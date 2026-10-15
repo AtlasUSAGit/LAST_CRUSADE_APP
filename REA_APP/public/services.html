@@ -20,9 +20,9 @@
 
   <style>
     :root {
-      --bg-obsidian: #07080a;
-      --bg-surface: #0d0f13;
-      --bg-card: rgba(16, 19, 25, 0.82);
+      --bg-obsidian: #410217;
+      --bg-surface: #2e0110;
+      --bg-card: rgba(46, 1, 16, 0.82);
       --bg-ivory: #f4f1ea;
       --text-primary: #f4f1ea;
       --text-secondary: #9ba3b0;
@@ -96,7 +96,7 @@
       left: 0;
       right: 0;
       height: 68px;
-      background: rgba(7, 8, 10, 0.86);
+      background: rgba(46, 1, 16, 0.88);
       backdrop-filter: blur(16px);
       border-bottom: 1px solid var(--border-hairline);
       z-index: 100;
@@ -343,7 +343,7 @@
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       border-bottom: 1px solid var(--border-hairline);
-      background: rgba(13, 15, 19, 0.75);
+      background: rgba(46, 1, 16, 0.75);
       backdrop-filter: blur(8px);
     }
 
@@ -726,7 +726,7 @@
 
     /* RED-TEAM & TELEMETRY CONTROL PANEL */
     .sim-controls-panel {
-      background: rgba(13, 15, 19, 0.75);
+      background: rgba(46, 1, 16, 0.75);
       border: 1px solid var(--border-hairline);
       padding: 14px 12px;
       display: flex;
@@ -756,7 +756,7 @@
 
     .btn-probe:hover {
       background: var(--accent-amber);
-      color: #07080a;
+      color: #410217;
       box-shadow: 0 0 16px rgba(245, 158, 11, 0.5);
       transform: translateY(-1px);
     }
@@ -823,7 +823,7 @@
       font-family: var(--font-mono);
       font-size: 10px;
       font-weight: 600;
-      background: rgba(7, 8, 10, 0.85);
+      background: rgba(46, 1, 16, 0.85);
       border: 1px solid var(--border-hairline);
       color: var(--text-secondary);
       cursor: pointer;
@@ -905,7 +905,7 @@
     }
 
     .peg-card {
-      background: rgba(7, 8, 10, 0.7);
+      background: rgba(46, 1, 16, 0.7);
       border: 1px solid var(--border-hairline);
       padding: 18px 16px;
       display: flex;
@@ -951,7 +951,7 @@
     .text-cyan { color: #38bdf8; }
 
     .lab-viewport-card {
-      background: #040609;
+      background: #24010d;
       border: 1px solid var(--border-strong);
       position: -webkit-sticky;
       position: sticky;
@@ -991,7 +991,7 @@
     }
 
     .hud-tag {
-      background: rgba(7, 8, 10, 0.88);
+      background: rgba(46, 1, 16, 0.88);
       border: 1px solid var(--border-strong);
       padding: 4px 10px;
       font-family: var(--font-mono);
@@ -1007,7 +1007,7 @@
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       border-top: 1px solid var(--border-hairline);
-      background: rgba(13, 15, 19, 0.95);
+      background: rgba(46, 1, 16, 0.95);
       margin-top: 0;
     }
 
@@ -1083,12 +1083,12 @@
     canvas.vol4-chart {
       width: 100%;
       height: 220px;
-      background: rgba(5, 7, 11, 0.85);
+      background: rgba(36, 1, 13, 0.85);
       border: 1px solid rgba(244, 241, 234, 0.08);
     }
 
     .ops-terminal {
-      background: #040609;
+      background: #24010d;
       border: 1px solid rgba(0, 255, 157, 0.28);
       padding: 14px;
       font-family: var(--font-mono);
@@ -2095,7 +2095,7 @@
     function initOpsWebGLLab() {
       const mount = document.getElementById('ops-webgl-mount');
       opsScene = new THREE.Scene();
-      opsScene.fog = new THREE.FogExp2(0x040609, 0.015);
+      opsScene.fog = new THREE.FogExp2(0x24010d, 0.015);
 
       opsCamera = new THREE.PerspectiveCamera(52, mount.clientWidth / mount.clientHeight, 0.1, 500);
       opsCamera.position.set(18, 14, 22);
@@ -2103,7 +2103,7 @@
       opsRenderer = new THREE.WebGLRenderer({ antialias: true });
       opsRenderer.setSize(mount.clientWidth, mount.clientHeight);
       opsRenderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-      opsRenderer.setClearColor(0x040609, 1);
+      opsRenderer.setClearColor(0x24010d, 1);
       mount.appendChild(opsRenderer.domElement);
 
       opsControls = new THREE.OrbitControls(opsCamera, opsRenderer.domElement);
