@@ -119,7 +119,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenAudit, onOpenIncident, onN
                   <span>Last Crusade Pitch Deck (HTML)</span>
                 </a>
               </li>
-              <li><a href="#problem" className="hover:text-[#FBF3E2] transition-colors">Distortion Simulator</a></li>
+              <li><a href="#problem" className="hover:text-[#FBF3E2] transition-colors">Attack Surface</a></li>
               <li><a href="#research" className="hover:text-[#FBF3E2] transition-colors">Counter-GEO Research</a></li>
             </ul>
           </div>
