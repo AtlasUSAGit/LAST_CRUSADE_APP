@@ -33,10 +33,10 @@ export const Header: React.FC<HeaderProps> = ({
               </div>
               <div className="flex flex-col">
                 <span className="font-serif font-bold text-2xl tracking-tight text-[#410217] flex items-center gap-1 leading-none">
-                  LAST CRUSADE <span className="font-sans font-light text-sm text-[#D5991C] tracking-widest pl-1">DEFENSE</span>
+                  LAST CRUSADE
                 </span>
                 <span className="font-mono text-[9px] text-[#410217]/60 tracking-[0.22em] uppercase mt-1">
-                  COUNTER-GEO THREAT INTEL
+                  GEO CYBER OPERATIONS
                 </span>
               </div>
             </button>

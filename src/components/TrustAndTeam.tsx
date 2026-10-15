@@ -69,9 +69,9 @@ export const TrustAndTeam: React.FC<TrustAndTeamProps> = ({ onNavigate }) => {
         <SectionHeader
           sectionIndex="§ 02"
           kicker="// Foundational Research & Threat Intelligence"
-          title="Sovereign Whitepapers & Zero-Day Research"
+          title="Whitepapers and Research"
           italicWord="Whitepapers"
-          description="Authored by Last Crusade Defense Security Labs to codify the mathematics, threat vectors, and active defense protocols across modern RAG pipelines and frontier AI reasoning models."
+          description="Authored to codify the mathematics, threat vectors, and active defense protocols across modern RAG pipelines and frontier AI reasoning models."
         />
 
         {/* Flagship Research Dossiers Grid */}
