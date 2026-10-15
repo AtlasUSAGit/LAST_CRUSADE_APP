@@ -174,10 +174,64 @@
       height: 100%;
       display: block;
     }
+
+    /* Smart auto-hiding menu bar */
+    #smart-menu-bar {
+      will-change: transform, opacity;
+      transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+    }
   </style>
 </head>
 
 <body class="editorial-grid font-sans antialiased selection:bg-oxblood selection:text-cream">
+
+  <!-- Smart Auto-Hiding Top Menu Bar (Disappears on scroll down, reappears on scroll up) -->
+  <header id="smart-menu-bar"
+    class="fixed top-0 left-0 w-full z-50 bg-[#FAF5EB]/95 backdrop-blur-md border-b border-oxblood/15 px-6 sm:px-14 lg:px-24 py-3 flex items-center justify-between shadow-xs">
+    
+    <!-- Left: Brand / Home Link -->
+    <div class="flex items-center gap-3 sm:gap-4">
+      <a href="/" target="_top"
+        class="flex items-center gap-2 font-mono text-xs text-oxblood hover:text-gold uppercase tracking-widest border border-oxblood/20 px-3 py-1.5 transition-all bg-cream hover:bg-oxblood hover:text-cream shadow-xs rounded-sm">
+        <span>←</span>
+        <span>Platform Home</span>
+      </a>
+      <span class="inline-block w-2.5 h-2.5 rotate-45 bg-gold border border-oxblood"></span>
+      <span class="font-mono text-xs sm:text-sm tracking-[0.3em] uppercase text-oxblood font-bold">
+        LAST CRUSADE
+      </span>
+    </div>
+
+    <!-- Center: Section Jump Links (Desktop) -->
+    <nav class="hidden lg:flex items-center gap-5 font-mono text-[11px] text-oxblood/70 uppercase tracking-wider">
+      <a href="#sec-1" class="hover:text-gold transition-colors">01 Intro</a>
+      <span class="text-oxblood/20">/</span>
+      <a href="#sec-3" class="hover:text-gold transition-colors">03 Sovereign Markets</a>
+      <span class="text-oxblood/20">/</span>
+      <a href="#sec-5" class="hover:text-gold transition-colors">05 GEO Duality</a>
+      <span class="text-oxblood/20">/</span>
+      <a href="#sec-7" class="hover:text-gold transition-colors">07 Arbitrage</a>
+      <span class="text-oxblood/20">/</span>
+      <a href="#sec-8" class="hover:text-gold transition-colors">08 Manifesto</a>
+    </nav>
+
+    <!-- Right: Explore CTA & Astrolabe -->
+    <div class="flex items-center gap-3 sm:gap-4">
+      <a href="/" target="_top"
+        class="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-wider px-3.5 py-1.5 bg-oxblood text-cream border border-gold hover:bg-gold hover:text-oxblood transition-all font-bold shadow-xs">
+        <span>Explore Last Crusade</span>
+        <span>→</span>
+      </a>
+
+      <!-- Geometric astrolabe emblem -->
+      <svg class="w-7 h-7 text-oxblood animate-spin shrink-0" style="animation-duration: 24s;" viewBox="0 0 40 40" fill="none">
+        <circle cx="20" cy="20" r="18" stroke="currentColor" stroke-width="1" stroke-dasharray="3 3" />
+        <circle cx="20" cy="20" r="11" stroke="#DDA743" stroke-width="1.2" />
+        <path d="M20 2 L20 38 M2 20 L38 20" stroke="currentColor" stroke-width="0.75" opacity="0.5" />
+        <rect x="17" y="17" width="6" height="6" transform="rotate(45 20 20)" fill="#320813" />
+      </svg>
+    </div>
+  </header>
 
   <!-- Top Scroll Progress Bar -->
   <div class="fixed top-0 left-0 w-full h-1 bg-oxblood/10 z-50">
@@ -223,26 +277,18 @@
          SECTION 1: TITLE / HERO — LAST CRUSADE
          ========================================== -->
     <section id="sec-1"
-      class="min-h-screen w-full flex flex-col justify-between px-6 sm:px-14 lg:px-24 py-12 sm:py-16 relative">
-      <!-- Top Bar with exact text "PITCH DECK" -->
-      <div class="flex items-center justify-between border-b border-oxblood/20 pb-5">
-        <div class="flex items-center gap-4">
-          <a href="/" class="flex items-center gap-2 font-mono text-xs text-oxblood hover:text-gold uppercase tracking-widest border border-oxblood/20 px-3 py-1.5 transition-all bg-cream/80 hover:bg-oxblood hover:text-cream shadow-xs">
-            <span>←</span>
-            <span>Platform Home</span>
-          </a>
-          <span class="inline-block w-2.5 h-2.5 rotate-45 bg-gold border border-oxblood"></span>
-          <span
-            class="font-mono text-xs sm:text-sm tracking-[0.35em] uppercase text-oxblood font-medium reveal-up">PITCH
-            DECK</span>
+      class="min-h-screen w-full flex flex-col justify-between px-6 sm:px-14 lg:px-24 pt-24 pb-12 sm:pt-28 sm:pb-16 relative">
+      <!-- Hero Top Meta Rule -->
+      <div class="flex items-center justify-between border-b border-oxblood/20 pb-4">
+        <div class="flex items-center gap-2.5">
+          <span class="inline-block w-2 h-2 rotate-45 bg-gold border border-oxblood"></span>
+          <span class="font-mono text-xs tracking-[0.3em] uppercase text-oxblood/70 font-semibold">
+            PETRA LABS · CYBER OPERATIONS DIVISION
+          </span>
         </div>
-        <!-- Purely geometric astrolabe emblem -->
-        <svg class="w-8 h-8 text-oxblood animate-spin" style="animation-duration: 24s;" viewBox="0 0 40 40" fill="none">
-          <circle cx="20" cy="20" r="18" stroke="currentColor" stroke-width="1" stroke-dasharray="3 3" />
-          <circle cx="20" cy="20" r="11" stroke="#DDA743" stroke-width="1.2" />
-          <path d="M20 2 L20 38 M2 20 L38 20" stroke="currentColor" stroke-width="0.75" opacity="0.5" />
-          <rect x="17" y="17" width="6" height="6" transform="rotate(45 20 20)" fill="#320813" />
-        </svg>
+        <span class="font-mono text-xs text-oxblood/50 uppercase tracking-widest hidden sm:inline-block">
+          EXECUTIVE PITCH DECK // 2026
+        </span>
       </div>
 
       <!-- Center Monumental Title -->
@@ -777,6 +823,18 @@
           </p>
         </div>
 
+        <!-- Bottom Action CTA: Explore Last Crusade (Takes user to home page) -->
+        <div class="text-center pt-8 pb-16 reveal-card">
+          <a href="/" target="_top"
+            class="group inline-flex items-center justify-center gap-4 px-10 sm:px-14 py-5 bg-oxblood text-cream font-mono text-sm sm:text-base font-bold tracking-[0.22em] uppercase border-2 border-gold rounded-full shadow-2xl hover:bg-gold hover:text-oxblood hover:border-oxblood transition-all duration-300 transform hover:-translate-y-1 cursor-pointer">
+            <span>Explore Last Crusade</span>
+            <span class="inline-block transition-transform duration-300 group-hover:translate-x-1.5 font-sans text-xl">→</span>
+          </a>
+          <p class="mt-4 font-mono text-xs text-oxblood/60 uppercase tracking-widest">
+            Enter Sovereign Defense Platform & Counter-GEO Command Center
+          </p>
+        </div>
+
       </div>
     </section>
 
@@ -966,6 +1024,50 @@
           scrub: 0.2
         }
       });
+
+      /* -----------------------------------------------------------
+       * SMART AUTO-HIDING TOP MENU BAR
+       * At top: visible.
+       * Scrolling down: smoothly disappears (-translate-y-full).
+       * Scrolling up: smoothly slides back down (translate-y-0).
+       * ----------------------------------------------------------- */
+      const menuBar = document.getElementById('smart-menu-bar');
+      if (menuBar) {
+        let lastScrollY = window.pageYOffset || document.documentElement.scrollTop;
+        let ticking = false;
+
+        const handleScroll = () => {
+          const currentScrollY = window.pageYOffset || document.documentElement.scrollTop;
+          const diff = currentScrollY - lastScrollY;
+
+          // Always reveal if near top
+          if (currentScrollY <= 25) {
+            menuBar.style.transform = 'translateY(0)';
+            menuBar.style.opacity = '1';
+            menuBar.style.pointerEvents = 'auto';
+          } else if (diff > 6 && currentScrollY > 70) {
+            // Scrolling down -> hide
+            menuBar.style.transform = 'translateY(-110%)';
+            menuBar.style.opacity = '0';
+            menuBar.style.pointerEvents = 'none';
+          } else if (diff < -5) {
+            // Scrolling up -> reveal
+            menuBar.style.transform = 'translateY(0)';
+            menuBar.style.opacity = '1';
+            menuBar.style.pointerEvents = 'auto';
+          }
+
+          lastScrollY = currentScrollY <= 0 ? 0 : currentScrollY;
+          ticking = false;
+        };
+
+        window.addEventListener('scroll', () => {
+          if (!ticking) {
+            window.requestAnimationFrame(handleScroll);
+            ticking = true;
+          }
+        }, { passive: true });
+      }
 
       // Hero Entrance
       gsap.from('#hero-title', {
