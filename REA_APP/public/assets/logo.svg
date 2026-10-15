@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none">
+  <defs>
+    <linearGradient id="reaGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#7928ca" />
+      <stop offset="100%" stop-color="#00f2fe" />
+    </linearGradient>
+  </defs>
+  <rect width="100" height="100" rx="24" fill="url(#reaGrad)" />
+  <path d="M50 18L78 34V66L50 82L22 66V34L50 18Z" stroke="#ffffff" stroke-width="4" stroke-linejoin="round" fill="none"/>
+  <path d="M50 18V50M78 34L50 50M22 34L50 50" stroke="#ffffff" stroke-width="4" stroke-linejoin="round"/>
+  <circle cx="50" cy="50" r="7" fill="#ffffff"/>
+  <circle cx="50" cy="18" r="4" fill="#00f2fe"/>
+  <circle cx="78" cy="34" r="4" fill="#00f2fe"/>
+  <circle cx="22" cy="34" r="4" fill="#00f2fe"/>
+  <circle cx="78" cy="66" r="4" fill="#7928ca"/>
+  <circle cx="22" cy="66" r="4" fill="#7928ca"/>
+  <circle cx="50" cy="82" r="4" fill="#7928ca"/>
+</svg>

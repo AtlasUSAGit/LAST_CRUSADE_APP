@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LAST CRUSADE DEFENSE // REA Studio · Reverse Engineer Anything Workbench</title>
+  <meta name="description" content="State of the art interactive interface and workbench for Reverse Engineer Anything (REA), connecting coding agents, MCP tools, and binary/application inspection.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,300..700;1,300..700&family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..700&family=Plus+Jakarta+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="app-container">
+    <!-- Header -->
+    <header class="app-header">
+      <div class="brand-section">
+        <div class="logo-badge" id="appLogoBadge">
+          <div class="logo-badge-inner"></div>
+        </div>
+        <div class="brand-title">
+          <h1>LAST CRUSADE DEFENSE // REA STUDIO</h1>
+          <span class="brand-subtitle">Reverse Engineer Anything · AI Agent MCP Workbench v6.3.0</span>
+        </div>
+      </div>
+
+      <div class="header-status-group">
+        <div class="status-chip" id="connectionChip">
+          <span class="pulse-dot"></span>
+          <span id="connectionText">REA MCP Ready · 133 Tools</span>
+        </div>
+        <div class="header-actions">
+          <button class="btn btn-secondary btn-sm" id="btnQuickDoctor">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
+            </svg>
+            System Doctor
+          </button>
+          <a href="/#/counter-geo" target="_top" class="btn btn-gold btn-sm" id="btnOpenVisualizer" style="text-decoration: none; display: inline-flex; align-items: center; gap: 6px;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+              <polyline points="2 17 12 22 22 17"></polyline>
+              <polyline points="2 12 12 17 22 12"></polyline>
+            </svg>
+            Counter-GEO 3D Engine
+          </a>
+          <button class="btn btn-primary btn-sm" id="btnOpenSetupModal">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+            </svg>
+            Setup Plan & Agents
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Sidebar Navigation -->
+    <aside class="app-sidebar">
+      <div>
+        <div class="nav-section-title">Navigation</div>
+        <ul class="nav-menu">
+          <li class="nav-item active" data-view="dashboard">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+            Dashboard & Status
+          </li>
+          <li class="nav-item" data-view="inspector">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+            Target Inspector
+          </li>
+          <li class="nav-item" data-view="promptStudio">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+            Agent Prompt Studio
+          </li>
+          <li class="nav-item" data-view="terminal">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><polyline points="4 17 10 11 4 5"></polyline><line x1="12" y1="19" x2="20" y2="19"></line></svg>
+            REA Live Terminal
+          </li>
+          <li class="nav-item" data-view="setupManager">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+            MCP & Agent Setup
+          </li>
+        </ul>
+      </div>
+
+      <div class="sidebar-agent-card">
+        <div class="agent-card-header">
+          <span class="agent-title">Active Environment</span>
+          <span class="agent-tag">Antigravity 2.0</span>
+        </div>
+        <p class="agent-desc">Connects Antigravity, Claude Code, & Gemini CLI to REA's local binary/JavaScript analysis engine.</p>
+        <button class="btn btn-secondary btn-sm" id="btnSidebarSetup">Review Setup Plan</button>
+      </div>
+    </aside>
+
+    <!-- Main Views Content -->
+    <main class="app-main">
+
+      <!-- VIEW 1: Dashboard -->
+      <section class="view-panel active" id="view-dashboard">
+        <div class="hero-banner">
+          <div class="hero-content">
+            <h2>Inspect Any App. Understand Any Feature.</h2>
+            <p>Reverse Engineer Anything (REA) provides deep local inspection for native binaries, JavaScript/Electron apps, and web runtimes. Extract evidence, trace IPC channels, and build clean-room implementations.</p>
+          </div>
+          <div class="hero-actions">
+            <button class="btn btn-primary" id="btnHeroInspect">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+              Start Target Inspection
+            </button>
+            <button class="btn btn-emerald" id="btnHeroSetupPlan">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              Approve Agent Setup
+            </button>
+          </div>
+        </div>
+
+        <!-- Metric Grid -->
+        <div class="stats-grid">
+          <div class="stat-card">
+            <span class="stat-label">REA Version</span>
+            <div class="stat-value" id="valReaVersion">v6.3.0</div>
+            <div class="stat-meta">npm release (latest verified)</div>
+          </div>
+          <div class="stat-card">
+            <span class="stat-label">Available MCP Tools</span>
+            <div class="stat-value">133 Tools</div>
+            <div class="stat-meta">Binary, Electron, Web & Native</div>
+          </div>
+          <div class="stat-card">
+            <span class="stat-label">Node Runtime</span>
+            <div class="stat-value">v22.20.0</div>
+            <div class="stat-meta">Native ESM & V8 Inspector ready</div>
+          </div>
+          <div class="stat-card">
+            <span class="stat-label">Detected Agents</span>
+            <div class="stat-value" id="valDetectedAgents">5 Agents</div>
+            <div class="stat-meta">Antigravity, Claude, Gemini, VSCode</div>
+          </div>
+        </div>
+
+        <!-- Quick Launch Cards -->
+        <div class="workbench-grid">
+          <div class="panel-card">
+            <div class="panel-title">Quick Actions</div>
+            <div class="target-selector-list">
+              <div class="target-card" id="quickCardElectron">
+                <div class="target-header">
+                  <span class="target-name">Analyze Electron App</span>
+                  <span class="target-badge">ASAR / JS</span>
+                </div>
+                <p class="target-summary">Extract modules, imports, IPC handlers, and context isolation boundaries.</p>
+              </div>
+
+              <div class="target-card" id="quickCardMacho">
+                <div class="target-header">
+                  <span class="target-name">Native Mach-O Binary</span>
+                  <span class="target-badge">ARM64 / x86</span>
+                </div>
+                <p class="target-summary">Inspect dyld resolution, symbols, entitlements, and disassemblies.</p>
+              </div>
+
+              <div class="target-card" id="quickCardPrompt">
+                <div class="target-header">
+                  <span class="target-name">Ask Agent Workflow</span>
+                  <span class="target-badge">Prompting</span>
+                </div>
+                <p class="target-summary">Generate evidence-based prompts for clean-room implementation.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="panel-card">
+            <div class="panel-title">
+              <span>Agent Integration Status</span>
+              <button class="btn btn-secondary btn-sm" id="btnRefreshDoctor">Refresh</button>
+            </div>
+            <div class="evidence-grid" id="dashboardAgentGrid">
+              <!-- Dynamically populated -->
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- VIEW 2: Target Inspector -->
+      <section class="view-panel" id="view-inspector">
+        <div class="workbench-grid">
+          <!-- Left: Target Selector & Custom Path Input -->
+          <div class="panel-card">
+            <div class="panel-title">Choose Analysis Target</div>
+            
+            <div class="target-selector-list" id="sampleTargetList">
+              <div class="target-card active" data-sample-key="electronNotes">
+                <div class="target-header">
+                  <span class="target-name">Notes App (Electron)</span>
+                  <span class="target-badge">Electron 32</span>
+                </div>
+                <p class="target-summary">SQLite FTS5 full-text search, IPC Main <-> Renderer handlers, and contextBridge.</p>
+              </div>
+
+              <div class="target-card" data-sample-key="machoBinary">
+                <div class="target-header">
+                  <span class="target-name">System Telemetry (Mach-O)</span>
+                  <span class="target-badge">macOS ARM64</span>
+                </div>
+                <p class="target-summary">Native Mach message port dispatch, IOKit power telemetry, and libSystem.</p>
+              </div>
+
+              <div class="target-card" data-sample-key="webBundle">
+                <div class="target-header">
+                  <span class="target-name">Single Page App (Web)</span>
+                  <span class="target-badge">React / Vite</span>
+                </div>
+                <p class="target-summary">Recovered source maps, GraphQL WebSocket channels, and token refresh routes.</p>
+              </div>
+            </div>
+
+            <div class="custom-input-box">
+              <span class="stat-label">Analyze Local App / Path</span>
+              <input type="text" class="input-field" id="inputCustomPath" placeholder="/Applications/Slack.app or ./dist">
+              <button class="btn btn-primary btn-sm" id="btnRunCustomAnalysis">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"></polyline><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"></path></svg>
+                Analyze Directory / ASAR
+              </button>
+            </div>
+          </div>
+
+          <!-- Right: Interactive Analysis View -->
+          <div class="panel-card">
+            <div class="panel-title">
+              <div>
+                <span id="activeTargetTitle">Notes Desktop App (Electron Search & IPC)</span>
+                <span class="target-badge" id="activeTargetConfidence" style="margin-left: 8px;">Confidence: 0.94</span>
+              </div>
+              <button class="btn btn-secondary btn-sm" id="btnCopyEvidenceJson">Copy Evidence JSON</button>
+            </div>
+
+            <!-- Tabs -->
+            <div class="tabs-header">
+              <button class="tab-btn active" data-tab="tab-ipc">IPC & Boundaries</button>
+              <button class="tab-btn" data-tab="tab-modules">Modules & Imports</button>
+              <button class="tab-btn" data-tab="tab-decompiled">Decompiled / Reconstructed Code</button>
+            </div>
+
+            <!-- Tab Content: IPC & Boundaries -->
+            <div class="evidence-section" id="tab-ipc">
+              <div class="evidence-grid" id="ipcChannelsContainer">
+                <!-- Dynamically populated -->
+              </div>
+            </div>
+
+            <!-- Tab Content: Modules & Imports -->
+            <div class="evidence-section" id="tab-modules" style="display: none;">
+              <div class="evidence-grid" id="modulesContainer">
+                <!-- Dynamically populated -->
+              </div>
+            </div>
+
+            <!-- Tab Content: Decompiled Code -->
+            <div class="evidence-section" id="tab-decompiled" style="display: none;">
+              <div class="code-viewer-container">
+                <div class="code-header">
+                  <span id="codeHeaderFilename">src/main/search-service.js (Clean-Room Implementation)</span>
+                  <button class="btn btn-secondary btn-sm" id="btnCopyCode">Copy Code</button>
+                </div>
+                <pre class="code-content" id="codeContentView"></pre>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- VIEW 3: Agent Prompt Studio -->
+      <section class="view-panel" id="view-promptStudio">
+        <div class="panel-card">
+          <div class="panel-title">Reverse Engineering Agent Prompt Studio</div>
+          <p style="color: var(--text-secondary); font-size: 0.9rem;">
+            Formulate high-precision prompt templates for your AI agent (Antigravity, Claude Code, Gemini CLI, Cursor) to investigate target apps, extract verified evidence, and implement matching features without guessing.
+          </p>
+
+          <div class="prompt-box">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <span class="stat-label">Recommended Prompt Pattern</span>
+              <button class="btn btn-secondary btn-sm" id="btnCopyPrompt">Copy to Clipboard</button>
+            </div>
+            <div class="prompt-text" id="promptTextDisplay">
+              "Understand how search works in the Notes app, show me the evidence, and build a similar feature for my project."
+            </div>
+          </div>
+
+          <div class="workbench-grid" style="margin-top: 10px;">
+            <div class="item-box">
+              <div class="item-box-title">Step 1: Discover & Map</div>
+              <p class="item-box-detail">Agent calls REA MCP tools like <code>analyze-javascript-application</code> or <code>inspect-macho</code> to map exports, IPC channels, and dependencies.</p>
+            </div>
+            <div class="item-box">
+              <div class="item-box-title">Step 2: Trace & Extract Evidence</div>
+              <p class="item-box-detail">Agent isolates exact handlers (e.g. SQLite FTS5 queries or Mach message registers) with file provenance and confidence scores.</p>
+            </div>
+            <div class="item-box">
+              <div class="item-box-title">Step 3: Clean-Room Build</div>
+              <p class="item-box-detail">Agent creates fresh project code conforming to the recovered contract with zero copyright leakage.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- VIEW 4: Live REA Terminal -->
+      <section class="view-panel" id="view-terminal">
+        <div class="terminal-window">
+          <div class="terminal-titlebar">
+            <div class="terminal-controls">
+              <span class="control-dot dot-red"></span>
+              <span class="control-dot dot-yellow"></span>
+              <span class="control-dot dot-green"></span>
+            </div>
+            <span style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-muted);">npx rea-agents@latest CLI Bridge</span>
+            <div style="display: flex; gap: 8px;">
+              <button class="btn btn-secondary btn-sm" id="btnRunDoctorTerminal">rea doctor</button>
+              <button class="btn btn-secondary btn-sm" id="btnRunProvidersTerminal">rea providers</button>
+              <button class="btn btn-secondary btn-sm" id="btnClearTerminal">Clear</button>
+            </div>
+          </div>
+          <div class="terminal-body" id="terminalOutput">REA Workbench Terminal Bridge Initialized.
+Type a command or click a preset above.
+$ rea doctor --format json
+</div>
+          <div class="terminal-input-bar">
+            <span class="terminal-prompt-prefix">rea &gt;</span>
+            <input type="text" class="terminal-input" id="terminalInput" placeholder="doctor, providers, update, inspect-plist...">
+          </div>
+        </div>
+      </section>
+
+      <!-- VIEW 5: MCP & Agent Setup Manager -->
+      <section class="view-panel" id="view-setupManager">
+        <div class="panel-card">
+          <div class="panel-title">
+            <span>REA Setup Plan & Agent Integrations</span>
+            <span class="target-badge">Dry-Run Inspection</span>
+          </div>
+          <p style="color: var(--text-secondary); font-size: 0.88rem;">
+            REA connects to your local coding agents via MCP (Model Context Protocol). Review proposed configuration changes and apply them with safety backups.
+          </p>
+
+          <div style="display: flex; gap: 12px; margin: 10px 0;">
+            <button class="btn btn-primary" id="btnApplySetupAntigravity">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              Approve Setup for Antigravity (Recommended)
+            </button>
+            <button class="btn btn-secondary" id="btnApplySetupAll">
+              Approve for All Detected Agents
+            </button>
+          </div>
+
+          <div class="target-selector-list" id="setupPlanDetailsList">
+            <!-- Dynamically populated from /api/plan -->
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- Setup Approval Modal -->
+  <div class="modal-overlay" id="setupModalOverlay">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3>Approve REA Agent Setup Plan</h3>
+        <button class="modal-close" id="btnCloseSetupModal">&times;</button>
+      </div>
+      <p style="color: var(--text-secondary); font-size: 0.85rem;">
+        The setup command adds REA's MCP server and bundles workflow instructions. Backups of your existing configuration are automatically created.
+      </p>
+
+      <div class="target-selector-list" id="modalPlanActionsList">
+        <div class="plan-item">
+          <div class="plan-item-label">
+            <span>Antigravity MCP Configuration</span>
+            <span class="target-badge">MCP stdio</span>
+          </div>
+          <div class="plan-item-target">/Users/sammyb/.gemini/config/mcp_config.json</div>
+          <div class="plan-item-desc">Registers command <code>npx -y rea-agents@6.3.0 mcp</code>. Backs up original to <code>mcp_config.json.rea.backup</code>.</div>
+        </div>
+
+        <div class="plan-item">
+          <div class="plan-item-label">
+            <span>REA Reverse-Engineering Skill</span>
+            <span class="target-badge">Bundled Skill</span>
+          </div>
+          <div class="plan-item-target">/Users/sammyb/.agents/skills/reverse-engineer-anything</div>
+          <div class="plan-item-desc">Installs agent instructions, investigation blueprints, and on-demand reference documentation.</div>
+        </div>
+      </div>
+
+      <div style="display: flex; justify-content: flex-end; gap: 12px; margin-top: 10px;">
+        <button class="btn btn-secondary" id="btnCancelModal">Cancel</button>
+        <button class="btn btn-emerald" id="btnConfirmModalSetup">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          Approve & Apply Installation
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div class="toast" id="toastMessage">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent-emerald)" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+    <span id="toastText">Action completed successfully</span>
+  </div>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

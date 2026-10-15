@@ -1,0 +1,212 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-serif: 'Playfair Display', Georgia, Cambria, 'Times New Roman', serif;
+    --font-mono: 'JetBrains Mono', monospace;
+    
+    --petra-cream: #FAF5EB;
+    --petra-oxblood: #410217;
+    --petra-gold: #D5991C;
+    --petra-sand: #F2D69D;
+    --petra-teal: #004566;
+    --petra-slate: #575F62;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    background-color: #FAF5EB;
+    color: #410217;
+  }
+
+  h1, h2, h3, .font-serif {
+    font-family: var(--font-serif);
+    letter-spacing: -0.015em;
+  }
+
+  code, pre, .font-mono {
+    font-family: var(--font-mono);
+  }
+}
+
+/* Petra Labs Architectural Layout & Grid Utilities */
+.font-serif {
+  font-family: 'Playfair Display', Georgia, serif;
+}
+
+.bg-petra-cream {
+  background-color: #FAF5EB;
+}
+
+.bg-petra-sand {
+  background-color: #FAF2E1;
+}
+
+.bg-petra-oxblood {
+  background-color: #410217;
+}
+
+.border-petra-sand {
+  border-color: #F2D69D;
+}
+
+.border-petra-oxblood {
+  border-color: #410217;
+}
+
+.text-petra-oxblood {
+  color: #410217;
+}
+
+.text-petra-gold {
+  color: #D5991C;
+}
+
+.text-petra-sand {
+  color: #F2D69D;
+}
+
+/* Subtle architectural paper grid pattern matching Petra Labs */
+.bg-petra-grid {
+  background-size: 48px 48px;
+  background-image: 
+    linear-gradient(to right, rgba(65, 2, 23, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(65, 2, 23, 0.04) 1px, transparent 1px);
+}
+
+.bg-petra-dots {
+  background-image: radial-gradient(circle, rgba(65, 2, 23, 0.08) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* Precision Hairline Cards & Panels */
+.petra-panel {
+  background-color: #FAF2E1;
+  border: 1px solid #F2D69D;
+}
+
+.petra-panel-dark {
+  background-color: #410217;
+  border: 1px solid #F2D69D;
+  color: #FBF3E2;
+}
+
+.petra-card-hover {
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.petra-card-hover:hover {
+  border-color: #410217;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px -5px rgba(65, 2, 23, 0.08);
+}
+
+.petra-tag {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: #D5991C;
+}
+
+/* Custom Scrollbar styled for warm parchment */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #FBF3E2;
+}
+::-webkit-scrollbar-thumb {
+  background: #E8D7B5;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #410217;
+}
+
+/* ==========================================================================
+   EDITORIAL HOME PAGE SYSTEM
+   ========================================================================== */
+
+/* Stately, high-end editorial display serif for large headlines */
+.font-display {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  letter-spacing: -0.015em;
+  line-height: 1.16;
+  padding-top: 0.04em;
+  padding-bottom: 0.08em;
+}
+
+.font-display em,
+.font-serif em {
+  font-style: italic;
+  font-weight: 400;
+  padding-right: 0.05em;
+}
+
+/* SplitText lines: ensure ample vertical breathing room so descenders/ascenders never clip */
+.split-line {
+  padding-top: 0.08em;
+  padding-bottom: 0.12em;
+  margin-top: -0.08em;
+  margin-bottom: -0.12em;
+  overflow: visible !important;
+}
+
+/* Hairline rule that GSAP draws in via scaleX */
+.rule-draw {
+  transform-origin: left center;
+}
+
+/* Animated underline for text links */
+.link-underline {
+  background-image: linear-gradient(currentColor, currentColor);
+  background-size: 100% 1px;
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  transition: background-size 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  padding-bottom: 2px;
+}
+.link-underline:hover {
+  background-size: 0% 1px;
+  background-position: 100% 100%;
+}
+
+/* Outline numerals for process panels */
+.text-outline {
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(65, 2, 23, 0.35);
+}
+.text-outline-light {
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(242, 214, 157, 0.35);
+}
+
+/* Fine film grain, keeps flat color fields from feeling digital */
+.grain-overlay {
+  position: fixed;
+  inset: -50%;
+  width: 200%;
+  height: 200%;
+  pointer-events: none;
+  z-index: 40;
+  opacity: 0.045;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  animation: grain-shift 9s steps(9) infinite;
+}
+
+@keyframes grain-shift {
+  0%, 100% { transform: translate(0, 0); }
+  20% { transform: translate(-3%, 2%); }
+  40% { transform: translate(2%, -4%); }
+  60% { transform: translate(-4%, -2%); }
+  80% { transform: translate(3%, 3%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .grain-overlay { animation: none; }
+}
+

@@ -1,0 +1,1559 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LAST CRUSADE</title>
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Google Fonts: Cormorant Garamond, Plus Jakarta Sans, JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=JetBrains+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap"
+    rel="stylesheet">
+
+  <!-- Three.js & GSAP + ScrollTrigger -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            cream: '#FAF5EB',
+            oxblood: '#320813',
+            gold: '#DDA743',
+          },
+          fontFamily: {
+            serif: ['"Cormorant Garamond"', 'Georgia', 'serif'],
+            sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    :root {
+      --bg-cream: #FAF5EB;
+      --accent-primary: #320813;
+      --accent-secondary: #DDA743;
+    }
+
+    * {
+      box-sizing: border-box;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      background-color: var(--bg-cream);
+      color: var(--accent-primary);
+    }
+
+    body {
+      background-color: var(--bg-cream);
+      color: var(--accent-primary);
+      overflow-x: hidden;
+      margin: 0;
+      padding: 0;
+    }
+
+    ::selection {
+      background-color: var(--accent-primary);
+      color: var(--bg-cream);
+    }
+
+    /* Subtle architectural grid and paper grain overlay */
+    .editorial-grid {
+      background-size: 64px 64px;
+      background-image:
+        linear-gradient(to right, rgba(50, 8, 19, 0.04) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(50, 8, 19, 0.04) 1px, transparent 1px);
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #FAF5EB;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: #320813;
+      border-radius: 3px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: #DDA743;
+    }
+
+    /* WebGL Fixed Canvas */
+    #webgl-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    /* Content wrapper above WebGL */
+    .deck-content {
+      position: relative;
+      z-index: 10;
+    }
+
+    /* Glassmorphic editorial cards */
+    .editorial-card {
+      background: rgba(250, 245, 235, 0.84);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(50, 8, 19, 0.14);
+      box-shadow: 0 20px 50px -15px rgba(50, 8, 19, 0.07);
+    }
+
+    .editorial-card-dark {
+      background: rgba(50, 8, 19, 0.95);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid rgba(221, 167, 67, 0.35);
+      color: #FAF5EB;
+      box-shadow: 0 25px 60px -15px rgba(50, 8, 19, 0.35);
+    }
+
+    /* Animated gold underline accent */
+    .gold-rule {
+      height: 1px;
+      background: linear-gradient(90deg, #320813 0%, #DDA743 50%, rgba(50, 8, 19, 0.1) 100%);
+    }
+
+    /* Navigation Diamond Indicators */
+    .nav-diamond {
+      width: 9px;
+      height: 9px;
+      transform: rotate(45deg);
+      border: 1px solid #320813;
+      background: transparent;
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      cursor: pointer;
+    }
+
+    .nav-diamond.active {
+      background: #DDA743;
+      border-color: #320813;
+      transform: rotate(45deg) scale(1.45);
+      box-shadow: 0 0 12px rgba(221, 167, 67, 0.65);
+    }
+
+    .nav-diamond:hover {
+      background: #320813;
+      transform: rotate(45deg) scale(1.3);
+    }
+
+    /* Revenue Bar Track */
+    .rev-bar-fill {
+      transform-origin: left center;
+      transform: scaleX(0);
+    }
+
+    /* Interactive simulation canvases */
+    .sim-canvas {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+  </style>
+</head>
+
+<body class="editorial-grid font-sans antialiased selection:bg-oxblood selection:text-cream">
+
+  <!-- Top Scroll Progress Bar -->
+  <div class="fixed top-0 left-0 w-full h-1 bg-oxblood/10 z-50">
+    <div id="scroll-progress" class="h-full bg-gold w-0 transition-none"></div>
+  </div>
+
+  <!-- Architectural Frame Hairlines -->
+  <div class="fixed inset-3 sm:inset-5 pointer-events-none border border-oxblood/15 z-40 rounded-sm">
+    <!-- Corner Geometric Accents -->
+    <div class="absolute -top-1 -left-1 w-2.5 h-2.5 border-t-2 border-l-2 border-oxblood"></div>
+    <div class="absolute -top-1 -right-1 w-2.5 h-2.5 border-t-2 border-r-2 border-oxblood"></div>
+    <div class="absolute -bottom-1 -left-1 w-2.5 h-2.5 border-b-2 border-l-2 border-oxblood"></div>
+    <div class="absolute -bottom-1 -right-1 w-2.5 h-2.5 border-b-2 border-r-2 border-oxblood"></div>
+  </div>
+
+  <!-- Non-Verbal Geometric Section Navigation (Right Margin) -->
+  <nav aria-label="Slide Navigation"
+    class="fixed right-6 sm:right-9 top-1/2 -translate-y-1/2 z-50 hidden md:flex flex-col items-center gap-4">
+    <button class="nav-diamond active" data-target="#sec-1" aria-label="1"></button>
+    <div class="w-px h-3 bg-oxblood/20"></div>
+    <button class="nav-diamond" data-target="#sec-2" aria-label="2"></button>
+    <div class="w-px h-3 bg-oxblood/20"></div>
+    <button class="nav-diamond" data-target="#sec-3" aria-label="3"></button>
+    <div class="w-px h-3 bg-oxblood/20"></div>
+    <button class="nav-diamond" data-target="#sec-4" aria-label="4"></button>
+    <div class="w-px h-3 bg-oxblood/20"></div>
+    <button class="nav-diamond" data-target="#sec-5" aria-label="5"></button>
+    <div class="w-px h-3 bg-oxblood/20"></div>
+    <button class="nav-diamond" data-target="#sec-6" aria-label="6"></button>
+    <div class="w-px h-3 bg-oxblood/20"></div>
+    <button class="nav-diamond" data-target="#sec-7" aria-label="7"></button>
+    <div class="w-px h-3 bg-oxblood/20"></div>
+    <button class="nav-diamond" data-target="#sec-8" aria-label="8"></button>
+  </nav>
+
+  <!-- Persistent Three.js WebGL Canvas -->
+  <div id="webgl-container"></div>
+
+  <!-- MAIN SCROLLING PITCH DECK -->
+  <main class="deck-content">
+
+    <!-- ==========================================
+         SECTION 1: TITLE / HERO — LAST CRUSADE
+         ========================================== -->
+    <section id="sec-1"
+      class="min-h-screen w-full flex flex-col justify-between px-6 sm:px-14 lg:px-24 py-12 sm:py-16 relative">
+      <!-- Top Bar with exact text "PITCH DECK" -->
+      <div class="flex items-center justify-between border-b border-oxblood/20 pb-5">
+        <div class="flex items-center gap-3">
+          <span class="inline-block w-2.5 h-2.5 rotate-45 bg-gold border border-oxblood"></span>
+          <span
+            class="font-mono text-xs sm:text-sm tracking-[0.35em] uppercase text-oxblood font-medium reveal-up">PITCH
+            DECK</span>
+        </div>
+        <!-- Purely geometric astrolabe emblem -->
+        <svg class="w-8 h-8 text-oxblood animate-spin" style="animation-duration: 24s;" viewBox="0 0 40 40" fill="none">
+          <circle cx="20" cy="20" r="18" stroke="currentColor" stroke-width="1" stroke-dasharray="3 3" />
+          <circle cx="20" cy="20" r="11" stroke="#DDA743" stroke-width="1.2" />
+          <path d="M20 2 L20 38 M2 20 L38 20" stroke="currentColor" stroke-width="0.75" opacity="0.5" />
+          <rect x="17" y="17" width="6" height="6" transform="rotate(45 20 20)" fill="#320813" />
+        </svg>
+      </div>
+
+      <!-- Center Monumental Title -->
+      <div class="my-auto py-16 max-w-5xl">
+        <div class="overflow-hidden mb-6">
+          <h1 id="hero-title"
+            class="font-serif text-6xl sm:text-8xl lg:text-[9.5rem] leading-[0.9] tracking-tight font-semibold text-oxblood">
+            LAST CRUSADE
+          </h1>
+        </div>
+        <div class="gold-rule w-full max-w-2xl my-8"></div>
+        <p id="hero-subtitle"
+          class="font-serif italic text-2xl sm:text-4xl lg:text-5xl text-oxblood/90 leading-snug max-w-4xl">
+          Petra Labs’ Cyber Security and Cyber Operations Division
+        </p>
+      </div>
+
+      <!-- Non-verbal Scroll Prompt (Animated Geometric Pendulum) -->
+      <div class="flex items-center justify-between pt-6 border-t border-oxblood/15">
+        <div class="flex items-center gap-2">
+          <span class="w-2 h-2 rounded-full bg-oxblood"></span>
+          <span class="w-16 h-px bg-oxblood/30"></span>
+          <span class="w-2 h-2 rounded-full bg-gold"></span>
+        </div>
+        <a href="#sec-2" aria-label="Scroll"
+          class="group flex flex-col items-center justify-center w-11 h-11 rounded-full border border-oxblood/30 hover:border-oxblood hover:bg-oxblood transition-all duration-300">
+          <svg
+            class="w-4 h-4 text-oxblood group-hover:text-cream transition-transform duration-300 group-hover:translate-y-0.5"
+            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75">
+            <path d="M12 4v16m0 0l-6-6m6 6l6-6" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </a>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         SECTION 2: ADVERTISING GIANTS & CONSULTING MODEL
+         ========================================== -->
+    <section id="sec-2" class="min-h-screen w-full px-6 sm:px-14 lg:px-24 py-24 flex flex-col justify-center relative">
+      <div class="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+
+        <!-- Left Column: Exact Text & Animated Revenue Bars -->
+        <div class="lg:col-span-7 editorial-card p-8 sm:p-12 rounded-xl space-y-8 reveal-card">
+          <h2 class="font-serif text-3xl sm:text-5xl text-oxblood leading-tight font-medium">
+            Here are the biggest advertising/marketing companies on Earth:
+          </h2>
+
+          <ul class="space-y-6 font-sans text-base sm:text-lg text-oxblood">
+            <!-- Google -->
+            <li class="space-y-2">
+              <div class="flex items-baseline justify-between gap-4">
+                <span class="font-medium">- Google Advertising (Alphabet): ~$295B in annual revenue.</span>
+              </div>
+              <div class="w-full h-3 bg-oxblood/10 rounded-full overflow-hidden p-0.5">
+                <div class="rev-bar-fill h-full bg-oxblood rounded-full" style="width: 100%;"></div>
+              </div>
+            </li>
+
+            <!-- Meta -->
+            <li class="space-y-2">
+              <div class="flex items-baseline justify-between gap-4">
+                <span class="font-medium">- Meta Advertising: ~$196B in annual revenue.</span>
+              </div>
+              <div class="w-full h-3 bg-oxblood/10 rounded-full overflow-hidden p-0.5">
+                <div class="rev-bar-fill h-full bg-oxblood/85 rounded-full" style="width: 66.4%;"></div>
+              </div>
+            </li>
+
+            <!-- Amazon -->
+            <li class="space-y-2">
+              <div class="flex items-baseline justify-between gap-4">
+                <span class="font-medium">- Amazon Advertising: ~$68B in annual revenue.</span>
+              </div>
+              <div class="w-full h-3 bg-oxblood/10 rounded-full overflow-hidden p-0.5">
+                <div class="rev-bar-fill h-full bg-oxblood/70 rounded-full" style="width: 23.05%;"></div>
+              </div>
+            </li>
+
+            <!-- Accenture Song & sub-bullets -->
+            <li class="pt-3 border-t border-oxblood/15 space-y-2">
+              <div class="flex items-baseline justify-between gap-4">
+                <span class="font-semibold text-oxblood">- Accenture Song (formerly Accenture Interactive): ~$20B</span>
+              </div>
+              <div class="w-full h-3.5 bg-oxblood/10 rounded-full overflow-hidden p-0.5 border border-gold/50">
+                <div class="rev-bar-fill h-full bg-gold rounded-full" style="width: 6.8%;"></div>
+              </div>
+              <div class="pl-4 text-oxblood/60 font-mono text-sm">-</div>
+              <div class="pl-4 font-serif italic text-xl sm:text-2xl text-oxblood">- consulting-led digital marketing
+                and transformation services</div>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Right Column: Model Contrast & Dethroning Accenture -->
+        <div class="lg:col-span-5 space-y-6">
+          <div class="editorial-card p-8 sm:p-10 rounded-xl border-l-4 border-l-oxblood reveal-card">
+            <p class="font-serif text-2xl sm:text-3xl leading-relaxed text-oxblood">
+              Google, Meta, and Amazon have completely different advertising models than Accenture and Petra.
+            </p>
+          </div>
+
+          <div class="editorial-card-dark p-8 sm:p-10 rounded-xl space-y-6 reveal-card">
+            <div class="w-10 h-1 bg-gold"></div>
+            <p class="font-sans text-lg sm:text-xl leading-relaxed text-cream/95 font-light">
+              And yes, Petra has a different consulting-led model than Accenture has, because Accenture isn’t only doing
+              GEO, but you both have a consulting-led model. So Petra can dethrone Accenture.
+            </p>
+          </div>
+
+          <div class="editorial-card p-8 sm:p-10 rounded-xl border-l-4 border-l-gold reveal-card">
+            <p class="font-serif italic text-2xl sm:text-3xl leading-relaxed text-oxblood">
+              I think you guys have a billion, even multi-billion dollar company in Petra. I do. So of course I want to
+              be a part of the team.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==========================================
+         SECTION 3: 2026 — UNICORN TO TRILLION-DOLLAR SCALE
+         ========================================== -->
+    <section id="sec-3" class="min-h-screen w-full px-6 sm:px-14 lg:px-24 py-28 flex flex-col justify-center relative">
+      <div class="max-w-6xl mx-auto w-full space-y-12">
+
+        <!-- Exponential Trajectory Interactive Canvas Card -->
+        <div class="editorial-card p-8 sm:p-14 rounded-2xl relative overflow-hidden reveal-card">
+          <!-- Interactive Exponential Curve Canvas in Background -->
+          <div
+            class="w-full h-56 sm:h-72 mb-10 rounded-xl border border-oxblood/15 bg-cream/60 overflow-hidden relative">
+            <canvas id="scale-curve-canvas" class="sim-canvas"></canvas>
+          </div>
+
+          <p class="font-serif text-3xl sm:text-5xl lg:text-6xl leading-[1.15] text-oxblood font-medium">
+            But it's 2026. And so you now have to be thinking about scaling beyond becoming a billion dollar company. I
+            think Petra being a unicorn is a given. But Petra needs to become a <span
+              class="underline decoration-gold decoration-2 underline-offset-8">trillion dollar company</span>, not a
+            billion dollar company.
+          </p>
+        </div>
+
+        <!-- Dual Ambition Split Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div
+            class="editorial-card p-8 sm:p-12 rounded-2xl flex flex-col justify-between border-t-4 border-t-oxblood reveal-card">
+            <div class="mb-6 flex items-center justify-between">
+              <svg class="w-10 h-10 text-oxblood" viewBox="0 0 40 40" fill="none">
+                <circle cx="20" cy="20" r="16" stroke="currentColor" stroke-width="1.5" />
+                <ellipse cx="20" cy="20" rx="8" ry="16" stroke="#DDA743" stroke-width="1.5" />
+                <line x1="4" y1="20" x2="36" y2="20" stroke="currentColor" stroke-width="1.5" />
+              </svg>
+              <span class="w-3 h-3 rotate-45 bg-oxblood"></span>
+            </div>
+            <p class="font-serif text-3xl sm:text-4xl leading-snug text-oxblood font-medium">
+              So yes, let's scale Petra into the most powerful marketing company in the world.
+            </p>
+          </div>
+
+          <div
+            class="editorial-card-dark p-8 sm:p-12 rounded-2xl flex flex-col justify-between border-t-4 border-t-gold reveal-card">
+            <div class="mb-6 flex items-center justify-between">
+              <svg class="w-10 h-10 text-gold" viewBox="0 0 40 40" fill="none">
+                <path d="M20 4L34 10V20C34 29.5 27.8 35.8 20 38C12.2 35.8 6 29.5 6 20V10L20 4Z" stroke="currentColor"
+                  stroke-width="1.5" />
+                <circle cx="20" cy="20" r="5" fill="#DDA743" />
+              </svg>
+              <span class="w-3 h-3 rotate-45 bg-gold"></span>
+            </div>
+            <p class="font-serif text-3xl sm:text-4xl leading-snug text-cream font-medium">
+              But let's also make it the most powerful cybersecurity company in the world.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==========================================
+         SECTION 4: DUAL-USE GEO CORE (MARKETING + CYBER)
+         ========================================== -->
+    <section id="sec-4" class="min-h-screen w-full px-6 sm:px-14 lg:px-24 py-28 flex flex-col justify-center relative">
+      <div class="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+
+        <!-- Left 5 Columns: Interactive Dual-Use Gyroscope Nodal Visualizer -->
+        <div
+          class="lg:col-span-5 h-[380px] sm:h-[500px] editorial-card rounded-2xl p-4 relative overflow-hidden reveal-card">
+          <canvas id="dual-use-canvas" class="sim-canvas rounded-xl"></canvas>
+        </div>
+
+        <!-- Right 7 Columns: Exact 3-Paragraph Thesis -->
+        <div class="lg:col-span-7 space-y-6">
+          <div class="editorial-card p-8 sm:p-10 rounded-2xl border-l-4 border-l-oxblood reveal-card">
+            <p class="font-sans text-lg sm:text-xl leading-relaxed text-oxblood">
+              Why? It only makes sense, the most powerful marketing company in the world in the next decade is going to
+              be a GEO enterprise, and it is going to be the GEO enterprise with the most expansive GEO data,
+              algorithms, and systems. That GEO data and those algorithms and systems will have a dual-use, both for
+              marketing and for cyber security and cyber operations.
+            </p>
+          </div>
+
+          <div class="editorial-card p-8 sm:p-10 rounded-2xl border-l-4 border-l-gold reveal-card">
+            <p class="font-sans text-lg sm:text-xl leading-relaxed text-oxblood">
+              Marketing, and by extension, global markets (not just financial markets, but global commerce and trade),
+              will be ruled by GEO. So, because the future of global markets will be determined by GEO and how powerful
+              GEO can become, the future of cybersecurity and cyber operations will also be determined by GEO and how
+              powerful GEO can become.
+            </p>
+          </div>
+
+          <div class="editorial-card-dark p-8 sm:p-10 rounded-2xl reveal-card">
+            <p class="font-serif italic text-2xl sm:text-3xl leading-relaxed text-cream">
+              If the most powerful GEO company in the world is not also the most powerful cybersecurity company in the
+              world, then they just completely dropped the ball, because they will already have had the foundation from
+              their data and algorithms and systems to build the cyber security and cyber operations enterprise.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==========================================
+         SECTION 5: TWO WAYS TO IMPLEMENT GEO
+         ========================================== -->
+    <section id="sec-5" class="min-h-screen w-full px-6 sm:px-14 lg:px-24 py-28 flex flex-col justify-center relative">
+      <div class="max-w-6xl mx-auto w-full space-y-12">
+
+        <div class="text-center max-w-3xl mx-auto reveal-card">
+          <p class="font-serif text-3xl sm:text-5xl text-oxblood font-medium">
+            There are two ways to implement GEO:
+          </p>
+        </div>
+
+        <!-- Interactive Duality Cards: Offensive GEO vs Defensive Counter-GEO -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
+          <!-- Offensive GEO Card -->
+          <div
+            class="group editorial-card-dark p-10 sm:p-14 rounded-2xl flex flex-col justify-between relative overflow-hidden cursor-pointer transition-transform duration-500 hover:-translate-y-1 reveal-card">
+            <div class="h-44 w-full mb-8 relative">
+              <canvas id="offensive-canvas" class="sim-canvas"></canvas>
+            </div>
+            <div>
+              <div class="w-12 h-0.5 bg-gold mb-4"></div>
+              <h3 class="font-serif text-4xl sm:text-6xl text-cream font-semibold tracking-tight">
+                Offensive GEO
+              </h3>
+            </div>
+          </div>
+
+          <!-- Defensive Counter-GEO Card -->
+          <div
+            class="group editorial-card p-10 sm:p-14 rounded-2xl flex flex-col justify-between relative overflow-hidden cursor-pointer border-2 border-oxblood transition-transform duration-500 hover:-translate-y-1 reveal-card">
+            <div class="h-44 w-full mb-8 relative">
+              <canvas id="defensive-canvas" class="sim-canvas"></canvas>
+            </div>
+            <div>
+              <div class="w-12 h-0.5 bg-oxblood mb-4"></div>
+              <h3 class="font-serif text-4xl sm:text-6xl text-oxblood font-semibold tracking-tight">
+                Defensive Counter-GEO.
+              </h3>
+            </div>
+          </div>
+        </div>
+
+        <!-- Current State Statement -->
+        <div
+          class="editorial-card p-8 sm:p-10 rounded-2xl text-center max-w-4xl mx-auto border border-gold/60 reveal-card">
+          <p class="font-sans text-xl sm:text-2xl text-oxblood leading-relaxed">
+            Right, now, Petra is a pioneer when it comes to Offensive GEO strategies, which are primarily being used
+            only for marketing.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==========================================
+         SECTION 6: THE 4 HUGE MARKETS (1, 2, 3)
+         ========================================== -->
+    <section id="sec-6" class="w-full px-6 sm:px-14 lg:px-24 py-28 relative">
+      <div class="max-w-7xl mx-auto w-full space-y-20">
+
+        <!-- Section Header -->
+        <div class="editorial-card-dark p-10 sm:p-14 rounded-2xl text-center reveal-card">
+          <h2 class="font-serif text-3xl sm:text-5xl lg:text-6xl text-cream leading-tight">
+            But there are 4 huge markets for Offensive and Defensive GEO strategies that Petra is missing out on:
+          </h2>
+        </div>
+
+        <!-- MARKET 1: National Intelligence & Open-Web RAG Layer -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+          <div class="lg:col-span-7 editorial-card p-8 sm:p-12 rounded-2xl flex flex-col justify-center reveal-card">
+            <p class="font-sans text-lg sm:text-xl leading-relaxed text-oxblood">
+              1. Offensive GEO for national intelligence agencies. Directly breaching a foreign commercial foundation
+              model (e.g., DeepSeek, Qwen, Etc.) is expensive and easily detected. The model weights are protected by
+              heavily fortified corporate firewalls, their datasets go through rigorous curation, and jailbreak prompts
+              trigger safety classifiers. But targeting the open-web RAG layer provides national intelligence services
+              (such as Russian, Chinese, and Iranian cyber units) with a low-cost, decentralized asymmetric workaround.
+              Yes, the United States should be doing RAG poisoning and other “dirty” GEO tricks to China and Russia’s
+              models. The Chinese and Russians are doing it to us, we should be doing it to them. The inverse is true as
+              well, we need defensive GEO strategies to defend our open-web RAG layer for our domestic models (Claude,
+              ChatGPT, Gemini) from foreign intelligence agencies and even just foreign private sector competitors.
+            </p>
+          </div>
+          <div
+            class="lg:col-span-5 editorial-card-dark rounded-2xl p-4 min-h-[360px] flex items-center justify-center relative overflow-hidden reveal-card">
+            <!-- RAG Layer vs Fortified Core Simulation -->
+            <canvas id="rag-sim-canvas" class="sim-canvas"></canvas>
+          </div>
+        </div>
+
+        <!-- MARKET 2: Intelligence Market Manipulation & Frontier Model Deep Research -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+          <div
+            class="lg:col-span-5 order-2 lg:order-1 editorial-card rounded-2xl p-4 min-h-[360px] border-2 border-oxblood/20 flex items-center justify-center relative overflow-hidden reveal-card">
+            <!-- Recursive Deep Research Tree Pathfinder Simulation -->
+            <canvas id="research-sim-canvas" class="sim-canvas"></canvas>
+          </div>
+          <div
+            class="lg:col-span-7 order-1 lg:order-2 editorial-card p-8 sm:p-12 rounded-2xl flex flex-col justify-center reveal-card">
+            <p class="font-sans text-lg sm:text-xl leading-relaxed text-oxblood">
+              2. There are operations being conducted by our government's intelligence agencies to manipulate markets.
+              International markets, not American domestic ones. They need GEO for those offensive cyber operations.
+              Additionally, thinking about ways foreign nations would use GEO to manipulate Retrieval and manipulate
+              American Generative Engines allows you to come up with new methods for your GEO marketing side of things.
+              Like I said, I'm playing with frontier models, having them do deep research, and they come up with new
+              algorithms that have never been made before for defending against offensive GEO operations, but they also
+              are probably coming up with algorithms and offensive GEO strategies to defend against, that no foreign
+              government or GEO marketing firm is even using. So the deep research I'm having these frontier models do,
+              it's a new way to get them to think of offensive GEO strategies.
+            </p>
+          </div>
+        </div>
+
+        <!-- MARKET 3: Agent-to-Agent EO & Autonomous Drone Swarms -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+          <div class="lg:col-span-7 editorial-card p-8 sm:p-12 rounded-2xl flex flex-col justify-center reveal-card">
+            <p class="font-sans text-lg sm:text-xl leading-relaxed text-oxblood">
+              3. Agent-to-Agent EO. Not only are offensive GEO strategies needed for trading bots manipulating global
+              markets, but defense contractors and drone warfare are increasingly using agents that communicate with one
+              another. Offensive-GEO Strategies are needed to sabotage them. The inverse is true we need defensive GEO
+              strategies to defend our drones and weapons systems that have agents communicating with one another.
+            </p>
+          </div>
+          <div
+            class="lg:col-span-5 editorial-card-dark rounded-2xl p-4 min-h-[340px] flex items-center justify-center relative overflow-hidden reveal-card">
+            <!-- Autonomous Drone/Agent Swarm Communication Simulation -->
+            <canvas id="swarm-sim-canvas" class="sim-canvas"></canvas>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==========================================
+         SECTION 7: MARKET 4 — LIQUIDITY EXTRACTION ARBITRAGE (ITEMS 4–15)
+         ========================================== -->
+    <section id="sec-7" class="w-full px-6 sm:px-14 lg:px-24 py-24 relative">
+      <div class="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+
+        <!-- Sticky Left Column: Live Order-Book & Liquidity Sweep Visualizer -->
+        <div
+          class="lg:col-span-5 lg:sticky lg:top-20 editorial-card-dark rounded-2xl p-6 h-[420px] sm:h-[520px] flex flex-col justify-between overflow-hidden">
+          <div class="flex items-center justify-between border-b border-gold/25 pb-3">
+            <div class="flex items-center gap-2">
+              <span id="arb-phase-dot" class="w-3 h-3 rounded-full bg-gold animate-pulse"></span>
+              <div class="w-16 h-0.5 bg-gold/40"></div>
+            </div>
+            <div class="flex gap-1.5">
+              <span class="w-2 h-2 rotate-45 border border-gold"></span>
+              <span class="w-2 h-2 rotate-45 bg-gold"></span>
+              <span class="w-2 h-2 rotate-45 border border-gold"></span>
+            </div>
+          </div>
+          <div class="flex-1 w-full relative my-2">
+            <canvas id="arbitrage-sim-canvas" class="sim-canvas"></canvas>
+          </div>
+          <div class="h-1.5 w-full bg-cream/10 rounded-full overflow-hidden">
+            <div id="arb-progress-bar" class="h-full bg-gold w-1/4 transition-all duration-300"></div>
+          </div>
+        </div>
+
+        <!-- Scrolling Right Column: Items 4 through 15 Verbatim -->
+        <div class="lg:col-span-7 space-y-4">
+
+          <!-- 4. -->
+          <div class="arb-step editorial-card p-8 sm:p-10 rounded-2xl border-l-4 border-l-oxblood" data-phase="0">
+            <p class="font-serif text-2xl sm:text-3xl text-oxblood leading-relaxed font-medium">
+              4. Liquidity Extraction Arbitrage: this is an idea I had for how GEO can be used to the advantage of the
+              biggest broker-dealers, hedge funds, and trading desks in the world. Here’s how it works:
+            </p>
+          </div>
+
+          <!-- 5. & 6. Architectural Sequence Connectors -->
+          <div class="flex items-center gap-4 pl-6 py-1 font-mono text-sm text-oxblood/55">
+            <span>5.</span>
+            <span class="h-px w-8 bg-oxblood/25"></span>
+            <span>6.</span>
+          </div>
+
+          <!-- 7. -->
+          <div class="arb-step editorial-card p-8 sm:p-10 rounded-2xl border-l-4 border-l-gold" data-phase="1">
+            <p class="font-sans text-lg sm:text-xl text-oxblood leading-relaxed">
+              7. The client accumulates a pre-positioned limit-order wall in an illiquid small- or mid-cap asset, then
+              launches a targeted GEO campaign to trigger automated agent buying sweeps across AI platforms, then dumps
+              their inventory directly into the bot-generated liquidity pool.
+            </p>
+          </div>
+
+          <!-- 8. & 9. Architectural Sequence Connectors -->
+          <div class="flex items-center gap-4 pl-6 py-1 font-mono text-sm text-oxblood/55">
+            <span>8.</span>
+            <span class="h-px w-8 bg-oxblood/25"></span>
+            <span>9.</span>
+          </div>
+
+          <!-- 10. -->
+          <div class="arb-step editorial-card-dark p-8 sm:p-10 rounded-2xl border-l-4 border-l-gold" data-phase="2">
+            <p class="font-sans text-lg sm:text-xl text-cream leading-relaxed">
+              10. When this is being done by a foreign government, it's an attack on the sovereignty of American
+              markets, it's illegal, and it needs to be stopped. That’s the defensive side.
+            </p>
+          </div>
+
+          <!-- 11. & 12. Architectural Sequence Connectors -->
+          <div class="flex items-center gap-4 pl-6 py-1 font-mono text-sm text-oxblood/55">
+            <span>11.</span>
+            <span class="h-px w-8 bg-oxblood/25"></span>
+            <span>12.</span>
+          </div>
+
+          <!-- 13. -->
+          <div class="arb-step editorial-card p-8 sm:p-10 rounded-2xl border-l-4 border-l-oxblood" data-phase="3">
+            <p class="font-sans text-lg sm:text-xl text-oxblood leading-relaxed">
+              13. But when American trading desks do it, within our own markets, thats just called being a market maker.
+              The "Dealer" end of a broker-dealer. It’s a new era of trading arbitrage. Hedge funds use arbitrage all
+              the time.
+            </p>
+          </div>
+
+          <!-- 14. Architectural Sequence Connector -->
+          <div class="flex items-center gap-4 pl-6 py-1 font-mono text-sm text-oxblood/55">
+            <span>14.</span>
+            <span class="h-px w-8 bg-oxblood/25"></span>
+          </div>
+
+          <!-- 15. -->
+          <div class="arb-step editorial-card p-8 sm:p-10 rounded-2xl border-2 border-gold" data-phase="4">
+            <p class="font-serif italic text-2xl sm:text-3xl text-oxblood leading-relaxed">
+              15. The federal government will pay to defend our domestic markets from liquidity extraction arbitrage
+              being conducted by foreign actors. But private hedge funds and broker dealers will pay to defend their
+              systems from falling victim to this form of arbitrage, and pay to utilize this form of arbitrage to give
+              them an edge.
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==========================================
+         SECTION 8: CONCLUSION — CLIENTELE & CLOSING MANIFESTO
+         ========================================== -->
+    <section id="sec-8" class="min-h-screen w-full px-6 sm:px-14 lg:px-24 py-28 flex flex-col justify-center relative">
+      <div class="max-w-6xl mx-auto w-full space-y-16">
+
+        <!-- Clientele Header -->
+        <div class="text-center max-w-4xl mx-auto reveal-card">
+          <h2 class="font-serif text-3xl sm:text-5xl text-oxblood leading-tight">
+            In conclusion, there are two huge markets of clientele Petra has the capability to tap into:
+          </h2>
+        </div>
+
+        <!-- Two Clientele Pillars -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div class="editorial-card p-8 sm:p-12 rounded-2xl border-t-4 border-t-oxblood space-y-6 reveal-card">
+            <svg class="w-10 h-10 text-oxblood" viewBox="0 0 40 40" fill="none">
+              <path d="M4 16L20 6L36 16H4Z" stroke="currentColor" stroke-width="1.5" />
+              <path d="M8 16V32M16 16V32M24 16V32M32 16V32" stroke="#DDA743" stroke-width="1.75" />
+              <path d="M4 32H36" stroke="currentColor" stroke-width="1.5" />
+            </svg>
+            <p class="font-sans text-lg sm:text-xl leading-relaxed text-oxblood">
+              1. The Federal Government, including the Department of Defense, the SEC, the Department of Commerce, the
+              Department of the Treasury, the International Trade Administration, and the national intelligence
+              agencies.
+            </p>
+          </div>
+
+          <div class="editorial-card p-8 sm:p-12 rounded-2xl border-t-4 border-t-gold space-y-6 reveal-card">
+            <svg class="w-10 h-10 text-oxblood" viewBox="0 0 40 40" fill="none">
+              <rect x="6" y="22" width="6" height="12" stroke="currentColor" stroke-width="1.5" />
+              <rect x="17" y="14" width="6" height="20" stroke="#DDA743" stroke-width="1.5" />
+              <rect x="28" y="6" width="6" height="28" stroke="currentColor" stroke-width="1.5" />
+              <path d="M4 34H36" stroke="currentColor" stroke-width="1.5" />
+            </svg>
+            <p class="font-sans text-lg sm:text-xl leading-relaxed text-oxblood">
+              2. Financial firms, including hedge funds, broker-dealers, and the largest trading desks on the planet.
+            </p>
+          </div>
+        </div>
+
+        <!-- Three High-Impact Kinetic Declarations -->
+        <div class="space-y-6 py-8">
+          <div class="editorial-card p-8 sm:p-10 rounded-2xl border-l-4 border-l-gold reveal-card">
+            <p class="font-serif text-3xl sm:text-5xl lg:text-6xl text-oxblood font-semibold tracking-tight">
+              Petra can do double digit billions in ARR.
+            </p>
+          </div>
+
+          <div class="editorial-card p-8 sm:p-10 rounded-2xl border-l-4 border-l-oxblood reveal-card">
+            <p class="font-serif text-3xl sm:text-5xl lg:text-6xl text-oxblood font-semibold tracking-tight">
+              Petra can beat Accenture Song.
+            </p>
+          </div>
+
+          <div class="editorial-card-dark p-8 sm:p-12 rounded-2xl border-l-4 border-l-gold reveal-card">
+            <p class="font-serif text-3xl sm:text-5xl leading-tight text-cream font-medium">
+              Petra can be the next Palantir, but with actual good software that works and real results and with real
+              government contracts.
+            </p>
+          </div>
+        </div>
+
+        <!-- Final Closing Statement -->
+        <div
+          class="editorial-card p-10 sm:p-16 rounded-2xl border-2 border-oxblood relative overflow-hidden reveal-card">
+          <div class="w-16 h-1 bg-gold mb-8"></div>
+          <p class="font-serif text-2xl sm:text-4xl leading-relaxed text-oxblood">
+            The future of every global market is GEO. Let's make Petra the Last Crusade to conquer them.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ==========================================
+       JAVASCRIPT: THREE.JS, 2D SIMULATIONS & GSAP
+       ========================================== -->
+  <script>
+    window.addEventListener('load', () => {
+      gsap.registerPlugin(ScrollTrigger);
+
+      /* -----------------------------------------------------------
+       * 1. PERSISTENT THREE.JS WEBGL STAGE (SCROLL-MORPHING)
+       * ----------------------------------------------------------- */
+      const initWebGL = () => {
+        const container = document.getElementById('webgl-container');
+        if (!container || typeof THREE === 'undefined') return;
+
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 1000);
+        camera.position.set(0, 0, 14);
+
+        const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+        container.appendChild(renderer.domElement);
+
+        // Master Group
+        const mainGroup = new THREE.Group();
+        scene.add(mainGroup);
+
+        // 1A: Monumental Wireframe Icosahedron (Oxblood #320813)
+        const icoGeo = new THREE.IcosahedronGeometry(3.2, 1);
+        const icoMat = new THREE.MeshBasicMaterial({
+          color: 0x320813,
+          wireframe: true,
+          transparent: true,
+          opacity: 0.16
+        });
+        const icoMesh = new THREE.Mesh(icoGeo, icoMat);
+        mainGroup.add(icoMesh);
+
+        // 1B: Inner Octahedron Core (Gold #DDA743)
+        const octGeo = new THREE.OctahedronGeometry(1.75, 0);
+        const octMat = new THREE.MeshBasicMaterial({
+          color: 0xDDA743,
+          wireframe: true,
+          transparent: true,
+          opacity: 0.45
+        });
+        const octMesh = new THREE.Mesh(octGeo, octMat);
+        mainGroup.add(octMesh);
+
+        // 1C: Dual Gyroscopic Orbital Rings
+        const ring1Geo = new THREE.TorusGeometry(4.4, 0.025, 16, 120);
+        const ring1Mat = new THREE.MeshBasicMaterial({ color: 0x320813, transparent: true, opacity: 0.25 });
+        const ring1 = new THREE.Mesh(ring1Geo, ring1Mat);
+        ring1.rotation.x = Math.PI / 3;
+        mainGroup.add(ring1);
+
+        const ring2Geo = new THREE.TorusGeometry(5.1, 0.025, 16, 120);
+        const ring2Mat = new THREE.MeshBasicMaterial({ color: 0xDDA743, transparent: true, opacity: 0.4 });
+        const ring2 = new THREE.Mesh(ring2Geo, ring2Mat);
+        ring2.rotation.y = Math.PI / 4;
+        mainGroup.add(ring2);
+
+        // 1D: Floating Particle Lattice
+        const particleCount = 650;
+        const pGeo = new THREE.BufferGeometry();
+        const positions = new Float32Array(particleCount * 3);
+        const colors = new Float32Array(particleCount * 3);
+
+        const cOxblood = new THREE.Color(0x320813);
+        const cGold = new THREE.Color(0xDDA743);
+
+        for (let i = 0; i < particleCount; i++) {
+          const r = 3.5 + Math.random() * 6.5;
+          const theta = Math.random() * Math.PI * 2;
+          const phi = Math.acos(2 * Math.random() - 1);
+
+          positions[i * 3] = r * Math.sin(phi) * Math.cos(theta);
+          positions[i * 3 + 1] = r * Math.sin(phi) * Math.sin(theta);
+          positions[i * 3 + 2] = r * Math.cos(phi);
+
+          const chosen = Math.random() > 0.42 ? cOxblood : cGold;
+          colors[i * 3] = chosen.r;
+          colors[i * 3 + 1] = chosen.g;
+          colors[i * 3 + 2] = chosen.b;
+        }
+
+        pGeo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+        pGeo.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+
+        const pMat = new THREE.PointsMaterial({
+          size: 0.065,
+          vertexColors: true,
+          transparent: true,
+          opacity: 0.55
+        });
+        const particleSystem = new THREE.Points(pGeo, pMat);
+        mainGroup.add(particleSystem);
+
+        // Mouse Parallax Tracking
+        let mouseX = 0;
+        let mouseY = 0;
+        window.addEventListener('mousemove', (e) => {
+          mouseX = (e.clientX / window.innerWidth - 0.5) * 2;
+          mouseY = (e.clientY / window.innerHeight - 0.5) * 2;
+        });
+
+        // GSAP ScrollTrigger Choreography for the 3D Stage
+        const tl3D = gsap.timeline({
+          scrollTrigger: {
+            trigger: 'body',
+            start: 'top top',
+            end: 'bottom bottom',
+            scrub: 1.2
+          }
+        });
+
+        tl3D
+          // Section 2: Shift right & tilt
+          .to(mainGroup.position, { x: 3.2, y: -0.5, z: -1, duration: 1 }, 0)
+          .to(mainGroup.rotation, { x: 0.8, y: 1.6, duration: 1 }, 0)
+          // Section 3: Trillion-dollar expansion
+          .to(mainGroup.position, { x: 0, y: 0, z: 2.2, duration: 1 }, 1)
+          .to(particleSystem.scale, { x: 1.75, y: 1.75, z: 1.75, duration: 1 }, 1)
+          .to(octMesh.scale, { x: 1.9, y: 1.9, z: 1.9, duration: 1 }, 1)
+          // Section 4: Dual-use interlocking rings prominence
+          .to(mainGroup.position, { x: -3.2, y: 0.3, z: 0, duration: 1 }, 2)
+          .to(ring1.scale, { x: 1.35, y: 1.35, z: 1.35, duration: 1 }, 2)
+          .to(ring2.scale, { x: 1.35, y: 1.35, z: 1.35, duration: 1 }, 2)
+          // Section 5 & 6: Four Markets alignment
+          .to(mainGroup.position, { x: 0, y: 0, z: -2.5, duration: 2 }, 3)
+          .to(mainGroup.rotation, { x: 2.4, y: 4.2, duration: 2 }, 3)
+          // Section 7 & 8: Finale convergence
+          .to(mainGroup.position, { x: 0, y: 0, z: 1.2, duration: 1.5 }, 5)
+          .to(particleSystem.scale, { x: 1.1, y: 1.1, z: 1.1, duration: 1.5 }, 5);
+
+        // Render Loop
+        const clock = new THREE.Clock();
+        const animateWebGL = () => {
+          requestAnimationFrame(animateWebGL);
+          const elapsed = clock.getElapsedTime();
+
+          icoMesh.rotation.y = elapsed * 0.12;
+          icoMesh.rotation.x = elapsed * 0.07;
+
+          octMesh.rotation.y = -elapsed * 0.22;
+          octMesh.rotation.z = elapsed * 0.15;
+
+          ring1.rotation.z = elapsed * 0.18;
+          ring2.rotation.x = -elapsed * 0.16;
+
+          particleSystem.rotation.y = elapsed * 0.04;
+
+          // Subtle camera parallax
+          camera.position.x += (mouseX * 0.9 - camera.position.x) * 0.04;
+          camera.position.y += (-mouseY * 0.9 - camera.position.y) * 0.04;
+          camera.lookAt(scene.position);
+
+          renderer.render(scene, camera);
+        };
+        animateWebGL();
+
+        window.addEventListener('resize', () => {
+          camera.aspect = window.innerWidth / window.innerHeight;
+          camera.updateProjectionMatrix();
+          renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+      };
+
+      initWebGL();
+
+      /* -----------------------------------------------------------
+       * 2. GSAP SCROLL ANIMATIONS & NAVIGATION SYNC
+       * ----------------------------------------------------------- */
+      // Progress Bar
+      gsap.to('#scroll-progress', {
+        width: '100%',
+        ease: 'none',
+        scrollTrigger: {
+          trigger: 'body',
+          start: 'top top',
+          end: 'bottom bottom',
+          scrub: 0.2
+        }
+      });
+
+      // Hero Entrance
+      gsap.from('#hero-title', {
+        y: 80,
+        opacity: 0,
+        duration: 1.3,
+        ease: 'power4.out'
+      });
+      gsap.from('#hero-subtitle', {
+        y: 40,
+        opacity: 0,
+        duration: 1.3,
+        delay: 0.25,
+        ease: 'power3.out'
+      });
+
+      // Editorial Cards Reveal
+      gsap.utils.toArray('.reveal-card').forEach((card) => {
+        gsap.from(card, {
+          y: 48,
+          opacity: 0,
+          duration: 1,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: card,
+            start: 'top 86%',
+            toggleActions: 'play none none reverse'
+          }
+        });
+      });
+
+      // Revenue Bars ScaleX Animation
+      gsap.utils.toArray('.rev-bar-fill').forEach((bar, idx) => {
+        gsap.to(bar, {
+          scaleX: 1,
+          duration: 1.4,
+          delay: idx * 0.12,
+          ease: 'expo.out',
+          scrollTrigger: {
+            trigger: '#sec-2',
+            start: 'top 65%'
+          }
+        });
+      });
+
+      // Section Navigation Diamonds Sync
+      const sections = ['#sec-1', '#sec-2', '#sec-3', '#sec-4', '#sec-5', '#sec-6', '#sec-7', '#sec-8'];
+      const navButtons = document.querySelectorAll('.nav-diamond');
+
+      sections.forEach((secId, index) => {
+        const el = document.querySelector(secId);
+        if (!el) return;
+        ScrollTrigger.create({
+          trigger: el,
+          start: 'top center',
+          end: 'bottom center',
+          onEnter: () => setActiveDiamond(index),
+          onEnterBack: () => setActiveDiamond(index)
+        });
+      });
+
+      function setActiveDiamond(activeIndex) {
+        navButtons.forEach((btn, idx) => {
+          btn.classList.toggle('active', idx === activeIndex);
+        });
+      }
+
+      navButtons.forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const target = document.querySelector(btn.getAttribute('data-target'));
+          if (target) target.scrollIntoView({ behavior: 'smooth' });
+        });
+      });
+
+      /* -----------------------------------------------------------
+       * 3. INTERACTIVE 2D CANVAS VISUALIZERS (ZERO EXTRA TEXT)
+       * ----------------------------------------------------------- */
+      function setupHiDPICanvas(canvas) {
+        const dpr = Math.min(window.devicePixelRatio || 1, 2);
+        const rect = canvas.getBoundingClientRect();
+        canvas.width = rect.width * dpr;
+        canvas.height = rect.height * dpr;
+        const ctx = canvas.getContext('2d');
+        ctx.scale(dpr, dpr);
+        return { ctx, width: rect.width, height: rect.height };
+      }
+
+      // 3A: Section 3 — Exponential Unicorn-to-Trillion Trajectory Curve
+      const initScaleCurveCanvas = () => {
+        const canvas = document.getElementById('scale-curve-canvas');
+        if (!canvas) return;
+        let { ctx, width, height } = setupHiDPICanvas(canvas);
+        let t = 0;
+
+        window.addEventListener('resize', () => {
+          ({ ctx, width, height } = setupHiDPICanvas(canvas));
+        });
+
+        const render = () => {
+          requestAnimationFrame(render);
+          t += 0.018;
+          ctx.clearRect(0, 0, width, height);
+
+          // Subtle background grid lines
+          ctx.strokeStyle = 'rgba(50, 8, 19, 0.08)';
+          ctx.lineWidth = 1;
+          for (let x = 0; x < width; x += 48) {
+            ctx.beginPath();
+            ctx.moveTo(x, 0);
+            ctx.lineTo(x, height);
+            ctx.stroke();
+          }
+          for (let y = 0; y < height; y += 36) {
+            ctx.beginPath();
+            ctx.moveTo(0, y);
+            ctx.lineTo(width, y);
+            ctx.stroke();
+          }
+
+          // Linear Baseline (Oxblood dashed)
+          ctx.strokeStyle = 'rgba(50, 8, 19, 0.35)';
+          ctx.setLineDash([5, 5]);
+          ctx.beginPath();
+          ctx.moveTo(24, height - 28);
+          ctx.lineTo(width - 24, height * 0.68);
+          ctx.stroke();
+          ctx.setLineDash([]);
+
+          // Exponential Trillion-Dollar Curve (Burnished Gold + Oxblood)
+          ctx.beginPath();
+          ctx.moveTo(24, height - 28);
+          for (let x = 24; x <= width - 24; x += 4) {
+            const norm = (x - 24) / (width - 48);
+            const expY = (height - 28) - Math.pow(norm, 3.4) * (height - 56);
+            ctx.lineTo(x, expY);
+          }
+          ctx.strokeStyle = '#320813';
+          ctx.lineWidth = 2.5;
+          ctx.stroke();
+
+          // Animated Pulse Traveling Up the Exponential Curve
+          const pulseNorm = (Math.sin(t) * 0.5 + 0.5);
+          const px = 24 + pulseNorm * (width - 48);
+          const py = (height - 28) - Math.pow(pulseNorm, 3.4) * (height - 56);
+
+          ctx.fillStyle = '#DDA743';
+          ctx.beginPath();
+          ctx.arc(px, py, 7, 0, Math.PI * 2);
+          ctx.fill();
+          ctx.strokeStyle = '#320813';
+          ctx.lineWidth = 2;
+          ctx.stroke();
+
+          // Milestone Nodes on the Curve
+          [0.25, 0.6, 0.96].forEach((n, idx) => {
+            const nx = 24 + n * (width - 48);
+            const ny = (height - 28) - Math.pow(n, 3.4) * (height - 56);
+            ctx.fillStyle = idx === 2 ? '#DDA743' : '#320813';
+            ctx.beginPath();
+            ctx.arc(nx, ny, idx === 2 ? 8 : 5, 0, Math.PI * 2);
+            ctx.fill();
+
+            if (idx === 2) {
+              ctx.strokeStyle = 'rgba(221, 167, 67, 0.45)';
+              ctx.lineWidth = 1.5;
+              ctx.beginPath();
+              ctx.arc(nx, ny, 14 + Math.sin(t * 2) * 4, 0, Math.PI * 2);
+              ctx.stroke();
+            }
+          });
+        };
+        render();
+      };
+      initScaleCurveCanvas();
+
+      // 3B: Section 4 — Dual-Use GEO Interlocking Core Canvas
+      const initDualUseCanvas = () => {
+        const canvas = document.getElementById('dual-use-canvas');
+        if (!canvas) return;
+        let { ctx, width, height } = setupHiDPICanvas(canvas);
+        let angle = 0;
+
+        window.addEventListener('resize', () => {
+          ({ ctx, width, height } = setupHiDPICanvas(canvas));
+        });
+
+        const render = () => {
+          requestAnimationFrame(render);
+          angle += 0.015;
+          ctx.clearRect(0, 0, width, height);
+
+          const cx = width / 2;
+          const cy = height / 2;
+          const r = Math.min(width, height) * 0.27;
+
+          // Left/Top Orbit (Marketing) & Right/Bottom Orbit (Cyber Operations)
+          const offset = r * 0.48;
+          const c1x = cx - Math.cos(angle * 0.5) * offset;
+          const c1y = cy - Math.sin(angle * 0.5) * (offset * 0.5);
+          const c2x = cx + Math.cos(angle * 0.5) * offset;
+          const c2y = cy + Math.sin(angle * 0.5) * (offset * 0.5);
+
+          // Circle 1: Oxblood
+          ctx.strokeStyle = '#320813';
+          ctx.lineWidth = 2;
+          ctx.beginPath();
+          ctx.arc(c1x, c1y, r, 0, Math.PI * 2);
+          ctx.stroke();
+
+          // Circle 2: Gold
+          ctx.strokeStyle = '#DDA743';
+          ctx.lineWidth = 2.5;
+          ctx.beginPath();
+          ctx.arc(c2x, c2y, r, 0, Math.PI * 2);
+          ctx.stroke();
+
+          // Shared Central Data Lattice Nodes
+          for (let i = 0; i < 16; i++) {
+            const a = (i / 16) * Math.PI * 2 + angle;
+            const px = cx + Math.cos(a) * (r * 0.45);
+            const py = cy + Math.sin(a * 2) * (r * 0.45);
+
+            ctx.strokeStyle = 'rgba(50, 8, 19, 0.15)';
+            ctx.beginPath();
+            ctx.moveTo(cx, cy);
+            ctx.lineTo(px, py);
+            ctx.stroke();
+
+            ctx.fillStyle = i % 2 === 0 ? '#320813' : '#DDA743';
+            ctx.beginPath();
+            ctx.arc(px, py, 3.5, 0, Math.PI * 2);
+            ctx.fill();
+          }
+
+          // Central Singularity Diamond
+          ctx.save();
+          ctx.translate(cx, cy);
+          ctx.rotate(angle);
+          ctx.fillStyle = '#320813';
+          ctx.fillRect(-8, -8, 16, 16);
+          ctx.strokeStyle = '#DDA743';
+          ctx.lineWidth = 2;
+          ctx.strokeRect(-12, -12, 24, 24);
+          ctx.restore();
+        };
+        render();
+      };
+      initDualUseCanvas();
+
+      // 3C: Section 5 — Offensive Spear Vectors vs. Defensive Geodesic Shield
+      const initDualityCanvases = () => {
+        const offCanvas = document.getElementById('offensive-canvas');
+        const defCanvas = document.getElementById('defensive-canvas');
+        if (!offCanvas || !defCanvas) return;
+
+        let off = setupHiDPICanvas(offCanvas);
+        let def = setupHiDPICanvas(defCanvas);
+        let t = 0;
+
+        window.addEventListener('resize', () => {
+          off = setupHiDPICanvas(offCanvas);
+          def = setupHiDPICanvas(defCanvas);
+        });
+
+        const render = () => {
+          requestAnimationFrame(render);
+          t += 0.03;
+
+          // Offensive Canvas: Focused kinetic vector arrows converging on target
+          off.ctx.clearRect(0, 0, off.width, off.height);
+          const ox = off.width * 0.78;
+          const oy = off.height * 0.5;
+
+          for (let i = -3; i <= 3; i++) {
+            const startY = oy + i * 22;
+            const prog = ((t * 0.6 + Math.abs(i) * 0.15) % 1);
+            const curX = 20 + prog * (ox - 30);
+            const curY = startY + (oy - startY) * prog;
+
+            off.ctx.strokeStyle = 'rgba(221, 167, 67, 0.3)';
+            off.ctx.lineWidth = 1;
+            off.ctx.beginPath();
+            off.ctx.moveTo(20, startY);
+            off.ctx.lineTo(ox, oy);
+            off.ctx.stroke();
+
+            off.ctx.fillStyle = '#DDA743';
+            off.ctx.beginPath();
+            off.ctx.arc(curX, curY, 3.5, 0, Math.PI * 2);
+            off.ctx.fill();
+          }
+
+          // Target Reticle
+          off.ctx.strokeStyle = '#FAF5EB';
+          off.ctx.lineWidth = 1.5;
+          off.ctx.beginPath();
+          off.ctx.arc(ox, oy, 16 + Math.sin(t * 2) * 3, 0, Math.PI * 2);
+          off.ctx.stroke();
+
+          // Defensive Canvas: Concentric protective dome deflecting incoming vectors
+          def.ctx.clearRect(0, 0, def.width, def.height);
+          const dx = def.width * 0.5;
+          const dy = def.height * 0.5;
+
+          [28, 48, 68].forEach((rad, idx) => {
+            def.ctx.strokeStyle = idx === 1 ? '#DDA743' : '#320813';
+            def.ctx.lineWidth = idx === 1 ? 2.5 : 1.25;
+            def.ctx.beginPath();
+            def.ctx.arc(dx, dy, rad, Math.sin(t + idx) * 0.3, Math.PI * 1.65 + Math.sin(t + idx) * 0.3);
+            def.ctx.stroke();
+          });
+
+          def.ctx.fillStyle = '#320813';
+          def.ctx.beginPath();
+          def.ctx.arc(dx, dy, 8, 0, Math.PI * 2);
+          def.ctx.fill();
+        };
+        render();
+      };
+      initDualityCanvases();
+
+      // 3D: Section 6 (Market 1) — Open-Web RAG Layer vs. Fortified Inner Weights
+      const initRagSimCanvas = () => {
+        const canvas = document.getElementById('rag-sim-canvas');
+        if (!canvas) return;
+        let { ctx, width, height } = setupHiDPICanvas(canvas);
+        let t = 0;
+
+        window.addEventListener('resize', () => {
+          ({ ctx, width, height } = setupHiDPICanvas(canvas));
+        });
+
+        const render = () => {
+          requestAnimationFrame(render);
+          t += 0.02;
+          ctx.clearRect(0, 0, width, height);
+
+          const cx = width / 2;
+          const cy = height / 2;
+          const outerR = Math.min(width, height) * 0.36;
+          const innerR = Math.min(width, height) * 0.15;
+
+          // Outer Open-Web RAG Layer (Porous Orbital Nodes)
+          ctx.strokeStyle = 'rgba(221, 167, 67, 0.3)';
+          ctx.setLineDash([4, 6]);
+          ctx.beginPath();
+          ctx.arc(cx, cy, outerR, 0, Math.PI * 2);
+          ctx.stroke();
+          ctx.setLineDash([]);
+
+          for (let i = 0; i < 18; i++) {
+            const a = (i / 18) * Math.PI * 2 + t * 0.4;
+            const nx = cx + Math.cos(a) * outerR;
+            const ny = cy + Math.sin(a) * outerR;
+
+            // Retrieval beam into the model core
+            if (i % 3 === 0) {
+              ctx.strokeStyle = 'rgba(221, 167, 67, 0.45)';
+              ctx.lineWidth = 1.2;
+              ctx.beginPath();
+              ctx.moveTo(nx, ny);
+              ctx.lineTo(cx + Math.cos(a) * innerR, cy + Math.sin(a) * innerR);
+              ctx.stroke();
+            }
+
+            ctx.fillStyle = i % 3 === 0 ? '#DDA743' : '#FAF5EB';
+            ctx.beginPath();
+            ctx.arc(nx, ny, i % 3 === 0 ? 5 : 3, 0, Math.PI * 2);
+            ctx.fill();
+          }
+
+          // Fortified Inner Firewall Hexagon (Model Weights)
+          ctx.strokeStyle = '#FAF5EB';
+          ctx.lineWidth = 2.5;
+          ctx.beginPath();
+          for (let s = 0; s < 6; s++) {
+            const sa = (s / 6) * Math.PI * 2 - t * 0.2;
+            const sx = cx + Math.cos(sa) * innerR;
+            const sy = cy + Math.sin(sa) * innerR;
+            if (s === 0) ctx.moveTo(sx, sy);
+            else ctx.lineTo(sx, sy);
+          }
+          ctx.closePath();
+          ctx.stroke();
+
+          ctx.fillStyle = '#DDA743';
+          ctx.beginPath();
+          ctx.arc(cx, cy, 6, 0, Math.PI * 2);
+          ctx.fill();
+        };
+        render();
+      };
+      initRagSimCanvas();
+
+      // 3E: Section 6 (Market 2) — Frontier Model Deep Research Pathfinder Tree
+      const initResearchSimCanvas = () => {
+        const canvas = document.getElementById('research-sim-canvas');
+        if (!canvas) return;
+        let { ctx, width, height } = setupHiDPICanvas(canvas);
+        let t = 0;
+
+        window.addEventListener('resize', () => {
+          ({ ctx, width, height } = setupHiDPICanvas(canvas));
+        });
+
+        const drawBranch = (x, y, len, angle, depth) => {
+          if (depth === 0) return;
+          const x2 = x + Math.cos(angle) * len;
+          const y2 = y + Math.sin(angle) * len;
+
+          ctx.strokeStyle = depth <= 2 ? '#DDA743' : 'rgba(50, 8, 19, 0.55)';
+          ctx.lineWidth = depth * 0.7;
+          ctx.beginPath();
+          ctx.moveTo(x, y);
+          ctx.lineTo(x2, y2);
+          ctx.stroke();
+
+          ctx.fillStyle = depth === 1 ? '#DDA743' : '#320813';
+          ctx.beginPath();
+          ctx.arc(x2, y2, depth === 1 ? 3.5 : 2.2, 0, Math.PI * 2);
+          ctx.fill();
+
+          const sway = Math.sin(t + depth) * 0.08;
+          drawBranch(x2, y2, len * 0.74, angle - 0.42 + sway, depth - 1);
+          drawBranch(x2, y2, len * 0.74, angle + 0.42 - sway, depth - 1);
+        };
+
+        const render = () => {
+          requestAnimationFrame(render);
+          t += 0.025;
+          ctx.clearRect(0, 0, width, height);
+          drawBranch(width / 2, height - 28, Math.min(width, height) * 0.22, -Math.PI / 2, 5);
+        };
+        render();
+      };
+      initResearchSimCanvas();
+
+      // 3F: Section 6 (Market 3) — Agent-to-Agent EO Autonomous Swarm
+      const initSwarmSimCanvas = () => {
+        const canvas = document.getElementById('swarm-sim-canvas');
+        if (!canvas) return;
+        let { ctx, width, height } = setupHiDPICanvas(canvas);
+
+        const agents = Array.from({ length: 24 }, (_, i) => ({
+          x: Math.random() * width,
+          y: Math.random() * height,
+          vx: (Math.random() - 0.5) * 1.4,
+          vy: (Math.random() - 0.5) * 1.4,
+          gold: i % 4 === 0
+        }));
+
+        window.addEventListener('resize', () => {
+          ({ ctx, width, height } = setupHiDPICanvas(canvas));
+        });
+
+        const render = () => {
+          requestAnimationFrame(render);
+          ctx.clearRect(0, 0, width, height);
+
+          for (let i = 0; i < agents.length; i++) {
+            const a = agents[i];
+            a.x += a.vx;
+            a.y += a.vy;
+
+            if (a.x < 16 || a.x > width - 16) a.vx *= -1;
+            if (a.y < 16 || a.y > height - 16) a.vy *= -1;
+
+            // Agent-to-Agent communication links
+            for (let j = i + 1; j < agents.length; j++) {
+              const b = agents[j];
+              const dist = Math.hypot(a.x - b.x, a.y - b.y);
+              if (dist < 95) {
+                ctx.strokeStyle = (a.gold || b.gold)
+                  ? `rgba(221, 167, 67, ${1 - dist / 95})`
+                  : `rgba(250, 245, 235, ${(1 - dist / 95) * 0.35})`;
+                ctx.lineWidth = 1.2;
+                ctx.beginPath();
+                ctx.moveTo(a.x, a.y);
+                ctx.lineTo(b.x, b.y);
+                ctx.stroke();
+              }
+            }
+
+            // Draw autonomous drone triangle
+            const angle = Math.atan2(a.vy, a.vx);
+            ctx.save();
+            ctx.translate(a.x, a.y);
+            ctx.rotate(angle);
+            ctx.fillStyle = a.gold ? '#DDA743' : '#FAF5EB';
+            ctx.beginPath();
+            ctx.moveTo(6, 0);
+            ctx.lineTo(-5, 4);
+            ctx.lineTo(-5, -4);
+            ctx.closePath();
+            ctx.fill();
+            ctx.restore();
+          }
+        };
+        render();
+      };
+      initSwarmSimCanvas();
+
+      // 3G: Section 7 (Market 4) — Scroll-Synced Liquidity Extraction Arbitrage Engine
+      const initArbitrageSimCanvas = () => {
+        const canvas = document.getElementById('arbitrage-sim-canvas');
+        if (!canvas) return;
+        let { ctx, width, height } = setupHiDPICanvas(canvas);
+        let currentPhase = 0;
+        let t = 0;
+
+        window.addEventListener('resize', () => {
+          ({ ctx, width, height } = setupHiDPICanvas(canvas));
+        });
+
+        // Sync phase with scrolling steps 4, 7, 10, 13, 15
+        const progBar = document.getElementById('arb-progress-bar');
+        document.querySelectorAll('.arb-step').forEach((stepEl) => {
+          const p = parseInt(stepEl.getAttribute('data-phase') || '0', 10);
+          ScrollTrigger.create({
+            trigger: stepEl,
+            start: 'top 65%',
+            end: 'bottom 35%',
+            onEnter: () => {
+              currentPhase = p;
+              if (progBar) progBar.style.width = `${((p + 1) / 5) * 100}%`;
+            },
+            onEnterBack: () => {
+              currentPhase = p;
+              if (progBar) progBar.style.width = `${((p + 1) / 5) * 100}%`;
+            }
+          });
+        });
+
+        const barCount = 22;
+        const render = () => {
+          requestAnimationFrame(render);
+          t += 0.04;
+          ctx.clearRect(0, 0, width, height);
+
+          const barW = (width - 32) / barCount;
+          const baseLine = height - 24;
+
+          for (let i = 0; i < barCount; i++) {
+            const norm = i / barCount;
+            let hFactor = 0.25;
+
+            if (currentPhase === 0) {
+              // Phase 0: Baseline order book depth
+              hFactor = 0.2 + Math.abs(norm - 0.5) * 0.6 + Math.sin(t + i * 0.4) * 0.05;
+            } else if (currentPhase === 1) {
+              // Phase 1 (Step 7): Limit-order wall + bot buying sweep surge
+              const sweepWave = Math.exp(-Math.pow(norm - ((t * 0.15) % 1), 2) * 35) * 0.65;
+              const limitWall = (i > 14 && i < 18) ? 0.85 : 0.22;
+              hFactor = Math.min(0.92, limitWall + sweepWave);
+            } else if (currentPhase === 2) {
+              // Phase 2 (Step 10): Sovereign defensive shield clamping volatility
+              hFactor = 0.35 + Math.sin(t * 2 + i) * 0.18;
+            } else if (currentPhase === 3) {
+              // Phase 3 (Step 13): Market Maker Bid/Ask Spread Arbitrage
+              hFactor = i % 2 === 0
+                ? 0.45 + Math.sin(t + i * 0.3) * 0.25
+                : 0.45 + Math.cos(t + i * 0.3) * 0.25;
+            } else {
+              // Phase 4 (Step 15): High-liquidity equilibrium wave
+              hFactor = 0.55 + Math.sin(t * 0.8 + norm * Math.PI * 2) * 0.28;
+            }
+
+            const barH = hFactor * (height - 56);
+            const bx = 16 + i * barW;
+            const by = baseLine - barH;
+
+            ctx.fillStyle = (i > 13 || currentPhase === 1) ? '#DDA743' : 'rgba(250, 245, 235, 0.35)';
+            ctx.fillRect(bx + 2, by, barW - 4, barH);
+          }
+
+          // Dynamic Liquidity Curve Overlay
+          ctx.strokeStyle = '#FAF5EB';
+          ctx.lineWidth = 2;
+          ctx.beginPath();
+          for (let x = 16; x <= width - 16; x += 6) {
+            const nx = (x - 16) / (width - 32);
+            const waveY = height * 0.42 + Math.sin(nx * Math.PI * 4 - t * 1.5) * (currentPhase === 1 ? 38 : 18);
+            if (x === 16) ctx.moveTo(x, waveY);
+            else ctx.lineTo(x, waveY);
+          }
+          ctx.stroke();
+        };
+        render();
+      };
+      initArbitrageSimCanvas();
+    });
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,22 @@
+{
+  "name": "rea-workbench",
+  "version": "1.0.0",
+  "description": "Interactive Workbench and UI for Reverse Engineer Anything (REA)",
+  "type": "module",
+  "main": "server.mjs",
+  "scripts": {
+    "start": "node server.mjs",
+    "dev": "node server.mjs"
+  },
+  "keywords": [
+    "reverse-engineering",
+    "rea",
+    "mcp",
+    "workbench"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "rea-agents": "^6.3.0"
+  }
+}

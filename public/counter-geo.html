@@ -1,0 +1,1778 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Last Crusade Defense | Sovereign Attack Library: Offensive GEO & Countermeasures (WebGL 2.0)</title>
+  <meta name="description" content="Library of Offensive GEO strategies and the Counter-GEO defensive strategies that can be used to combat them. Real-time WebGL 2.0 3D simulation and telemetry visualizer across Volumes 1, 2, and 3." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700;800&family=Outfit:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --bg-dark: #363636;
+      --bg-surface: #2b2b2b;
+      --panel-bg: rgba(54, 54, 54, 0.92);
+      --panel-border: rgba(213, 153, 28, 0.35);
+      --accent-gold: #D5991C;
+      --accent-gold-light: #F2D69D;
+      --accent-green: #00A878;
+      --accent-green-bright: #00FF9D;
+      --accent-red: #E63946;
+      --accent-red-bright: #FF2A5F;
+      --accent-purple: #7C3AED;
+      --accent-purple-light: #B565FF;
+      --accent-cyan: #00F0FF;
+      --text-main: #FBF3E2;
+      --text-muted: #D4C3A3;
+      --text-dim: rgba(251, 243, 226, 0.6);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      user-select: none;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      font-family: 'JetBrains Mono', monospace;
+      overflow: hidden;
+      width: 100vw;
+      height: 100vh;
+    }
+
+    #webgl-container {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: 1;
+    }
+
+    /* TOP SOVEREIGN HUD HEADER */
+    .hud-header {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 64px;
+      background: linear-gradient(90deg, rgba(13, 2, 6, 0.96) 0%, rgba(29, 6, 17, 0.92) 50%, rgba(13, 2, 6, 0.96) 100%);
+      border-bottom: 1px solid var(--panel-border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 20px;
+      z-index: 20;
+      backdrop-filter: blur(14px);
+      box-shadow: 0 4px 25px rgba(0, 0, 0, 0.7);
+    }
+
+    .brand-section {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .brand-logo {
+      width: 32px;
+      height: 32px;
+      background: #310111;
+      border: 1px solid var(--accent-gold);
+      transform: rotate(45deg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 10px rgba(213, 153, 28, 0.4);
+      flex-shrink: 0;
+    }
+
+    .brand-logo-inner {
+      width: 12px;
+      height: 12px;
+      background: var(--accent-gold);
+      transform: rotate(-45deg);
+    }
+
+    .brand-title-box h1 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 16px;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      line-height: 1.2;
+    }
+
+    .brand-title-box h1 span.gold {
+      color: var(--accent-gold);
+      font-weight: 900;
+    }
+
+    .brand-subtitle {
+      font-size: 10px;
+      color: var(--accent-gold-light);
+      letter-spacing: 0.8px;
+      opacity: 0.85;
+      margin-top: 1px;
+    }
+
+    .header-badges {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .status-pill {
+      padding: 5px 10px;
+      border-radius: 2px;
+      border: 1px solid rgba(213, 153, 28, 0.3);
+      background: rgba(13, 2, 6, 0.75);
+      font-size: 10px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-weight: 500;
+      color: var(--text-dim);
+    }
+
+    .status-pill strong {
+      font-weight: 700;
+      color: var(--accent-gold-light);
+    }
+
+    .status-pill.success strong {
+      color: var(--accent-green-bright);
+    }
+
+    .status-pill.danger strong {
+      color: var(--accent-red-bright);
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .hdr-btn {
+      padding: 6px 12px;
+      font-family: inherit;
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      border: 1px solid var(--panel-border);
+      background: rgba(49, 1, 17, 0.8);
+      color: var(--text-main);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      border-radius: 2px;
+    }
+
+    .hdr-btn:hover {
+      background: rgba(92, 10, 36, 0.9);
+      border-color: var(--accent-gold);
+      color: var(--accent-gold-light);
+    }
+
+    .hdr-btn.highlight {
+      background: var(--accent-gold);
+      color: #130108;
+      border-color: var(--accent-gold);
+    }
+
+    .hdr-btn.highlight:hover {
+      background: #e5a932;
+    }
+
+    /* LEFT ARCHITECTURAL & VECTOR PANEL */
+    .left-panel {
+      position: absolute;
+      top: 76px;
+      left: 16px;
+      width: 380px;
+      max-height: calc(100vh - 96px);
+      background: var(--panel-bg);
+      border: 1px solid var(--panel-border);
+      border-radius: 4px;
+      padding: 14px;
+      z-index: 20;
+      backdrop-filter: blur(16px);
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      overflow-y: auto;
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.8);
+    }
+
+    .left-panel::-webkit-scrollbar, .right-panel::-webkit-scrollbar, .audit-terminal::-webkit-scrollbar {
+      width: 4px;
+    }
+    .left-panel::-webkit-scrollbar-thumb, .right-panel::-webkit-scrollbar-thumb, .audit-terminal::-webkit-scrollbar-thumb {
+      background: rgba(213, 153, 28, 0.4);
+    }
+
+    .panel-section-title {
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 1.4px;
+      color: var(--accent-gold);
+      border-bottom: 1px solid rgba(213, 153, 28, 0.25);
+      padding-bottom: 4px;
+      font-weight: 700;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .layer-btn {
+      width: 100%;
+      text-align: left;
+      background: rgba(23, 4, 12, 0.65);
+      border: 1px solid rgba(213, 153, 28, 0.2);
+      border-radius: 3px;
+      padding: 8px 10px;
+      color: var(--text-main);
+      font-family: inherit;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .layer-btn:hover {
+      border-color: var(--accent-gold);
+      background: rgba(49, 1, 17, 0.55);
+    }
+
+    .layer-btn.active {
+      background: linear-gradient(135deg, rgba(65, 2, 23, 0.8) 0%, rgba(213, 153, 28, 0.18) 100%);
+      border-color: var(--accent-gold);
+      box-shadow: 0 0 14px rgba(213, 153, 28, 0.3);
+    }
+
+    .layer-btn .l-tag {
+      font-size: 9px;
+      color: var(--accent-gold);
+      font-weight: 800;
+      letter-spacing: 0.8px;
+    }
+
+    .layer-btn .l-name {
+      font-size: 11px;
+      font-weight: 700;
+      color: #ffffff;
+    }
+
+    .layer-btn .l-desc {
+      font-size: 9.5px;
+      color: var(--text-muted);
+      line-height: 1.35;
+    }
+
+    /* ATTACK SELECTOR PILLS (AT-1 through AT-7 from Volume 3) */
+    .attack-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 5px;
+    }
+
+    .atk-pill {
+      padding: 6px 8px;
+      background: rgba(30, 4, 14, 0.6);
+      border: 1px solid rgba(230, 57, 70, 0.3);
+      color: var(--text-main);
+      font-family: inherit;
+      font-size: 9.5px;
+      font-weight: 600;
+      cursor: pointer;
+      border-radius: 2px;
+      text-align: left;
+      transition: all 0.15s ease;
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+    }
+
+    .atk-pill span.code {
+      font-size: 8.5px;
+      font-weight: 800;
+      color: var(--accent-red-bright);
+    }
+
+    .atk-pill:hover {
+      border-color: var(--accent-red-bright);
+      background: rgba(230, 57, 70, 0.2);
+    }
+
+    .atk-pill.active {
+      background: var(--accent-red);
+      color: #fff;
+      border-color: var(--accent-red-bright);
+      box-shadow: 0 0 10px rgba(230, 57, 70, 0.5);
+    }
+
+    .atk-pill.active span.code {
+      color: #fff;
+    }
+
+    /* ACTION BUTTONS */
+    .action-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 7px;
+    }
+
+    .action-btn {
+      padding: 10px 8px;
+      border-radius: 3px;
+      font-family: inherit;
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      border: 1px solid;
+      text-align: center;
+    }
+
+    .btn-attack {
+      background: rgba(230, 57, 70, 0.22);
+      border-color: var(--accent-red-bright);
+      color: #ff94a5;
+    }
+
+    .btn-attack:hover, .btn-attack.active {
+      background: var(--accent-red-bright);
+      color: #130108;
+      box-shadow: 0 0 16px rgba(230, 57, 70, 0.6);
+    }
+
+    .btn-defend {
+      background: rgba(0, 168, 120, 0.22);
+      border-color: var(--accent-green-bright);
+      color: var(--accent-green-bright);
+    }
+
+    .btn-defend:hover, .btn-defend.active {
+      background: var(--accent-green-bright);
+      color: #03140d;
+      box-shadow: 0 0 16px rgba(0, 255, 157, 0.6);
+    }
+
+    .btn-wide {
+      grid-column: span 2;
+      background: rgba(124, 58, 237, 0.2);
+      border-color: var(--accent-purple-light);
+      color: #e0cbff;
+      padding: 8px;
+    }
+
+    .btn-wide:hover {
+      background: var(--accent-purple);
+      color: #fff;
+      box-shadow: 0 0 14px rgba(124, 58, 237, 0.5);
+    }
+
+    .explainer-box {
+      background: rgba(13, 2, 6, 0.85);
+      border-left: 3px solid var(--accent-gold);
+      padding: 9px 11px;
+      border-radius: 2px;
+      font-size: 10px;
+      line-height: 1.45;
+      color: var(--text-muted);
+    }
+
+    .explainer-box strong {
+      color: #ffffff;
+    }
+
+    /* RIGHT MATHEMATICAL TELEMETRY PANEL */
+    .right-panel {
+      position: absolute;
+      top: 76px;
+      right: 16px;
+      width: 390px;
+      max-height: calc(100vh - 96px);
+      background: var(--panel-bg);
+      border: 1px solid var(--panel-border);
+      border-radius: 4px;
+      padding: 14px;
+      z-index: 20;
+      backdrop-filter: blur(16px);
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      overflow-y: auto;
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.8);
+    }
+
+    .metric-row {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+      background: rgba(13, 2, 6, 0.7);
+      padding: 7px 9px;
+      border-radius: 3px;
+      border: 1px solid rgba(213, 153, 28, 0.15);
+    }
+
+    .metric-header {
+      display: flex;
+      justify-content: space-between;
+      font-size: 10px;
+    }
+
+    .metric-label {
+      color: var(--text-dim);
+    }
+
+    .metric-val {
+      font-weight: 700;
+      color: var(--accent-gold-light);
+    }
+
+    .progress-track {
+      width: 100%;
+      height: 4px;
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 2px;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 100%;
+      width: 25%;
+      background: var(--accent-gold);
+      transition: width 0.25s ease, background-color 0.25s ease;
+    }
+
+    #oscilloscope-canvas {
+      width: 100%;
+      height: 85px;
+      background: rgba(9, 1, 4, 0.95);
+      border: 1px solid rgba(213, 153, 28, 0.25);
+      border-radius: 3px;
+    }
+
+    .audit-terminal {
+      background: #080104;
+      border: 1px solid rgba(0, 168, 120, 0.3);
+      border-radius: 3px;
+      padding: 8px;
+      font-size: 9.5px;
+      line-height: 1.4;
+      color: var(--accent-green-bright);
+      height: 130px;
+      overflow-y: auto;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .audit-entry {
+      margin-bottom: 3px;
+      word-break: break-all;
+    }
+
+    .audit-entry.warn {
+      color: var(--accent-gold-light);
+    }
+
+    .audit-entry.err {
+      color: var(--accent-red-bright);
+    }
+
+    /* BOTTOM DOCK & COLOR LEGEND */
+    .bottom-dock {
+      position: absolute;
+      bottom: 14px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--panel-bg);
+      border: 1px solid var(--panel-border);
+      border-radius: 30px;
+      padding: 6px 18px;
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      z-index: 20;
+      font-size: 10px;
+      backdrop-filter: blur(14px);
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.7);
+    }
+
+    .dock-group {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .legend-swatch {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+    }
+
+    .view-btn {
+      padding: 3px 8px;
+      border: 1px solid rgba(213, 153, 28, 0.3);
+      background: rgba(13, 2, 6, 0.8);
+      color: var(--text-main);
+      font-family: inherit;
+      font-size: 9px;
+      font-weight: 700;
+      cursor: pointer;
+      border-radius: 12px;
+      transition: all 0.15s ease;
+    }
+
+    .view-btn:hover, .view-btn.active {
+      border-color: var(--accent-gold);
+      background: var(--accent-gold);
+      color: #130108;
+    }
+
+    /* FLASH CRASH NOTIFICATION BANNER */
+    .flash-banner {
+      position: absolute;
+      top: 76px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(230, 57, 70, 0.95);
+      color: #ffffff;
+      padding: 8px 18px;
+      border-radius: 4px;
+      border: 1px solid #ff8093;
+      font-weight: 800;
+      font-size: 11px;
+      letter-spacing: 1px;
+      z-index: 30;
+      display: none;
+      box-shadow: 0 0 25px rgba(230, 57, 70, 0.8);
+      animation: pulse 1s infinite alternate;
+    }
+
+    @keyframes pulse {
+      0% { transform: translateX(-50%) scale(1); }
+      100% { transform: translateX(-50%) scale(1.03); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 3D WEBGL CANVAS CONTAINER -->
+  <div id="webgl-container"></div>
+
+  <!-- FLASH CRASH WARNING BANNER -->
+  <div id="flash-banner" class="flash-banner">
+    ⚠️ PREPARING SCENARIO ALPHA SIMULATION: $45M PREDATORY ASK WALL DETECTED
+  </div>
+
+  <!-- TOP COMMAND HUD HEADER -->
+  <header class="hud-header">
+    <div class="brand-section">
+      <div class="brand-logo">
+        <div class="brand-logo-inner"></div>
+      </div>
+      <div class="brand-title-box">
+        <h1>LAST CRUSADE <span class="gold">DEFENSE</span> // ATTACK LIBRARY</h1>
+        <div class="brand-subtitle">Library of Offensive GEO Strategies & Counter-GEO Defensive Strategies · Volumes 1, 2 & 3</div>
+      </div>
+    </div>
+
+    <div class="header-badges">
+      <div class="status-pill">
+        <span>STATUS:</span>
+        <strong id="hud-status" style="color: var(--accent-green-bright);">SHIELD ACTIVE</strong>
+      </div>
+      <div class="status-pill">
+        <span>SEC 15c3-8:</span>
+        <strong id="hud-sec">ZK-VERIFIED (CAT OK)</strong>
+      </div>
+      <div class="status-pill">
+        <span>AUROC:</span>
+        <strong>0.9994 (FPR 0.38%)</strong>
+      </div>
+      <div class="status-pill">
+        <span>LATENCY:</span>
+        <strong id="hud-latency">14.2 ms</strong>
+      </div>
+    </div>
+
+    <div class="header-actions">
+      <button class="hdr-btn highlight" onclick="runScenarioAlphaReplay()">
+        ⚡ Scenario Alpha (14.2ms)
+      </button>
+      <button class="hdr-btn" id="sound-btn" onclick="toggleAudio()">
+        🔊 Audio: Off
+      </button>
+      <button class="hdr-btn" onclick="toggleFullscreen()">
+        ⛶ Fullscreen
+      </button>
+      <button class="hdr-btn" onclick="window.parent !== window ? window.parent.location.hash = '#/' : window.location.href = '/'">
+        ← Platform
+      </button>
+    </div>
+  </header>
+
+  <!-- LEFT CONTROL PANEL: ARCHITECTURE LAYERS & VECTOR INJECTOR -->
+  <aside class="left-panel">
+    
+    <div class="panel-section-title">
+      <span>1. Select Architecture Layer</span>
+      <span style="font-size: 8.5px; opacity: 0.7;">VOLS 1–3</span>
+    </div>
+
+    <button class="layer-btn active" onclick="switchSceneMode(0)" id="mode-btn-0">
+      <span class="l-tag">LAYERS 0 & 1 // MTVD + AM-CIDP</span>
+      <span class="l-name">Attractor Manifold & Hubness Sinkhole</span>
+      <span class="l-desc">GLSL Riemannian curvature, 21k-query hub sink (AT-1), Levina-Bickel LID & Householder rotation.</span>
+    </button>
+
+    <button class="layer-btn" onclick="switchSceneMode(1)" id="mode-btn-1">
+      <span class="l-tag">LAYERS 2 & 3 // NCARD + TCG-CL v2.0</span>
+      <span class="l-name">Cross-Embedder Planes & C2PA Sybil Graph</span>
+      <span class="l-desc">Dense / ColBERT / Sparse rank divergence (AT-2) vs. C2PA hardware roots & Hawkes botnets (AT-4).</span>
+    </button>
+
+    <button class="layer-btn" onclick="switchSceneMode(2)" id="mode-btn-2">
+      <span class="l-tag">LAYER 4A // CEH-ASID + DAPP</span>
+      <span class="l-name">Split-Payload Attention Tomography</span>
+      <span class="l-desc">Transformer self-attention matrix, Möbius KL synergy firewall & enthymematic split suppression (AT-5).</span>
+    </button>
+
+    <button class="layer-btn" onclick="switchSceneMode(3)" id="mode-btn-3">
+      <span class="l-tag">LAYER 4B // TMMEG ORDER-BOOK SHIELD</span>
+      <span class="l-name">Thermodynamic LOB vs. RAG Surprise</span>
+      <span class="l-desc">3D Limit Order Book canyon, VPIN/Kyle's λ & $45M predatory ask wall circuit breaker (AT-6).</span>
+    </button>
+
+    <button class="layer-btn" onclick="switchSceneMode(4)" id="mode-btn-4">
+      <span class="l-tag">LAYERS 5–8 // DMEM + SGL + CM + ZK</span>
+      <span class="l-name">Martingale Memory, Swarm & zk-SNARKs</span>
+      <span class="l-desc">Wasserstein-2 memory rollback, SGL-CMI swarm diversity, VLM saliency & 288-byte Groth16 proofs (AT-7).</span>
+    </button>
+
+    <button class="layer-btn" onclick="switchSceneMode(5)" id="mode-btn-5">
+      <span class="l-tag">BENCHMARK LAB // VOL. 3 HYPER-SURFACE</span>
+      <span class="l-name">3D ROC Surface & SEC 10-K Separation</span>
+      <span class="l-desc">Empirical ROC discriminant boundary (Figure 9): Baseline 0.8124 vs Sovereign 0.9994 AUROC.</span>
+    </button>
+
+    <div class="panel-section-title" style="margin-top: 4px;">
+      <span>2. Adversarial Threat Taxonomy (AT-1..7)</span>
+      <span style="font-size: 8.5px; opacity: 0.7;">TABLE 6</span>
+    </div>
+
+    <div class="attack-grid">
+      <button class="atk-pill active" onclick="selectAttackVector('AT-1')" id="atk-btn-AT-1">
+        <span class="code">AT-1 // ATTRACTOR</span>
+        <span>Universal Query Hub</span>
+      </button>
+      <button class="atk-pill" onclick="selectAttackVector('AT-2')" id="atk-btn-AT-2">
+        <span class="code">AT-2 // RANK-DIV</span>
+        <span>Multi-Embedder Drift</span>
+      </button>
+      <button class="atk-pill" onclick="selectAttackVector('AT-3')" id="atk-btn-AT-3">
+        <span class="code">AT-3 // ZERO-FONT</span>
+        <span>VLM Steganography</span>
+      </button>
+      <button class="atk-pill" onclick="selectAttackVector('AT-4')" id="atk-btn-AT-4">
+        <span class="code">AT-4 // HAWKES</span>
+        <span>Supercritical Sybil</span>
+      </button>
+      <button class="atk-pill" onclick="selectAttackVector('AT-5')" id="atk-btn-AT-5">
+        <span class="code">AT-5 // ENTHYMEME</span>
+        <span>Split-Payload Fuse</span>
+      </button>
+      <button class="atk-pill" onclick="selectAttackVector('AT-6')" id="atk-btn-AT-6">
+        <span class="code">AT-6 // LOB TRAP</span>
+        <span>$45M Predatory Wall</span>
+      </button>
+      <button class="atk-pill" onclick="selectAttackVector('AT-7')" id="atk-btn-AT-7" style="grid-column: span 2;">
+        <span class="code">AT-7 // SLOW-BOIL</span>
+        <span>Episodic Memory Martingale Poisoning (0.02 drift/turn)</span>
+      </button>
+    </div>
+
+    <div class="panel-section-title" style="margin-top: 4px;">
+      <span>3. Real-Time Intervention Controls</span>
+    </div>
+
+    <div class="action-grid">
+      <button class="action-btn btn-attack" id="btn-trigger-attack" onclick="setThreatState(true)">
+        ⚡ Inject Attack
+      </button>
+      <button class="action-btn btn-defend active" id="btn-trigger-defend" onclick="setThreatState(false)">
+        🛡️ Engage Shield
+      </button>
+      <button class="action-btn btn-wide" onclick="triggerHouseholderRotation()">
+        🔄 Rotate Vector Frame (Householder Q_t ∈ O(d))
+      </button>
+    </div>
+
+    <div class="explainer-box" id="scene-explainer">
+      <strong>Layers 0 & 1 Active:</strong> Visualizing Riemannian embedding manifold via custom GLSL vertex displacement. Universal retrieval hubs create artificial gravitational sinks pulling 21k+ queries. Engage shield to activate Levina-Bickel LID isolation and Householder frame rotation.
+    </div>
+
+  </aside>
+
+  <!-- RIGHT MATHEMATICAL TELEMETRY & SEC 15c3-8 PANEL -->
+  <aside class="right-panel">
+    
+    <div class="panel-section-title">
+      <span>Real-Time Mathematical Telemetry</span>
+      <span style="font-size: 8.5px; opacity: 0.7;">SOVEREIGN HUD</span>
+    </div>
+
+    <div class="metric-row">
+      <div class="metric-header">
+        <span class="metric-label">AM-CIDP Levina-Bickel LID_K(x)</span>
+        <span class="metric-val" id="val-lid">18.42 (Natural)</span>
+      </div>
+      <div class="progress-track"><div class="progress-fill" id="bar-lid" style="width: 78%; background: var(--accent-green);"></div></div>
+    </div>
+
+    <div class="metric-row">
+      <div class="metric-header">
+        <span class="metric-label">NCARD Cross-Embedder Kendall's τ</span>
+        <span class="metric-val" id="val-ncard">0.942 (Aligned)</span>
+      </div>
+      <div class="progress-track"><div class="progress-fill" id="bar-ncard" style="width: 94%; background: var(--accent-green);"></div></div>
+    </div>
+
+    <div class="metric-row">
+      <div class="metric-header">
+        <span class="metric-label">TCG-CL Hawkes Ratio (α/β) & C2PA Root</span>
+        <span class="metric-val" id="val-tcg">0.32 (Subcritical) / HSM SIGNED</span>
+      </div>
+      <div class="progress-track"><div class="progress-fill" id="bar-tcg" style="width: 22%; background: var(--accent-green);"></div></div>
+    </div>
+
+    <div class="metric-row">
+      <div class="metric-header">
+        <span class="metric-label">CEH-ASID Möbius KL Synergy (I_ij)</span>
+        <span class="metric-val" id="val-synergy">0.012 nats (Clean)</span>
+      </div>
+      <div class="progress-track"><div class="progress-fill" id="bar-synergy" style="width: 8%; background: var(--accent-green);"></div></div>
+    </div>
+
+    <div class="metric-row">
+      <div class="metric-header">
+        <span class="metric-label">TMMEG Thermodynamic Damping (Γ_t)</span>
+        <span class="metric-val" id="val-gamma">0.985 (Equilibrium)</span>
+      </div>
+      <div class="progress-track"><div class="progress-fill" id="bar-gamma" style="width: 98%; background: var(--accent-green);"></div></div>
+    </div>
+
+    <div class="metric-row">
+      <div class="metric-header">
+        <span class="metric-label">DMEM Martingale Drift & SGL-CMI M_eff</span>
+        <span class="metric-val" id="val-dmem">0.12 / 19.4 Agents (High Diversity)</span>
+      </div>
+      <div class="progress-track"><div class="progress-fill" id="bar-dmem" style="width: 15%; background: var(--accent-green);"></div></div>
+    </div>
+
+    <div class="metric-row">
+      <div class="metric-header">
+        <span class="metric-label">ZK-CGEO R1CS Groth16 Proof (288 B)</span>
+        <span class="metric-val" id="val-zk" style="color: var(--accent-purple-light);">VERIFIED (1.4 ms, Gas: 182k)</span>
+      </div>
+      <div class="progress-track"><div class="progress-fill" id="bar-zk" style="width: 100%; background: var(--accent-purple);"></div></div>
+    </div>
+
+    <div class="panel-section-title" style="margin-top: 2px;">
+      <span>Multi-Channel Oscilloscope</span>
+      <span style="font-size: 8.5px; opacity: 0.7;">4-CHANNEL 60HZ</span>
+    </div>
+    <canvas id="oscilloscope-canvas" width="360" height="85"></canvas>
+
+    <div class="panel-section-title" style="margin-top: 2px;">
+      <span>SEC Rule 15c3-8 CAT & STIX Audit Stream</span>
+      <button onclick="clearAuditTerminal()" style="font-size: 8.5px; background: none; border: none; color: var(--accent-gold); cursor: pointer;">CLEAR</button>
+    </div>
+    <div class="audit-terminal" id="audit-log"></div>
+
+  </aside>
+
+  <!-- BOTTOM DOCK & COLOR LEGEND -->
+  <div class="bottom-dock">
+    <div class="dock-group">
+      <span style="font-weight: 700; color: var(--accent-gold);">CAMERA:</span>
+      <button class="view-btn active" onclick="setCameraView('orbit')">Orbit</button>
+      <button class="view-btn" onclick="setCameraView('top')">Top</button>
+      <button class="view-btn" onclick="setCameraView('front')">Front</button>
+      <button class="view-btn" onclick="setCameraView('iso')">Isometric</button>
+    </div>
+
+    <div style="width: 1px; height: 16px; background: rgba(213, 153, 28, 0.3);"></div>
+
+    <div class="dock-group">
+      <span class="legend-swatch" style="background: #00F0FF;"></span> Clean Vector
+    </div>
+    <div class="dock-group">
+      <span class="legend-swatch" style="background: #00FF9D;"></span> C2PA Hardware Root
+    </div>
+    <div class="dock-group">
+      <span class="legend-swatch" style="background: #FF2A5F;"></span> Adversarial Hub / Sybil
+    </div>
+    <div class="dock-group">
+      <span class="legend-swatch" style="background: #D5991C;"></span> Predatory Ask Wall
+    </div>
+    <div class="dock-group">
+      <span class="legend-swatch" style="background: #B565FF;"></span> zk-SNARK / MTVD
+    </div>
+  </div>
+
+  <!-- THREE.JS & ORBIT CONTROLS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+
+  <script>
+    // ============================================================================
+    // APPLICATION STATE & SOUND SYNTHESIZER
+    // ============================================================================
+    let currentMode = 0;             // 0: MTVD/AM-CIDP, 1: NCARD/TCG-CL, 2: CEH-ASID, 3: TMMEG, 4: DMEM/SGL/ZK, 5: ROC Bench
+    let currentAttack = 'AT-1';      // Active attack class from Table 6
+    let isAttackActive = false;      // false = Shielded, true = Attack Active
+    let rotationPulse = 0.0;
+    let clock = new THREE.Clock();
+    let audioEnabled = false;
+    let audioCtx = null;
+
+    // Web Audio Synthesizer
+    function initAudio() {
+      if (!audioCtx) {
+        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      }
+    }
+
+    function toggleAudio() {
+      initAudio();
+      audioEnabled = !audioEnabled;
+      const btn = document.getElementById('sound-btn');
+      btn.innerText = audioEnabled ? '🔊 Audio: On' : '🔇 Audio: Off';
+      if (audioEnabled) {
+        playSynthTone(440, 'sine', 0.15, 0.1);
+        appendAuditLog('Web Audio Telemetry Acoustic Feedback Enabled.');
+      }
+    }
+
+    function playSynthTone(freq, type = 'sine', duration = 0.2, vol = 0.12) {
+      if (!audioEnabled || !audioCtx) return;
+      try {
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.type = type;
+        osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+        gain.gain.setValueAtTime(vol, audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + duration);
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        osc.start();
+        osc.stop(audioCtx.currentTime + duration);
+      } catch (e) {}
+    }
+
+    // Oscilloscope buffers (120 historical frames)
+    const oscHistory = {
+      anomaly: new Array(120).fill(0.05),
+      gamma: new Array(120).fill(0.98),
+      martingale: new Array(120).fill(0.12),
+      hawkes: new Array(120).fill(0.2)
+    };
+
+    // Mode Explanations
+    const modeDescriptions = [
+      "<strong>Layers 0 & 1 (MTVD + AM-CIDP):</strong> High-dimensional Riemannian embedding manifold. Adversarial universal retrieval hubs (AT-1) collapse local intrinsic dimensionality (LID 18.42 → 4.12) creating topological sinkholes. Shield activates Levina-Bickel LID isolation cage and rotates orthogonal coordinate frame via Householder reflection (Q_t = I - 2v_tv_t^T).",
+      "<strong>Layers 2 & 3 (NCARD + TCG-CL v2.0):</strong> Three stacked planes represent Dense (OpenAI text-embedding-3-large), ColBERT Token Max-Sim, and Sparse BM25/SPLADE. Multi-modal zero-font attacks trigger cross-embedder rank divergence (Kendall's τ = 0.14). C2PA hardware root keys (SEC EDGAR HSM) establish cryptographic truth anchors, collapsing unanchored Hawkes Sybil cascades.",
+      "<strong>Layer 4A (CEH-ASID + DAPP Attention Tomography):</strong> Deep Transformer Multi-Head Self-Attention lattice. Split-payload enthymemes (AT-5) split malicious premise A into Doc 1 and premise B into Doc 2, forcing frontier LLM cross-attention to synthesize harmful conclusion C. Shield drops a surgical attention firewall plane (mask = -10^9) severing toxic cross-document edges.",
+      "<strong>Layer 4B (TMMEG Limit Order Book Shield - Scenario Alpha):</strong> 3D Limit Order Book (LOB) canyon showing Bid depth (Green) vs. Ask depth (Red). AT-6 simulates buy-side models tricked into sweeping straight into a $45M predatory ask wall at $150.00. TMMEG epistemic circuit breaker triggers an SEC Rule 15c3-8 halt within 14.2 ms, saving $42.8M in capital.",
+      "<strong>Layers 5–8 (DMEM-WMQ, SGL-CMI, CM-JSAS, ZK-CGEO):</strong> Central double-helix tracks episodic conversation memory; slow-boil poisoning (0.02 drift/turn) triggers Doob martingale stopping and Wasserstein-2 rollback. Outer ring models 20-agent swarm diversity (M_eff = 19.4 vs 1.8). Floating upper torus compiles 288-byte Groth16 zk-SNARK compliance proofs for SEC CAT.",
+      "<strong>Volume 3 Benchmark Lab & ROC Hyper-Surface:</strong> Interactive 3D ROC space mapping (TPR vs. FPR vs. Decision Threshold). Contrasts Gen-1 baseline surface (AUROC 0.8124, 18.6% false alarm rate on SEC 10-K financial tables) against Last Crusade Defense's Sovereign 8-Layer Stack (AUROC 0.9994, 0.38% FPR across 5,000 trials)."
+    ];
+
+    // ============================================================================
+    // THREE.JS INITIALIZATION
+    // ============================================================================
+    const container = document.getElementById('webgl-container');
+    const scene = new THREE.Scene();
+    scene.fog = new THREE.FogExp2(0x363636, 0.011);
+
+    const camera = new THREE.PerspectiveCamera(52, window.innerWidth / window.innerHeight, 0.1, 1000);
+    camera.position.set(0, 19, 38);
+
+    const renderer = new THREE.WebGLRenderer({ antialias: true, powerPreference: 'high-performance' });
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    renderer.setClearColor(0x363636, 1);
+    container.appendChild(renderer.domElement);
+
+    const controls = new THREE.OrbitControls(camera, renderer.domElement);
+    controls.enableDamping = true;
+    controls.dampingFactor = 0.06;
+    controls.maxDistance = 90;
+    controls.minDistance = 8;
+
+    // Ambient & Point Lighting
+    scene.add(new THREE.AmbientLight(0x310111, 1.8));
+    
+    const goldLight = new THREE.PointLight(0xD5991C, 2.4, 120);
+    goldLight.position.set(22, 32, 22);
+    scene.add(goldLight);
+
+    const cyanLight = new THREE.PointLight(0x00F0FF, 1.8, 100);
+    cyanLight.position.set(-22, -10, -22);
+    scene.add(cyanLight);
+
+    const redLight = new THREE.PointLight(0xFF2A5F, 1.5, 80);
+    redLight.position.set(0, -15, 0);
+    scene.add(redLight);
+
+    // Background Particle Starfield
+    const starGeo = new THREE.BufferGeometry();
+    const starCount = 1500;
+    const starPos = new Float32Array(starCount * 3);
+    for (let i = 0; i < starCount * 3; i++) {
+      starPos[i] = (Math.random() - 0.5) * 220;
+    }
+    starGeo.setAttribute('position', new THREE.BufferAttribute(starPos, 3));
+    const starMat = new THREE.PointsMaterial({ color: 0xF2D69D, size: 0.35, transparent: true, opacity: 0.35 });
+    scene.add(new THREE.Points(starGeo, starMat));
+
+    // Scene Groups for 6 Distinct Modes
+    const modeGroups = [
+      new THREE.Group(), // Mode 0: MTVD & AM-CIDP
+      new THREE.Group(), // Mode 1: NCARD & TCG-CL v2.0
+      new THREE.Group(), // Mode 2: CEH-ASID & DAPP
+      new THREE.Group(), // Mode 3: TMMEG LOB Canyon
+      new THREE.Group(), // Mode 4: DMEM + SGL + CM + ZK
+      new THREE.Group()  // Mode 5: ROC Hyper-Surface (Vol. 3)
+    ];
+
+    modeGroups.forEach((g, idx) => {
+      g.visible = (idx === 0);
+      scene.add(g);
+    });
+
+    // ============================================================================
+    // MODE 0: GLSL RIEMANNIAN MANIFOLD & HUBNESS SINKHOLE (VOL. 1)
+    // ============================================================================
+    const manifoldUniforms = {
+      uTime: { value: 0.0 },
+      uSinkDepth: { value: 0.0 },
+      uShieldActive: { value: 1.0 }
+    };
+
+    const manifoldVertShader = `
+      uniform float uTime;
+      uniform float uSinkDepth;
+      varying vec3 vPos;
+      varying float vDist;
+
+      void main() {
+        vec3 pos = position;
+        float dist = length(pos.xz);
+        vDist = dist;
+
+        float ripple = sin(dist * 0.45 - uTime * 2.2) * 0.45;
+        float sinkWell = -uSinkDepth * exp(-(dist * dist) / 36.0);
+        pos.y += ripple + sinkWell;
+
+        vPos = pos;
+        gl_Position = projectionMatrix * modelViewMatrix * vec4(pos, 1.0);
+      }
+    `;
+
+    const manifoldFragShader = `
+      uniform float uSinkDepth;
+      uniform float uShieldActive;
+      varying vec3 vPos;
+      varying float vDist;
+
+      void main() {
+        vec3 goldColor = vec3(0.83, 0.60, 0.11); // #D5991C
+        vec3 dangerColor = vec3(1.0, 0.16, 0.37); // #FF2A5F
+        vec3 shieldColor = vec3(0.0, 1.0, 0.62); // #00FF9D
+
+        float well = clamp(exp(-(vDist * vDist) / 40.0) * (uSinkDepth / 11.0), 0.0, 1.0);
+        vec3 col = mix(goldColor, dangerColor, well);
+
+        if (uShieldActive > 0.5 && vDist < 5.8) {
+          col = mix(col, shieldColor, 0.7);
+        }
+
+        float alpha = clamp(1.0 - (vDist / 26.0), 0.18, 0.9);
+        gl_FragColor = vec4(col, alpha);
+      }
+    `;
+
+    const manifoldGeo = new THREE.PlaneGeometry(48, 48, 64, 64);
+    manifoldGeo.rotateX(-Math.PI / 2);
+    const manifoldMat = new THREE.ShaderMaterial({
+      uniforms: manifoldUniforms,
+      vertexShader: manifoldVertShader,
+      fragmentShader: manifoldFragShader,
+      wireframe: true,
+      transparent: true
+    });
+    const manifoldMesh = new THREE.Mesh(manifoldGeo, manifoldMat);
+    modeGroups[0].add(manifoldMesh);
+
+    // Hub Core & Quarantine Shield Cage
+    const hubSphere = new THREE.Mesh(
+      new THREE.SphereGeometry(1.4, 32, 32),
+      new THREE.MeshBasicMaterial({ color: 0xFF2A5F })
+    );
+    modeGroups[0].add(hubSphere);
+
+    const quarantineCage = new THREE.Mesh(
+      new THREE.IcosahedronGeometry(3.4, 1),
+      new THREE.MeshBasicMaterial({ color: 0x00FF9D, wireframe: true, transparent: true, opacity: 0.85 })
+    );
+    modeGroups[0].add(quarantineCage);
+
+    // 480 Query Vector Particles (24 Purple Canary Honeypots)
+    const queryCount = 480;
+    const queryGeo = new THREE.BufferGeometry();
+    const queryPos = new Float32Array(queryCount * 3);
+    const queryHome = new Float32Array(queryCount * 3);
+    const queryColors = new Float32Array(queryCount * 3);
+
+    for (let i = 0; i < queryCount; i++) {
+      const r = 4.8 + Math.random() * 18.0;
+      const theta = Math.random() * Math.PI * 2;
+      const phi = (Math.random() - 0.5) * 0.8;
+      const x = r * Math.cos(theta);
+      const y = 2.0 + Math.sin(phi) * 6.0;
+      const z = r * Math.sin(theta);
+
+      queryPos[i*3] = queryHome[i*3] = x;
+      queryPos[i*3+1] = queryHome[i*3+1] = y;
+      queryPos[i*3+2] = queryHome[i*3+2] = z;
+
+      if (i < 24) {
+        // Spectral Canary Honeypots (Purple #B565FF)
+        queryColors[i*3] = 0.71; queryColors[i*3+1] = 0.40; queryColors[i*3+2] = 1.0;
+      } else {
+        // Natural Queries (Gold/Parchment #F2D69D)
+        queryColors[i*3] = 0.95; queryColors[i*3+1] = 0.84; queryColors[i*3+2] = 0.62;
+      }
+    }
+    queryGeo.setAttribute('position', new THREE.BufferAttribute(queryPos, 3));
+    queryGeo.setAttribute('color', new THREE.BufferAttribute(queryColors, 3));
+    const queryCloud = new THREE.Points(queryGeo, new THREE.PointsMaterial({ size: 0.45, vertexColors: true }));
+    modeGroups[0].add(queryCloud);
+
+    // Coordinate Axes for Householder Frame Rotation
+    const frameGroup = new THREE.Group();
+    const axisMatX = new THREE.LineBasicMaterial({ color: 0xFF2A5F, linewidth: 2 });
+    const axisMatY = new THREE.LineBasicMaterial({ color: 0x00FF9D, linewidth: 2 });
+    const axisMatZ = new THREE.LineBasicMaterial({ color: 0x00F0FF, linewidth: 2 });
+    
+    const makeAxisLine = (p1, p2, mat) => {
+      const g = new THREE.BufferGeometry().setFromPoints([p1, p2]);
+      return new THREE.Line(g, mat);
+    };
+    frameGroup.add(makeAxisLine(new THREE.Vector3(-14, 0, 0), new THREE.Vector3(14, 0, 0), axisMatX));
+    frameGroup.add(makeAxisLine(new THREE.Vector3(0, -10, 0), new THREE.Vector3(0, 10, 0), axisMatY));
+    frameGroup.add(makeAxisLine(new THREE.Vector3(0, 0, -14), new THREE.Vector3(0, 0, 14), axisMatZ));
+    modeGroups[0].add(frameGroup);
+
+    // ============================================================================
+    // MODE 1: NCARD TRIPLE-PLANE & TCG-CL C2PA SYBIL GRAPH (VOL. 1 & 2)
+    // ============================================================================
+    const planeHeights = [-8, 0, 8];
+    const planeLabels = ['Sparse BM25 / SPLADE Grid', 'ColBERT Token Max-Sim Plane', 'Dense 3072-D Semantic Plane'];
+    const planeColors = [0xD5991C, 0x00F0FF, 0xB565FF];
+
+    planeHeights.forEach((h, idx) => {
+      const grid = new THREE.GridHelper(34, 18, planeColors[idx], 0x310111);
+      grid.position.y = h;
+      modeGroups[1].add(grid);
+    });
+
+    // C2PA Hardware Root Anchors (Green Octahedrons)
+    const c2paNodes = [];
+    for (let i = 0; i < 4; i++) {
+      const mesh = new THREE.Mesh(
+        new THREE.OctahedronGeometry(1.2, 0),
+        new THREE.MeshBasicMaterial({ color: 0x00FF9D, wireframe: false })
+      );
+      mesh.position.set((i - 1.5) * 7.5, 8, -5);
+      modeGroups[1].add(mesh);
+      c2paNodes.push(mesh);
+    }
+
+    // Hawkes Sybil Botnet Ring (20 nodes)
+    const sybilNodes = [];
+    const sybilLines = [];
+    for (let i = 0; i < 20; i++) {
+      const angle = (i / 20) * Math.PI * 2;
+      const radius = 11.5;
+      const mesh = new THREE.Mesh(
+        new THREE.SphereGeometry(0.65, 16, 16),
+        new THREE.MeshBasicMaterial({ color: 0xFF2A5F })
+      );
+      mesh.position.set(Math.cos(angle) * radius, 0, Math.sin(angle) * radius);
+      modeGroups[1].add(mesh);
+      sybilNodes.push(mesh);
+    }
+
+    // Rank Permutation Ribbons (Connecting Dense, ColBERT, Sparse)
+    const ribbonCount = 8;
+    const rankRibbons = [];
+    for (let i = 0; i < ribbonCount; i++) {
+      const curve = new THREE.CatmullRomCurve3([
+        new THREE.Vector3((i - 3.5) * 3, 8, 0),
+        new THREE.Vector3((i - 3.5) * 3, 0, 0),
+        new THREE.Vector3((i - 3.5) * 3, -8, 0)
+      ]);
+      const tubeGeo = new THREE.TubeGeometry(curve, 24, 0.15, 8, false);
+      const tubeMat = new THREE.MeshBasicMaterial({ color: 0x00FF9D, transparent: true, opacity: 0.8 });
+      const ribbon = new THREE.Mesh(tubeGeo, tubeMat);
+      modeGroups[1].add(ribbon);
+      rankRibbons.push({ mesh: ribbon, origX: (i - 3.5) * 3 });
+    }
+
+    // ============================================================================
+    // MODE 2: CEH-ASID SPLIT-PAYLOAD ATTENTION TOMOGRAPHY (VOL. 1 & 2)
+    // ============================================================================
+    const headGrid = new THREE.GridHelper(26, 16, 0x00F0FF, 0x310111);
+    headGrid.position.y = -6;
+    modeGroups[2].add(headGrid);
+
+    // Three base documents (D1, D2, D3)
+    const baseDocs = [];
+    for (let i = 0; i < 3; i++) {
+      const docMesh = new THREE.Mesh(
+        new THREE.BoxGeometry(2.5, 0.4, 2.5),
+        new THREE.MeshBasicMaterial({ color: i === 2 ? 0x00FF9D : 0xD5991C })
+      );
+      docMesh.position.set((i - 1) * 7.5, -6, 5);
+      modeGroups[2].add(docMesh);
+      baseDocs.push(docMesh);
+    }
+
+    // Central cross-attention synthesis core
+    const synthesisCore = new THREE.Mesh(
+      new THREE.IcosahedronGeometry(2.2, 2),
+      new THREE.MeshBasicMaterial({ color: 0x00FF9D, wireframe: true })
+    );
+    synthesisCore.position.set(0, 4, 0);
+    modeGroups[2].add(synthesisCore);
+
+    // Enthymeme toxic payload nucleus
+    const enthymemeNucleus = new THREE.Mesh(
+      new THREE.SphereGeometry(1.2, 32, 32),
+      new THREE.MeshBasicMaterial({ color: 0xFF2A5F })
+    );
+    enthymemeNucleus.position.set(0, 4, 0);
+    modeGroups[2].add(enthymemeNucleus);
+
+    // Attention Firewall Plane (Luminous Emerald Sheet mask = -1e9)
+    const firewallPlane = new THREE.Mesh(
+      new THREE.PlaneGeometry(16, 12),
+      new THREE.MeshBasicMaterial({
+        color: 0x00FF9D,
+        side: THREE.DoubleSide,
+        transparent: true,
+        opacity: 0.45,
+        wireframe: true
+      })
+    );
+    firewallPlane.position.set(0, 0, 2);
+    firewallPlane.rotateX(-0.2);
+    modeGroups[2].add(firewallPlane);
+
+    // Attention Beams
+    const beamMat = new THREE.LineBasicMaterial({ color: 0xFF2A5F, linewidth: 2 });
+    const beamGeo1 = new THREE.BufferGeometry().setFromPoints([new THREE.Vector3(-7.5, -5.8, 5), new THREE.Vector3(0, 4, 0)]);
+    const beamGeo2 = new THREE.BufferGeometry().setFromPoints([new THREE.Vector3(0, -5.8, 5), new THREE.Vector3(0, 4, 0)]);
+    const beam1 = new THREE.Line(beamGeo1, beamMat);
+    const beam2 = new THREE.Line(beamGeo2, beamMat);
+    modeGroups[2].add(beam1);
+    modeGroups[2].add(beam2);
+
+    // ============================================================================
+    // MODE 3: TMMEG LIMIT ORDER BOOK (LOB) CANYON - SCENARIO ALPHA (VOL. 1 & 3)
+    // ============================================================================
+    const lobDepthLevels = 18;
+    const bidBars = [];
+    const askBars = [];
+
+    // Bids (Green, Left Side)
+    for (let i = 0; i < lobDepthLevels; i++) {
+      const h = 2.5 + Math.random() * 4.0;
+      const bar = new THREE.Mesh(
+        new THREE.BoxGeometry(0.8, h, 2.0),
+        new THREE.MeshBasicMaterial({ color: 0x00A878 })
+      );
+      bar.position.set(-1.0 - i * 1.1, h / 2 - 4, 0);
+      modeGroups[3].add(bar);
+      bidBars.push(bar);
+    }
+
+    // Asks (Red, Right Side)
+    for (let i = 0; i < lobDepthLevels; i++) {
+      const h = (i < 3) ? 14.0 : (2.5 + Math.random() * 4.0); // Predatory Ask Wall at first 3 ticks!
+      const col = (i < 3) ? 0xD5991C : 0xE63946;
+      const bar = new THREE.Mesh(
+        new THREE.BoxGeometry(0.8, h, 2.0),
+        new THREE.MeshBasicMaterial({ color: col })
+      );
+      bar.position.set(1.0 + i * 1.1, h / 2 - 4, 0);
+      modeGroups[3].add(bar);
+      askBars.push(bar);
+    }
+
+    // SEC Rule 15c3-8 Circuit Breaker Barrier Wall
+    const secBarrier = new THREE.Mesh(
+      new THREE.PlaneGeometry(0.3, 16),
+      new THREE.MeshBasicMaterial({ color: 0xD5991C, side: THREE.DoubleSide, transparent: true, opacity: 0.85, wireframe: true })
+    );
+    secBarrier.position.set(0, 3, 0);
+    modeGroups[3].add(secBarrier);
+
+    // Algorithmic Buy Order Projectiles
+    const projectileCount = 14;
+    const orderProjectiles = [];
+    for (let i = 0; i < projectileCount; i++) {
+      const proj = new THREE.Mesh(
+        new THREE.SphereGeometry(0.35, 12, 12),
+        new THREE.MeshBasicMaterial({ color: 0x00F0FF })
+      );
+      proj.position.set(-18.0 + Math.random() * 10, -1.0 + (Math.random() - 0.5) * 3.0, (Math.random() - 0.5) * 4);
+      modeGroups[3].add(proj);
+      orderProjectiles.push(proj);
+    }
+
+    // ============================================================================
+    // MODE 4: DMEM MARTINGALE HELIX, SGL SWARM & ZK-SNARK TORUS (VOL. 2 & 3)
+    // ============================================================================
+    const helixCheckpoints = 26;
+    const helixNodes = [];
+    for (let i = 0; i < helixCheckpoints; i++) {
+      const y = (i - helixCheckpoints / 2) * 0.55 - 2.0;
+      const angle = i * 0.45;
+      const mesh = new THREE.Mesh(
+        new THREE.SphereGeometry(0.45, 16, 16),
+        new THREE.MeshBasicMaterial({ color: 0x00FF9D })
+      );
+      mesh.position.set(Math.cos(angle) * 3.0, y, Math.sin(angle) * 3.0);
+      modeGroups[4].add(mesh);
+      helixNodes.push(mesh);
+    }
+
+    // 20-Agent Frontier Model Swarm Circle (SGL-CMI)
+    const swarmAgents = [];
+    for (let i = 0; i < 20; i++) {
+      const angle = (i / 20) * Math.PI * 2;
+      const radius = 12.0;
+      const mesh = new THREE.Mesh(
+        new THREE.TetrahedronGeometry(0.85, 0),
+        new THREE.MeshBasicMaterial({ color: 0x00F0FF })
+      );
+      mesh.position.set(Math.cos(angle) * radius, -2.0, Math.sin(angle) * radius);
+      modeGroups[4].add(mesh);
+      swarmAgents.push(mesh);
+    }
+
+    // Floating 288-Byte Groth16 zk-SNARK Torus
+    const zkSnarkTorus = new THREE.Mesh(
+      new THREE.TorusGeometry(3.5, 0.7, 16, 64),
+      new THREE.MeshBasicMaterial({ color: 0xB565FF, wireframe: true, transparent: true, opacity: 0.9 })
+    );
+    zkSnarkTorus.position.set(0, 9, 0);
+    modeGroups[4].add(zkSnarkTorus);
+
+    // ============================================================================
+    // MODE 5: 3D ROC & BENCHMARK HYPER-SURFACE (VOL. 3 FIGURE 9 & TABLE 7)
+    // ============================================================================
+    // High-precision 3D ROC surface: X = FPR (0..1), Y = TPR (0..1), Z = Threshold τ
+    const rocResolution = 30;
+    const rocGeo = new THREE.PlaneGeometry(24, 20, rocResolution, rocResolution);
+    const rocPos = rocGeo.attributes.position;
+
+    for (let i = 0; i < rocPos.count; i++) {
+      const u = (rocPos.getX(i) + 12) / 24; // 0..1 (FPR)
+      const v = (rocPos.getY(i) + 10) / 20; // 0..1 (Threshold)
+      // Sovereign Stack ROC Curve (AUROC 0.9994): TPR shoots up almost immediately
+      const sovereignTPR = Math.pow(u, 0.04) * 8.0; 
+      rocPos.setZ(i, sovereignTPR - 4.0);
+    }
+    rocGeo.computeVertexNormals();
+    const rocMesh = new THREE.Mesh(
+      rocGeo,
+      new THREE.MeshBasicMaterial({ color: 0x00FF9D, wireframe: true, transparent: true, opacity: 0.75 })
+    );
+    rocMesh.rotateX(-Math.PI / 4);
+    modeGroups[5].add(rocMesh);
+
+    // Baseline Gen-1 Curve Surface (AUROC 0.8124)
+    const baseRocGeo = new THREE.PlaneGeometry(24, 20, rocResolution, rocResolution);
+    const baseRocPos = baseRocGeo.attributes.position;
+    for (let i = 0; i < baseRocPos.count; i++) {
+      const u = (baseRocPos.getX(i) + 12) / 24;
+      const baseTPR = Math.pow(u, 0.45) * 8.0;
+      baseRocPos.setZ(i, baseTPR - 4.0);
+    }
+    baseRocGeo.computeVertexNormals();
+    const baseRocMesh = new THREE.Mesh(
+      baseRocGeo,
+      new THREE.MeshBasicMaterial({ color: 0xFF2A5F, wireframe: true, transparent: true, opacity: 0.35 })
+    );
+    baseRocMesh.rotateX(-Math.PI / 4);
+    modeGroups[5].add(baseRocMesh);
+
+    // Benign SEC 10-K Document Cluster (Demonstrating 0.38% FPR)
+    const sec10kClusterGeo = new THREE.BufferGeometry();
+    const secCount = 200;
+    const secPosArray = new Float32Array(secCount * 3);
+    for (let i = 0; i < secCount; i++) {
+      secPosArray[i*3] = -9.0 + (Math.random() - 0.5) * 3.5;
+      secPosArray[i*3+1] = 4.0 + (Math.random() - 0.5) * 3.0;
+      secPosArray[i*3+2] = -2.0 + (Math.random() - 0.5) * 4.0;
+    }
+    sec10kClusterGeo.setAttribute('position', new THREE.BufferAttribute(secPosArray, 3));
+    const sec10kPoints = new THREE.Points(
+      sec10kClusterGeo,
+      new THREE.PointsMaterial({ color: 0xD5991C, size: 0.55 })
+    );
+    modeGroups[5].add(sec10kPoints);
+
+    // ============================================================================
+    // MULTI-CHANNEL OSCILLOSCOPE CONTROLLER (2D CANVAS)
+    // ============================================================================
+    const oscCanvas = document.getElementById('oscilloscope-canvas');
+    const oscCtx = oscCanvas.getContext('2d');
+
+    function renderOscilloscope(t) {
+      // Push live samples
+      const targetAnomaly = isAttackActive ? (0.75 + Math.sin(t * 7) * 0.18) : (0.05 + Math.sin(t * 2) * 0.02);
+      const targetGamma = isAttackActive ? (0.12 + Math.cos(t * 8) * 0.08) : (0.98 - Math.sin(t * 3) * 0.02);
+      const targetMartingale = isAttackActive ? (0.85 + Math.sin(t * 4) * 0.12) : (0.10 + Math.cos(t * 1.5) * 0.03);
+      const targetHawkes = isAttackActive ? 0.92 : 0.22;
+
+      oscHistory.anomaly.push(targetAnomaly);
+      oscHistory.anomaly.shift();
+      oscHistory.gamma.push(targetGamma);
+      oscHistory.gamma.shift();
+      oscHistory.martingale.push(targetMartingale);
+      oscHistory.martingale.shift();
+      oscHistory.hawkes.push(targetHawkes);
+      oscHistory.hawkes.shift();
+
+      oscCtx.clearRect(0, 0, oscCanvas.width, oscCanvas.height);
+
+      // Grid background
+      oscCtx.strokeStyle = 'rgba(213, 153, 28, 0.12)';
+      oscCtx.lineWidth = 1;
+      for (let y = 15; y < oscCanvas.height; y += 18) {
+        oscCtx.beginPath();
+        oscCtx.moveTo(0, y);
+        oscCtx.lineTo(oscCanvas.width, y);
+        oscCtx.stroke();
+      }
+
+      // Channel 1: Anomaly Level (Red/Cyan)
+      oscCtx.strokeStyle = isAttackActive ? '#FF2A5F' : '#00F0FF';
+      oscCtx.lineWidth = 1.8;
+      oscCtx.beginPath();
+      for (let i = 0; i < oscHistory.anomaly.length; i++) {
+        const x = (i / (oscHistory.anomaly.length - 1)) * oscCanvas.width;
+        const y = oscCanvas.height - oscHistory.anomaly[i] * (oscCanvas.height - 14) - 7;
+        if (i === 0) oscCtx.moveTo(x, y); else oscCtx.lineTo(x, y);
+      }
+      oscCtx.stroke();
+
+      // Channel 2: TMMEG Gamma Integrity (Emerald Green)
+      oscCtx.strokeStyle = '#00FF9D';
+      oscCtx.lineWidth = 1.4;
+      oscCtx.beginPath();
+      for (let i = 0; i < oscHistory.gamma.length; i++) {
+        const x = (i / (oscHistory.gamma.length - 1)) * oscCanvas.width;
+        const y = oscCanvas.height - oscHistory.gamma[i] * (oscCanvas.height - 14) - 7;
+        if (i === 0) oscCtx.moveTo(x, y); else oscCtx.lineTo(x, y);
+      }
+      oscCtx.stroke();
+
+      // Channel 3: Episodic Drift (Purple)
+      oscCtx.strokeStyle = '#B565FF';
+      oscCtx.lineWidth = 1.2;
+      oscCtx.beginPath();
+      for (let i = 0; i < oscHistory.martingale.length; i++) {
+        const x = (i / (oscHistory.martingale.length - 1)) * oscCanvas.width;
+        const y = oscCanvas.height - oscHistory.martingale[i] * (oscCanvas.height - 14) - 7;
+        if (i === 0) oscCtx.moveTo(x, y); else oscCtx.lineTo(x, y);
+      }
+      oscCtx.stroke();
+    }
+
+    // ============================================================================
+    // AUDIT LOG TERMINAL STREAM
+    // ============================================================================
+    const auditLogEl = document.getElementById('audit-log');
+
+    function appendAuditLog(text, level = 'info') {
+      const time = new Date().toISOString().substring(11, 23);
+      const entry = document.createElement('div');
+      entry.className = `audit-entry ${level}`;
+      entry.innerText = `[${time}] ${text}`;
+      auditLogEl.appendChild(entry);
+      auditLogEl.scrollTop = auditLogEl.scrollHeight;
+    }
+
+    function clearAuditTerminal() {
+      auditLogEl.innerHTML = '';
+      appendAuditLog('Audit terminal buffer cleared.');
+    }
+
+    // ============================================================================
+    // INTERACTION HANDLERS & SCENE SWITCHING
+    // ============================================================================
+    function switchSceneMode(modeIdx) {
+      currentMode = modeIdx;
+      modeGroups.forEach((g, idx) => {
+        g.visible = (idx === modeIdx);
+      });
+
+      for (let i = 0; i <= 5; i++) {
+        const btn = document.getElementById(`mode-btn-${i}`);
+        if (btn) {
+          if (i === modeIdx) btn.classList.add('active');
+          else btn.classList.remove('active');
+        }
+      }
+
+      document.getElementById('scene-explainer').innerHTML = modeDescriptions[modeIdx];
+      playSynthTone(520, 'sine', 0.12, 0.08);
+      appendAuditLog(`Switched view to Mode ${modeIdx}: ${document.getElementById(`mode-btn-${modeIdx}`).querySelector('.l-name').innerText}`);
+    }
+
+    function selectAttackVector(atkId) {
+      currentAttack = atkId;
+      document.querySelectorAll('.atk-pill').forEach(btn => btn.classList.remove('active'));
+      const activeBtn = document.getElementById(`atk-btn-${atkId}`);
+      if (activeBtn) activeBtn.classList.add('active');
+
+      // Auto-switch to most representative mode for that attack
+      if (atkId === 'AT-1') switchSceneMode(0);
+      else if (atkId === 'AT-2' || atkId === 'AT-4') switchSceneMode(1);
+      else if (atkId === 'AT-3') switchSceneMode(1);
+      else if (atkId === 'AT-5') switchSceneMode(2);
+      else if (atkId === 'AT-6') switchSceneMode(3);
+      else if (atkId === 'AT-7') switchSceneMode(4);
+
+      setThreatState(true);
+      appendAuditLog(`Injected Adversarial Threat Vector ${atkId}: Table 6 parameters active.`, 'warn');
+    }
+
+    function setThreatState(attackActive) {
+      isAttackActive = attackActive;
+      const atkBtn = document.getElementById('btn-trigger-attack');
+      const defBtn = document.getElementById('btn-trigger-defend');
+      const statusHud = document.getElementById('hud-status');
+
+      if (attackActive) {
+        atkBtn.classList.add('active');
+        defBtn.classList.remove('active');
+        statusHud.innerText = `ALERT: ${currentAttack} ACTIVE`;
+        statusHud.style.color = 'var(--accent-red-bright)';
+        playSynthTone(220, 'sawtooth', 0.35, 0.15);
+        updateTelemetryValues(true);
+        appendAuditLog(`Red-Team Probe Activated: ${currentAttack} bypassing unshielded vector stores.`, 'err');
+      } else {
+        atkBtn.classList.remove('active');
+        defBtn.classList.add('active');
+        statusHud.innerText = 'SHIELD ACTIVE';
+        statusHud.style.color = 'var(--accent-green-bright)';
+        playSynthTone(660, 'sine', 0.25, 0.12);
+        updateTelemetryValues(false);
+        appendAuditLog('Counter-GEO 8-Layer Sovereign Shield Engaged. Zero-day vector contained.', 'info');
+      }
+    }
+
+    function updateTelemetryValues(isAttack) {
+      const lidEl = document.getElementById('val-lid');
+      const ncardEl = document.getElementById('val-ncard');
+      const tcgEl = document.getElementById('val-tcg');
+      const synEl = document.getElementById('val-synergy');
+      const gammaEl = document.getElementById('val-gamma');
+      const dmemEl = document.getElementById('val-dmem');
+
+      if (isAttack) {
+        lidEl.innerText = '4.12 (Low LID Hub)';
+        lidEl.style.color = 'var(--accent-red-bright)';
+        document.getElementById('bar-lid').style.width = '22%';
+        document.getElementById('bar-lid').style.background = 'var(--accent-red)';
+
+        ncardEl.innerText = '0.140 (Rank Divergence)';
+        ncardEl.style.color = 'var(--accent-red-bright)';
+        document.getElementById('bar-ncard').style.width = '14%';
+        document.getElementById('bar-ncard').style.background = 'var(--accent-red)';
+
+        tcgEl.innerText = '1.48 (Supercritical) / UNANCHORED';
+        tcgEl.style.color = 'var(--accent-red-bright)';
+        document.getElementById('bar-tcg').style.width = '92%';
+        document.getElementById('bar-tcg').style.background = 'var(--accent-red)';
+
+        synEl.innerText = '0.410 nats (Split Enthymeme)';
+        synEl.style.color = 'var(--accent-red-bright)';
+        document.getElementById('bar-synergy').style.width = '88%';
+        document.getElementById('bar-synergy').style.background = 'var(--accent-red)';
+
+        gammaEl.innerText = '0.042 (VPIN Spike 0.88)';
+        gammaEl.style.color = 'var(--accent-red-bright)';
+        document.getElementById('bar-gamma').style.width = '6%';
+        document.getElementById('bar-gamma').style.background = 'var(--accent-red)';
+
+        dmemEl.innerText = '1.42 / 1.8 Agents (Echo Collapse)';
+        dmemEl.style.color = 'var(--accent-red-bright)';
+        document.getElementById('bar-dmem').style.width = '94%';
+        document.getElementById('bar-dmem').style.background = 'var(--accent-red)';
+      } else {
+        lidEl.innerText = '18.42 (Natural)';
+        lidEl.style.color = 'var(--accent-green-bright)';
+        document.getElementById('bar-lid').style.width = '78%';
+        document.getElementById('bar-lid').style.background = 'var(--accent-green)';
+
+        ncardEl.innerText = '0.942 (Aligned)';
+        ncardEl.style.color = 'var(--accent-green-bright)';
+        document.getElementById('bar-ncard').style.width = '94%';
+        document.getElementById('bar-ncard').style.background = 'var(--accent-green)';
+
+        tcgEl.innerText = '0.32 (Subcritical) / HSM SIGNED';
+        tcgEl.style.color = 'var(--accent-green-bright)';
+        document.getElementById('bar-tcg').style.width = '22%';
+        document.getElementById('bar-tcg').style.background = 'var(--accent-green)';
+
+        synEl.innerText = '0.012 nats (Clean)';
+        synEl.style.color = 'var(--accent-green-bright)';
+        document.getElementById('bar-synergy').style.width = '8%';
+        document.getElementById('bar-synergy').style.background = 'var(--accent-green)';
+
+        gammaEl.innerText = '0.985 (Equilibrium)';
+        gammaEl.style.color = 'var(--accent-green-bright)';
+        document.getElementById('bar-gamma').style.width = '98%';
+        document.getElementById('bar-gamma').style.background = 'var(--accent-green)';
+
+        dmemEl.innerText = '0.12 / 19.4 Agents (High Diversity)';
+        dmemEl.style.color = 'var(--accent-green-bright)';
+        document.getElementById('bar-dmem').style.width = '15%';
+        document.getElementById('bar-dmem').style.background = 'var(--accent-green)';
+      }
+    }
+
+    function triggerHouseholderRotation() {
+      rotationPulse = 1.0;
+      playSynthTone(780, 'sine', 0.35, 0.15);
+      appendAuditLog('Executed MTVD Layer 0 Epoch Frame Rotation: Q_t = I - 2v_t v_t^T ∈ O(d).', 'info');
+    }
+
+    function runScenarioAlphaReplay() {
+      switchSceneMode(3);
+      selectAttackVector('AT-6');
+      const banner = document.getElementById('flash-banner');
+      banner.style.display = 'block';
+      banner.innerText = '⚠️ SCENARIO ALPHA INITIATED: 420 SYBIL DOMAINS → $45M PREDATORY ASK WALL';
+
+      appendAuditLog('[t=0.0s] Scenario Alpha initiated: 420 unanchored Sybil domains injected.', 'warn');
+      playSynthTone(300, 'sawtooth', 0.4, 0.2);
+
+      setTimeout(() => {
+        banner.innerText = '⚡ [t=1.2s] FRONTIER MODEL INGESTION: SPREAD EXPANDING TO $150.00';
+        appendAuditLog('[t=1.2s] Buy-side frontier model ingests poisoned payload. Algorithmic buy sweeps triggered.', 'err');
+        playSynthTone(240, 'sawtooth', 0.4, 0.2);
+      }, 1200);
+
+      setTimeout(() => {
+        banner.innerText = '🛡️ [t=2.414s] 14.2ms EPISTEMIC HALT TRIGGERED · CAPITAL PRESERVED: $42.8M';
+        banner.style.background = 'rgba(0, 168, 120, 0.95)';
+        banner.style.borderColor = '#00FF9D';
+        setThreatState(false);
+        playSynthTone(880, 'sine', 0.5, 0.25);
+        appendAuditLog('[t=2.414s] SEC Rule 15c3-8 Epistemic Circuit Breaker halted order sweeps in 14.2 ms.', 'info');
+      }, 2800);
+
+      setTimeout(() => {
+        banner.style.display = 'none';
+        banner.style.background = 'rgba(230, 57, 70, 0.95)';
+        banner.style.borderColor = '#ff8093';
+      }, 6500);
+    }
+
+    function setCameraView(view) {
+      document.querySelectorAll('.view-btn').forEach(b => b.classList.remove('active'));
+      event.target.classList.add('active');
+
+      if (view === 'orbit') {
+        controls.reset();
+        camera.position.set(0, 19, 38);
+      } else if (view === 'top') {
+        camera.position.set(0, 48, 0.1);
+        camera.lookAt(0, 0, 0);
+      } else if (view === 'front') {
+        camera.position.set(0, 2, 42);
+        camera.lookAt(0, 0, 0);
+      } else if (view === 'iso') {
+        camera.position.set(30, 26, 30);
+        camera.lookAt(0, 0, 0);
+      }
+    }
+
+    function toggleFullscreen() {
+      if (!document.fullscreenElement) {
+        document.documentElement.requestFullscreen().catch(() => {});
+      } else {
+        if (document.exitFullscreen) document.exitFullscreen();
+      }
+    }
+
+    // ============================================================================
+    // MAIN ANIMATION LOOP (60 FPS)
+    // ============================================================================
+    appendAuditLog('Last Crusade Defense Sovereign Command Center Initialized (WebGL 2.0).');
+    appendAuditLog('SEC Rule 15c3-8 Consolidated Audit Trail (CAT) Telemetry Active.');
+    appendAuditLog('C2PA HSM Hardware Keys Online (SEC EDGAR, Reuters, Bloomberg).');
+
+    function animate() {
+      requestAnimationFrame(animate);
+      const t = clock.getElapsedTime();
+
+      // Householder Rotation Pulse
+      if (rotationPulse > 0.001) {
+        modeGroups[currentMode].rotation.y += rotationPulse * 0.22;
+        rotationPulse *= 0.93;
+      }
+
+      // --- UPDATE MODE 0: MANIFOLD & HUBNESS SINKHOLE ---
+      manifoldUniforms.uTime.value = t;
+      const targetSink = isAttackActive ? 12.0 : 1.2;
+      manifoldUniforms.uSinkDepth.value += (targetSink - manifoldUniforms.uSinkDepth.value) * 0.08;
+      manifoldUniforms.uShieldActive.value = isAttackActive ? 0.0 : 1.0;
+
+      hubSphere.position.y = -manifoldUniforms.uSinkDepth.value * 0.85;
+      quarantineCage.position.copy(hubSphere.position);
+      quarantineCage.visible = !isAttackActive;
+      quarantineCage.rotation.x = t * 0.7;
+      quarantineCage.rotation.y = t * 1.0;
+
+      const posAttr = queryGeo.attributes.position;
+      for (let i = 0; i < queryCount; i++) {
+        let hx = queryHome[i*3];
+        let hy = queryHome[i*3+1];
+        let hz = queryHome[i*3+2];
+
+        if (isAttackActive) {
+          const pull = 0.25 + 0.65 * (0.5 + 0.5 * Math.sin(t * 2.2 + i));
+          posAttr.setXYZ(i, hx * (1.0 - pull), hy * (1.0 - pull) + hubSphere.position.y * pull, hz * (1.0 - pull));
+        } else {
+          const ang = t * 0.22 + (i * 0.012);
+          const rx = hx * Math.cos(ang * 0.2) - hz * Math.sin(ang * 0.2);
+          const rz = hx * Math.sin(ang * 0.2) + hz * Math.cos(ang * 0.2);
+          posAttr.setXYZ(i, rx, hy + Math.sin(t * 1.6 + i) * 0.35, rz);
+        }
+      }
+      posAttr.needsUpdate = true;
+
+      // --- UPDATE MODE 1: NCARD & TCG-CL SYBIL GRAPH ---
+      c2paNodes.forEach((node, i) => {
+        node.rotation.y = t * 1.2 + i;
+      });
+      sybilNodes.forEach((node, i) => {
+        const s = isAttackActive ? (1.2 + 0.35 * Math.sin(t * 8.0 + i)) : 0.35;
+        node.scale.set(s, s, s);
+        node.material.color.setHex(isAttackActive ? 0xFF2A5F : 0x310111);
+      });
+      rankRibbons.forEach((ribbon, i) => {
+        if (isAttackActive) {
+          ribbon.mesh.rotation.y = Math.sin(t * 4.0 + i) * 0.6;
+          ribbon.mesh.material.color.setHex(0xFF2A5F);
+        } else {
+          ribbon.mesh.rotation.y = 0;
+          ribbon.mesh.material.color.setHex(0x00FF9D);
+        }
+      });
+
+      // --- UPDATE MODE 2: ATTENTION TOMOGRAPHY & FIREWALL ---
+      firewallPlane.visible = !isAttackActive;
+      firewallPlane.rotation.z = Math.sin(t * 0.6) * 0.05;
+      enthymemeNucleus.scale.setScalar(isAttackActive ? (1.3 + 0.3 * Math.sin(t * 7.0)) : 0.4);
+      synthesisCore.material.color.setHex(isAttackActive ? 0xFF2A5F : 0x00FF9D);
+      synthesisCore.rotation.y = t * 0.8;
+      beam1.visible = isAttackActive;
+      beam2.visible = isAttackActive;
+
+      // --- UPDATE MODE 3: TMMEG LIMIT ORDER BOOK ---
+      secBarrier.visible = !isAttackActive;
+      bidBars.forEach((bar, i) => {
+        const h = 2.5 + Math.sin(t * 2.0 + i * 0.4) * 1.5;
+        bar.scale.y = h / 3.0;
+        bar.position.y = h / 2 - 4;
+      });
+      askBars.forEach((bar, i) => {
+        let h = (i < 3) ? (isAttackActive ? 15.0 : 9.0) : (2.5 + Math.cos(t * 2.0 + i * 0.4) * 1.5);
+        bar.scale.y = h / 3.0;
+        bar.position.y = h / 2 - 4;
+      });
+      orderProjectiles.forEach((proj, i) => {
+        proj.position.x += isAttackActive ? 0.42 : 0.18;
+        if (!isAttackActive && proj.position.x > -0.6) {
+          proj.position.x = -18.0;
+        } else if (isAttackActive && proj.position.x > 3.8) {
+          proj.position.x = -18.0;
+        }
+      });
+
+      // --- UPDATE MODE 4: MARTINGALE HELIX & ZK TORUS ---
+      helixNodes.forEach((node, i) => {
+        const y = (i - helixCheckpoints / 2) * 0.55 - 2.0;
+        const ang = i * 0.45 + t * 1.2;
+        const drift = (isAttackActive && i > 12) ? Math.pow((i - 12) * 0.32, 1.5) : 0.0;
+        node.position.set(Math.cos(ang) * 3.0 + drift, y, Math.sin(ang) * 3.0);
+        node.material.color.setHex((isAttackActive && i > 12) ? 0xFF2A5F : 0x00FF9D);
+      });
+      swarmAgents.forEach((agent, i) => {
+        const ang = (i / swarmAgents.length) * Math.PI * 2 + t * 0.35;
+        const rad = isAttackActive ? 5.2 : 12.0;
+        agent.position.set(Math.cos(ang) * rad, -2.0 + Math.sin(t * 2 + i) * 0.5, Math.sin(ang) * rad);
+        agent.rotation.x = t + i;
+        agent.rotation.y = t * 0.8;
+        agent.material.color.setHex(isAttackActive ? 0xD5991C : 0x00F0FF);
+      });
+      zkSnarkTorus.rotation.x = t * 0.6;
+      zkSnarkTorus.rotation.y = t * 0.9;
+
+      // --- UPDATE MODE 5: ROC HYPER-SURFACE ---
+      rocMesh.rotation.z = Math.sin(t * 0.3) * 0.05;
+      baseRocMesh.rotation.z = Math.sin(t * 0.3) * 0.05;
+
+      renderOscilloscope(t);
+      controls.update();
+      renderer.render(scene, camera);
+    }
+
+    window.addEventListener('resize', () => {
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+    });
+
+    animate();
+  </script>
+</body>
+</html>

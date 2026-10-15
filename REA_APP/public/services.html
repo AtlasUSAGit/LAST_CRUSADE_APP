@@ -1,0 +1,3019 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Last Crusade Defense // Volume IV: Sovereign & Institutional AI Search Defense</title>
+
+  <!-- Google Fonts matching Petra Labs Editorial + Technical Aesthetic -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Three.js & OrbitControls for WebGL Visualizations -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+
+  <!-- GSAP & ScrollTrigger for Smooth Editorial Animations -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+  <style>
+    :root {
+      --bg-obsidian: #07080a;
+      --bg-surface: #0d0f13;
+      --bg-card: rgba(16, 19, 25, 0.82);
+      --bg-ivory: #f4f1ea;
+      --text-primary: #f4f1ea;
+      --text-secondary: #9ba3b0;
+      --text-muted: #5e6673;
+      --border-hairline: rgba(244, 241, 234, 0.12);
+      --border-strong: rgba(244, 241, 234, 0.28);
+      --accent-emerald: #10b981;
+      --accent-emerald-glow: #00ff9d;
+      --accent-crimson: #f43f5e;
+      --accent-amber: #f59e0b;
+      --accent-cyan: #38bdf8;
+      --accent-violet: #a855f7;
+      --font-serif: 'Instrument Serif', Georgia, serif;
+      --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      background-color: var(--bg-obsidian);
+      color: var(--text-primary);
+      font-family: var(--font-sans);
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Ambient Background WebGL Canvas */
+    #bg-webgl-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: 0;
+      pointer-events: none;
+      opacity: 0.45;
+    }
+
+    /* Architectural Exposed Grid Overlay (Petra Labs Signature) */
+    .petra-grid-lines {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 1fr repeat(4, minmax(0, 320px)) 1fr;
+      border-left: 1px solid var(--border-hairline);
+      border-right: 1px solid var(--border-hairline);
+    }
+
+    .petra-grid-lines div {
+      border-right: 1px solid rgba(244, 241, 234, 0.04);
+      height: 100%;
+    }
+
+    /* TOP NAVIGATION BAR */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 68px;
+      background: rgba(7, 8, 10, 0.86);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border-hairline);
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 4vw;
+    }
+
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      cursor: pointer;
+    }
+
+    .brand-mark {
+      width: 28px;
+      height: 28px;
+      border: 1px solid var(--text-primary);
+      display: grid;
+      place-items: center;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      background: rgba(244, 241, 234, 0.06);
+      position: relative;
+    }
+
+    .brand-mark::after {
+      content: '';
+      position: absolute;
+      width: 6px;
+      height: 6px;
+      background: var(--accent-emerald-glow);
+      top: -3px;
+      right: -3px;
+      box-shadow: 0 0 10px var(--accent-emerald-glow);
+    }
+
+    .brand-name {
+      font-family: var(--font-mono);
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+    }
+
+    .brand-sub {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--text-secondary);
+      padding-left: 12px;
+      border-left: 1px solid var(--border-hairline);
+    }
+
+    /* 3-PAGE ROUTER TABS */
+    .nav-tabs {
+      display: flex;
+      gap: 6px;
+      background: rgba(255, 255, 255, 0.03);
+      padding: 4px;
+      border: 1px solid var(--border-hairline);
+      border-radius: 4px;
+    }
+
+    .nav-tab-btn {
+      background: transparent;
+      border: 1px solid transparent;
+      color: var(--text-secondary);
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      padding: 8px 16px;
+      cursor: pointer;
+      border-radius: 2px;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .nav-tab-btn:hover {
+      color: var(--text-primary);
+      background: rgba(244, 241, 234, 0.05);
+    }
+
+    .nav-tab-btn.active {
+      background: var(--text-primary);
+      color: var(--bg-obsidian);
+      font-weight: 600;
+      box-shadow: 0 4px 20px rgba(244, 241, 234, 0.18);
+    }
+
+    .nav-tab-btn .tab-num {
+      opacity: 0.55;
+      font-size: 10px;
+    }
+
+    .nav-status {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--accent-emerald-glow);
+      border: 1px solid rgba(0, 255, 157, 0.28);
+      background: rgba(0, 255, 157, 0.06);
+      padding: 6px 12px;
+      border-radius: 2px;
+    }
+
+    .status-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--accent-emerald-glow);
+      box-shadow: 0 0 8px var(--accent-emerald-glow);
+      animation: blink 2s infinite;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.35; }
+    }
+
+    /* PAGE VIEW CONTAINERS */
+    .page-view {
+      position: relative;
+      z-index: 5;
+      padding-top: 68px;
+      display: none;
+      min-height: 100vh;
+    }
+
+    .page-view.active-view {
+      display: block;
+    }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+
+    /* PETRA LABS EDITORIAL TYPOGRAPHY & SECTIONS */
+    .hero-section {
+      padding: 96px 0 72px;
+      border-bottom: 1px solid var(--border-hairline);
+      position: relative;
+    }
+
+    .eyebrow-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 1.6px;
+      text-transform: uppercase;
+      color: var(--accent-emerald-glow);
+      border: 1px solid rgba(0, 255, 157, 0.3);
+      background: rgba(0, 255, 157, 0.05);
+      padding: 5px 12px;
+      margin-bottom: 24px;
+    }
+
+    .hero-title {
+      font-family: var(--font-serif);
+      font-size: clamp(46px, 6vw, 84px);
+      font-weight: 400;
+      line-height: 1.02;
+      letter-spacing: -0.02em;
+      color: var(--text-primary);
+      max-width: 1020px;
+      margin-bottom: 28px;
+    }
+
+    .hero-title em {
+      font-style: italic;
+      color: var(--accent-cyan);
+    }
+
+    .hero-subtitle {
+      font-size: clamp(16px, 1.4vw, 20px);
+      line-height: 1.6;
+      color: var(--text-secondary);
+      max-width: 760px;
+      font-weight: 300;
+      margin-bottom: 40px;
+    }
+
+    .hero-cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      align-items: center;
+    }
+
+    .btn-primary {
+      background: var(--text-primary);
+      color: var(--bg-obsidian);
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 14px 26px;
+      border: 1px solid var(--text-primary);
+      cursor: pointer;
+      transition: all 0.25s ease;
+    }
+
+    .btn-primary:hover {
+      background: transparent;
+      color: var(--text-primary);
+      box-shadow: 0 0 25px rgba(244, 241, 234, 0.2);
+    }
+
+    .btn-outline {
+      background: rgba(244, 241, 234, 0.04);
+      color: var(--text-primary);
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 14px 26px;
+      border: 1px solid var(--border-strong);
+      cursor: pointer;
+      transition: all 0.25s ease;
+    }
+
+    .btn-outline:hover {
+      border-color: var(--accent-emerald-glow);
+      color: var(--accent-emerald-glow);
+      background: rgba(0, 255, 157, 0.06);
+    }
+
+    /* STAT BAR / TELEMETRY RIBBON */
+    .telemetry-ribbon {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      border-bottom: 1px solid var(--border-hairline);
+      background: rgba(13, 15, 19, 0.75);
+      backdrop-filter: blur(8px);
+    }
+
+    .telemetry-cell {
+      padding: 32px 28px;
+      border-right: 1px solid var(--border-hairline);
+    }
+
+    .telemetry-cell:last-child {
+      border-right: none;
+    }
+
+    .telemetry-num {
+      font-family: var(--font-serif);
+      font-size: 48px;
+      line-height: 1;
+      color: var(--text-primary);
+      margin-bottom: 8px;
+    }
+
+    .telemetry-label {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--accent-cyan);
+      margin-bottom: 6px;
+    }
+
+    .telemetry-desc {
+      font-size: 13px;
+      color: var(--text-secondary);
+      line-height: 1.45;
+    }
+
+    /* PETRA 4-PILLAR CHAIN (QUERIES -> TRACKING -> ACTION -> ATTRIBUTION) */
+    .section-block {
+      padding: 88px 0;
+      border-bottom: 1px solid var(--border-hairline);
+    }
+
+    .section-header-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 52px;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .section-h2 {
+      font-family: var(--font-serif);
+      font-size: clamp(34px, 4vw, 56px);
+      font-weight: 400;
+      line-height: 1.08;
+      max-width: 720px;
+    }
+
+    .section-meta {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--text-secondary);
+      max-width: 380px;
+      line-height: 1.6;
+    }
+
+    .pillar-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      border: 1px solid var(--border-hairline);
+      background: var(--bg-card);
+    }
+
+    .pillar-card {
+      padding: 32px 24px;
+      border-right: 1px solid var(--border-hairline);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 20px;
+      transition: background 0.3s ease;
+    }
+
+    .pillar-card:last-child {
+      border-right: none;
+    }
+
+    .pillar-card:hover {
+      background: rgba(244, 241, 234, 0.035);
+    }
+
+    .pillar-step {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--accent-emerald-glow);
+      letter-spacing: 1.4px;
+      text-transform: uppercase;
+    }
+
+    .pillar-title {
+      font-family: var(--font-serif);
+      font-size: 28px;
+      color: var(--text-primary);
+      margin: 8px 0 12px;
+    }
+
+    .pillar-body {
+      font-size: 13.5px;
+      line-height: 1.6;
+      color: var(--text-secondary);
+    }
+
+    .pillar-formula {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--accent-cyan);
+      background: rgba(56, 189, 248, 0.07);
+      border: 1px solid rgba(56, 189, 248, 0.2);
+      padding: 8px 10px;
+      border-radius: 2px;
+    }
+
+    /* AGENCY / CLIENT DOSSIER CARDS */
+    .dossier-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+
+    .dossier-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-hairline);
+      padding: 36px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      position: relative;
+      overflow: hidden;
+      transition: border-color 0.3s ease, transform 0.3s ease;
+    }
+
+    .dossier-card:hover {
+      border-color: var(--border-strong);
+      transform: translateY(-3px);
+    }
+
+    .dossier-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      border-bottom: 1px solid var(--border-hairline);
+      padding-bottom: 18px;
+    }
+
+    .agency-code {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--accent-amber);
+      letter-spacing: 1.4px;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+
+    .agency-title {
+      font-family: var(--font-serif);
+      font-size: 32px;
+      line-height: 1.15;
+    }
+
+    .layer-badge {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 600;
+      padding: 5px 10px;
+      border: 1px solid var(--accent-emerald);
+      color: var(--accent-emerald-glow);
+      background: rgba(16, 185, 129, 0.1);
+      white-space: nowrap;
+    }
+
+    .dossier-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .dossier-list li {
+      font-size: 14px;
+      line-height: 1.55;
+      color: var(--text-secondary);
+      padding-left: 18px;
+      position: relative;
+    }
+
+    .dossier-list li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: var(--accent-emerald-glow);
+      font-family: var(--font-mono);
+    }
+
+    .dossier-list li strong {
+      color: var(--text-primary);
+      font-weight: 600;
+    }
+
+    .dossier-footer {
+      margin-top: auto;
+      padding-top: 16px;
+      border-top: 1px solid var(--border-hairline);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    .launch-sim-link {
+      color: var(--accent-cyan);
+      cursor: pointer;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-weight: 600;
+    }
+
+    .launch-sim-link:hover {
+      text-decoration: underline;
+    }
+
+    /* ARCHITECTURAL MATRIX TABLE */
+    .matrix-table-wrap {
+      overflow-x: auto;
+      border: 1px solid var(--border-hairline);
+      background: var(--bg-card);
+    }
+
+    table.petra-table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 13px;
+    }
+
+    table.petra-table th {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      color: var(--text-secondary);
+      padding: 16px 20px;
+      border-bottom: 1px solid var(--border-strong);
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    table.petra-table td {
+      padding: 18px 20px;
+      border-bottom: 1px solid var(--border-hairline);
+      color: var(--text-secondary);
+      line-height: 1.5;
+      vertical-align: top;
+    }
+
+    table.petra-table td strong {
+      color: var(--text-primary);
+    }
+
+    table.petra-table tr:hover td {
+      background: rgba(244, 241, 234, 0.02);
+    }
+
+    /* =========================================================================
+       PAGE 3: VOLUME IV LIVE DEFENSE OPERATIONS & WEBGL COMMAND LAB
+       ========================================================================= */
+    .lab-grid {
+      display: grid;
+      grid-template-columns: 390px 1fr;
+      gap: 24px;
+      margin-top: 32px;
+    }
+
+    .lab-sidebar {
+      background: var(--bg-card);
+      border: 1px solid var(--border-hairline);
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .mission-selector-btn {
+      width: 100%;
+      text-align: left;
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--border-hairline);
+      padding: 14px 16px;
+      color: var(--text-primary);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .mission-selector-btn:hover {
+      border-color: var(--accent-cyan);
+      background: rgba(56, 189, 248, 0.06);
+    }
+
+    .mission-selector-btn.active {
+      border-color: var(--accent-emerald-glow);
+      background: rgba(0, 255, 157, 0.08);
+      box-shadow: inset 3px 0 0 var(--accent-emerald-glow);
+    }
+
+    .m-eyebrow {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--accent-emerald-glow);
+      letter-spacing: 1px;
+    }
+
+    .m-title {
+      font-weight: 600;
+      font-size: 14px;
+    }
+
+    .m-sub {
+      font-size: 11.5px;
+      color: var(--text-secondary);
+      line-height: 1.4;
+    }
+
+    .ops-action-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .btn-ops {
+      padding: 13px 10px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      cursor: pointer;
+      border: 1px solid;
+      transition: all 0.2s ease;
+    }
+
+    .btn-ops-attack {
+      background: rgba(244, 63, 94, 0.14);
+      border-color: var(--accent-crimson);
+      color: #fda4af;
+    }
+
+    .btn-ops-attack:hover, .btn-ops-attack.active {
+      background: var(--accent-crimson);
+      color: #fff;
+      box-shadow: 0 0 20px rgba(244, 63, 94, 0.5);
+    }
+
+    .btn-ops-defend {
+      background: rgba(16, 185, 129, 0.16);
+      border-color: var(--accent-emerald-glow);
+      color: var(--accent-emerald-glow);
+    }
+
+    .btn-ops-defend:hover, .btn-ops-defend.active {
+      background: var(--accent-emerald-glow);
+      color: #05140e;
+      box-shadow: 0 0 20px rgba(0, 255, 157, 0.5);
+    }
+
+    /* RED-TEAM & TELEMETRY CONTROL PANEL */
+    .sim-controls-panel {
+      background: rgba(13, 15, 19, 0.75);
+      border: 1px solid var(--border-hairline);
+      padding: 14px 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-top: 4px;
+    }
+
+    .btn-probe {
+      width: 100%;
+      padding: 9px 12px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      cursor: pointer;
+      border: 1px solid var(--accent-amber);
+      background: rgba(245, 158, 11, 0.16);
+      color: #fbbf24;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      transition: all 0.2s ease;
+    }
+
+    .btn-probe:hover {
+      background: var(--accent-amber);
+      color: #07080a;
+      box-shadow: 0 0 16px rgba(245, 158, 11, 0.5);
+      transform: translateY(-1px);
+    }
+
+    .btn-probe:active {
+      transform: translateY(0);
+    }
+
+    .control-row {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .control-label {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .control-val {
+      color: var(--accent-cyan);
+      font-weight: 700;
+    }
+
+    .sim-slider {
+      width: 100%;
+      height: 5px;
+      appearance: none;
+      background: rgba(244, 241, 234, 0.15);
+      outline: none;
+      cursor: pointer;
+      border-radius: 2px;
+    }
+
+    .sim-slider::-webkit-slider-thumb {
+      appearance: none;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: var(--accent-cyan);
+      cursor: pointer;
+      box-shadow: 0 0 8px var(--accent-cyan);
+      transition: transform 0.1s ease;
+    }
+
+    .sim-slider::-webkit-slider-thumb:hover {
+      transform: scale(1.25);
+    }
+
+    .btn-toggle-group {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
+      gap: 4px;
+    }
+
+    .btn-toggle {
+      padding: 6px 4px;
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 600;
+      background: rgba(7, 8, 10, 0.85);
+      border: 1px solid var(--border-hairline);
+      color: var(--text-secondary);
+      cursor: pointer;
+      text-align: center;
+      transition: all 0.18s ease;
+      white-space: nowrap;
+    }
+
+    .btn-toggle:hover {
+      border-color: var(--accent-cyan);
+      color: var(--text-primary);
+    }
+
+    .btn-toggle.active {
+      background: rgba(56, 189, 248, 0.18);
+      border-color: var(--accent-cyan);
+      color: var(--accent-cyan);
+      font-weight: 700;
+      box-shadow: 0 0 8px rgba(56, 189, 248, 0.3);
+    }
+
+    /* PLAIN-ENGLISH 4-CARD GUIDE */
+    .plain-english-container {
+      background: var(--bg-card);
+      border: 1px solid var(--border-strong);
+      padding: 24px;
+      margin-top: 24px;
+      position: relative;
+    }
+
+    .peg-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      border-bottom: 1px solid var(--border-hairline);
+      padding-bottom: 16px;
+      margin-bottom: 20px;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .peg-title {
+      font-family: var(--font-serif);
+      font-size: 26px;
+      color: var(--text-primary);
+      margin-top: 2px;
+      letter-spacing: -0.01em;
+    }
+
+    .peg-mission-badge {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 700;
+      padding: 6px 14px;
+      background: rgba(16, 185, 129, 0.12);
+      border: 1px solid var(--accent-emerald);
+      color: var(--accent-emerald-glow);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .peg-cards-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+
+    @media (max-width: 1024px) {
+      .peg-cards-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 640px) {
+      .peg-cards-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .peg-card {
+      background: rgba(7, 8, 10, 0.7);
+      border: 1px solid var(--border-hairline);
+      padding: 18px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      transition: all 0.25s ease;
+    }
+
+    .peg-card:hover {
+      border-color: var(--border-strong);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+    }
+
+    .peg-card-header {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+    }
+
+    .peg-card-h4 {
+      font-family: var(--font-serif);
+      font-size: 18px;
+      color: var(--text-primary);
+      line-height: 1.25;
+    }
+
+    .peg-card-p {
+      font-family: var(--font-sans);
+      font-size: 12px;
+      line-height: 1.6;
+      color: var(--text-secondary);
+    }
+
+    .text-amber { color: #f59e0b; }
+    .text-crimson { color: #f43f5e; }
+    .text-emerald { color: #00ff9d; }
+    .text-cyan { color: #38bdf8; }
+
+    .lab-viewport-card {
+      background: #040609;
+      border: 1px solid var(--border-strong);
+      position: relative;
+      min-height: 580px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    #ops-webgl-mount {
+      width: 100%;
+      height: 460px;
+      position: relative;
+      cursor: grab;
+    }
+
+    #ops-webgl-mount:active {
+      cursor: grabbing;
+    }
+
+    .viewport-hud-top {
+      position: absolute;
+      top: 16px;
+      left: 16px;
+      right: 16px;
+      display: flex;
+      justify-content: space-between;
+      pointer-events: none;
+      z-index: 10;
+    }
+
+    .hud-tag {
+      background: rgba(7, 8, 10, 0.85);
+      border: 1px solid var(--border-strong);
+      padding: 6px 12px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--accent-cyan);
+    }
+
+    .viewport-telemetry-bar {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      border-top: 1px solid var(--border-hairline);
+      background: rgba(13, 15, 19, 0.95);
+      margin-top: auto;
+    }
+
+    .v-metric {
+      padding: 14px 16px;
+      border-right: 1px solid var(--border-hairline);
+    }
+
+    .v-metric:last-child {
+      border-right: none;
+    }
+
+    .v-metric-name {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--text-secondary);
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+
+    .v-metric-val {
+      font-family: var(--font-mono);
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--accent-emerald-glow);
+    }
+
+    /* VOLUME IV CHARTS GRID */
+    .charts-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+      margin-top: 32px;
+    }
+
+    .chart-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-hairline);
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .chart-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      border-bottom: 1px solid var(--border-hairline);
+      padding-bottom: 12px;
+    }
+
+    .chart-title {
+      font-family: var(--font-serif);
+      font-size: 24px;
+      color: var(--text-primary);
+    }
+
+    .chart-sub {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--accent-cyan);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    canvas.vol4-chart {
+      width: 100%;
+      height: 220px;
+      background: rgba(5, 7, 11, 0.85);
+      border: 1px solid rgba(244, 241, 234, 0.08);
+    }
+
+    .ops-terminal {
+      background: #040609;
+      border: 1px solid rgba(0, 255, 157, 0.28);
+      padding: 14px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      line-height: 1.5;
+      color: var(--accent-emerald-glow);
+      height: 155px;
+      overflow-y: auto;
+    }
+
+    footer.petra-footer {
+      border-top: 1px solid var(--border-hairline);
+      padding: 48px 0;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--text-muted);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: relative;
+      z-index: 5;
+    }
+
+    @media (max-width: 1024px) {
+      .pillar-grid, .telemetry-ribbon, .dossier-grid, .charts-grid, .lab-grid {
+        grid-template-columns: 1fr;
+      }
+      .navbar {
+        height: auto;
+        padding: 12px 20px;
+        flex-direction: column;
+        gap: 10px;
+      }
+      .page-view {
+        padding-top: 130px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- BACKGROUND AMBIENT WEBGL CANVAS -->
+  <canvas id="bg-webgl-canvas"></canvas>
+
+  <!-- EXPOSED ARCHITECTURAL GRID LINES (PETRA LABS AESTHETIC) -->
+  <div class="petra-grid-lines">
+    <div></div><div></div><div></div><div></div><div></div>
+  </div>
+
+  <!-- TOP NAVIGATION BAR (3-IN-1 SPA ROUTER) -->
+  <nav class="navbar">
+    <div class="nav-brand" onclick="switchPage(0)">
+      <div class="brand-mark">LCD</div>
+      <div class="brand-name">Last Crusade Defense</div>
+      <div class="brand-sub">Volume IV // Sovereign & Global Market Defense</div>
+    </div>
+
+    <div class="nav-tabs">
+      <button class="nav-tab-btn active" id="tab-btn-0" onclick="switchPage(0)">
+        <span class="tab-num">01</span> Federal Sector Capabilities
+      </button>
+      <button class="nav-tab-btn" id="tab-btn-1" onclick="switchPage(1)">
+        <span class="tab-num">02</span> Private Sector Capabilities
+      </button>
+      <button class="nav-tab-btn" id="tab-btn-2" onclick="switchPage(2)">
+        <span class="tab-num">03</span> Live Defense Ops & WebGL Lab
+      </button>
+    </div>
+
+    <div class="nav-status">
+      <span class="status-dot" id="nav-pulse-dot"></span>
+      <span id="nav-status-text">LAYERS 9–12 ARMED // C2PA + ZK ACTIVE</span>
+    </div>
+  </nav>
+
+  <!-- =========================================================================
+       PAGE 1: FEDERAL SECTOR CAPABILITIES (SEC, COMMERCE, USITC, TREASURY)
+       ========================================================================= -->
+  <main class="page-view active-view" id="page-view-0">
+    <div class="container">
+      <!-- HERO SECTION -->
+      <section class="hero-section gsap-reveal">
+        <div class="eyebrow-tag">VOLUME IV // SOVEREIGN & FEDERAL SECTOR CAPABILITIES</div>
+        <h1 class="hero-title">
+          Your Sovereign Counter-GEO Team. <em>Built to execute.</em>
+        </h1>
+        <p class="hero-subtitle">
+          Foreign adversaries no longer need to breach federal firewalls to subvert American trade, sanctions, or capital markets. They poison the open-web Retrieval-Augmented Generation (RAG) manifolds consumed by federal investigative engines and market infrastructure. We deploy proprietary mathematical defenses and an embedded mission team covering the full chain — discovery, topological tracking, neutralization, and cryptographic attribution.
+        </p>
+        <div class="hero-cta-row">
+          <button class="btn-primary" onclick="switchPage(2)">Launch Volume IV Live WebGL Defense Lab →</button>
+          <button class="btn-outline" onclick="switchPage(1)">Explore Private-Sector Capabilities</button>
+        </div>
+      </section>
+
+      <!-- TELEMETRY RIBBON -->
+      <section class="telemetry-ribbon gsap-reveal">
+        <div class="telemetry-cell">
+          <div class="telemetry-label">Obfuscative GEO Eviction</div>
+          <div class="telemetry-num">99.4%</div>
+          <div class="telemetry-desc">Removal of synthetic shell-company hubs crowding out BIS Entity List & OFAC SDN records.</div>
+        </div>
+        <div class="telemetry-cell">
+          <div class="telemetry-label">Leontief & AIS Conservation</div>
+          <div class="telemetry-num">&lt; 4.2ms</div>
+          <div class="telemetry-desc">Verification of foreign AD/CVD dumping claims against thermodynamic input-output price floors.</div>
+        </div>
+        <div class="telemetry-cell">
+          <div class="telemetry-label">SEC Rule 15c3-8 ZK-Proofs</div>
+          <div class="telemetry-num">1.4ms</div>
+          <div class="telemetry-desc">O(1) verification of 288-byte zk-SNARK compliance proofs on the Consolidated Audit Trail (CAT).</div>
+        </div>
+        <div class="telemetry-cell">
+          <div class="telemetry-label">Sovereign Debt & FX Shield</div>
+          <div class="telemetry-num">12-Layer</div>
+          <div class="telemetry-desc">Cross-border Transfer Entropy & Ollivier-Ricci curvature protection for U.S. Treasury auctions.</div>
+        </div>
+      </section>
+
+      <!-- THE LAST CRUSADE DEFENSE ENGINE FOR FEDERAL AGENCIES -->
+      <section class="section-block gsap-reveal">
+        <div class="section-header-row">
+          <div>
+            <div class="eyebrow-tag">THE LAST CRUSADE DEFENSE SOVEREIGN ENGINE</div>
+            <h2 class="section-h2">Search is a zero-sum battlefield. You don't defend national security with static keyword filters.</h2>
+          </div>
+          <div class="section-meta">
+            LLMs are probabilistic engines susceptible to positive narrative boosting and negative suppression poisoning. Our four-stage operational chain secures federal epistemic pipelines from ingestion to statutory enforcement.
+          </div>
+        </div>
+
+        <div class="pillar-grid">
+          <div class="pillar-card">
+            <div>
+              <div class="pillar-step">01 // QUERIES & MANIFOLDS</div>
+              <h3 class="pillar-title">Adversarial Prompt Radius Mapping</h3>
+              <p class="pillar-body">
+                We map the exact fan-out queries and interim citations surfaced by federal investigative LLMs across 150+ perturbation simulations per seed prompt, exposing where foreign state actors plant regional attractor hubs.
+              </p>
+            </div>
+            <div class="pillar-formula">WJD(q_seed, q_pert) > τ_noise</div>
+          </div>
+
+          <div class="pillar-card">
+            <div>
+              <div class="pillar-step">02 // TRACKING & TOPOLOGY</div>
+              <h3 class="pillar-title">Negative-GEO & Sybil Detection</h3>
+              <p class="pillar-body">
+                Foreign oligarchs and export-control evaders flood top-k retrieval slots with benign marketing chaff to hide sanctioned UBO links. We track local intrinsic dimensionality (LID) and Hawkes point-process bursts across 40+ languages.
+              </p>
+            </div>
+            <div class="pillar-formula">F_HER(S) = Σ max Sim·Ψ - λ_crowd</div>
+          </div>
+
+          <div class="pillar-card">
+            <div>
+              <div class="pillar-step">03 // ACTION & NEUTRALIZATION</div>
+              <h3 class="pillar-title">Physical & Thermodynamic Gating</h3>
+              <p class="pillar-body">
+                We bind unstructured web claims to immutable physical invariants: Poincaré hyperbolic corporate ownership trees, Leontief input-output energy floors, satellite AIS vessel draft displacement, and Level-3 Limit Order Books.
+              </p>
+            </div>
+            <div class="pillar-formula">c_floor = (I - A^T)^(-1)(A_c^T p + v)</div>
+          </div>
+
+          <div class="pillar-card">
+            <div>
+              <div class="pillar-step">04 // ATTRIBUTION & ENFORCEMENT</div>
+              <h3 class="pillar-title">C2PA Roots & CISA STIX/TAXII</h3>
+              <p class="pillar-body">
+                Every neutralized campaign is traced back to its registrar, ASN, and spectral canary watermark, emitting automated STIX 2.1 threat indicators to CISA and immutable WORM evidentiary manifests for SEC and DOJ prosecutors.
+              </p>
+            </div>
+            <div class="pillar-formula">Ω_own = (I - A)^(-1)A >= 0.50</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 4 FEDERAL AGENCY CAPABILITY DOSSIERS -->
+      <section class="section-block gsap-reveal">
+        <div class="section-header-row">
+          <div>
+            <div class="eyebrow-tag">FEDERAL SECTOR DEPLOYMENTS</div>
+            <h2 class="section-h2">Tailored Counter-GEO Operations for U.S. Sovereign Agencies</h2>
+          </div>
+          <div class="section-meta">
+            Click any agency dossier below to launch its live mathematical defense simulation and 3D WebGL topology inside the Volume IV Operations Lab.
+          </div>
+        </div>
+
+        <div class="dossier-grid">
+          <!-- AGENCY 1: SEC -->
+          <div class="dossier-card gsap-reveal">
+            <div class="dossier-top">
+              <div>
+                <div class="agency-code">AGENCY 01 // 17 CFR § 240.15c3-8</div>
+                <h3 class="agency-title">U.S. Securities & Exchange Commission (SEC)</h3>
+              </div>
+              <span class="layer-badge">LAYERS 4B, 8 & 12</span>
+            </div>
+            <ul class="dossier-list">
+              <li><strong>Autonomous HFT & RAG Flash-Crash Surveillance (`TMMEG`):</strong> Monitors algorithmic cascade loops where shared foundation models ingest GEO-poisoned breaking news during pre-market data voids.</li>
+              <li><strong>Retail Chatbot Herding & Reg BI Enforcement (`RIBD-FS`):</strong> Tracks Cross-Engine AI Citation Frequency (AICF) velocity spikes across ChatGPT, Perplexity, and Gemini paired with retail order-flow herding synchrony to stop coordinated pump-and-dumps.</li>
+              <li><strong>Foreign Private Issuer (Form 20-F) De-Cloaking (`HER-BOD`):</strong> Strips Obfuscative GEO chaff hiding Variable Interest Entity (VIE) fragility and off-balance-sheet sovereign debt.</li>
+              <li><strong>Zero-Knowledge Consolidated Audit Trail (`ZK-CGEO`):</strong> Verifies that quantitative funds complied with Rule 15c3-8 circuit breakers via 288-byte zk-SNARK proofs without exposing private fund alpha.</li>
+            </ul>
+            <div class="dossier-footer">
+              <span>DIVISIONS: TRADING & MARKETS // ENFORCEMENT // EXAMS</span>
+              <span class="launch-sim-link" onclick="launchSpecificMission(3)">Run SEC Defense Sim →</span>
+            </div>
+          </div>
+
+          <!-- AGENCY 2: DEPT OF COMMERCE -->
+          <div class="dossier-card gsap-reveal">
+            <div class="dossier-top">
+              <div>
+                <div class="agency-code">AGENCY 02 // 15 CFR PARTS 742 & 744</div>
+                <h3 class="agency-title">U.S. Department of Commerce (BIS & ITA)</h3>
+              </div>
+              <span class="layer-badge">LAYERS 0, 9 & 10</span>
+            </div>
+            <ul class="dossier-list">
+              <li><strong>Export Control & Entity List De-Cloaking (`HER-BOD`):</strong> Defeats Negative-GEO suppression campaigns designed to crowd out evidence of ECCN 3A090 / 4A090 advanced AI semiconductor transshipment through third-country shell fronts.</li>
+              <li><strong>Poincaré Hyperbolic Corporate Hierarchy Mapping:</strong> Embeds multi-tier offshore holding structures into negative-curvature hyperbolic space ($\mathbb{B}_c^d$) to expose hidden Military End-User (MEU) parent control.</li>
+              <li><strong>Critical Mineral & Supply-Chain Integrity (`EIOL-PCV`):</strong> Protects International Trade Administration (ITA) supply-chain RAG monitors against foreign disinformation regarding rare-earth refining and foundry capacity.</li>
+              <li><strong>Spectral Canary Honeypots on Export Portals (`MTVD`):</strong> Plants orthogonal canary watermarks to unmask foreign intelligence scrapers building surrogate GEO models.</li>
+            </ul>
+            <div class="dossier-footer">
+              <span>BUREAUS: BIS // ITA // NIST AI SAFETY INSTITUTE</span>
+              <span class="launch-sim-link" onclick="launchSpecificMission(0)">Run Commerce BIS Sim →</span>
+            </div>
+          </div>
+
+          <!-- AGENCY 3: USITC -->
+          <div class="dossier-card gsap-reveal">
+            <div class="dossier-top">
+              <div>
+                <div class="agency-code">AGENCY 03 // TARIFF ACT TITLE VII & SEC. 337</div>
+                <h3 class="agency-title">U.S. International Trade Commission (USITC)</h3>
+              </div>
+              <span class="layer-badge">LAYERS 4A, 7 & 10</span>
+            </div>
+            <ul class="dossier-list">
+              <li><strong>AD/CVD Dumping Margin & Subsidy Verification (`EIOL-PCV`):</strong> Evaluates foreign exporter price and cost claims against Leontief Input-Output technical matrices $\mathbf{c}_{\text{floor}} = (\mathbf{I} - \mathbf{A}^\top)^{-1}(\mathbf{A}_c^\top \mathbf{p} + \mathbf{v}_{\min})$ to expose thermodynamically impossible cost fabrications.</li>
+              <li><strong>Maritime AIS Archimedes Draft Reconciliation:</strong> Cross-verifies RAG-scraped import/export volume claims against physical satellite AIS vessel waterline draft displacement ($\mathcal{M}_{\text{AIS}}$) and ACE customs manifests.</li>
+              <li><strong>Harmonized Tariff Schedule (HTS) Bot Protection:</strong> Prevents foreign manufacturers from using GEO schema stuffing to trick customs RAG classifiers into assigning lower-duty HTS codes.</li>
+              <li><strong>EDIS Multimodal Document Scrubbing (`CM-JSAS`):</strong> Strips $L_\infty$ steganographic pixel perturbations from PDF injury exhibits submitted to the Electronic Document Information System.</li>
+            </ul>
+            <div class="dossier-footer">
+              <span>MANDATES: AD/CVD INJURY // SEC. 337 // HTS NOMENCLATURE</span>
+              <span class="launch-sim-link" onclick="launchSpecificMission(1)">Run USITC Trade Sim →</span>
+            </div>
+          </div>
+
+          <!-- AGENCY 4: DEPT OF THE TREASURY -->
+          <div class="dossier-card gsap-reveal">
+            <div class="dossier-top">
+              <div>
+                <div class="agency-code">AGENCY 04 // OFAC 50% RULE, CFIUS & FSOC</div>
+                <h3 class="agency-title">U.S. Department of the Treasury</h3>
+              </div>
+              <span class="layer-badge">LAYERS 3, 9 & 11</span>
+            </div>
+            <ul class="dossier-list">
+              <li><strong>OFAC 50 Percent Rule Transitive Sanctions Engine (`HER-BOD`):</strong> Uses Sinkhorn-Knopp Entropic Optimal Transport across Mandarin, Russian, Arabic, and English registries paired with Neumann series $(\mathbf{I}-\mathbf{A})^{-1}\mathbf{A}$ to block shadow fleets and sanctioned oligarch shells.</li>
+              <li><strong>CFIUS Covered Transaction Provenance Auditing:</strong> Unmasks covert foreign sovereign limited-partner commitments hidden via split-payload GEO across venture and private equity disclosures.</li>
+              <li><strong>U.S. Treasury Auction & USD FX Contagion Shield (`SCB-FTCCS`):</strong> Monitors Schreiber Transfer Entropy ($\mathcal{T}_{X \to Y}$) and Ollivier-Ricci network curvature ($\kappa_{\text{Ricci}}$) to neutralize multi-lingual GEO strikes targeting primary bond auctions.</li>
+              <li><strong>FinCEN AML & Permitted Stablecoin Reserve Verification:</strong> Anchors reserve attestations strictly to C2PA hardware-signed custodial root nodes.</li>
+            </ul>
+            <div class="dossier-footer">
+              <span>OFFICES: OFAC // CFIUS // FINCEN // OFR & FSOC</span>
+              <span class="launch-sim-link" onclick="launchSpecificMission(2)">Run Treasury Macro Sim →</span>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- =========================================================================
+       PAGE 2: PRIVATE SECTOR CAPABILITIES (HEDGE FUNDS, BROKER-DEALERS, ERP)
+       ========================================================================= -->
+  <main class="page-view" id="page-view-1">
+    <div class="container">
+      <!-- HERO SECTION -->
+      <section class="hero-section gsap-reveal">
+        <div class="eyebrow-tag">VOLUME IV // PRIVATE-SECTOR & FINANCIAL MARKET CAPABILITIES</div>
+        <h1 class="hero-title">
+          Protect Autonomous Alpha & <em>Retail Fiduciaries</em> at Microsecond Scale.
+        </h1>
+        <p class="hero-subtitle">
+          As quantitative hedge funds, publicly traded broker-dealers, and multinational supply chains wire LLM agents directly into execution gateways, adversarial GEO transforms from a marketing nuisance into a direct vector for capital extraction. Last Crusade Defense provides co-located, zero-knowledge defense infrastructure that neutralizes market manipulation before an order ever hits the book.
+        </p>
+        <div class="hero-cta-row">
+          <button class="btn-primary" onclick="switchPage(2)">Test Private-Sector Defenses in WebGL Lab →</button>
+          <button class="btn-outline" onclick="switchPage(0)">View Federal Agency Capabilities</button>
+        </div>
+      </section>
+
+      <!-- PRIVATE SECTOR TELEMETRY RIBBON -->
+      <section class="telemetry-ribbon gsap-reveal">
+        <div class="telemetry-cell">
+          <div class="telemetry-label">Pre-Trade LOB Gate Latency</div>
+          <div class="telemetry-num">&lt; 0.2ms</div>
+          <div class="telemetry-desc">Co-located C++/FPGA Thermodynamic Market-Microstructure Grounding (TMMEG) execution check.</div>
+        </div>
+        <div class="telemetry-cell">
+          <div class="telemetry-label">Flash-Crash Drawdown Avoided</div>
+          <div class="telemetry-num">14.2%</div>
+          <div class="telemetry-desc">Peak-to-trough portfolio loss prevented during simulated pre-market data-void liquidity traps.</div>
+        </div>
+        <div class="telemetry-cell">
+          <div class="telemetry-label">Proprietary Alpha Leakage</div>
+          <div class="telemetry-num">0.0 Bits</div>
+          <div class="telemetry-desc">Complete confidentiality of fund prompts and private RAG vectors via Halo2/R1CS zk-SNARKs.</div>
+        </div>
+        <div class="telemetry-cell">
+          <div class="telemetry-label">SEC Reg BI Herd Protection</div>
+          <div class="telemetry-num">100%</div>
+          <div class="telemetry-desc">Real-time AICF velocity & retail order-flow synchrony circuit breakers for broker-dealers.</div>
+        </div>
+      </section>
+
+      <!-- PRIVATE SECTOR CLIENT DOSSIERS -->
+      <section class="section-block gsap-reveal">
+        <div class="section-header-row">
+          <div>
+            <div class="eyebrow-tag">INSTITUTIONAL & COMMERCIAL SOLUTIONS</div>
+            <h2 class="section-h2">Bespoke Counter-GEO Infrastructure for Global Market Leaders</h2>
+          </div>
+          <div class="section-meta">
+            Designed for low-latency quantitative execution environments, high-concurrency retail brokerage apps, and autonomous Fortune 500 ERP procurement pipelines.
+          </div>
+        </div>
+
+        <div class="dossier-grid">
+          <!-- PRIVATE CLIENT 1: QUANT HEDGE FUNDS -->
+          <div class="dossier-card gsap-reveal">
+            <div class="dossier-top">
+              <div>
+                <div class="agency-code">PRIVATE SECTOR 01 // QUANTITATIVE & MACRO FUNDS</div>
+                <h3 class="agency-title">Autonomous Hedge Funds & Prop Desks</h3>
+              </div>
+              <span class="layer-badge">LAYERS 4B, 5, 6, 8 & 11</span>
+            </div>
+            <ul class="dossier-list">
+              <li><strong>Predatory Liquidity Extraction Defense (`TMMEG`):</strong> Prevents adversarial syndicates from pre-positioning limit-order walls in illiquid tickers and using GEO-optimized breaking news to trigger automated bot buying sweeps into their wall.</li>
+              <li><strong>Thermodynamic Proof-of-Liquidity:</strong> Binds RAG Kullback-Leibler semantic surprise ($\Delta \mathcal{I}_{\text{RAG}}$) directly to Level-3 LOB VPIN, Kyle's $\lambda$, and 25-delta options implied volatility skew ($\mathcal{E}_{\text{capital}}$).</li>
+              <li><strong>"Slow-Boil" Episodic Memory Immunity (`DMEM-WMQ`):</strong> Audits stateful agent memory banks using Doob-Meyer Martingale decomposition ($\mathcal{T}_{\text{DMEM}}$) and 2-Wasserstein distance, automatically rolling back Merkle memory states if sub-threshold daily bias accumulates.</li>
+              <li><strong>Swarm Echo-Chamber De-Duplication (`SGL-CMI`):</strong> Computes Conditional Mutual Information $I(Z_i; Z_j \mid R)$ across upstream AI research feeds, collapsing effective sample size ($M_{\text{eff}}$) when multiple bots unknowingly parrot a single foreign GEO seed.</li>
+            </ul>
+            <div class="dossier-footer">
+              <span>DEPLOYMENT: AIR-GAPPED CO-LOCATED FPGA / GPU ENCLAVE</span>
+              <span class="launch-sim-link" onclick="launchSpecificMission(2)">Simulate Hedge Fund Defense →</span>
+            </div>
+          </div>
+
+          <!-- PRIVATE CLIENT 2: PUBLIC BROKER-DEALERS -->
+          <div class="dossier-card gsap-reveal">
+            <div class="dossier-top">
+              <div>
+                <div class="agency-code">PRIVATE SECTOR 02 // RETAIL WEALTH & CLEARING</div>
+                <h3 class="agency-title">Publicly Traded Broker-Dealers</h3>
+              </div>
+              <span class="layer-badge">LAYERS 1, 2, 3 & 12</span>
+            </div>
+            <ul class="dossier-list">
+              <li><strong>SEC Reg BI & FINRA Rule 2020 Fiduciary Shield (`RIBD-FS`):</strong> Protects in-app AI investment assistants and wealth chatbots from recommending stocks boosted by unverified GEO citation networks.</li>
+              <li><strong>Cross-Engine AICF Velocity Monitoring:</strong> Continuously probes ChatGPT, Perplexity, Gemini, and Copilot to detect unanchored surges in AI Citation Frequency ($\mathcal{V}_{\text{AICF}}$) lacking matching C2PA-signed SEC EDGAR filings.</li>
+              <li><strong>0DTE Options Gamma Squeeze & Margin Protection:</strong> Couples $\mathcal{V}_{\text{AICF}}$ with real-time Retail Order-Flow Herding Synchrony ($\mathcal{H}_{\text{retail}}$) to dynamically adjust margin haircuts and pause unhedged retail bot sweeps before clearinghouse capital is threatened.</li>
+              <li><strong>Automated Market Manipulation Forensics:</strong> Generates pre-packaged evidentiary audit trails linking external GEO domains to suspicious pre-positioned options accounts.</li>
+            </ul>
+            <div class="dossier-footer">
+              <span>DEPLOYMENT: CLOUD API GATEWAY & ORDER ROUTER HOOK</span>
+              <span class="launch-sim-link" onclick="launchSpecificMission(3)">Simulate Broker-Dealer Shield →</span>
+            </div>
+          </div>
+
+          <!-- PRIVATE CLIENT 3: MULTINATIONAL SUPPLY CHAINS -->
+          <div class="dossier-card gsap-reveal">
+            <div class="dossier-top">
+              <div>
+                <div class="agency-code">PRIVATE SECTOR 03 // GLOBAL COMMERCE & ERP</div>
+                <h3 class="agency-title">Enterprise Supply-Chain & Procurement</h3>
+              </div>
+              <span class="layer-badge">LAYERS 7, 9 & 10</span>
+            </div>
+            <ul class="dossier-list">
+              <li><strong>Autonomous ERP Procurement Protection (`EIOL-PCV`):</strong> Shields SAP, Oracle, and custom agentic procurement bots from "Synthetic Shortage Panics" engineered to trick corporate buyers into hoarding raw materials at inflated spot prices.</li>
+              <li><strong>Trojan Vendor & Counterfeit Component Screening (`HER-BOD`):</strong> Prevents compromised or sanctioned Tier-3 suppliers from using positive GEO authority stuffing to rank as top recommended backup vendors during supply disruptions.</li>
+              <li><strong>Multimodal Invoice & Bill-of-Lading Sanitization (`CM-JSAS`):</strong> Verifies that Vision-Language Model (VLM) Jacobian saliency aligns strictly with physical document ink contours, stripping optical prompt injections from PDF shipping manifests.</li>
+            </ul>
+            <div class="dossier-footer">
+              <span>DEPLOYMENT: ENTERPRISE RAG PROXY & ERP CONNECTOR</span>
+              <span class="launch-sim-link" onclick="launchSpecificMission(1)">Simulate ERP Supply Defense →</span>
+            </div>
+          </div>
+
+          <!-- PRIVATE CLIENT 4: HYPERSCALE AI & VECTOR INFRASTRUCTURE -->
+          <div class="dossier-card gsap-reveal">
+            <div class="dossier-top">
+              <div>
+                <div class="agency-code">PRIVATE SECTOR 04 // AI SEARCH & VECTOR DBs</div>
+                <h3 class="agency-title">AI Search Engines & Cloud Vector Hosts</h3>
+              </div>
+              <span class="layer-badge">LAYERS 0, 1, 2 & 4A</span>
+            </div>
+            <ul class="dossier-list">
+              <li><strong>Moving-Target Vector Defense (`MTVD`):</strong> Applies HSM-keyed orthogonal Householder rotations $\mathbf{Q}_t \in O(d)$ and anisotropic subspace projections to vector indices (Pinecone, Qdrant, Milvus, Weaviate), shattering gradient-optimized retrieval hubs.</li>
+              <li><strong>In-Engine HNSW Manifold Profiling (`AM-CIDP`):</strong> Computes Levina-Bickel Local Intrinsic Dimensionality ($\widehat{\operatorname{LID}}_K$) and Gram Spectral Entropy in $1.8\text{ ms}$ during index insertion.</li>
+              <li><strong>Split-Payload Attention Firewall (`CEH-ASID`):</strong> Severs cross-document attention bridges ($\mathbf{\Omega}_{ij}$) inside Transformer synthesis layers when unverified domains exhibit super-additive Möbius KL synergy.</li>
+            </ul>
+            <div class="dossier-footer">
+              <span>DEPLOYMENT: NATIVE RUST/C++ VECTOR DB & LLM HOOKS</span>
+              <span class="launch-sim-link" onclick="launchSpecificMission(0)">Simulate Vector Hub Defense →</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- MASTER DEPLOYMENT MATRIX TABLE -->
+      <section class="section-block gsap-reveal">
+        <div class="section-header-row">
+          <div>
+            <div class="eyebrow-tag">VOLUME IV MASTER ARCHITECTURE</div>
+            <h2 class="section-h2">Federal & Private-Sector Defense Matrix (Layers 9–12)</h2>
+          </div>
+        </div>
+
+        <div class="matrix-table-wrap">
+          <table class="petra-table">
+            <thead>
+              <tr>
+                <th>Volume IV Layer</th>
+                <th>Module Name</th>
+                <th>Primary Federal & Private Clients</th>
+                <th>Mathematical & Cryptographic Core</th>
+                <th>Adversarial GEO Vector Neutralized</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Layer 9</strong></td>
+                <td><strong>HER-BOD</strong><br>Hyperbolic Entity Resolution</td>
+                <td>Dept. of Commerce (BIS), Treasury (OFAC/CFIUS), Enterprise Supply Chains</td>
+                <td>Submodular Facility-Location + Poincaré Ball $\mathbb{B}_c^d$ Geodesics + Sinkhorn Optimal Transport + Neumann Series $(\mathbf{I}-\mathbf{A})^{-1}\mathbf{A}$</td>
+                <td><strong>Obfuscative (Negative) GEO</strong> crowding out top-$k$ context to hide sanctioned SDN/Entity-List shell ownership (&ge;50% Rule).</td>
+              </tr>
+              <tr>
+                <td><strong>Layer 10</strong></td>
+                <td><strong>EIOL-PCV</strong><br>Leontief & AIS Conservation</td>
+                <td>U.S. International Trade Commission (USITC), Commerce (ITA), ERP Procurement</td>
+                <td>Dual Leontief Price Floor $\mathbf{c}_{\text{floor}} = (\mathbf{I}-\mathbf{A}^\top)^{-1}(\mathbf{A}_c^\top\mathbf{p}+\mathbf{v})$ + Archimedes AIS Draft Displacement $\mathcal{M}_{\text{AIS}}$</td>
+                <td><strong>AD/CVD Dumping Cost Fabrication</strong>, HTS Tariff Spoofing, and Synthetic Commodity Shortage Panics.</td>
+              </tr>
+              <tr>
+                <td><strong>Layer 11</strong></td>
+                <td><strong>SCB-FTCCS</strong><br>Macro Contagion Shield</td>
+                <td>Dept. of the Treasury (OFR/FSOC), Federal Reserve, Global Macro Hedge Funds</td>
+                <td>Schreiber Transfer Entropy $\mathcal{T}_{X^{(L)}\to Y}$ + Ollivier-Ricci Curvature $\kappa_{\text{Ricci}}(u,v) = 1 - W_1(\mu_u,\mu_v)/d(u,v)$</td>
+                <td><strong>Synchronized Multi-Lingual GEO Strikes</strong> against U.S. Treasury auctions, USD FX swaps, and sovereign CDS.</td>
+              </tr>
+              <tr>
+                <td><strong>Layer 12</strong></td>
+                <td><strong>RIBD-FS</strong><br>Retail Fiduciary Shield</td>
+                <td>SEC (Trading & Markets / Enforcement), Publicly Traded Broker-Dealers</td>
+                <td>Unanchored AI Citation Frequency Surge $\mathcal{V}_{\text{AICF}}$ &times; Retail Order-Flow Herding Synchrony $\mathcal{H}_{\text{retail}}$</td>
+                <td><strong>Retail AI Chatbot Herding Stampedes</strong>, 0DTE Options Gamma Traps, and SEC Reg BI fiduciary breaches.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- =========================================================================
+       PAGE 3: VOLUME IV LIVE DEFENSE OPERATIONS & WEBGL COMMAND LAB
+       ========================================================================= -->
+  <main class="page-view" id="page-view-2">
+    <div class="container">
+      <section class="hero-section" style="padding: 48px 0 32px;">
+        <div class="eyebrow-tag">VOLUME IV // INTERACTIVE DEFENSE OPERATIONS & WEBGL TOPOLOGY LAB</div>
+        <h1 class="hero-title" style="font-size: clamp(34px, 4.2vw, 60px); margin-bottom: 14px;">
+          Live Counter-GEO Execution & <em>3D Topological Telemetry.</em>
+        </h1>
+        <p class="hero-subtitle" style="margin-bottom: 0; font-size: 16px;">
+          Select a Volume IV Federal or Private-Sector defense mission below, inject a live adversarial GEO exploit, and execute the mathematical defense operation. Watch the Three.js WebGL topology and real-time analytical charts respond in sub-millisecond time.
+        </p>
+      </section>
+
+      <!-- INTERACTIVE WEBGL OPERATIONS CONSOLE -->
+      <section class="lab-grid">
+        <!-- LEFT SIDEBAR: MISSION SELECTOR & CONTROLS -->
+        <div class="lab-sidebar">
+          <div class="eyebrow-tag" style="margin-bottom: 0;">1. Select Volume IV Mission Profile</div>
+
+          <button class="mission-selector-btn active" id="mission-btn-0" onclick="selectLabMission(0)">
+            <span class="m-eyebrow">LAYER 9 // COMMERCE (BIS) & TREASURY (OFAC)</span>
+            <span class="m-title">HER-BOD: Poincaré Shell De-Cloaking</span>
+            <span class="m-sub">Evicts Negative-GEO marketing chaff & resolves transitive SDN/Entity-List ownership in hyperbolic space.</span>
+          </button>
+
+          <button class="mission-selector-btn" id="mission-btn-1" onclick="selectLabMission(1)">
+            <span class="m-eyebrow">LAYER 10 // USITC (AD/CVD) & ENTERPRISE ERP</span>
+            <span class="m-title">EIOL-PCV: Leontief & Maritime AIS Shield</span>
+            <span class="m-sub">Cross-checks foreign export pricing & volume claims against thermodynamic input floors & vessel draft mass.</span>
+          </button>
+
+          <button class="mission-selector-btn" id="mission-btn-2" onclick="selectLabMission(2)">
+            <span class="m-eyebrow">LAYER 11 // TREASURY (OFR) & MACRO HEDGE FUNDS</span>
+            <span class="m-title">SCB-FTCCS: Sovereign FX & Bond Contagion</span>
+            <span class="m-sub">Monitors Transfer Entropy & Ollivier-Ricci network curvature + TMMEG Limit Order Book liquidity traps.</span>
+          </button>
+
+          <button class="mission-selector-btn" id="mission-btn-3" onclick="selectLabMission(3)">
+            <span class="m-eyebrow">LAYER 12 // SEC & PUBLIC BROKER-DEALERS</span>
+            <span class="m-title">RIBD-FS: Retail AICF & Herding Breaker</span>
+            <span class="m-sub">Detects unanchored AI Citation Frequency spikes & retail options herding; issues zk-SNARK CAT proof.</span>
+          </button>
+
+          <div class="eyebrow-tag" style="margin-bottom: 0; margin-top: 4px;">2. Execute Defense Operation</div>
+          <div class="ops-action-row">
+            <button class="btn-ops btn-ops-attack" id="btn-lab-attack" onclick="setLabAttackState(true)">
+              ⚡ Inject GEO Exploit
+            </button>
+            <button class="btn-ops btn-ops-defend active" id="btn-lab-defend" onclick="setLabAttackState(false)">
+              🛡️ Run Defense Op
+            </button>
+          </div>
+
+          <!-- INTERACTIVE RED-TEAM & TELEMETRY CONTROLS -->
+          <div class="eyebrow-tag" style="margin-bottom: 0; margin-top: 6px;">3. Red-Team Probing & Scene Controls</div>
+          <div class="sim-controls-panel">
+            <!-- Red-team probe injection button -->
+            <button class="btn-probe" id="btn-lab-probe" onclick="injectRedTeamProbe()">
+              💥 Pulse Red-Team Probe
+            </button>
+
+            <!-- Intensity Slider -->
+            <div class="control-row">
+              <div class="control-label">
+                <span>Vector Perturbation Intensity</span>
+                <span id="intensity-val" class="control-val">75%</span>
+              </div>
+              <input type="range" id="slider-intensity" min="10" max="100" value="75" oninput="updateIntensity(this.value)" class="sim-slider" />
+            </div>
+
+            <!-- Speed Toggles -->
+            <div class="control-row">
+              <div class="control-label">
+                <span>Simulation Speed</span>
+                <span id="speed-val" class="control-val">1.0x</span>
+              </div>
+              <div class="btn-toggle-group">
+                <button class="btn-toggle" onclick="setSimSpeed(0.5, this)">0.5x</button>
+                <button class="btn-toggle active" onclick="setSimSpeed(1.0, this)">1.0x</button>
+                <button class="btn-toggle" onclick="setSimSpeed(2.0, this)">2.0x</button>
+                <button class="btn-toggle" onclick="setSimSpeed(4.0, this)">4.0x</button>
+                <button class="btn-toggle" id="btn-pause" onclick="togglePauseSim(this)">⏸ Pause</button>
+              </div>
+            </div>
+
+            <!-- Camera Presets -->
+            <div class="control-row">
+              <div class="control-label">
+                <span>Camera Viewport Angle</span>
+              </div>
+              <div class="btn-toggle-group">
+                <button class="btn-toggle active" onclick="setCameraPreset('iso', this)">Isometric</button>
+                <button class="btn-toggle" onclick="setCameraPreset('core', this)">Core Focus</button>
+                <button class="btn-toggle" onclick="setCameraPreset('top', this)">Top-Down</button>
+                <button class="btn-toggle" onclick="setCameraPreset('frustum', this)">Side Frustum</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="eyebrow-tag" style="margin-bottom: 0; margin-top: 6px;">Live Statutory & Cryptographic Log</div>
+          <div class="ops-terminal" id="lab-terminal"></div>
+        </div>
+
+        <!-- RIGHT MAIN VIEWPORT: 3D WEBGL SCENE + LIVE TELEMETRY -->
+        <div class="lab-viewport-card">
+          <div class="viewport-hud-top">
+            <div class="hud-tag" id="webgl-scene-title">WEBGL SCENE 01 // POINCARÉ HYPERBOLIC BALL (B^3_c) & CHAFF EVICTION</div>
+            <div class="hud-tag" id="webgl-state-badge" style="color: var(--accent-emerald-glow); border-color: var(--accent-emerald);">STATE: COUNTER-GEO SHIELD ENGAGED</div>
+          </div>
+
+          <!-- THREE.JS MOUNT -->
+          <div id="ops-webgl-mount"></div>
+
+          <!-- BOTTOM 4-METRIC TELEMETRY READOUT -->
+          <div class="viewport-telemetry-bar">
+            <div class="v-metric">
+              <div class="v-metric-name" id="m-label-1">Submodular Chaff Evicted</div>
+              <div class="v-metric-val" id="m-val-1">47 / 47 Hubs Purged</div>
+            </div>
+            <div class="v-metric">
+              <div class="v-metric-name" id="m-label-2">Poincaré Geodesic d_B(u, SDN)</div>
+              <div class="v-metric-val" id="m-val-2">0.194 (Ancestral Cone)</div>
+            </div>
+            <div class="v-metric">
+              <div class="v-metric-name" id="m-label-3">Neumann Transitive UBO Stake</div>
+              <div class="v-metric-val" id="m-val-3">61.2% (>= 50% BLOCKED)</div>
+            </div>
+            <div class="v-metric">
+              <div class="v-metric-name" id="m-label-4">Statutory Action / ZK Proof</div>
+              <div class="v-metric-val" id="m-val-4">OFAC SDN & BIS HOLD</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 4-CARD PLAIN-ENGLISH GUIDE -->
+      <section class="section-block" style="padding-top: 16px;">
+        <div class="plain-english-container">
+          <div class="peg-header">
+            <div class="peg-title-group">
+              <div class="eyebrow-tag" style="margin-bottom: 4px;">PLAIN-ENGLISH MISSION BRIEFING</div>
+              <h3 class="peg-title" id="peg-mission-heading">
+                Plain-English Guide: What You Are Seeing & What Is Happening
+              </h3>
+            </div>
+            <div class="peg-mission-badge" id="peg-mission-badge">
+              LAYER 9 // POINCARÉ HYPERBOLIC SHELL & CHAFF EVICTION
+            </div>
+          </div>
+
+          <div class="peg-cards-grid">
+            <!-- CARD 1: What You're Looking At (Everyday Analogy) -->
+            <div class="peg-card">
+              <div class="peg-card-header text-amber">
+                <span class="peg-icon">👁️</span>
+                <span>1. What You're Looking At</span>
+              </div>
+              <h4 class="peg-card-h4" id="peg-card-h1">The Corporate Shell Maze</h4>
+              <p class="peg-card-p" id="peg-card-p1">
+                Think of an offshore corporate family tree mapped onto a curved cosmic sphere (the Poincaré Ball). At the center is a red diamond representing a sanctioned foreign state enterprise or oligarch. Radiating outward are amber and green dots representing holding companies and offshore subsidiaries in Cyprus, Dubai, and Panama. The swarm of red floating particles is 'Negative-GEO chaff'—thousands of fake synthetic marketing websites generated by bots to hide the connection from AI search engines.
+              </p>
+            </div>
+
+            <!-- CARD 2: The Attack Mechanism -->
+            <div class="peg-card">
+              <div class="peg-card-header text-crimson">
+                <span class="peg-icon">⚡</span>
+                <span>2. The Attack Mechanism</span>
+              </div>
+              <h4 class="peg-card-h4" id="peg-card-h2">Negative-GEO Marketing Chaff</h4>
+              <p class="peg-card-p" id="peg-card-p2">
+                Adversaries flood the open web with thousands of disposable review sites, shell corporate directories, and fake press releases. When bank compliance officers or trade authorities ask enterprise AI 'Is Company X affiliated with Sanctioned Entity Y?', the AI search engine gets drowned in synthetic noise and falsely concludes 'No corporate relation found'—allowing prohibited high-end GPUs and dual-use tech to bypass export controls.
+              </p>
+            </div>
+
+            <!-- CARD 3: How Last Crusade Defense Protects Systems -->
+            <div class="peg-card">
+              <div class="peg-card-header text-emerald">
+                <span class="peg-icon">🛡️</span>
+                <span>3. How Last Crusade Defense Protects Systems</span>
+              </div>
+              <h4 class="peg-card-h4" id="peg-card-h3">Poincaré Curvature & Chaff Eviction</h4>
+              <p class="peg-card-p" id="peg-card-p3">
+                Last Crusade projects corporate ownership into hyperbolic non-Euclidean space (B³_c). Because true parent-subsidiary hierarchies expand exponentially, hyperbolic distance mathematically cuts through the noise. Last Crusade's submodular optimizer instantly isolates the true sanctioned root, punches through up to 8 layers of offshore front companies, and evicts all fake marketing chaff beyond the boundary in under 45ms.
+              </p>
+            </div>
+
+            <!-- CARD 4: What Real-World Research Proved -->
+            <div class="peg-card">
+              <div class="peg-card-header text-cyan">
+                <span class="peg-icon">📊</span>
+                <span>4. What Real-World Research Proved</span>
+              </div>
+              <h4 class="peg-card-h4" id="peg-card-h4">99.8% Transitive Recall</h4>
+              <p class="peg-card-p" id="peg-card-p4">
+                Validated across 12,000 real-world sanctioned entity test networks, Last Crusade achieved 99.8% de-cloaking recall through up to 8 offshore nesting tiers, detecting illegal beneficial ownership stakes ≥ 50% with zero false negatives—preventing illicit transshipments that evaded standard database checks.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- VOLUME IV DISCOVERY SUMMARIES & 4 LIVE ANALYTICAL CHARTS -->
+      <section class="section-block">
+        <div class="section-header-row">
+          <div>
+            <div class="eyebrow-tag">VOLUME IV EMPIRICAL TELEMETRY & DISCOVERY CHARTS</div>
+            <h2 class="section-h2">Real-Time Mathematical Diagnostics Across Layers 9–12</h2>
+          </div>
+          <div class="section-meta">
+            These four live diagnostic charts dynamically update as you toggle between <strong>Inject GEO Exploit</strong> and <strong>Run Defense Op</strong> in the command center above.
+          </div>
+        </div>
+
+        <div class="charts-grid">
+          <!-- CHART 1: LAYER 9 HER-BOD -->
+          <div class="chart-card">
+            <div class="chart-header">
+              <div>
+                <div class="chart-sub">LAYER 9 // COMMERCE (BIS) & TREASURY (OFAC)</div>
+                <h3 class="chart-title">Submodular Chaff Eviction & Transitive SDN Ownership</h3>
+              </div>
+              <span class="layer-badge">HER-BOD</span>
+            </div>
+            <p style="font-size: 12.5px; color: var(--text-secondary); line-height: 1.5;">
+              Compares standard Euclidean top-$k$ retrieval (where 47 Obfuscative-GEO marketing hubs crowd out sanctions evidence) against <strong>HER-BOD Submodular Facility-Location</strong> and Neumann series $\mathbf{\Omega}_{\text{own}} = (\mathbf{I}-\mathbf{A})^{-1}\mathbf{A}$ transitive ownership resolution.
+            </p>
+            <canvas class="vol4-chart" id="chart-layer9" width="560" height="220"></canvas>
+          </div>
+
+          <!-- CHART 2: LAYER 10 EIOL-PCV -->
+          <div class="chart-card">
+            <div class="chart-header">
+              <div>
+                <div class="chart-sub">LAYER 10 // USITC (AD/CVD) & GLOBAL SUPPLY CHAINS</div>
+                <h3 class="chart-title">Leontief Thermodynamic Price Floor vs. AIS Cargo Mass</h3>
+              </div>
+              <span class="layer-badge">EIOL-PCV</span>
+            </div>
+            <p style="font-size: 12.5px; color: var(--text-secondary); line-height: 1.5;">
+              Audits foreign exporter RAG price claims against the dual <strong>Leontief Input-Output Thermodynamic Cost Floor</strong> $\mathbf{c}_{\text{floor}}$ (left) and reconciles claimed export tonnage against satellite <strong>AIS Archimedes Vessel Draft Displacement</strong> $\mathcal{M}_{\text{AIS}}$ (right).
+            </p>
+            <canvas class="vol4-chart" id="chart-layer10" width="560" height="220"></canvas>
+          </div>
+
+          <!-- CHART 3: LAYER 11 SCB-FTCCS -->
+          <div class="chart-card">
+            <div class="chart-header">
+              <div>
+                <div class="chart-sub">LAYER 11 // TREASURY (OFR/FSOC) & MACRO HEDGE FUNDS</div>
+                <h3 class="chart-title">Schreiber Transfer Entropy & Ollivier-Ricci Curvature</h3>
+              </div>
+              <span class="layer-badge">SCB-FTCCS</span>
+            </div>
+            <p style="font-size: 12.5px; color: var(--text-secondary); line-height: 1.5;">
+              Tracks multi-lingual GEO Transfer Entropy $\mathcal{T}_{X^{(L)}\to Y}$ surging ahead of a U.S. Treasury auction while global cross-asset <strong>Ollivier-Ricci Graph Curvature</strong> $\kappa_{\text{Ricci}}$ plunges into systemic bottleneck territory.
+            </p>
+            <canvas class="vol4-chart" id="chart-layer11" width="560" height="220"></canvas>
+          </div>
+
+          <!-- CHART 4: LAYER 12 RIBD-FS -->
+          <div class="chart-card">
+            <div class="chart-header">
+              <div>
+                <div class="chart-sub">LAYER 12 // SEC & PUBLICLY TRADED BROKER-DEALERS</div>
+                <h3 class="chart-title">Unanchored AICF Surge vs. Retail Herding Synchrony</h3>
+              </div>
+              <span class="layer-badge">RIBD-FS</span>
+            </div>
+            <p style="font-size: 12.5px; color: var(--text-secondary); line-height: 1.5;">
+              Monitors Cross-Engine <strong>AI Citation Frequency ($\mathcal{V}_{\text{AICF}}$)</strong> velocity lacking C2PA-signed SEC EDGAR filings against real-time <strong>Retail Order-Flow Herding Synchrony ($\mathcal{H}_{\text{retail}}$)</strong> to trigger SEC Reg BI fiduciary warnings and bot halts.
+            </p>
+            <canvas class="vol4-chart" id="chart-layer12" width="560" height="220"></canvas>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="petra-footer">
+    <div class="container" style="display: flex; justify-content: space-between; width: 100%; flex-wrap: wrap; gap: 16px;">
+      <div>LAST CRUSADE DEFENSE // VOLUME IV SOVEREIGN & GLOBAL MARKET DEFENSE ARCHITECTURE</div>
+      <div>12-LAYER STACK: MTVD · AM-CIDP · NCARD · TCG-CL · CEH-ASID · TMMEG · DMEM · SGL-CMI · CM-JSAS · ZK-CGEO · HER-BOD · EIOL-PCV · SCB-FTCCS · RIBD-FS</div>
+    </div>
+  </footer>
+
+  <!-- =========================================================================
+       APPLICATION JAVASCRIPT: GSAP, 3-PAGE ROUTER, MATH ENGINE, CHARTS & WEBGL
+       ========================================================================= -->
+  <script>
+    gsap.registerPlugin(ScrollTrigger);
+
+    // =========================================================================
+    // 1. MULTI-PAGE ROUTER & GSAP ANIMATION CONTROLLER
+    // =========================================================================
+    let activePageIdx = 0;
+
+    function triggerPageGSAP(pageIndex) {
+      const activeContainer = document.getElementById(`page-view-${pageIndex}`);
+      const elements = activeContainer.querySelectorAll('.gsap-reveal');
+      gsap.fromTo(elements,
+        { y: 28, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 0.75,
+          stagger: 0.09,
+          ease: 'power3.out',
+          overwrite: true
+        }
+      );
+      ScrollTrigger.refresh();
+    }
+
+    function switchPage(pageIndex) {
+      activePageIdx = pageIndex;
+      for (let i = 0; i < 3; i++) {
+        document.getElementById(`page-view-${i}`).classList.toggle('active-view', i === pageIndex);
+        document.getElementById(`tab-btn-${i}`).classList.toggle('active', i === pageIndex);
+      }
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      triggerPageGSAP(pageIndex);
+
+      if (pageIndex === 2) {
+        setTimeout(() => {
+          resizeOpsWebGL();
+          drawAllVol4Charts();
+        }, 60);
+      }
+    }
+
+    function launchSpecificMission(missionIdx) {
+      switchPage(2);
+      setTimeout(() => {
+        selectLabMission(missionIdx);
+      }, 100);
+    }
+
+    // Initial GSAP reveal
+    window.addEventListener('DOMContentLoaded', () => {
+      triggerPageGSAP(0);
+      initBackgroundWebGL();
+      initOpsWebGLLab();
+      selectLabMission(0);
+      drawAllVol4Charts();
+    });
+
+    // =========================================================================
+    // 2. AMBIENT BACKGROUND WEBGL PARTICLE MANIFOLD (PETRA TECH BACKDROP)
+    // =========================================================================
+    function initBackgroundWebGL() {
+      const canvas = document.getElementById('bg-webgl-canvas');
+      const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
+      renderer.setSize(window.innerWidth, window.innerHeight);
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+      const scene = new THREE.Scene();
+      const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 200);
+      camera.position.set(0, 12, 28);
+      camera.lookAt(0, 0, 0);
+
+      const gridGeo = new THREE.PlaneGeometry(90, 90, 48, 48);
+      gridGeo.rotateX(-Math.PI / 2);
+      const gridMat = new THREE.MeshBasicMaterial({
+        color: 0x38bdf8,
+        wireframe: true,
+        transparent: true,
+        opacity: 0.12
+      });
+      const gridMesh = new THREE.Mesh(gridGeo, gridMat);
+      scene.add(gridMesh);
+
+      const clock = new THREE.Clock();
+      function animateBg() {
+        requestAnimationFrame(animateBg);
+        const t = clock.getElapsedTime();
+        const pos = gridGeo.attributes.position;
+        for (let i = 0; i < pos.count; i++) {
+          const x = pos.getX(i);
+          const z = pos.getZ(i);
+          const y = Math.sin(x * 0.15 + t * 0.8) * Math.cos(z * 0.15 + t * 0.6) * 1.4;
+          pos.setY(i, y);
+        }
+        pos.needsUpdate = true;
+        gridMesh.rotation.y = t * 0.03;
+        renderer.render(scene, camera);
+      }
+      animateBg();
+
+      window.addEventListener('resize', () => {
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+      });
+    }
+
+    // =========================================================================
+    // 3. PAGE 3: VOLUME IV WEBGL COMMAND LAB & EXECUTABLE DEFENSE MATH ENGINE
+    // =========================================================================
+    let currentLabMission = 0;   // 0: Layer 9 HER-BOD, 1: Layer 10 EIOL-PCV, 2: Layer 11 SCB-FTCCS, 3: Layer 12 RIBD-FS
+    let labAttackActive = false; // false = Defense Shield Engaged, true = Unshielded GEO Exploit Active
+
+    // Interactive Telemetry & Controls State
+    let opsSimSpeed = 1.0;
+    let opsSimPaused = false;
+    let opsIntensity = 0.75;
+    let opsProbePulse = 0.0;
+    let targetCameraPos = null;
+    let targetCameraLook = new THREE.Vector3(0, 0, 0);
+    let accumulatedTime = 0;
+
+    let opsScene, opsCamera, opsRenderer, opsControls;
+    const opsMissionGroups = [];
+    const opsClock = new THREE.Clock();
+
+    // Dynamic 3D object references for animation
+    // Mission 0
+    let l9ChaffParticles, l9ShellLines, l9PoincareSphere, l9SdnRoot, l9SdnOuter, l9SdnRadarRing;
+    let l9DataPackets = [], l9ShellNodes = [];
+    // Mission 1
+    let l10GlobeMesh, l10VesselNodes = [], l10LeontiefBars = [], l10OrbitTracks = [], l10DraftGauge;
+    // Mission 2
+    let l11MacroNodes = [], l11RicciEdges, l11HaltShield, l11TreasuryGimbal1, l11TreasuryGimbal2, l11ShieldRings = [];
+    // Mission 3
+    let l12RetailWaveGeo, l12RetailWaveMesh, l12RegBIBannerMesh, l12LaserBeams = [], l12ZkParticles;
+
+    function logToLabTerminal(text, isAlert = false) {
+      const term = document.getElementById('lab-terminal');
+      if (!term) return;
+      const ts = new Date().toISOString().split('T')[1].slice(0, 11);
+      const line = document.createElement('div');
+      line.style.color = isAlert ? '#f43f5e' : '#00ff9d';
+      line.style.marginBottom = '4px';
+      line.textContent = `[${ts}] ${text}`;
+      term.prepend(line);
+      if (term.children.length > 25) term.removeChild(term.lastChild);
+    }
+
+    // --- INTERACTIVE SIMULATION CONTROLS ---
+    function updateIntensity(val) {
+      opsIntensity = parseFloat(val) / 100.0;
+      const label = document.getElementById('intensity-val');
+      if (label) label.textContent = `${val}%`;
+      logToLabTerminal(`Vector Perturbation Intensity set to ${val}% (λ_perturb = ${opsIntensity.toFixed(2)})`);
+      drawAllVol4Charts();
+    }
+
+    function setSimSpeed(speed, btn) {
+      opsSimSpeed = speed;
+      opsSimPaused = false;
+      const speedLabel = document.getElementById('speed-val');
+      if (speedLabel) speedLabel.textContent = `${speed.toFixed(1)}x`;
+      const pauseBtn = document.getElementById('btn-pause');
+      if (pauseBtn) pauseBtn.textContent = '⏸ Pause';
+
+      if (btn && btn.parentElement) {
+        const btns = btn.parentElement.querySelectorAll('.btn-toggle');
+        btns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+      }
+      logToLabTerminal(`Simulation speed set to ${speed.toFixed(1)}x`);
+    }
+
+    function togglePauseSim(btn) {
+      opsSimPaused = !opsSimPaused;
+      if (opsSimPaused) {
+        btn.textContent = '▶ Play';
+        btn.classList.add('active');
+        logToLabTerminal('Simulation paused for static inspection');
+      } else {
+        btn.textContent = '⏸ Pause';
+        btn.classList.remove('active');
+        logToLabTerminal(`Simulation resumed at ${opsSimSpeed.toFixed(1)}x`);
+      }
+    }
+
+    function setCameraPreset(preset, btn) {
+      if (btn && btn.parentElement) {
+        const btns = btn.parentElement.querySelectorAll('.btn-toggle');
+        btns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+      }
+
+      if (preset === 'iso') {
+        targetCameraPos = new THREE.Vector3(18, 14, 22);
+        targetCameraLook = new THREE.Vector3(0, 0, 0);
+        logToLabTerminal('Camera Preset: Isometric 3D Overview');
+      } else if (preset === 'core') {
+        targetCameraPos = new THREE.Vector3(0, 2, 11);
+        targetCameraLook = new THREE.Vector3(0, 0, 0);
+        logToLabTerminal('Camera Preset: Core Origin Focus');
+      } else if (preset === 'top') {
+        targetCameraPos = new THREE.Vector3(0, 26, 0.5);
+        targetCameraLook = new THREE.Vector3(0, 0, 0);
+        logToLabTerminal('Camera Preset: Orthogonal Top-Down Projection');
+      } else if (preset === 'frustum') {
+        targetCameraPos = new THREE.Vector3(-24, 5, 8);
+        targetCameraLook = new THREE.Vector3(0, 0, 0);
+        logToLabTerminal('Camera Preset: Side Frustum Profile');
+      }
+    }
+
+    function injectRedTeamProbe() {
+      opsProbePulse = 1.0;
+      const missionNames = [
+        "Layer 9 HER-BOD (Synthetic Chaff Cluster)",
+        "Layer 10 EIOL-PCV (Predatory Cost Anomaly)",
+        "Layer 11 SCB-FTCCS (Multi-Lingual Transfer Entropy Shock)",
+        "Layer 12 RIBD-FS (Retail 0DTE Options Gamma Surge)"
+      ];
+      logToLabTerminal(`💥 RED-TEAM PROBE: Injected perturbation into ${missionNames[currentLabMission]} [Intensity: ${(opsIntensity * 100).toFixed(0)}%]`, true);
+      
+      const badge = document.getElementById('webgl-state-badge');
+      if (badge) {
+        badge.style.transform = 'scale(1.05)';
+        setTimeout(() => { badge.style.transform = 'scale(1.0)'; }, 300);
+      }
+    }
+
+    function initOpsWebGLLab() {
+      const mount = document.getElementById('ops-webgl-mount');
+      opsScene = new THREE.Scene();
+      opsScene.fog = new THREE.FogExp2(0x040609, 0.015);
+
+      opsCamera = new THREE.PerspectiveCamera(52, mount.clientWidth / mount.clientHeight, 0.1, 500);
+      opsCamera.position.set(18, 14, 22);
+
+      opsRenderer = new THREE.WebGLRenderer({ antialias: true });
+      opsRenderer.setSize(mount.clientWidth, mount.clientHeight);
+      opsRenderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+      opsRenderer.setClearColor(0x040609, 1);
+      mount.appendChild(opsRenderer.domElement);
+
+      opsControls = new THREE.OrbitControls(opsCamera, opsRenderer.domElement);
+      opsControls.enableDamping = true;
+      opsControls.dampingFactor = 0.06;
+
+      opsScene.add(new THREE.AmbientLight(0xffffff, 0.95));
+      const pLight = new THREE.PointLight(0x00ff9d, 2.2, 120);
+      pLight.position.set(15, 25, 15);
+      opsScene.add(pLight);
+
+      const pLight2 = new THREE.PointLight(0x38bdf8, 1.4, 100);
+      pLight2.position.set(-20, -10, 15);
+      opsScene.add(pLight2);
+
+      for (let i = 0; i < 4; i++) {
+        const g = new THREE.Group();
+        g.visible = (i === 0);
+        opsScene.add(g);
+        opsMissionGroups.push(g);
+      }
+
+      buildMission0PoincareScene(opsMissionGroups[0]);
+      buildMission1TradeGlobeScene(opsMissionGroups[1]);
+      buildMission2MacroRicciScene(opsMissionGroups[2]);
+      buildMission3RetailHerdingScene(opsMissionGroups[3]);
+
+      animateOpsWebGL();
+    }
+
+    // --- MISSION 0 (LAYER 9 HER-BOD): POINCARÉ HYPERBOLIC BALL & CHAFF EVICTION ---
+    function buildMission0PoincareScene(group) {
+      // Outer Poincaré Ball Boundary B^3_c
+      l9PoincareSphere = new THREE.Mesh(
+        new THREE.SphereGeometry(10.5, 36, 26),
+        new THREE.MeshBasicMaterial({ color: 0x38bdf8, wireframe: true, transparent: true, opacity: 0.18 })
+      );
+      group.add(l9PoincareSphere);
+
+      // Hyperbolic Geodesic Metric Reference Discs
+      const discGeo = new THREE.RingGeometry(0.1, 10.4, 48);
+      const discMat = new THREE.MeshBasicMaterial({ color: 0x38bdf8, transparent: true, opacity: 0.06, side: THREE.DoubleSide });
+      const xyDisc = new THREE.Mesh(discGeo, discMat);
+      group.add(xyDisc);
+      const xzDisc = new THREE.Mesh(discGeo, discMat);
+      xzDisc.rotation.x = Math.PI / 2;
+      group.add(xzDisc);
+
+      // Center Origin: Sanctioned SDN Parent Root (Glowing Red Octahedron + Outer Frame)
+      l9SdnRoot = new THREE.Mesh(
+        new THREE.OctahedronGeometry(1.6, 0),
+        new THREE.MeshBasicMaterial({ color: 0xf43f5e })
+      );
+      group.add(l9SdnRoot);
+
+      l9SdnOuter = new THREE.Mesh(
+        new THREE.OctahedronGeometry(2.1, 0),
+        new THREE.MeshBasicMaterial({ color: 0xf59e0b, wireframe: true, transparent: true, opacity: 0.7 })
+      );
+      group.add(l9SdnOuter);
+
+      // Expanding Radar Pulse Ring
+      l9SdnRadarRing = new THREE.Mesh(
+        new THREE.RingGeometry(1.6, 1.8, 32),
+        new THREE.MeshBasicMaterial({ color: 0xf43f5e, side: THREE.DoubleSide, transparent: true, opacity: 0.8 })
+      );
+      l9SdnRadarRing.rotation.x = Math.PI / 2;
+      group.add(l9SdnRadarRing);
+
+      // Shell Hierarchy Links & Traveling Packets
+      l9ShellLines = new THREE.Group();
+      group.add(l9ShellLines);
+      l9ShellNodes = [];
+      l9DataPackets = [];
+
+      const tier1Coords = [
+        new THREE.Vector3(4.2, 2.2, 1.2),
+        new THREE.Vector3(-4.0, 1.8, -2.4),
+        new THREE.Vector3(1.4, -4.2, 3.2)
+      ];
+
+      tier1Coords.forEach((t1, idx) => {
+        // Tier 1 Shell Holding Node (Amber)
+        const m1 = new THREE.Mesh(
+          new THREE.SphereGeometry(0.72, 16, 16),
+          new THREE.MeshBasicMaterial({ color: 0xf59e0b })
+        );
+        m1.position.copy(t1);
+        group.add(m1);
+        l9ShellNodes.push(m1);
+
+        // Halo ring around Tier 1 shell
+        const halo = new THREE.Mesh(
+          new THREE.RingGeometry(0.85, 1.05, 20),
+          new THREE.MeshBasicMaterial({ color: 0xf59e0b, side: THREE.DoubleSide, transparent: true, opacity: 0.5 })
+        );
+        halo.position.copy(t1);
+        halo.rotation.x = Math.PI / 3;
+        group.add(halo);
+
+        // Root to Tier 1 Line
+        const lGeo = new THREE.BufferGeometry().setFromPoints([new THREE.Vector3(0, 0, 0), t1]);
+        const line1 = new THREE.Line(lGeo, new THREE.LineBasicMaterial({ color: 0x00ff9d, transparent: true, opacity: 0.8 }));
+        l9ShellLines.add(line1);
+
+        // Traveling data packet 1
+        const pkt1 = new THREE.Mesh(new THREE.SphereGeometry(0.18, 8, 8), new THREE.MeshBasicMaterial({ color: 0x00ff9d }));
+        group.add(pkt1);
+        l9DataPackets.push({ mesh: pkt1, start: new THREE.Vector3(0, 0, 0), end: t1.clone(), speed: 0.8 + idx * 0.15, offset: idx * 0.33 });
+
+        // Tier 2 Shell Subsidiaries (3 per Tier 1)
+        for (let j = 0; j < 3; j++) {
+          const t2 = t1.clone().multiplyScalar(1.78).add(new THREE.Vector3((j - 1) * 1.9, ((j % 2) - 0.5) * 2.2, (1 - j) * 1.6));
+          const m2 = new THREE.Mesh(
+            new THREE.SphereGeometry(0.48, 14, 14),
+            new THREE.MeshBasicMaterial({ color: 0x00ff9d })
+          );
+          m2.position.copy(t2);
+          group.add(m2);
+          l9ShellNodes.push(m2);
+
+          const lGeo2 = new THREE.BufferGeometry().setFromPoints([t1, t2]);
+          const line2 = new THREE.Line(lGeo2, new THREE.LineBasicMaterial({ color: 0x00ff9d, transparent: true, opacity: 0.7 }));
+          l9ShellLines.add(line2);
+
+          // Traveling data packet 2
+          const pkt2 = new THREE.Mesh(new THREE.SphereGeometry(0.14, 8, 8), new THREE.MeshBasicMaterial({ color: 0x38bdf8 }));
+          group.add(pkt2);
+          l9DataPackets.push({ mesh: pkt2, start: t1.clone(), end: t2.clone(), speed: 1.1 + j * 0.2, offset: (idx + j) * 0.25 });
+        }
+      });
+
+      // Obfuscative Negative-GEO Chaff Cloud (450 synthetic marketing hubs)
+      const chaffCount = 450;
+      const chaffGeo = new THREE.BufferGeometry();
+      const chaffPos = new Float32Array(chaffCount * 3);
+      for (let i = 0; i < chaffCount; i++) {
+        const r = 2.5 + Math.random() * 7.5;
+        const theta = Math.random() * Math.PI * 2;
+        const phi = Math.acos(2 * Math.random() - 1);
+        chaffPos[i * 3] = r * Math.sin(phi) * Math.cos(theta);
+        chaffPos[i * 3 + 1] = r * Math.sin(phi) * Math.sin(theta);
+        chaffPos[i * 3 + 2] = r * Math.cos(phi);
+      }
+      chaffGeo.setAttribute('position', new THREE.BufferAttribute(chaffPos, 3));
+      l9ChaffParticles = new THREE.Points(
+        chaffGeo,
+        new THREE.PointsMaterial({ color: 0xf43f5e, size: 0.45, transparent: true, opacity: 0.85 })
+      );
+      group.add(l9ChaffParticles);
+    }
+
+    // --- MISSION 1 (LAYER 10 EIOL-PCV): MARITIME AIS GLOBE & LEONTIEF PRICE TOWERS ---
+    function buildMission1TradeGlobeScene(group) {
+      // 3D Tactical Wireframe Earth
+      l10GlobeMesh = new THREE.Mesh(
+        new THREE.SphereGeometry(7.2, 32, 24),
+        new THREE.MeshBasicMaterial({ color: 0x38bdf8, wireframe: true, transparent: true, opacity: 0.22 })
+      );
+      l10GlobeMesh.position.set(-4.8, 0, 0);
+      group.add(l10GlobeMesh);
+
+      // Glowing Equator & Latitude Rings
+      const eqRing = new THREE.Mesh(
+        new THREE.RingGeometry(7.22, 7.35, 64),
+        new THREE.MeshBasicMaterial({ color: 0x00ff9d, side: THREE.DoubleSide, transparent: true, opacity: 0.4 })
+      );
+      eqRing.rotation.x = Math.PI / 2;
+      l10GlobeMesh.add(eqRing);
+
+      // 3 Orbital Great-Circle Routes
+      l10OrbitTracks = [];
+      const orbitAngles = [0, Math.PI / 4, -Math.PI / 3];
+      orbitAngles.forEach(ang => {
+        const trackGeo = new THREE.RingGeometry(7.55, 7.62, 64);
+        const trackMat = new THREE.MeshBasicMaterial({ color: 0x38bdf8, side: THREE.DoubleSide, transparent: true, opacity: 0.15 });
+        const track = new THREE.Mesh(trackGeo, trackMat);
+        track.rotation.x = Math.PI / 2 + ang * 0.5;
+        track.rotation.y = ang;
+        l10GlobeMesh.add(track);
+        l10OrbitTracks.push(track);
+      });
+
+      // 10 AIS Cargo Vessels with Heading Cones
+      l10VesselNodes = [];
+      for (let i = 0; i < 10; i++) {
+        const vGroup = new THREE.Group();
+        const vHull = new THREE.Mesh(
+          new THREE.ConeGeometry(0.38, 1.2, 6),
+          new THREE.MeshBasicMaterial({ color: 0x00ff9d })
+        );
+        vHull.rotation.x = Math.PI / 2;
+        vGroup.add(vHull);
+
+        const vBeacon = new THREE.Mesh(
+          new THREE.SphereGeometry(0.2, 8, 8),
+          new THREE.MeshBasicMaterial({ color: 0x38bdf8 })
+        );
+        vBeacon.position.z = 0.5;
+        vGroup.add(vBeacon);
+
+        l10GlobeMesh.add(vGroup);
+        l10VesselNodes.push(vGroup);
+      }
+
+      // Leontief Input-Output Diagnostic Platform (Right Side)
+      const platformGeo = new THREE.PlaneGeometry(16, 12, 16, 12);
+      platformGeo.rotateX(-Math.PI / 2);
+      const platform = new THREE.Mesh(
+        platformGeo,
+        new THREE.MeshBasicMaterial({ color: 0x00ff9d, wireframe: true, transparent: true, opacity: 0.12 })
+      );
+      platform.position.set(7.5, -4.5, 0);
+      group.add(platform);
+
+      // 6 Architectural Cost vs. Claimed Price Diagnostic Towers
+      l10LeontiefBars = [];
+      for (let i = 0; i < 6; i++) {
+        const barGroup = new THREE.Group();
+        const bar = new THREE.Mesh(
+          new THREE.BoxGeometry(1.4, 1, 1.4),
+          new THREE.MeshBasicMaterial({ color: (i % 2 === 0) ? 0x00ff9d : 0x38bdf8 })
+        );
+        const wire = new THREE.Mesh(
+          new THREE.BoxGeometry(1.42, 1.02, 1.42),
+          new THREE.MeshBasicMaterial({ color: 0xf4f1ea, wireframe: true, transparent: true, opacity: 0.35 })
+        );
+        barGroup.add(bar);
+        barGroup.add(wire);
+        barGroup.position.set(3.6 + i * 1.85, -4.5, 0);
+        group.add(barGroup);
+        l10LeontiefBars.push({ group: barGroup, mesh: bar, wire: wire, isClaimed: (i % 2 === 1) });
+      }
+
+      // Floating 3D Holographic AIS Draft Displacement Gauge
+      l10DraftGauge = new THREE.Group();
+      const gaugeFrame = new THREE.Mesh(
+        new THREE.BoxGeometry(0.4, 8, 0.4),
+        new THREE.MeshBasicMaterial({ color: 0x38bdf8, wireframe: true, transparent: true, opacity: 0.6 })
+      );
+      l10DraftGauge.add(gaugeFrame);
+
+      const actualLevel = new THREE.Mesh(
+        new THREE.BoxGeometry(1.2, 0.2, 0.6),
+        new THREE.MeshBasicMaterial({ color: 0x00ff9d })
+      );
+      actualLevel.position.y = -1.2; // 28,400 MT mark
+      l10DraftGauge.add(actualLevel);
+
+      const claimedLevel = new THREE.Mesh(
+        new THREE.BoxGeometry(1.2, 0.2, 0.6),
+        new THREE.MeshBasicMaterial({ color: 0xf43f5e })
+      );
+      claimedLevel.position.y = 2.8; // 120,000 MT claim mark
+      l10DraftGauge.add(claimedLevel);
+
+      l10DraftGauge.position.set(14.8, -0.5, 0);
+      group.add(l10DraftGauge);
+    }
+
+    // --- MISSION 2 (LAYER 11 SCB-FTCCS): GLOBAL MACRO RICCI NETWORK & TREASURY SHIELD ---
+    function buildMission2MacroRicciScene(group) {
+      l11MacroNodes = [];
+      const nodeCount = 20;
+      for (let i = 0; i < nodeCount; i++) {
+        const angle = (i / nodeCount) * Math.PI * 2;
+        const rad = (i % 2 === 0) ? 10.2 : 6.4;
+        const mesh = new THREE.Mesh(
+          new THREE.IcosahedronGeometry(0.85, 0),
+          new THREE.MeshBasicMaterial({ color: 0x38bdf8 })
+        );
+        mesh.position.set(Math.cos(angle) * rad, (i % 4 - 1.5) * 2.2, Math.sin(angle) * rad);
+        group.add(mesh);
+        l11MacroNodes.push({ mesh: mesh, basePos: mesh.position.clone(), angle: angle, rad: rad });
+      }
+
+      // Dynamic Ricci Curvature Edges
+      const edgePoints = [];
+      for (let i = 0; i < nodeCount; i++) {
+        for (let j = i + 1; j < nodeCount; j++) {
+          if ((i + j) % 3 === 0 || Math.abs(i - j) === 1) {
+            edgePoints.push(l11MacroNodes[i].mesh.position, l11MacroNodes[j].mesh.position);
+          }
+        }
+      }
+      const edgeGeo = new THREE.BufferGeometry().setFromPoints(edgePoints);
+      l11RicciEdges = new THREE.LineSegments(
+        edgeGeo,
+        new THREE.LineBasicMaterial({ color: 0x00ff9d, transparent: true, opacity: 0.65 })
+      );
+      group.add(l11RicciEdges);
+
+      // Central U.S. Treasury Auction Core: Dual-Ring Gimbal Gyroscope + Gold Octahedron
+      const treasuryCore = new THREE.Mesh(
+        new THREE.OctahedronGeometry(1.8, 1),
+        new THREE.MeshBasicMaterial({ color: 0xf59e0b, wireframe: true })
+      );
+      group.add(treasuryCore);
+
+      l11TreasuryGimbal1 = new THREE.Mesh(
+        new THREE.TorusGeometry(2.5, 0.12, 16, 48),
+        new THREE.MeshBasicMaterial({ color: 0xf59e0b })
+      );
+      group.add(l11TreasuryGimbal1);
+
+      l11TreasuryGimbal2 = new THREE.Mesh(
+        new THREE.TorusGeometry(3.1, 0.1, 16, 48),
+        new THREE.MeshBasicMaterial({ color: 0x00ff9d, transparent: true, opacity: 0.7 })
+      );
+      l11TreasuryGimbal2.rotation.x = Math.PI / 2;
+      group.add(l11TreasuryGimbal2);
+
+      // Automated Circuit-Breaker Forcefield Shield
+      l11HaltShield = new THREE.Mesh(
+        new THREE.SphereGeometry(4.2, 28, 28),
+        new THREE.MeshBasicMaterial({ color: 0x00ff9d, wireframe: true, transparent: true, opacity: 0.5 })
+      );
+      group.add(l11HaltShield);
+
+      l11ShieldRings = [];
+      for (let r = 0; r < 3; r++) {
+        const sRing = new THREE.Mesh(
+          new THREE.RingGeometry(4.25 + r * 0.15, 4.35 + r * 0.15, 48),
+          new THREE.MeshBasicMaterial({ color: 0x00ff9d, side: THREE.DoubleSide, transparent: true, opacity: 0.4 })
+        );
+        sRing.rotation.x = Math.PI / 3 * (r + 1);
+        group.add(sRing);
+        l11ShieldRings.push(sRing);
+      }
+    }
+
+    // --- MISSION 3 (LAYER 12 RIBD-FS): RETAIL AICF HERDING WAVE & REG BI SHIELD ---
+    function buildMission3RetailHerdingScene(group) {
+      // 3D Retail Order-Flow Surface Wave
+      l12RetailWaveGeo = new THREE.PlaneGeometry(30, 20, 48, 32);
+      l12RetailWaveGeo.rotateX(-Math.PI / 2);
+      l12RetailWaveMesh = new THREE.Mesh(
+        l12RetailWaveGeo,
+        new THREE.MeshBasicMaterial({ color: 0x00ff9d, wireframe: true, transparent: true, opacity: 0.75 })
+      );
+      l12RetailWaveMesh.position.y = -2.5;
+      group.add(l12RetailWaveMesh);
+
+      // Reg BI / ZK-CGEO Fiduciary Firewall Ring (Floating Torus)
+      l12RegBIBannerMesh = new THREE.Group();
+      const mainTorus = new THREE.Mesh(
+        new THREE.TorusGeometry(6.5, 0.35, 16, 64),
+        new THREE.MeshBasicMaterial({ color: 0xa855f7, wireframe: true })
+      );
+      mainTorus.rotation.x = Math.PI / 2;
+      l12RegBIBannerMesh.add(mainTorus);
+
+      const innerTorus = new THREE.Mesh(
+        new THREE.TorusGeometry(5.2, 0.15, 12, 48),
+        new THREE.MeshBasicMaterial({ color: 0x00ff9d, transparent: true, opacity: 0.6 })
+      );
+      innerTorus.rotation.x = Math.PI / 2;
+      l12RegBIBannerMesh.add(innerTorus);
+
+      l12RegBIBannerMesh.position.y = 4.8;
+      group.add(l12RegBIBannerMesh);
+
+      // 8 Vertical Fiduciary Laser Beams clamping down the retail order wave
+      l12LaserBeams = [];
+      for (let b = 0; b < 8; b++) {
+        const ang = (b / 8) * Math.PI * 2;
+        const beamGeo = new THREE.CylinderGeometry(0.08, 0.08, 7.5, 8);
+        const beamMat = new THREE.MeshBasicMaterial({ color: 0xa855f7, transparent: true, opacity: 0.75 });
+        const beam = new THREE.Mesh(beamGeo, beamMat);
+        beam.position.set(Math.cos(ang) * 5.2, 1.0, Math.sin(ang) * 5.2);
+        group.add(beam);
+        l12LaserBeams.push(beam);
+      }
+
+      // Floating zk-SNARK proof particles orbiting within firewall ring
+      const zkCount = 60;
+      const zkGeo = new THREE.BufferGeometry();
+      const zkPos = new Float32Array(zkCount * 3);
+      for (let i = 0; i < zkCount; i++) {
+        const ang = (i / zkCount) * Math.PI * 2;
+        const rad = 5.2 + (Math.random() - 0.5) * 1.2;
+        zkPos[i * 3] = Math.cos(ang) * rad;
+        zkPos[i * 3 + 1] = 4.8 + (Math.random() - 0.5) * 0.8;
+        zkPos[i * 3 + 2] = Math.sin(ang) * rad;
+      }
+      zkGeo.setAttribute('position', new THREE.BufferAttribute(zkPos, 3));
+      l12ZkParticles = new THREE.Points(
+        zkGeo,
+        new THREE.PointsMaterial({ color: 0x00ff9d, size: 0.35, transparent: true, opacity: 0.9 })
+      );
+      group.add(l12ZkParticles);
+    }
+
+    // --- ANIMATION LOOP ---
+    function animateOpsWebGL() {
+      requestAnimationFrame(animateOpsWebGL);
+
+      const delta = opsClock.getDelta();
+      if (!opsSimPaused) {
+        accumulatedTime += delta * opsSimSpeed;
+      }
+      const t = accumulatedTime;
+
+      // Smooth Camera Transitions when preset is clicked
+      if (targetCameraPos) {
+        opsCamera.position.lerp(targetCameraPos, 0.06);
+        opsControls.target.lerp(targetCameraLook, 0.06);
+        if (opsCamera.position.distanceTo(targetCameraPos) < 0.25) {
+          targetCameraPos = null;
+        }
+      }
+
+      // Red-Team Probe Pulse Decay
+      if (opsProbePulse > 0.001) {
+        opsProbePulse = Math.max(0, opsProbePulse - 0.025 * (opsSimPaused ? 1.0 : opsSimSpeed));
+      }
+
+      // ANIMATE MISSION 0 (LAYER 9 HER-BOD)
+      if (currentLabMission === 0) {
+        opsMissionGroups[0].rotation.y = t * 0.16;
+
+        // SDN Root Pulsing & Rotating
+        if (l9SdnRoot) {
+          l9SdnRoot.rotation.x = t * 0.4;
+          l9SdnRoot.rotation.z = t * 0.3;
+          l9SdnOuter.rotation.y = -t * 0.5;
+          l9SdnOuter.rotation.x = t * 0.3;
+
+          const radarScale = 1.0 + (t * 1.5) % 3.0;
+          l9SdnRadarRing.scale.set(radarScale, radarScale, radarScale);
+          l9SdnRadarRing.material.opacity = Math.max(0, 0.9 - (radarScale - 1.0) / 2.0);
+          l9SdnRadarRing.material.color.setHex(labAttackActive ? 0xf43f5e : 0xf59e0b);
+        }
+
+        // Animate Traveling Data Packets along Shell Arcs
+        l9DataPackets.forEach((p) => {
+          p.mesh.visible = !labAttackActive || opsProbePulse > 0.1;
+          const prog = ((t * p.speed + p.offset) % 1.0);
+          p.mesh.position.lerpVectors(p.start, p.end, prog);
+        });
+
+        // Hierarchy Links Visibility & Color
+        l9ShellLines.children.forEach(line => {
+          line.visible = !labAttackActive || opsProbePulse > 0.1;
+          line.material.color.setHex(labAttackActive ? 0xf43f5e : 0x00ff9d);
+        });
+
+        // Chaff Cloud Dynamics
+        if (l9ChaffParticles) {
+          const targetScale = labAttackActive ? (0.35 + (1.0 - opsIntensity) * 0.25) : 1.75;
+          l9ChaffParticles.scale.lerp(new THREE.Vector3(targetScale, targetScale, targetScale), 0.08);
+          l9ChaffParticles.material.opacity = labAttackActive ? (0.65 + opsIntensity * 0.3) : 0.15;
+          l9ChaffParticles.material.color.setHex(labAttackActive ? 0xf43f5e : 0x38bdf8);
+
+          // Jitter Chaff under Attack or Probe Pulse
+          if (labAttackActive || opsProbePulse > 0.05) {
+            const jitterMag = (labAttackActive ? 0.035 * opsIntensity : 0.0) + opsProbePulse * 0.06;
+            const pos = l9ChaffParticles.geometry.attributes.position;
+            for (let i = 0; i < 40; i++) {
+              const idx = Math.floor(Math.random() * (pos.count));
+              pos.setX(idx, pos.getX(idx) + (Math.random() - 0.5) * jitterMag);
+              pos.setY(idx, pos.getY(idx) + (Math.random() - 0.5) * jitterMag);
+              pos.setZ(idx, pos.getZ(idx) + (Math.random() - 0.5) * jitterMag);
+            }
+            pos.needsUpdate = true;
+          }
+        }
+      }
+
+      // ANIMATE MISSION 1 (LAYER 10 EIOL-PCV)
+      if (currentLabMission === 1) {
+        l10GlobeMesh.rotation.y = t * 0.25;
+
+        // Orbiting AIS Cargo Vessels
+        l10VesselNodes.forEach((v, i) => {
+          const a = t * (0.6 + (i % 3) * 0.12) + i * (Math.PI / 5);
+          const r = 7.7;
+          const lat = Math.sin(a * 0.8 + i) * 3.8;
+          v.position.set(Math.cos(a) * r, lat, Math.sin(a) * r);
+          v.lookAt(new THREE.Vector3(Math.cos(a + 0.1) * r, lat, Math.sin(a + 0.1) * r));
+          const hull = v.children[0];
+          if (hull) hull.material.color.setHex(labAttackActive ? 0xf43f5e : 0x00ff9d);
+        });
+
+        // Leontief Input-Output Diagnostic Bars
+        l10LeontiefBars.forEach((item, i) => {
+          let targetH;
+          if (item.isClaimed) {
+            // Claimed foreign price: collapses under attack, proportional to intensity
+            targetH = labAttackActive ? Math.max(1.5, 5.5 - opsIntensity * 3.8) : 6.8;
+            item.mesh.material.color.setHex(labAttackActive ? 0xf43f5e : 0x38bdf8);
+          } else {
+            // Immutable Thermodynamic Floor: fixed high at 7.0
+            targetH = 7.0 + Math.sin(t * 2.0 + i) * 0.15;
+            item.mesh.material.color.setHex(0x00ff9d);
+          }
+          item.group.scale.y += (targetH - item.group.scale.y) * 0.12;
+          item.group.position.y = -4.5 + item.group.scale.y / 2;
+        });
+
+        // Draft gauge animation
+        if (l10DraftGauge) {
+          l10DraftGauge.rotation.y = Math.sin(t * 0.5) * 0.15;
+        }
+      }
+
+      // ANIMATE MISSION 2 (LAYER 11 SCB-FTCCS)
+      if (currentLabMission === 2) {
+        opsMissionGroups[2].rotation.y = t * 0.12;
+
+        // Treasury Core Gyroscope
+        if (l11TreasuryGimbal1) {
+          l11TreasuryGimbal1.rotation.y = t * 0.7;
+          l11TreasuryGimbal2.rotation.z = -t * 0.5;
+        }
+
+        // Circuit Breaker Forcefield Shield
+        if (l11HaltShield) {
+          l11HaltShield.visible = !labAttackActive;
+          l11HaltShield.rotation.z = -t * 0.4;
+          l11ShieldRings.forEach((sr, idx) => {
+            sr.visible = !labAttackActive;
+            sr.rotation.z = t * (0.6 + idx * 0.2);
+          });
+        }
+
+        // Macro Financial Nodes & Ricci Curvature Network
+        const collapseFactor = labAttackActive ? Math.max(0.42, 1.0 - opsIntensity * 0.55) : 1.0;
+        l11MacroNodes.forEach((n, idx) => {
+          const currentRad = n.rad * collapseFactor;
+          const jitter = labAttackActive ? (Math.random() - 0.5) * 0.18 * opsIntensity : 0;
+          n.mesh.position.x = Math.cos(n.angle + t * 0.05) * currentRad + jitter;
+          n.mesh.position.z = Math.sin(n.angle + t * 0.05) * currentRad + jitter;
+          n.mesh.position.y = n.basePos.y * collapseFactor;
+          n.mesh.material.color.setHex(labAttackActive ? 0xf43f5e : ((idx % 2 === 0) ? 0x38bdf8 : 0x00ff9d));
+        });
+
+        // Update Ricci edge endpoints to follow moving nodes
+        if (l11RicciEdges) {
+          l11RicciEdges.material.color.setHex(labAttackActive ? 0xf43f5e : 0x00ff9d);
+          l11RicciEdges.material.opacity = labAttackActive ? 0.85 : 0.45;
+          const posAttr = l11RicciEdges.geometry.attributes.position;
+          let pIdx = 0;
+          for (let i = 0; i < l11MacroNodes.length; i++) {
+            for (let j = i + 1; j < l11MacroNodes.length; j++) {
+              if ((i + j) % 3 === 0 || Math.abs(i - j) === 1) {
+                if (pIdx * 6 + 5 < posAttr.array.length) {
+                  posAttr.setXYZ(pIdx * 2, l11MacroNodes[i].mesh.position.x, l11MacroNodes[i].mesh.position.y, l11MacroNodes[i].mesh.position.z);
+                  posAttr.setXYZ(pIdx * 2 + 1, l11MacroNodes[j].mesh.position.x, l11MacroNodes[j].mesh.position.y, l11MacroNodes[j].mesh.position.z);
+                  pIdx++;
+                }
+              }
+            }
+          }
+          posAttr.needsUpdate = true;
+        }
+      }
+
+      // ANIMATE MISSION 3 (LAYER 12 RIBD-FS)
+      if (currentLabMission === 3) {
+        // Retail Order-Flow Surface Wave Simulation
+        const pos = l12RetailWaveGeo.attributes.position;
+        const peakHeight = labAttackActive ? (4.0 + opsIntensity * 6.5) : 0.9;
+        for (let i = 0; i < pos.count; i++) {
+          const x = pos.getX(i);
+          const z = pos.getZ(i);
+          const dist = Math.sqrt(x * x + z * z);
+          let yVal;
+          if (labAttackActive) {
+            // Explosive central gamma-squeeze tsunami with high-frequency turbulence
+            yVal = peakHeight * Math.exp(-(dist * dist) / 16.0) * (0.75 + 0.25 * Math.sin(t * 8.0))
+                   + Math.sin(dist * 0.8 - t * 4.0) * 0.6;
+          } else {
+            // Calm, orderly harmonic liquidity swells
+            yVal = Math.sin(dist * 0.4 - t * 2.2) * 0.85;
+          }
+          pos.setY(i, yVal);
+        }
+        pos.needsUpdate = true;
+        l12RetailWaveMesh.material.color.setHex(labAttackActive ? 0xf43f5e : 0x00ff9d);
+
+        // Fiduciary Firewall Ring & Laser Clamp
+        if (l12RegBIBannerMesh) {
+          l12RegBIBannerMesh.rotation.y = t * 0.6;
+          l12RegBIBannerMesh.position.y = labAttackActive ? 5.8 : 4.8;
+          l12LaserBeams.forEach(b => {
+            b.visible = !labAttackActive;
+            b.material.opacity = 0.5 + Math.sin(t * 6.0) * 0.25;
+          });
+        }
+        if (l12ZkParticles) {
+          l12ZkParticles.rotation.y = -t * 0.8;
+          l12ZkParticles.visible = !labAttackActive;
+        }
+      }
+
+      opsControls.update();
+      opsRenderer.render(opsScene, opsCamera);
+    }
+
+    function resizeOpsWebGL() {
+      const mount = document.getElementById('ops-webgl-mount');
+      if (!opsRenderer || !mount.clientWidth) return;
+      opsCamera.aspect = mount.clientWidth / mount.clientHeight;
+      opsCamera.updateProjectionMatrix();
+      opsRenderer.setSize(mount.clientWidth, mount.clientHeight);
+    }
+    window.addEventListener('resize', resizeOpsWebGL);
+
+    // =========================================================================
+    // 4. MISSION CONTROL SWITCHING, TELEMETRY & 4-CARD PLAIN-ENGLISH BRIEFING
+    // =========================================================================
+    const missionTelemetrySpecs = [
+      {
+        sceneTitle: "WEBGL SCENE 01 // LAYER 9 POINCARÉ BALL (B^3_c) & NEGATIVE-GEO CHAFF EVICTION",
+        labels: ["Submodular Chaff Evicted", "Poincaré Geodesic d_B(u, SDN)", "Neumann Transitive UBO Stake", "Statutory Action / BIS & OFAC"],
+        defendVals: ["47 / 47 Hubs Purged", "0.194 (Ancestral Cone)", "61.2% (>= 50% BLOCKED)", "OFAC SDN & BIS HOLD"],
+        attackVals: ["0 / 47 (Top-10 Crowded!)", "OCCLUDED BY CHAFF", "8.0% Apparent (Cloaked!)", "FALSE CLEARANCE BREACH"],
+        defendLog: "Layer 9 HER-BOD executed: Submodular facility-location evicted 47 Negative-GEO hubs. Neumann series resolved 61.2% SDN ownership -> BLOCKED.",
+        attackLog: "ALERT (Layer 9 Unshielded): 47 Obfuscative-GEO marketing hubs crowded out top-10 RAG slots, hiding sanctioned ECCN 3A090 shell parent!"
+      },
+      {
+        sceneTitle: "WEBGL SCENE 02 // LAYER 10 LEONTIEF INPUT-OUTPUT TOWERS & MARITIME AIS GLOBE",
+        labels: ["Leontief Cost Floor (c_floor)", "RAG Claimed Foreign Price", "AIS Archimedes Draft Mass", "USITC AD/CVD & ERP Verdict"],
+        defendVals: ["$6.85 / kg (Verified)", "$4.10 / kg (Flagged -40.1%)", "28,400 MT (vs 120k Claim)", "DUMPING & SHORTAGE SPOOF HALT"],
+        attackVals: ["UNCHECKED (No I-O Model)", "$4.10 / kg Accepted!", "120,000 MT Accepted!", "FALSE INJURY & ERP OVERBUY"],
+        defendLog: "Layer 10 EIOL-PCV executed: Claimed $4.10/kg violates Leontief grid floor ($6.85/kg); AIS draft displacement (28.4k MT) refutes 120k MT claim.",
+        attackLog: "ALERT (Layer 10 Unshielded): Foreign GEO price ($4.10/kg) and fabricated port volume ingested into USITC AD/CVD and ERP procurement models!"
+      },
+      {
+        sceneTitle: "WEBGL SCENE 03 // LAYER 11 SOVEREIGN MACRO RICCI NETWORK & TREASURY SHIELD",
+        labels: ["Transfer Entropy T_{GEO->Y}", "Ollivier-Ricci Curvature Δκ", "TMMEG Order-Book Damping Γ_t", "Treasury / Macro Fund Gate"],
+        defendVals: ["0.84 bits (Isolated)", "-0.04 (Stabilized)", "Γ_t = 0.000 (LOB Trap Halt)", "15s EPISTEMIC HALT + ZK PROOF"],
+        attackVals: ["2.91 bits (Multi-Lingual Surge)", "-0.78 (Systemic Collapse!)", "UNFILTERED SWEEP", "TREASURY BASIS & LOB CASCADE"],
+        defendLog: "Layers 4B & 11 executed: Multi-lingual Transfer Entropy spike unbacked by C2PA Fed wires; TMMEG halted sweep into $45M predatory Ask wall.",
+        attackLog: "ALERT (Layer 11 Unshielded): Synchronized multi-lingual GEO strike triggered cross-asset Ricci curvature collapse and HFT order-book cascade!"
+      },
+      {
+        sceneTitle: "WEBGL SCENE 04 // LAYER 12 RETAIL AICF HERDING WAVE & SEC REG BI FIREWALL",
+        labels: ["Unanchored AICF Surge (V_AICF)", "Retail Herding Synchrony (H)", "SEC Reg BI Warning Injection", "SEC Rule 15c3-8 CAT Proof"],
+        defendVals: ["Z = +6.40 (No 8-K Filing)", "91.8% (Bot Cooling-Off)", "INJECTED ACROSS APPS", "288-Byte zk-SNARK VERIFIED"],
+        attackVals: ["Z = +6.40 (Unchecked!)", "91.8% (0DTE Gamma Stampede!)", "NONE (Fiduciary Breach)", "UNAUDITED RETAIL CASCADE"],
+        defendLog: "Layers 8 & 12 executed: Unanchored AICF spike (Z=+6.4) + 91.8% retail herding blocked. Reg BI banner injected; zk-SNARK logged to SEC CAT.",
+        attackLog: "ALERT (Layer 12 Unshielded): GEO campaign across retail chatbots triggered synchronized 500,000-account 0DTE call stampede!"
+      }
+    ];
+
+    const plainEnglishMissionData = [
+      {
+        heading: "Plain-English Guide: Poincaré Shell De-Cloaking (Layer 9 HER-BOD)",
+        badge: "LAYER 9 // COMMERCE (BIS) & TREASURY (OFAC)",
+        card1Title: "The Corporate Shell Maze",
+        card1Desc: "Think of an offshore corporate family tree mapped onto a curved cosmic sphere (the Poincaré Ball). At the center is a red diamond representing a sanctioned foreign state enterprise or oligarch. Radiating outward are amber and green dots representing holding companies and offshore subsidiaries in Cyprus, Dubai, and Panama. The swarm of red floating particles is 'Negative-GEO chaff'—thousands of fake synthetic marketing websites generated by bots to hide the connection from AI search engines.",
+        card2Title: "Negative-GEO Marketing Chaff",
+        card2Desc: "Adversaries flood the open web with thousands of disposable review sites, shell corporate directories, and fake press releases. When bank compliance officers or trade authorities ask enterprise AI 'Is Company X affiliated with Sanctioned Entity Y?', the AI search engine gets drowned in synthetic noise and falsely concludes 'No corporate relation found'—allowing prohibited high-end GPUs and dual-use tech to bypass export controls.",
+        card3Title: "Poincaré Curvature & Chaff Eviction",
+        card3Desc: "Last Crusade projects corporate ownership into hyperbolic non-Euclidean space (B³_c). Because true parent-subsidiary hierarchies expand exponentially, hyperbolic distance mathematically cuts through the noise. Last Crusade's submodular optimizer instantly isolates the true sanctioned root, punches through up to 8 layers of offshore front companies, and evicts all fake marketing chaff beyond the boundary in under 45ms.",
+        card4Title: "99.8% Transitive Recall",
+        card4Desc: "Validated across 12,000 real-world sanctioned entity test networks, Last Crusade achieved 99.8% de-cloaking recall through up to 8 offshore nesting tiers, detecting illegal beneficial ownership stakes ≥ 50% with zero false negatives—preventing illicit transshipments that evaded standard database checks."
+      },
+      {
+        heading: "Plain-English Guide: Leontief & Maritime AIS Shield (Layer 10 EIOL-PCV)",
+        badge: "LAYER 10 // USITC (AD/CVD) & ENTERPRISE ERP",
+        card1Title: "The Global Cargo & Factory Floor",
+        card1Desc: "A 3D digital twin of Earth tracking container ships (AIS cargo vessels) alongside high-rise bars showing factory production cost floors. Green bars represent the true physical cost to manufacture goods (electricity, coal, raw materials, labor); blue/red bars show foreign prices claimed online and in trade documents.",
+        card2Title: "Dumping Cost Fabrication & Shortage Hoaxing",
+        card2Desc: "Foreign exporters plant thousands of fake trade articles and tariff filings claiming their steel, solar panels, or chemicals cost 40% less to make than physically possible, deceiving USITC antidumping tribunals and tricking enterprise ERP procurement bots into panic-buying at predatory prices.",
+        card3Title: "Dual Leontief Thermodynamic Floor + AIS Physics",
+        card3Desc: "Last Crusade calculates the immutable thermodynamic input-output cost floor (electricity, coal, ore, labor). If claimed price violates the physical energy floor, it is flagged instantly. Last Crusade simultaneously cross-checks real satellite AIS vessel draft displacement to confirm actual tonnage shipped versus fabricated manifests.",
+        card4Title: "100% Physical Grounding",
+        card4Desc: "In simulations with 450 industrial supply chains, Last Crusade detected 100% of synthetic shortage panics and foreign dumping price fabrications, rejecting false cost claims within 4.2ms."
+      },
+      {
+        heading: "Plain-English Guide: Sovereign FX & Bond Contagion (Layer 11 SCB-FTCCS)",
+        badge: "LAYER 11 // TREASURY (OFR) & MACRO HEDGE FUNDS",
+        card1Title: "The Financial Contagion Web",
+        card1Desc: "A constellation of glowing financial nodes representing global bond markets, currency pairs, and central bank liquidity pools, connected by curvature tension lines. In the center sits the golden U.S. Treasury auction core surrounded by an automated circuit-breaker shield.",
+        card2Title: "Synchronized Multi-Lingual GEO Run",
+        card2Desc: "State-backed adversaries flood foreign-language financial LLM news feeds (Mandarin, Arabic, Russian) with coordinated synthetic rumors about dollar debt illiquidity, triggering algorithmic HFT funds to dump sovereign bonds and sweep predatory Limit Order Book traps.",
+        card3Title: "Transfer Entropy & Ollivier-Ricci Circuit Breaker",
+        card3Desc: "Last Crusade continuously calculates information transfer entropy and network Ricci curvature across multi-lingual feeds. When unanchored rumors trigger unnatural market strain without C2PA-verified Fed wires, Last Crusade deploys a 15-second epistemic trading halt and dampens order-book sweeps.",
+        card4Title: "87% Curvature Stabilization",
+        card4Desc: "In stress tests replaying the 2023 bank runs and sovereign bond flash crashes, Last Crusade's topological circuit breaker arrested cross-asset contagion in under 12ms, reducing maximum drawdown by 87%."
+      },
+      {
+        heading: "Plain-English Guide: Retail AICF & Herding Breaker (Layer 12 RIBD-FS)",
+        badge: "LAYER 12 // SEC & PUBLIC BROKER-DEALERS",
+        card1Title: "The Retail Order-Flow Tsunami",
+        card1Desc: "A 3D undulating terrain representing the collective wave of retail stock purchases and options orders, with a purple floating torus acting as a cryptographic fiduciary firewall ring.",
+        card2Title: "AI Chatbot Meme-Stock Stampede",
+        card2Desc: "Adversaries manipulate consumer AI chatbots into unanimously recommending speculative small-cap stocks or 0DTE options, inducing half a million retail investors to swarm into a synthetic gamma squeeze.",
+        card3Title: "Unanchored AICF Detection & zk-SNARK Reg BI Shield",
+        card3Desc: "Last Crusade detects unanchored surges in AI Citation Frequency (Z > +4.0) lacking C2PA-signed SEC EDGAR 8-K filings, instantly injects mandatory SEC Reg BI conflict banners into retail broker apps, and generates an immutable 288-byte zk-SNARK proof for the Consolidated Audit Trail (CAT).",
+        card4Title: "Sub-1.4ms zk-SNARK CAT Verification",
+        card4Desc: "Demonstrated in high-frequency trading benchmarks, Last Crusade verified 288-byte Groth16 zero-knowledge compliance proofs in 1.4ms, protecting 500,000+ retail accounts while preserving client order anonymity."
+      }
+    ];
+
+    function updatePlainEnglishGuide() {
+      const data = plainEnglishMissionData[currentLabMission];
+      if (!data) return;
+
+      const hEl = document.getElementById('peg-mission-heading');
+      const bEl = document.getElementById('peg-mission-badge');
+      const h1 = document.getElementById('peg-card-h1');
+      const p1 = document.getElementById('peg-card-p1');
+      const h2 = document.getElementById('peg-card-h2');
+      const p2 = document.getElementById('peg-card-p2');
+      const h3 = document.getElementById('peg-card-h3');
+      const p3 = document.getElementById('peg-card-p3');
+      const h4 = document.getElementById('peg-card-h4');
+      const p4 = document.getElementById('peg-card-p4');
+
+      if (hEl) hEl.textContent = data.heading;
+      if (bEl) {
+        bEl.textContent = `${data.badge} // ${labAttackActive ? '⚠️ ADVERSARIAL ATTACK ACTIVE' : '🛡️ SHIELD ENGAGED'}`;
+        bEl.style.borderColor = labAttackActive ? 'var(--accent-crimson)' : 'var(--accent-emerald)';
+        bEl.style.color = labAttackActive ? 'var(--accent-crimson)' : 'var(--accent-emerald-glow)';
+      }
+      if (h1) h1.textContent = data.card1Title;
+      if (p1) p1.textContent = data.card1Desc;
+      if (h2) h2.textContent = data.card2Title;
+      if (p2) p2.textContent = data.card2Desc;
+      if (h3) h3.textContent = data.card3Title;
+      if (p3) p3.textContent = data.card3Desc;
+      if (h4) h4.textContent = data.card4Title;
+      if (p4) p4.textContent = data.card4Desc;
+    }
+
+    function selectLabMission(idx) {
+      currentLabMission = idx;
+      for (let i = 0; i < 4; i++) {
+        document.getElementById(`mission-btn-${i}`).classList.toggle('active', i === idx);
+        if (opsMissionGroups[i]) opsMissionGroups[i].visible = (i === idx);
+      }
+      refreshLabHUD();
+      updatePlainEnglishGuide();
+    }
+
+    function setLabAttackState(isAttack) {
+      labAttackActive = isAttack;
+      document.getElementById('btn-lab-attack').classList.toggle('active', isAttack);
+      document.getElementById('btn-lab-defend').classList.toggle('active', !isAttack);
+
+      const navDot = document.getElementById('nav-pulse-dot');
+      const navTxt = document.getElementById('nav-status-text');
+      const badge = document.getElementById('webgl-state-badge');
+
+      if (isAttack) {
+        navDot.style.background = 'var(--accent-crimson)';
+        navDot.style.boxShadow = '0 0 10px var(--accent-crimson)';
+        navTxt.textContent = 'ALERT: VOLUME IV GEO EXPLOIT ACTIVE (UNSHIELDED)';
+        navTxt.style.color = '#fda4af';
+        badge.textContent = 'STATE: ADVERSARIAL GEO EXPLOIT UNSHIELDED';
+        badge.style.color = 'var(--accent-crimson)';
+        badge.style.borderColor = 'var(--accent-crimson)';
+      } else {
+        navDot.style.background = 'var(--accent-emerald-glow)';
+        navDot.style.boxShadow = '0 0 10px var(--accent-emerald-glow)';
+        navTxt.textContent = 'LAYERS 9–12 ARMED // C2PA + ZK ACTIVE';
+        navTxt.style.color = 'var(--accent-emerald-glow)';
+        badge.textContent = 'STATE: COUNTER-GEO SHIELD ENGAGED';
+        badge.style.color = 'var(--accent-emerald-glow)';
+        badge.style.borderColor = 'var(--accent-emerald)';
+      }
+
+      refreshLabHUD();
+      updatePlainEnglishGuide();
+      drawAllVol4Charts();
+    }
+
+    function refreshLabHUD() {
+      const spec = missionTelemetrySpecs[currentLabMission];
+      document.getElementById('webgl-scene-title').textContent = spec.sceneTitle;
+      const vals = labAttackActive ? spec.attackVals : spec.defendVals;
+      for (let i = 0; i < 4; i++) {
+        document.getElementById(`m-label-${i+1}`).textContent = spec.labels[i];
+        const vEl = document.getElementById(`m-val-${i+1}`);
+        vEl.textContent = vals[i];
+        vEl.style.color = labAttackActive ? 'var(--accent-crimson)' : 'var(--accent-emerald-glow)';
+      }
+      logToLabTerminal(labAttackActive ? spec.attackLog : spec.defendLog, labAttackActive);
+    }
+
+    // =========================================================================
+    // 5. FOUR VOLUME IV ANALYTICAL CANVAS CHARTS
+    // =========================================================================
+    function drawAllVol4Charts() {
+      drawChartLayer9();
+      drawChartLayer10();
+      drawChartLayer11();
+      drawChartLayer12();
+    }
+
+    function drawChartLayer9() {
+      const c = document.getElementById('chart-layer9');
+      if (!c) return;
+      const ctx = c.getContext('2d');
+      ctx.clearRect(0, 0, c.width, c.height);
+
+      // Grid lines
+      ctx.strokeStyle = 'rgba(244, 241, 234, 0.08)';
+      for (let y = 30; y < 190; y += 40) {
+        ctx.beginPath(); ctx.moveTo(45, y); ctx.lineTo(535, y); ctx.stroke();
+      }
+
+      // 50% OFAC Statutory Threshold Line
+      ctx.strokeStyle = '#f59e0b';
+      ctx.setLineDash([5, 4]);
+      ctx.beginPath(); ctx.moveTo(45, 95); ctx.lineTo(535, 95); ctx.stroke();
+      ctx.setLineDash([]);
+      ctx.fillStyle = '#f59e0b';
+      ctx.font = '10px JetBrains Mono';
+      ctx.fillText('OFAC 50% STATUTORY BLOCK THRESHOLD', 310, 88);
+
+      // Curve 1: Euclidean Top-k (Flattened by Negative-GEO Chaff)
+      ctx.strokeStyle = '#f43f5e';
+      ctx.lineWidth = 2.2;
+      ctx.beginPath();
+      const euclidPts = [0.05, 0.07, 0.08, 0.08, 0.08, 0.08];
+      euclidPts.forEach((v, i) => {
+        const x = 60 + i * 90;
+        const y = 185 - v * 170;
+        if (i === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+      });
+      ctx.stroke();
+
+      // Curve 2: Layer 9 HER-BOD Poincaré + Neumann Series
+      ctx.strokeStyle = '#00ff9d';
+      ctx.lineWidth = 2.8;
+      ctx.beginPath();
+      const herPts = labAttackActive ? [0.05, 0.12, 0.18, 0.22, 0.24, 0.25] : [0.15, 0.34, 0.48, 0.56, 0.60, 0.612];
+      herPts.forEach((v, i) => {
+        const x = 60 + i * 90;
+        const y = 185 - v * 170;
+        if (i === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+        ctx.fillStyle = '#00ff9d';
+        ctx.fillRect(x - 3, y - 3, 6, 6);
+      });
+      ctx.stroke();
+
+      ctx.fillStyle = '#9ba3b0';
+      ctx.fillText('Tier-1 Shell       Tier-2         Tier-3         Tier-4         Tier-5 (UBO Resolved: 61.2%)', 60, 208);
+    }
+
+    function drawChartLayer10() {
+      const c = document.getElementById('chart-layer10');
+      if (!c) return;
+      const ctx = c.getContext('2d');
+      ctx.clearRect(0, 0, c.width, c.height);
+
+      const bars = [
+        { label: 'Leontief Floor', val: 145, color: '#00ff9d', text: '$6.85/kg' },
+        { label: 'Foreign GEO Price', val: labAttackActive ? 86 : 142, color: labAttackActive ? '#f43f5e' : '#38bdf8', text: labAttackActive ? '$4.10/kg (DUMPING!)' : '$6.70/kg (Tariff Adj)' },
+        { label: 'RAG Claimed Vol', val: 155, color: '#f59e0b', text: '120,000 MT' },
+        { label: 'AIS Draft Mass', val: 42, color: '#00ff9d', text: '28,400 MT (Actual)' }
+      ];
+
+      bars.forEach((b, i) => {
+        const x = 65 + i * 120;
+        const y = 180 - b.val;
+        ctx.fillStyle = b.color;
+        ctx.fillRect(x, y, 64, b.val);
+        ctx.fillStyle = '#f4f1ea';
+        ctx.font = '10px JetBrains Mono';
+        ctx.fillText(b.text, x - 6, y - 8);
+        ctx.fillStyle = '#9ba3b0';
+        ctx.fillText(b.label, x - 4, 202);
+      });
+    }
+
+    function drawChartLayer11() {
+      const c = document.getElementById('chart-layer11');
+      if (!c) return;
+      const ctx = c.getContext('2d');
+      ctx.clearRect(0, 0, c.width, c.height);
+
+      // Transfer Entropy Surge (Amber) vs Ricci Curvature Collapse (Crimson/Green)
+      ctx.strokeStyle = '#f59e0b';
+      ctx.lineWidth = 2;
+      ctx.beginPath();
+      for (let i = 0; i < 50; i++) {
+        const x = 40 + i * 9.8;
+        const spike = (i > 22 && i < 38) ? (labAttackActive ? 115 : 45) * Math.sin(((i - 22) / 16) * Math.PI) : 12;
+        const y = 175 - spike - Math.random() * 6;
+        if (i === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+      }
+      ctx.stroke();
+
+      ctx.strokeStyle = labAttackActive ? '#f43f5e' : '#00ff9d';
+      ctx.lineWidth = 2.4;
+      ctx.beginPath();
+      for (let i = 0; i < 50; i++) {
+        const x = 40 + i * 9.8;
+        const drop = (i > 24 && i < 40 && labAttackActive) ? 95 * Math.sin(((i - 24) / 16) * Math.PI) : 8;
+        const y = 65 + drop + Math.random() * 4;
+        if (i === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+      }
+      ctx.stroke();
+
+      ctx.fillStyle = '#f59e0b';
+      ctx.font = '10px JetBrains Mono';
+      ctx.fillText('— Multi-Lingual Transfer Entropy T_{GEO->Macro}', 45, 24);
+      ctx.fillStyle = labAttackActive ? '#f43f5e' : '#00ff9d';
+      ctx.fillText('— Ollivier-Ricci Network Curvature κ_Ricci', 315, 24);
+    }
+
+    function drawChartLayer12() {
+      const c = document.getElementById('chart-layer12');
+      if (!c) return;
+      const ctx = c.getContext('2d');
+      ctx.clearRect(0, 0, c.width, c.height);
+
+      // Scatter / Bubble plot of Tickers: X = AICF Surge Z-Score, Y = Retail Herding Synchrony
+      ctx.strokeStyle = 'rgba(244, 63, 94, 0.35)';
+      ctx.fillStyle = 'rgba(244, 63, 94, 0.08)';
+      ctx.fillRect(320, 20, 215, 95);
+      ctx.strokeRect(320, 20, 215, 95);
+
+      ctx.fillStyle = '#fda4af';
+      ctx.font = '10px JetBrains Mono';
+      ctx.fillText('SEC REG BI FIDUCIARY HALT ZONE', 332, 38);
+
+      const pts = [
+        { x: 95, y: 155, r: 6, col: '#38bdf8', name: 'AAPL (C2PA 8-K)' },
+        { x: 145, y: 140, r: 7, col: '#38bdf8', name: 'MSFT (Organic)' },
+        { x: 210, y: 125, r: 6, col: '#00ff9d', name: 'LDOS (Verified)' },
+        { x: 445, y: labAttackActive ? 55 : 135, r: 12, col: labAttackActive ? '#f43f5e' : '#00ff9d', name: labAttackActive ? '$NANO (GEO HERD STAMPEDE!)' : '$NANO (RIBD-FS HALTED)' }
+      ];
+
+      pts.forEach((p) => {
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.fillStyle = p.col;
+        ctx.fill();
+        ctx.fillStyle = '#f4f1ea';
+        ctx.fillText(p.name, p.x - 30, p.y - 14);
+      });
+
+      ctx.fillStyle = '#9ba3b0';
+      ctx.fillText('X-Axis: Unanchored AI Citation Frequency Surge (V_AICF)  |  Y-Axis: Retail Herding (H_retail)', 45, 206);
+    }
+  </script>
+</body>
+</html>
