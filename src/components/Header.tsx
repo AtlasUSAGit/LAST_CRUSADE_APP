@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ShieldAlert, Menu, X, ArrowUpRight, FileCode, Boxes, Globe, Terminal, Briefcase, Presentation } from 'lucide-react';
+import { ShieldAlert, Menu, X, ArrowUpRight, FileCode, Boxes, Home, Terminal, Briefcase, Presentation } from 'lucide-react';
 import { NavigationPage } from '../types';
 
 interface HeaderProps {
@@ -52,8 +52,8 @@ export const Header: React.FC<HeaderProps> = ({
                   : 'text-[#410217]/70 hover:text-[#410217]'
               }`}
             >
-              <Globe className="w-3.5 h-3.5 text-[#D5991C]" />
-              <span>Threat Intel</span>
+              <Home className="w-3.5 h-3.5 text-[#D5991C]" />
+              <span>Home</span>
             </button>
 
             <button
@@ -193,8 +193,8 @@ export const Header: React.FC<HeaderProps> = ({
                   : 'bg-[#FBF3E2] text-[#410217] border-[#F2D69D]'
               }`}
             >
-              <span>01 // Threat Intelligence (Overview)</span>
-              <Globe className="w-4 h-4 text-[#D5991C]" />
+              <span>01 // Home (Overview)</span>
+              <Home className="w-4 h-4 text-[#D5991C]" />
             </button>
 
             <button
