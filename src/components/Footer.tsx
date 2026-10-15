@@ -112,7 +112,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenAudit, onOpenIncident, onN
               </li>
               <li>
                 <a
-                  href="/last_crusade_pitch_deck.html"
+                  href="./last_crusade_pitch_deck.html"
                   className="hover:text-[#D5991C] transition-colors text-left flex items-center gap-1 cursor-pointer font-bold"
                 >
                   <Presentation className="w-3 h-3 text-[#D5991C]" />
@@ -136,7 +136,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenAudit, onOpenIncident, onN
                 <ArrowUpRight className="w-3.5 h-3.5" />
               </button>
               <a
-                href="/last_crusade_pitch_deck.html"
+                href="./last_crusade_pitch_deck.html"
                 className="w-full text-left py-2.5 px-3 bg-[#310111] text-[#F2D69D] border border-[#D5991C]/50 font-bold hover:bg-[#D5991C] hover:text-[#130108] transition-all flex items-center justify-between cursor-pointer group"
               >
                 <span>PITCH DECK</span>

@@ -35,7 +35,7 @@ export const PitchDeckPage: React.FC<PitchDeckPageProps> = ({
 
         <div className="flex items-center space-x-3">
           <a
-            href="/last_crusade_pitch_deck.html"
+            href="./last_crusade_pitch_deck.html"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center space-x-1.5 px-3 py-1.5 border border-[#410217]/30 hover:border-[#410217] text-[#410217] hover:bg-[#410217]/5 transition-colors cursor-pointer font-bold uppercase tracking-wider"
@@ -60,7 +60,7 @@ export const PitchDeckPage: React.FC<PitchDeckPageProps> = ({
       {/* Embedded Presentation Frame */}
       <div className="w-full flex-1 relative bg-[#FAF5EB] min-h-[calc(100vh-130px)]">
         <iframe
-          src="/last_crusade_pitch_deck.html"
+          src="./last_crusade_pitch_deck.html"
           title="Last Crusade // Petra Labs Pitch Deck"
           className="w-full h-full min-h-[calc(100vh-130px)] border-0"
           allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; fullscreen"

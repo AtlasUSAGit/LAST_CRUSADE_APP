@@ -133,7 +133,7 @@ export const Header: React.FC<HeaderProps> = ({
           {/* Action CTAs */}
           <div className="hidden md:flex items-center space-x-3">
             <a
-              href="/last_crusade_pitch_deck.html"
+              href="./last_crusade_pitch_deck.html"
               className="flex items-center space-x-1.5 px-3.5 py-2 border border-[#D5991C] bg-[#FAF2E1] hover:bg-[#D5991C] text-[#410217] hover:text-[#130108] text-xs font-bold uppercase tracking-wider transition-all shadow-xs cursor-pointer group"
               title="View Last Crusade Pitch Deck"
             >
@@ -153,7 +153,7 @@ export const Header: React.FC<HeaderProps> = ({
           {/* Mobile Menu Button */}
           <div className="md:hidden flex items-center space-x-2">
             <a
-              href="/last_crusade_pitch_deck.html"
+              href="./last_crusade_pitch_deck.html"
               className="p-2 border border-[#D5991C] bg-[#FAF2E1] text-[#410217] hover:bg-[#D5991C] hover:text-[#130108] transition-colors"
               title="Pitch Deck"
             >
@@ -288,7 +288,7 @@ export const Header: React.FC<HeaderProps> = ({
             </button>
 
             <a
-              href="/last_crusade_pitch_deck.html"
+              href="./last_crusade_pitch_deck.html"
               onClick={() => setMobileMenuOpen(false)}
               className="w-full text-left p-2.5 font-bold flex items-center justify-between border bg-[#FAF5EB] text-[#410217] border-[#D5991C] hover:bg-[#D5991C] hover:text-[#130108] transition-colors"
             >
