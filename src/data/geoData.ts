@@ -139,7 +139,7 @@ export const SERVICES: ServiceItem[] = [
     subtitle: 'Sovereign Epistemic Defense & RAG Layer Immunization',
     icon: 'ShieldCheck',
     badge: 'DEFENSIVE CYBER',
-    description: 'Comprehensive defensive cybersecurity shielding enterprise knowledge bases and domestic commercial foundation models (Claude, ChatGPT, Gemini) from foreign intelligence agencies and algorithmic adversaries targeting the open-web RAG layer.',
+    description: 'Comprehensive defensive cybersecurity shielding enterprise knowledge bases and domestic commercial foundation models (Claude, ChatGPT, Gemini) from foreign adversaries targeting the open-web RAG layer.',
     capabilities: [
       'Continuous vector embedding telemetry across multi-engine RAG pipelines',
       'Automated indirect prompt injection & memory poisoning neutralization',
