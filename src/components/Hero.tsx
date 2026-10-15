@@ -43,18 +43,16 @@ export const Hero: React.FC<HeroProps> = ({ onOpenAudit, onNavigate }) => {
     mm.add(MOTION_OK, () => {
       // Intro sequence on load
       const intro = gsap.timeline({ defaults: { ease: EASE_OUT } });
-      intro.from('[data-hero-meta]', { autoAlpha: 0, y: -8, duration: 0.8, stagger: 0.06 });
-      intro.from('[data-hero-rule]', { scaleX: 0, duration: 1.4, ease: EASE_IN_OUT }, 0);
 
       const split = SplitText.create(titleRef.current, {
         type: 'lines',
         linesClass: 'split-line',
         autoSplit: true,
-        onSplit: (self) => gsap.from(self.lines, { y: 24, autoAlpha: 0, duration: 1.2, ease: EASE_OUT, stagger: 0.1, delay: 0.2 })
+        onSplit: (self) => gsap.from(self.lines, { y: 24, autoAlpha: 0, duration: 1.2, ease: EASE_OUT, stagger: 0.1, delay: 0.1 })
       });
 
-      intro.from('[data-hero-fade]', { autoAlpha: 0, y: 24, duration: 1.1, stagger: 0.1 }, 0.7);
-      intro.from(globeRef.current, { autoAlpha: 0, scale: 0.86, duration: 2, ease: 'power3.out' }, 0.3);
+      intro.from('[data-hero-fade]', { autoAlpha: 0, y: 24, duration: 1.1, stagger: 0.1 }, 0.4);
+      intro.from(globeRef.current, { autoAlpha: 0, scale: 0.86, duration: 2, ease: 'power3.out' }, 0.2);
 
       // Globe drifts upward as the hero scrolls away
       gsap.to(globeRef.current, {
@@ -99,16 +97,8 @@ export const Hero: React.FC<HeroProps> = ({ onOpenAudit, onNavigate }) => {
   return (
     <section ref={sectionRef} className="relative overflow-visible bg-transparent">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        {/* Meta strip */}
-        <div className="pt-8 md:pt-10 flex flex-wrap items-center justify-between gap-3 font-mono text-[10px] sm:text-[11px] uppercase tracking-[0.2em] text-[#410217]/55">
-          <span data-hero-meta>Last Crusade Defense — Counter-GEO Threat Intelligence</span>
-          <span data-hero-meta className="hidden md:inline">Washington, D.C.</span>
-          <span data-hero-meta>Research Vols. I–III · Oct 2026</span>
-        </div>
-        <div data-hero-rule className="rule-draw h-px bg-[#410217]/20 mt-4" />
-
         {/* Headline + globe */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center pt-10 md:pt-14">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center pt-8 md:pt-12">
           <div className="lg:col-span-6">
             <h1
               ref={titleRef}
