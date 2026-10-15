@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Zap, Database, AlertTriangle, GitFork, Search, UserCheck, Cpu, ArrowUpRight, ShieldCheck, Layers } from 'lucide-react';
+import { Crosshair, TrendingUp, Database, AlertTriangle, GitFork, Search, ShieldCheck, Cpu, Zap, Layers } from 'lucide-react';
 import { CAPABILITIES_MATRIX } from '../data/geoData';
 import { SectionHeader } from './home/SectionHeader';
 import { gsap, ScrollTrigger, EASE_OUT } from '../utils/motion';
@@ -12,10 +12,10 @@ export const CapabilitiesGrid: React.FC = () => {
 
   const categories = [
     { label: 'ALL', count: CAPABILITIES_MATRIX.length },
-    { label: 'LLM Security', count: CAPABILITIES_MATRIX.filter((c) => c.category === 'LLM Security').length },
-    { label: 'RAG Integrity', count: CAPABILITIES_MATRIX.filter((c) => c.category === 'RAG Integrity').length },
-    { label: 'Brand Protection', count: CAPABILITIES_MATRIX.filter((c) => c.category === 'Brand Protection').length },
-    { label: 'Threat Intel', count: CAPABILITIES_MATRIX.filter((c) => c.category === 'Threat Intel').length }
+    { label: 'Defensive Cyber', count: CAPABILITIES_MATRIX.filter((c) => c.category === 'Defensive Cyber').length },
+    { label: 'Offensive Operations', count: CAPABILITIES_MATRIX.filter((c) => c.category === 'Offensive Operations').length },
+    { label: 'Market Arbitrage', count: CAPABILITIES_MATRIX.filter((c) => c.category === 'Market Arbitrage').length },
+    { label: 'Autonomous Swarms', count: CAPABILITIES_MATRIX.filter((c) => c.category === 'Autonomous Swarms').length }
   ];
 
   const filteredCapabilities = selectedCategory === 'ALL'
@@ -47,18 +47,20 @@ export const CapabilitiesGrid: React.FC = () => {
 
   const getIcon = (iconName: string) => {
     switch (iconName) {
-      case 'ShieldZap':
-        return <Zap className="w-4 h-4 text-[#410217]" />;
       case 'Database':
         return <Database className="w-4 h-4 text-[#8B5A0B]" />;
+      case 'Crosshair':
+        return <Crosshair className="w-4 h-4 text-[#8B1E1E]" />;
+      case 'TrendingUp':
+        return <TrendingUp className="w-4 h-4 text-[#00A878]" />;
+      case 'GitFork':
+        return <GitFork className="w-4 h-4 text-[#004566]" />;
+      case 'Search':
+        return <Search className="w-4 h-4 text-[#8B5A0B]" />;
       case 'AlertTriangle':
         return <AlertTriangle className="w-4 h-4 text-[#8B1E1E]" />;
-      case 'GitFork':
-        return <GitFork className="w-4 h-4 text-[#00A878]" />;
-      case 'Search':
-        return <Search className="w-4 h-4 text-[#004566]" />;
-      case 'UserCheck':
-        return <UserCheck className="w-4 h-4 text-[#410217]" />;
+      case 'ShieldCheck':
+        return <ShieldCheck className="w-4 h-4 text-[#00A878]" />;
       default:
         return <Cpu className="w-4 h-4 text-[#410217]" />;
     }
@@ -75,10 +77,10 @@ export const CapabilitiesGrid: React.FC = () => {
         {/* Section Header */}
         <SectionHeader
           sectionIndex="§ 05"
-          kicker="// Threat Detection Matrix & Specifications"
+          kicker="// Threat Matrix & Cyber Operations Specifications"
           title="Multi-Vector Generative Threat Matrix"
           italicWord="Threat Matrix"
-          description="Proprietary high-dimensional vector space monitoring engineered specifically for frontier LLMs, retrieval-augmented embeddings, and autonomous search crawlers."
+          description="Proprietary high-dimensional vector space architecture engineered for defensive cybersecurity, offensive GEO cyber operations, algorithmic liquidity arbitrage, and autonomous agent swarms."
         />
 
         {/* Category Filter Tabs */}
@@ -120,7 +122,7 @@ export const CapabilitiesGrid: React.FC = () => {
                       {getIcon(cap.icon)}
                     </div>
                     <span className="font-bold text-[#8B5A0B] text-[11px]">
-                      DET-0{idx + 1}
+                      OPS-0{idx + 1}
                     </span>
                   </div>
                   <span className="font-mono text-[9px] px-2 py-0.5 bg-[#FFFDF8] border border-[#F2D69D] text-[#410217] font-bold uppercase tracking-wider">

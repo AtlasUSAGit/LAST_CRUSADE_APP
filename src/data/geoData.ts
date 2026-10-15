@@ -134,100 +134,100 @@ export const ENGINE_STATUSES: EngineStatus[] = [
 
 export const SERVICES: ServiceItem[] = [
   {
-    id: 'investigations',
-    title: 'GEO Investigations',
-    subtitle: 'Forensic AI Answer Analysis & Citation Auditing',
-    icon: 'SearchCheck',
-    badge: 'FORENSIC AUDITING',
-    description: 'Deep-tissue forensic analysis of how your brand, key executives, products, and legal disclaimers are synthesized, cited, or distorted inside generative LLMs and RAG pipelines.',
+    id: 'defensive-cyber',
+    title: 'Counter-GEO Defensive Cybersecurity',
+    subtitle: 'Sovereign Epistemic Defense & RAG Layer Immunization',
+    icon: 'ShieldCheck',
+    badge: 'DEFENSIVE CYBER',
+    description: 'Comprehensive defensive cybersecurity shielding enterprise knowledge bases and domestic commercial foundation models (Claude, ChatGPT, Gemini) from foreign intelligence agencies and algorithmic adversaries targeting the open-web RAG layer.',
     capabilities: [
-      'Multi-engine prompt matrix probing across 15+ frontier models',
-      'Vector space similarity analysis & embedding cluster drift tracking',
-      'Citation source provenance mapping & hallucination attribution',
-      'Executive perception & synthetic defamation audit reports'
+      'Continuous vector embedding telemetry across multi-engine RAG pipelines',
+      'Automated indirect prompt injection & memory poisoning neutralization',
+      'Cryptographic HSM ground-truth anchoring for SEC and corporate filings',
+      'Hawkes-process contagion suppression across generative answer engines'
     ],
-    sampleLog: '[FORENSIC_LOG] Probed 1,200 prompt variations across GPT-4o, Claude 3.5, and Perplexity. Identified 14 corrupt vector paths originating from unverified 3rd-party blogs.'
+    sampleLog: '[DEFENSIVE_CYBER] Quarantined 19 asymmetric RAG poisoning payloads targeting corporate financial disclosures. Embeddings stabilized at cosine similarity 0.998. Vector drift neutralized.'
   },
   {
-    id: 'detection',
-    title: 'GEO Threat Detection',
-    subtitle: 'Continuous Adversarial Monitoring & Attack Early Warning',
-    icon: 'ShieldAlert',
-    badge: 'CONTINUOUS MONITORING',
-    description: '24/7 automated monitoring against adversarial manipulation of generative answers: prompt injection attacks, poisoned training/RAG data, malicious answer engine optimization, and hallucination exploits.',
+    id: 'offensive-ops',
+    title: 'Offensive GEO Cyber Operations',
+    subtitle: 'Model-Targeted Asymmetric Operations & Swarm Interdiction',
+    icon: 'Crosshair',
+    badge: 'OFFENSIVE OPERATIONS',
+    description: 'Precision offensive cyber operations engineered for national security agencies and sovereign defense contractors: weaponizing the unfortified open-web RAG layers of foreign foundation models, discovering novel exploitation algorithms, and executing Agent-to-Agent (A2A) swarm interdiction.',
     capabilities: [
-      'Real-time prompt injection & memory poisoning detection',
-      'Automated RAG knowledge base corruption alerting',
-      'Synthetic rumor & hallucinated financial claim early warning',
-      'Dark-web & adversary forum GEO exploit chatter monitoring'
+      'Asymmetric targeting of foreign foundation model open-web RAG pipelines',
+      'Frontier model recursive deep-research for zero-day offensive algorithm discovery',
+      'Agent-to-Agent (A2A) protocol interdiction & autonomous drone swarm disruption',
+      'Adversarial retrieval displacement across foreign sovereign search engines'
     ],
-    sampleLog: '[DETECTION_ALERT] High-confidence indirect prompt injection payload detected in external HTML element targeting Perplexity vector indexing engine. Status: Flagged.'
+    sampleLog: '[OFFENSIVE_OPS] Executed sovereign RAG layer probe against foreign frontier model cluster. Identified 12 unfortified external ingestion sinks. Deployed asymmetric semantic counter-vector.'
   },
   {
-    id: 'countermeasures',
-    title: 'Counter-GEO Operations',
-    subtitle: 'Active Remediation, Source Correction & Takedown Coordination',
-    icon: 'ZapOff',
-    badge: 'ACTIVE REMEDIATION',
-    description: 'Tactical countermeasures to reclaim AI answer real estate: correcting poisoned RAG sources, deploying authoritative vector-seeded content, legal/technical takedown coordination, and model perception alignment.',
+    id: 'market-arbitrage',
+    title: 'Liquidity Extraction & Market Arbitrage',
+    subtitle: 'Algorithmic Order-Book Sweeps & Market Manipulation Defense',
+    icon: 'TrendingUp',
+    badge: 'MARKET OPERATIONS',
+    description: 'Dual-use financial intelligence for broker-dealers, hedge funds, and sovereign treasuries: defending domestic markets from foreign liquidity extraction attacks while deploying algorithmic GEO strategies to capture bot-generated liquidity in high-frequency trading.',
     capabilities: [
-      'Authoritative vector seeding to displace malicious/hallucinated answers',
-      'Poisoned web source technical & legal takedown enforcement',
-      'RAG pipeline citation override & Knowledge Graph alignment',
-      'Emergency response containment within < 15 minutes'
+      'Detection and interdiction of foreign-state generative market manipulation',
+      'Pre-positioned limit-order wall defense against predatory agent buying sweeps',
+      'Algorithmic GEO execution converting generative AI queries into actionable liquidity',
+      'SEC, FINRA, & Treasury-grade sovereign market monitoring and compliance telemetry'
     ],
-    sampleLog: '[COUNTERMEASURE_EXEC] Deployed high-density authoritative entity schemas to 4 primary crawling clusters. Vector distance normalized to 0.04. Hallucinated claim suppressed.'
+    sampleLog: '[ARBITRAGE_INTEL] Flagged coordinated agent buying sweep in mid-cap industrial assets. Defended pre-positioned order book; captured $14.2M bot-generated liquidity pool.'
   }
 ];
 
 export const CAPABILITIES_MATRIX: CapabilityItem[] = [
   {
     id: 'cap-1',
-    title: 'Prompt Injection Defense',
-    category: 'LLM Security',
-    icon: 'ShieldZap',
-    description: 'Detect and neutralize direct and indirect prompt injection attacks hidden inside web content designed to hijack model answers about your brand.',
-    technicalImpact: 'Prevents untrusted third-party inputs from manipulating model system instructions or injecting malicious output instructions.'
+    title: 'Open-Web RAG Layer Immunization',
+    category: 'Defensive Cyber',
+    icon: 'Database',
+    description: 'Immunize public and enterprise data sources against asymmetric RAG poisoning designed by foreign intelligence services to corrupt domestic models like Claude, ChatGPT, and Gemini.',
+    technicalImpact: 'Cryptographic HSM root anchors and cosine similarity bounds prevent adversarial micro-data from being ingested into generative vector indexes.'
   },
   {
     id: 'cap-2',
-    title: 'RAG Data Poisoning Scans',
-    category: 'RAG Integrity',
-    icon: 'Database',
-    description: 'Continuous monitoring of public data sources, Wikipedia, forums, and tech review databases crawled by AI search vector stores.',
-    technicalImpact: 'Identifies malicious edits, hidden text, and adversarial micro-data created to pollute retrieval-augmented generation.'
+    title: 'Foreign Model RAG Targeting',
+    category: 'Offensive Operations',
+    icon: 'Crosshair',
+    description: 'Asymmetric offensive cyber operations targeting the open-web retrieval layers of foreign commercial and sovereign foundation models, bypassing corporate firewalls without touching model weights.',
+    technicalImpact: 'Injects authorized, low-cost decentralized semantic vectors into foreign crawling clusters to shape model perception and decision synthesis.'
   },
   {
     id: 'cap-3',
-    title: 'Hallucination & Defamation Tracking',
-    category: 'Brand Protection',
-    icon: 'AlertTriangle',
-    description: 'Track false claims, synthetic lawsuits, fake product recalls, or executive misconduct generated erroneously by probabilistic model sampling.',
-    technicalImpact: 'Automated temperature probing measures model hallucination frequency across enterprise decision query workflows.'
+    title: 'Liquidity Extraction Arbitrage Defense',
+    category: 'Market Arbitrage',
+    icon: 'TrendingUp',
+    description: 'Detect, intercept, and counter predatory attacks where adversaries accumulate pre-positioned limit orders and trigger automated AI bot buying sweeps to extract market liquidity.',
+    technicalImpact: 'Correlates high-frequency order-book anomalies with generative engine query velocity to neutralize synthetic liquidity traps in real time.'
   },
   {
     id: 'cap-4',
-    title: 'Cross-Model Citation Graphing',
-    category: 'Threat Intel',
+    title: 'Agent-to-Agent (A2A) Swarm Interdiction',
+    category: 'Autonomous Swarms',
     icon: 'GitFork',
-    description: 'Map interconnected citation dependencies showing how one poisoned source cascades across ChatGPT, Perplexity, Copilot, and Gemini.',
-    technicalImpact: 'Graph neural analysis isolates root node corruptions responsible for multi-engine answer degradation.'
+    description: 'Offensive and defensive counter-GEO operations for autonomous drone swarms, defense contractor robotics, and interconnected multi-agent communication networks.',
+    technicalImpact: 'Neutralizes semantic spoofing and consensus hijacking across distributed autonomous agent communication protocols.'
   },
   {
     id: 'cap-5',
-    title: 'Malicious AEO Detection',
-    category: 'Threat Intel',
+    title: 'Frontier Model Deep Research & Novel Algorithms',
+    category: 'Offensive Operations',
     icon: 'Search',
-    description: 'Identify aggressive competitor or black-hat "Answer Engine Optimization" tactics designed to demote or slander your offerings.',
-    technicalImpact: 'Exposes automated synthetic content farms engineered specifically to rank at top positions in AI RAG retrieval.'
+    description: 'Harnessing frontier reasoning models in recursive deep-research configurations to discover novel mathematical algorithms and zero-day offensive GEO strategies never before seen.',
+    technicalImpact: 'Generates non-obvious topological retrieval paths and novel vector perturbation strategies before foreign adversaries can develop them.'
   },
   {
     id: 'cap-6',
-    title: 'Executive Perception Safeguards',
-    category: 'Brand Protection',
-    icon: 'UserCheck',
-    description: 'Specialized intelligence layer defending C-suite executives, board members, and founders from AI-generated biographical distortions.',
-    technicalImpact: 'Ensures authoritative biography and verified public statements override hallucinated internet chatter.'
+    title: 'Sovereign Market Manipulation Countermeasures',
+    category: 'Defensive Cyber',
+    icon: 'AlertTriangle',
+    description: 'Nation-state cyber defense shielding American financial markets, sovereign debt stability, and regulatory disclosures from foreign generative disinformation campaigns.',
+    technicalImpact: 'Multi-model Hawkes-process consensus filters suppress synthetic panic contagion across Bloomberg/Reuters terminals and AI analyst agents.'
   }
 ];
 

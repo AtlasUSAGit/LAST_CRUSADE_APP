@@ -42,13 +42,13 @@ export const Footer: React.FC<FooterProps> = ({ onOpenAudit, onOpenIncident, onN
 
           {/* Nav Col 1 */}
           <div className="space-y-3 font-mono text-xs">
-            <div className="text-[#D5991C] font-bold uppercase tracking-widest">SERVICES</div>
+            <div className="text-[#D5991C] font-bold uppercase tracking-widest">OPERATIONS & SERVICES</div>
             <ul className="space-y-2 text-[#FBF3E2]/70 font-sans text-xs">
-              <li><a href="#services" className="hover:text-[#FBF3E2] transition-colors">GEO Investigations</a></li>
-              <li><a href="#services" className="hover:text-[#FBF3E2] transition-colors">Threat Detection</a></li>
-              <li><a href="#services" className="hover:text-[#FBF3E2] transition-colors">Counter-GEO Ops</a></li>
-              <li><a href="#capabilities" className="hover:text-[#FBF3E2] transition-colors">RAG Vector Scans</a></li>
-              <li><a href="#capabilities" className="hover:text-[#FBF3E2] transition-colors">Prompt Injection Defense</a></li>
+              <li><a href="#services" className="hover:text-[#FBF3E2] transition-colors">Defensive Cybersecurity</a></li>
+              <li><a href="#services" className="hover:text-[#FBF3E2] transition-colors">Offensive Cyber Operations</a></li>
+              <li><a href="#services" className="hover:text-[#FBF3E2] transition-colors">Liquidity Extraction Arbitrage</a></li>
+              <li><a href="#capabilities" className="hover:text-[#FBF3E2] transition-colors">Open-Web RAG Immunization</a></li>
+              <li><a href="#capabilities" className="hover:text-[#FBF3E2] transition-colors">Swarm & A2A Interdiction</a></li>
             </ul>
           </div>
 

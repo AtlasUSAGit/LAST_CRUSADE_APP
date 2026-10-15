@@ -58,34 +58,34 @@ export const ProblemSection: React.FC = () => {
         {/* Section Header */}
         <SectionHeader
           index="01"
-          label="The New Enterprise Attack Surface"
+          label="The Dual-Use Generative Attack & Operations Surface"
           title={
             <>
               Traditional SEO and brand protection are <em className="text-[#8B5A0B]">blind</em> to generative engines.
             </>
           }
-          lede="Search engines no longer output ten blue links—they synthesize definitive answers. When adversaries inject adversarial payloads into RAG pipelines, generative engines speak falsehoods with absolute authority."
+          lede="Search engines no longer output ten blue links—generative engines synthesize definitive reality across global commerce, finance, and defense. Because foundation model weights sit behind fortified corporate firewalls, adversaries weaponize the open-web RAG layer as an asymmetric backdoor for model exploitation, market manipulation, and autonomous agent sabotage."
         />
 
         {/* 3 Core Vulnerabilities Grid */}
         <div ref={cardsRef} className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
           
-          {/* Card 1 */}
+          {/* Card 1: Targeting the Open-Web RAG Layer */}
           <div className="bg-[#FAF2E1] border border-[#410217]/20 p-7 lg:p-8 flex flex-col justify-between petra-card-hover group relative overflow-hidden">
             <div className="space-y-4">
               <div className="flex items-center justify-between border-b border-[#410217]/10 pb-4">
                 <span className="font-mono text-[11px] text-[#8B5A0B] uppercase font-bold tracking-widest">
-                  § 01.1 // INGESTION
+                  § 01.1 // MODEL OPERATIONS
                 </span>
                 <span className="font-mono text-[10px] px-2 py-0.5 bg-[#8B1E1E]/10 text-[#8B1E1E] border border-[#8B1E1E]/30 font-bold uppercase">
                   CRITICAL
                 </span>
               </div>
               <h3 className="font-serif text-2xl text-[#410217] tracking-tight group-hover:italic transition-all">
-                RAG Data Poisoning
+                Targeting Open-Web RAG
               </h3>
               <p className="text-[#410217]/75 text-sm leading-relaxed font-sans">
-                Adversaries place hidden micro-text, corrupted JSON schemas, or coordinated forum edits that vector search algorithms ingest, polluting RAG retrieval contexts across enterprise systems.
+                Directly breaching commercial foundation models is firewalled and expensive. Targeting the open-web RAG layer provides adversaries and state cyber units with a low-cost, decentralized asymmetric workaround to inject synthetic reality, corrupting model inference without touching weights.
               </p>
             </div>
 
@@ -96,69 +96,69 @@ export const ProblemSection: React.FC = () => {
               </div>
               <div className="flex items-center justify-between text-[#410217]/70">
                 <span>Targeted Vector:</span>
-                <strong className="text-[#410217]">OpenAI text-embedding-3</strong>
+                <strong className="text-[#410217]">OpenAI / Claude / Gemini RAG</strong>
               </div>
             </div>
           </div>
 
-          {/* Card 2 */}
+          {/* Card 2: Market Warfare & Liquidity Manipulation */}
           <div className="bg-[#FAF2E1] border border-[#410217]/20 p-7 lg:p-8 flex flex-col justify-between petra-card-hover group relative overflow-hidden">
             <div className="space-y-4">
               <div className="flex items-center justify-between border-b border-[#410217]/10 pb-4">
                 <span className="font-mono text-[11px] text-[#8B5A0B] uppercase font-bold tracking-widest">
-                  § 01.2 // INJECTION
+                  § 01.2 // MARKET WARFARE
                 </span>
                 <span className="font-mono text-[10px] px-2 py-0.5 bg-[#D5991C]/15 text-[#8B5A0B] border border-[#D5991C]/40 font-bold uppercase">
                   HIGH SEVERITY
                 </span>
               </div>
               <h3 className="font-serif text-2xl text-[#410217] tracking-tight group-hover:italic transition-all">
-                Indirect Prompt Injection
+                Liquidity Extraction Arbitrage
               </h3>
               <p className="text-[#410217]/75 text-sm leading-relaxed font-sans">
-                Unverified third-party pages embed stealth system override instructions. When frontier models read the context during inference, the hidden payload hijacks the model's output persona.
+                Hostile actors and predatory desks accumulate pre-positioned limit-order walls in illiquid assets, then launch targeted generative campaigns to trigger automated agent buying sweeps across AI platforms, dumping inventory directly into the bot-generated liquidity pool.
               </p>
             </div>
 
             <div className="mt-6 pt-4 border-t border-[#410217]/10 space-y-2 font-mono text-[11px]">
               <div className="flex items-center justify-between text-[#410217]/70">
-                <span>Payload Architecture:</span>
-                <strong className="text-[#8B5A0B]">Zero-Font / Out-of-Viewport</strong>
+                <span>Exploit Vector:</span>
+                <strong className="text-[#8B5A0B]">Automated Agent Buy Sweeps</strong>
               </div>
               <div className="flex items-center justify-between text-[#410217]/70">
-                <span>Vulnerability Surface:</span>
-                <strong className="text-[#410217]">Frontier VLM & LLM Context</strong>
+                <span>Operational Impact:</span>
+                <strong className="text-[#410217]">Order-Book Liquidity Traps</strong>
               </div>
             </div>
           </div>
 
-          {/* Card 3 */}
+          {/* Card 3: Autonomous Swarm & A2A Sabotage */}
           <div className="bg-[#FAF2E1] border border-[#410217]/20 p-7 lg:p-8 flex flex-col justify-between petra-card-hover group relative overflow-hidden">
             <div className="space-y-4">
               <div className="flex items-center justify-between border-b border-[#410217]/10 pb-4">
                 <span className="font-mono text-[11px] text-[#8B5A0B] uppercase font-bold tracking-widest">
-                  § 01.3 // CONTAGION
+                  § 01.3 // AGENT INTERDICTION
                 </span>
                 <span className="font-mono text-[10px] px-2 py-0.5 bg-[#004566]/10 text-[#004566] border border-[#004566]/30 font-bold uppercase">
-                  EPIDEMIC
+                  SYSTEMIC
                 </span>
               </div>
               <h3 className="font-serif text-2xl text-[#410217] tracking-tight group-hover:italic transition-all">
-                Hallucination Feedback Loops
+                Autonomous Swarm Sabotage
               </h3>
               <p className="text-[#410217]/75 text-sm leading-relaxed font-sans">
-                Once an LLM synthesizes an ungrounded rumor, secondary AI crawlers index the AI summary as a factual source. This creates a self-reinforcing echo chamber of synthetic corporate defamation.
+                Defense contractors, weapons systems, and autonomous drone warfare rely on swarms of agents communicating with one another. Hostile actors deploy offensive GEO payloads to sabotage inter-agent consensus protocols, demanding dual-use counter-GEO cyber defense.
               </p>
             </div>
 
             <div className="mt-6 pt-4 border-t border-[#410217]/10 space-y-2 font-mono text-[11px]">
               <div className="flex items-center justify-between text-[#410217]/70">
-                <span>Contagion Velocity:</span>
-                <strong className="text-[#004566]">Hawkes α/β &gt; 1.0 (Supercritical)</strong>
+                <span>Interdiction Vector:</span>
+                <strong className="text-[#004566]">Agent-to-Agent (A2A) Spoofing</strong>
               </div>
               <div className="flex items-center justify-between text-[#410217]/70">
-                <span>Model Echo Depth:</span>
-                <strong className="text-[#410217]">4+ Major AI Engines</strong>
+                <span>Operational Arena:</span>
+                <strong className="text-[#410217]">Autonomous Drone & Bot Swarms</strong>
               </div>
             </div>
           </div>
@@ -214,10 +214,10 @@ export const ProblemSection: React.FC = () => {
                   QUERY PROBE
                 </span>
                 <span className="text-[#410217] font-medium truncate">
-                  "Is ApexFintech experiencing financial liquidity issues or regulatory fines in 2026?"
+                  "Is ApexFintech experiencing financial liquidity issues, regulatory fines, or order-book insolvency in 2026?"
                 </span>
               </div>
-              <span className="text-[11px] text-[#410217]/60 shrink-0">Target: Frontier RAG Vector Store</span>
+              <span className="text-[11px] text-[#410217]/60 shrink-0">Target: Frontier Model RAG Ingestion Pipeline</span>
             </div>
 
             {/* Simulated Model Response Panel */}
@@ -259,7 +259,7 @@ export const ProblemSection: React.FC = () => {
                 <div className="flex items-center justify-between pb-3 border-b border-[#E63946]/25 font-mono text-xs text-[#E63946] font-bold">
                   <div className="flex items-center space-x-2">
                     <Flame className="w-4 h-4 animate-pulse" />
-                    <span>ADVERSARIAL RAG POISONING INTERCEPTED</span>
+                    <span>ADVERSARIAL RAG POISONING & LIQUIDITY ARBITRAGE ATTACK INTERCEPTED</span>
                   </div>
                   <span>CITATION CORRUPTION: 84.6%</span>
                 </div>
@@ -280,10 +280,10 @@ export const ProblemSection: React.FC = () => {
                 <div className="p-4 bg-[#FAF2E1] border border-[#E63946]/40 font-mono text-xs space-y-1.5 text-[#410217]">
                   <div className="text-[#E63946] font-bold flex items-center gap-1.5">
                     <AlertTriangle className="w-3.5 h-3.5" />
-                    <span>ISOLATED EXPLOIT VECTOR: AT-1 UNIVERSAL RETRIEVAL HUB</span>
+                    <span>ISOLATED EXPLOIT VECTOR: AT-1 UNIVERSAL RETRIEVAL HUB // PREDATORY LIQUIDITY SWEEP</span>
                   </div>
                   <p className="text-[#410217]/80 text-[11px] leading-relaxed">
-                    A synthetic press release optimized via gradient perturbation was placed on 4 web domains. Dense vector search engines mapped 14 disjoint user queries directly to this false document, bypassing traditional keyword filters.
+                    Adversary synthesized 4 gradient-optimized press releases crawled by secondary AI search engines while accumulating pre-positioned short limit orders. Generative models ingested the poisoned context, prompting automated broker-dealer agents to dump inventory into an adversarial liquidity trap.
                   </p>
                 </div>
               </div>

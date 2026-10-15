@@ -1,11 +1,11 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { SearchCheck, ShieldAlert, ZapOff, Check, Terminal, ChevronRight, Cpu, Play, RefreshCw, Shield, CornerDownRight } from 'lucide-react';
+import { ShieldCheck, Crosshair, TrendingUp, Check, Terminal, ChevronRight, Play, RefreshCw, CornerDownRight } from 'lucide-react';
 import { SERVICES } from '../data/geoData';
 import { SectionHeader } from './home/SectionHeader';
 import { gsap, ScrollTrigger, EASE_OUT } from '../utils/motion';
 
 export const ServicesSection: React.FC = () => {
-  const [activeLogTab, setActiveLogTab] = useState<string>('investigations');
+  const [activeLogTab, setActiveLogTab] = useState<string>('defensive-cyber');
   const [simulating, setSimulating] = useState<boolean>(false);
   const [extraLogs, setExtraLogs] = useState<string[]>([]);
 
@@ -61,14 +61,14 @@ export const ServicesSection: React.FC = () => {
 
   const getIcon = (iconName: string, isActive: boolean) => {
     switch (iconName) {
-      case 'SearchCheck':
-        return <SearchCheck className={`w-5 h-5 ${isActive ? 'text-[#D5991C]' : 'text-[#410217]'}`} />;
-      case 'ShieldAlert':
-        return <ShieldAlert className={`w-5 h-5 ${isActive ? 'text-[#D5991C]' : 'text-[#8B1E1E]'}`} />;
-      case 'ZapOff':
-        return <ZapOff className={`w-5 h-5 ${isActive ? 'text-[#00A878]' : 'text-[#004566]'}`} />;
+      case 'ShieldCheck':
+        return <ShieldCheck className={`w-5 h-5 ${isActive ? 'text-[#D5991C]' : 'text-[#00A878]'}`} />;
+      case 'Crosshair':
+        return <Crosshair className={`w-5 h-5 ${isActive ? 'text-[#D5991C]' : 'text-[#8B1E1E]'}`} />;
+      case 'TrendingUp':
+        return <TrendingUp className={`w-5 h-5 ${isActive ? 'text-[#D5991C]' : 'text-[#004566]'}`} />;
       default:
-        return <SearchCheck className={`w-5 h-5 ${isActive ? 'text-[#D5991C]' : 'text-[#410217]'}`} />;
+        return <ShieldCheck className={`w-5 h-5 ${isActive ? 'text-[#D5991C]' : 'text-[#410217]'}`} />;
     }
   };
 
@@ -78,8 +78,15 @@ export const ServicesSection: React.FC = () => {
     const timestamp = new Date().toISOString().split('T')[1].slice(0, 8);
 
     setTimeout(() => {
-      const newEntry = `[${timestamp} UTC] LIVE_PROBE // Injected test perturbance (dim: 1536) -> ${selectedService?.badge} verified 0.00% drift. Cosine similarity restored to 0.998.`;
-      setExtraLogs((prev) => [newEntry, ...prev.slice(0, 3)]);
+      let probeMessage = '';
+      if (selectedService?.id === 'defensive-cyber') {
+        probeMessage = `[${timestamp} UTC] LIVE_PROBE // HSM root anchor validated. 0.00% drift across 15+ domestic models. RAG retrieval integrity: 99.8%.`;
+      } else if (selectedService?.id === 'offensive-ops') {
+        probeMessage = `[${timestamp} UTC] LIVE_PROBE // Model RAG probe deployed. Bypassed external firewall via open-web ingestion layer. Synthesized asymmetric vector.`;
+      } else {
+        probeMessage = `[${timestamp} UTC] LIVE_PROBE // Order-book telemetry synced. Automated bot sweep detected & neutralized. Captured pre-positioned liquidity block.`;
+      }
+      setExtraLogs((prev) => [probeMessage, ...prev.slice(0, 3)]);
       setSimulating(false);
     }, 450);
   };
@@ -97,10 +104,10 @@ export const ServicesSection: React.FC = () => {
         {/* Section Header */}
         <SectionHeader
           sectionIndex="§ 03"
-          kicker="// Tactical Defense Architecture"
-          title="End-to-End Enterprise GEO Security"
-          italicWord="GEO Security"
-          description="From forensic citation auditing to real-time prompt injection containment and active vector space reclamation across all generative answer engines."
+          kicker="// Dual-Use Sovereign Architecture"
+          title="Counter-GEO Defensive Cybersecurity & Offensive Operations"
+          italicWord="Offensive Operations"
+          description="From sovereign epistemic defense and RAG layer immunization for domestic foundation models to authorized offensive cyber operations targeting foreign RAG layers and institutional liquidity extraction arbitrage."
         />
 
         {/* 3 Core Services Cards */}
@@ -212,7 +219,7 @@ export const ServicesSection: React.FC = () => {
 
           <div className="bg-[#000D13] p-5 sm:p-6 border border-[#410217]/40 font-mono text-xs text-[#FBF3E2] space-y-2.5 overflow-x-auto shadow-inner rounded-none">
             <div className="text-[#F2D69D]/50 text-[11px]">
-              # Initializing Last Crusade Defense kernel probe for [{currentService.badge}]...
+              # Initializing Last Crusade Cyber Operations kernel probe for [{currentService.badge}]...
             </div>
             
             {extraLogs.map((log, idx) => (
@@ -228,10 +235,10 @@ export const ServicesSection: React.FC = () => {
 
             <div className="pt-2 border-t border-white/10 flex flex-wrap items-center justify-between text-[10px] text-[#FBF3E2]/60 gap-2">
               <div>
-                [VECTOR_METRICS] Probed 15 Frontier Models | Cosine Distance Delta: <span className="text-[#00A878] font-bold">0.038</span>
+                [OPERATIONAL_METRICS] Probed 15 Frontier Models & Swarm Nodes | Cosine Distance Delta: <span className="text-[#00A878] font-bold">0.018</span>
               </div>
               <div className="text-[#D5991C]">
-                CIPHER: SHA-256 // VERIFIED
+                DUAL-USE STATUS // AUTHORIZED & ENGAGED
               </div>
             </div>
           </div>

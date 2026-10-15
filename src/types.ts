@@ -35,7 +35,7 @@ export interface ServiceItem {
 export interface CapabilityItem {
   id: string;
   title: string;
-  category: 'LLM Security' | 'RAG Integrity' | 'Brand Protection' | 'Threat Intel';
+  category: 'Defensive Cyber' | 'Offensive Operations' | 'Market Arbitrage' | 'Autonomous Swarms' | 'LLM Security' | 'RAG Integrity' | 'Brand Protection' | 'Threat Intel' | string;
   icon: string;
   description: string;
   technicalImpact: string;
