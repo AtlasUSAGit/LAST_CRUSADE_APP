@@ -320,7 +320,7 @@ export const RESEARCH_ADVISORIES: ResearchAdvisory[] = [
     title: 'Counter GEO Master Doc Volume 1: Sovereign Architecture for Epistemic & Financial Cybersecurity',
     date: 'October 2026',
     type: 'Vulnerability Notice',
-    summary: 'Foundational research whitepaper establishing the Six-Layer Sovereign Counter-GEO Defense Stack, neutralizing vector retrieval hubs, Hawkes Sybil botnets, split-payload enthymemes, and RAG market manipulation under SEC Rule 15c3-8.',
+    summary: 'The foundational whitepaper introducing the threat of Generative Engine Optimization (GEO) and the core defense framework. It examines how adversaries manipulate AI search and retrieval systems to distort facts, and presents mathematical defenses to filter out synthetic content, protect decision-making pipelines, and keep enterprise AI reliable.',
     severity: 'CRITICAL'
   },
   {
@@ -328,7 +328,7 @@ export const RESEARCH_ADVISORIES: ResearchAdvisory[] = [
     title: 'Counter GEO Master Doc Volume 2: Stateful Memory Immunity, Byzantine Swarms & Zero-Knowledge Compliance',
     date: 'October 2026',
     type: 'Vulnerability Notice',
-    summary: 'Expands the sovereign defense architecture to Generation-3 threats: solving persistent memory poisoning via Doob-Meyer Martingales (DMEM-WMQ), autophagous swarm echo chambers (SGL-CMI), multimodal steganographic chart GEO (CM-JSAS), and zero-knowledge SEC Rule 15c3-8 compliance (ZK-CGEO).',
+    summary: 'Expands defense coverage to advanced threats targeting autonomous AI agents, persistent system memory, and multimodal inputs like images and financial charts. It provides safeguards against coordinated bot swarms and long-term data tampering, ensuring continuous agent workflows remain secure, uncorrupted, and verifiable.',
     severity: 'CRITICAL'
   },
   {
@@ -336,7 +336,7 @@ export const RESEARCH_ADVISORIES: ResearchAdvisory[] = [
     title: 'Counter GEO Master Doc Volume 3: The CounterGEO-Bench Simulation Suite, Flash-Crash Stress Testing & ROC/AUC Validation',
     date: 'October 2026',
     type: 'Experimental Appendix',
-    summary: 'Standardized empirical benchmark (CounterGEO-Bench, N=250k, Q=50k) validating the complete 8-Layer Sovereign Counter-GEO Defense Stack against AT-1 through AT-7 attacks, achieving 99.1% overall recall, reducing SEC 10-K false alarms to 0.38% (AUROC 0.996), and proving 0.00% drawdown in high-frequency flash-crash stress replay.',
+    summary: 'A comprehensive testing and simulation benchmark evaluating the defense framework under real-world pressure. Through large-scale stress tests and rapid market volatility simulations, this volume demonstrates how the system reliably detects and blocks adversarial attacks in real time while maintaining high accuracy and preventing disruptions.',
     severity: 'CRITICAL'
   }
 ];
