@@ -126,7 +126,7 @@ export const Header: React.FC<HeaderProps> = ({
               title="Library of Offensive GEO Strategies & Counter-GEO Defenses (WebGL 2.0)"
             >
               <Terminal className="w-3.5 h-3.5 text-[#D5991C]" />
-              <span>Attack Library</span>
+              <span>Strategy Library</span>
             </button>
           </div>
 
@@ -283,7 +283,7 @@ export const Header: React.FC<HeaderProps> = ({
                   : 'bg-[#FBF3E2] text-[#410217] border-[#F2D69D]'
               }`}
             >
-              <span>07 // Attack Library: Offensive GEO & Defenses (WebGL 2.0)</span>
+              <span>07 // Strategy Library: Offensive GEO & Defenses (WebGL 2.0)</span>
               <Terminal className="w-4 h-4 text-[#D5991C]" />
             </button>
 

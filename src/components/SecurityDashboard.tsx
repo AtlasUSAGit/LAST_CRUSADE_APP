@@ -60,7 +60,7 @@ export const SecurityDashboard: React.FC<SecurityDashboardProps> = ({ onNavigate
             <span>PRODUCT PREVIEW // SECURITY OPERATIONS CENTER</span>
           </div>
           <h2 className="font-serif font-normal text-3xl sm:text-5xl text-[#410217] tracking-tight leading-[1.05]">
-            Last Crusade Defense <span className="italic">Attack Library</span>
+            Last Crusade Defense <span className="italic">GEO Strategy Library</span>
           </h2>
           <p className="text-[#410217]/75 text-base sm:text-lg font-sans">
             A real-time threat intelligence dashboard giving security teams 360° visibility into generative search perception, RAG vector distance, and countermeasure status.

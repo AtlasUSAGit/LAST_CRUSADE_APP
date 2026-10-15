@@ -107,7 +107,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenAudit, onOpenIncident, onN
                   className="hover:text-[#D5991C] transition-colors text-left flex items-center gap-1 cursor-pointer font-bold"
                 >
                   <Boxes className="w-3 h-3 text-[#D5991C]" />
-                  <span>Attack Library: Offensive GEO & Defenses (WebGL)</span>
+                  <span>Strategy Library: Offensive GEO & Defenses (WebGL)</span>
                 </button>
               </li>
               <li>

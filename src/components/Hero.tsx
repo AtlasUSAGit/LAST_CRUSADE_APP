@@ -31,7 +31,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenAudit, onNavigate }) => {
   const directAccess: { page: NavigationPage; title: string; detail: string }[] = [
     { page: 'rea', title: 'REA Studio', detail: 'Reverse-engineering workbench' },
     { page: 'counter-geo', title: 'Counter-GEO Visualizer', detail: 'Volume I · interactive 3D lab' },
-    { page: 'counter-geo-ops', title: 'Attack Library', detail: 'Offensive GEO & countermeasures' },
+    { page: 'counter-geo-ops', title: 'Strategy Library', detail: 'Offensive GEO & countermeasures' },
     { page: 'pitch-deck', title: 'Pitch Deck', detail: 'Last Crusade & Petra Labs proposal' }
   ];
 

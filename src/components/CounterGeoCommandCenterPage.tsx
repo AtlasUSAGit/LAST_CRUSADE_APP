@@ -1038,7 +1038,7 @@ export const CounterGeoCommandCenterPage: React.FC<CounterGeoCommandCenterPagePr
           <div className="hidden sm:flex items-center space-x-2 text-[#FBF3E2]/60">
             <span>LAST CRUSADE DEFENSE</span>
             <span>/</span>
-            <span className="text-[#D5991C] font-bold">ATTACK LIBRARY</span>
+            <span className="text-[#D5991C] font-bold">GEO STRATEGY LIBRARY</span>
             <span>/</span>
             <span className="text-[#00FF9D] font-mono text-[11px]">OFFENSIVE GEO VS COUNTER-GEO</span>
           </div>
@@ -1110,7 +1110,7 @@ export const CounterGeoCommandCenterPage: React.FC<CounterGeoCommandCenterPagePr
               <span className="font-mono text-xs text-[#00FF9D]">VOLUMES 1, 2 & 3 KNOWLEDGE BASE</span>
             </div>
             <h1 className="font-serif text-2xl sm:text-3xl font-bold text-[#FBF3E2] tracking-tight">
-              Last Crusade Defense <span className="text-[#D5991C]">Attack Library</span>
+              Last Crusade Defense <span className="text-[#D5991C]">GEO Strategy Library</span>
             </h1>
             <p className="text-sm text-[#FBF3E2]/80 max-w-3xl leading-relaxed">
               A comprehensive library of <strong>Offensive GEO Strategies</strong> deployed by hostile entities to manipulate Generative Engine Optimization, paired with the <strong>Counter-GEO Defensive Strategies</strong> engineered to detect, quarantine, and neutralize them in real time.
@@ -1647,7 +1647,7 @@ export const CounterGeoCommandCenterPage: React.FC<CounterGeoCommandCenterPagePr
               <div className="space-y-1">
                 <div className="flex items-center space-x-2 font-mono text-xs text-[#00FF9D]">
                   <span className="w-2 h-2 rounded-full bg-[#00FF9D] animate-pulse" />
-                  <span className="uppercase tracking-widest font-bold">ATTACK LIBRARY // STRATEGY LIBRARY</span>
+                  <span className="uppercase tracking-widest font-bold">GEO STRATEGY LIBRARY // CATALOG DIRECTORY</span>
                 </div>
                 <h2 className="font-serif text-2xl font-bold text-[#FBF3E2]">
                   Strategy Library: 8 Formal Attack Classes & Countermeasures
