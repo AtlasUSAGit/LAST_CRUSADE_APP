@@ -33,8 +33,8 @@ export const ProblemSection: React.FC = () => {
   }, []);
 
   return (
-    <section ref={containerRef} id="problem" className="py-24 md:py-32 relative bg-transparent border-t border-[#410217]/15">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-16 md:space-y-20">
+    <section ref={containerRef} id="problem" className="pt-20 pb-8 md:pt-28 md:pb-12 relative bg-transparent border-t border-[#410217]/15">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-10 md:space-y-12">
         
         {/* Section Header */}
         <SectionHeader

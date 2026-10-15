@@ -25,17 +25,17 @@ export const TrustAndTeam: React.FC<TrustAndTeamProps> = ({ onNavigate }) => {
         const cards = cardsGridRef.current.children;
         gsap.fromTo(
           cards,
-          { opacity: 0, y: 35 },
+          { opacity: 0, y: 25 },
           {
             opacity: 1,
             y: 0,
-            duration: 0.8,
-            stagger: 0.15,
+            duration: 0.6,
+            stagger: 0.1,
             ease: EASE_OUT,
             scrollTrigger: {
               trigger: cardsGridRef.current,
-              start: 'top 82%',
-              toggleActions: 'play none none reverse'
+              start: 'top 90%',
+              once: true
             }
           }
         );
@@ -61,7 +61,7 @@ export const TrustAndTeam: React.FC<TrustAndTeamProps> = ({ onNavigate }) => {
     <section
       ref={sectionRef}
       id="research"
-      className="py-24 md:py-32 relative bg-transparent border-t border-[#F2D69D] scroll-mt-20 overflow-hidden"
+      className="pt-10 pb-20 md:pt-14 md:pb-28 relative bg-transparent border-t border-[#F2D69D] scroll-mt-20 overflow-hidden"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
@@ -75,8 +75,8 @@ export const TrustAndTeam: React.FC<TrustAndTeamProps> = ({ onNavigate }) => {
         />
 
         {/* Flagship Research Dossiers Grid */}
-        <div className="scroll-mt-24 mt-8">
-          <div className="flex flex-wrap items-baseline justify-between gap-4 mb-8 pb-3 border-b border-[#F2D69D]/80">
+        <div className="scroll-mt-24 mt-6">
+          <div className="flex flex-wrap items-baseline justify-between gap-4 mb-6 pb-3 border-b border-[#F2D69D]/80">
             <div>
               <span className="font-mono text-[10px] text-[#D5991C] uppercase tracking-[0.25em] font-bold block mb-1">
                 // PEER-REVIEWED ARCHIVAL RELEASES
