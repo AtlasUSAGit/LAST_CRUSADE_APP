@@ -1069,7 +1069,7 @@ export const CounterGeoCommandCenterPage: React.FC<CounterGeoCommandCenterPagePr
               }`}
             >
               <BookOpen className="w-3.5 h-3.5" />
-              <span>Strategy Dossiers ({ATTACK_STRATEGIES_CATALOG.length})</span>
+              <span>Strategy Library ({ATTACK_STRATEGIES_CATALOG.length})</span>
             </button>
           </div>
 
@@ -1647,10 +1647,10 @@ export const CounterGeoCommandCenterPage: React.FC<CounterGeoCommandCenterPagePr
               <div className="space-y-1">
                 <div className="flex items-center space-x-2 font-mono text-xs text-[#00FF9D]">
                   <span className="w-2 h-2 rounded-full bg-[#00FF9D] animate-pulse" />
-                  <span className="uppercase tracking-widest font-bold">ATTACK LIBRARY // DOSSIER DIRECTORY</span>
+                  <span className="uppercase tracking-widest font-bold">ATTACK LIBRARY // STRATEGY LIBRARY</span>
                 </div>
                 <h2 className="font-serif text-2xl font-bold text-[#FBF3E2]">
-                  Dossier Directory: 8 Formal Attack Classes & Countermeasures
+                  Strategy Library: 8 Formal Attack Classes & Countermeasures
                 </h2>
                 <p className="text-xs text-[#FBF3E2]/70 font-sans max-w-3xl">
                   Explained in everyday terms. Explore how adversaries exploit AI search, RAG pipelines, and autonomous trading agents—and how Last Crusade Defense stops them using topological mathematics and zero-knowledge proofs.
@@ -1801,7 +1801,7 @@ export const CounterGeoCommandCenterPage: React.FC<CounterGeoCommandCenterPagePr
             </div>
           </div>
 
-          {/* Strategy Dossier Grid */}
+          {/* Strategy Library Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {filteredStrategies.map((strat) => (
               <div
