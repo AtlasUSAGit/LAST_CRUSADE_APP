@@ -7,6 +7,7 @@ import {
   Zap,
   Activity,
   Maximize2,
+  Minimize2,
   Terminal,
   Cpu,
   RefreshCw,
@@ -767,8 +768,72 @@ export const CounterGeoCommandCenterPage: React.FC<CounterGeoCommandCenterPagePr
     }
   };
 
+  const [isFullscreen, setIsFullscreen] = useState<boolean>(false);
+
+  useEffect(() => {
+    const handleFullscreenChange = () => {
+      const doc = document as any;
+      setIsFullscreen(Boolean(
+        doc.fullscreenElement ||
+        doc.webkitFullscreenElement ||
+        doc.mozFullScreenElement ||
+        doc.msFullscreenElement
+      ));
+    };
+
+    document.addEventListener('fullscreenchange', handleFullscreenChange);
+    document.addEventListener('webkitfullscreenchange', handleFullscreenChange);
+    document.addEventListener('mozfullscreenchange', handleFullscreenChange);
+    document.addEventListener('MSFullscreenChange', handleFullscreenChange);
+
+    return () => {
+      document.removeEventListener('fullscreenchange', handleFullscreenChange);
+      document.removeEventListener('webkitfullscreenchange', handleFullscreenChange);
+      document.removeEventListener('mozfullscreenchange', handleFullscreenChange);
+      document.removeEventListener('MSFullscreenChange', handleFullscreenChange);
+    };
+  }, []);
+
+  const handleToggleFullscreen = () => {
+    const doc = document as any;
+    const docEl = document.documentElement as any;
+
+    const isCurrentlyFullscreen = Boolean(
+      doc.fullscreenElement ||
+      doc.webkitFullscreenElement ||
+      doc.mozFullScreenElement ||
+      doc.msFullscreenElement
+    );
+
+    if (!isCurrentlyFullscreen) {
+      if (docEl.requestFullscreen) {
+        docEl.requestFullscreen().catch(() => {
+          window.open('./counter-geo.html', '_blank', 'noopener,noreferrer');
+        });
+      } else if (docEl.webkitRequestFullscreen) {
+        docEl.webkitRequestFullscreen();
+      } else if (docEl.mozRequestFullScreen) {
+        docEl.mozRequestFullScreen();
+      } else if (docEl.msRequestFullscreen) {
+        docEl.msRequestFullscreen();
+      } else {
+        window.open('./counter-geo.html', '_blank', 'noopener,noreferrer');
+      }
+    } else {
+      if (doc.exitFullscreen) {
+        doc.exitFullscreen().catch(() => {});
+      } else if (doc.webkitExitFullscreen) {
+        doc.webkitExitFullscreen();
+      } else if (doc.mozCancelFullScreen) {
+        doc.mozCancelFullScreen();
+      } else if (doc.msExitFullscreen) {
+        doc.msExitFullscreen();
+      }
+    }
+  };
+
   const openStandalone = () => {
-    window.open('/counter-geo.html', '_blank', 'noopener,noreferrer');
+    window.open('./counter-geo.html', '_blank', 'noopener,noreferrer');
   };
 
   // ============================================================================
@@ -1811,11 +1876,25 @@ export const CounterGeoCommandCenterPage: React.FC<CounterGeoCommandCenterPagePr
           </button>
 
           <button
-            onClick={openStandalone}
-            className="flex items-center space-x-1 px-2.5 py-1 bg-[#D5991C] hover:bg-[#E5A932] text-[#130108] font-bold uppercase transition-all shadow-sm cursor-pointer"
+            onClick={handleToggleFullscreen}
+            className={`flex items-center space-x-1 px-2.5 py-1 font-bold uppercase transition-all shadow-sm cursor-pointer ${
+              isFullscreen
+                ? 'bg-[#00A878] hover:bg-[#00c98d] text-white border border-[#00FF9D]/40'
+                : 'bg-[#D5991C] hover:bg-[#E5A932] text-[#130108]'
+            }`}
+            title={isFullscreen ? 'Exit Fullscreen (Esc)' : 'Toggle Browser Fullscreen Mode'}
           >
-            <Maximize2 className="w-3.5 h-3.5" />
-            <span className="hidden lg:inline">Fullscreen</span>
+            {isFullscreen ? <Minimize2 className="w-3.5 h-3.5" /> : <Maximize2 className="w-3.5 h-3.5" />}
+            <span className="hidden lg:inline">{isFullscreen ? 'Exit Fullscreen' : 'Fullscreen'}</span>
+          </button>
+
+          <button
+            onClick={openStandalone}
+            className="flex items-center space-x-1 px-2.5 py-1 bg-[#2d0110] hover:bg-[#5C0A24] border border-[#D5991C]/35 text-[#FBF3E2] font-bold uppercase transition-all shadow-sm cursor-pointer"
+            title="Open Standalone Simulation in New Window"
+          >
+            <ExternalLink className="w-3.5 h-3.5 text-[#D5991C]" />
+            <span className="hidden xl:inline">Standalone</span>
           </button>
         </div>
 
