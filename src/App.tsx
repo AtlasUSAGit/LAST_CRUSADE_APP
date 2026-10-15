@@ -93,6 +93,22 @@ export default function App() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
+  // Responsive detection for mobile density optimization
+  const [isMobile, setIsMobile] = useState<boolean>(() => {
+    if (typeof window !== 'undefined') {
+      return window.innerWidth < 768;
+    }
+    return false;
+  });
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   return (
     <div className="relative min-h-screen bg-[#FAF5EB] text-[#410217] font-sans selection:bg-[#410217]/15 selection:text-[#410217] overflow-x-hidden">
       {/* Particle Drift WebGL Living Background for the whole Home Page */}
@@ -102,7 +118,8 @@ export default function App() {
             background="#FAF5EB"
             baseColor="#320813"
             accentColor="#DDA743"
-            density={95}
+            density={isMobile ? 40 : 95}
+            mobileDensity={40}
             dotSize={6}
             speed={50}
             direction={0}

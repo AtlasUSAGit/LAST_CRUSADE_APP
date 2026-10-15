@@ -181,6 +181,7 @@ export interface ParticleDriftProps {
   baseColor?: string;
   accentColor?: string;
   density?: number;
+  mobileDensity?: number;
   dotSize?: number;
   speed?: number;
   direction?: number;
@@ -197,6 +198,7 @@ export function ParticleDrift(props: ParticleDriftProps) {
     baseColor = "#320813",
     accentColor = "#DDA743",
     density = 95,
+    mobileDensity,
     dotSize = 6,
     speed = 50,
     direction = 0,
@@ -214,11 +216,12 @@ export function ParticleDrift(props: ParticleDriftProps) {
 
   const ptrRef = useRef({ x: -10000, y: -10000 });
 
-  const vRef = useRef<Record<string, number | string>>({});
+  const vRef = useRef<Record<string, number | string | undefined>>({});
   vRef.current = {
     base: baseColor,
     accent: accentColor,
     density: Math.round(clampN(num(density, 95), 10, 400)),
+    mobileDensity: mobileDensity !== undefined ? Math.round(clampN(num(mobileDensity, 40), 10, 400)) : undefined,
     dotSize: clampN(num(dotSize, 6), 1, 24),
     speed: clampN(num(speed, 50), 0, 100) / 50,
     direction: clampN(num(direction, 0), 0, 360),
@@ -323,9 +326,10 @@ export function ParticleDrift(props: ParticleDriftProps) {
       }
       gl.viewport(0, 0, bw, bh);
 
-      if ((v.density as number) !== builtN) {
-        buildNodes(v.density as number, cw, ch);
-        builtN = v.density as number;
+      const targetDensity = (cw < 768 && v.mobileDensity !== undefined) ? (v.mobileDensity as number) : (v.density as number);
+      if (targetDensity !== builtN) {
+        buildNodes(targetDensity, cw, ch);
+        builtN = targetDensity;
       }
       if (cw !== builtW || ch !== builtH) {
         const sx = cw / Math.max(builtW || cw, 1);
