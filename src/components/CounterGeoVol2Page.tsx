@@ -12,7 +12,7 @@ import { CounterGeoVol2FindingsAndLab } from './CounterGeoVol2FindingsAndLab';
 import { MASTER_DOC_VOL2_METADATA } from '../data/counterGeoVol2Content';
 
 interface CounterGeoVol2PageProps {
-  onNavigate: (page: NavigationPage) => void;
+  onNavigate: (page: NavigationPage, subPage?: 'paper' | 'lab') => void;
   onOpenAudit?: () => void;
   onOpenIncident?: () => void;
   initialSubPage?: 'paper' | 'lab';
@@ -35,6 +35,12 @@ export const CounterGeoVol2Page: React.FC<CounterGeoVol2PageProps> = ({
 
   const [subPage, setSubPage] = useState<'paper' | 'lab'>(getInitialSubPage);
   const [copiedLink, setCopiedLink] = useState(false);
+
+  useEffect(() => {
+    if (initialSubPage) {
+      setSubPage(initialSubPage);
+    }
+  }, [initialSubPage]);
 
   useEffect(() => {
     const handleHash = () => {
@@ -71,15 +77,21 @@ export const CounterGeoVol2Page: React.FC<CounterGeoVol2PageProps> = ({
           {/* Back & Breadcrumb */}
           <div className="flex items-center space-x-3">
             <button
-              onClick={() => onNavigate('overview')}
+              onClick={() => onNavigate('research')}
               className="flex items-center space-x-1.5 px-3 py-1 bg-[#2a2a2a] hover:bg-[#5C0A24] border border-[#F2D69D]/40 text-[#FBF3E2] font-bold uppercase transition-colors cursor-pointer"
+              title="Return to Research Corpus"
             >
               <ArrowLeft className="w-3.5 h-3.5 text-[#00A878]" />
-              <span>Back to Overview</span>
+              <span>Back to Research</span>
             </button>
 
             <div className="hidden md:flex items-center space-x-2 text-[#FBF3E2]/60">
-              <span>RESEARCH ADVISORY</span>
+              <button
+                onClick={() => onNavigate('research')}
+                className="hover:text-[#00A878] transition-colors cursor-pointer"
+              >
+                RESEARCH
+              </button>
               <span>/</span>
               <span className="text-[#00A878] font-bold">{MASTER_DOC_VOL2_METADATA.id}</span>
               <span>/</span>

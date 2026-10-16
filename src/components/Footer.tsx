@@ -1,5 +1,5 @@
 import React from 'react';
-import { ShieldAlert, ArrowUpRight, FileCode, Boxes, Briefcase, Presentation } from 'lucide-react';
+import { ShieldAlert, ArrowUpRight, FileCode, Boxes, Briefcase, Presentation, BookOpen } from 'lucide-react';
 import { NavigationPage } from '../types';
 
 interface FooterProps {
@@ -72,6 +72,15 @@ export const Footer: React.FC<FooterProps> = ({ onOpenAudit, onOpenIncident, onN
                 >
                   <FileCode className="w-3 h-3 text-[#D5991C]" />
                   <span>REA Studio (Workbench)</span>
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => onNavigate && onNavigate('research')}
+                  className="hover:text-[#D5991C] transition-colors text-left flex items-center gap-1 cursor-pointer font-bold"
+                >
+                  <BookOpen className="w-3 h-3 text-[#D5991C]" />
+                  <span>Research Corpus (Volumes 1, 2, 3)</span>
                 </button>
               </li>
               <li>

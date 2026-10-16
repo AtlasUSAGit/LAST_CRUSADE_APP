@@ -85,9 +85,19 @@ export const TrustAndTeam: React.FC<TrustAndTeamProps> = ({ onNavigate }) => {
                 The Counter-GEO <span className="italic">Trilogy</span>
               </h3>
             </div>
-            <p className="text-xs font-mono text-[#410217]/60 max-w-md">
-              Each volume includes full mathematical proofs, threat taxonomy, 2-page archival briefing, and an interactive 3D WebGL laboratory.
-            </p>
+            <div className="flex flex-col sm:flex-row sm:items-center gap-3">
+              <p className="text-xs font-mono text-[#410217]/60 max-w-sm">
+                Each volume includes full mathematical proofs, threat taxonomy, 2-page archival briefing, and an interactive 3D WebGL laboratory.
+              </p>
+              {onNavigate && (
+                <button
+                  onClick={() => onNavigate('research')}
+                  className="px-3 py-1.5 bg-[#410217] hover:bg-[#5C0A24] text-[#FBF3E2] font-mono text-xs font-bold uppercase tracking-wider transition-colors cursor-pointer whitespace-nowrap"
+                >
+                  Research Hub →
+                </button>
+              )}
+            </div>
           </div>
 
           <div ref={cardsGridRef} className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -200,6 +210,17 @@ export const TrustAndTeam: React.FC<TrustAndTeamProps> = ({ onNavigate }) => {
               >
                 <Sparkles className="w-4 h-4 text-[#00A878]" />
                 <span>Open Volume 2 Paper & Interactive Lab →</span>
+              </button>
+            ) : selectedAdvisory.id === 'ADV-2026-002' && onNavigate ? (
+              <button
+                onClick={() => {
+                  setSelectedAdvisory(null);
+                  onNavigate('counter-geo-vol3');
+                }}
+                className="w-full py-3 bg-[#5B21B6] hover:bg-[#3d147d] text-[#FBF3E2] font-mono text-xs font-bold uppercase tracking-wider transition-colors cursor-pointer flex items-center justify-center space-x-2"
+              >
+                <Sparkles className="w-4 h-4 text-[#D5991C]" />
+                <span>Open Volume 3 Paper & Benchmark Lab →</span>
               </button>
             ) : (
               <button

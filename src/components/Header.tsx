@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ShieldAlert, Menu, X, ArrowUpRight, FileCode, Boxes, Home, Terminal, Briefcase, Presentation } from 'lucide-react';
+import { ShieldAlert, Menu, X, ArrowUpRight, FileCode, Boxes, Home, Terminal, Briefcase, Presentation, BookOpen } from 'lucide-react';
 import { NavigationPage } from '../types';
 
 interface HeaderProps {
@@ -81,39 +81,16 @@ export const Header: React.FC<HeaderProps> = ({
             </button>
 
             <button
-              onClick={() => onNavigate('counter-geo')}
-              className={`flex items-center space-x-1.5 px-3 py-1.5 transition-all cursor-pointer font-bold uppercase tracking-wider ${
-                currentPage === 'counter-geo'
+              onClick={() => onNavigate('research')}
+              className={`flex items-center space-x-1.5 px-3.5 py-1.5 transition-all cursor-pointer font-bold uppercase tracking-wider ${
+                currentPage === 'research' || currentPage === 'counter-geo' || currentPage === 'counter-geo-vol2' || currentPage === 'counter-geo-vol3'
                   ? 'bg-[#410217] text-[#FBF3E2] shadow-xs'
                   : 'text-[#410217]/70 hover:text-[#410217]'
               }`}
+              title="Counter-GEO Research Corpus: Whitepaper Volumes 1, 2, 3 & Algorithmic Labs"
             >
-              <Boxes className="w-3.5 h-3.5 text-[#D5991C]" />
-              <span>Vol. 1</span>
-            </button>
-
-            <button
-              onClick={() => onNavigate('counter-geo-vol2')}
-              className={`flex items-center space-x-1.5 px-3 py-1.5 transition-all cursor-pointer font-bold uppercase tracking-wider ${
-                currentPage === 'counter-geo-vol2'
-                  ? 'bg-[#004566] text-[#FBF3E2] shadow-xs'
-                  : 'text-[#410217]/70 hover:text-[#410217]'
-              }`}
-            >
-              <Boxes className="w-3.5 h-3.5 text-[#00A878]" />
-              <span>Vol. 2</span>
-            </button>
-
-            <button
-              onClick={() => onNavigate('counter-geo-vol3')}
-              className={`flex items-center space-x-1.5 px-3 py-1.5 transition-all cursor-pointer font-bold uppercase tracking-wider ${
-                currentPage === 'counter-geo-vol3'
-                  ? 'bg-[#5B21B6] text-white shadow-xs'
-                  : 'text-[#410217]/70 hover:text-[#410217]'
-              }`}
-            >
-              <Boxes className="w-3.5 h-3.5 text-[#D5991C]" />
-              <span>Vol. 3</span>
+              <BookOpen className="w-3.5 h-3.5 text-[#D5991C]" />
+              <span>Research</span>
             </button>
 
             <button
@@ -229,47 +206,17 @@ export const Header: React.FC<HeaderProps> = ({
 
             <button
               onClick={() => {
-                onNavigate('counter-geo');
+                onNavigate('research');
                 setMobileMenuOpen(false);
               }}
               className={`w-full text-left p-2.5 font-bold flex items-center justify-between border ${
-                currentPage === 'counter-geo'
+                currentPage === 'research' || currentPage === 'counter-geo' || currentPage === 'counter-geo-vol2' || currentPage === 'counter-geo-vol3'
                   ? 'bg-[#410217] text-[#FBF3E2] border-[#410217]'
                   : 'bg-[#FBF3E2] text-[#410217] border-[#F2D69D]'
               }`}
             >
-              <span>04 // Counter-GEO Vol. 1 Whitepaper & 3D Lab</span>
-              <Boxes className="w-4 h-4 text-[#D5991C]" />
-            </button>
-
-            <button
-              onClick={() => {
-                onNavigate('counter-geo-vol2');
-                setMobileMenuOpen(false);
-              }}
-              className={`w-full text-left p-2.5 font-bold flex items-center justify-between border ${
-                currentPage === 'counter-geo-vol2'
-                  ? 'bg-[#004566] text-[#FBF3E2] border-[#004566]'
-                  : 'bg-[#FBF3E2] text-[#410217] border-[#F2D69D]'
-              }`}
-            >
-              <span>05 // Counter-GEO Vol. 2 (Memory, Swarm & ZK)</span>
-              <Boxes className="w-4 h-4 text-[#00A878]" />
-            </button>
-
-            <button
-              onClick={() => {
-                onNavigate('counter-geo-vol3');
-                setMobileMenuOpen(false);
-              }}
-              className={`w-full text-left p-2.5 font-bold flex items-center justify-between border ${
-                currentPage === 'counter-geo-vol3'
-                  ? 'bg-[#5B21B6] text-white border-[#5B21B6]'
-                  : 'bg-[#FBF3E2] text-[#410217] border-[#F2D69D]'
-              }`}
-            >
-              <span>06 // Counter-GEO Vol. 3 (Benchmark Suite & LOB)</span>
-              <Boxes className="w-4 h-4 text-[#D5991C]" />
+              <span>04 // Research (Volumes 1, 2, 3 Whitepapers & Labs)</span>
+              <BookOpen className="w-4 h-4 text-[#D5991C]" />
             </button>
 
             <button
@@ -283,7 +230,7 @@ export const Header: React.FC<HeaderProps> = ({
                   : 'bg-[#FBF3E2] text-[#410217] border-[#F2D69D]'
               }`}
             >
-              <span>07 // Strategy Library: Offensive GEO & Defenses (WebGL 2.0)</span>
+              <span>05 // Strategy Library: Offensive GEO & Defenses (WebGL 2.0)</span>
               <Terminal className="w-4 h-4 text-[#D5991C]" />
             </button>
 
@@ -292,7 +239,7 @@ export const Header: React.FC<HeaderProps> = ({
               onClick={() => setMobileMenuOpen(false)}
               className="w-full text-left p-2.5 font-bold flex items-center justify-between border bg-[#FAF5EB] text-[#410217] border-[#D5991C] hover:bg-[#D5991C] hover:text-[#130108] transition-colors"
             >
-              <span>08 // Pitch Deck (Proposal for Petra Labs)</span>
+              <span>06 // Pitch Deck (Proposal for Petra Labs)</span>
               <Presentation className="w-4 h-4 text-[#D5991C]" />
             </a>
           </div>

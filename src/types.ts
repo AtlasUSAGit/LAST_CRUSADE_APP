@@ -61,7 +61,7 @@ export interface ResearchAdvisory {
   severity: 'HIGH' | 'CRITICAL' | 'MEDIUM';
 }
 
-export type NavigationPage = 'overview' | 'services' | 'rea' | 'counter-geo' | 'counter-geo-vol2' | 'counter-geo-vol3' | 'counter-geo-ops' | 'pitch-deck';
+export type NavigationPage = 'overview' | 'services' | 'rea' | 'research' | 'counter-geo' | 'counter-geo-vol2' | 'counter-geo-vol3' | 'counter-geo-vol4' | 'counter-geo-ops' | 'pitch-deck';
 
 export interface ReaSampleTarget {
   id: string;

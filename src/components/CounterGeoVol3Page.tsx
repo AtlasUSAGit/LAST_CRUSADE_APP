@@ -12,7 +12,7 @@ import { CounterGeoVol3FindingsAndLab } from './CounterGeoVol3FindingsAndLab';
 import { MASTER_DOC_VOL3_METADATA } from '../data/counterGeoVol3Content';
 
 interface CounterGeoVol3PageProps {
-  onNavigate: (page: NavigationPage) => void;
+  onNavigate: (page: NavigationPage, subPage?: 'paper' | 'lab') => void;
   onOpenAudit?: () => void;
   onOpenIncident?: () => void;
   initialSubPage?: 'paper' | 'lab';
@@ -35,6 +35,12 @@ export const CounterGeoVol3Page: React.FC<CounterGeoVol3PageProps> = ({
 
   const [subPage, setSubPage] = useState<'paper' | 'lab'>(getInitialSubPage);
   const [copiedLink, setCopiedLink] = useState(false);
+
+  useEffect(() => {
+    if (initialSubPage) {
+      setSubPage(initialSubPage);
+    }
+  }, [initialSubPage]);
 
   useEffect(() => {
     const handleHash = () => {
@@ -71,15 +77,21 @@ export const CounterGeoVol3Page: React.FC<CounterGeoVol3PageProps> = ({
           {/* Back & Breadcrumb */}
           <div className="flex items-center space-x-3">
             <button
-              onClick={() => onNavigate('overview')}
+              onClick={() => onNavigate('research')}
               className="flex items-center space-x-1.5 px-3 py-1 bg-[#2a2a2a] hover:bg-[#341865] border border-[#D5991C]/40 text-[#FBF3E2] font-bold uppercase transition-colors cursor-pointer"
+              title="Return to Research Corpus"
             >
               <ArrowLeft className="w-3.5 h-3.5 text-[#D5991C]" />
-              <span>Back to Overview</span>
+              <span>Back to Research</span>
             </button>
 
             <div className="hidden md:flex items-center space-x-2 text-[#FBF3E2]/60">
-              <span>RESEARCH ADVISORY</span>
+              <button
+                onClick={() => onNavigate('research')}
+                className="hover:text-[#D5991C] transition-colors cursor-pointer"
+              >
+                RESEARCH
+              </button>
               <span>/</span>
               <span className="text-[#D5991C] font-bold">{MASTER_DOC_VOL3_METADATA.id}</span>
               <span>/</span>
