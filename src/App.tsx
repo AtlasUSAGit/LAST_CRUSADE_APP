@@ -9,6 +9,7 @@ import { ServicesSection } from './components/ServicesSection';
 import { ProcessSection } from './components/ProcessSection';
 import { CapabilitiesGrid } from './components/CapabilitiesGrid';
 import { TrustAndTeam } from './components/TrustAndTeam';
+import { HomeRedesign } from './components/HomeRedesign';
 import { Footer } from './components/Footer';
 import { AuditModal } from './components/AuditModal';
 import { IncidentReportModal } from './components/IncidentReportModal';
@@ -123,8 +124,8 @@ export default function App() {
 
   return (
     <div className="relative min-h-screen bg-[#FAF5EB] text-[#410217] font-sans selection:bg-[#410217]/15 selection:text-[#410217] overflow-x-hidden">
-      {/* Particle Drift WebGL Living Background for the whole Home Page */}
-      {currentPage === 'overview' && (
+      {/* Particle Drift WebGL Living Background (Disabled during HomeRedesign so its custom WebGL canvas runs exclusively) */}
+      {/* {currentPage === 'overview' && (
         <div className="fixed inset-0 pointer-events-none z-0" aria-hidden="true">
           <ParticleDrift
             background="#FAF5EB"
@@ -141,7 +142,7 @@ export default function App() {
             style={{ width: '100%', height: '100%' }}
           />
         </div>
-      )}
+      )} */}
 
       {/* Subtle archival film grain overlay */}
       <div className="grain-overlay pointer-events-none" aria-hidden="true" />
@@ -157,29 +158,29 @@ export default function App() {
       {/* Page Routing */}
       {currentPage === 'overview' && (
         <main className="relative z-10">
-          {/* 1. Hero with direct links to REA Studio & Counter-GEO */}
+          <HomeRedesign
+            onOpenAudit={() => setAuditModalOpen(true)}
+            onOpenIncident={() => setIncidentModalOpen(true)}
+            onNavigate={handleNavigate}
+          />
+        </main>
+      )}
+
+      {/* Legacy Home Page (Preserved for quick rollback) */}
+      {/* {currentPage === 'overview' && (
+        <main className="relative z-10">
           <Hero
             onOpenAudit={() => setAuditModalOpen(true)}
             onOpenIncident={() => setIncidentModalOpen(true)}
             onNavigate={handleNavigate}
           />
-
-          {/* 2. The Problem / Traditional SEO & Brand Protection Are Blind to AI Answers */}
           <ProblemSection />
-
-          {/* 3. Counter-GEO Research (Advisories & Whitepapers) */}
           <TrustAndTeam onNavigate={handleNavigate} />
-
-          {/* 4. Core Services */}
           <ServicesSection />
-
-          {/* 5. Process Timeline */}
           <ProcessSection />
-
-          {/* 6. Detection Capabilities Tech Grid */}
           <CapabilitiesGrid />
         </main>
-      )}
+      )} */}
 
       {currentPage === 'services' && (
         <ServicesPage
