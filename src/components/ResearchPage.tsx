@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
 import {
-  BookOpen,
   FileText,
   Sparkles,
-  ArrowLeft,
   ArrowRight,
   ShieldCheck,
   Cpu,
@@ -186,44 +184,7 @@ export const ResearchPage: React.FC<ResearchPageProps> = ({
   return (
     <div className="min-h-screen bg-[#FAF5EB] text-[#410217] selection:bg-[#410217]/15 selection:text-[#410217]">
       
-      {/* 1. Archival Command Breadcrumb & Classification Bar */}
-      <div className="bg-[#310111] text-[#FBF3E2] border-b border-[#F2D69D]/30 py-3 px-4 sm:px-6 lg:px-8 sticky top-0 z-40 shadow-md">
-        <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-4 text-xs font-mono">
-          
-          <div className="flex items-center space-x-3">
-            <button
-              onClick={() => onNavigate('overview')}
-              className="flex items-center space-x-1.5 px-3 py-1 bg-[#1e010a] hover:bg-[#5C0A24] border border-[#F2D69D]/40 text-[#FBF3E2] font-bold uppercase transition-colors cursor-pointer"
-            >
-              <ArrowLeft className="w-3.5 h-3.5 text-[#D5991C]" />
-              <span>Back to Overview</span>
-            </button>
-
-            <div className="hidden sm:flex items-center space-x-2 text-[#FBF3E2]/70">
-              <span className="text-[#D5991C] font-bold">RESEARCH REPOSITORY</span>
-              <span>/</span>
-              <span>COUNTER-GEO TETRALOGY</span>
-              <span>/</span>
-              <span className="text-[#00A878] font-bold">4 VOLUMES ONLINE</span>
-            </div>
-          </div>
-
-          <div className="flex items-center space-x-3 text-[11px]">
-            <span className="hidden md:inline-block px-2 py-0.5 border border-[#D5991C]/40 bg-[#1e010a] text-[#D5991C] font-bold uppercase tracking-wider">
-              TLP:CLEAR // PUBLIC ADVISORY
-            </span>
-            <button
-              onClick={onOpenAudit}
-              className="px-3 py-1 bg-[#D5991C] text-[#130108] hover:bg-[#e6a827] font-bold uppercase tracking-wider transition-colors cursor-pointer"
-            >
-              Request GEO Audit
-            </button>
-          </div>
-
-        </div>
-      </div>
-
-      {/* 2. Hero Header: Research Corpus */}
+      {/* Hero Header: Research Library */}
       <section className="relative pt-12 pb-16 md:pt-18 md:pb-22 border-b border-[#F2D69D] bg-gradient-to-b from-[#FFFDF9] via-[#FAF5EB] to-[#F5ECE0] overflow-hidden">
         {/* Subtle background ambient grid */}
         <div className="absolute inset-0 bg-[radial-gradient(#410217_1px,transparent_1px)] [background-size:24px_24px] opacity-[0.03] pointer-events-none" />
@@ -231,13 +192,8 @@ export const ResearchPage: React.FC<ResearchPageProps> = ({
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-4xl">
             
-            <div className="inline-flex items-center space-x-2 px-3 py-1 mb-4 bg-[#FAF2E1] border border-[#D5991C] text-xs font-mono font-bold uppercase tracking-widest text-[#410217]">
-              <BookOpen className="w-3.5 h-3.5 text-[#D5991C]" />
-              <span>Counter-GEO Sovereign Research Corpus</span>
-            </div>
-
             <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl font-normal tracking-tight text-[#410217] leading-[1.1] mb-6">
-              Peer-Reviewed <span className="italic font-serif text-[#410217] underline decoration-[#D5991C]/60 decoration-2 underline-offset-8">Research</span> &amp; Algorithmic Laboratories
+              Research Library
             </h1>
 
             <p className="text-base sm:text-lg text-[#410217]/85 font-sans leading-relaxed mb-8 max-w-3xl">
