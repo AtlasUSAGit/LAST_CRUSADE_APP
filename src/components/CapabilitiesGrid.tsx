@@ -78,8 +78,7 @@ export const CapabilitiesGrid: React.FC = () => {
         <SectionHeader
           sectionIndex="§ 05"
           kicker="// Threat Matrix & Cyber Operations Specifications"
-          title="Multi-Vector Generative Threat Matrix"
-          italicWord="Threat Matrix"
+          title="Services"
           description="Proprietary high-dimensional vector space architecture engineered for defensive cybersecurity, offensive GEO cyber operations, algorithmic liquidity arbitrage, and autonomous agent swarms."
         />
 
