@@ -208,7 +208,7 @@ export const ResearchPage: React.FC<ResearchPageProps> = ({
             </h1>
 
             <p className="text-base sm:text-lg text-[#410217]/85 font-sans leading-relaxed mb-8 max-w-3xl">
-              As AI chatbots and autonomous agents replace classical keyword search, digital discoverability has migrated to <strong>Generative Engine Optimization (GEO)</strong>. The Counter-GEO Research Trilogy codifies the threat vectors, mathematical detection algorithms, and cryptographic provenance architectures required to protect epistemic truth, foundation reasoning pipelines, and sovereign financial markets.
+              As AI chatbots and autonomous agents replace classical keyword search, digital discoverability has migrated to <strong>Generative Engine Optimization (GEO)</strong>. This page features deep research we have conducted using frontier models to codify the threat vectors, mathematical detection algorithms, and codebase architectures required to protect foundation reasoning pipelines, financial markets, national security, and LLM-based agents.
             </p>
 
             {/* Live Telemetry KPI Ticker */}
