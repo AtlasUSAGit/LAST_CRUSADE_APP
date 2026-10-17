@@ -19,6 +19,7 @@ import { CounterGeoPage } from './components/CounterGeoPage';
 import { CounterGeoVol2Page } from './components/CounterGeoVol2Page';
 import { CounterGeoVol3Page } from './components/CounterGeoVol3Page';
 import { CounterGeoVol4Page } from './components/CounterGeoVol4Page';
+import { CounterGeoVol5Page } from './components/CounterGeoVol5Page';
 import { CounterGeoCommandCenterPage } from './components/CounterGeoCommandCenterPage';
 import { PitchDeckPage } from './components/PitchDeckPage';
 import { ResearchPage } from './components/ResearchPage';
@@ -36,6 +37,7 @@ export default function App() {
     const hash = window.location.hash.toLowerCase();
     if (hash.includes('services')) return 'services';
     if (hash.includes('attack-library') || hash.includes('counter-geo-ops') || hash.includes('command-center') || hash.includes('counter-geo-html') || hash.includes('8-layer') || hash.includes('ops')) return 'counter-geo-ops';
+    if (hash.includes('counter-geo-vol5') || hash.includes('volume-5') || hash.includes('vol5')) return 'counter-geo-vol5';
     if (hash.includes('counter-geo-vol4') || hash.includes('volume-4') || hash.includes('vol4')) return 'counter-geo-vol4';
     if (hash.includes('counter-geo-vol3') || hash.includes('volume-3') || hash.includes('vol3')) return 'counter-geo-vol3';
     if (hash.includes('counter-geo-vol2') || hash.includes('volume-2') || hash.includes('vol2')) return 'counter-geo-vol2';
@@ -56,6 +58,8 @@ export default function App() {
         setCurrentPage('services');
       } else if (hash.includes('attack-library') || hash.includes('counter-geo-ops') || hash.includes('command-center') || hash.includes('counter-geo-html') || hash.includes('8-layer') || hash.includes('ops')) {
         setCurrentPage('counter-geo-ops');
+      } else if (hash.includes('counter-geo-vol5') || hash.includes('volume-5') || hash.includes('vol5')) {
+        setCurrentPage('counter-geo-vol5');
       } else if (hash.includes('counter-geo-vol4') || hash.includes('volume-4') || hash.includes('vol4')) {
         setCurrentPage('counter-geo-vol4');
       } else if (hash.includes('counter-geo-vol3') || hash.includes('volume-3') || hash.includes('vol3')) {
@@ -98,6 +102,8 @@ export default function App() {
       window.location.hash = subPage ? `#/counter-geo-vol3/${subPage}` : '#/counter-geo-vol3';
     } else if (page === 'counter-geo-vol4') {
       window.location.hash = subPage ? `#/counter-geo-vol4/${subPage}` : '#/counter-geo-vol4';
+    } else if (page === 'counter-geo-vol5') {
+      window.location.hash = subPage ? `#/counter-geo-vol5/${subPage}` : '#/counter-geo-vol5';
     } else if (page === 'counter-geo-ops') {
       window.location.hash = '#/attack-library';
     } else if (page === 'pitch-deck') {
@@ -258,6 +264,21 @@ export default function App() {
           onOpenIncident={() => setIncidentModalOpen(true)}
           initialSubPage={
             window.location.hash.toLowerCase().includes('lab') || window.location.hash.toLowerCase().includes('hardware') || window.location.hash.toLowerCase().includes('fpga') || window.location.hash.toLowerCase().includes('roi') || window.location.hash.toLowerCase().includes('visualizer')
+              ? 'lab'
+              : window.location.hash.toLowerCase().includes('paper')
+              ? 'paper'
+              : undefined
+          }
+        />
+      )}
+
+      {currentPage === 'counter-geo-vol5' && (
+        <CounterGeoVol5Page
+          onNavigate={handleNavigate}
+          onOpenAudit={() => setAuditModalOpen(true)}
+          onOpenIncident={() => setIncidentModalOpen(true)}
+          initialSubPage={
+            window.location.hash.toLowerCase().includes('lab') || window.location.hash.toLowerCase().includes('visualizer') || window.location.hash.toLowerCase().includes('a2a') || window.location.hash.toLowerCase().includes('camel')
               ? 'lab'
               : window.location.hash.toLowerCase().includes('paper')
               ? 'paper'

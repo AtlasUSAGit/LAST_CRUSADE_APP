@@ -26,6 +26,7 @@ import { MASTER_DOC_METADATA } from '../data/counterGeoPaperContent';
 import { MASTER_DOC_VOL2_METADATA } from '../data/counterGeoVol2Content';
 import { MASTER_DOC_VOL3_METADATA } from '../data/counterGeoVol3Content';
 import { MASTER_DOC_VOL4_METADATA } from '../data/counterGeoVol4Content';
+import { MASTER_DOC_VOL5_METADATA } from './CounterGeoVol5Page';
 
 interface ResearchPageProps {
   onNavigate: (page: NavigationPage, subPage?: 'paper' | 'lab') => void;
@@ -39,16 +40,16 @@ export const ResearchPage: React.FC<ResearchPageProps> = ({
   onOpenIncident
 }) => {
   const [copiedBibtex, setCopiedBibtex] = useState(false);
-  const [activeTab, setActiveTab] = useState<'all' | 'vol1' | 'vol2' | 'vol3' | 'vol4'>('all');
+  const [activeTab, setActiveTab] = useState<'all' | 'vol1' | 'vol2' | 'vol3' | 'vol4' | 'vol5'>('all');
   const [expandedLayer, setExpandedLayer] = useState<number | null>(null);
 
-  const bibtexString = `@article{sentinel_geo_tetralogy_2026,
-  title={Generative Engine Optimization (GEO) and Counter-GEO Defenses: Sovereign Architecture for Epistemic and Financial Cybersecurity (Volumes I, II, III, and IV)},
+  const bibtexString = `@article{sentinel_geo_pentology_2026,
+  title={Generative Engine Optimization (GEO) and Counter-GEO Defenses: Sovereign Architecture for Epistemic and Financial Cybersecurity (Volumes I, II, III, IV, and V)},
   author={Last Crusade Defense Security Labs and Autonomous Systems Red-Team Group},
   journal={Sovereign Strategic Research & Defense Initiative},
   year={2026},
   month={October},
-  doi={10.1145/3637528.3671900-CGEO-TETRALOGY},
+  doi={10.1145/3637528.3671900-CGEO-PENTOLOGY},
   url={https://sentinel-geo.defense.ai/#/research}
 }`;
 
@@ -178,6 +179,16 @@ export const ResearchPage: React.FC<ResearchPageProps> = ({
       core: 'Dual-Use Air-Gapped Appliance + Actuarial VaR Loss Prevention Engine',
       latency: '< 0.5 ms',
       status: 'Active'
+    },
+    {
+      layer: 'Layer 10-A2A',
+      vol: 'Vol. V',
+      volKey: 'counter-geo-vol5' as NavigationPage,
+      name: 'GSF-CACS & C-NUB',
+      threat: 'Silent-Web autonomous agent hijacking, schema poisoning & MCP tool spoofing',
+      core: 'Gradient Schema Flattening (β_P = 3.82..16.2) + Ed25519 Nonce Handshake',
+      latency: '< 0.3 ms',
+      status: 'Active'
     }
   ];
 
@@ -204,20 +215,20 @@ export const ResearchPage: React.FC<ResearchPageProps> = ({
             <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 pt-4 border-t border-[#F2D69D]/80 font-mono text-xs">
               <div className="p-3 bg-[#FAF2E1] border border-[#F2D69D]">
                 <div className="text-[10px] text-[#410217]/60 uppercase tracking-wider">Volumes</div>
-                <div className="text-xl font-bold text-[#410217] mt-0.5">4 Works</div>
-                <div className="text-[10px] text-[#D5991C] mt-0.5">180 Pages Total</div>
+                <div className="text-xl font-bold text-[#410217] mt-0.5">5 Works</div>
+                <div className="text-[10px] text-[#D5991C] mt-0.5">232 Pages Total</div>
               </div>
 
               <div className="p-3 bg-[#FAF2E1] border border-[#F2D69D]">
                 <div className="text-[10px] text-[#410217]/60 uppercase tracking-wider">Defense Stack</div>
-                <div className="text-xl font-bold text-[#410217] mt-0.5">10 Layers</div>
-                <div className="text-[10px] text-[#00A878] mt-0.5">Hardware &amp; Software</div>
+                <div className="text-xl font-bold text-[#410217] mt-0.5">12 Layers</div>
+                <div className="text-[10px] text-[#00A878] mt-0.5">Complete Stack</div>
               </div>
 
               <div className="p-3 bg-[#FAF2E1] border border-[#F2D69D]">
-                <div className="text-[10px] text-[#410217]/60 uppercase tracking-wider">Benchmark Corpus</div>
-                <div className="text-xl font-bold text-[#410217] mt-0.5">250,000</div>
-                <div className="text-[10px] text-[#410217]/70 mt-0.5">AT-1 to AT-7</div>
+                <div className="text-[10px] text-[#410217]/60 uppercase tracking-wider">Agent Routing</div>
+                <div className="text-xl font-bold text-[#410217] mt-0.5">96% Win Rate</div>
+                <div className="text-[10px] text-[#410217]/70 mt-0.5">A2A-EO Dominance</div>
               </div>
 
               <div className="p-3 bg-[#FAF2E1] border border-[#F2D69D]">
@@ -255,7 +266,7 @@ export const ResearchPage: React.FC<ResearchPageProps> = ({
                   activeTab === 'all' ? 'bg-[#410217] text-[#FBF3E2]' : 'text-[#410217]/70 hover:text-[#410217]'
                 }`}
               >
-                All 4 Volumes
+                All 5 Volumes
               </button>
               <button
                 onClick={() => setActiveTab('vol1')}
@@ -287,7 +298,15 @@ export const ResearchPage: React.FC<ResearchPageProps> = ({
                   activeTab === 'vol4' ? 'bg-[#D5991C] text-[#130108] font-black' : 'text-[#410217]/70 hover:text-[#410217]'
                 }`}
               >
-                Volume 4 (Hardware)
+                Volume 4
+              </button>
+              <button
+                onClick={() => setActiveTab('vol5')}
+                className={`px-3 py-1 font-bold uppercase tracking-wider transition-colors cursor-pointer ${
+                  activeTab === 'vol5' ? 'bg-[#7C3AED] text-white font-black' : 'text-[#410217]/70 hover:text-[#410217]'
+                }`}
+              >
+                Volume 5 (A2A-EO)
               </button>
             </div>
           </div>
@@ -803,6 +822,130 @@ export const ResearchPage: React.FC<ResearchPageProps> = ({
           </article>
         )}
 
+        {/* ============================================================== */}
+        {/* VOLUME 5 SHOWCASE CARD */}
+        {/* ============================================================== */}
+        {(activeTab === 'all' || activeTab === 'vol5') && (
+          <article className="bg-[#FAF2E1] border-2 border-[#7C3AED] shadow-xl p-6 sm:p-10 relative overflow-hidden transition-all duration-300 hover:border-[#410217]">
+            
+            {/* Top Accent Strip */}
+            <div className="flex flex-wrap items-center justify-between gap-3 pb-5 mb-6 border-b border-[#F2D69D] font-mono text-xs">
+              <div className="flex items-center space-x-2">
+                <span className="px-2.5 py-1 bg-[#4C1D95] text-[#FAF5EB] border border-[#7C3AED] font-bold uppercase tracking-widest text-[10px]">
+                  VOLUME V // AUTONOMOUS PROTOCOL DOMINANCE &amp; MULTI-AGENT CRYPTOGRAPHY
+                </span>
+                <span className="text-[#410217] font-bold">{MASTER_DOC_VOL5_METADATA.id}</span>
+                <span className="text-[#410217]/60">•</span>
+                <span className="text-[#410217]/70">{MASTER_DOC_VOL5_METADATA.date}</span>
+              </div>
+              <div className="flex items-center space-x-2 text-[11px] text-[#410217]/70">
+                <span>{MASTER_DOC_VOL5_METADATA.pageCount} Pages</span>
+                <span>•</span>
+                <span className="text-[#7C3AED] font-bold">A2A-EO &amp; Silent Web</span>
+                <span>•</span>
+                <span className="text-[#00A878] font-bold">MCP · ERC-8004 · x402</span>
+              </div>
+            </div>
+
+            {/* Volume Title & Subtitle */}
+            <div className="mb-6">
+              <h2 className="font-serif text-2xl sm:text-3xl lg:text-4xl text-[#410217] font-normal tracking-tight leading-tight mb-3">
+                {MASTER_DOC_VOL5_METADATA.title}
+              </h2>
+              <p className="text-sm sm:text-base text-[#410217]/80 font-sans leading-relaxed max-w-4xl">
+                The foundational architecture for the post-human "Silent Web", where autonomous AI agents negotiate, invoke Model Context Protocol (MCP) tool schemas, settle micropayments (x402 / ERC-8004), and execute protocol selections without human intervention. Formulates Gradient-Guided Schema Flattening (GSF-CACS), Cryptographic Nonce-Utility Binding (C-NUB), and adversarial multi-agent defenses against schema poisoning, tool spoofing, and rogue autonomous swarms.
+              </p>
+            </div>
+
+            {/* Key A2A Specifications in Vol 5 */}
+            <div className="mb-8 p-4 bg-[#FFFDF8] border border-[#F2D69D] font-mono text-xs">
+              <div className="text-[10px] text-[#7C3AED] font-bold uppercase tracking-wider mb-2">
+                // AUTONOMOUS AGENT-TO-AGENT (A2A-EO) PROTOCOL SPECIFICATIONS:
+              </div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 text-[11px]">
+                <div className="p-2.5 bg-[#FAF2E1] border border-[#F2D69D]/60">
+                  <div className="text-[10px] text-[#410217]/60 uppercase">Schema De-nesting</div>
+                  <div className="text-base font-bold text-[#7C3AED] mt-0.5">β_P = 3.82..16.2</div>
+                  <div className="text-[10px] text-[#410217]/70">Log-Odds Selection Bias</div>
+                </div>
+                <div className="p-2.5 bg-[#FAF2E1] border border-[#F2D69D]/60">
+                  <div className="text-[10px] text-[#410217]/60 uppercase">Index-Zero Win Rate</div>
+                  <div className="text-base font-bold text-[#00A878] mt-0.5">79% – 96%</div>
+                  <div className="text-[10px] text-[#410217]/70">Positional Priming Dominance</div>
+                </div>
+                <div className="p-2.5 bg-[#FAF2E1] border border-[#F2D69D]/60">
+                  <div className="text-[10px] text-[#410217]/60 uppercase">Cryptographic Binding</div>
+                  <div className="text-base font-bold text-[#410217] mt-0.5">C-NUB &amp; Ed25519</div>
+                  <div className="text-[10px] text-[#410217]/70">RFC 8785 Canonical JSON</div>
+                </div>
+                <div className="p-2.5 bg-[#FAF2E1] border border-[#F2D69D]/60">
+                  <div className="text-[10px] text-[#410217]/60 uppercase">Interactive Lab</div>
+                  <div className="text-base font-bold text-[#410217] mt-0.5">Self-Contained</div>
+                  <div className="text-[10px] text-[#00A878]">Live Simulator &amp; 3D Graph</div>
+                </div>
+              </div>
+            </div>
+
+            {/* PRIMARY DUAL ACCESS BUTTONS: PAGE 1 vs PAGE 2 */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2">
+              
+              {/* PAGE 1: Full Whitepaper word-for-word */}
+              <button
+                onClick={() => onNavigate('counter-geo-vol5', 'paper')}
+                className="group p-5 bg-[#3B0764] hover:bg-[#581C87] text-[#FAF5EB] border-2 border-[#7C3AED] shadow-md transition-all duration-200 text-left cursor-pointer flex flex-col justify-between"
+              >
+                <div>
+                  <div className="flex items-center justify-between mb-2">
+                    <span className="inline-flex items-center space-x-1.5 px-2.5 py-0.5 bg-[#2E1065] text-[#D8B4FE] text-[10px] font-mono font-bold uppercase tracking-wider border border-[#7C3AED]/40">
+                      <FileText className="w-3 h-3" />
+                      <span>Page 1 of Volume 5</span>
+                    </span>
+                    <span className="text-xs font-mono text-[#D8B4FE]">52 Pages · Unabridged</span>
+                  </div>
+                  <h3 className="font-serif text-xl font-bold text-[#FAF5EB] group-hover:text-[#D8B4FE] transition-colors mb-1.5">
+                    Full Whitepaper Vol. 5 (Word-for-Word)
+                  </h3>
+                  <p className="text-xs text-[#FAF5EB]/80 leading-relaxed font-sans mb-4">
+                    The complete, unabridged text of Volume V covering autonomous agent routing mechanics, vLLM semantic router equations, GSF-CACS algorithms, and multi-agent cryptographic protocols.
+                  </p>
+                </div>
+                <div className="flex items-center text-xs font-mono font-bold text-[#D8B4FE] group-hover:translate-x-1 transition-transform">
+                  <span>Open Page 1: Read Complete Vol. 5 Whitepaper</span>
+                  <ArrowRight className="w-4 h-4 ml-1.5" />
+                </div>
+              </button>
+
+              {/* PAGE 2: Findings, Algorithms, and Visualizers */}
+              <button
+                onClick={() => onNavigate('counter-geo-vol5', 'lab')}
+                className="group p-5 bg-[#FFFDF8] hover:bg-[#FAF2E1] text-[#410217] border-2 border-[#7C3AED] shadow-md transition-all duration-200 text-left cursor-pointer flex flex-col justify-between"
+              >
+                <div>
+                  <div className="flex items-center justify-between mb-2">
+                    <span className="inline-flex items-center space-x-1.5 px-2.5 py-0.5 bg-[#FAF2E1] text-[#7C3AED] text-[10px] font-mono font-bold uppercase tracking-wider border border-[#7C3AED]">
+                      <Sparkles className="w-3 h-3 text-[#7C3AED]" />
+                      <span>Page 2 of Volume 5</span>
+                    </span>
+                    <span className="text-xs font-mono text-[#7C3AED] font-bold">Interactive A2A Lab</span>
+                  </div>
+                  <h3 className="font-serif text-xl font-bold text-[#410217] group-hover:text-[#7C3AED] transition-colors mb-1.5">
+                    Findings, Algorithms &amp; Visualizers
+                  </h3>
+                  <p className="text-xs text-[#410217]/80 leading-relaxed font-sans mb-4">
+                    Interactive A2A Agent Selection Simulator, topological schema de-nester, cryptographic handshake verifier, and 3D autonomous multi-agent protocol graph.
+                  </p>
+                </div>
+                <div className="flex items-center text-xs font-mono font-bold text-[#410217] group-hover:translate-x-1 transition-transform">
+                  <span className="group-hover:text-[#7C3AED] transition-colors">Open Page 2: Launch A2A Lab &amp; Visualizers</span>
+                  <ArrowRight className="w-4 h-4 ml-1.5 text-[#7C3AED]" />
+                </div>
+              </button>
+
+            </div>
+
+          </article>
+        )}
+
       </section>
 
       {/* 5. Complete 8-Layer Sovereign Defense Architecture Matrix */}
@@ -971,7 +1114,7 @@ export const ResearchPage: React.FC<ResearchPageProps> = ({
               </pre>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 font-mono text-xs text-[#410217]/80">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 font-mono text-xs text-[#410217]/80">
               <div className="p-3 bg-[#FFFDF8] border border-[#F2D69D]">
                 <div className="text-[10px] text-[#410217]/60 uppercase">Vol. 1 DOI</div>
                 <div className="font-bold text-[#410217] mt-0.5 truncate">{MASTER_DOC_METADATA.doi}</div>
@@ -987,6 +1130,10 @@ export const ResearchPage: React.FC<ResearchPageProps> = ({
               <div className="p-3 bg-[#FFFDF8] border border-[#F2D69D]">
                 <div className="text-[10px] text-[#410217]/60 uppercase">Vol. 4 ID</div>
                 <div className="font-bold text-[#410217] mt-0.5 truncate">{MASTER_DOC_VOL4_METADATA.id}</div>
+              </div>
+              <div className="p-3 bg-[#FFFDF8] border border-[#F2D69D]">
+                <div className="text-[10px] text-[#410217]/60 uppercase">Vol. 5 ID</div>
+                <div className="font-bold text-[#410217] mt-0.5 truncate">{MASTER_DOC_VOL5_METADATA.id}</div>
               </div>
             </div>
 

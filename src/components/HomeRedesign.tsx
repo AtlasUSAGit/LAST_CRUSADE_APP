@@ -800,6 +800,7 @@ export const HomeRedesign: React.FC<HomeRedesignProps> = ({
       'counter-geo-vol2': subPage ? `#/counter-geo-vol2/${subPage}` : '#/counter-geo-vol2',
       'counter-geo-vol3': subPage ? `#/counter-geo-vol3/${subPage}` : '#/counter-geo-vol3',
       'counter-geo-vol4': subPage ? `#/counter-geo-vol4/${subPage}` : '#/counter-geo-vol4',
+      'counter-geo-vol5': subPage ? `#/counter-geo-vol5/${subPage}` : '#/counter-geo-vol5',
       'counter-geo-ops': '#/attack-library',
       'pitch-deck': '#/pitch-deck'
     };
