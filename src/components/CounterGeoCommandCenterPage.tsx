@@ -158,7 +158,7 @@ for step = 1..T_steps:
       verificationSpec:
         'HNSW Graph Insertion Hook: Evaluates K=20 nearest neighbors; triggers STIX 2.1 quarantine if M_AM-CIDP > 0.72 or Canary Energy E_canary > 0.22.',
       empiricalProof:
-        'Quarantined 99.7% of universal and domain-specific hub sinkholes in CounterGEO-Bench with 1.8 ms P99 latency overhead and zero recall loss on clean queries.'
+        'Quarantined 99.7% of universal and domain-specific hub sinkholes in CounterAEO-Bench with 1.8 ms P99 latency overhead and zero recall loss on clean queries.'
     }
   },
   {
@@ -197,7 +197,7 @@ for step = 1..T_steps:
       summary:
         'Attackers exploit LLM trust heuristics by formatting disinformation inside structured Markdown tables, JSON-LD financial schema, fabricated direct transcript excerpts from executives/regulators, and dense institutional prose.',
       exploitMechanism:
-        'Empirical GEO studies (Aggarwal et al., 2024) prove that injecting quantitative statistics boosts LLM visibility by +41% and adding inline citations boosts visibility by +30–40%. Adversaries combine synthetic stat-stuffing with dense-embedder overfitting so the document dominates neural retrieval despite lacking lexical or factual grounding.',
+        'Empirical AEO studies (Aggarwal et al., 2024) prove that injecting quantitative statistics boosts LLM visibility by +41% and adding inline citations boosts visibility by +30–40%. Adversaries combine synthetic stat-stuffing with dense-embedder overfitting so the document dominates neural retrieval despite lacking lexical or factual grounding.',
       mathFormula:
         '\\Delta r = |\\text{Rank}_{\\text{Dense}}(D) - \\text{Rank}_{\\text{Sparse}}(D)| > 60 \\quad \\land \\quad \\text{IGPR}(D) = \\frac{\\text{Entities}(D) \\cdot \\text{Citations}(D)}{H(\\text{Tokens}(D))} \\gg \\tau',
       algorithmicPseudocode: `// Adversarial Authority & Schema Stuffing
@@ -338,13 +338,13 @@ for i, t_pub in enumerate(timestamps):
       verificationSpec:
         'Graph Max-Flow & Eigen-Spectrum Gate: Collapses unanchored circular citation rings to 0.00 authority and reduces echo-chamber voting weight by M_eff / M.',
       empiricalProof:
-        'Detected 99.2% of Hawkes-staggered Sybil campaigns in CounterGEO-Bench, collapsing 24-bot echo chambers to M_eff = 1.08 effective sources.'
+        'Detected 99.2% of Hawkes-staggered Sybil campaigns in CounterAEO-Bench, collapsing 24-bot echo chambers to M_eff = 1.08 effective sources.'
     }
   },
   {
     id: 'at-5',
     code: 'AT-5',
-    name: 'Split-Payload Enthymematic GEO (The "Jigsaw Puzzle" Attack)',
+    name: 'Split-Payload Enthymematic AEO (The "Jigsaw Puzzle" Attack)',
     plainEnglishName: 'The "Jigsaw Puzzle" Attack (Multi-Document Logic Traps)',
     tagline: 'Three 100% innocent-looking websites combine inside the AI’s head to form a toxic lie.',
     category: 'Logic & Inference',
@@ -398,7 +398,7 @@ Doc_3 = "Defense contractors face immediate insolvency if refining pauses > 14 d
       verificationSpec:
         'Single-Pass FlashAttention Hook: Evaluates top-50% Transformer reasoning layers; severs cross-document attention bridges when Omega_ij > 0.18 or I_ij > 0.35 nats.',
       empiricalProof:
-        'Boosted Split-Payload detection recall from 4.1% (Gen-1 baseline) to 97.8% in CounterGEO-Bench with 5.1 ms single-pass latency overhead.'
+        'Boosted Split-Payload detection recall from 4.1% (Gen-1 baseline) to 97.8% in CounterAEO-Bench with 5.1 ms single-pass latency overhead.'
     }
   },
   {
@@ -415,7 +415,7 @@ Doc_3 = "Defense contractors face immediate insolvency if refining pauses > 14 d
       everydayAnalogy:
         'Imagine a ticket scalper buying up thousands of cheap tickets, standing outside an arena at 6:00 AM before the box office opens, and starting a fake loudspeaker announcement that the show is almost sold out so panicking fans buy all the scalper’s overpriced tickets.',
       howAiGetsTricked:
-        'At 7:30 AM before real financial reporters are awake (a "data void"), attackers quietly place a massive $45 million wall of overpriced stock for sale in the market order book. Then they blast out fake GEO-optimized news that the company won a huge contract. AI trading bots read the news and automatically buy straight into the attacker’s $45M trap.',
+        'At 7:30 AM before real financial reporters are awake (a "data void"), attackers quietly place a massive $45 million wall of overpriced stock for sale in the market order book. Then they blast out fake AEO-optimized news that the company won a huge contract. AI trading bots read the news and automatically buy straight into the attacker’s $45M trap.',
       howShieldStopsIt:
         'Words on the internet are free to fake, but moving real Wall Street money costs millions. Our shield checks the live stock and options order book in 142 nanoseconds. When it sees fake news trying to push bots into a pre-set $45M sell wall, it slams an emergency brake.',
       keyTakeaway:
@@ -435,14 +435,14 @@ Doc_3 = "Defense contractors face immediate insolvency if refining pauses > 14 d
     },
     offensiveDossier: {
       summary:
-        'During breaking-news data voids (e.g., 04:00–08:00 EST pre-market), predatory syndicates pre-position massive limit-order walls in illiquid equities and flood web indexes with GEO-optimized catalysts to trigger automated AI buying sweeps into their wall.',
+        'During breaking-news data voids (e.g., 04:00–08:00 EST pre-market), predatory syndicates pre-position massive limit-order walls in illiquid equities and flood web indexes with AEO-optimized catalysts to trigger automated AI buying sweeps into their wall.',
       exploitMechanism:
         'Exploits the zero-cost token vs. capital commitment asymmetry and Shared Model Foundation contagion. When dozens of LLM funds ingest the same poisoned pre-market summary, their simultaneous market orders trigger momentum HFT algorithms (Algorithmic Cascade Loops), providing exit liquidity for the attacker’s pre-positioned shares.',
       mathFormula:
         '\\Delta \\mathcal{I}_{\\text{RAG}}(t) \\gg \\kappa_{\\text{cap}} \\mathcal{E}_{\\text{capital}}(\\text{VPIN}_t, \\lambda_t, \\Psi_{\\text{opt}}) \\quad \\land \\quad \\text{OBAR}_t = \\frac{\\sum e^{-\\delta_j} Q_j^{\\text{Ask}} - \\sum e^{-\\delta_j} Q_j^{\\text{Bid}}}{\\sum e^{-\\delta_j}(Q_j^{\\text{Ask}} + Q_j^{\\text{Bid}})} > 0.20',
       algorithmicPseudocode: `// Liquidity Extraction Arbitrage Attack (Scenario Alpha)
 07:29:50 -> Place $45M resting Limit-Sell Wall on $DFNS at +3.5% above mid-price
-07:30:00 -> Release 20 GEO-optimized press releases: "$DFNS wins $1.2B Pentagon award"
+07:30:00 -> Release 20 AEO-optimized press releases: "$DFNS wins $1.2B Pentagon award"
 07:30:02 -> 50 AI RAG bots + 200 momentum HFTs sweep Ask book -> Dump $45M inventory
 07:30:15 -> Pull remaining bids -> Stock flash-crashes -14.2%`,
       realWorldImpact:
@@ -458,7 +458,7 @@ Doc_3 = "Defense contractors face immediate insolvency if refining pauses > 14 d
       verificationSpec:
         'Co-Located Xilinx Versal FPGA SmartNIC (312.5 MHz): Evaluates Q8.24 fixed-point LOB asymmetry and halts OUCH/FIX execution in 45 clock cycles (142 ns).',
       empiricalProof:
-        'Neutralized 99.8% of data-void liquidity traps in CounterGEO-Bench, preventing 100% of flash-crash drawdowns ($0.00 capital lost).'
+        'Neutralized 99.8% of data-void liquidity traps in CounterAEO-Bench, preventing 100% of flash-crash drawdowns ($0.00 capital lost).'
     }
   },
   {
@@ -524,7 +524,7 @@ for day = 1..60:
   {
     id: 'at-8',
     code: 'AT-8',
-    name: 'Supply-Chain ERP Hijack, Obfuscative GEO & Zero-Knowledge Compliance',
+    name: 'Supply-Chain ERP Hijack, Obfuscative AEO & Zero-Knowledge Compliance',
     plainEnglishName: 'Supply-Chain ERP Hijack & Zero-Knowledge Regulatory Proof',
     tagline: 'Stopping Trojan suppliers, fake shortages, and proving SEC compliance without leaking secrets.',
     category: 'Regulatory & ZK',
@@ -551,16 +551,16 @@ for day = 1..60:
       computeUnprotectedOutcome: (val) =>
         `${Math.round(val * 0.6)} chaff pages hide 61.2% sanctioned UBO stake; ERP bot accepts fake $${(6.85 * (1 - val * 0.006)).toFixed(2)}/kg dumping price!`,
       computeProtectedOutcome: (val) =>
-        `HER-BOD evicts chaff & blocks 61.2% SDN stake; EIOL-PCV flags Leontief floor breach ($6.85/kg); ZK-CGEO verifies SEC proof in 1.4 ms (0 bits leaked)!`
+        `HER-BOD evicts chaff & blocks 61.2% SDN stake; EIOL-PCV flags Leontief floor breach ($6.85/kg); ZK-CAEO verifies SEC proof in 1.4 ms (0 bits leaked)!`
     },
     offensiveDossier: {
       summary:
-        'Adversaries deploy Obfuscative (Negative) GEO to crowd out top-k retrieval slots and hide sanctioned beneficial ownership (OFAC 50% Rule / BIS Entity List), while injecting fabricated production costs and synthetic shortage panics into ERP procurement bots.',
+        'Adversaries deploy Obfuscative (Negative) AEO to crowd out top-k retrieval slots and hide sanctioned beneficial ownership (OFAC 50% Rule / BIS Entity List), while injecting fabricated production costs and synthetic shortage panics into ERP procurement bots.',
       exploitMechanism:
         'By surrounding a shell entity with 50 synthetic ESG/directory hubs, attackers push incriminating ownership records out of the top-k context window. Simultaneously, state trade associations inject below-cost pricing tables into AD/CVD repositories, while institutional funds face a deadlock between SEC audit transparency and proprietary alpha secrecy.',
       mathFormula:
         '\\Delta_{\\text{Leontief}} = \\frac{c_{\\text{floor}, j} - p_{\\text{RAG}}}{c_{\\text{floor}, j}} > \\tau_{\\text{dump}} \\quad \\land \\quad \\mathcal{S}_{\\text{OFAC-50}}(j) = \\sum_{i \\in \\text{SDN}} (\\mathbf{P}^*(\\mathbf{I}-\\mathbf{A})^{-1}\\mathbf{A})_{ij} \\ge 0.50',
-      algorithmicPseudocode: `// Obfuscative GEO Crowding + Trojan ERP Vendor Injection
+      algorithmicPseudocode: `// Obfuscative AEO Crowding + Trojan ERP Vendor Injection
 publish_benign_chaff_hubs(entity="Apex Micro Ltd", count=50) // Crowds top-10 RAG slots
 inject_erp_catalog(item="Polysilicon", price="$4.10/kg", claim="Port blockade imminent!")
 // Hides 61.2% sanctioned parent stake & triggers autonomous ERP panic-hoarding`,
@@ -569,15 +569,15 @@ inject_erp_catalog(item="Polysilicon", price="$4.10/kg", claim="Port blockade im
     },
     defensiveStrategy: {
       layer: 'Layer 8, Layer 9 & Layer 10',
-      defenseName: 'Poincaré Shell De-Cloaking (HER-BOD), Leontief/AIS Conservation (EIOL-PCV) & zk-SNARKs (ZK-CGEO)',
+      defenseName: 'Poincaré Shell De-Cloaking (HER-BOD), Leontief/AIS Conservation (EIOL-PCV) & zk-SNARKs (ZK-CAEO)',
       mitigationMechanism:
-        'Layer 9 (HER-BOD) uses Submodular Facility-Location to evict redundant chaff hubs and resolves transitive SDN ownership in Poincaré hyperbolic space. Layer 10 (EIOL-PCV) verifies prices against dual Leontief input-output energy floors and satellite AIS vessel draft displacement. Layer 8 (ZK-CGEO) compiles all Counter-GEO checks into a 288-byte Groth16/Halo2 zk-SNARK proof for the SEC Consolidated Audit Trail (CAT).',
+        'Layer 9 (HER-BOD) uses Submodular Facility-Location to evict redundant chaff hubs and resolves transitive SDN ownership in Poincaré hyperbolic space. Layer 10 (EIOL-PCV) verifies prices against dual Leontief input-output energy floors and satellite AIS vessel draft displacement. Layer 8 (ZK-CAEO) compiles all Counter-AEO checks into a 288-byte Groth16/Halo2 zk-SNARK proof for the SEC Consolidated Audit Trail (CAT).',
       mathFormula:
-        '\\mathbf{c}_{\\text{floor}} = (\\mathbf{I}-\\mathbf{A}^\\top)^{-1}(\\mathbf{A}_c^\\top \\mathbf{p}_{\\text{spot}} + \\mathbf{v}_{\\min}), \\quad \\pi_{\\text{CGEO}} \\in 288\\text{ Bytes} \\implies \\text{Verify}(\\text{vk}, \\mathbf{x}_{\\text{pub}}, \\pi_{\\text{CGEO}}) = 1',
+        '\\mathbf{c}_{\\text{floor}} = (\\mathbf{I}-\\mathbf{A}^\\top)^{-1}(\\mathbf{A}_c^\\top \\mathbf{p}_{\\text{spot}} + \\mathbf{v}_{\\min}), \\quad \\pi_{\\text{CAEO}} \\in 288\\text{ Bytes} \\implies \\text{Verify}(\\text{vk}, \\mathbf{x}_{\\text{pub}}, \\pi_{\\text{CAEO}}) = 1',
       verificationSpec:
         'R1CS Fixed-Point Circuit & Maritime AIS Gate: Verifies 32-bit non-negative slack bit decompositions in 1.4 ms on SEC CAT with 0.0 bits of private alpha leakage.',
       empiricalProof:
-        'Evicted 99.4% of Negative-GEO chaff hubs, exposed 100% of >=50% transitive SDN ownership links, and verified SEC Rule 15c3-8 zk-SNARK proofs in 1.4 ms.'
+        'Evicted 99.4% of Negative-AEO chaff hubs, exposed 100% of >=50% transitive SDN ownership links, and verified SEC Rule 15c3-8 zk-SNARK proofs in 1.4 ms.'
     }
   }
 ];
@@ -1385,7 +1385,7 @@ export const CounterGeoCommandCenterPage: React.FC<CounterGeoCommandCenterPagePr
     modeGroups[6].add(doobStoppingRing);
 
     // ==========================================================================
-    // SCENE 7 (AT-8): SUPPLY-CHAIN ERP HIJACK & ZK-CGEO SNARK PROVER
+    // SCENE 7 (AT-8): SUPPLY-CHAIN ERP HIJACK & ZK-CAEO SNARK PROVER
     // ==========================================================================
     const tradeGlobe = new THREE.Mesh(
       new THREE.SphereGeometry(6.2, 28, 20),
@@ -1416,7 +1416,7 @@ export const CounterGeoCommandCenterPage: React.FC<CounterGeoCommandCenterPagePr
       leontiefTowers.push(tower);
     }
 
-    // Upper Groth16 R1CS Arithmetic Circuit Torus Knot (ZK-CGEO 288-byte Prover)
+    // Upper Groth16 R1CS Arithmetic Circuit Torus Knot (ZK-CAEO 288-byte Prover)
     const zkTorusKnot = new THREE.Mesh(
       new THREE.TorusKnotGeometry(3.4, 0.52, 96, 16),
       new THREE.MeshBasicMaterial({ color: 0xB565FF, wireframe: true, transparent: true, opacity: 0.8 })
@@ -1799,7 +1799,7 @@ export const CounterGeoCommandCenterPage: React.FC<CounterGeoCommandCenterPagePr
           <div className="hidden sm:flex items-center space-x-2 text-[#FBF3E2]/70">
             <span>LAST CRUSADE DEFENSE</span>
             <span>/</span>
-            <span className="text-[#D5991C] font-bold">GEO COMMAND CENTER</span>
+            <span className="text-[#D5991C] font-bold">AEO COMMAND CENTER</span>
             <span>/</span>
             <span className="text-[#00FF9D] font-mono text-[11px]">ALL 8 THREAT SCENES ACTIVE</span>
           </div>
@@ -1908,24 +1908,24 @@ export const CounterGeoCommandCenterPage: React.FC<CounterGeoCommandCenterPagePr
           <div className="space-y-1.5">
             <div className="flex flex-wrap items-center gap-2">
               <span className="px-2 py-0.5 bg-[#D5991C]/20 border border-[#D5991C] text-[#D5991C] font-mono text-[10px] font-bold uppercase tracking-widest">
-                OFFENSIVE GEO VS COUNTER-GEO
+                OFFENSIVE AEO VS COUNTER-AEO
               </span>
               <span className="font-mono text-xs text-[#00FF9D]">
                 8 DEDICATED 3D WEBGL SCENES · PROGRESSIVE COMPLEXITY ENGINE
               </span>
             </div>
             <h1 className="font-serif text-2xl sm:text-3xl font-bold text-[#FBF3E2] tracking-tight">
-              Last Crusade Defense <span className="text-[#D5991C]">GEO Cyber Operations & Strategy Center</span>
+              Last Crusade Defense <span className="text-[#D5991C]">AEO Cyber Operations & Strategy Center</span>
             </h1>
             <p className="text-sm text-[#FBF3E2]/85 max-w-3xl leading-relaxed">
               {knowledgeDepth === 'beginner' && (
                 <>
-                  <strong>New to Generative Engine Optimization (GEO)?</strong> Start in <strong>Level 1 (Plain-English)</strong> to explore everyday analogies and interactive sandboxes. As you interact—or whenever you’re ready—step up to <strong>Level 2 (Cyber Ops)</strong> or <strong>Level 3 (Topological Math & Code)</strong>.
+                  <strong>New to Generative Engine Optimization (AEO)?</strong> Start in <strong>Level 1 (Plain-English)</strong> to explore everyday analogies and interactive sandboxes. As you interact—or whenever you’re ready—step up to <strong>Level 2 (Cyber Ops)</strong> or <strong>Level 3 (Topological Math & Code)</strong>.
                 </>
               )}
               {knowledgeDepth === 'operator' && (
                 <>
-                  <strong>Cyber Operations Mode Active:</strong> Inspecting red-team exploit kill-chains, vulnerable RAG and multi-agent surfaces, and real-time Counter-GEO mitigation layers across all 8 threat classes.
+                  <strong>Cyber Operations Mode Active:</strong> Inspecting red-team exploit kill-chains, vulnerable RAG and multi-agent surfaces, and real-time Counter-AEO mitigation layers across all 8 threat classes.
                 </>
               )}
               {knowledgeDepth === 'architect' && (
@@ -2081,7 +2081,7 @@ export const CounterGeoCommandCenterPage: React.FC<CounterGeoCommandCenterPagePr
                 </span>
               </div>
               <div className="bg-[#350213] p-2.5 border border-[#D5991C]/25">
-                <span className="text-[#D5991C] block text-[10px] uppercase font-bold">Counter-GEO Defense Layer:</span>
+                <span className="text-[#D5991C] block text-[10px] uppercase font-bold">Counter-AEO Defense Layer:</span>
                 <span className="font-bold text-sm text-[#00FF9D]">{activeStrategy.defensiveStrategy.layer}</span>
               </div>
               <div className="bg-[#350213] p-2.5 border border-[#D5991C]/25">
@@ -2181,8 +2181,8 @@ export const CounterGeoCommandCenterPage: React.FC<CounterGeoCommandCenterPagePr
                     {knowledgeDepth === 'beginner'
                       ? '3. How Our Shield Stops It'
                       : knowledgeDepth === 'operator'
-                      ? `3. Counter-GEO Defense (${activeStrategy.defensiveStrategy.layer})`
-                      : '3. Counter-GEO Mathematical Proof & Gate'}
+                      ? `3. Counter-AEO Defense (${activeStrategy.defensiveStrategy.layer})`
+                      : '3. Counter-AEO Mathematical Proof & Gate'}
                   </span>
                 </div>
                 <div className="text-[#FBF3E2]/90 leading-relaxed">
@@ -2235,11 +2235,11 @@ export const CounterGeoCommandCenterPage: React.FC<CounterGeoCommandCenterPagePr
                 <div className="flex items-center space-x-2 font-mono text-xs text-[#00FF9D]">
                   <Sparkles className="w-4 h-4 text-[#D5991C]" />
                   <span className="uppercase tracking-widest font-bold">
-                    PROGRESSIVE GEO STRATEGY LIBRARY // CHOOSE YOUR STARTING DEPTH
+                    PROGRESSIVE AEO STRATEGY LIBRARY // CHOOSE YOUR STARTING DEPTH
                   </span>
                 </div>
                 <h2 className="font-serif text-2xl font-bold text-[#FBF3E2]">
-                  Interactive Catalog of All 8 GEO Attack Classes & Defenses
+                  Interactive Catalog of All 8 AEO Attack Classes & Defenses
                 </h2>
                 <p className="text-xs text-[#FBF3E2]/80 max-w-3xl leading-relaxed">
                   Every threat card below is <strong>progressive</strong>: start with <strong>Step 1 (Everyday Analogy)</strong> and click through to <strong>Step 4 (Topological Math & Code)</strong>—or use the global depth switcher to immediately unlock full mathematical specifications across all cards.
@@ -2436,14 +2436,14 @@ export const CounterGeoCommandCenterPage: React.FC<CounterGeoCommandCenterPagePr
                             onClick={() => setCardStep(2)}
                             className="text-[11px] font-mono font-bold text-[#00FF9D] hover:underline flex items-center space-x-1 cursor-pointer"
                           >
-                            <span>Next: See Counter-GEO Defense ({strat.defensiveStrategy.layer})</span>
+                            <span>Next: See Counter-AEO Defense ({strat.defensiveStrategy.layer})</span>
                             <ChevronRight className="w-3.5 h-3.5" />
                           </button>
                         </div>
                       </div>
                     )}
 
-                    {/* STEP 2: COUNTER-GEO DEFENSE & BENCHMARKS */}
+                    {/* STEP 2: COUNTER-AEO DEFENSE & BENCHMARKS */}
                     {activeStep === 2 && (
                       <div className="bg-[#24010d] border border-[#00A878]/40 p-4 space-y-3 text-xs leading-relaxed">
                         <div className="flex items-center justify-between">
@@ -2461,7 +2461,7 @@ export const CounterGeoCommandCenterPage: React.FC<CounterGeoCommandCenterPagePr
                           {strat.defensiveStrategy.mitigationMechanism}
                         </div>
                         <div className="bg-[#1a0009] p-3 border border-[#D5991C]/30 font-mono text-[11px] text-[#00FF9D]">
-                          <strong>CounterGEO-Bench Proof:</strong> {strat.defensiveStrategy.empiricalProof}
+                          <strong>CounterAEO-Bench Proof:</strong> {strat.defensiveStrategy.empiricalProof}
                         </div>
                         <div className="flex justify-end pt-1">
                           <button
@@ -2496,7 +2496,7 @@ export const CounterGeoCommandCenterPage: React.FC<CounterGeoCommandCenterPagePr
                         </div>
                         <div>
                           <span className="text-[10px] text-[#00FF9D] uppercase font-bold block mb-1">
-                            Counter-GEO Defense Invariant ({strat.defensiveStrategy.layer}):
+                            Counter-AEO Defense Invariant ({strat.defensiveStrategy.layer}):
                           </span>
                           <div className="p-2.5 bg-[#120006] border border-[#00A878]/30 text-[#00FF9D] overflow-x-auto text-[11px]">
                             {strat.defensiveStrategy.mathFormula}
@@ -2537,7 +2537,7 @@ export const CounterGeoCommandCenterPage: React.FC<CounterGeoCommandCenterPagePr
                         <strong>Unprotected AI:</strong> {strat.interactiveSandbox.computeUnprotectedOutcome(sVal)}
                       </div>
                       <div className="p-2 bg-[#2d0110] border-l-2 border-[#00FF9D] text-[#00FF9D]">
-                        <strong>With Counter-GEO:</strong> {strat.interactiveSandbox.computeProtectedOutcome(sVal)}
+                        <strong>With Counter-AEO:</strong> {strat.interactiveSandbox.computeProtectedOutcome(sVal)}
                       </div>
                     </div>
                   </div>
@@ -2568,7 +2568,7 @@ export const CounterGeoCommandCenterPage: React.FC<CounterGeoCommandCenterPagePr
         <div className="flex items-center space-x-2">
           <span>LAST CRUSADE DEFENSE</span>
           <span>·</span>
-          <span>SOVEREIGN COUNTER-GEO PROTOCOL</span>
+          <span>SOVEREIGN COUNTER-AEO PROTOCOL</span>
           <span>·</span>
           <span className="text-[#00FF9D]">ALL 8 WEBGL THREAT SCENES ACTIVE</span>
         </div>

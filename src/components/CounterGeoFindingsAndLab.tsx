@@ -1199,7 +1199,7 @@ export const CounterGeoFindingsAndLab: React.FC<FindingsAndLabProps> = ({
                 PAGE 2 // INTERACTIVE FINDINGS, ALGORITHMS & VISUALIZERS
               </div>
               <h2 className="font-serif text-xl sm:text-2xl font-bold text-[#410217]">
-                Counter-GEO Sovereign Architecture Lab
+                Counter-AEO Sovereign Architecture Lab
               </h2>
             </div>
           </div>
@@ -1275,7 +1275,7 @@ export const CounterGeoFindingsAndLab: React.FC<FindingsAndLabProps> = ({
               </h3>
               <p className="text-sm text-[#410217]/80 leading-relaxed font-sans max-w-4xl">
                 The implementations below run the exact mathematical algorithms specified in{' '}
-                <strong className="text-[#410217]">Counter GEO Master Doc Volume 1</strong>. Adjust parameters,
+                <strong className="text-[#410217]">Counter AEO Master Doc Volume 1</strong>. Adjust parameters,
                 switch attack scenarios, and observe real-time matrix transformations, Levina-Bickel LID
                 collapses, Hawkes point-process decay, and SEC Rule 15c3-8 limit-order book damping.
               </p>
@@ -1741,7 +1741,7 @@ export const CounterGeoFindingsAndLab: React.FC<FindingsAndLabProps> = ({
                 Whitepaper Graphic Figures & Synthesis Matrix
               </h3>
               <p className="text-sm text-[#410217]/75 font-sans">
-                Interactive diagrams faithfully recreating Figures 1–8 and Tables 1–5 from Counter GEO Master Doc Volume 1.
+                Interactive diagrams faithfully recreating Figures 1–8 and Tables 1–5 from Counter AEO Master Doc Volume 1.
               </p>
             </div>
 
@@ -1813,7 +1813,7 @@ export const CounterGeoFindingsAndLab: React.FC<FindingsAndLabProps> = ({
                     TABLE 1: PARADIGM COMPARISON
                   </span>
                   <h4 className="font-serif text-xl font-bold text-[#410217]">
-                    Traditional SEO vs. Generative Engine Optimization (GEO)
+                    Traditional SEO vs. Generative Engine Optimization (AEO)
                   </h4>
                 </div>
               </div>
@@ -1824,7 +1824,7 @@ export const CounterGeoFindingsAndLab: React.FC<FindingsAndLabProps> = ({
                     <tr className="bg-[#410217] text-[#FBF3E2] font-serif font-bold">
                       <th className="p-3 border-r border-[#F2D69D]/30">Dimension</th>
                       <th className="p-3 border-r border-[#F2D69D]/30">Traditional SEO</th>
-                      <th className="p-3">Generative Engine Optimization (GEO)</th>
+                      <th className="p-3">Generative Engine Optimization (AEO)</th>
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-[#F2D69D]">
@@ -1858,7 +1858,7 @@ export const CounterGeoFindingsAndLab: React.FC<FindingsAndLabProps> = ({
               </div>
             </div>
 
-            {/* TABLE 4: Master Six-Layer Counter-GEO Synthesis Matrix */}
+            {/* TABLE 4: Master Six-Layer Counter-AEO Synthesis Matrix */}
             <div className="bg-[#FFFDF8] border border-[#F2D69D] p-6 sm:p-8 shadow-xs space-y-4">
               <div className="flex items-center justify-between pb-3 border-b border-[#F2D69D]">
                 <div>
@@ -1866,7 +1866,7 @@ export const CounterGeoFindingsAndLab: React.FC<FindingsAndLabProps> = ({
                     TABLE 4: MASTER SYNTHESIS SPECIFICATION MATRIX
                   </span>
                   <h4 className="font-serif text-xl font-bold text-[#410217]">
-                    The Six-Layer Sovereign Counter-GEO Defense Stack
+                    The Six-Layer Sovereign Counter-AEO Defense Stack
                   </h4>
                 </div>
               </div>
@@ -2391,7 +2391,7 @@ export const CounterGeoFindingsAndLab: React.FC<FindingsAndLabProps> = ({
                     )}
                     {webglMode === 4 && (
                       <>
-                        Using BN254 elliptic curve cryptography, institutions can prove their compliance with SEC Counter-GEO rules in <strong>1.4 milliseconds</strong> with <strong>zero leakage</strong> of confidential prompts or proprietary trading algorithms.
+                        Using BN254 elliptic curve cryptography, institutions can prove their compliance with SEC Counter-AEO rules in <strong>1.4 milliseconds</strong> with <strong>zero leakage</strong> of confidential prompts or proprietary trading algorithms.
                       </>
                     )}
                   </p>

@@ -82,7 +82,7 @@ export const TrustAndTeam: React.FC<TrustAndTeamProps> = ({ onNavigate }) => {
                 // PEER-REVIEWED ARCHIVAL RELEASES
               </span>
               <h3 className="font-serif text-2xl sm:text-3xl text-[#410217] tracking-tight">
-                The Counter-GEO <span className="italic">Trilogy</span>
+                The Counter-AEO <span className="italic">Trilogy</span>
               </h3>
             </div>
             <div className="flex flex-col sm:flex-row sm:items-center gap-3">
@@ -110,7 +110,7 @@ export const TrustAndTeam: React.FC<TrustAndTeamProps> = ({ onNavigate }) => {
                 ? { tag: 'VOLUME I', color: 'bg-[#410217] text-[#FBF3E2] border-[#D5991C]', accent: '#D5991C', target: 'counter-geo' as NavigationPage, subtitle: 'Vector De-Biasing & 6-Layer Architecture' }
                 : isVol2
                 ? { tag: 'VOLUME II', color: 'bg-[#004566] text-[#FBF3E2] border-[#00A878]', accent: '#00A878', target: 'counter-geo-vol2' as NavigationPage, subtitle: 'Stateful Memory Immunity & ZK Compliance' }
-                : { tag: 'VOLUME III', color: 'bg-[#2A0845] text-[#FBF3E2] border-[#D5991C]', accent: '#E63946', target: 'counter-geo-vol3' as NavigationPage, subtitle: 'CounterGEO-Bench & High-Frequency Stress Testing' };
+                : { tag: 'VOLUME III', color: 'bg-[#2A0845] text-[#FBF3E2] border-[#D5991C]', accent: '#E63946', target: 'counter-geo-vol3' as NavigationPage, subtitle: 'CounterAEO-Bench & High-Frequency Stress Testing' };
 
               return (
                 <article

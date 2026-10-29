@@ -43,14 +43,14 @@ export const ResearchPage: React.FC<ResearchPageProps> = ({
   const [activeTab, setActiveTab] = useState<'all' | 'vol1' | 'vol2' | 'vol3' | 'vol4' | 'vol5'>('all');
   const [expandedLayer, setExpandedLayer] = useState<number | null>(null);
 
-  const bibtexString = `@article{sentinel_geo_pentology_2026,
-  title={Generative Engine Optimization (GEO) and Counter-GEO Defenses: Sovereign Architecture for Epistemic and Financial Cybersecurity (Volumes I, II, III, IV, and V)},
+  const bibtexString = `@article{sentinel_aeo_pentology_2026,
+  title={Generative Engine Optimization (AEO) and Counter-AEO Defenses: Sovereign Architecture for Epistemic and Financial Cybersecurity (Volumes I, II, III, IV, and V)},
   author={Last Crusade Defense Security Labs and Autonomous Systems Red-Team Group},
   journal={Sovereign Strategic Research & Defense Initiative},
   year={2026},
   month={October},
-  doi={10.1145/3637528.3671900-CGEO-PENTOLOGY},
-  url={https://sentinel-geo.defense.ai/#/research}
+  doi={10.1145/3637528.3671900-CAEO-PENTOLOGY},
+  url={https://sentinel-aeo.defense.ai/#/research}
 }`;
 
   const handleCopyBibtex = () => {
@@ -105,7 +105,7 @@ export const ResearchPage: React.FC<ResearchPageProps> = ({
       vol: 'Vol. I',
       volKey: 'counter-geo' as NavigationPage,
       name: 'CEH-ASID & DAPP',
-      threat: 'Split-Payload (Enthymematic) GEO & indirect prompt injections',
+      threat: 'Split-Payload (Enthymematic) AEO & indirect prompt injections',
       core: 'Möbius KL Synergy (I_ij) + Transformer Attention Sink Tomography',
       latency: '5.1 ms',
       status: 'Active'
@@ -145,7 +145,7 @@ export const ResearchPage: React.FC<ResearchPageProps> = ({
       vol: 'Vol. II',
       volKey: 'counter-geo-vol2' as NavigationPage,
       name: 'CM-JSAS',
-      threat: 'Multimodal steganographic GEO hubs in PDF financial slides & charts',
+      threat: 'Multimodal steganographic AEO hubs in PDF financial slides & charts',
       core: 'VLM Jacobian Saliency vs. Sobel Contour Mask (L_leak) + DCT Scrubbing',
       latency: '8.4 ms',
       status: 'Active'
@@ -154,7 +154,7 @@ export const ResearchPage: React.FC<ResearchPageProps> = ({
       layer: 'Layer 8',
       vol: 'Vol. II',
       volKey: 'counter-geo-vol2' as NavigationPage,
-      name: 'ZK-CGEO',
+      name: 'ZK-CAEO',
       threat: 'Institutional alpha leakage in SEC Rule 15c3-8 regulatory reporting',
       core: '288-Byte zk-SNARK Fixed-Point R1CS Arithmetic Proofs (1.4 ms verify)',
       latency: '1.4 ms',
@@ -208,7 +208,7 @@ export const ResearchPage: React.FC<ResearchPageProps> = ({
             </h1>
 
             <p className="text-base sm:text-lg text-[#410217]/85 font-sans leading-relaxed mb-8 max-w-3xl">
-              As AI chatbots and autonomous agents replace classical keyword search, digital discoverability has migrated to <strong>Generative Engine Optimization (GEO)</strong>. This page features deep research we have conducted using frontier models to codify the threat vectors, mathematical detection algorithms, and codebase architectures required to protect foundation reasoning pipelines, financial markets, national security, and LLM-based agents.
+              As AI chatbots and autonomous agents replace classical keyword search, digital discoverability has migrated to <strong>Generative Engine Optimization (AEO)</strong>. This page features deep research we have conducted using frontier models to codify the threat vectors, mathematical detection algorithms, and codebase architectures required to protect foundation reasoning pipelines, financial markets, national security, and LLM-based agents.
             </p>
 
             {/* Live Telemetry KPI Ticker */}
@@ -357,7 +357,7 @@ export const ResearchPage: React.FC<ResearchPageProps> = ({
                 {MASTER_DOC_METADATA.title}
               </h2>
               <p className="text-sm sm:text-base text-[#410217]/80 font-sans leading-relaxed max-w-4xl">
-                The master blueprint establishing the theoretical and engineering foundation of Counter-GEO. Diagnoses why first-generation anomaly detectors fail against transferable ensemble attacks, scale pathologies, and latency bottlenecks. Formulates Layers 0 through 4B including Moving-Target Vector Defense (MTVD), AM-CIDP intrinsic dimensionality profiling, NCARD cross-architecture divergence, and Thermodynamic Market Grounding (TMMEG).
+                The master blueprint establishing the theoretical and engineering foundation of Counter-AEO. Diagnoses why first-generation anomaly detectors fail against transferable ensemble attacks, scale pathologies, and latency bottlenecks. Formulates Layers 0 through 4B including Moving-Target Vector Defense (MTVD), AM-CIDP intrinsic dimensionality profiling, NCARD cross-architecture divergence, and Thermodynamic Market Grounding (TMMEG).
               </p>
             </div>
 
@@ -485,7 +485,7 @@ export const ResearchPage: React.FC<ResearchPageProps> = ({
                 {MASTER_DOC_VOL2_METADATA.title}
               </h2>
               <p className="text-sm sm:text-base text-[#410217]/80 font-sans leading-relaxed max-w-4xl">
-                Extends Counter-GEO into stateful episodic agent memory, autophagous multi-agent swarms, multimodal Vision-Language Models (VLMs), and zero-knowledge regulatory reporting. Solves the catastrophic trade-off between proprietary hedge-fund alpha protection and mandatory SEC Rule 15c3-8 algorithmic auditing via 288-byte zk-SNARKs.
+                Extends Counter-AEO into stateful episodic agent memory, autophagous multi-agent swarms, multimodal Vision-Language Models (VLMs), and zero-knowledge regulatory reporting. Solves the catastrophic trade-off between proprietary hedge-fund alpha protection and mandatory SEC Rule 15c3-8 algorithmic auditing via 288-byte zk-SNARKs.
               </p>
             </div>
 
@@ -509,7 +509,7 @@ export const ResearchPage: React.FC<ResearchPageProps> = ({
                 </div>
                 <div className="flex items-start space-x-2">
                   <span className="text-[#00A878] font-bold">L8:</span>
-                  <span className="text-[#410217]">Zero-Knowledge SEC Regulatory Proofs (ZK-CGEO)</span>
+                  <span className="text-[#410217]">Zero-Knowledge SEC Regulatory Proofs (ZK-CAEO)</span>
                 </div>
               </div>
             </div>
@@ -605,7 +605,7 @@ export const ResearchPage: React.FC<ResearchPageProps> = ({
                 {MASTER_DOC_VOL3_METADATA.title}
               </h2>
               <p className="text-sm sm:text-base text-[#410217]/80 font-sans leading-relaxed max-w-4xl">
-                The empirical validation appendix for the entire Counter-GEO defense stack. Evaluates 250,000 multi-modal documents across threat taxonomy AT-1 to AT-7. Details the elimination of the SEC 10-K false positive pathology (from 18.6% down to 0.38%) and replays high-frequency Limit Order Book (LOB) flash-crash simulations with 50 autonomous LLM trading agents during pre-market data voids.
+                The empirical validation appendix for the entire Counter-AEO defense stack. Evaluates 250,000 multi-modal documents across threat taxonomy AT-1 to AT-7. Details the elimination of the SEC 10-K false positive pathology (from 18.6% down to 0.38%) and replays high-frequency Limit Order Book (LOB) flash-crash simulations with 50 autonomous LLM trading agents during pre-market data voids.
               </p>
             </div>
 
@@ -633,7 +633,7 @@ export const ResearchPage: React.FC<ResearchPageProps> = ({
                 <div className="p-2.5 bg-[#FAF2E1] border border-[#F2D69D]/60">
                   <div className="text-[10px] text-[#410217]/60 uppercase">Python Test Harness</div>
                   <div className="text-base font-bold text-[#410217] mt-0.5">Self-Contained</div>
-                  <div className="text-[10px] text-[#D5991C]">counter_geo_bench.py</div>
+                  <div className="text-[10px] text-[#D5991C]">counter_aeo_bench.py</div>
                 </div>
               </div>
             </div>
@@ -729,7 +729,7 @@ export const ResearchPage: React.FC<ResearchPageProps> = ({
                 {MASTER_DOC_VOL4_METADATA.title}
               </h2>
               <p className="text-sm sm:text-base text-[#410217]/80 font-sans leading-relaxed max-w-4xl">
-                Translates Counter-GEO research into synthesizable FPGA hardware, enterprise commercialization, and sovereign defense procurement. Formulates the 142ns sub-microsecond pre-trade wire kill-switch for SEC Rule 15c3-8 algorithmic trading, institutional actuarial Value-at-Risk modeling (18.4x to 34.2x 3-year net ROI across 3 enterprise SKUs), 8 patent claim families, and a dual-use federal sovereign procurement roadmap (SBIR Phase III, DIU, In-Q-Tel, 15 U.S.C. § 638(r)).
+                Translates Counter-AEO research into synthesizable FPGA hardware, enterprise commercialization, and sovereign defense procurement. Formulates the 142ns sub-microsecond pre-trade wire kill-switch for SEC Rule 15c3-8 algorithmic trading, institutional actuarial Value-at-Risk modeling (18.4x to 34.2x 3-year net ROI across 3 enterprise SKUs), 8 patent claim families, and a dual-use federal sovereign procurement roadmap (SBIR Phase III, DIU, In-Q-Tel, 15 U.S.C. § 638(r)).
               </p>
             </div>
 
@@ -1049,7 +1049,7 @@ export const ResearchPage: React.FC<ResearchPageProps> = ({
             // EMPIRICAL THREAT TAXONOMY &amp; DETECTION RATES
           </span>
           <h2 className="font-serif text-3xl sm:text-4xl text-[#410217] font-normal tracking-tight">
-            CounterGEO-Bench Threat Matrix (AT-1 – AT-7)
+            CounterAEO-Bench Threat Matrix (AT-1 – AT-7)
           </h2>
           <p className="text-sm text-[#410217]/80 font-sans mt-2 max-w-2xl">
             Quantitative benchmarks from Volume III evaluating detection recall across 250,000 multi-modal adversarial documents comparing baseline unprotected pipelines, Generation-1 detectors, and our Sovereign 8-Layer Stack.
@@ -1097,7 +1097,7 @@ export const ResearchPage: React.FC<ResearchPageProps> = ({
               Archival Citation and Metadata
             </h2>
             <p className="text-sm text-[#410217]/80 leading-relaxed font-sans mb-6">
-              When citing this research or utilizing the CounterGEO-Bench evaluation dataset in academic publications or defense intelligence reports, please reference the sovereign master document identifiers below:
+              When citing this research or utilizing the CounterAEO-Bench evaluation dataset in academic publications or defense intelligence reports, please reference the sovereign master document identifiers below:
             </p>
 
             <div className="relative bg-[#1A050D] text-[#FAF5EB] p-4 sm:p-5 font-mono text-xs border border-[#F2D69D] shadow-inner mb-6">
@@ -1145,7 +1145,7 @@ export const ResearchPage: React.FC<ResearchPageProps> = ({
       <section className="py-14 bg-[#410217] text-[#FBF3E2] border-t border-[#F2D69D]/40">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="font-serif text-3xl sm:text-4xl text-[#FBF3E2] mb-3">
-            Deploy Sovereign Counter-GEO Defenses
+            Deploy Sovereign Counter-AEO Defenses
           </h2>
           <p className="text-sm sm:text-base text-[#FBF3E2]/80 max-w-2xl mx-auto font-sans mb-8">
             Request an institutional audit of your enterprise RAG indices, algorithmic trading pipelines, or public web presence against adversarial vector hubness and split-payload injection.
@@ -1155,7 +1155,7 @@ export const ResearchPage: React.FC<ResearchPageProps> = ({
               onClick={onOpenAudit}
               className="px-6 py-3 bg-[#D5991C] hover:bg-[#e6a827] text-[#130108] font-mono text-xs font-bold uppercase tracking-wider shadow-md transition-all cursor-pointer"
             >
-              Request Sovereign GEO Audit →
+              Request Sovereign AEO Audit →
             </button>
             <button
               onClick={() => onNavigate('counter-geo-ops')}

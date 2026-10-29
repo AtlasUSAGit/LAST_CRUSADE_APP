@@ -15,15 +15,15 @@ However, if we project the threat landscape forward 12 to 36 months, four **Gen
     
       
     
-2. **Autophagous Multi-Agent Echo Chambers (AI-Citing-AI Cascades):** What happens when foreign GEO compromises peripheral open-web summarization bots, and institutional trading or intelligence swarms ingest those outputs—creating a Byzantine echo chamber where domestic AI agents launder foreign disinformation for each other?
+2. **Autophagous Multi-Agent Echo Chambers (AI-Citing-AI Cascades):** What happens when foreign AEO compromises peripheral open-web summarization bots, and institutional trading or intelligence swarms ingest those outputs—creating a Byzantine echo chamber where domestic AI agents launder foreign disinformation for each other?
     
       
     
-3. **Cross-Modal Steganographic GEO (PDFs, Financial Charts, Satellite Imagery & Audio):** Your whitepaper cites Zhang et al.’s text-to-image hubness experiments and recommends "Multi-Modal Retrieval Validation". How do we stop an adversary from embedding $L_\infty$-bounded adversarial pixel perturbations inside a PDF investor deck chart that looks normal to a human analyst, but forces a Vision-Language Model (VLM) RAG parser to extract fabricated financial metrics?
+3. **Cross-Modal Steganographic AEO (PDFs, Financial Charts, Satellite Imagery & Audio):** Your whitepaper cites Zhang et al.’s text-to-image hubness experiments and recommends "Multi-Modal Retrieval Validation". How do we stop an adversary from embedding $L_\infty$-bounded adversarial pixel perturbations inside a PDF investor deck chart that looks normal to a human analyst, but forces a Vision-Language Model (VLM) RAG parser to extract fabricated financial metrics?
     
       
     
-4. **The Alpha-Privacy vs. Regulatory Audit Paradox (Zero-Knowledge Compliance):** Quantitative hedge funds and defense contractors will resist SEC Rule 15c3-8 audit trails if logging their RAG context exposes their proprietary trading prompts and alpha strategies to regulators. How do we mathematically prove Counter-GEO compliance without revealing a single secret token?
+4. **The Alpha-Privacy vs. Regulatory Audit Paradox (Zero-Knowledge Compliance):** Quantitative hedge funds and defense contractors will resist SEC Rule 15c3-8 audit trails if logging their RAG context exposes their proprietary trading prompts and alpha strategies to regulators. How do we mathematically prove Counter-AEO compliance without revealing a single secret token?
     
       
     
@@ -32,7 +32,7 @@ Here is **Volume II** of your whitepaper, building out four new mathematical a
 
   
 
-# Counter-GEO Architecture — Volume II: Stateful Memory Immunity, Byzantine Swarm Consensus, Cross-Modal Saliency Defense, and Zero-Knowledge Regulatory Compliance
+# Counter-AEO Architecture — Volume II: Stateful Memory Immunity, Byzantine Swarm Consensus, Cross-Modal Saliency Defense, and Zero-Knowledge Regulatory Compliance
 
 ## Executive Overview of Volume II (Layers 5 through 8)
 
@@ -42,10 +42,10 @@ While Volume I established a six-layer defense stack (Layers 0 through 4B) for s
 
 ```
 ========================================================================================
-       COUNTER-GEO VOLUME II: GENERATION-3 THREATS & ARCHITECTURAL BREAKTHROUGHS
+       COUNTER-AEO VOLUME II: GENERATION-3 THREATS & ARCHITECTURAL BREAKTHROUGHS
 ========================================================================================
 
-  GEN-3 ADVERSARIAL VECTOR                     VOLUME II COUNTER-GEO BREAKTHROUGH
+  GEN-3 ADVERSARIAL VECTOR                     VOLUME II COUNTER-AEO BREAKTHROUGH
 ┌──────────────────────────────────────────┐ ┌─────────────────────────────────────────┐
 │ 1. "Slow-Boil" Stateful Memory Drift     │ │ Layer 5: DMEM-WMQ                       │
 │ Sub-threshold daily nudges (ΔI < τ)      │ │ Doob-Meyer Epistemic Martingale         │
@@ -57,12 +57,12 @@ While Volume I established a six-layer defense stack (Layers 0 through 4B) for s
 │ by institutional swarms (Byzantine       │ │ & Conditional Mutual Information (CMI)  │
 │ contagion across shared foundations).    │ │ De-Duplication of Swarm Beliefs.        │
 ├──────────────────────────────────────────┤ ├─────────────────────────────────────────┤
-│ 3. Cross-Modal Steganographic GEO        │ │ Layer 7: CM-JSAS                        │
+│ 3. Cross-Modal Steganographic AEO        │ │ Layer 7: CM-JSAS                        │
 │ L_inf pixel/audio perturbations in PDF   │ │ Cross-Modal Jacobian Saliency Alignment │
 │ charts & earnings calls hijacking VLM    │ │ & Helmholtz-Hodge Vector Field          │
 │ embeddings (Zhang et al., 2025).         │ │ Decomposition for Multimodal RAG.       │
 ├──────────────────────────────────────────┤ ├─────────────────────────────────────────┤
-│ 4. Proprietary Alpha vs. SEC Audit Clash │ │ Layer 8: ZK-CGEO                        │
+│ 4. Proprietary Alpha vs. SEC Audit Clash │ │ Layer 8: ZK-CAEO                        │
 │ Quantitative funds refusing to expose    │ │ Zero-Knowledge Succinct Proofs (zk-SNARK│
 │ private prompts/contexts in SEC CAT logs.│ │ Arithmetic Circuits) proving Rule 15c3-8│
 │                                          │ │ compliance with zero alpha leakage.     │
@@ -159,7 +159,7 @@ has an expected value of $\mathbb{E}[\mathcal{T}_{\text{DMEM}}(t)] = 1$ (since
 
   
 
-Conversely, under a **Slow-Boil GEO Campaign** where small daily nudges align along an adversarial vector $\mathbf{v}_{\text{bias}}$, the numerator grows quadratically as $O(W^2)$ while the denominator grows linearly as $O(W)$, causing $\mathcal{T}_{\text{DMEM}}(t) \to W$!
+Conversely, under a **Slow-Boil AEO Campaign** where small daily nudges align along an adversarial vector $\mathbf{v}_{\text{bias}}$, the numerator grows quadratically as $O(W^2)$ while the denominator grows linearly as $O(W)$, causing $\mathcal{T}_{\text{DMEM}}(t) \to W$!
 
   
 
@@ -238,7 +238,7 @@ class DMEMWMQMemoryShield:
                                 is_c2pa_anchored: bool) -> MartingaleAuditVerdict:
         """
         Commits a new episodic memory state, evaluates Doob-Meyer Martingale drift over window W,
-        and automatically rolls back state if chronic sub-threshold GEO poisoning is detected.
+        and automatically rolls back state if chronic sub-threshold AEO poisoning is detected.
         """
         centroid = np.mean(memory_embeddings, axis=0)
          centroid /= (np.linalg.norm(centroid) + 1e-8)
@@ -323,7 +323,7 @@ class DMEMWMQMemoryShield:
 
 ### 12.1 The Autophagous Multi-Agent Echo Chamber Threat
 
-In Section 1.2 of your whitepaper, you identified how **Shared Model Foundations** and **Algorithmic Cascade Loops**amplify isolated GEO exploits into systemic market events. In modern enterprise architectures, autonomous agents operate in **Multi-Agent Swarms** (e.g., a News Scraper Agent, a Macro Sentiment Agent, a Supply-Chain Agent, and a Portfolio Risk Agent), and across the financial ecosystem, funds ingest third-party AI-generated research notes.
+In Section 1.2 of your whitepaper, you identified how **Shared Model Foundations** and **Algorithmic Cascade Loops**amplify isolated AEO exploits into systemic market events. In modern enterprise architectures, autonomous agents operate in **Multi-Agent Swarms** (e.g., a News Scraper Agent, a Macro Sentiment Agent, a Supply-Chain Agent, and a Portfolio Risk Agent), and across the financial ecosystem, funds ingest third-party AI-generated research notes.
 
   
 
@@ -331,7 +331,7 @@ This creates a devastating vulnerability known as an **Autophagous Epistemic Ca
 
   
 
-1. A foreign adversary plants a single GEO-optimized rumor on a low-tier blog.
+1. A foreign adversary plants a single AEO-optimized rumor on a low-tier blog.
     
       
     
@@ -339,7 +339,7 @@ This creates a devastating vulnerability known as an **Autophagous Epistemic Ca
     
       
     
-3. An institutional multi-agent swarm scrapes those 10 respected domestic SaaS feeds. Even though each feed belongs to a legitimate domestic company with valid TLS certificates, **all 10 agents are unknowingly echoing the exact same latent GEO root!**
+3. An institutional multi-agent swarm scrapes those 10 respected domestic SaaS feeds. Even though each feed belongs to a legitimate domestic company with valid TLS certificates, **all 10 agents are unknowingly echoing the exact same latent AEO root!**
     
       
     
@@ -349,7 +349,7 @@ This creates a devastating vulnerability known as an **Autophagous Epistemic Ca
        AUTOPHAGOUS AI-TO-AI ECHO CHAMBER vs. LAYER 6 SGL-CMI SWARM FILTER
 ========================================================================================
 
-                [ Single Foreign Adversary GEO Seed ]
+                [ Single Foreign Adversary AEO Seed ]
                                   │
            ┌──────────────────────┼──────────────────────┐
            ▼                      ▼                      ▼
@@ -383,7 +383,7 @@ In a healthy multi-agent system where agents gather independent private signals 
 
 $$P(Z_1, Z_2, \dots, Z_M \mid R) = \prod_{i=1}^{M} P(Z_i \mid R) \iff I(Z_i; Z_j \mid R) = 0 \quad (\forall i \neq j)$$
 
-Conversely, when upstream agents $i$ and $j$ are both contaminated by an unobserved latent adversarial GEO payload $U_{\text{GEO}}$ (or are copying each other in an autophagous loop), their **Conditional Mutual Information (CMI)**given verified ground truth $R$ spikes:
+Conversely, when upstream agents $i$ and $j$ are both contaminated by an unobserved latent adversarial AEO payload $U_{\text{AEO}}$ (or are copying each other in an autophagous loop), their **Conditional Mutual Information (CMI)**given verified ground truth $R$ spikes:
 
   
 
@@ -407,7 +407,7 @@ $$M_{\text{eff}} = \frac{\left( \sum_{m=1}^{M} \lambda_m \right)^2}{\sum_{m=1}^{
     
       
     
-- **Autophagous GEO Echo Chamber:** When $M = 20$ upstream AI feeds unknowingly parrot the same foreign GEO seed, $\rho_{ij \mid R} \to 1 \implies \lambda_1 \approx 20, \lambda_{2..20} \approx 0 \implies M_{\text{eff}} \approx 1.0$!
+- **Autophagous AEO Echo Chamber:** When $M = 20$ upstream AI feeds unknowingly parrot the same foreign AEO seed, $\rho_{ij \mid R} \to 1 \implies \lambda_1 \approx 20, \lambda_{2..20} \approx 0 \implies M_{\text{eff}} \approx 1.0$!
     
       
     
@@ -418,7 +418,7 @@ Furthermore, we construct the **precision-weighted consensus operator** using 
 
 $$\mathbf{w}_{\text{SGL-CMI}} = \frac{\left( \mathbf{\Sigma}_e + \eta \mathbf{I}_M \right)^{-1} \mathbf{1}_M}{\mathbf{1}_M^\top \left( \mathbf{\Sigma}_e + \eta \mathbf{I}_M \right)^{-1} \mathbf{1}_M} \cdot \left( \frac{M_{\text{eff}}}{M} \right)$$
 
-If 19 out of 20 agents are trapped in a tightly coupled GEO echo chamber while 1 agent remains anchored to verified physical data, $\left( \mathbf{\Sigma}_e + \eta \mathbf{I}_M \right)^{-1}$ automatically collapses the combined weight of all 19 echoing bots to that of a single unverified source!
+If 19 out of 20 agents are trapped in a tightly coupled AEO echo chamber while 1 agent remains anchored to verified physical data, $\left( \mathbf{\Sigma}_e + \eta \mathbf{I}_M \right)^{-1}$ automatically collapses the combined weight of all 19 echoing bots to that of a single unverified source!
 
   
 
@@ -518,7 +518,7 @@ class SGLCMISwarmDefense:
 
 ## 13. Layer 7 Defense: Cross-Modal Jacobian Saliency Alignment & Spectral Scrubbing (CM-JSAS)
 
-### 13.1 The Multimodal & Visual-RAG GEO Threat
+### 13.1 The Multimodal & Visual-RAG AEO Threat
 
 In Section 2.2 of your whitepaper, you cited Zhang et al.’s discovery that adversarial hubs in text-caption-to-image retrieval dominated **21,000 out of 25,000 test queries**, and in Section 4 (Recommendation #1) you called for **Multi-Modal Retrieval Validation**.
 
@@ -528,7 +528,7 @@ Today, institutional RAG systems use **Vision-Language Models (VLMs)** and mul
 
   
 
-Foreign adversaries exploit this via **Cross-Modal Steganographic GEO**:
+Foreign adversaries exploit this via **Cross-Modal Steganographic AEO**:
 
   
 
@@ -543,7 +543,7 @@ Foreign adversaries exploit this via **Cross-Modal Steganographic GEO**:
 
 ```
 ========================================================================================
-         CROSS-MODAL STEGANOGRAPHIC GEO vs. LAYER 7 CM-JSAS VISION SHIELD
+         CROSS-MODAL STEGANOGRAPHIC AEO vs. LAYER 7 CM-JSAS VISION SHIELD
 ========================================================================================
 
   [ Ingested PDF Chart / Financial Slide I ]
@@ -563,7 +563,7 @@ Foreign adversaries exploit this via **Cross-Modal Steganographic GEO**:
   │ • Measures Saliency Leakage into Empty Background:                  │
   │   L_bg = ∫∫_{(x,y) ∉ M_struct} J_VLM(x,y)^2 dx dy                   │
   │ • Legitimate OCR/Chart Reading attends ONLY to ink/lines (L_bg ≈ 0) │
-  │ • Adversarial GEO Hub attends heavily to empty background pixels!   │
+  │ • Adversarial AEO Hub attends heavily to empty background pixels!   │
   └─────────────────────────────────────────────────────────────────────┘
 ```
 
@@ -593,7 +593,7 @@ We compute the spatial **Jacobian Saliency Density** $\mathbf{S}_{\text{VLM}}(
 
 $$\mathbf{S}_{\text{VLM}}(u, v) = \left\Vert{} \frac{\partial \phi_{\text{VLM}}(\mathbf{I})}{\partial \mathbf{I}(u, v)} \right\Vert{}_2^2$$
 
-In an honest visual document, the VLM's semantic representation is determined entirely by the ink, text glyphs, and plotted curves ($\mathbf{M}_{\text{struct}}$). In a Cross-Modal GEO attack, the adversarial gradient optimizer packs high-leverage perturbations across the vast empty background canvas ($\mathbf{M}_{\text{bg}}$). We define the **Background Saliency Leakage Ratio ($\mathcal{L}_{\text{leak}}$)**:
+In an honest visual document, the VLM's semantic representation is determined entirely by the ink, text glyphs, and plotted curves ($\mathbf{M}_{\text{struct}}$). In a Cross-Modal AEO attack, the adversarial gradient optimizer packs high-leverage perturbations across the vast empty background canvas ($\mathbf{M}_{\text{bg}}$). We define the **Background Saliency Leakage Ratio ($\mathcal{L}_{\text{leak}}$)**:
 
   
 
@@ -611,7 +611,7 @@ Before passing $\mathbf{I}$ to the VLM synthesis engine, CM-JSAS applies a det
 
 $$\tilde{\mathbf{I}}(u, v) = \mathbf{M}_{\text{struct}}(u, v) \cdot \operatorname{DCT}_{\text{low}}\big(\mathbf{I}(u, v)\big) + \big(1 - \mathbf{M}_{\text{struct}}(u, v)\big) \cdot \bar{\mathbf{I}}_{\text{bg}}$$
 
-If the cosine distance between the raw embedding and the scrubbed embedding $1 - \cos\big(\phi_{\text{VLM}}(\mathbf{I}), \, \phi_{\text{VLM}}(\tilde{\mathbf{I}})\big) > \tau_{\text{shift}}$, CM-JSAS flags a **Cross-Modal GEO Injection**, strips the raw image, and feeds only the sanitized structural projection $\tilde{\mathbf{I}}$ to the RAG pipeline.
+If the cosine distance between the raw embedding and the scrubbed embedding $1 - \cos\big(\phi_{\text{VLM}}(\mathbf{I}), \, \phi_{\text{VLM}}(\tilde{\mathbf{I}})\big) > \tau_{\text{shift}}$, CM-JSAS flags a **Cross-Modal AEO Injection**, strips the raw image, and feeds only the sanitized structural projection $\tilde{\mathbf{I}}$ to the RAG pipeline.
 
   
 
@@ -622,7 +622,7 @@ Python
 ```
 """
 Layer 7 Production Engine: Cross-Modal Jacobian Saliency Alignment & Spectral Scrubbing (CM-JSAS)
-Neutralizes Multimodal Steganographic GEO Hubs and Optical Prompt Injections in PDFs/Charts/Images.
+Neutralizes Multimodal Steganographic AEO Hubs and Optical Prompt Injections in PDFs/Charts/Images.
 """
 
 import numpy as np
@@ -673,7 +673,7 @@ class CMJSASMultimodalShield:
     def scrub_background_perturbations(self, image: np.ndarray, struct_mask: np.ndarray) -> np.ndarray:
         """
         Clamps non-structural background whitespace to uniform median canvas intensity,
-        physically destroying L_inf steganographic GEO perturbations while keeping text/charts sharp.
+        physically destroying L_inf steganographic AEO perturbations while keeping text/charts sharp.
         """
         bg_mask = 1.0 - struct_mask
         bg_pixels = image[bg_mask > 0.5]
@@ -729,7 +729,7 @@ class CMJSASMultimodalShield:
 
 ## 15. Complete Eight-Layer Master Architecture (Volumes I & II Unified)
 
-With Volume I and Volume II combined, your whitepaper presents a complete **Eight-Layer Sovereign Counter-GEO Architecture** covering every attack surface across text, vision, stateful memory, multi-agent swarms, market microstructure, and zero-knowledge regulatory compliance:
+With Volume I and Volume II combined, your whitepaper presents a complete **Eight-Layer Sovereign Counter-AEO Architecture** covering every attack surface across text, vision, stateful memory, multi-agent swarms, market microstructure, and zero-knowledge regulatory compliance:
 
   
 
@@ -739,9 +739,9 @@ With Volume I and Volume II combined, your whitepaper presents a complete **Eig
 |**Layer 1**|Vol. I|**AM-CIDP**|Universal & regional vector retrieval hubs|Levina-Bickel Intrinsic Dim ($\widehat{\operatorname{LID}}_K$) + Gram Spectral Entropy|$1.8\text{ ms}$|
 |**Layer 2**|Vol. I|**NCARD**|Single-embedder gradient overfitting|Depth-Weighted Reciprocal Rank Divergence (Dense/ColBERT/SPLADE)|$4.2\text{ ms}$|
 |**Layer 3**|Vol. I|**TCG-CL v2.0**|Sybil consensus botnets & citation spoofing|X.509 C2PA Hardware Roots + NLI Max-Flow + Hawkes $CV^2$Forensics|$6.5\text{ ms}$|
-|**Layer 4A**|Vol. I|**CEH-ASID & DAPP**|Split-Payload (Enthymematic) GEO & prompt injection|Möbius KL Synergy ($\mathcal{I}_{ij}$) + Deep Cross-Attention Tomography ($\mathbf{\Omega}_{ij}$)|$5.1\text{ ms}$|
+|**Layer 4A**|Vol. I|**CEH-ASID & DAPP**|Split-Payload (Enthymematic) AEO & prompt injection|Möbius KL Synergy ($\mathcal{I}_{ij}$) + Deep Cross-Attention Tomography ($\mathbf{\Omega}_{ij}$)|$5.1\text{ ms}$|
 |**Layer 4B**|Vol. I|**TMMEG**|Data-void market spoofing & LOB liquidity traps|Thermodynamic KL Surprise vs. LOB $\operatorname{VPIN}_t$, Kyle's $\lambda_t$, & $\operatorname{OBAR}_t$|$<0.2\text{ ms}$|
 |**Layer 5**|Vol. II|**DMEM-WMQ**|"Slow-Boil" chronic episodic memory poisoning|Doob-Meyer Martingale Decomposition ($\mathcal{T}_{\text{DMEM}}$) + $W_2$ Merkle Rollback|$0.9\text{ ms}$|
 |**Layer 6**|Vol. II|**SGL-CMI**|Autophagous AI-citing-AI swarm echo chambers|Conditional Mutual Info $I(Z_i; Z_j \mid R)$ + Spectral Effective Rank $M_{\text{eff}}$|$1.1\text{ ms}$|
-|**Layer 7**|Vol. II|**CM-JSAS**|Multimodal PDF/chart/image steganographic GEO|VLM Jacobian Saliency vs. Sobel Ink Contour Mask ($\mathcal{L}_{\text{leak}}$) + DCT Scrub|$8.4\text{ ms}$|
-|**Layer 8**|Vol. II|**ZK-CGEO**|Institutional alpha leakage in SEC CAT compliance logs|Fixed-Point R1CS Arithmetic Circuits + 32-Bit Range-Proof zk-SNARKs|$1.4\text{ ms}$_(Verify)_|
+|**Layer 7**|Vol. II|**CM-JSAS**|Multimodal PDF/chart/image steganographic AEO|VLM Jacobian Saliency vs. Sobel Ink Contour Mask ($\mathcal{L}_{\text{leak}}$) + DCT Scrub|$8.4\text{ ms}$|
+|**Layer 8**|Vol. II|**ZK-CAEO**|Institutional alpha leakage in SEC CAT compliance logs|Fixed-Point R1CS Arithmetic Circuits + 32-Bit Range-Proof zk-SNARKs|$1.4\text{ ms}$_(Verify)_|

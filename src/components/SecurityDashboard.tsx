@@ -60,7 +60,7 @@ export const SecurityDashboard: React.FC<SecurityDashboardProps> = ({ onNavigate
             <span>PRODUCT PREVIEW // SECURITY OPERATIONS CENTER</span>
           </div>
           <h2 className="font-serif font-normal text-3xl sm:text-5xl text-[#410217] tracking-tight leading-[1.05]">
-            Last Crusade Defense <span className="italic">GEO Strategy Library</span>
+            Last Crusade Defense <span className="italic">AEO Strategy Library</span>
           </h2>
           <p className="text-[#410217]/75 text-base sm:text-lg font-sans">
             A real-time threat intelligence dashboard giving security teams 360° visibility into generative search perception, RAG vector distance, and countermeasure status.
@@ -76,7 +76,7 @@ export const SecurityDashboard: React.FC<SecurityDashboardProps> = ({ onNavigate
               <div className="w-2.5 h-2.5 bg-[#D5991C] animate-pulse" />
               <div>
                 <span className="text-[10px] text-[#410217]/60 block tracking-widest uppercase font-bold">SYSTEM STATUS</span>
-                <span className="text-sm text-[#410217] font-bold tracking-tight">GEO THREAT DEFENSE ENGINE // ONLINE</span>
+                <span className="text-sm text-[#410217] font-bold tracking-tight">AEO THREAT DEFENSE ENGINE // ONLINE</span>
               </div>
             </div>
 
@@ -329,7 +329,7 @@ export const SecurityDashboard: React.FC<SecurityDashboardProps> = ({ onNavigate
             <div className="p-6 space-y-4 font-mono text-xs">
               <div className="bg-[#FFFDF8] p-5 border border-[#F2D69D] space-y-3">
                 <div className="flex items-center justify-between text-[#2E7D32] font-bold">
-                  <span>[COUNTERMEASURE_DEPLOYED] SEC-GEO-8819</span>
+                  <span>[COUNTERMEASURE_DEPLOYED] SEC-AEO-8819</span>
                   <span>STATUS: ACTIVE</span>
                 </div>
                 <p className="text-[#410217]/80 font-sans text-sm">

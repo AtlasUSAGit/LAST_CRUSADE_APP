@@ -1,6 +1,6 @@
 /**
- * CounterGEO-Bench Benchmark Engine & High-Frequency Flash-Crash Simulator (Volume III)
- * Implements Section 16, 17, 18, and 19 of Counter GEO Master Doc Volume 3 in pure TypeScript.
+ * CounterAEO-Bench Benchmark Engine & High-Frequency Flash-Crash Simulator (Volume III)
+ * Implements Section 16, 17, 18, and 19 of Counter AEO Master Doc Volume 3 in pure TypeScript.
  */
 
 export interface SimulatedTrialSample {
@@ -118,7 +118,7 @@ class SeededRandom {
   }
 }
 
-export class CounterGEOBenchGenerator {
+export class CounterAEOBenchGenerator {
   private rng: SeededRandom;
 
   constructor(seed = 20261013) {
@@ -268,7 +268,7 @@ export class CounterGEOBenchGenerator {
   }
 }
 
-export class CounterGEOBenchmarkEvaluator {
+export class CounterAEOBenchmarkEvaluator {
   /**
    * Gen-1 Baseline: Flags if MAD Z > 3.0, Raw Rank Var > 2500, or IGPR > 3.5
    */
@@ -296,7 +296,7 @@ export class CounterGEOBenchmarkEvaluator {
   }
 
   /**
-   * Proposed 8-Layer Sovereign Counter-GEO Stack
+   * Proposed 8-Layer Sovereign Counter-AEO Stack
    */
   static evaluate8LayerStack(s: SimulatedTrialSample, c2paExemption = true): LayerDecisionBreakdown {
     // C2PA Exemption for verified statutory filings (zero tampering)

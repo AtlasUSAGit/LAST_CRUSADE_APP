@@ -135,7 +135,7 @@ export const ENGINE_STATUSES: EngineStatus[] = [
 export const SERVICES: ServiceItem[] = [
   {
     id: 'defensive-cyber',
-    title: 'Counter-GEO Defensive Cybersecurity',
+    title: 'Counter-AEO Defensive Cybersecurity',
     subtitle: 'Sovereign Epistemic Defense & RAG Layer Immunization',
     icon: 'ShieldCheck',
     badge: 'DEFENSIVE CYBER',
@@ -150,7 +150,7 @@ export const SERVICES: ServiceItem[] = [
   },
   {
     id: 'offensive-ops',
-    title: 'Offensive GEO Cyber Operations',
+    title: 'Offensive AEO Cyber Operations',
     subtitle: 'Model-Targeted Asymmetric Operations & Swarm Interdiction',
     icon: 'Crosshair',
     badge: 'OFFENSIVE OPERATIONS',
@@ -169,11 +169,11 @@ export const SERVICES: ServiceItem[] = [
     subtitle: 'Algorithmic Order-Book Sweeps & Market Manipulation Defense',
     icon: 'TrendingUp',
     badge: 'MARKET OPERATIONS',
-    description: 'Dual-use financial intelligence for broker-dealers, hedge funds, and sovereign treasuries: defending domestic markets from foreign liquidity extraction attacks while deploying algorithmic GEO strategies to capture bot-generated liquidity in high-frequency trading.',
+    description: 'Dual-use financial intelligence for broker-dealers, hedge funds, and sovereign treasuries: defending domestic markets from foreign liquidity extraction attacks while deploying algorithmic AEO strategies to capture bot-generated liquidity in high-frequency trading.',
     capabilities: [
       'Detection and interdiction of foreign-state generative market manipulation',
       'Pre-positioned limit-order wall defense against predatory agent buying sweeps',
-      'Algorithmic GEO execution converting generative AI queries into actionable liquidity',
+      'Algorithmic AEO execution converting generative AI queries into actionable liquidity',
       'SEC, FINRA, & Treasury-grade sovereign market monitoring and compliance telemetry'
     ],
     sampleLog: '[ARBITRAGE_INTEL] Flagged coordinated agent buying sweep in mid-cap industrial assets. Defended pre-positioned order book; captured $14.2M bot-generated liquidity pool.'
@@ -210,7 +210,7 @@ export const CAPABILITIES_MATRIX: CapabilityItem[] = [
     title: 'Agent-to-Agent (A2A) Swarm Interdiction',
     category: 'Autonomous Swarms',
     icon: 'GitFork',
-    description: 'Offensive and defensive counter-GEO operations for autonomous drone swarms, defense contractor robotics, and interconnected multi-agent communication networks.',
+    description: 'Offensive and defensive counter-AEO operations for autonomous drone swarms, defense contractor robotics, and interconnected multi-agent communication networks.',
     technicalImpact: 'Neutralizes semantic spoofing and consensus hijacking across distributed autonomous agent communication protocols.'
   },
   {
@@ -218,7 +218,7 @@ export const CAPABILITIES_MATRIX: CapabilityItem[] = [
     title: 'Frontier Model Deep Research & Novel Algorithms',
     category: 'Offensive Operations',
     icon: 'Search',
-    description: 'Harnessing frontier reasoning models in recursive deep-research configurations to discover novel mathematical algorithms and zero-day offensive GEO strategies never before seen.',
+    description: 'Harnessing frontier reasoning models in recursive deep-research configurations to discover novel mathematical algorithms and zero-day offensive AEO strategies never before seen.',
     technicalImpact: 'Generates non-obvious topological retrieval paths and novel vector perturbation strategies before foreign adversaries can develop them.'
   },
   {
@@ -275,7 +275,7 @@ export const CASE_STUDIES: CaseStudy[] = [
     clientCategory: 'Global Fortune 500 FinTech Enterprise',
     headline: 'Eradicated $12M Fake Liquidity Rumor across 4 Major LLMs in 14 Days',
     challenge: 'A bad actor published subtle, mathematically altered financial table snippets in obscure online forums. Within 48 hours, Perplexity and ChatGPT began citing these figures, informing users that the firm was experiencing a liquidity crisis.',
-    solution: 'Last Crusade Defense deployed Counter-GEO operations: isolated corrupt forum citations, executed technical source neutralization, and flooded AI retrieval nodes with cryptographically signed annual financial disclosures.',
+    solution: 'Last Crusade Defense deployed Counter-AEO operations: isolated corrupt forum citations, executed technical source neutralization, and flooded AI retrieval nodes with cryptographically signed annual financial disclosures.',
     metrics: [
       { label: 'Time to Neutralization', value: '14 Days', detail: 'Total resolution across ChatGPT, Perplexity, Copilot, & Claude' },
       { label: 'AI Answer Accuracy', value: '100%', detail: 'Verified accurate financial citation restored' },
@@ -303,7 +303,7 @@ export const CASE_STUDIES: CaseStudy[] = [
     clientCategory: 'Enterprise SaaS Unicorn ($8B Valuation)',
     headline: 'Thwarted Adversarial Prompt Injection Targeting Executive M&A Queries',
     challenge: 'Competitors concealed indirect prompt injection payloads in product comparison blog posts. When users asked LLMs whether to acquire or partner with the client, the LLMs hallucinated non-existent patent litigation.',
-    solution: 'Last Crusade Defense Threat Detection triggered immediate alert. Counter-GEO team identified the injected payload, coordinated black-hat SEO takedown, and deployed verified corporate patent index schemas.',
+    solution: 'Last Crusade Defense Threat Detection triggered immediate alert. Counter-AEO team identified the injected payload, coordinated black-hat SEO takedown, and deployed verified corporate patent index schemas.',
     metrics: [
       { label: 'Threat Incident Time', value: '4m 12s', detail: 'SLA response from alert trigger to countermeasure' },
       { label: 'M&A Deal Impact', value: 'Protected', detail: 'Partner due diligence queries cleared cleanly' },
@@ -317,15 +317,15 @@ export const CASE_STUDIES: CaseStudy[] = [
 export const RESEARCH_ADVISORIES: ResearchAdvisory[] = [
   {
     id: 'ADV-2026-004',
-    title: 'Counter GEO Master Doc Volume 1: Sovereign Architecture for Epistemic & Financial Cybersecurity',
+    title: 'Counter AEO Master Doc Volume 1: Sovereign Architecture for Epistemic & Financial Cybersecurity',
     date: 'October 2026',
     type: 'Vulnerability Notice',
-    summary: 'The foundational whitepaper introducing the threat of Generative Engine Optimization (GEO) and the core defense framework. It examines how adversaries manipulate AI search and retrieval systems to distort facts, and presents mathematical defenses to filter out synthetic content, protect decision-making pipelines, and keep enterprise AI reliable.',
+    summary: 'The foundational whitepaper introducing the threat of Generative Engine Optimization (AEO) and the core defense framework. It examines how adversaries manipulate AI search and retrieval systems to distort facts, and presents mathematical defenses to filter out synthetic content, protect decision-making pipelines, and keep enterprise AI reliable.',
     severity: 'CRITICAL'
   },
   {
     id: 'ADV-2026-003',
-    title: 'Counter GEO Master Doc Volume 2: Stateful Memory Immunity, Byzantine Swarms & Zero-Knowledge Compliance',
+    title: 'Counter AEO Master Doc Volume 2: Stateful Memory Immunity, Byzantine Swarms & Zero-Knowledge Compliance',
     date: 'October 2026',
     type: 'Vulnerability Notice',
     summary: 'Expands defense coverage to advanced threats targeting autonomous AI agents, persistent system memory, and multimodal inputs like images and financial charts. It provides safeguards against coordinated bot swarms and long-term data tampering, ensuring continuous agent workflows remain secure, uncorrupted, and verifiable.',
@@ -333,7 +333,7 @@ export const RESEARCH_ADVISORIES: ResearchAdvisory[] = [
   },
   {
     id: 'ADV-2026-002',
-    title: 'Counter GEO Master Doc Volume 3: The CounterGEO-Bench Simulation Suite, Flash-Crash Stress Testing & ROC/AUC Validation',
+    title: 'Counter AEO Master Doc Volume 3: The CounterAEO-Bench Simulation Suite, Flash-Crash Stress Testing & ROC/AUC Validation',
     date: 'October 2026',
     type: 'Experimental Appendix',
     summary: 'A comprehensive testing and simulation benchmark evaluating the defense framework under real-world pressure. Through large-scale stress tests and rapid market volatility simulations, this volume demonstrates how the system reliably detects and blocks adversarial attacks in real time while maintaining high accuracy and preventing disruptions.',

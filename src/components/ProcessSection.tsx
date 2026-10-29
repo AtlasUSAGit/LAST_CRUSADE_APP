@@ -89,7 +89,7 @@ export const ProcessSection: React.FC = () => {
         <SectionHeader
           sectionIndex="§ 04"
           kicker="// Operational Methodology & Lifecycle"
-          title="Five-Stage GEO Defense Lifecycle"
+          title="Five-Stage AEO Defense Lifecycle"
           italicWord="Defense Lifecycle"
           description="An institutional-grade 5-stage lifecycle for isolating AI answer distortions, neutralizing poisoned RAG vectors, and reclaiming generative brand sovereignty."
         />

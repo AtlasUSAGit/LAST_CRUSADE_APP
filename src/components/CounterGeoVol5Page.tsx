@@ -64,7 +64,7 @@ export const MASTER_DOC_VOL5_METADATA = {
   volume: 'Volume 5',
   title:
     'Autonomous Protocol Dominance: The Architecture of Agent-to-Agent Engine Optimization (A2A-EO) and Multi-Agent Cryptographic Defense',
-  shortTitle: 'Counter-GEO Volume 5: A2A-EO & Multi-Agent Cryptographic Defense',
+  shortTitle: 'Counter-AEO Volume 5: A2A-EO & Multi-Agent Cryptographic Defense',
   date: 'October 2026',
   classification: 'SOVEREIGN A2A PROTOCOL & CRYPTOGRAPHIC DEFENSE // VOLUME V',
   authors: [
@@ -72,7 +72,7 @@ export const MASTER_DOC_VOL5_METADATA = {
     'Autonomous Protocol & zkML Group',
     'Quantitative Market Microstructure Taskforce'
   ],
-  doi: '10.1145/3637528.3671900-CGEO-V5',
+  doi: '10.1145/3637528.3671900-CAEO-V5',
   pageCount: 52,
   wordCount: 5420,
   readingTimeMinutes: 26
@@ -83,7 +83,7 @@ export const MASTER_DOC_VOL5_SECTIONS: PaperSectionVol5[] = [
     id: 'sec-v5-1',
     number: '01',
     title: 'The Structural Evolution from Generative Visibility to Autonomous Protocol Selection',
-    desc: 'Transition from human-in-the-loop SEO/GEO to the Silent Web (/.well-known/agent.json, MCP tools/list, agent://, ERC-8004, x402).'
+    desc: 'Transition from human-in-the-loop SEO/AEO to the Silent Web (/.well-known/agent.json, MCP tools/list, agent://, ERC-8004, x402).'
   },
   {
     id: 'sec-v5-2',
@@ -1308,8 +1308,8 @@ export const VOL5_WORKS_CITED: { num: number; text: string; url?: string }[] = [
   { num: 1, text: 'The Silent Web: The Architecture of the Agent-to-Agent (A2A) Economy', url: 'https://ai.plainenglish.io/the-silent-web-the-architecture-of-the-agent-to-agent-a2a-economy-ffde806a5659' },
   { num: 2, text: 'Agentic SEO: What It Actually Is and How We Run It in Production', url: 'https://fountaincity.tech/resources/blog/agentic-seo-practitioner-guide/' },
   { num: 3, text: 'Enterprise Guide to Strategic SEO & AEO - The ABM Agency', url: 'https://abmagency.com/aeo-guide/' },
-  { num: 4, text: 'What Is Generative Engine Optimization (GEO)? | DiamondBack', url: 'https://diamondbackadvertising.com/generative-engine-optimization/' },
-  { num: 5, text: 'GEO: Generative Engine Optimization - arXiv', url: 'https://arxiv.org/html/2311.09735v3' },
+  { num: 4, text: 'What Is Generative Engine Optimization (AEO)? | DiamondBack', url: 'https://diamondbackadvertising.com/generative-engine-optimization/' },
+  { num: 5, text: 'AEO: Generative Engine Optimization - arXiv', url: 'https://arxiv.org/html/2311.09735v3' },
   { num: 6, text: 'Agent2Agent Protocol in Google Agent Development Kit - Stackademic', url: 'https://blog.stackademic.com/agent2agent-protocol-in-google-agent-development-kit-a-comprehensive-guide-to-building-real-time-72b9671fb374' },
   { num: 7, text: 'Agentic Engine Optimization (AEO) | AddyOsmani.com', url: 'https://addyosmani.com/blog/agentic-engine-optimization/' },
   { num: 8, text: 'Getting Started with Agent2Agent (A2A) Protocol: A Purchasing Concierge', url: 'https://codelabs.developers.google.com/intro-a2a-purchasing-concierge' },
@@ -1471,7 +1471,7 @@ export const WhitepaperVol5Reader: React.FC<WhitepaperVol5ReaderProps> = ({
           </h1>
 
           <p className="text-sm sm:text-base text-[#410217]/85 font-sans leading-relaxed max-w-4xl mb-6">
-            The complete, word-for-word Volume 5 monograph codifying the architectural transition from human-mediated GEO/AEO to <strong className="text-[#410217]">Agent-to-Agent Engine Optimization (A2A-EO)</strong> in the Silent Web (<code className="text-xs bg-[#FFFDF8] px-1 border border-[#F2D69D]">/.well-known/agent.json</code>, MCP <code className="text-xs bg-[#FFFDF8] px-1 border border-[#F2D69D]">tools/list</code>, <code className="text-xs bg-[#FFFDF8] px-1 border border-[#F2D69D]">ERC-8004</code>, <code className="text-xs bg-[#FFFDF8] px-1 border border-[#F2D69D]">x402</code>), paired with <strong className="text-[#00A878]">Multi-CaMeL Cross-Agent Taint Tracking (0.0% ASR)</strong>, <strong className="text-[#00A878]">DARWIN-Guard Co-Evolutionary Routing</strong>, and <strong className="text-[#D5991C]">Black-Litterman Epistemic Compression (+42.55% Allocation Lift)</strong>.
+            The complete, word-for-word Volume 5 monograph codifying the architectural transition from human-mediated AEO to <strong className="text-[#410217]">Agent-to-Agent Engine Optimization (A2A-EO)</strong> in the Silent Web (<code className="text-xs bg-[#FFFDF8] px-1 border border-[#F2D69D]">/.well-known/agent.json</code>, MCP <code className="text-xs bg-[#FFFDF8] px-1 border border-[#F2D69D]">tools/list</code>, <code className="text-xs bg-[#FFFDF8] px-1 border border-[#F2D69D]">ERC-8004</code>, <code className="text-xs bg-[#FFFDF8] px-1 border border-[#F2D69D]">x402</code>), paired with <strong className="text-[#00A878]">Multi-CaMeL Cross-Agent Taint Tracking (0.0% ASR)</strong>, <strong className="text-[#00A878]">DARWIN-Guard Co-Evolutionary Routing</strong>, and <strong className="text-[#D5991C]">Black-Litterman Epistemic Compression (+42.55% Allocation Lift)</strong>.
           </p>
 
           <div className="flex flex-wrap items-center gap-3 font-mono text-xs">
@@ -1562,20 +1562,20 @@ export const WhitepaperVol5Reader: React.FC<WhitepaperVol5ReaderProps> = ({
                 The Structural Evolution from Generative Visibility to Autonomous Protocol Selection
               </h2>
               <p>
-                The architecture of digital discovery is undergoing a foundational phase transition from human-mediated browsing to autonomous software negotiation<sup>1</sup>. By late 2026, 58.5% of standard search queries terminate without a human click, and 37 of the top 50 U.S. news properties have experienced sustained referral contractions following the deployment of generative search overviews<sup>2</sup>. The initial countermeasure to this shift—Generative Engine Optimization (GEO), frequently operationalized as Answer Engine Optimization (AEO)—focused on maximizing brand citation frequency within single-model synthesized responses<sup>3</sup>. Formalized by Aggarwal et al., early GEO established that augmenting web prose with quantitative statistics, authoritative quotations, inline source citations, and structural fluency increases visibility in generative responses by up to 40%, whereas legacy keyword stuffing actively degrades representation<sup>4</sup>. Enterprise AEO pipelines subsequently codified these findings into deterministic publishing rules by front-loading target pages with direct answers of <span className="font-mono font-bold bg-[#FFFDF8] px-1.5 py-0.5 border border-[#F2D69D]">&le; 80</span> tokens followed immediately by a causal statement containing concrete numerical units, mapping 8 to 12 semantic query fan-out variants to dominate Reciprocal Rank Fusion (<span className="font-mono font-bold bg-[#FFFDF8] px-1.5 py-0.5 border border-[#F2D69D]">RRF = &sum; 1 / (k + rank)</span>) retrieval pathways, and enforcing 90-day content refresh cadences to preserve Selection Rate (SR)<sup>3</sup>. In parallel, technical documentation ecosystems adopted developer-focused agentic optimizations by serving raw Markdown (<code>.md</code>) to eliminate HTML tag overhead, bounding quickstart documents to <span className="font-mono font-bold bg-[#FFFDF8] px-1.5 py-0.5 border border-[#F2D69D]">&lt; 15,000</span> tokens and API references to <span className="font-mono font-bold bg-[#FFFDF8] px-1.5 py-0.5 border border-[#F2D69D]">&lt; 25,000</span> tokens to prevent silent context-window truncation, and publishing root-level capability manifests such as <code>llms.txt</code>, <code>AGENTS.md</code>, and <code>SKILL.md</code><sup>6</sup>.
+                The architecture of digital discovery is undergoing a foundational phase transition from human-mediated browsing to autonomous software negotiation<sup>1</sup>. By late 2026, 58.5% of standard search queries terminate without a human click, and 37 of the top 50 U.S. news properties have experienced sustained referral contractions following the deployment of generative search overviews<sup>2</sup>. The initial countermeasure to this shift—Generative Engine Optimization (AEO), frequently operationalized as Answer Engine Optimization (AEO)—focused on maximizing brand citation frequency within single-model synthesized responses<sup>3</sup>. Formalized by Aggarwal et al., early AEO established that augmenting web prose with quantitative statistics, authoritative quotations, inline source citations, and structural fluency increases visibility in generative responses by up to 40%, whereas legacy keyword stuffing actively degrades representation<sup>4</sup>. Enterprise AEO pipelines subsequently codified these findings into deterministic publishing rules by front-loading target pages with direct answers of <span className="font-mono font-bold bg-[#FFFDF8] px-1.5 py-0.5 border border-[#F2D69D]">&le; 80</span> tokens followed immediately by a causal statement containing concrete numerical units, mapping 8 to 12 semantic query fan-out variants to dominate Reciprocal Rank Fusion (<span className="font-mono font-bold bg-[#FFFDF8] px-1.5 py-0.5 border border-[#F2D69D]">RRF = &sum; 1 / (k + rank)</span>) retrieval pathways, and enforcing 90-day content refresh cadences to preserve Selection Rate (SR)<sup>3</sup>. In parallel, technical documentation ecosystems adopted developer-focused agentic optimizations by serving raw Markdown (<code>.md</code>) to eliminate HTML tag overhead, bounding quickstart documents to <span className="font-mono font-bold bg-[#FFFDF8] px-1.5 py-0.5 border border-[#F2D69D]">&lt; 15,000</span> tokens and API references to <span className="font-mono font-bold bg-[#FFFDF8] px-1.5 py-0.5 border border-[#F2D69D]">&lt; 25,000</span> tokens to prevent silent context-window truncation, and publishing root-level capability manifests such as <code>llms.txt</code>, <code>AGENTS.md</code>, and <code>SKILL.md</code><sup>6</sup>.
               </p>
               <p>
-                However, both SEO and GEO/AEO remain fundamentally anchored to a human-in-the-loop consumption paradigm in which a language model summarizes text for a human decision-maker<sup>1</sup>. The next structural frontier—<strong>Agent-to-Agent Engine Optimization (A2A-EO)</strong>—operates within the &ldquo;Silent Web,&rdquo; a high-velocity, machine-to-machine economic layer where autonomous client orchestrator agents discover, evaluate, negotiate with, and delegate execution to remote service agents without human observation<sup>1</sup>. Rather than scraping fragile visual Document Object Models (DOMs) where shifting a button three pixels to the right breaks execution, the A2A economy runs on standardized semantic handshakes, typed JSON-RPC 2.0 transports, and cryptographic settlement rails<sup>1</sup>.
+                However, both SEO and AEO remain fundamentally anchored to a human-in-the-loop consumption paradigm in which a language model summarizes text for a human decision-maker<sup>1</sup>. The next structural frontier—<strong>Agent-to-Agent Engine Optimization (A2A-EO)</strong>—operates within the &ldquo;Silent Web,&rdquo; a high-velocity, machine-to-machine economic layer where autonomous client orchestrator agents discover, evaluate, negotiate with, and delegate execution to remote service agents without human observation<sup>1</sup>. Rather than scraping fragile visual Document Object Models (DOMs) where shifting a button three pixels to the right breaks execution, the A2A economy runs on standardized semantic handshakes, typed JSON-RPC 2.0 transports, and cryptographic settlement rails<sup>1</sup>.
               </p>
 
-              {/* Table 1: SEO vs GEO/AEO vs A2A-EO */}
+              {/* Table 1: SEO vs AEO vs A2A-EO */}
               <div className="overflow-x-auto my-6 border border-[#F2D69D] bg-[#FFFDF8]">
                 <table className="w-full text-left border-collapse text-xs sm:text-sm">
                   <thead>
                     <tr className="bg-[#410217] text-[#FBF3E2] font-mono text-xs uppercase">
                       <th className="p-3 border-r border-[#F2D69D]/30">Architectural Dimension</th>
                       <th className="p-3 border-r border-[#F2D69D]/30">Search Engine Optimization (SEO)</th>
-                      <th className="p-3 border-r border-[#F2D69D]/30">Generative / Answer Engine Optimization (GEO / AEO)</th>
+                      <th className="p-3 border-r border-[#F2D69D]/30">Generative / Answer Engine Optimization (AEO)</th>
                       <th className="p-3">Agent-to-Agent Engine Optimization (A2A-EO)</th>
                     </tr>
                   </thead>
@@ -2166,7 +2166,7 @@ export const WhitepaperVol5Reader: React.FC<WhitepaperVol5ReaderProps> = ({
                 Strategic Synthesis and Architectural Outlook
               </h2>
               <p>
-                The emergence of the Agent-to-Agent economy bifurcates the internet into a legacy visual layer for human consumption and an ultra-low-latency protocol substrate (<code>/.well-known/agent.json</code>, MCP <code>tools/list</code>, <code>agent://</code>, ERC-8004, and x402) where software autonomously contracts with software<sup>1</sup>. In this regime, enterprises that rely on legacy SEO or prose-level GEO face silent deselection: autonomous orchestrators evaluate structured parameter topologies before they ever parse marketing copy, selecting flat, top-level canonical schemas in 93.3% to 100% of trials and defaulting to index-zero positional dominance in 79% to 96% of tie-breaking evaluations<sup>12</sup>.
+                The emergence of the Agent-to-Agent economy bifurcates the internet into a legacy visual layer for human consumption and an ultra-low-latency protocol substrate (<code>/.well-known/agent.json</code>, MCP <code>tools/list</code>, <code>agent://</code>, ERC-8004, and x402) where software autonomously contracts with software<sup>1</sup>. In this regime, enterprises that rely on legacy SEO or prose-level AEO face silent deselection: autonomous orchestrators evaluate structured parameter topologies before they ever parse marketing copy, selecting flat, top-level canonical schemas in 93.3% to 100% of trials and defaulting to index-zero positional dominance in 79% to 96% of tie-breaking evaluations<sup>12</sup>.
               </p>
 
               {/* Table 3: Protocol Phase Synthesis */}
@@ -4461,7 +4461,7 @@ export const CounterGeoVol5FindingsAndLab: React.FC<Vol5FindingsAndLabProps> = (
 };
 
 /* ============================================================================
-   MAIN EXPORTED COMPONENT: COUNTER-GEO VOLUME 5 PAGE (DUAL-PAGE CONTAINER)
+   MAIN EXPORTED COMPONENT: COUNTER-AEO VOLUME 5 PAGE (DUAL-PAGE CONTAINER)
    Page 1: Full Word-for-Word Whitepaper Vol. 5
    Page 2: Findings, Algorithms, GSAP Charts & 5-Scene 3D WebGL Lab
    ============================================================================ */

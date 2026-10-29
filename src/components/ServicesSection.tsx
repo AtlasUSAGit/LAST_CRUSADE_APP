@@ -63,7 +63,7 @@ export const ServicesSection: React.FC = () => {
         <SectionHeader
           sectionIndex="§ 03"
           kicker="// Dual-Use Sovereign Architecture"
-          title="Counter-GEO Defensive Cybersecurity & Offensive Operations"
+          title="Counter-AEO Defensive Cybersecurity & Offensive Operations"
           italicWord="Offensive Operations"
           description="From sovereign epistemic defense and RAG layer immunization for domestic foundation models to authorized offensive cyber operations targeting foreign RAG layers and institutional liquidity extraction arbitrage."
         />

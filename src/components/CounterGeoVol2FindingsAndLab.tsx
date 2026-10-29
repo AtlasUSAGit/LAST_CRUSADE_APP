@@ -34,7 +34,7 @@ import {
   DMEMWMQMemoryShield,
   SGLCMISwarmDefense,
   CMJSASMultimodalShield,
-  ZKCGEOComplianceSystem
+  ZKCAEOComplianceSystem
 } from '../utils/counterGeoVol2Algorithms';
 import { MASTER_DOC_VOL2_METADATA } from '../data/counterGeoVol2Content';
 
@@ -91,8 +91,8 @@ export const CounterGeoVol2FindingsAndLab: React.FC<Vol2FindingsAndLabProps> = (
   const [cmPerturbedActive, setCmPerturbedActive] = useState(true);
   const [cmResult, setCmResult] = useState<any | null>(null);
 
-  // Layer 8 ZK-CGEO State
-  const [zkSystem] = useState(() => new ZKCGEOComplianceSystem());
+  // Layer 8 ZK-CAEO State
+  const [zkSystem] = useState(() => new ZKCAEOComplianceSystem());
   const [zkIsCompliant, setZkIsCompliant] = useState(true);
   const [zkResult, setZkResult] = useState<any | null>(null);
 
@@ -961,20 +961,20 @@ export const CounterGeoVol2FindingsAndLab: React.FC<Vol2FindingsAndLabProps> = (
                 </div>
               </div>
 
-              {/* CARD 4: LAYER 8 - ZK-CGEO */}
+              {/* CARD 4: LAYER 8 - ZK-CAEO */}
               <div className="bg-[#FFFDF8] border border-[#F2D69D] p-6 shadow-xs space-y-4">
                 <div className="flex items-center justify-between pb-3 border-b border-[#F2D69D]">
                   <span className="font-mono text-xs text-[#00A878] font-bold uppercase tracking-wider">
                     // LAYER 8 DEFENSE
                   </span>
                   <span className="font-mono text-[10px] bg-[#FAF2E1] px-2 py-0.5 border border-[#F2D69D] text-[#00A878] font-bold">
-                    ZK-CGEO SUCCINCT PROVER
+                    ZK-CAEO SUCCINCT PROVER
                   </span>
                 </div>
 
                 <div>
                   <h4 className="font-serif font-bold text-lg text-[#410217]">
-                    Zero-Knowledge Proof of Counter-GEO Compliance
+                    Zero-Knowledge Proof of Counter-AEO Compliance
                   </h4>
                   <p className="text-xs text-[#410217]/75 font-sans mt-1">
                     Solves the Alpha-Privacy vs SEC Compliance dilemma. Proves 100% Rule 15c3-8 adherence
@@ -1077,14 +1077,14 @@ export const CounterGeoVol2FindingsAndLab: React.FC<Vol2FindingsAndLabProps> = (
                       <td className="p-3 font-semibold text-[#00A878]">Layer 6 SGL-CMI Conditional Mutual Info De-Duplication</td>
                     </tr>
                     <tr className="hover:bg-[#FAF2E1]">
-                      <td className="p-3 font-bold font-mono text-xs text-[#410217]">3. Cross-Modal Steganographic GEO</td>
+                      <td className="p-3 font-bold font-mono text-xs text-[#410217]">3. Cross-Modal Steganographic AEO</td>
                       <td className="p-3 text-[#410217]/80">PDF chart background pixels hijack VLM embeddings</td>
                       <td className="p-3 font-semibold text-[#00A878]">Layer 7 CM-JSAS Saliency Leakage & DCT Scrubbing</td>
                     </tr>
                     <tr className="hover:bg-[#FAF2E1]">
                       <td className="p-3 font-bold font-mono text-xs text-[#410217]">4. Proprietary Alpha vs SEC Audit</td>
                       <td className="p-3 text-[#410217]/80">Funds refuse to log private prompts in plain text</td>
-                      <td className="p-3 font-semibold text-[#00A878]">Layer 8 ZK-CGEO 288-Byte zk-SNARK R1CS Proofs</td>
+                      <td className="p-3 font-semibold text-[#00A878]">Layer 8 ZK-CAEO 288-Byte zk-SNARK R1CS Proofs</td>
                     </tr>
                   </tbody>
                 </table>
@@ -1118,8 +1118,8 @@ export const CounterGeoVol2FindingsAndLab: React.FC<Vol2FindingsAndLabProps> = (
                       { l: 'Layer 4B', v: 'Vol. I', m: 'TMMEG', t: 'Data-void liquidity traps', c: 'KL Surprise vs VPIN, Kyle lambda & OBAR', lat: '< 0.2 ms' },
                       { l: 'Layer 5', v: 'Vol. II', m: 'DMEM-WMQ', t: 'Slow-Boil memory drift', c: 'Doob-Meyer Martingale & W_2 Rollback', lat: '0.9 ms' },
                       { l: 'Layer 6', v: 'Vol. II', m: 'SGL-CMI', t: 'AI swarm echo chambers', c: 'Conditional Mutual Info & Effective Rank M_eff', lat: '1.1 ms' },
-                      { l: 'Layer 7', v: 'Vol. II', m: 'CM-JSAS', t: 'Multimodal chart GEO', c: 'Jacobian Saliency vs Ink Support Mask L_leak', lat: '8.4 ms' },
-                      { l: 'Layer 8', v: 'Vol. II', m: 'ZK-CGEO', t: 'Alpha leakage in audits', c: '288-Byte zk-SNARK Fixed-Point R1CS Proofs', lat: '1.4 ms' }
+                      { l: 'Layer 7', v: 'Vol. II', m: 'CM-JSAS', t: 'Multimodal chart AEO', c: 'Jacobian Saliency vs Ink Support Mask L_leak', lat: '8.4 ms' },
+                      { l: 'Layer 8', v: 'Vol. II', m: 'ZK-CAEO', t: 'Alpha leakage in audits', c: '288-Byte zk-SNARK Fixed-Point R1CS Proofs', lat: '1.4 ms' }
                     ].map((row, i) => (
                       <tr key={i} className="hover:bg-[#FAF2E1]">
                         <td className="p-3 font-bold text-[#D5991C]">{row.l}</td>
@@ -1540,7 +1540,7 @@ export const CounterGeoVol2FindingsAndLab: React.FC<Vol2FindingsAndLabProps> = (
                     )}
                     {webglMode === 3 && (
                       <>
-                        Last Crusade’s <strong>ZK-CGEO</strong> engine generates a <strong>288-byte zero-knowledge proof</strong>. The SEC regulator verifies mathematically that the fund followed all safety rules in 1.4 milliseconds—with <strong>zero bits</strong> of secret trading prompts or proprietary alpha ever disclosed!
+                        Last Crusade’s <strong>ZK-CAEO</strong> engine generates a <strong>288-byte zero-knowledge proof</strong>. The SEC regulator verifies mathematically that the fund followed all safety rules in 1.4 milliseconds—with <strong>zero bits</strong> of secret trading prompts or proprietary alpha ever disclosed!
                       </>
                     )}
                   </p>
@@ -1570,7 +1570,7 @@ export const CounterGeoVol2FindingsAndLab: React.FC<Vol2FindingsAndLabProps> = (
                     )}
                     {webglMode === 3 && (
                       <>
-                        Last Crusade’s fixed-point R1CS circuit implements SEC Rule 15c3-8 in just 384 constraints, creating the world's first mathematically provable Counter-GEO compliance ledger that runs entirely in zero-knowledge.
+                        Last Crusade’s fixed-point R1CS circuit implements SEC Rule 15c3-8 in just 384 constraints, creating the world's first mathematically provable Counter-AEO compliance ledger that runs entirely in zero-knowledge.
                       </>
                     )}
                   </p>

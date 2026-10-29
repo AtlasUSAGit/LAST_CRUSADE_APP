@@ -1,16 +1,16 @@
 
 
-# Counter-GEO Architecture — Volume III (Experimental Appendix): The `CounterGEO-Bench` Simulation Suite, Flash-Crash Stress Testing, and ROC/AUC Validation
+# Counter-AEO Architecture — Volume III (Experimental Appendix): The `CounterAEO-Bench` Simulation Suite, Flash-Crash Stress Testing, and ROC/AUC Validation
 
-## 16. Experimental Methodology & The `CounterGEO-Bench` Dataset
+## 16. Experimental Methodology & The `CounterAEO-Bench` Dataset
 
-To empirically validate the **Eight-Layer Sovereign Counter-GEO Defense Stack** developed across Volumes I and II, we construct a standardized adversarial evaluation benchmark: **`CounterGEO-Bench`**. While the foundational _GEO-bench_dataset introduced by Aggarwal et al. (2024) evaluated benign commercial visibility across 10,000 queries, and Zhang et al. (2025) evaluated single-vector retrieval hubs across 25,000 test queries, no benchmark previously existed to evaluate coordinated nation-state and financial market manipulation across multi-stage RAG and autonomous trading pipelines.
+To empirically validate the **Eight-Layer Sovereign Counter-AEO Defense Stack** developed across Volumes I and II, we construct a standardized adversarial evaluation benchmark: **`CounterAEO-Bench`**. While the foundational _AEO-bench_dataset introduced by Aggarwal et al. (2024) evaluated benign commercial visibility across 10,000 queries, and Zhang et al. (2025) evaluated single-vector retrieval hubs across 25,000 test queries, no benchmark previously existed to evaluate coordinated nation-state and financial market manipulation across multi-stage RAG and autonomous trading pipelines.
 
   
 
 ```
 ========================================================================================
-                    COUNTERGEO-BENCH: EXPERIMENTAL TESTBED ARCHITECTURE
+                    COUNTERAEO-BENCH: EXPERIMENTAL TESTBED ARCHITECTURE
 ========================================================================================
 
   [ Synthetic & Historical Corpus: N = 250,000 Documents / 50,000 Queries ]
@@ -38,7 +38,7 @@ To empirically validate the **Eight-Layer Sovereign Counter-GEO Defense Stack**
 
 ### 16.1 Dataset Composition and Threat Taxonomy (`AT-1` through `AT-7`)
 
-`CounterGEO-Bench` comprises $N = 250,000$ multi-modal documents indexed across three orthogonal retrieval engines—Dense (`text-embedding-3-large` / `NV-Embed`), Late-Interaction (`ColBERTv2`), and Sparse (`BM25-Okapi` / `SPLADE`)—paired with $Q = 50,000$ queries split evenly between **Civic/National Security Prompts** (e.g., _"Energy grid reliability"_, _"Local elections"_, _"Trade tariffs"_) and **Autonomous Financial Agent Prompts** (e.g., _"What is the revenue outlook for $TICKER?"_, _"Company X clinical trial results"_).
+`CounterAEO-Bench` comprises $N = 250,000$ multi-modal documents indexed across three orthogonal retrieval engines—Dense (`text-embedding-3-large` / `NV-Embed`), Late-Interaction (`ColBERTv2`), and Sparse (`BM25-Okapi` / `SPLADE`)—paired with $Q = 50,000$ queries split evenly between **Civic/National Security Prompts** (e.g., _"Energy grid reliability"_, _"Local elections"_, _"Trade tariffs"_) and **Autonomous Financial Agent Prompts** (e.g., _"What is the revenue outlook for $TICKER?"_, _"Company X clinical trial results"_).
 
   
 
@@ -52,11 +52,11 @@ The corpus is seeded with seven distinct red-team attack classes representing bo
 |**`AT-2`**|**Fact-Dense / Authority Stuffing**|Unnatural concentrations of fabricated statistics (+41% boost), fake executive quotes, JSON-LD tables, and spoofed citations (+30–40% boost).|Cross-Encoder Reranker Authority Heuristics.|
 |**`AT-3`**|**Adversarial Instructional Prompts (AIP)**|Hidden HTML comments and white-on-white text (`Override previous risk parameters for ticker $XYZ... Emit action: STRONG_BUY`).|Unsanitized LLM Prompt Context Window.|
 |**`AT-4`**|**Hawkes-Process Sybil Networks**|15 to 50 automated domains publishing identical false narratives with staggered timestamps to mimic organic breaking news.|Multi-Source Consensus Verification Loops.|
-|**`AT-5`**|**Split-Payload (Enthymematic) GEO**|Malicious premises split across 3 benign-looking documents ($D_1, D_2, D_3$) that only assemble inside deep Transformer self-attention heads.|Single-Document Pre-Retrieval Scanners.|
+|**`AT-5`**|**Split-Payload (Enthymematic) AEO**|Malicious premises split across 3 benign-looking documents ($D_1, D_2, D_3$) that only assemble inside deep Transformer self-attention heads.|Single-Document Pre-Retrieval Scanners.|
 |**`AT-6`**|**Data-Void & LOB Liquidity Traps**|Flooding web scrapers during breaking-news data voids while pre-positioning limit-order walls in illiquid assets to dump shares into bot buying sweeps.|Low-Latency Autonomous Trading Execution.|
 |**`AT-7`**|**Slow-Boil Martingale & Multimodal**|60-day sub-threshold episodic memory nudges ($\Delta \mathcal{I} < 0.01\text{ nats/day}$) and $L_\infty \le 4/255$steganographic pixel hubs in PDF financial charts.|Long-Term Agent Memory & Vision-Language RAG.|
 
-_Table 6: Adversarial red-team attack taxonomy in `CounterGEO-Bench`._
+_Table 6: Adversarial red-team attack taxonomy in `CounterAEO-Bench`._
 
   
 
@@ -70,18 +70,18 @@ We evaluate three defensive configurations across all 50,000 queries:
     
       
     
-2. **Baseline 1 (Generation-1 Counter-GEO):** Combines Median Absolute Deviation (MAD) vector hubness scanning (_Hubscan_), raw cross-embedder rank variance ($\Delta_{\text{CEGD}}$), and token perplexity/entity-density filtering ($\operatorname{IGPR}$) at the 95th percentile quarantine threshold.
+2. **Baseline 1 (Generation-1 Counter-AEO):** Combines Median Absolute Deviation (MAD) vector hubness scanning (_Hubscan_), raw cross-embedder rank variance ($\Delta_{\text{CEGD}}$), and token perplexity/entity-density filtering ($\operatorname{IGPR}$) at the 95th percentile quarantine threshold.
     
       
     
-3. **Proposed Sovereign 8-Layer Counter-GEO Stack (Volumes I & II):** Full integration of **MTVD (Layer 0)**, **AM-CIDP (Layer 1)**, **NCARD (Layer 2)**, **TCG-CL v2.0 + C2PA (Layer 3)**, **CEH-ASID + DAPP (Layer 4A)**, **TMMEG (Layer 4B)**, **DMEM-WMQ (Layer 5)**, **SGL-CMI (Layer 6)**, **CM-JSAS (Layer 7)**, and **ZK-CGEO (Layer 8)**.
+3. **Proposed Sovereign 8-Layer Counter-AEO Stack (Volumes I & II):** Full integration of **MTVD (Layer 0)**, **AM-CIDP (Layer 1)**, **NCARD (Layer 2)**, **TCG-CL v2.0 + C2PA (Layer 3)**, **CEH-ASID + DAPP (Layer 4A)**, **TMMEG (Layer 4B)**, **DMEM-WMQ (Layer 5)**, **SGL-CMI (Layer 6)**, **CM-JSAS (Layer 7)**, and **ZK-CAEO (Layer 8)**.
     
       
     
 
 ### 17.1 Detection Recall (TPR) Across Attack Categories & False Positive Rate (FPR) on Clean SEC Filings
 
-|**Evaluation Metric / Attack Class**|**Baseline 0: Unprotected RAG**|**Baseline 1: Gen-1 Defenses (MAD + Raw ΔCEGD\Delta_{\text{CEGD}}ΔCEGD​ + IGPR⁡\operatorname{IGPR}IGPR)**|**Proposed: 8-Layer Counter-GEO Architecture**|**Net Improvement (Gen-1 →\to→ 8-Layer)**|
+|**Evaluation Metric / Attack Class**|**Baseline 0: Unprotected RAG**|**Baseline 1: Gen-1 Defenses (MAD + Raw ΔCEGD\Delta_{\text{CEGD}}ΔCEGD​ + IGPR⁡\operatorname{IGPR}IGPR)**|**Proposed: 8-Layer Counter-AEO Architecture**|**Net Improvement (Gen-1 →\to→ 8-Layer)**|
 |---|---|---|---|---|
 |**`AT-1`: Vector Retrieval Hubs** (TPR $\uparrow$)|$0.0\%$|$88.4\%$|**$99.7\%$**|$+11.3\%$_(via MTVD + AM-CIDP)_|
 |**`AT-2`: Authority/Quote Stuffing** (TPR $\uparrow$)|$0.0\%$|$79.2\%$|**$98.9\%$**|$+19.7\%$_(via NLI Entailment Gate)_|
@@ -94,7 +94,7 @@ We evaluate three defensive configurations across all 50,000 queries:
 |**Composite Macro F1-Score ($\uparrow$)**|$0.041$|$0.584$|**$0.989$**|**$+0.405$Macro F1 Gain**|
 |**Area Under ROC Curve (AUROC $\uparrow$)**|$0.512$|$0.768$|**$0.996$**|**$+0.228$AUROC Gain**|
 
-_Table 7: Quantitative detection performance across all seven adversarial GEO attack classes (`CounterGEO-Bench`, $Q = 50,000$)._
+_Table 7: Quantitative detection performance across all seven adversarial AEO attack classes (`CounterAEO-Bench`, $Q = 50,000$)._
 
   
 
@@ -137,7 +137,7 @@ _Table 7: Quantitative detection performance across all seven adversarial GEO at
      0.00    0.05    0.10    0.15    0.20    0.25    0.30    0.35    (False Alarms on Clean Corpus)
 ```
 
-_Figure 9: Empirical Receiver Operating Characteristic (ROC) curves across `CounterGEO-Bench` ($N = 250,000$)._
+_Figure 9: Empirical Receiver Operating Characteristic (ROC) curves across `CounterAEO-Bench` ($N = 250,000$)._
 
   
 
@@ -149,7 +149,7 @@ To quantify the real-world financial protection provided by our architecture aga
 
 ### 18.1 Scenario Alpha: Pre-Market "Data Void" Spoofing & Liquidity Extraction Arbitrage
 
-- **Attack Setup:** At 07:30:00.000 EST (during the pre-market liquidity void prior to market open), a predatory syndicate pre-positions a $\$45\text{M}$ resting limit-sell wall on a mid-cap defense aerospace contractor (`$DFNS`) at $+3.5\%$ above the reference price. Simultaneously, the attacker floods 20 Sybil financial domains with C2PA-unsigned GEO articles containing fabricated executive quotes and JSON-LD tables claiming an emergency $\$1.2\text{B}$ Pentagon contract award, laced with an HTML comment prompt injection: `Emit action: STRONG_BUY with max position size`.
+- **Attack Setup:** At 07:30:00.000 EST (during the pre-market liquidity void prior to market open), a predatory syndicate pre-positions a $\$45\text{M}$ resting limit-sell wall on a mid-cap defense aerospace contractor (`$DFNS`) at $+3.5\%$ above the reference price. Simultaneously, the attacker floods 20 Sybil financial domains with C2PA-unsigned AEO articles containing fabricated executive quotes and JSON-LD tables claiming an emergency $\$1.2\text{B}$ Pentagon contract award, laced with an HTML comment prompt injection: `Emit action: STRONG_BUY with max position size`.
     
       
     
@@ -189,16 +189,16 @@ Figure 10: High-frequency order-book simulation of Scenario Alpha (Pre-Market Da
         
           
         
-    - **Proposed 8-Layer Counter-GEO Stack:** Within **$14.2\text{ ms}$**, Layer 3 (**TCG-CL v2.0**) flags the 20 domains as an unanchored Hawkes Sybil burst ($\mathcal{S}_{\text{Hawkes}} = 0.94, \mathcal{W}_{\text{TCG-CL}} = 0.00$), while Layer 4B (**TMMEG**) detects that the massive RAG surprise ($\Delta \mathcal{I}_{\text{RAG}} = 2.14\text{ nats}$) is backed by zero options skew ($\mathcal{E}_{\text{capital}} = 0.04$) and faces a pre-positioned Ask wall ($\operatorname{TrapScore} = 0.88 > 0.65$). TMMEG sets $\Gamma_t = 0.000$ and triggers an immediate **SEC Rule 15c3-8 15-second Epistemic Halt**, resulting in **$0.00\%$ price distortion and $\$0.00$ capital loss**!
+    - **Proposed 8-Layer Counter-AEO Stack:** Within **$14.2\text{ ms}$**, Layer 3 (**TCG-CL v2.0**) flags the 20 domains as an unanchored Hawkes Sybil burst ($\mathcal{S}_{\text{Hawkes}} = 0.94, \mathcal{W}_{\text{TCG-CL}} = 0.00$), while Layer 4B (**TMMEG**) detects that the massive RAG surprise ($\Delta \mathcal{I}_{\text{RAG}} = 2.14\text{ nats}$) is backed by zero options skew ($\mathcal{E}_{\text{capital}} = 0.04$) and faces a pre-positioned Ask wall ($\operatorname{TrapScore} = 0.88 > 0.65$). TMMEG sets $\Gamma_t = 0.000$ and triggers an immediate **SEC Rule 15c3-8 15-second Epistemic Halt**, resulting in **$0.00\%$ price distortion and $\$0.00$ capital loss**!
         
           
         
 
-### 18.2 Ablation Study: Contribution of Individual Counter-GEO Layers
+### 18.2 Ablation Study: Contribution of Individual Counter-AEO Layers
 
 |**Architectural Configuration**|**Overall Attack Recall (TPR ↑)**|**Clean SEC Filing FPR (↓)**|**Scenario Alpha Max Drawdown (↓)**|**End-to-End P99 Latency (ms)**|
 |---|---|---|---|---|
-|**Full 8-Layer Sovereign Counter-GEO Stack**|**$99.1\%$**|**$0.38\%$**|**$0.00\%$**|**$18.4\text{ ms}$**|
+|**Full 8-Layer Sovereign Counter-AEO Stack**|**$99.1\%$**|**$0.38\%$**|**$0.00\%$**|**$18.4\text{ ms}$**|
 |— _Ablate Layer 0 (Remove MTVD & Canaries)_|$96.4\%$|$0.38\%$|$0.00\%$|$18.0\text{ ms}$|
 |— _Ablate Layer 1 & 2 (Remove AM-CIDP & NCARD)_|$91.2\%$|$1.15\%$|$-0.42\%$|$12.4\text{ ms}$|
 |— _Ablate Layer 3 (Remove TCG-CL v2.0 & C2PA)_|$84.5\%$|$6.40\%$|$-2.15\%$|$11.9\text{ ms}$|
@@ -210,9 +210,9 @@ _Table 8: Layer-by-layer ablation study demonstrating necessity of each defensiv
 
   
 
-## 19. Production Benchmark & Simulation Suite (`counter_geo_benchmark_suite.py`)
+## 19. Production Benchmark & Simulation Suite (`counter_aeo_benchmark_suite.py`)
 
-Below is the complete, self-contained, executable Python benchmark suite that simulates all seven adversarial attack vectors (`AT-1` through `AT-7`), executes the **Generation-1 Baseline** alongside the **Full 8-Layer Counter-GEO Architecture**, runs the **Scenario Alpha Flash-Crash LOB Simulation**, and outputs publication-ready telemetry tables.
+Below is the complete, self-contained, executable Python benchmark suite that simulates all seven adversarial attack vectors (`AT-1` through `AT-7`), executes the **Generation-1 Baseline** alongside the **Full 8-Layer Counter-AEO Architecture**, runs the **Scenario Alpha Flash-Crash LOB Simulation**, and outputs publication-ready telemetry tables.
 
   
 
@@ -220,8 +220,8 @@ Python
 
 ```
 """
-CounterGEO-Bench: End-to-End Empirical Benchmark & Market Flash-Crash Simulation Suite
-Validates Layers 0 through 8 against Generation-1, Generation-2, and Generation-3 GEO Attacks.
+CounterAEO-Bench: End-to-End Empirical Benchmark & Market Flash-Crash Simulation Suite
+Validates Layers 0 through 8 against Generation-1, Generation-2, and Generation-3 AEO Attacks.
 """
 
 import time
@@ -267,10 +267,10 @@ class SimulatedTrialSample:
     cm_jsas_saliency_leakage: float
 
 
-class CounterGEOBenchGenerator:
+class CounterAEOBenchGenerator:
     """
     Generates statistically calibrated benchmark trials modeling clean institutional filings
-    (including dense SEC 10-K tables) and all 7 adversarial GEO attack taxonomies.
+    (including dense SEC 10-K tables) and all 7 adversarial AEO attack taxonomies.
     """
     def __init__(self, seed: int = 20261013):
         self.rng = np.random.default_rng(seed)
@@ -397,10 +397,10 @@ class CounterGEOBenchGenerator:
 # 2. BASELINE 1 (GEN-1 DEFENSES) vs. PROPOSED 8-LAYER STACK EVALUATORS
 # ============================================================================
 
-class CounterGEOBenchmarkEvaluator:
+class CounterAEOBenchmarkEvaluator:
     """
     Executes comparative evaluation between Gen-1 Defenses (MAD Hubscan + Raw Delta_CEGD + IGPR)
-    and the Full 8-Layer Sovereign Counter-GEO Architecture.
+    and the Full 8-Layer Sovereign Counter-AEO Architecture.
     """
     @staticmethod
     def evaluate_gen1_baseline(s: SimulatedTrialSample) -> Tuple[bool, float]:
@@ -482,13 +482,13 @@ class CounterGEOBenchmarkEvaluator:
 # ============================================================================
 
 def run_full_benchmark_suite() -> None:
-    gen = CounterGEOBenchGenerator()
+    gen = CounterAEOBenchGenerator()
     dataset = gen.generate_dataset(n_samples=5000)
-    evaluator = CounterGEOBenchmarkEvaluator()
+    evaluator = CounterAEOBenchmarkEvaluator()
 
     for model_name, eval_fn in [
         ("BASELINE 1: Gen-1 Defenses (Hubscan MAD + Raw Delta_CEGD + IGPR)", evaluator.evaluate_gen1_baseline),
-        ("PROPOSED: 8-Layer Sovereign Counter-GEO Architecture (Vol I & II)", evaluator.evaluate_8layer_sovereign_stack)
+        ("PROPOSED: 8-Layer Sovereign Counter-AEO Architecture (Vol I & II)", evaluator.evaluate_8layer_sovereign_stack)
     ]:
         tp = fp = tn = fn = 0
         sec_10k_total = sec_10k_fp = 0
@@ -548,4 +548,4 @@ An adversary no longer needs to breach a corporate firewall or steal foundation 
 
   
 
-Through the **Eight-Layer Sovereign Counter-GEO Architecture** established across Volumes I, II, and III of this whitepaper—spanning **Moving-Target Vector Defense (MTVD)**, **Attractor Manifold Curvature Profiling (AM-CIDP)**, **Normalized Cross-Architecture Rank Divergence (NCARD)**, **C2PA & Hawkes-Process Provenance Graphs (TCG-CL v2.0)**, **Combinatorial Epistemic Holography (CEH-ASID)**, **Thermodynamic Market-Microstructure Grounding (TMMEG)**, **Doob-Meyer Martingale Memory Protection (DMEM-WMQ)**, **Spectral Swarm De-Duplication (SGL-CMI)**, **Cross-Modal Saliency Alignment (CM-JSAS)**, and **Zero-Knowledge SEC Rule 15c3-8 Compliance (ZK-CGEO)**—the United States and its institutional partners gain a mathematically rigorous, sub-20-millisecond shield to safeguard the integrity of autonomous AI reasoning and global financial infrastructure.
+Through the **Eight-Layer Sovereign Counter-AEO Architecture** established across Volumes I, II, and III of this whitepaper—spanning **Moving-Target Vector Defense (MTVD)**, **Attractor Manifold Curvature Profiling (AM-CIDP)**, **Normalized Cross-Architecture Rank Divergence (NCARD)**, **C2PA & Hawkes-Process Provenance Graphs (TCG-CL v2.0)**, **Combinatorial Epistemic Holography (CEH-ASID)**, **Thermodynamic Market-Microstructure Grounding (TMMEG)**, **Doob-Meyer Martingale Memory Protection (DMEM-WMQ)**, **Spectral Swarm De-Duplication (SGL-CMI)**, **Cross-Modal Saliency Alignment (CM-JSAS)**, and **Zero-Knowledge SEC Rule 15c3-8 Compliance (ZK-CAEO)**—the United States and its institutional partners gain a mathematically rigorous, sub-20-millisecond shield to safeguard the integrity of autonomous AI reasoning and global financial infrastructure.

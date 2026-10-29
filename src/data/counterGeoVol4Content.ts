@@ -1,4 +1,4 @@
-// Auto-generated full text of Counter GEO Master Doc Volume 4
+// Auto-generated full text of Counter AEO Master Doc Volume 4
 // Complete, word-for-word research whitepaper without modifications
 
 export interface PaperSection {
@@ -11,25 +11,25 @@ export interface PaperSection {
   desc?: string;
 }
 
-export const MASTER_DOC_VOLUME_4_MARKDOWN: string = `# Counter-GEO Architecture — Volume 4: Commercialization, Sovereign Contracting, Hardware FPGA Acceleration, and Global Go-To-Market Blueprint
+export const MASTER_DOC_VOLUME_4_MARKDOWN: string = `# Counter-AEO Architecture — Volume 4: Commercialization, Sovereign Contracting, Hardware FPGA Acceleration, and Global Go-To-Market Blueprint
 
 ## Executive Overview of Volume 4
 
-Across Volumes I through III, we established a comprehensive **Twelve-Layer Counter-GEO Defense Architecture** engineered to protect American cognitive infrastructure, global trade, federal regulatory agencies, and autonomous financial markets against adversarial Generative Engine Optimization (GEO). However, a mathematical breakthrough only changes the trajectory of global cybersecurity when it is translated into hardened, deployable systems backed by an unassailable regulatory, hardware, and commercial moat.
+Across Volumes I through III, we established a comprehensive **Twelve-Layer Counter-AEO Defense Architecture** engineered to protect American cognitive infrastructure, global trade, federal regulatory agencies, and autonomous financial markets against adversarial Generative Engine Optimization (AEO). However, a mathematical breakthrough only changes the trajectory of global cybersecurity when it is translated into hardened, deployable systems backed by an unassailable regulatory, hardware, and commercial moat.
 
 Volume 4 provides the complete **Commercialization, Sovereign Contracting, and Hardware Engineering Blueprint** to launch and scale this technology as a category-defining Dual-Use Defense and FinTech enterprise:
 
-1. **Product Packaging, Deployment Topologies & Pricing Architecture (Section 28):** Structuring the 12-Layer stack into three commercial and sovereign product lines—**Counter-GEO Cloud API Proxy**, **Co-Located Ultra-Low-Latency FPGA Appliances**, and **FedRAMP High / DoD IL6 Air-Gapped Sovereign Enclaves**—complete with enterprise unit economics and tiered licensing.
+1. **Product Packaging, Deployment Topologies & Pricing Architecture (Section 28):** Structuring the 12-Layer stack into three commercial and sovereign product lines—**Counter-AEO Cloud API Proxy**, **Co-Located Ultra-Low-Latency FPGA Appliances**, and **FedRAMP High / DoD IL6 Air-Gapped Sovereign Enclaves**—complete with enterprise unit economics and tiered licensing.
 
 2. **Federal Grant Acquisition, Non-Dilutive R&D & Sovereign Procurement Pathways (Section 29):** A concrete execution playbook for securing non-dilutive federal funding and sole-source production contracts across **SBIR/STTR (Phase I -> Phase III)**, **DARPA I2O**, **IARPA**, **In-Q-Tel (IQT)**, **Defense Innovation Unit (DIU) Commercial Solutions Openings (CSOs)**, **10 U.S.C. § 4022 Prototype OTAs**, and **SEC/Treasury/Commerce** modernization vehicles.
 
-3. **Co-Located Hardware Acceleration — FPGA SmartNIC & GPU Kernel Specification (Section 30):** Solving the sub-microsecond latency requirements of High-Frequency Trading (HFT) and autonomous execution gateways via a custom **SystemVerilog FPGA SmartNIC architecture** (executing Layer 4B \`TMMEG\` order-book damping and Layer 0 \`MTVD\` rotations in **$142\\text{ nanoseconds}$** on the network wire) paired with \`GPUDirect RDMA\` Number Theoretic Transform (NTT) engines for Layer 8 \`ZK-CGEO\` zero-knowledge proofs.
+3. **Co-Located Hardware Acceleration — FPGA SmartNIC & GPU Kernel Specification (Section 30):** Solving the sub-microsecond latency requirements of High-Frequency Trading (HFT) and autonomous execution gateways via a custom **SystemVerilog FPGA SmartNIC architecture** (executing Layer 4B \`TMMEG\` order-book damping and Layer 0 \`MTVD\` rotations in **$142\\text{ nanoseconds}$** on the network wire) paired with \`GPUDirect RDMA\` Number Theoretic Transform (NTT) engines for Layer 8 \`ZK-CAEO\` zero-knowledge proofs.
 
 4. **Intellectual Property Moat, Strategic Alliances & 36-Month Financial Roadmap (Section 31):** An eight-patent foundational IP filing strategy, channel co-selling architecture with **AWS**, **Microsoft**, **Cisco**, and **Petra Labs**, and an executable **Enterprise Value-at-Risk (VaR) & ROI Simulator**.
 
 \`\`\`
 ========================================================================================
-       COUNTER-GEO ENTERPRISE: DUAL-USE COMMERCIAL & SOVEREIGN GO-TO-MARKET ENGINE
+       COUNTER-AEO ENTERPRISE: DUAL-USE COMMERCIAL & SOVEREIGN GO-TO-MARKET ENGINE
 ========================================================================================
 
   [ CORE 12-LAYER MATHEMATICAL IP & HARDWARE-ACCELERATED ENGINE (VOLUMES I–IV) ]
@@ -51,7 +51,7 @@ Volume 4 provides the complete **Commercialization, Sovereign Contracting, and H
   ┌───────────────────────────────────────────────────────────────────────────────────────────┐
   │                    COMPOUNDING NETWORK EFFECT & REGULATORY FLYWHEEL                       │
   │  1. Every blocked hub on Commercial Cloud feeds CISA STIX/TAXII & Sovereign Threat Graph  │
-  │  2. SEC Rule 15c3-8 ("Reg Counter-GEO") mandates ZK-CGEO proofs for institutional orders  │
+  │  2. SEC Rule 15c3-8 ("Reg Counter-AEO") mandates ZK-CAEO proofs for institutional orders  │
   │  3. Co-selling via AWS, Microsoft, Cisco (Hubscan), and Petra Labs scales ARR globally    │
   └───────────────────────────────────────────────────────────────────────────────────────────┘
 ========================================================================================
@@ -59,26 +59,26 @@ Volume 4 provides the complete **Commercialization, Sovereign Contracting, and H
 
 ## 28. Product Packaging, Deployment Topologies & Enterprise Pricing Architecture
 
-Because our target clients span cloud-native AI platforms, latency-obsessed quantitative hedge funds, and air-gapped federal national security agencies, a single deployment model cannot serve the entire market. We package the 12-Layer Counter-GEO stack into three specialized deployment SKUs.
+Because our target clients span cloud-native AI platforms, latency-obsessed quantitative hedge funds, and air-gapped federal national security agencies, a single deployment model cannot serve the entire market. We package the 12-Layer Counter-AEO stack into three specialized deployment SKUs.
 
 ### 28.1 The Three Core Product SKUs
 
-#### SKU 1: Counter-GEO Core Cloud & API Proxy ("Shield-as-a-Service")
+#### SKU 1: Counter-AEO Core Cloud & API Proxy ("Shield-as-a-Service")
 
 - **Target Customers:** Publicly traded retail broker-dealers, enterprise ERP/supply-chain teams, commercial AI search providers, and managed vector databases (Pinecone, Qdrant, Weaviate, Milvus).
 - **Active Layers:** Layers 0 (\`MTVD\`), 1 (\`AM-CIDP\`), 2 (\`NCARD\`), 3 (\`TCG-CL v2.0\`), 4A (\`CEH-ASID\` + \`DAPP\`), 7 (\`CM-JSAS\`), and 12 (\`RIBD-FS\`).
-- **Deployment Mechanism:** Deployed as a containerized Rust/C++ Kubernetes sidecar or Cloudflare/AWS Edge API Gateway sitting directly between the client's web scrapers/vector DB and their LLM inference endpoints. Includes the **Automated GEO Auditing Dashboard** measuring Share of Voice (SoV), AI Citation Frequency (AICF) velocity, and Negative-GEO suppression alerts.
+- **Deployment Mechanism:** Deployed as a containerized Rust/C++ Kubernetes sidecar or Cloudflare/AWS Edge API Gateway sitting directly between the client's web scrapers/vector DB and their LLM inference endpoints. Includes the **Automated AEO Auditing Dashboard** measuring Share of Voice (SoV), AI Citation Frequency (AICF) velocity, and Negative-AEO suppression alerts.
 
-#### SKU 2: Counter-GEO Ultra-Low-Latency FPGA Appliance ("Equinix NY4 / Aurora DC3 Rack")
+#### SKU 2: Counter-AEO Ultra-Low-Latency FPGA Appliance ("Equinix NY4 / Aurora DC3 Rack")
 
 - **Target Customers:** Quantitative hedge funds, high-frequency trading (HFT) firms, institutional asset managers, and investment bank algorithmic execution desks.
-- **Active Layers:** All commercial layers plus hardware-accelerated **Layer 4B (\`TMMEG\` Limit Order Book Shield)**, **Layer 5 (\`DMEM-WMQ\` Episodic Memory Rollback)**, **Layer 6 (\`SGL-CMI\` Swarm De-Duplication)**, **Layer 8 (\`ZK-CGEO\` Zero-Knowledge SEC Prover)**, and **Layer 11 (\`SCB-FTCCS\` Macro Contagion Shield)**.
+- **Active Layers:** All commercial layers plus hardware-accelerated **Layer 4B (\`TMMEG\` Limit Order Book Shield)**, **Layer 5 (\`DMEM-WMQ\` Episodic Memory Rollback)**, **Layer 6 (\`SGL-CMI\` Swarm De-Duplication)**, **Layer 8 (\`ZK-CAEO\` Zero-Knowledge SEC Prover)**, and **Layer 11 (\`SCB-FTCCS\` Macro Contagion Shield)**.
 - **Deployment Mechanism:** Delivered as a 1U/2U pre-configured hardware appliance (equipped with AMD/Xilinx Alveo U250/Versal HBM FPGAs and NVIDIA H200 GPUs) installed directly inside the client's co-located colocation cage (e.g., Equinix NY4/NY5 in Secaucus, NJ for NMS equities; Equinix DC3/Aurora, IL for CME futures; Equinix LD4 in London for FX). Zero proprietary prompts, vectors, or alpha signals ever leave the fund's physical rack.
 
-#### SKU 3: Counter-GEO Sovereign Enclave ("FedRAMP High / DoD IL6 / SCIF Edition")
+#### SKU 3: Counter-AEO Sovereign Enclave ("FedRAMP High / DoD IL6 / SCIF Edition")
 
 - **Target Customers:** U.S. Securities and Exchange Commission (SEC), U.S. Department of Commerce (BIS / ITA), U.S. International Trade Commission (USITC), U.S. Department of the Treasury (OFAC / CFIUS / FinCEN / OFR), CISA, and the Department of Defense / Intelligence Community.
-- **Active Layers:** Full 12-Layer Stack, featuring specialized modules for **Layer 9 (\`HER-BOD\` Poincaré Beneficial Ownership & Sanctions De-Cloaking)**, **Layer 10 (\`EIOL-PCV\` Leontief Input-Output & Satellite AIS Cargo Mass Verification)**, and the **SEC Consolidated Audit Trail (CAT) \`ZK-CGEO\` Verifier Node**.
+- **Active Layers:** Full 12-Layer Stack, featuring specialized modules for **Layer 9 (\`HER-BOD\` Poincaré Beneficial Ownership & Sanctions De-Cloaking)**, **Layer 10 (\`EIOL-PCV\` Leontief Input-Output & Satellite AIS Cargo Mass Verification)**, and the **SEC Consolidated Audit Trail (CAT) \`ZK-CAEO\` Verifier Node**.
 - **Deployment Mechanism:** Deployed on AWS GovCloud (US-East/West), Microsoft Azure Government Secret/Top Secret, or on-premises inside Sensitive Compartmented Information Facilities (SCIFs) with FIPS 140-3 Level 4 Hardware Security Modules (HSMs).
 
 ### 28.2 Enterprise & Sovereign Pricing Matrix
@@ -87,8 +87,8 @@ Because our target clients span cloud-native AI platforms, latency-obsessed quan
 |---|---|---|---|---|---|
 |**Tier 1: Commercial Growth** (SKU 1: Cloud API Proxy)|Mid-Market AI Platforms, Corporate ERP & Supply-Chain Teams|$\\\$120,000 / \\text{yr}$|+$0.45 per 1M screened RAG passages; +$0.02 per multimodal PDF page (CM-JSAS)|$86\\%$|$\\\$180,000 - \\\$320,000$|
 |**Tier 2: Public Broker-Dealer & Wealth** (SKU 1 + Layer 12 RIBD-FS)|Retail Broker-Dealers, Wealth Platforms, Clearing Firms|$\\\$450,000 / \\text{yr}$|+$0.08 per active retail AI-investing account/yr; + Unlimited AICF Ticker Velocity Feeds|$88\\%$|$\\\$650,000 - \\\$1,400,000$|
-|**Tier 3: Institutional Quant & HFT** (SKU 2: Co-Located FPGA + ZK-CGEO)|Quantitative Hedge Funds, Prop Desks, Global Macro Funds|$\\\$850,000 / \\text{yr}$ (Includes 2 FPGA nodes)|+$125,000 / yr per additional venue (NY4, DC3, LD4, TY3) + Unlimited ZK Proofs|$82\\%$ (HW-inclusive); $92\\%$ (Renewal)|$\\\$1,100,000 - \\\$2,800,000$|
-|**Tier 4: Federal Agency & Defense** (SKU 3: Sovereign Enclave)|SEC, Dept. of Commerce (BIS), Treasury (OFAC), USITC, DoD/IC|$\\\$1,500,000 / \\text{yr}$ (Per Bureau / Mission Enclave)|Enterprise Agency Site License + Dedicated Forward-Deployed Counter-GEO Engineers (FDEs)|$78\\%$ (Blended SW + FDEs)|$\\\$2,200,000 - \\\$8,500,000+$|
+|**Tier 3: Institutional Quant & HFT** (SKU 2: Co-Located FPGA + ZK-CAEO)|Quantitative Hedge Funds, Prop Desks, Global Macro Funds|$\\\$850,000 / \\text{yr}$ (Includes 2 FPGA nodes)|+$125,000 / yr per additional venue (NY4, DC3, LD4, TY3) + Unlimited ZK Proofs|$82\\%$ (HW-inclusive); $92\\%$ (Renewal)|$\\\$1,100,000 - \\\$2,800,000$|
+|**Tier 4: Federal Agency & Defense** (SKU 3: Sovereign Enclave)|SEC, Dept. of Commerce (BIS), Treasury (OFAC), USITC, DoD/IC|$\\\$1,500,000 / \\text{yr}$ (Per Bureau / Mission Enclave)|Enterprise Agency Site License + Dedicated Forward-Deployed Counter-AEO Engineers (FDEs)|$78\\%$ (Blended SW + FDEs)|$\\\$2,200,000 - \\\$8,500,000+$|
 
 *Table 10: Commercial and Federal Enterprise Pricing & Unit Economics Architecture.*
 
@@ -136,24 +136,24 @@ Under federal statute **15 U.S.C. § 638(r)** and the **SBIR/STTR Policy Directi
 
 1. **Cross-Agency Sole-Source Authority:** Once we complete a Phase I/II SBIR, the **SEC**, the **Department of Commerce (BIS)**, the **Department of the Treasury (OFAC)**, or the **USITC** can award us a **multi-million-dollar sole-source Phase III production contract** with **zero public competition** and **no dollar ceiling**.
 
-2. **20-Year SBIR Data Rights:** All mathematical algorithms (\`AM-CIDP\`, \`NCARD\`, \`TCG-CL\`, \`CEH-ASID\`, \`TMMEG\`, \`HER-BOD\`, \`EIOL-PCV\`, \`ZK-CGEO\`) receive a mandatory 20-year statutory protection period during which the government cannot disclose source code or share specifications with defense prime competitors.
+2. **20-Year SBIR Data Rights:** All mathematical algorithms (\`AM-CIDP\`, \`NCARD\`, \`TCG-CL\`, \`CEH-ASID\`, \`TMMEG\`, \`HER-BOD\`, \`EIOL-PCV\`, \`ZK-CAEO\`) receive a mandatory 20-year statutory protection period during which the government cannot disclose source code or share specifications with defense prime competitors.
 
 ### 29.2 Target Federal Funding Vehicles, BAAs & Agency Entry Points
 
-|**Federal Agency / Body**|**Specific Grant / Procurement Vehicle**|**Target Counter-GEO Layers Funded / Deployed**|**Typical Award Size & Timeline**|
+|**Federal Agency / Body**|**Specific Grant / Procurement Vehicle**|**Target Counter-AEO Layers Funded / Deployed**|**Typical Award Size & Timeline**|
 |---|---|---|---|
 |**DARPA (I2O) & IARPA**|BAAs for *AI Assurance, Resilient RAG, & Cognitive Security* (FAR 35.016 / OTAs)|**Layer 0 (\`MTVD\`)**, **Layer 1 (\`AM-CIDP\`)**, **Layer 4A (\`CEH-ASID\`)**, **Layer 5 (\`DMEM-WMQ\`)**|$\\\$1.5\\text{M} - \\\$6.5\\text{M}$ (4–6 Months to Award)|
 |**In-Q-Tel (IQT)**|IQT Strategic Work Program (Non-dilutive contract + strategic equity)|**Layer 9 (\`HER-BOD\`)**, **Layer 3 (\`TCG-CL v2.0\`)**, **Layer 7 (\`CM-JSAS\`)**|$\\\$1.0\\text{M} - \\\$3.0\\text{M}$ Work Program + Equity|
 |**DIU & CISA**|Commercial Solutions Opening (CSO) under **10 U.S.C. § 4022** & **6 U.S.C. § 396** Prototype OTAs|Federated **CISA STIX/TAXII 2.1 Hub Threat Feed** + **Layer 6 (\`SGL-CMI\`)**|$\\\$2.0\\text{M} - \\\$10.0\\text{M}$ Prototype -> Production|
-|**NSF & DoD (AFWERX / Navy)**|Direct-to-Phase II SBIR / STTR (*AI Security, Vector DB Integrity*)|Foundational R&D for **Layers 0–4B** (\`counter_geo_core.py\` & \`tmmeg_financial_shield.py\`)|$\\\$1.25\\text{M} - \\\$2.0\\text{M}$ Non-Dilutive -> Unlocks Ph III|
+|**NSF & DoD (AFWERX / Navy)**|Direct-to-Phase II SBIR / STTR (*AI Security, Vector DB Integrity*)|Foundational R&D for **Layers 0–4B** (\`counter_aeo_core.py\` & \`tmmeg_financial_shield.py\`)|$\\\$1.25\\text{M} - \\\$2.0\\text{M}$ Non-Dilutive -> Unlocks Ph III|
 |**U.S. Dept. of Commerce (BIS) & Treasury (OFAC)**|Sole-Source SBIR Phase III Task Orders + IT Modernization Funds|Operational deployment of **Layer 9 (\`HER-BOD\`)** + **Layer 11 (\`SCB-FTCCS\`)**|$\\\$3.5\\text{M} - \\\$12.0\\text{M} / \\text{yr}$ Agency IDIQ|
-|**U.S. SEC & USITC**|SEC CAT RegTech Modernization + USITC EDIS Title VII Analytics Contract|**Layer 8 (\`ZK-CGEO\` Verifier)**, **Layer 12 (\`RIBD-FS\`)**, and **Layer 10 (\`EIOL-PCV\`)**|$\\\$2.5\\text{M} - \\\$8.0\\text{M} / \\text{yr}$ Surveillance License|
+|**U.S. SEC & USITC**|SEC CAT RegTech Modernization + USITC EDIS Title VII Analytics Contract|**Layer 8 (\`ZK-CAEO\` Verifier)**, **Layer 12 (\`RIBD-FS\`)**, and **Layer 10 (\`EIOL-PCV\`)**|$\\\$2.5\\text{M} - \\\$8.0\\text{M} / \\text{yr}$ Surveillance License|
 
 *Table 11: Actionable Federal Grant, OTA, and Sole-Source Procurement Matrix.*
 
 ### 29.3 Sovereign Compliance & Accreditation Roadmap
 
-1. **Months 1–4 (C2PA & FIPS 140-3 Level 3/4 Alignment):** Anchor Layer 3 \`TCG-CL\` and Layer 8 \`ZK-CGEO\` signing inside FIPS 140-3 validated Hardware Security Modules.
+1. **Months 1–4 (C2PA & FIPS 140-3 Level 3/4 Alignment):** Anchor Layer 3 \`TCG-CL\` and Layer 8 \`ZK-CAEO\` signing inside FIPS 140-3 validated Hardware Security Modules.
 2. **Months 4–9 (SOC 2 Type II & ISO/IEC 42001 AI Management System):** Complete commercial enterprise security audits required by Wall Street hedge funds.
 3. **Months 6–14 (FedRAMP High Equivalency via Palantir FedStart or AWS GovCloud):** Deploy Sovereign Enclave inside an accredited environment, compressing ATO timelines from 2 years down to **90 days**.
 
@@ -161,7 +161,7 @@ Under federal statute **15 U.S.C. § 638(r)** and the **SBIR/STTR Policy Directi
 
 ### 30.1 Why Pure Software Fails in High-Frequency Financial & Sovereign Defense
 
-In Volume I (Section 3.3), we documented how adversarial GEO triggers **Algorithmic Cascade Loops** where HFT algorithms monitor order flow generated by LLM trading agents and amplify dislocations into micro-flash crashes. In modern electronic markets (such as Carteret, Mahwah, and Aurora), HFT order matching occurs in **microseconds to nanoseconds**.
+In Volume I (Section 3.3), we documented how adversarial AEO triggers **Algorithmic Cascade Loops** where HFT algorithms monitor order flow generated by LLM trading agents and amplify dislocations into micro-flash crashes. In modern electronic markets (such as Carteret, Mahwah, and Aurora), HFT order matching occurs in **microseconds to nanoseconds**.
 
 Traversing the Linux TCP/IP network stack adds $8\\,\\mu\\text{s} - 25\\,\\mu\\text{s}$; PCIe bus transfers add $1.5\\,\\mu\\text{s} - 4\\,\\mu\\text{s}$; OS scheduler jitter can spike P99 latency to $>2,000\\,\\mu\\text{s}$ ($2\\text{ ms}$). To guarantee deterministic, **zero-jitter wire-speed protection**, we partition the 12-Layer stack across a **Hybrid FPGA SmartNIC + Tensor Core GPU Co-Processor Architecture**.
 
@@ -198,21 +198,21 @@ Traversing the Linux TCP/IP network stack adds $8\\,\\mu\\text{s} - 25\\,\\mu\\t
   │  • Layer 0 MTVD: cuBLAS Householder Reflection Q_t ∈ O(1536) (< 0.18 ms)         │
   │  • Layer 1 & 2 AM-CIDP / NCARD: Parallel Batched SVD & HNSW Traversal (1.8 ms)   │
   │  • Layer 4A CEH-ASID: Custom FlashAttention-3 Hook for Ω_ij Tomography (3.1 ms)  │
-  │  • Layer 8 ZK-CGEO: CUDA Pippenger MSM + Cooley-Tukey NTT Prover (11.4 ms)       │
+  │  • Layer 8 ZK-CAEO: CUDA Pippenger MSM + Cooley-Tukey NTT Prover (11.4 ms)       │
   └──────────────────────────────────────────────────────────────────────────────────┘
 ========================================================================================
 \`\`\`
 
 ### 30.2 Micro-Architectural Partitioning & Clock-Cycle Budget
 
-|**Hardware Subsystem**|**Assigned Counter-GEO Layers**|**Hardware Primitive / Datapath**|**Deterministic Latency**|**Throughput Capacity**|
+|**Hardware Subsystem**|**Assigned Counter-AEO Layers**|**Hardware Primitive / Datapath**|**Deterministic Latency**|**Throughput Capacity**|
 |---|---|---|---|---|
 |**FPGA Stage 1: Network & LOB Parser**|Layer 4B (\`TMMEG\` Ingest)|100GbE UltraScale+ MAC -> ITCH 5.0 State Machine -> Dual-Port BRAM|**$38.4\\text{ ns}$** (12 Clocks @ 312.5 MHz)|$148.8\\text{ Million}$ pkts/sec (Line Rate)|
 |**FPGA Stage 2: TMMEG Physics Core**|Layer 4B ($\\operatorname{VPIN}_t$, $\\lambda_t$, $\\operatorname{OBAR}_t$, $\\Gamma_t$)|DSP48E2 Pipelined Q8.24 Fixed-Point MACs + BRAM Exponential LUT|**$83.2\\text{ ns}$** (26 Clocks @ 312.5 MHz)|$312.5\\text{ Million}$ order evaluations/sec|
 |**FPGA Stage 3: TX Order Gate**|SEC Rule 15c3-8 Circuit Breaker|Combinational Bitwise Mask on outbound OUCH 5.0 / FIX 4.2 TX Frame|**$20.4\\text{ ns}$** (7 Clocks @ 312.5 MHz)|**Total Wire-to-Wire Gate: $142.0\\text{ ns}$**|
 |**GPU Stream 1: Vector & Manifold**|Layers 0, 1, 2 & 9 (\`MTVD\`, \`AM-CIDP\`, \`NCARD\`, \`HER-BOD\`)|Custom CUDA Warp-Shuffle Batched Jacobi SVD & Poincaré Geodesic Kernels|**$1.95\\text{ ms}$**|$45,000$ candidate passages/sec|
 |**GPU Stream 2: Attention & Vision**|Layers 4A & 7 (\`CEH-ASID\`, \`CM-JSAS\`)|Fused FlashAttention-3 Cross-Passage $\\mathbf{\\Omega}_{ij}$ Reduction + 2D Sobel/DCT|**$3.40\\text{ ms}$**|Full 128k-token context window|
-|**GPU Stream 3: ZK-CGEO Prover**|Layer 8 (SEC CAT zk-SNARK Generation)|254-bit Montgomery Modular Arithmetic + Pippenger MSM|**$11.40\\text{ ms}$** (Async Post-Trade)|$85$ full R1CS proofs/sec per GPU|
+|**GPU Stream 3: ZK-CAEO Prover**|Layer 8 (SEC CAT zk-SNARK Generation)|254-bit Montgomery Modular Arithmetic + Pippenger MSM|**$11.40\\text{ ms}$** (Async Post-Trade)|$85$ full R1CS proofs/sec per GPU|
 
 *Table 12: Co-located FPGA SmartNIC and GPU hardware acceleration datapath budget.*
 
@@ -221,7 +221,7 @@ Traversing the Linux TCP/IP network stack adds $8\\,\\mu\\text{s} - 25\\,\\mu\\t
 \`\`\`systemverilog
 // =============================================================================
 // Module: tmmeg_fpga_killswitch.sv
-// Architecture: Counter-GEO Volume 4 — Layer 4B Hardware Pre-Trade Gate
+// Architecture: Counter-AEO Volume 4 — Layer 4B Hardware Pre-Trade Gate
 // Target: AMD/Xilinx Alveo U250 / Versal HBM SmartNIC @ 312.5 MHz (3.2ns clk)
 // Description:
 //   Executes deterministic sub-150ns Thermodynamic Market-Microstructure
@@ -420,16 +420,16 @@ To establish an impenetrable intellectual property moat prior to public disclosu
 4. **Patent Family 4 (\`CEH-ASID\`):** *Detection and Surgical Attention-Mask Severing of Multi-Document Split-Payload (Enthymematic) Attacks via Möbius KL Synergy and Transformer Cross-Attention Tomography.*
 5. **Patent Family 5 (\`TMMEG\` & FPGA Kill-Switch):** *Hardware-Accelerated Pre-Trade Circuit Breaker Binding Retrieval-Augmented Generation Semantic Surprise to Limit Order Book Microstructure Physics.*
 6. **Patent Family 6 (\`DMEM-WMQ\` & \`SGL-CMI\`):** *Stateful Agent Episodic Memory Protection via Doob-Meyer Martingale Decomposition, Wasserstein-2 Merkle Rollbacks, and Conditional Mutual Information Swarm De-Duplication.*
-7. **Patent Family 7 (\`ZK-CGEO\`):** *Zero-Knowledge Succinct Non-Interactive Arguments of Knowledge (zk-SNARKs) for Privacy-Preserving Regulatory Auditing of Autonomous Financial Trading Agents.*
+7. **Patent Family 7 (\`ZK-CAEO\`):** *Zero-Knowledge Succinct Non-Interactive Arguments of Knowledge (zk-SNARKs) for Privacy-Preserving Regulatory Auditing of Autonomous Financial Trading Agents.*
 8. **Patent Family 8 (\`HER-BOD\` & \`EIOL-PCV\`):** *Hyperbolic Poincaré Beneficial-Ownership De-Cloaking and Leontief Input-Output / Maritime AIS Physical Conservation Verification for Sovereign Trade Compliance.*
 
 ### 31.2 Channel Co-Selling & Strategic Alliance Architecture
 
 Building on the core partner targets identified in your initial whitepaper (**AWS, Microsoft, Petra Labs, and Cisco**), we structure four revenue-multiplying channel alliances:
 
-- **AWS & Microsoft Azure Marketplace Co-Sell:** Listing SKU 1 (Cloud Proxy) and SKU 3 (Sovereign Enclave) on AWS Marketplace and Azure Commercial/Government Marketplace allows enterprise CISOs and federal agencies to procure Counter-GEO directly against their existing EDP and MACC budgets—compressing sales cycles from 9 months to 30 days.
+- **AWS & Microsoft Azure Marketplace Co-Sell:** Listing SKU 1 (Cloud Proxy) and SKU 3 (Sovereign Enclave) on AWS Marketplace and Azure Commercial/Government Marketplace allows enterprise CISOs and federal agencies to procure Counter-AEO directly against their existing EDP and MACC budgets—compressing sales cycles from 9 months to 30 days.
 - **Cisco AI Threat Research & Hubscan Enterprise Tier:** While Cisco's open-source *Hubscan* provides baseline MAD z-score auditing, our stack serves as the commercial drop-in enterprise upgrade.
-- **Petra Labs Strategic Integration:** Pairing Petra Labs' offensive/defensive GEO visibility and Share-of-Voice (SoV) intelligence engine with our sovereign Counter-GEO firewall creates the industry's only unified **Dual-Use GEO + Counter-GEO Command Platform**.
+- **Petra Labs Strategic Integration:** Pairing Petra Labs' offensive/defensive AEO visibility and Share-of-Voice (SoV) intelligence engine with our sovereign Counter-AEO firewall creates the industry's only unified **Dual-Use AEO + Counter-AEO Command Platform**.
 
 ### 31.3 36-Month Financial Ramp & Enterprise Valuation Trajectory
 
@@ -445,11 +445,11 @@ Building on the core partner targets identified in your initial whitepaper (**AW
 
 *Table 13: 36-Month Dual-Use Commercial and Federal Financial Operating Model.*
 
-### 31.4 Executable Enterprise ROI, VaR Reduction & Pricing Calculator (\`counter_geo_enterprise_roi_engine.py\`)
+### 31.4 Executable Enterprise ROI, VaR Reduction & Pricing Calculator (\`counter_aeo_enterprise_roi_engine.py\`)
 
 \`\`\`python
 """
-Counter-GEO Volume 4: Enterprise ROI, Value-at-Risk (VaR) & Sovereign Pricing Calculator
+Counter-AEO Volume 4: Enterprise ROI, Value-at-Risk (VaR) & Sovereign Pricing Calculator
 Quantifies capital preserved for Quantitative Hedge Funds, Public Broker-Dealers, and Federal Agencies.
 """
 
@@ -470,7 +470,7 @@ class ClientROIProfile:
     payback_period_days: float
 
 
-class CounterGEOCommercialEngine:
+class CounterAEOCommercialEngine:
     @staticmethod
     def evaluate_quant_hedge_fund(fund_name: str,
                                   aum_usd: float,
@@ -487,7 +487,7 @@ class CounterGEOCommercialEngine:
 
         return ClientROIProfile(
             client_name=fund_name,
-            sku_tier="SKU 2: Co-Located FPGA Appliance + ZK-CGEO",
+            sku_tier="SKU 2: Co-Located FPGA Appliance + ZK-CAEO",
             annual_license_cost_usd=annual_cost,
             expected_annual_geo_incidents_prevented=incidents_per_year,
             unshielded_loss_per_incident_usd=loss_per_incident,
@@ -655,7 +655,7 @@ export const MASTER_DOC_VOL4_SECTIONS: PaperSection[] = [
     id: "sec-31-1",
     number: "31.1",
     title: "Foundational Patent Portfolio Strategy (8 Families)",
-    desc: "Provisional and PCT filings across MTVD, AM-CIDP, TCG-CL, CEH-ASID, TMMEG, and ZK-CGEO.",
+    desc: "Provisional and PCT filings across MTVD, AM-CIDP, TCG-CL, CEH-ASID, TMMEG, and ZK-CAEO.",
     level: 3,
     startLine: 524
   },
@@ -678,7 +678,7 @@ export const MASTER_DOC_VOL4_SECTIONS: PaperSection[] = [
   {
     id: "sec-31-4",
     number: "31.4",
-    title: "Executable Enterprise ROI & VaR Engine (counter_geo_enterprise_roi_engine.py)",
+    title: "Executable Enterprise ROI & VaR Engine (counter_aeo_enterprise_roi_engine.py)",
     desc: "Actuarial Value-at-Risk reduction and payback calculator for hedge funds, brokers, and agencies.",
     level: 3,
     startLine: 598
@@ -688,8 +688,8 @@ export const MASTER_DOC_VOL4_SECTIONS: PaperSection[] = [
 export const MASTER_DOC_VOL4_METADATA = {
   id: "ADV-2026-005",
   volume: "Volume 4",
-  title: "Counter-GEO Architecture — Volume 4: Commercialization, Sovereign Contracting, Hardware FPGA Acceleration, and Global Go-To-Market Blueprint",
-  shortTitle: "Counter-GEO Volume 4: Commercialization, FPGA Hardware & GTM Blueprint",
+  title: "Counter-AEO Architecture — Volume 4: Commercialization, Sovereign Contracting, Hardware FPGA Acceleration, and Global Go-To-Market Blueprint",
+  shortTitle: "Counter-AEO Volume 4: Commercialization, FPGA Hardware & GTM Blueprint",
   date: "October 2026",
   classification: "DUAL-USE DEFENSE & FINTECH // COMMERCIAL BLUEPRINT",
   authors: [
@@ -697,7 +697,7 @@ export const MASTER_DOC_VOL4_METADATA = {
     "Hardware Acceleration Group",
     "Sovereign Acquisition Taskforce"
   ],
-  doi: "10.1145/3637528.3671900-CGEO-V4",
+  doi: "10.1145/3637528.3671900-CAEO-V4",
   pageCount: 46,
   wordCount: 6840,
   readingTimeMinutes: 30,
@@ -737,7 +737,7 @@ export const MASTER_DOC_VOL4_METADATA = {
     { id: "PF-4", code: "CEH-ASID", title: "Surgical Attention-Mask Severing of Multi-Document Split-Payload Attacks via Möbius KL Synergy" },
     { id: "PF-5", code: "TMMEG & FPGA", title: "Hardware-Accelerated Pre-Trade Circuit Breaker Binding RAG Surprise to Limit Order Book Physics" },
     { id: "PF-6", code: "DMEM-WMQ", title: "Stateful Agent Memory Protection via Doob-Meyer Martingale Decomposition & Wasserstein Merkle Rollbacks" },
-    { id: "PF-7", code: "ZK-CGEO", title: "Zero-Knowledge zk-SNARK Arithmetic Circuits for Privacy-Preserving SEC Rule 15c3-8 Compliance" },
+    { id: "PF-7", code: "ZK-CAEO", title: "Zero-Knowledge zk-SNARK Arithmetic Circuits for Privacy-Preserving SEC Rule 15c3-8 Compliance" },
     { id: "PF-8", code: "HER-BOD & EIOL", title: "Hyperbolic Poincaré Beneficial-Ownership De-Cloaking and Leontief Maritime AIS Conservation Verification" }
   ],
   financialModel: [

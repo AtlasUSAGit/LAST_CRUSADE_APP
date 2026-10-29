@@ -291,7 +291,7 @@ export const NodeGraphCanvas: React.FC = () => {
             {hoveredNode.type === 'BRAND' && 'Central verified knowledge graph entity anchor. Cryptographically validated.'}
             {hoveredNode.type === 'ENGINE' && `Generative engine citation pipeline. Current vector integrity score: ${hoveredNode.health}/100.`}
             {hoveredNode.type === 'THREAT' && 'Adversarial indirect prompt injection attempt detected targeting RAG context.'}
-            {hoveredNode.type === 'COUNTERMEASURE' && 'Last Crusade Defense Counter-GEO vector override active. Suppressing hallucinated outputs.'}
+            {hoveredNode.type === 'COUNTERMEASURE' && 'Last Crusade Defense Counter-AEO vector override active. Suppressing hallucinated outputs.'}
           </p>
         </div>
       )}

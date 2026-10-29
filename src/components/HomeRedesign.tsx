@@ -72,7 +72,7 @@ const TETRALOGY_VOLUMES: TetralogyVolume[] = [
     title: 'Sovereign Architecture for Epistemic & Financial Cybersecurity',
     subtitle: 'Vector De-Biasing, Intrinsic Dimension & 6-Layer RAG Defense',
     summary:
-      'Establishes the mathematical foundation of Counter-GEO: moving-target Householder isometric rotations, Levina-Bickel Local Intrinsic Dimension (LID_k) sinkhole detection, and multi-topology reciprocal rank divergence.',
+      'Establishes the mathematical foundation of Counter-AEO: moving-target Householder isometric rotations, Levina-Bickel Local Intrinsic Dimension (LID_k) sinkhole detection, and multi-topology reciprocal rank divergence.',
     equation: 'Q_t = I - 2u_t u_t^⊤ ∈ O(d),   LID_k(x) = - (1/k ∑ ln(r_i / r_k))⁻¹',
     equationLabel: 'Householder Isometric Rotation & Levina-Bickel Estimator',
     keyMetric: '99.4% Sinkhole Quarantine',
@@ -101,12 +101,12 @@ const TETRALOGY_VOLUMES: TetralogyVolume[] = [
     roman: 'III',
     code: 'LCD-VOL-03 // BENCHMARK SUITE',
     date: 'October 2026',
-    title: 'The CounterGEO-Bench Simulation Suite, Flash-Crash Stress Testing & ROC/AUC',
+    title: 'The CounterAEO-Bench Simulation Suite, Flash-Crash Stress Testing & ROC/AUC',
     subtitle: '250,000-Vector Empirical Validation & Order-Book Contagion Trials',
     summary:
       'Empirical evaluation across N = 250,000 adversarial RAG payloads and synthetic limit-order-book flash crashes, proving sub-millisecond suppression without degrading benign retrieval recall.',
     equation: 'AUC_{ROC} = 0.994 ± 0.002,   VPIN_t · Kyle_λ < Θ_{circuit}',
-    equationLabel: 'CounterGEO-Bench Empirical ROC & Order-Book Toxicity Gate',
+    equationLabel: 'CounterAEO-Bench Empirical ROC & Order-Book Toxicity Gate',
     keyMetric: 'N = 250,000 Trial Corpus',
     targetPage: 'counter-geo-vol3',
     badgeBg: 'bg-[#2B0110] text-[#FBF3E2] border-[#D5991C]'
@@ -196,7 +196,7 @@ const TEN_LAYER_STACK: DefenseLayerSpec[] = [
     act: 1,
     volPage: 'counter-geo',
     volLabel: 'Vol. I',
-    threatVector: 'Split-payload enthymematic GEO & indirect prompt injection',
+    threatVector: 'Split-payload enthymematic AEO & indirect prompt injection',
     mathematicalCore: 'Möbius KL Synergy (I_ij) + Transformer Attention-Sink Tomography',
     latency: '5.10 ms'
   },
@@ -229,14 +229,14 @@ const TEN_LAYER_STACK: DefenseLayerSpec[] = [
     act: 2,
     volPage: 'counter-geo-vol2',
     volLabel: 'Vol. II',
-    threatVector: 'Multimodal steganographic GEO payloads in PDF earnings slides & charts',
+    threatVector: 'Multimodal steganographic AEO payloads in PDF earnings slides & charts',
     mathematicalCore: 'VLM Jacobian Saliency vs. Sobel Contour Mask (L_leak) + Spectral DCT Scrub',
     latency: '8.40 ms'
   },
   {
     id: 'L8',
     layer: 'Layer 8',
-    code: 'ZK-CGEO',
+    code: 'ZK-CAEO',
     act: 2,
     volPage: 'counter-geo-vol2',
     volLabel: 'Vol. II',
@@ -326,7 +326,7 @@ const MANIFOLD_VERTEX_SHADER = `
     float wave = sin(p3.x * 3.2 + uTime * 1.8) * cos(p3.z * 2.4 - uTime * 1.1) * 0.14;
     p3.y += wave * (1.0 + uPerturbation * 0.8 * (1.0 - uShieldActive));
 
-    // Stage 4: Zero-Knowledge R1CS Merkle Proof Lattice (ZK-CGEO)
+    // Stage 4: Zero-Knowledge R1CS Merkle Proof Lattice (ZK-CAEO)
     vec3 p4 = rotateAxis(aMerklePos, normalize(vec3(0.1, 1.0, 0.1)), uTime * 0.14);
 
     vec3 pos = p0 * w0 + p1 * w1 + p2 * w2 + p3 * w3 + p4 * w4;
@@ -1407,7 +1407,7 @@ export const HomeRedesign: React.FC<HomeRedesignProps> = ({
     'STAGE II // TOPOLOGICAL SINKHOLE GRAVITY WELL (AM-CIDP)',
     'STAGE III // HOUSEHOLDER ISOMETRIC ROTATION Q_t ∈ O(d)',
     'STAGE IV // 142.0ns FPGA ORDER-BOOK WAVEFRONT (TMMEG)',
-    'STAGE V // ZERO-KNOWLEDGE R1CS MERKLE LATTICE (ZK-CGEO)'
+    'STAGE V // ZERO-KNOWLEDGE R1CS MERKLE LATTICE (ZK-CAEO)'
   ];
 
   const activeService = useMemo(
@@ -1525,7 +1525,7 @@ export const HomeRedesign: React.FC<HomeRedesignProps> = ({
               <span className="px-2 py-0.5 bg-[#15684E]/10 border border-[#15684E]/30 text-[#15684E] font-bold uppercase tracking-wider text-[10px]">
                 10-LAYER STACK ACTIVE
               </span>
-              <span className="text-[#6E3340]">COUNTERGEO-BENCH N=250,000</span>
+              <span className="text-[#6E3340]">COUNTERAEO-BENCH N=250,000</span>
             </div>
           </div>
 
@@ -1641,7 +1641,7 @@ export const HomeRedesign: React.FC<HomeRedesignProps> = ({
                   onClick={triggerAudit}
                   className="group inline-flex items-center gap-4 bg-[#410217] hover:bg-[#26010D] text-[#FBF3E2] pl-6 pr-4 py-4 font-mono text-xs font-bold uppercase tracking-[0.14em] border border-[#410217] transition-colors cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#410217]"
                 >
-                  <span>Request Sovereign GEO Audit</span>
+                  <span>Request Sovereign AEO Audit</span>
                   <span className="w-7 h-7 border border-[#F2D69D]/35 flex items-center justify-center bg-[#26010D]">
                     <ArrowRight className="w-3.5 h-3.5 text-[#D5991C] transition-transform duration-300 group-hover:translate-x-0.5" />
                   </span>
@@ -1808,7 +1808,7 @@ export const HomeRedesign: React.FC<HomeRedesignProps> = ({
                   page: 'counter-geo-ops' as NavigationPage,
                   kicker: '8 INTERACTIVE WEBGL SIMS',
                   title: 'Strategy Library',
-                  detail: 'Offensive GEO payloads (AT-1..AT-8) & live countermeasure sandbox'
+                  detail: 'Offensive AEO payloads (AT-1..AT-8) & live countermeasure sandbox'
                 },
                 {
                   num: '04',
@@ -1892,7 +1892,7 @@ export const HomeRedesign: React.FC<HomeRedesignProps> = ({
               ))}
             </div>
             <p className="mt-3 font-mono text-[10px] text-[#6E3340] leading-relaxed">
-              ¹–⁴ Empirical telemetry across monitored foundation models, CounterGEO-Bench (N = 250,000 vector trials, Vol. III), and Xilinx UltraScale+ SmartNIC synthesis (Vol. IV).
+              ¹–⁴ Empirical telemetry across monitored foundation models, CounterAEO-Bench (N = 250,000 vector trials, Vol. III), and Xilinx UltraScale+ SmartNIC synthesis (Vol. IV).
             </p>
           </div>
         </div>
@@ -2025,7 +2025,7 @@ export const HomeRedesign: React.FC<HomeRedesignProps> = ({
                   severityStyle: 'bg-[#004566]/10 text-[#004566] border-[#004566]/35',
                   title: 'Autonomous Swarm & Agent-to-Agent (A2A) Sabotage',
                   vectorCode: 'AT-4 / AT-7 · BYZANTINE CONSENSUS & EPISODIC MEMORY DRIFT',
-                  body: 'Defense robotics, autonomous drone swarms, and multi-agent enterprise workflows rely on shared RAG memory and inter-agent consensus. Hostile GEO payloads inject slow-boil martingale drift into episodic vector memory and trigger autophagous AI-citing-AI cascades that paralyze swarm coordination.',
+                  body: 'Defense robotics, autonomous drone swarms, and multi-agent enterprise workflows rely on shared RAG memory and inter-agent consensus. Hostile AEO payloads inject slow-boil martingale drift into episodic vector memory and trigger autophagous AI-citing-AI cascades that paralyze swarm coordination.',
                   metricLeftLabel: 'Swarm Fiedler λ₂',
                   metricLeftVal: 'Consensus Partitioned',
                   metricRightLabel: 'Countermeasure',
@@ -2186,7 +2186,7 @@ export const HomeRedesign: React.FC<HomeRedesignProps> = ({
               {
                 act: 2 as const,
                 phase: 'ACT III // SILICON & ZK PROOF',
-                layers: 'LAYERS 4B-HW, 7–9 (TMMEG 142ns · CM-JSAS · ZK-CGEO)',
+                layers: 'LAYERS 4B-HW, 7–9 (TMMEG 142ns · CM-JSAS · ZK-CAEO)',
                 headline: '45-Clock SmartNIC FPGA Gate & 288-Byte zk-SNARK',
                 formula: 'T_{FPGA} = 45 × 3.2ns = 142.0ns (Q8.24)',
                 sla: '142.0 ns Wire-Speed',
@@ -2360,7 +2360,7 @@ export const HomeRedesign: React.FC<HomeRedesignProps> = ({
                 id="services-heading"
                 className="font-display text-[clamp(2.2rem,4.3vw,3.9rem)] leading-[1.12] text-[#410217]"
               >
-                Counter-GEO defensive cybersecurity &amp;{' '}
+                Counter-AEO defensive cybersecurity &amp;{' '}
                 <em className="text-[#8B5A0B] font-normal">offensive operations.</em>
               </h2>
               <p className="text-base sm:text-lg text-[#5A1827] max-w-3xl leading-relaxed">
@@ -2535,7 +2535,7 @@ export const HomeRedesign: React.FC<HomeRedesignProps> = ({
       </section>
 
       {/* =====================================================================
-          § 04 — THE COUNTER-GEO TETRALOGY (ALL 4 PEER-REVIEWED VOLUMES & 3D LABS)
+          § 04 — THE COUNTER-AEO TETRALOGY (ALL 4 PEER-REVIEWED VOLUMES & 3D LABS)
           ===================================================================== */}
       <section
         id="research"
@@ -2551,7 +2551,7 @@ export const HomeRedesign: React.FC<HomeRedesignProps> = ({
                 § 04 // PEER-REVIEWED ARCHIVAL CORPUS
               </span>
               <div className="font-mono text-[11px] text-[#5A1827]">
-                DOI: 10.1145/3637528.3671900-CGEO · 180 PAGES
+                DOI: 10.1145/3637528.3671900-CAEO · 180 PAGES
               </div>
             </div>
 
@@ -2561,7 +2561,7 @@ export const HomeRedesign: React.FC<HomeRedesignProps> = ({
                   id="research-heading"
                   className="font-display text-[clamp(2.2rem,4.3vw,3.9rem)] leading-[1.12] text-[#410217]"
                 >
-                  The Counter-GEO <em className="text-[#8B5A0B] font-normal">Tetralogy.</em>
+                  The Counter-AEO <em className="text-[#8B5A0B] font-normal">Tetralogy.</em>
                 </h2>
                 <p className="mt-3 text-base text-[#5A1827] max-w-2xl leading-relaxed">
                   Four peer-reviewed volumes codifying the mathematical proofs, threat taxonomies, empirical ROC benchmarks, and 142ns FPGA silicon architectures of sovereign AI defense.
@@ -2775,7 +2775,7 @@ export const HomeRedesign: React.FC<HomeRedesignProps> = ({
                   </div>
                   <div className="p-4 bg-[#FAF5EB] border border-[#410217]/15">
                     <strong className="font-mono text-[10px] text-[#15684E] uppercase tracking-wider block mb-1">
-                      COUNTER-GEO REMEDIATION:
+                      COUNTER-AEO REMEDIATION:
                     </strong>
                     <p className="text-[#410217]/85">{activeCase.solution}</p>
                   </div>
@@ -2805,7 +2805,7 @@ export const HomeRedesign: React.FC<HomeRedesignProps> = ({
                 </div>
 
                 <h3 className="font-serif text-2xl text-[#FBF3E2]">
-                  Institutional GEO Exposure &amp; Liquidity VaR Calculator
+                  Institutional AEO Exposure &amp; Liquidity VaR Calculator
                 </h3>
 
                 <div className="space-y-4 pt-2 font-mono text-xs">

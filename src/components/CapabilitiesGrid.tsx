@@ -79,7 +79,7 @@ export const CapabilitiesGrid: React.FC = () => {
           sectionIndex="§ 05"
           kicker="// Threat Matrix & Cyber Operations Specifications"
           title="Services"
-          description="Proprietary high-dimensional vector space architecture engineered for defensive cybersecurity, offensive GEO cyber operations, algorithmic liquidity arbitrage, and autonomous agent swarms."
+          description="Proprietary high-dimensional vector space architecture engineered for defensive cybersecurity, offensive AEO cyber operations, algorithmic liquidity arbitrage, and autonomous agent swarms."
         />
 
         {/* Category Filter Tabs */}

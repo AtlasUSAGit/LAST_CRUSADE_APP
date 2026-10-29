@@ -1,10 +1,10 @@
 /**
- * Counter-GEO Volume 2 Defense Stack: Exact Mathematical Implementations
- * Corresponds directly to production engines in Counter GEO Master Doc Volume 2:
+ * Counter-AEO Volume 2 Defense Stack: Exact Mathematical Implementations
+ * Corresponds directly to production engines in Counter AEO Master Doc Volume 2:
  * - dmem_wmq_memory_shield.py (Layer 5: Doob-Meyer Epistemic Martingale & Wasserstein-2 Rollback)
  * - sgl_cmi_swarm_consensus.py (Layer 6: Spectral Graph Laplacian & Conditional Mutual Information)
  * - cm_jsas_multimodal_shield.py (Layer 7: Cross-Modal Jacobian Saliency Alignment & Scrubbing)
- * - zk_cgeo_compliance_prover.py (Layer 8: Zero-Knowledge SNARK Compliance Prover & Verifier)
+ * - zk_caeo_compliance_prover.py (Layer 8: Zero-Knowledge SNARK Compliance Prover & Verifier)
  */
 
 // ==========================================
@@ -354,7 +354,7 @@ export class CMJSASMultimodalShield {
 }
 
 // ==========================================
-// LAYER 8: ZK-CGEO (Zero-Knowledge Proof of Compliance)
+// LAYER 8: ZK-CAEO (Zero-Knowledge Proof of Compliance)
 // ==========================================
 
 export interface ZkProofResult {
@@ -370,7 +370,7 @@ export interface ZkProofResult {
   isSecVerified: boolean;
 }
 
-export class ZKCGEOComplianceSystem {
+export class ZKCAEOComplianceSystem {
   private crsKey: string = 'SEC_CAT_ZK_VERIFIER_CRS_KEY_2026';
 
   public generateAndVerifyProof(

@@ -232,7 +232,7 @@ export const WhitepaperVol4Reader: React.FC<WhitepaperVol4ReaderProps> = ({
                 Executive Overview of Volume 4
               </h2>
               <p>
-                Across Volumes I through III, we established a comprehensive <strong>Twelve-Layer Counter-GEO Defense Architecture</strong> engineered to protect American cognitive infrastructure, global trade, federal regulatory agencies, and autonomous financial markets against adversarial Generative Engine Optimization (GEO). However, a mathematical breakthrough only changes the trajectory of global cybersecurity when it is translated into hardened, deployable systems backed by an unassailable regulatory, hardware, and commercial moat.
+                Across Volumes I through III, we established a comprehensive <strong>Twelve-Layer Counter-AEO Defense Architecture</strong> engineered to protect American cognitive infrastructure, global trade, federal regulatory agencies, and autonomous financial markets against adversarial Generative Engine Optimization (AEO). However, a mathematical breakthrough only changes the trajectory of global cybersecurity when it is translated into hardened, deployable systems backed by an unassailable regulatory, hardware, and commercial moat.
               </p>
               <p>
                 Volume 4 provides the complete <strong>Commercialization, Sovereign Contracting, and Hardware Engineering Blueprint</strong> to launch and scale this technology as a category-defining Dual-Use Defense and FinTech enterprise across four core pillars:
@@ -267,7 +267,7 @@ export const WhitepaperVol4Reader: React.FC<WhitepaperVol4ReaderProps> = ({
                 28. Product Packaging, Deployment Topologies &amp; Enterprise Pricing
               </h2>
               <p>
-                Because our target clients span cloud-native AI platforms, latency-obsessed quantitative hedge funds, and air-gapped federal national security agencies, a single deployment model cannot serve the entire market. We package the 12-Layer Counter-GEO stack into three specialized deployment SKUs:
+                Because our target clients span cloud-native AI platforms, latency-obsessed quantitative hedge funds, and air-gapped federal national security agencies, a single deployment model cannot serve the entire market. We package the 12-Layer Counter-AEO stack into three specialized deployment SKUs:
               </p>
 
               <div id="sec-28-1" className="space-y-4 pt-2">
@@ -278,7 +278,7 @@ export const WhitepaperVol4Reader: React.FC<WhitepaperVol4ReaderProps> = ({
                 <div className="space-y-3">
                   <div className="p-4 bg-[#FFFDF8] border border-[#F2D69D]">
                     <h4 className="font-mono text-sm font-bold text-[#410217]">
-                      SKU 1: Counter-GEO Core Cloud &amp; API Proxy ("Shield-as-a-Service")
+                      SKU 1: Counter-AEO Core Cloud &amp; API Proxy ("Shield-as-a-Service")
                     </h4>
                     <p className="text-xs text-[#410217]/80 mt-1">
                       <strong>Target Customers:</strong> Publicly traded retail broker-dealers, enterprise ERP/supply-chain teams, commercial AI search providers, and managed vector databases (Pinecone, Qdrant, Weaviate, Milvus).<br />
@@ -289,22 +289,22 @@ export const WhitepaperVol4Reader: React.FC<WhitepaperVol4ReaderProps> = ({
 
                   <div className="p-4 bg-[#FFFDF8] border border-[#00A878]/60">
                     <h4 className="font-mono text-sm font-bold text-[#00A878]">
-                      SKU 2: Counter-GEO Ultra-Low-Latency FPGA Appliance ("Equinix NY4 / Aurora DC3 Rack")
+                      SKU 2: Counter-AEO Ultra-Low-Latency FPGA Appliance ("Equinix NY4 / Aurora DC3 Rack")
                     </h4>
                     <p className="text-xs text-[#410217]/80 mt-1">
                       <strong>Target Customers:</strong> Quantitative hedge funds, high-frequency trading (HFT) firms, institutional asset managers, and investment bank algorithmic execution desks.<br />
-                      <strong>Active Layers:</strong> All commercial layers plus hardware-accelerated Layer 4B (TMMEG Limit Order Book Shield), Layer 5 (DMEM-WMQ Episodic Memory Rollback), Layer 6 (SGL-CMI Swarm De-Duplication), Layer 8 (ZK-CGEO Zero-Knowledge SEC Prover), and Layer 11 (SCB-FTCCS Macro Contagion Shield).<br />
+                      <strong>Active Layers:</strong> All commercial layers plus hardware-accelerated Layer 4B (TMMEG Limit Order Book Shield), Layer 5 (DMEM-WMQ Episodic Memory Rollback), Layer 6 (SGL-CMI Swarm De-Duplication), Layer 8 (ZK-CAEO Zero-Knowledge SEC Prover), and Layer 11 (SCB-FTCCS Macro Contagion Shield).<br />
                       <strong>Deployment:</strong> 1U/2U pre-configured hardware appliance equipped with AMD/Xilinx Alveo U250 / Versal FPGAs and NVIDIA H200 GPUs co-located inside the client's cage. Zero proprietary prompts or alpha signals ever leave the fund's physical rack.
                     </p>
                   </div>
 
                   <div className="p-4 bg-[#FFFDF8] border border-[#410217]">
                     <h4 className="font-mono text-sm font-bold text-[#410217]">
-                      SKU 3: Counter-GEO Sovereign Enclave ("FedRAMP High / DoD IL6 / SCIF Edition")
+                      SKU 3: Counter-AEO Sovereign Enclave ("FedRAMP High / DoD IL6 / SCIF Edition")
                     </h4>
                     <p className="text-xs text-[#410217]/80 mt-1">
                       <strong>Target Customers:</strong> U.S. Securities and Exchange Commission (SEC), U.S. Department of Commerce (BIS / ITA), U.S. International Trade Commission (USITC), U.S. Department of the Treasury (OFAC / CFIUS / FinCEN / OFR), CISA, and DoD/IC.<br />
-                      <strong>Active Layers:</strong> Full 12-Layer Stack, featuring specialized modules for Layer 9 (HER-BOD Poincaré Beneficial Ownership De-Cloaking), Layer 10 (EIOL-PCV Leontief Input-Output &amp; Satellite AIS Cargo Mass Verification), and the SEC CAT ZK-CGEO Verifier Node.<br />
+                      <strong>Active Layers:</strong> Full 12-Layer Stack, featuring specialized modules for Layer 9 (HER-BOD Poincaré Beneficial Ownership De-Cloaking), Layer 10 (EIOL-PCV Leontief Input-Output &amp; Satellite AIS Cargo Mass Verification), and the SEC CAT ZK-CAEO Verifier Node.<br />
                       <strong>Deployment:</strong> Deployed on AWS GovCloud, Azure Government Secret, or air-gapped on-premises inside SCIFs with FIPS 140-3 Level 4 HSMs.
                     </p>
                   </div>
@@ -454,7 +454,7 @@ endmodule`}
                 31. Intellectual Property Moat &amp; 36-Month Financial Projections
               </h2>
               <p>
-                To establish an impenetrable intellectual property moat, Volume 4 details eight foundational patent families spanning MTVD, AM-CIDP, TCG-CL, CEH-ASID, TMMEG, DMEM-WMQ, ZK-CGEO, and HER-BOD.
+                To establish an impenetrable intellectual property moat, Volume 4 details eight foundational patent families spanning MTVD, AM-CIDP, TCG-CL, CEH-ASID, TMMEG, DMEM-WMQ, ZK-CAEO, and HER-BOD.
               </p>
 
               {/* Table 13 36-Month Model */}
@@ -493,9 +493,9 @@ endmodule`}
               {/* Python ROI Module Snippet */}
               <div id="sec-31-4" className="space-y-2 pt-4">
                 <div className="flex items-center justify-between font-mono text-xs">
-                  <span className="font-bold text-[#410217]">Executable Enterprise ROI Engine (counter_geo_enterprise_roi_engine.py)</span>
+                  <span className="font-bold text-[#410217]">Executable Enterprise ROI Engine (counter_aeo_enterprise_roi_engine.py)</span>
                   <button
-                    onClick={() => handleCopyCode('py', `class CounterGEOCommercialEngine:\n    # Computes Value-at-Risk reduction`)}
+                    onClick={() => handleCopyCode('py', `class CounterAEOCommercialEngine:\n    # Computes Value-at-Risk reduction`)}
                     className="flex items-center space-x-1 text-[#D5991C] hover:text-[#410217] cursor-pointer"
                   >
                     {copiedCodeKey === 'py' ? <Check className="w-3.5 h-3.5 text-[#00A878]" /> : <Copy className="w-3.5 h-3.5" />}
@@ -504,7 +504,7 @@ endmodule`}
                 </div>
                 <div className="bg-[#1A050D] text-[#FAF5EB] p-4 font-mono text-xs overflow-x-auto border border-[#F2D69D] shadow-inner">
                   <pre className="text-[11px] leading-relaxed">
-{`class CounterGEOCommercialEngine:
+{`class CounterAEOCommercialEngine:
     @staticmethod
     def evaluate_quant_hedge_fund(fund_name: str, aum_usd: float, daily_notional: float):
         # 142ns FPGA appliance preserves $2.4M+ in unshielded liquidity extraction losses

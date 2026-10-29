@@ -87,13 +87,13 @@ export const WhitepaperVol3Reader: React.FC<WhitepaperVol3ReaderProps> = ({
 
   const handleCopyCitation = () => {
     const citation = `@techreport{last_crusade_defense_vol3_2026,
-  title={Counter-GEO Architecture — Volume III (Experimental Appendix): The CounterGEO-Bench Simulation Suite, Flash-Crash Stress Testing, and ROC/AUC Validation},
+  title={Counter-AEO Architecture — Volume III (Experimental Appendix): The CounterAEO-Bench Simulation Suite, Flash-Crash Stress Testing, and ROC/AUC Validation},
   author={Last Crusade Defense Security Labs and Autonomous Systems Red-Team Group and Financial Cryptography Taskforce},
   institution={Last Crusade Defense Epistemic Cybersecurity Labs},
   year={2026},
   month={October},
   number={ADV-2026-002},
-  note={Regulation Counter-GEO / SEC Rule 15c3-8 Compliance Architecture}
+  note={Regulation Counter-AEO / SEC Rule 15c3-8 Compliance Architecture}
 }`;
     navigator.clipboard.writeText(citation);
     setCopiedPaper(true);
@@ -280,12 +280,12 @@ export const WhitepaperVol3Reader: React.FC<WhitepaperVol3ReaderProps> = ({
               <div className="flex items-center space-x-3 border-b border-[#F2D69D] pb-3">
                 <span className="font-mono text-sm text-[#D5991C] font-bold">SECTION 16</span>
                 <h2 className="font-serif text-2xl sm:text-3xl font-bold text-[#410217]">
-                  Experimental Methodology & The <code className="font-mono font-bold text-lg text-[#8B1E1E]">CounterGEO-Bench</code> Dataset
+                  Experimental Methodology & The <code className="font-mono font-bold text-lg text-[#8B1E1E]">CounterAEO-Bench</code> Dataset
                 </h2>
               </div>
 
               <p className="font-sans text-base leading-relaxed text-[#410217]/85">
-                To empirically validate the <strong>Eight-Layer Sovereign Counter-GEO Defense Stack</strong> developed across Volumes I and II, we construct a standardized adversarial evaluation benchmark: <strong><code>CounterGEO-Bench</code></strong>. While the foundational <em>GEO-bench</em> dataset introduced by Aggarwal et al. (2024) evaluated benign commercial visibility across 10,000 queries, and Zhang et al. (2025) evaluated single-vector retrieval hubs across 25,000 test queries, no benchmark previously existed to evaluate coordinated nation-state and financial market manipulation across multi-stage RAG and autonomous trading pipelines.
+                To empirically validate the <strong>Eight-Layer Sovereign Counter-AEO Defense Stack</strong> developed across Volumes I and II, we construct a standardized adversarial evaluation benchmark: <strong><code>CounterAEO-Bench</code></strong>. While the foundational <em>AEO-bench</em> dataset introduced by Aggarwal et al. (2024) evaluated benign commercial visibility across 10,000 queries, and Zhang et al. (2025) evaluated single-vector retrieval hubs across 25,000 test queries, no benchmark previously existed to evaluate coordinated nation-state and financial market manipulation across multi-stage RAG and autonomous trading pipelines.
               </p>
 
               {/* ASCII Diagram Testbed Architecture */}
@@ -295,7 +295,7 @@ export const WhitepaperVol3Reader: React.FC<WhitepaperVol3ReaderProps> = ({
                 </div>
                 <pre className="font-mono text-[11px] text-[#FBF3E2] leading-tight">
 {`========================================================================================
-                    COUNTERGEO-BENCH: EXPERIMENTAL TESTBED ARCHITECTURE
+                    COUNTERAEO-BENCH: EXPERIMENTAL TESTBED ARCHITECTURE
 ========================================================================================
 
   [ Synthetic & Historical Corpus: N = 250,000 Documents / 50,000 Queries ]
@@ -328,7 +328,7 @@ export const WhitepaperVol3Reader: React.FC<WhitepaperVol3ReaderProps> = ({
                   16.1 Dataset Composition and Threat Taxonomy (<code className="text-[#8B1E1E]">AT-1</code> through <code className="text-[#8B1E1E]">AT-7</code>)
                 </h3>
                 <p className="font-sans text-sm text-[#410217]/80 leading-relaxed">
-                  <code>CounterGEO-Bench</code> comprises $N = 250,000$ multi-modal documents indexed across three orthogonal retrieval engines—Dense (<code>text-embedding-3-large</code> / <code>NV-Embed</code>), Late-Interaction (<code>ColBERTv2</code>), and Sparse (<code>BM25-Okapi</code> / <code>SPLADE</code>)—paired with $Q = 50,000$ queries split evenly between Civic/National Security Prompts and Autonomous Financial Agent Prompts.
+                  <code>CounterAEO-Bench</code> comprises $N = 250,000$ multi-modal documents indexed across three orthogonal retrieval engines—Dense (<code>text-embedding-3-large</code> / <code>NV-Embed</code>), Late-Interaction (<code>ColBERTv2</code>), and Sparse (<code>BM25-Okapi</code> / <code>SPLADE</code>)—paired with $Q = 50,000$ queries split evenly between Civic/National Security Prompts and Autonomous Financial Agent Prompts.
                 </p>
 
                 {/* Table 6 */}
@@ -355,7 +355,7 @@ export const WhitepaperVol3Reader: React.FC<WhitepaperVol3ReaderProps> = ({
                   </table>
                 </div>
                 <div className="font-mono text-[11px] text-[#410217]/60 italic">
-                  Table 6: Adversarial red-team attack taxonomy in CounterGEO-Bench.
+                  Table 6: Adversarial red-team attack taxonomy in CounterAEO-Bench.
                 </div>
               </div>
             </section>
@@ -400,7 +400,7 @@ export const WhitepaperVol3Reader: React.FC<WhitepaperVol3ReaderProps> = ({
                   </table>
                 </div>
                 <div className="font-mono text-[11px] text-[#410217]/60 italic">
-                  Table 7: Quantitative detection performance across all seven adversarial GEO attack classes (CounterGEO-Bench, Q = 50,000).
+                  Table 7: Quantitative detection performance across all seven adversarial AEO attack classes (CounterAEO-Bench, Q = 50,000).
                 </div>
 
                 <div className="bg-[#FAF2E1] border-l-4 border-[#00A878] p-4 space-y-2 text-sm text-[#410217]/85">
@@ -455,7 +455,7 @@ export const WhitepaperVol3Reader: React.FC<WhitepaperVol3ReaderProps> = ({
                   </pre>
                 </div>
                 <div className="font-mono text-[11px] text-[#410217]/60 italic">
-                  Figure 9: Empirical Receiver Operating Characteristic (ROC) curves across CounterGEO-Bench (N = 250,000).
+                  Figure 9: Empirical Receiver Operating Characteristic (ROC) curves across CounterAEO-Bench (N = 250,000).
                 </div>
               </div>
             </section>
@@ -514,7 +514,7 @@ export const WhitepaperVol3Reader: React.FC<WhitepaperVol3ReaderProps> = ({
               {/* Subsection 18.2 Ablation Study */}
               <div id="sec-18-2" className="space-y-4 pt-4">
                 <h3 className="font-serif text-xl font-bold text-[#410217]">
-                  18.2 Ablation Study: Contribution of Individual Counter-GEO Layers
+                  18.2 Ablation Study: Contribution of Individual Counter-AEO Layers
                 </h3>
 
                 {/* Table 8 */}
@@ -553,12 +553,12 @@ export const WhitepaperVol3Reader: React.FC<WhitepaperVol3ReaderProps> = ({
               <div className="flex items-center space-x-3 border-b border-[#F2D69D] pb-3">
                 <span className="font-mono text-sm text-[#D5991C] font-bold">SECTION 19</span>
                 <h2 className="font-serif text-2xl sm:text-3xl font-bold text-[#410217]">
-                  Production Benchmark & Simulation Suite (<code className="font-mono text-xl text-[#8B1E1E]">counter_geo_benchmark_suite.py</code>)
+                  Production Benchmark & Simulation Suite (<code className="font-mono text-xl text-[#8B1E1E]">counter_aeo_benchmark_suite.py</code>)
                 </h2>
               </div>
 
               <p className="font-sans text-sm text-[#410217]/85 leading-relaxed">
-                Below is the complete, self-contained, executable Python benchmark suite that simulates all seven adversarial attack vectors (<code>AT-1</code> through <code>AT-7</code>), executes the Generation-1 Baseline alongside the Full 8-Layer Counter-GEO Architecture, runs the Scenario Alpha Flash-Crash LOB Simulation, and outputs publication-ready telemetry tables.
+                Below is the complete, self-contained, executable Python benchmark suite that simulates all seven adversarial attack vectors (<code>AT-1</code> through <code>AT-7</code>), executes the Generation-1 Baseline alongside the Full 8-Layer Counter-AEO Architecture, runs the Scenario Alpha Flash-Crash LOB Simulation, and outputs publication-ready telemetry tables.
               </p>
 
               {/* Code Snippet Block */}
@@ -566,12 +566,12 @@ export const WhitepaperVol3Reader: React.FC<WhitepaperVol3ReaderProps> = ({
                 <div className="bg-[#2a2a2a] px-4 py-2.5 border-b border-[#F2D69D]/30 flex items-center justify-between text-xs font-mono">
                   <div className="flex items-center space-x-2 text-[#FBF3E2]">
                     <Terminal className="w-3.5 h-3.5 text-[#00A878]" />
-                    <span className="font-bold">counter_geo_benchmark_suite.py</span>
+                    <span className="font-bold">counter_aeo_benchmark_suite.py</span>
                     <span className="text-[#D5991C] text-[10px]">// PRODUCTION EVALUATION HARNESS</span>
                   </div>
 
                   <button
-                    onClick={() => handleCopyCodeSnippet('bench-py', `\"\"\"\nCounterGEO-Bench: End-to-End Empirical Benchmark & Market Flash-Crash Simulation Suite\nValidates Layers 0 through 8 against Generation-1, Generation-2, and Generation-3 GEO Attacks.\n\"\"\"\n\n# Run full benchmark suite via Last Crusade Defense Sovereign Lab`)}
+                    onClick={() => handleCopyCodeSnippet('bench-py', `\"\"\"\nCounterAEO-Bench: End-to-End Empirical Benchmark & Market Flash-Crash Simulation Suite\nValidates Layers 0 through 8 against Generation-1, Generation-2, and Generation-3 AEO Attacks.\n\"\"\"\n\n# Run full benchmark suite via Last Crusade Defense Sovereign Lab`)}
                     className="px-2.5 py-1 bg-[#2a2a2a] hover:bg-[#5C0A24] border border-[#F2D69D]/40 text-[#FBF3E2] text-[11px] font-bold flex items-center space-x-1 cursor-pointer transition-colors"
                   >
                     {copiedCodeKey === 'bench-py' ? <Check className="w-3 h-3 text-[#00A878]" /> : <Copy className="w-3 h-3 text-[#D5991C]" />}
@@ -582,8 +582,8 @@ export const WhitepaperVol3Reader: React.FC<WhitepaperVol3ReaderProps> = ({
                 <div className="p-4 sm:p-6 overflow-x-auto max-h-[500px] text-[#FBF3E2] font-mono text-xs leading-relaxed">
                   <pre className="text-[#FBF3E2]">
 {`"""
-CounterGEO-Bench: End-to-End Empirical Benchmark & Market Flash-Crash Simulation Suite
-Validates Layers 0 through 8 against Generation-1, Generation-2, and Generation-3 GEO Attacks.
+CounterAEO-Bench: End-to-End Empirical Benchmark & Market Flash-Crash Simulation Suite
+Validates Layers 0 through 8 against Generation-1, Generation-2, and Generation-3 AEO Attacks.
 """
 
 import time
@@ -650,13 +650,13 @@ class SimulatedTrialSample:
               </p>
 
               <p className="font-sans text-base leading-relaxed text-[#410217]/85">
-                Through the <strong>Eight-Layer Sovereign Counter-GEO Architecture</strong> established across Volumes I, II, and III of this whitepaper—spanning <strong>Moving-Target Vector Defense (MTVD)</strong>, <strong>Attractor Manifold Curvature Profiling (AM-CIDP)</strong>, <strong>Normalized Cross-Architecture Rank Divergence (NCARD)</strong>, <strong>C2PA & Hawkes-Process Provenance Graphs (TCG-CL v2.0)</strong>, <strong>Combinatorial Epistemic Holography (CEH-ASID)</strong>, <strong>Thermodynamic Market-Microstructure Grounding (TMMEG)</strong>, <strong>Doob-Meyer Martingale Memory Protection (DMEM-WMQ)</strong>, <strong>Spectral Swarm De-Duplication (SGL-CMI)</strong>, <strong>Cross-Modal Saliency Alignment (CM-JSAS)</strong>, and <strong>Zero-Knowledge SEC Rule 15c3-8 Compliance (ZK-CGEO)</strong>—the United States and its institutional partners gain a mathematically rigorous, sub-20-millisecond shield to safeguard the integrity of autonomous AI reasoning and global financial infrastructure.
+                Through the <strong>Eight-Layer Sovereign Counter-AEO Architecture</strong> established across Volumes I, II, and III of this whitepaper—spanning <strong>Moving-Target Vector Defense (MTVD)</strong>, <strong>Attractor Manifold Curvature Profiling (AM-CIDP)</strong>, <strong>Normalized Cross-Architecture Rank Divergence (NCARD)</strong>, <strong>C2PA & Hawkes-Process Provenance Graphs (TCG-CL v2.0)</strong>, <strong>Combinatorial Epistemic Holography (CEH-ASID)</strong>, <strong>Thermodynamic Market-Microstructure Grounding (TMMEG)</strong>, <strong>Doob-Meyer Martingale Memory Protection (DMEM-WMQ)</strong>, <strong>Spectral Swarm De-Duplication (SGL-CMI)</strong>, <strong>Cross-Modal Saliency Alignment (CM-JSAS)</strong>, and <strong>Zero-Knowledge SEC Rule 15c3-8 Compliance (ZK-CAEO)</strong>—the United States and its institutional partners gain a mathematically rigorous, sub-20-millisecond shield to safeguard the integrity of autonomous AI reasoning and global financial infrastructure.
               </p>
 
               {/* Bottom CTA to switch to Page 2 */}
               <div className="bg-[#FAF2E1] border-2 border-[#410217] p-8 text-center space-y-4 mt-8 shadow-xl">
                 <span className="font-mono text-xs text-[#D5991C] uppercase font-bold tracking-widest">
-                  // PROVEN COUNTER-GEO EXPERIMENTAL TELEMETRY
+                  // PROVEN COUNTER-AEO EXPERIMENTAL TELEMETRY
                 </span>
                 <h3 className="font-serif text-2xl sm:text-3xl font-bold text-[#410217]">
                   Experience the Live Simulation Suite & Market Stress Tests

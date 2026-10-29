@@ -164,7 +164,7 @@ export default function App() {
       {/* Page Routing */}
       {currentPage === 'overview' && (
         <main className="relative z-10">
-          {/* 1. Hero with direct links to REA Studio & Counter-GEO */}
+          {/* 1. Hero with direct links to REA Studio & Counter-AEO */}
           <Hero
             onOpenAudit={() => setAuditModalOpen(true)}
             onOpenIncident={() => setIncidentModalOpen(true)}
@@ -174,7 +174,7 @@ export default function App() {
           {/* 2. The Problem / Traditional SEO & Brand Protection Are Blind to AI Answers */}
           <ProblemSection />
 
-          {/* 3. Counter-GEO Research (Advisories & Whitepapers) */}
+          {/* 3. Counter-AEO Research (Advisories & Whitepapers) */}
           <TrustAndTeam onNavigate={handleNavigate} />
 
           {/* 4. Core Services */}

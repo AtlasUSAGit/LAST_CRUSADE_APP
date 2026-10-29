@@ -45,7 +45,7 @@ export const IncidentReportModal: React.FC<IncidentReportModalProps> = ({ isOpen
                 <span>24/7 EMERGENCY INCIDENT RESPONSE</span>
               </div>
               <h3 className="font-serif text-2xl sm:text-3xl text-[#410217] tracking-tight">
-                Report an Active GEO Incident
+                Report an Active AEO Incident
               </h3>
               <p className="text-[#410217]/75 text-sm">
                 If your organization is currently experiencing an active AI search defamation, prompt injection, or fake rumor event, submit this priority dispatch form.
@@ -170,12 +170,12 @@ export const IncidentReportModal: React.FC<IncidentReportModalProps> = ({ isOpen
             <div className="space-y-2">
               <h3 className="font-serif text-2xl text-[#410217] font-bold">EMERGENCY TICKET DISPATCHED</h3>
               <p className="text-[#410217]/80 text-sm font-sans max-w-md mx-auto">
-                Priority alert dispatched to the Counter-GEO Operations Command Room. A lead threat analyst is calling <strong>{incidentData.phone}</strong> immediately.
+                Priority alert dispatched to the Counter-AEO Operations Command Room. A lead threat analyst is calling <strong>{incidentData.phone}</strong> immediately.
               </p>
             </div>
 
             <div className="p-4 bg-[#FFF5F5] border border-[#8B1E1E]/40 text-xs text-left space-y-1 max-w-md mx-auto">
-              <div className="text-[#8B1E1E] font-bold">INCIDENT TICKET: <strong className="text-[#410217]">SEC-GEO-INC-2026-9182</strong></div>
+              <div className="text-[#8B1E1E] font-bold">INCIDENT TICKET: <strong className="text-[#410217]">SEC-AEO-INC-2026-9182</strong></div>
               <div className="text-[#410217]/80">AFFECTED ENGINE: <strong>{incidentData.engineAffected}</strong></div>
               <div className="text-[#410217]/80">CLASSIFICATION: <strong>{incidentData.incidentType}</strong></div>
             </div>

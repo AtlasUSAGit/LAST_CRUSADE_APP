@@ -37,8 +37,8 @@ import {
   Radio
 } from 'lucide-react';
 import {
-  CounterGEOBenchGenerator,
-  CounterGEOBenchmarkEvaluator,
+  CounterAEOBenchGenerator,
+  CounterAEOBenchmarkEvaluator,
   ScenarioAlphaMarketSimulator,
   SimulatedTrialSample,
   BatchMetrics,
@@ -93,16 +93,16 @@ export const CounterGeoVol3FindingsAndLab: React.FC<Vol3FindingsAndLabProps> = (
   const [benchmarkSeed, setBenchmarkSeed] = useState(20261013);
 
   // Generated dataset
-  const generator = useMemo(() => new CounterGEOBenchGenerator(benchmarkSeed), [benchmarkSeed]);
+  const generator = useMemo(() => new CounterAEOBenchGenerator(benchmarkSeed), [benchmarkSeed]);
   const dataset = useMemo(() => generator.generateDataset(sampleSize, attackRatio), [generator, sampleSize, attackRatio]);
 
   // Evaluated batch metrics
   const gen1Metrics: BatchMetrics = useMemo(() => {
-    return CounterGEOBenchmarkEvaluator.runBatchEvaluation(dataset, 'gen1', c2paExemptionActive);
+    return CounterAEOBenchmarkEvaluator.runBatchEvaluation(dataset, 'gen1', c2paExemptionActive);
   }, [dataset, c2paExemptionActive]);
 
   const sovereignMetrics: BatchMetrics = useMemo(() => {
-    return CounterGEOBenchmarkEvaluator.runBatchEvaluation(dataset, 'sovereign_8layer', c2paExemptionActive);
+    return CounterAEOBenchmarkEvaluator.runBatchEvaluation(dataset, 'sovereign_8layer', c2paExemptionActive);
   }, [dataset, c2paExemptionActive]);
 
   // Single sample inspection probe
@@ -113,11 +113,11 @@ export const CounterGeoVol3FindingsAndLab: React.FC<Vol3FindingsAndLabProps> = (
   }, [dataset, selectedProbeCategory]);
 
   const probeGen1Verdict = useMemo(() => {
-    return CounterGEOBenchmarkEvaluator.evaluateGen1Baseline(probeSample);
+    return CounterAEOBenchmarkEvaluator.evaluateGen1Baseline(probeSample);
   }, [probeSample]);
 
   const probeSovereignVerdict = useMemo(() => {
-    return CounterGEOBenchmarkEvaluator.evaluate8LayerStack(probeSample, c2paExemptionActive);
+    return CounterAEOBenchmarkEvaluator.evaluate8LayerStack(probeSample, c2paExemptionActive);
   }, [probeSample, c2paExemptionActive]);
 
   // ==========================================
@@ -698,7 +698,7 @@ export const CounterGeoVol3FindingsAndLab: React.FC<Vol3FindingsAndLabProps> = (
                 PAGE 2 // EXPERIMENTAL BENCHMARK & SIMULATION SUITE
               </div>
               <h2 className="font-serif text-xl sm:text-2xl font-bold text-[#410217]">
-                CounterGEO-Bench & Market Stress Lab (Vol. 3)
+                CounterAEO-Bench & Market Stress Lab (Vol. 3)
               </h2>
             </div>
           </div>
@@ -772,10 +772,10 @@ export const CounterGeoVol3FindingsAndLab: React.FC<Vol3FindingsAndLabProps> = (
                   // SECTION 16 & 17 ALGORITHM EXECUTION
                 </span>
                 <h3 className="font-serif text-2xl font-bold text-[#410217]">
-                  CounterGEO-Bench Empirical Simulation Suite
+                  CounterAEO-Bench Empirical Simulation Suite
                 </h3>
                 <p className="font-sans text-sm text-[#410217]/75">
-                  Direct client-side execution of Section 19 (<code className="text-[#8B1E1E]">counter_geo_benchmark_suite.py</code>) across {sampleSize.toLocaleString()} statistically calibrated document trials.
+                  Direct client-side execution of Section 19 (<code className="text-[#8B1E1E]">counter_aeo_benchmark_suite.py</code>) across {sampleSize.toLocaleString()} statistically calibrated document trials.
                 </p>
               </div>
 

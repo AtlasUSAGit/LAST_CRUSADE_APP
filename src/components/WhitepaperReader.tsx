@@ -478,7 +478,7 @@ export const WhitepaperReader: React.FC<WhitepaperReaderProps> = ({
 
             <div className="p-4 bg-[#FFFDF8] border border-[#F2D69D] text-xs font-mono space-y-1.5">
               <div className="text-[#D5991C] font-bold uppercase tracking-wider">
-                CITATION BIBTEX KEY: [LastCrusadeDefense-CounterGEO-Vol1-2026]
+                CITATION BIBTEX KEY: [LastCrusadeDefense-CounterAEO-Vol1-2026]
               </div>
               <div className="text-[#410217]/75">
                 DOI: {MASTER_DOC_METADATA.doi} // Open Sovereign Defense Specification
@@ -586,7 +586,7 @@ export const WhitepaperReader: React.FC<WhitepaperReaderProps> = ({
             {/* Defense Stack Summary Pill */}
             <div className="p-3 bg-[#FFFDF8] border border-[#F2D69D] text-[10px] space-y-1.5">
               <div className="text-[#004566] font-bold uppercase">
-                6-LAYER COUNTER-GEO STACK:
+                6-LAYER COUNTER-AEO STACK:
               </div>
               <div className="text-[#410217]/70 space-y-1">
                 <div>• L0: MTVD & Spectral Canaries</div>

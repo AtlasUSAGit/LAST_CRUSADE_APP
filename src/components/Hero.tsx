@@ -31,7 +31,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenAudit, onNavigate }) => {
   const directAccess: { page: NavigationPage; title: string; detail: string }[] = [
     { page: 'rea', title: 'REA Studio', detail: 'Reverse-engineering workbench' },
     { page: 'research', title: 'Research Corpus', detail: 'Volumes I, II, III · Whitepapers & Labs' },
-    { page: 'counter-geo-ops', title: 'Strategy Library', detail: 'Offensive GEO & countermeasures' },
+    { page: 'counter-geo-ops', title: 'Strategy Library', detail: 'Offensive AEO & countermeasures' },
     { page: 'pitch-deck', title: 'Pitch Deck', detail: 'Last Crusade & Petra Labs proposal' }
   ];
 
@@ -111,7 +111,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenAudit, onNavigate }) => {
               data-hero-fade
               className="mt-10 max-w-xl border-l border-[#410217]/25 pl-5 text-base sm:text-[17px] leading-relaxed text-[#410217]/75"
             >
-              Our mission is to detect and counter GEO abuse by foreign adversaries looking to politically, culturally, and financially influence the United States, as well counter the threat of domestic and international financial interests looking to manipulate markets through the use of GEO within agentic trading.
+              Our mission is to detect and counter AEO abuse by foreign adversaries looking to politically, culturally, and financially influence the United States, as well counter the threat of domestic and international financial interests looking to manipulate markets through the use of AEO within agentic trading.
             </p>
 
             <div data-hero-fade className="mt-10 flex flex-wrap items-center gap-x-8 gap-y-4">
@@ -119,14 +119,14 @@ export const Hero: React.FC<HeroProps> = ({ onOpenAudit, onNavigate }) => {
                 onClick={onOpenAudit}
                 className="group inline-flex items-center gap-4 bg-[#410217] hover:bg-[#2B0110] text-[#FBF3E2] pl-7 pr-5 py-4 text-[13px] font-semibold tracking-wide transition-colors cursor-pointer"
               >
-                <span>Request a GEO audit</span>
+                <span>Request a AEO audit</span>
                 <span className="w-8 h-8 border border-[#FBF3E2]/25 flex items-center justify-center overflow-hidden">
                   <ArrowRight className="w-4 h-4 text-[#D5991C] transition-transform duration-500 group-hover:translate-x-1" />
                 </span>
               </button>
 
               <a href="#problem" className="link-underline text-[13px] font-semibold text-[#410217]">
-                See how GEO attacks work
+                See how AEO attacks work
               </a>
             </div>
           </div>
@@ -210,7 +210,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenAudit, onNavigate }) => {
             ))}
           </div>
           <p className="mt-6 font-mono text-[10px] text-[#410217]/40 leading-relaxed max-w-3xl">
-            ¹–⁴ Trailing 12-month figures across monitored engines, CounterGEO-Bench (N = 250k) and client engagements. See Research Vol. III for methodology.
+            ¹–⁴ Trailing 12-month figures across monitored engines, CounterAEO-Bench (N = 250k) and client engagements. See Research Vol. III for methodology.
           </p>
         </div>
       </div>

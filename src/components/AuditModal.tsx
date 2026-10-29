@@ -58,7 +58,7 @@ export const AuditModal: React.FC<AuditModalProps> = ({ isOpen, onClose }) => {
                 <span>CONFIDENTIAL SECURITY AUDIT</span>
               </div>
               <h3 className="font-serif text-2xl sm:text-3xl text-[#410217] tracking-tight">
-                Request a GEO Security Audit
+                Request a AEO Security Audit
               </h3>
               <p className="text-[#410217]/75 text-sm font-sans">
                 Receive a forensic evaluation of your brand, executive, and legal citation footprint across frontier LLMs and RAG engines.
@@ -159,7 +159,7 @@ export const AuditModal: React.FC<AuditModalProps> = ({ isOpen, onClose }) => {
               type="submit"
               className="w-full py-4 bg-[#410217] hover:bg-[#5C0A24] text-[#FBF3E2] font-semibold text-xs uppercase tracking-widest border border-[#410217] shadow-sm transition-all flex items-center justify-center space-x-2 cursor-pointer"
             >
-              <span>Submit GEO Audit Request</span>
+              <span>Submit AEO Audit Request</span>
               <ArrowRight className="w-4 h-4 text-[#D5991C]" />
             </button>
 
@@ -175,9 +175,9 @@ export const AuditModal: React.FC<AuditModalProps> = ({ isOpen, onClose }) => {
             </div>
 
             <div className="space-y-2">
-              <h3 className="font-serif text-2xl text-[#410217] font-bold">GEO Audit Request Confirmed</h3>
+              <h3 className="font-serif text-2xl text-[#410217] font-bold">AEO Audit Request Confirmed</h3>
               <p className="text-[#410217]/80 text-sm font-sans max-w-md mx-auto">
-                Thank you, <strong>{formData.name}</strong>. A Senior Threat Intelligence Specialist will contact you within <strong>2 business hours</strong> to deliver your confidential GEO audit report.
+                Thank you, <strong>{formData.name}</strong>. A Senior Threat Intelligence Specialist will contact you within <strong>2 business hours</strong> to deliver your confidential AEO audit report.
               </p>
             </div>
 

@@ -1,7 +1,7 @@
 /**
- * Counter-GEO Defense Stack: Exact Mathematical Implementations
- * Corresponds directly to production engines in Counter GEO Master Doc Volume 1:
- * - counter_geo_core.py (Layers 0, 1, 2)
+ * Counter-AEO Defense Stack: Exact Mathematical Implementations
+ * Corresponds directly to production engines in Counter AEO Master Doc Volume 1:
+ * - counter_aeo_core.py (Layers 0, 1, 2)
  * - tcg_cl_c2pa_engine.py (Layer 3)
  * - ceh_asid_engine.py (Layer 4A)
  * - tmmeg_financial_shield.py (Layer 4B)
@@ -275,7 +275,7 @@ export interface NCARDResult {
   ncardScore: number;
   divergenceThreshold: number;
   isQuarantined: boolean;
-  verdict: 'ALIGNED_MULTI_RETRIEVER' | 'MODERATE_VARIANCE' | 'QUARANTINE_OVERFITTED_GEO';
+  verdict: 'ALIGNED_MULTI_RETRIEVER' | 'MODERATE_VARIANCE' | 'QUARANTINE_OVERFITTED_AEO';
 }
 
 export class NCARDRankDivergenceEngine {
@@ -330,10 +330,10 @@ export class NCARDRankDivergenceEngine {
     const ncardScore = meanWeighted * 100.0;
     const isQuarantined = ncardScore > this.threshold;
 
-    let verdict: 'ALIGNED_MULTI_RETRIEVER' | 'MODERATE_VARIANCE' | 'QUARANTINE_OVERFITTED_GEO' =
+    let verdict: 'ALIGNED_MULTI_RETRIEVER' | 'MODERATE_VARIANCE' | 'QUARANTINE_OVERFITTED_AEO' =
       'ALIGNED_MULTI_RETRIEVER';
     if (isQuarantined) {
-      verdict = 'QUARANTINE_OVERFITTED_GEO';
+      verdict = 'QUARANTINE_OVERFITTED_AEO';
     } else if (ncardScore > 0.20) {
       verdict = 'MODERATE_VARIANCE';
     }
@@ -710,8 +710,8 @@ export class TMMEGFinancialShield {
 
     // SEC Rule 15c3-8 CAT Audit Telemetry record
     const catJson = {
-      '@context': 'https://sec.gov/schemas/reg-counter-geo/v2.0/context.jsonld',
-      audit_record_id: `CAT-GEO-2026-10-13-${Math.floor(Math.random() * 89999999 + 10000000)}`,
+      '@context': 'https://sec.gov/schemas/reg-counter-aeo/v2.0/context.jsonld',
+      audit_record_id: `CAT-AEO-2026-10-13-${Math.floor(Math.random() * 89999999 + 10000000)}`,
       timestamp_utc: new Date().toISOString(),
       executing_entity_cik: '0001849201',
       agent_architecture_id: 'LastCrusadeDefense-FinGPT-Macro-v4.2',
@@ -727,7 +727,7 @@ export class TMMEGFinancialShield {
         raw_unfiltered_rag_action: state.ragSignal > 0.25 ? 'STRONG_BUY' : 'STRONG_SELL',
         approved_signal_score: Number(approvedSignal.toFixed(4))
       },
-      counter_geo_telemetry: {
+      counter_aeo_telemetry: {
         epistemic_surprise_nats: Number(deltaI.toFixed(4)),
         capital_capacity_score: Number(eCap.toFixed(4)),
         order_book_asymmetry_obar: Number(obar.toFixed(4)),

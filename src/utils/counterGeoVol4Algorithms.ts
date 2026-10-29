@@ -1,5 +1,5 @@
 /**
- * Counter-GEO Volume 4: Algorithms & Hardware Simulation Suite
+ * Counter-AEO Volume 4: Algorithms & Hardware Simulation Suite
  * - 142ns FPGA SmartNIC Wire-to-Wire Order Kill-Switch (tmmeg_fpga_killswitch.sv simulation)
  * - Enterprise Actuarial ROI & Value-at-Risk (VaR) Engine
  * - Federal Acquisition SBIR Phase III Sole-Source Milestone Model
@@ -140,7 +140,7 @@ export interface ClientROIProfile {
   paybackPeriodDays: number;
 }
 
-export class CounterGEOCommercialEngine {
+export class CounterAEOCommercialEngine {
   public static evaluateQuantHedgeFund(
     fundName: string,
     aumUsd: number,
@@ -158,7 +158,7 @@ export class CounterGEOCommercialEngine {
 
     return {
       clientName: fundName,
-      skuTier: 'SKU 2: Co-Located FPGA Appliance + ZK-CGEO',
+      skuTier: 'SKU 2: Co-Located FPGA Appliance + ZK-CAEO',
       annualLicenseCostUsd: annualCost,
       expectedAnnualGeoIncidentsPrevented: incidentsPerYear,
       unshieldedLossPerIncidentUsd: lossPerIncident,

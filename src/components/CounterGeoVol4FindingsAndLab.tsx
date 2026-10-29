@@ -35,7 +35,7 @@ import {
 import {
   FPGASmartNICSimulator,
   FPGATickResult,
-  CounterGEOCommercialEngine,
+  CounterAEOCommercialEngine,
   ClientROIProfile
 } from '../utils/counterGeoVol4Algorithms';
 import { MASTER_DOC_VOL4_METADATA } from '../data/counterGeoVol4Content';
@@ -124,19 +124,19 @@ export const CounterGeoVol4FindingsAndLab: React.FC<Vol4FindingsAndLabProps> = (
   const [agencyBureaus, setAgencyBureaus] = useState(2);
   const [agencyTradeVol, setAgencyTradeVol] = useState(18.5); // $18.5B
 
-  const quantRoi: ClientROIProfile = CounterGEOCommercialEngine.evaluateQuantHedgeFund(
+  const quantRoi: ClientROIProfile = CounterAEOCommercialEngine.evaluateQuantHedgeFund(
     'Apex Quant Fund',
     fundAum * 1e9,
     dailyNotional * 1e6,
     venues
   );
 
-  const brokerRoi: ClientROIProfile = CounterGEOCommercialEngine.evaluatePublicBrokerDealer(
+  const brokerRoi: ClientROIProfile = CounterAEOCommercialEngine.evaluatePublicBrokerDealer(
     'National Retail Broker',
     retailAccounts * 1e6
   );
 
-  const agencyRoi: ClientROIProfile = CounterGEOCommercialEngine.evaluateFederalAgencyEnclave(
+  const agencyRoi: ClientROIProfile = CounterAEOCommercialEngine.evaluateFederalAgencyEnclave(
     'U.S. Dept of Commerce / USITC',
     agencyBureaus,
     agencyTradeVol * 1e9
@@ -845,7 +845,7 @@ export const CounterGeoVol4FindingsAndLab: React.FC<Vol4FindingsAndLabProps> = (
               </div>
               <div className="p-3 bg-[#FFFDF8] border border-[#F2D69D]">
                 <strong className="text-[#D5991C] block mb-0.5">Co-Processor:</strong>
-                <span>NVIDIA H200 GPUDirect RDMA ZK-CGEO Prover (11.4 ms)</span>
+                <span>NVIDIA H200 GPUDirect RDMA ZK-CAEO Prover (11.4 ms)</span>
               </div>
             </div>
           </div>

@@ -128,7 +128,7 @@ export const ProblemSection: React.FC = () => {
                 Autonomous Swarm Sabotage
               </h3>
               <p className="text-[#410217]/75 text-sm leading-relaxed font-sans">
-                Defense contractors, weapons systems, and autonomous drone warfare rely on swarms of agents communicating with one another. Hostile actors deploy offensive GEO payloads to sabotage inter-agent consensus protocols, demanding dual-use counter-GEO cyber defense.
+                Defense contractors, weapons systems, and autonomous drone warfare rely on swarms of agents communicating with one another. Hostile actors deploy offensive AEO payloads to sabotage inter-agent consensus protocols, demanding dual-use counter-AEO cyber defense.
               </p>
             </div>
 

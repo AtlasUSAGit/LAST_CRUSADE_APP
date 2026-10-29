@@ -36,7 +36,7 @@ export const Header: React.FC<HeaderProps> = ({
                   LAST CRUSADE
                 </span>
                 <span className="font-mono text-[9px] text-[#410217]/60 tracking-[0.22em] uppercase mt-1">
-                  GEO CYBER OPERATIONS
+                  AEO CYBER OPERATIONS
                 </span>
               </div>
             </button>
@@ -87,7 +87,7 @@ export const Header: React.FC<HeaderProps> = ({
                   ? 'bg-[#410217] text-[#FBF3E2] shadow-xs'
                   : 'text-[#410217]/70 hover:text-[#410217]'
               }`}
-              title="Counter-GEO Research Corpus: Whitepaper Volumes 1, 2, 3 & Algorithmic Labs"
+              title="Counter-AEO Research Corpus: Whitepaper Volumes 1, 2, 3 & Algorithmic Labs"
             >
               <BookOpen className="w-3.5 h-3.5 text-[#D5991C]" />
               <span>Research</span>
@@ -100,7 +100,7 @@ export const Header: React.FC<HeaderProps> = ({
                   ? 'bg-[#D5991C] text-[#130108] shadow-xs font-black'
                   : 'text-[#410217] hover:text-[#D5991C]'
               }`}
-              title="Library of Offensive GEO Strategies & Counter-GEO Defenses (WebGL 2.0)"
+              title="Library of Offensive AEO Strategies & Counter-AEO Defenses (WebGL 2.0)"
             >
               <Terminal className="w-3.5 h-3.5 text-[#D5991C]" />
               <span>Strategy Library</span>
@@ -112,17 +112,17 @@ export const Header: React.FC<HeaderProps> = ({
             <a
               href="./last_crusade_pitch_deck.html"
               className="flex items-center space-x-1.5 px-3.5 py-2 border border-[#D5991C] bg-[#FAF2E1] hover:bg-[#D5991C] text-[#410217] hover:text-[#130108] text-xs font-bold uppercase tracking-wider transition-all shadow-xs cursor-pointer group"
-              title="View Last Crusade Pitch Deck"
+              title="View Last Crusade Cover Deck"
             >
               <Presentation className="w-3.5 h-3.5 text-[#D5991C] group-hover:text-[#130108] transition-colors" />
-              <span>Pitch Deck</span>
+              <span>Cover Deck</span>
             </a>
 
             <button
               onClick={onOpenAudit}
               className="flex items-center space-x-1.5 px-5 py-2.5 bg-[#410217] hover:bg-[#5C0A24] text-[#FBF3E2] font-semibold text-xs tracking-wider uppercase border border-[#410217] shadow-xs transition-all transform hover:-translate-y-0.5 cursor-pointer"
             >
-              <span>Request GEO Audit</span>
+              <span>Request AEO Audit</span>
               <ArrowUpRight className="w-3.5 h-3.5" />
             </button>
           </div>
@@ -132,7 +132,7 @@ export const Header: React.FC<HeaderProps> = ({
             <a
               href="./last_crusade_pitch_deck.html"
               className="p-2 border border-[#D5991C] bg-[#FAF2E1] text-[#410217] hover:bg-[#D5991C] hover:text-[#130108] transition-colors"
-              title="Pitch Deck"
+              title="Cover Deck"
             >
               <Presentation className="w-5 h-5 text-[#D5991C]" />
             </a>
@@ -150,7 +150,7 @@ export const Header: React.FC<HeaderProps> = ({
       {mobileMenuOpen && (
         <div className="md:hidden bg-[#FAF2E1] border-b border-[#F2D69D] px-4 pt-3 pb-6 space-y-4 font-mono text-sm">
           <div className="flex items-center justify-between pb-3 border-b border-[#F2D69D] text-xs text-[#410217]/70">
-            <span>GEO THREAT LEVEL: <strong className="text-[#D5991C]">ELEVATED</strong></span>
+            <span>AEO THREAT LEVEL: <strong className="text-[#D5991C]">ELEVATED</strong></span>
             <span>1,482 MONITORS</span>
           </div>
 
@@ -230,7 +230,7 @@ export const Header: React.FC<HeaderProps> = ({
                   : 'bg-[#FBF3E2] text-[#410217] border-[#F2D69D]'
               }`}
             >
-              <span>05 // Strategy Library: Offensive GEO & Defenses (WebGL 2.0)</span>
+              <span>05 // Strategy Library: Offensive AEO & Defenses (WebGL 2.0)</span>
               <Terminal className="w-4 h-4 text-[#D5991C]" />
             </button>
 
@@ -239,7 +239,7 @@ export const Header: React.FC<HeaderProps> = ({
               onClick={() => setMobileMenuOpen(false)}
               className="w-full text-left p-2.5 font-bold flex items-center justify-between border bg-[#FAF5EB] text-[#410217] border-[#D5991C] hover:bg-[#D5991C] hover:text-[#130108] transition-colors"
             >
-              <span>06 // Pitch Deck (Proposal for Petra Labs)</span>
+              <span>06 // Cover Deck (Proposal for Petra Labs)</span>
               <Presentation className="w-4 h-4 text-[#D5991C]" />
             </a>
           </div>
@@ -252,7 +252,7 @@ export const Header: React.FC<HeaderProps> = ({
               }}
               className="w-full flex items-center justify-center space-x-2 py-3 bg-[#410217] text-[#FBF3E2] font-semibold text-xs tracking-wider uppercase border border-[#410217]"
             >
-              <span>Request GEO Audit</span>
+              <span>Request AEO Audit</span>
               <ArrowUpRight className="w-4 h-4" />
             </button>
           </div>

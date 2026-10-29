@@ -28,7 +28,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenAudit, onOpenIncident, onN
             </div>
 
             <p className="text-xs text-[#FBF3E2]/75 leading-relaxed max-w-sm font-sans">
-              The leading enterprise cybersecurity platform dedicated to Generative Engine Optimization (GEO) security, prompt injection containment, REA reverse engineering, and active counter-GEO operations.
+              The leading enterprise cybersecurity platform dedicated to Generative Engine Optimization (AEO) security, prompt injection containment, REA reverse engineering, and active counter-AEO operations.
             </p>
 
             {/* Compliance Badges Row */}
@@ -89,7 +89,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenAudit, onOpenIncident, onN
                   className="hover:text-[#D5991C] transition-colors text-left flex items-center gap-1 cursor-pointer"
                 >
                   <Boxes className="w-3 h-3 text-[#D5991C]" />
-                  <span>Counter-GEO Vol. 1 Visualizer</span>
+                  <span>Counter-AEO Vol. 1 Visualizer</span>
                 </button>
               </li>
               <li>
@@ -98,7 +98,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenAudit, onOpenIncident, onN
                   className="hover:text-[#00A878] transition-colors text-left flex items-center gap-1 cursor-pointer"
                 >
                   <Boxes className="w-3 h-3 text-[#00A878]" />
-                  <span>Counter-GEO Vol. 2 (Memory Swarm)</span>
+                  <span>Counter-AEO Vol. 2 (Memory Swarm)</span>
                 </button>
               </li>
               <li>
@@ -107,7 +107,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenAudit, onOpenIncident, onN
                   className="hover:text-[#A78BFA] transition-colors text-left flex items-center gap-1 cursor-pointer"
                 >
                   <Boxes className="w-3 h-3 text-[#A78BFA]" />
-                  <span>Counter-GEO Vol. 3 (Benchmark Suite)</span>
+                  <span>Counter-AEO Vol. 3 (Benchmark Suite)</span>
                 </button>
               </li>
               <li>
@@ -116,7 +116,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenAudit, onOpenIncident, onN
                   className="hover:text-[#D5991C] transition-colors text-left flex items-center gap-1 cursor-pointer font-bold"
                 >
                   <Boxes className="w-3 h-3 text-[#D5991C]" />
-                  <span>Strategy Library: Offensive GEO & Defenses (WebGL)</span>
+                  <span>Strategy Library: Offensive AEO & Defenses (WebGL)</span>
                 </button>
               </li>
               <li>
@@ -129,7 +129,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenAudit, onOpenIncident, onN
                 </a>
               </li>
               <li><a href="#problem" className="hover:text-[#FBF3E2] transition-colors">Attack Surface</a></li>
-              <li><a href="#research" className="hover:text-[#FBF3E2] transition-colors">Counter-GEO Research</a></li>
+              <li><a href="#research" className="hover:text-[#FBF3E2] transition-colors">Counter-AEO Research</a></li>
             </ul>
           </div>
 

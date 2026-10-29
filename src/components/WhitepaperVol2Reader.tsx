@@ -472,7 +472,7 @@ export const WhitepaperVol2Reader: React.FC<WhitepaperVol2ReaderProps> = ({
 
             <div className="p-4 bg-[#FFFDF8] border border-[#F2D69D] text-xs font-mono space-y-1.5">
               <div className="text-[#00A878] font-bold uppercase tracking-wider">
-                CITATION BIBTEX KEY: [LastCrusadeDefense-CounterGEO-Vol2-2026]
+                CITATION BIBTEX KEY: [LastCrusadeDefense-CounterAEO-Vol2-2026]
               </div>
               <div className="text-[#410217]/75">
                 DOI: {MASTER_DOC_VOL2_METADATA.doi} // Sovereign Defense Specification Vol. II
@@ -582,7 +582,7 @@ export const WhitepaperVol2Reader: React.FC<WhitepaperVol2ReaderProps> = ({
                 <div>• L5: DMEM-WMQ (Martingale & W_2 Rollback)</div>
                 <div>• L6: SGL-CMI (Swarm Echo De-Duplication)</div>
                 <div>• L7: CM-JSAS (Multimodal Saliency Scrub)</div>
-                <div>• L8: ZK-CGEO (Zero-Knowledge SNARK Proofs)</div>
+                <div>• L8: ZK-CAEO (Zero-Knowledge SNARK Proofs)</div>
               </div>
             </div>
 

@@ -253,7 +253,7 @@ export function createSecureWindow() {
                 className="flex items-center space-x-1.5 px-3.5 py-1.5 bg-[#D5991C] hover:bg-[#E5A932] text-[#410217] text-xs font-bold border border-[#410217]/30 cursor-pointer shadow-xs transition-transform transform hover:-translate-y-0.5"
               >
                 <Boxes className="w-3.5 h-3.5" />
-                <span>Counter-GEO 3D</span>
+                <span>Counter-AEO 3D</span>
                 <ArrowUpRight className="w-3 h-3" />
               </button>
 

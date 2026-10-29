@@ -51,7 +51,7 @@ export const PitchDeckPage: React.FC<PitchDeckPageProps> = ({
               className="flex items-center space-x-1.5 px-3.5 py-1.5 bg-[#D5991C] hover:bg-[#E5A932] text-[#130108] transition-colors cursor-pointer font-bold uppercase tracking-wider shadow-xs"
             >
               <Sparkles className="w-3.5 h-3.5" />
-              <span>Request GEO Audit</span>
+              <span>Request AEO Audit</span>
             </button>
           )}
         </div>
