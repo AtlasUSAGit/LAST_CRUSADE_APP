@@ -3849,7 +3849,7 @@ export const CounterGeoVol5FindingsAndLab: React.FC<Vol5FindingsAndLabProps> = (
                     <div>
                       <div className="flex justify-between text-[11px] mb-1">
                         <span>Context List Rank Position:</span>
-                        <span className="text-[#D5991C] font-bold">Index #{candidatePos - 1} (Pos {candidatePos})</span>
+                        <span className="text-[#D5991C] font-bold">Index {candidatePos - 1} (Pos {candidatePos})</span>
                       </div>
                       <input
                         type="range"
@@ -4325,7 +4325,7 @@ export const CounterGeoVol5FindingsAndLab: React.FC<Vol5FindingsAndLabProps> = (
                         className="px-3.5 py-2 bg-[#D5991C] hover:bg-[#e5a932] text-[#130108] font-mono text-xs font-bold uppercase flex items-center space-x-1.5 cursor-pointer"
                       >
                         <Play className="w-3.5 h-3.5 fill-current" />
-                        <span>Launch 3D Scene #{mod.simSceneIndex + 1}</span>
+                        <span>Launch 3D Scene {mod.simSceneIndex + 1}</span>
                       </button>
                     </div>
 

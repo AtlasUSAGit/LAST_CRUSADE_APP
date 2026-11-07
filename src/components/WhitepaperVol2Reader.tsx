@@ -155,14 +155,14 @@ export const WhitepaperVol2Reader: React.FC<WhitepaperVol2ReaderProps> = ({
 
         {/* Section Body */}
         <div className="space-y-4 text-[#410217]/90 leading-relaxed font-sans text-sm sm:text-base selection:bg-[#410217]/15">
-          {renderMarkdownBody(lines, section.id)}
+          {renderMarkdownBody(lines, section.id, section.title)}
         </div>
 
       </div>
     );
   };
 
-  const renderMarkdownBody = (lines: string[], sectionId: string) => {
+  const renderMarkdownBody = (lines: string[], sectionId: string, sectionTitle: string = '') => {
     const elements: React.ReactNode[] = [];
     let inCodeBlock = false;
     let codeLanguage = '';
@@ -313,11 +313,30 @@ export const WhitepaperVol2Reader: React.FC<WhitepaperVol2ReaderProps> = ({
       }
 
       // Headings inside section body
-      if (line.startsWith('#### ')) {
+      if (line.trim().startsWith('#')) {
+        const cleanHeading = line.trim().replace(/^#+\s*/, '').replace(/#+/g, '').trim();
+        if (!cleanHeading) return;
+
+        // Skip if this heading duplicates the section title
+        const normClean = cleanHeading.toLowerCase().replace(/[^a-z0-9]/g, '');
+        const normTitle = sectionTitle.toLowerCase().replace(/[^a-z0-9]/g, '');
+        if (normClean === normTitle || (idx === 0 && (normClean.includes(normTitle) || normTitle.includes(normClean)))) {
+          return;
+        }
+
+        if (line.trim().startsWith('####')) {
+          elements.push(
+            <h4 key={`h4-${idx}`} className="font-serif text-lg font-bold text-[#410217] mt-5 mb-2">
+              {formatInlineMarkdown(cleanHeading)}
+            </h4>
+          );
+          return;
+        }
+
         elements.push(
-          <h4 key={`h4-${idx}`} className="font-serif text-lg font-bold text-[#410217] mt-5 mb-2">
-            {line.replace('#### ', '')}
-          </h4>
+          <h3 key={`h3-${idx}`} className="font-serif text-xl sm:text-2xl font-bold text-[#410217] mt-6 mb-2">
+            {formatInlineMarkdown(cleanHeading)}
+          </h3>
         );
         return;
       }
@@ -367,7 +386,9 @@ export const WhitepaperVol2Reader: React.FC<WhitepaperVol2ReaderProps> = ({
   };
 
   const formatInlineMarkdown = (text: string): React.ReactNode => {
-    const parts = text.split(/(\*\*.*?\*\*|\$.*?\$|`.*?`)/g);
+    // Strip any raw markdown hash symbols (#) from inline text
+    const cleanText = text.replace(/#+/g, '');
+    const parts = cleanText.split(/(\*\*.*?\*\*|\$.*?\$|`.*?`)/g);
     return parts.map((part, index) => {
       if (part.startsWith('**') && part.endsWith('**')) {
         return (
