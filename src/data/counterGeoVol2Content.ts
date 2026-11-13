@@ -132,16 +132,15 @@ export const MASTER_DOC_VOL2_METADATA = {
   title: "Counter-AEO Architecture — Volume II: Stateful Memory Immunity, Byzantine Swarm Consensus, Cross-Modal Saliency Defense, and Zero-Knowledge Regulatory Compliance",
   shortTitle: "Counter AEO Master Doc Volume 2",
   date: "October 2026",
-  classification: "Sovereign Strategic Research // Generation-3 Counter-AEO",
+  classification: "Sovereign Strategic Research — Next-Generation Counter-AEO",
   authors: "Last Crusade Defense Security Labs & Sovereign Defense Research Initiative",
-  doi: "10.1145/3637528.3671900-CAEO-V2",
   pages: 42,
   wordCount: 4243,
   estimatedReadTimeMinutes: 32,
   defenseStackLayers: [
-    { layer: "Layer 5", name: "DMEM-WMQ", core: "Doob-Meyer Epistemic Martingale Decomposition & Wasserstein-2 Rollback", target: "Slow-Boil Persistent Memory Poisoning" },
-    { layer: "Layer 6", name: "SGL-CMI", core: "Spectral Graph Laplacian & Conditional Mutual Information De-Duplication", target: "Autophagous AI-to-AI Echo Chambers" },
-    { layer: "Layer 7", name: "CM-JSAS", core: "Cross-Modal Jacobian Saliency Alignment & Structural Ink Scrubbing", target: "Cross-Modal Steganographic PDF/Chart AEO" },
-    { layer: "Layer 8", name: "ZK-CAEO", core: "288-Byte zk-SNARK Fixed-Point R1CS Arithmetic Proofs", target: "Alpha-Privacy vs. SEC Rule 15c3-8 Compliance Conflict" }
+    { layer: "Layer 5", name: "Long-Term Memory Drift Guard (DMEM-WMQ)", core: "Long-term memory drift tracking & clean backup rollbacks", target: "Slow-Boil Persistent Memory Poisoning" },
+    { layer: "Layer 6", name: "AI Echo-Chamber Filter (SGL-CMI)", core: "Deduplicating AI bots quoting the exact same unverified rumor", target: "Autophagous AI-to-AI Echo Chambers" },
+    { layer: "Layer 7", name: "Visible Ink & PDF Scrubber (CM-JSAS)", core: "Ensuring AI only reads visible ink and scrubbing hidden background noise", target: "Cross-Modal Steganographic PDF/Chart AEO" },
+    { layer: "Layer 8", name: "Private Compliance Proof (ZK-CAEO)", core: "Compact zero-knowledge audit proofs that leak zero trading secrets", target: "Alpha-Privacy vs. Regulatory Audit Compliance Conflict" }
   ]
 };

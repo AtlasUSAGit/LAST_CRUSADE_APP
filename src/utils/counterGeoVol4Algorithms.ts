@@ -209,7 +209,7 @@ export class CounterAEOCommercialEngine {
 
     return {
       clientName: agencyName,
-      skuTier: 'SKU 3: Sovereign Enclave (FedRAMP High / SCIF)',
+      skuTier: 'SKU 3: Dedicated Air-Gapped Enclave',
       annualLicenseCostUsd: annualCost,
       expectedAnnualGeoIncidentsPrevented: incidentsPerYear,
       unshieldedLossPerIncidentUsd: lossPerIncident,

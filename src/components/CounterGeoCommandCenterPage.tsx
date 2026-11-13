@@ -35,9 +35,12 @@ import {
   GraduationCap,
   Code2,
   Sparkles,
-  Compass
+  Compass,
+  Radar
 } from 'lucide-react';
 import { NavigationPage } from '../types';
+import { CommandCenterCiSuiteView } from './CommandCenterCiSuiteView';
+import { CommandCenterWorkbenchView } from './CommandCenterWorkbenchView';
 
 interface CounterGeoCommandCenterPageProps {
   onNavigate: (page: NavigationPage) => void;
@@ -47,7 +50,7 @@ interface CounterGeoCommandCenterPageProps {
 
 export type KnowledgeDepthLevel = 'beginner' | 'operator' | 'architect';
 
-// 8 Core Strategies in the Attack Library (Each mapped 1-to-1 with its own 3D WebGL Scene 0..7)
+// 10 Core Scenarios in the Threat & Strategy Library (Mapped 1-to-1 with 3D WebGL Scenes 0..9)
 export interface AttackStrategy {
   id: string;
   code: string;
@@ -62,7 +65,9 @@ export interface AttackStrategy {
     | 'Logic & Inference'
     | 'Financial & Markets'
     | 'Memory & Long-Horizon'
-    | 'Regulatory & ZK';
+    | 'Regulatory & ZK'
+    | 'Silent Web & A2A'
+    | 'Quant A2A & Liquidity';
   severity: 'CRITICAL' | 'HIGH' | 'MEDIUM';
   vulnerableSurface: string;
   simModeIndex: number; // 0 through 7 (All 8 distinct 3D WebGL scenes)
@@ -103,7 +108,7 @@ export const ATTACK_STRATEGIES_CATALOG: AttackStrategy[] = [
   {
     id: 'at-1',
     code: 'AT-1',
-    name: 'Poisoning Retrieval-Augmented Generation (RAG) & Retrieval Hubs',
+    name: 'AI Search Gravity Traps (Poisoning Retrieval Hubs)',
     plainEnglishName: 'The "Master Key" Webpage (Vector Gravity Sinkholes)',
     tagline: 'One booby-trapped webpage mathematically hijacks 21,000+ unrelated AI searches.',
     category: 'Vector & Semantic',
@@ -150,7 +155,7 @@ for step = 1..T_steps:
     },
     defensiveStrategy: {
       layer: 'Layer 0 & Layer 1',
-      defenseName: 'Key-Seeded Householder Rotation (MTVD) & Intrinsic Dimensionality Profiling (AM-CIDP)',
+      defenseName: 'Moving-Target Map Rotation & Gravity Sinkhole Quarantine',
       mitigationMechanism:
         'Layer 0 (MTVD) rotates the vector database coordinate frame using HSM-keyed orthogonal Householder reflections Q_t in O(d) and projects out a secret 5% null-space to shatter fragile hub gradients. Layer 1 (AM-CIDP) computes the Levina-Bickel Local Intrinsic Dimensionality (LID) and Gram Matrix Spectral Entropy around every candidate vector, quarantining low-dimensional manifold sinkholes in 1.8 ms.',
       mathFormula:
@@ -164,7 +169,7 @@ for step = 1..T_steps:
   {
     id: 'at-2',
     code: 'AT-2',
-    name: 'Adversarial Formatting & "Authority Signals" (The Fake Expert Disguise)',
+    name: 'Fake Expert Disguises & Stat Stuffing',
     plainEnglishName: 'The Fake Expert Disguise (Stat & Quote Stuffing)',
     tagline: 'Dressing up lies with fake percentages, CEO quotes, and tables to trick AI trust scores.',
     category: 'Multi-Topology',
@@ -209,7 +214,7 @@ D_spoof += append_spoofed_doi_citations(count=8, target_authority="high")`,
     },
     defensiveStrategy: {
       layer: 'Layer 2',
-      defenseName: 'Normalized Cross-Architecture Rank Divergence (NCARD)',
+      defenseName: '3-Way Search Engine Cross-Check (NCARD)',
       mitigationMechanism:
         'NCARD evaluates candidate rank consistency across three orthogonal retrieval architectures simultaneously: (1) Dense Dual-Encoder Vectors, (2) Late-Interaction ColBERT Token Matrices, and (3) Sparse Lexical SPLADE/BM25. Using depth-weighted Reciprocal Rank Weights (RRW), NCARD penalizes top-k rank disparities without falsely flagging real SEC 10-K tables.',
       mathFormula:
@@ -223,7 +228,7 @@ D_spoof += append_spoofed_doi_citations(count=8, target_authority="high")`,
   {
     id: 'at-3',
     code: 'AT-3',
-    name: 'Indirect Prompt Injection & Cross-Modal Saliency Hijack',
+    name: 'Hidden Mind-Control Text & Pixel Traps',
     plainEnglishName: 'Invisible Mind-Control Text (Hidden Code & Pixel Traps)',
     tagline: 'Secret instructions hidden in white-on-white text or chart pixels hijack the AI’s brain.',
     category: 'Multi-Modal',
@@ -270,7 +275,7 @@ D_spoof += append_spoofed_doi_citations(count=8, target_authority="high")`,
     },
     defensiveStrategy: {
       layer: 'Layer 7',
-      defenseName: 'Cross-Modal Jacobian Saliency Alignment & Spectral Scrubbing (CM-JSAS)',
+      defenseName: 'Visible-Ink vs. Attention Saliency Shield',
       mitigationMechanism:
         'CM-JSAS extracts a deterministic Structural Ink/Contour Mask (M_struct) using morphological Sobel gradients and compares it against the neural VLM Jacobian Saliency map. Any attention or gradient sensitivity originating from blank background canvas (M_bg) or zero-opacity DOM nodes is clamped to median background intensity and stripped prior to LLM ingestion.',
       mathFormula:
@@ -284,7 +289,7 @@ D_spoof += append_spoofed_doi_citations(count=8, target_authority="high")`,
   {
     id: 'at-4',
     code: 'AT-4',
-    name: 'Multi-Source Synthetic Consensus & Hawkes Sybil Attacks',
+    name: 'Fake News Echo Chambers & Botnet Rings',
     plainEnglishName: 'The Fake News Echo Chamber (Coordinated Botnet Rings)',
     tagline: '20 fake news sites stagger their posts over 45 minutes to trick AI fact-checkers.',
     category: 'Multi-Agent & Swarms',
@@ -330,7 +335,7 @@ for i, t_pub in enumerate(timestamps):
     },
     defensiveStrategy: {
       layer: 'Layer 3 & Layer 6',
-      defenseName: 'C2PA Hardware Lineage Graph (TCG-CL v2.0) & Spectral Swarm De-Duplication (SGL-CMI)',
+      defenseName: 'Verified Source Seal Graph (C2PA) & Swarm De-Duplicator',
       mitigationMechanism:
         'Layer 3 (TCG-CL v2.0) solves damped harmonic trust propagation anchored strictly to X.509 C2PA hardware-signed root nodes (e.g., SEC EDGAR HSMs) gated by NLI entailment and causal ordering. Layer 6 (SGL-CMI) computes Conditional Mutual Information across upstream AI agents and collapses the Spectral Effective Sample Size (M_eff) of echo chambers.',
       mathFormula:
@@ -344,7 +349,7 @@ for i, t_pub in enumerate(timestamps):
   {
     id: 'at-5',
     code: 'AT-5',
-    name: 'Split-Payload Enthymematic AEO (The "Jigsaw Puzzle" Attack)',
+    name: 'Split-Document "Jigsaw Puzzle" Logic Traps',
     plainEnglishName: 'The "Jigsaw Puzzle" Attack (Multi-Document Logic Traps)',
     tagline: 'Three 100% innocent-looking websites combine inside the AI’s head to form a toxic lie.',
     category: 'Logic & Inference',
@@ -390,7 +395,7 @@ Doc_3 = "Defense contractors face immediate insolvency if refining pauses > 14 d
     },
     defensiveStrategy: {
       layer: 'Layer 4A',
-      defenseName: 'Combinatorial Epistemic Holography & Attention-Sink Interference Detection (CEH-ASID)',
+      defenseName: 'Cross-Document Reasoning Attention Firewall',
       mitigationMechanism:
         'CEH-ASID computes the Möbius/Shapley-Taylor Epistemic Interaction Index across retrieved document subsets and performs single-pass Attention Tomography over the Transformer’s deep self-attention matrices (Omega_ij). When unverified passages exhibit super-additive coupling, CEH-ASID severs their cross-attention mask (mask[u,v] = -1e9) in 5.1 ms.',
       mathFormula:
@@ -404,7 +409,7 @@ Doc_3 = "Defense contractors face immediate insolvency if refining pauses > 14 d
   {
     id: 'at-6',
     code: 'AT-6',
-    name: 'Exploiting "Data Voids" & Liquidity Extraction Arbitrage',
+    name: 'Pre-Market Data Voids & Order-Book Liquidity Traps',
     plainEnglishName: 'The Early-Morning Wall Street Ambush ($45M Order-Book Trap)',
     tagline: 'Flooding the internet with fake news at 7:30 AM to trick AI bots into buying overpriced stock.',
     category: 'Financial & Markets',
@@ -450,7 +455,7 @@ Doc_3 = "Defense contractors face immediate insolvency if refining pauses > 14 d
     },
     defensiveStrategy: {
       layer: 'Layer 4B & Layer 12',
-      defenseName: 'Thermodynamic Market-Microstructure Epistemic Grounding (TMMEG) & FPGA Kill-Switch',
+      defenseName: 'Live Order-Book Grounding & 142ns Hardware Brake',
       mitigationMechanism:
         'TMMEG enforces a conservation law between RAG informational surprise (Delta I_RAG in nats) and physical Limit Order Book energy (VPIN, Kyle’s lambda, and 25-delta options implied volatility skew). If unverified RAG text demands an order sweep into a pre-positioned opposing limit wall (OBAR TrapScore >= 0.65), the co-located FPGA SmartNIC zeroes TX_ENABLE in 142 nanoseconds and triggers a 15-second SEC Rule 15c3-8 Epistemic Halt.',
       mathFormula:
@@ -464,7 +469,7 @@ Doc_3 = "Defense contractors face immediate insolvency if refining pauses > 14 d
   {
     id: 'at-7',
     code: 'AT-7',
-    name: 'Stateful Episodic Memory Drift ("Slow-Boil" Martingale Poisoning)',
+    name: 'Slow 60-Day Long-Term Memory Drift Poisoning',
     plainEnglishName: 'The "Slow Poison" Drift (60-Day Long-Term Memory Tampering)',
     tagline: 'Tiny, unnoticeable daily nudges slowly brainwash an AI’s long-term memory over 60 days.',
     category: 'Memory & Long-Horizon',
@@ -510,7 +515,7 @@ for day = 1..60:
     },
     defensiveStrategy: {
       layer: 'Layer 5',
-      defenseName: 'Doob-Meyer Epistemic Martingale Decomposition & Wasserstein-2 Rollback (DMEM-WMQ)',
+      defenseName: 'Long-Term Memory Drift Detector & Checkpoint Rollback',
       mitigationMechanism:
         'By Doob’s Martingale Convergence Theorem, rational Bayesian belief updates must have zero predictable unbacked drift (E[X_{t+1} - X_t | F_t] = 0). DMEM-WMQ tracks the agent’s episodic memory distribution in 2-Wasserstein Optimal Transport space and computes the directional coherence ratio T_DMEM over rolling window W. When T_DMEM > 3.2, it purges unanchored writes and executes a cryptographic Merkle-Tree rollback.',
       mathFormula:
@@ -524,7 +529,7 @@ for day = 1..60:
   {
     id: 'at-8',
     code: 'AT-8',
-    name: 'Supply-Chain ERP Hijack, Obfuscative AEO & Zero-Knowledge Compliance',
+    name: 'Supply-Chain ERP Hijacks & Private Regulatory Audits',
     plainEnglishName: 'Supply-Chain ERP Hijack & Zero-Knowledge Regulatory Proof',
     tagline: 'Stopping Trojan suppliers, fake shortages, and proving SEC compliance without leaking secrets.',
     category: 'Regulatory & ZK',
@@ -569,15 +574,134 @@ inject_erp_catalog(item="Polysilicon", price="$4.10/kg", claim="Port blockade im
     },
     defensiveStrategy: {
       layer: 'Layer 8, Layer 9 & Layer 10',
-      defenseName: 'Poincaré Shell De-Cloaking (HER-BOD), Leontief/AIS Conservation (EIOL-PCV) & zk-SNARKs (ZK-CAEO)',
+      defenseName: 'Physical Cargo & Energy Verification + Private Compliance Proofs',
       mitigationMechanism:
-        'Layer 9 (HER-BOD) uses Submodular Facility-Location to evict redundant chaff hubs and resolves transitive SDN ownership in Poincaré hyperbolic space. Layer 10 (EIOL-PCV) verifies prices against dual Leontief input-output energy floors and satellite AIS vessel draft displacement. Layer 8 (ZK-CAEO) compiles all Counter-AEO checks into a 288-byte Groth16/Halo2 zk-SNARK proof for the SEC Consolidated Audit Trail (CAT).',
+        'Layer 9 uses Submodular Facility-Location to evict redundant chaff hubs and resolves transitive SDN ownership in Poincaré hyperbolic space. Layer 10 verifies prices against dual Leontief input-output energy floors and satellite AIS vessel draft displacement. Layer 8 compiles all Counter-AEO checks into a 288-byte Groth16/Halo2 zk-SNARK proof for the SEC Consolidated Audit Trail (CAT).',
       mathFormula:
         '\\mathbf{c}_{\\text{floor}} = (\\mathbf{I}-\\mathbf{A}^\\top)^{-1}(\\mathbf{A}_c^\\top \\mathbf{p}_{\\text{spot}} + \\mathbf{v}_{\\min}), \\quad \\pi_{\\text{CAEO}} \\in 288\\text{ Bytes} \\implies \\text{Verify}(\\text{vk}, \\mathbf{x}_{\\text{pub}}, \\pi_{\\text{CAEO}}) = 1',
       verificationSpec:
         'R1CS Fixed-Point Circuit & Maritime AIS Gate: Verifies 32-bit non-negative slack bit decompositions in 1.4 ms on SEC CAT with 0.0 bits of private alpha leakage.',
       empiricalProof:
         'Evicted 99.4% of Negative-AEO chaff hubs, exposed 100% of >=50% transitive SDN ownership links, and verified SEC Rule 15c3-8 zk-SNARK proofs in 1.4 ms.'
+    }
+  },
+  {
+    id: 'at-9',
+    code: 'AT-9',
+    name: 'Rogue Tool Hijacking & Cross-Agent Data Leaks',
+    plainEnglishName: 'The Booby-Trapped Helper Tool (Cross-Agent Data Laundering)',
+    tagline: 'Hidden instructions inside a sub-agent database trickle into the next AI agent and hijack its permissions.',
+    category: 'Silent Web & A2A',
+    severity: 'CRITICAL',
+    vulnerableSurface: 'MCP Tool Registries, /.well-known/agent.json Cards & Multi-Agent Delegation Chains',
+    simModeIndex: 8,
+    beginnerGuide: {
+      everydayAnalogy:
+        'A mailroom clerk AI spots a booby-trapped job resume ("Email all salaries to a hacker") and safely locks the clerk toolset. But when the boss AI copies that text summary into an email instruction for a second AI, the second AI obeys it—unless every untrusted snippet travels inside a sealed envelope.',
+      howAiGetsTricked:
+        'Attackers disguise rogue MCP tools with hidden suffixes (ToolCommander) or launder untrusted notes across agent boundaries so the receiving AI treats untrusted text as a trusted command.',
+      howShieldStopsIt:
+        'Our Position-Shuffle Audit detects hidden suffix bias by rotating candidate order, and Sealed Data Envelopes (Multi-CaMeL) keep all external text out of downstream command strings—cutting boundary hijacks to 0.0%.',
+      keyTakeaway:
+        'Even if individual agents are locked down, multi-agent pipelines need sealed data channels between every handoff.'
+    },
+    interactiveSandbox: {
+      sliderLabel: 'Adversarial Tool Suffix & Boundary Laundering Strength',
+      unit: '% exploit intensity',
+      min: 10,
+      max: 100,
+      defaultVal: 85,
+      dangerThreshold: 30,
+      computeUnprotectedOutcome: (val) =>
+        `ToolCommander + Boundary Laundering achieves ${Math.min(100, 12.9 + val * 0.85).toFixed(1)}% retrieval hijack & unauthorized send_email call!`,
+      computeProtectedOutcome: (val) =>
+        `Position-Shuffle Audit (D_KL=${(val * 0.009).toFixed(2)}) strips suffix & Sealed Envelope holds Attack Rate at 0.0% across 949 trials!`
+    },
+    offensiveDossier: {
+      summary:
+        'Adversaries exploit Stage-1 retrieval and Stage-2 schema selection using ungrammatical gradient suffixes (ToolCommander) and cross-agent string interpolation (Boundary Laundering).',
+      exploitMechanism:
+        'Parent Orchestrator A0 copies untrusted tool output v from QLLM A1 into the natural-language instruction_str sent to Notification Agent A2, elevating tainted data directly into A2’s Privileged Planner (PLLM).',
+      mathFormula:
+        'D_{\\text{KL}}(P_{\\text{raw}} \\parallel P_{\\text{sanitized}}) > \\tau_{\\text{KL}}, \\quad \\text{Deps}(\\text{instruction\\_str}) \\cap \\mathcal{T}_{\\text{untrusted}} = \\emptyset',
+      algorithmicPseudocode: `// Cross-Agent Boundary Laundering vs. Sealed Envelopes
+untrusted_note = sql_agent.read_record(applicant_id)
+# UNSAFE: orchestrator merges untrusted_note into child instruction_str -> HIJACK!
+# SAFE (Multi-CaMeL): pass UUID pointer in data_bindings only -> 0.0% ASR.`,
+      realWorldImpact:
+        'Compromised multi-agent workflows leak private databases or trigger unauthorized external fund transfers even when each single agent passes isolated tests.'
+    },
+    defensiveStrategy: {
+      layer: 'Layer 13 & Layer 14',
+      defenseName: 'Position-Shuffle Audit, Sealed Data Envelopes & Adaptive Traffic Firewall',
+      mitigationMechanism:
+        'Layer 13 simplifies canonical schemas and runs Latin-square permutation audits while binding all external outputs inside an OpaqueVariableStore. Layer 14 runs an online red-team Markov guardrail in the Envoy ext_proc data plane to block hijacked routing at 98.53% accuracy.',
+      mathFormula:
+        '\\forall \\text{ call } \\mathbf{invoke\\_a2a}(A_c, \\text{instr}, \\text{bindings}) : \\text{Deps}(\\text{instr}) \\cap \\mathcal{T}_{\\text{untrusted}} = \\emptyset',
+      verificationSpec:
+        'AST Taint Verifier & Envoy ext_proc Semantic Firewall: Aborts BoundaryLaunderingViolation pre-execution and inspects MANDATE.md spending caps.',
+      empiricalProof:
+        'Reduced MultiAgentDojo prompt-injection ASR from 12.9% to 0.0% across 949 trials; cut gateway latency by 47.1%.'
+    }
+  },
+  {
+    id: 'at-10',
+    code: 'AT-10',
+    name: 'Fake Agent Confidence & Market Liquidity Traps',
+    plainEnglishName: 'The Fake-Confidence Bot Swarm (+42.55% Allocation vs. Order-Book Brake)',
+    tagline: 'Sybil signal bots spoof high certainty to lure buy-side AI allocators into predatory stock traps.',
+    category: 'Quant A2A & Liquidity',
+    severity: 'CRITICAL',
+    vulnerableSurface: 'Autonomous Buy-Side Portfolio Orchestrators, Black-Litterman Allocators & x402 Trading Venues',
+    simModeIndex: 9,
+    beginnerGuide: {
+      everydayAnalogy:
+        'Wall Street allocator bots invest +42.55% more money when a verified seller proves its numbers with cryptography. A crooked gang of 15 clone bots tries to fake that high confidence so the buyer bot rushes into an empty, overpriced stock trap—until our live stock-exchange brake sees the trap and stops the trade.',
+      howAiGetsTricked:
+        'Portfolio optimizers allocate capital according to w* = (γΣ + Ω)⁻¹μ. When Sybil signal bots broadcast fake low uncertainty (Ω -> 0), unprotected buyer bots massively over-allocate into illiquid traps.',
+      howShieldStopsIt:
+        'Genuine providers achieve a verified +42.55% allocation lift via zkML uncertainty compression, while defenders detect Sybil disagreement and trip a physical circuit breaker whenever real Kyle’s Lambda or VPIN order-book impact exceeds safe limits.',
+      keyTakeaway:
+        'Cryptographic proof multiplies legitimate capital confidence—while real order-book physics stops fake agent swarms cold.'
+    },
+    interactiveSandbox: {
+      sliderLabel: 'Spoofed Confidence Compression & Market Impact Stress',
+      unit: '% stress level',
+      min: 10,
+      max: 100,
+      defaultVal: 75,
+      dangerThreshold: 35,
+      computeUnprotectedOutcome: (val) =>
+        `Spoofed low-Ω consensus lures unprotected buyer bot to expand allocation +${(val * 0.48).toFixed(1)}% directly into front-run liquidity trap!`,
+      computeProtectedOutcome: (val) =>
+        `Live Market Brake detects VPIN=${(0.18 + val * 0.003).toFixed(3)} / Conflict=${(val * 0.007).toFixed(2)} -> Trade Halted ($0 lost); Clean zkML retains +42.55% lift!`
+    },
+    offensiveDossier: {
+      summary:
+        'Predatory trading swarms deploy correlated A2A signal agents that broadcast artificially low variance estimates alongside fabricated depth metrics to induce high-conviction rogue loops inside buy-side allocators.',
+      exploitMechanism:
+        'Exploits Black-Litterman sensitivity to view uncertainty matrix Ω by spoofing multi-agent consensus while resting predatory opposing liquidity on lit exchanges.',
+      mathFormula:
+        'w^* = (\\gamma\\Sigma + \\Omega_{\\text{secure}})^{-1}\\mu, \\quad \\lambda_{\\text{Kyle}} = \\frac{\\text{Cov}(\\Delta P_t, Q_t)}{\\text{Var}(Q_t)} > 0.00015 \\implies \\text{HALT}',
+      algorithmicPseudocode: `// Verified Compression (+42.55% Lift) vs. Sybil Liquidity Trap Brake
+if zkml_verified and kyle_lambda <= 0.00015 and vpin <= 0.25:
+    allocate(omega=0.001)  # Weight sum: 1.2138 -> 1.7303 (+42.55%)
+else:
+    trip_orderbook_circuit_breaker()`,
+      realWorldImpact:
+        'Unchecked machine-to-machine alpha feeds enable zero-human micro-flash traps across autonomous trading venues and DeFi/institutional settlement rails.'
+    },
+    defensiveStrategy: {
+      layer: 'Layer 15 & Layer 16',
+      defenseName: 'Verified Signal Compression (+42.55% Lift) & Live Market Order-Book Brake',
+      mitigationMechanism:
+        'Layer 15 binds verifiable out-of-sample zkML execution receipts to compress legitimate view uncertainty from diag(0.05) to diag(0.001). Layer 16 reconstructs Ω_secure using Dempster-Shafer conflict and Sybil correlation penalties, gating OMS execution on physical Kyle’s Lambda and VPIN thresholds.',
+      mathFormula:
+        '\\Omega_{\\text{secure}} = \\hat{\\Omega}_{\\text{zk}} + \\eta_{\\text{conf}}\\frac{K_{\\text{conf}}}{1 - K_{\\text{conf}} + \\epsilon} I + \\eta_{\\text{sybil}}\\rho_{\\text{sybil}} I',
+      verificationSpec:
+        'Order-Book Physics Gate: Reconstructs uncertainty via Dempster-Shafer pairwise conflict and blocks OMS dispatch if Kyle λ > 0.00015 or VPIN > 0.25.',
+      empiricalProof:
+        'Lifts verified allocation from 1.2138 to 1.7303 (+42.55%) on clean proofs while halting 100% of simulated predatory liquidity sweeps.'
     }
   }
 ];
@@ -586,7 +710,7 @@ export const CounterGeoCommandCenterPage: React.FC<CounterGeoCommandCenterPagePr
   onNavigate
 }) => {
   // Page View Modes
-  const [activeView, setActiveView] = useState<'3d-sim' | 'strategy-catalog'>('3d-sim');
+  const [activeView, setActiveView] = useState<'3d-sim' | 'strategy-catalog' | 'ci-suite' | 'workbench'>('3d-sim');
   const [knowledgeDepth, setKnowledgeDepth] = useState<KnowledgeDepthLevel>('beginner');
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState<string>('ALL');
@@ -595,14 +719,16 @@ export const CounterGeoCommandCenterPage: React.FC<CounterGeoCommandCenterPagePr
   const [interactionScore, setInteractionScore] = useState<number>(1);
   const [cardStepMap, setCardStepMap] = useState<Record<string, number>>({
     'at-1': 0, 'at-2': 0, 'at-3': 0, 'at-4': 0,
-    'at-5': 0, 'at-6': 0, 'at-7': 0, 'at-8': 0
+    'at-5': 0, 'at-6': 0, 'at-7': 0, 'at-8': 0,
+    'at-9': 0, 'at-10': 0
   });
   const [sandboxValues, setSandboxValues] = useState<Record<string, number>>({
     'at-1': 100, 'at-2': 75, 'at-3': 80, 'at-4': 24,
-    'at-5': 85, 'at-6': 45, 'at-7': 45, 'at-8': 65
+    'at-5': 85, 'at-6': 45, 'at-7': 45, 'at-8': 65,
+    'at-9': 85, 'at-10': 75
   });
 
-  // 3D Simulation Theater State (All 8 Modes: 0 through 7)
+  // 3D Simulation Theater State (All 10 Modes: 0 through 9)
   const [currentSimMode, setCurrentSimMode] = useState<number>(0);
   const [isAttackInjected, setIsAttackInjected] = useState<boolean>(true);
   const [attackIntensity, setAttackIntensity] = useState<number>(85);
@@ -678,6 +804,19 @@ export const CounterGeoCommandCenterPage: React.FC<CounterGeoCommandCenterPagePr
     leontiefTowers?: THREE.Mesh[];
     zkTorusKnot?: THREE.Mesh;
     zkProofPackets?: THREE.Points;
+    // Scene 8 (AT-9)
+    a2aAgents?: THREE.Mesh[];
+    a2aTopBridge?: THREE.Mesh;
+    a2aSealedTunnel?: THREE.Mesh;
+    a2aPermRing?: THREE.Mesh;
+    a2aCanaryBeacon?: THREE.Mesh;
+    a2aPackets?: THREE.Points;
+    // Scene 9 (AT-10)
+    quantCoreSphere?: THREE.Mesh;
+    quantUncertaintyAura?: THREE.Mesh;
+    quantBidders?: THREE.Mesh[];
+    quantZkRings?: THREE.Mesh[];
+    quantLobGate?: THREE.Mesh;
   }>({
     renderer: null,
     scene: null,
@@ -893,9 +1032,9 @@ export const CounterGeoCommandCenterPage: React.FC<CounterGeoCommandCenterPagePr
     const starMat = new THREE.PointsMaterial({ color: 0xF2D69D, size: 0.38, transparent: true, opacity: 0.32 });
     scene.add(new THREE.Points(starGeo, starMat));
 
-    // Create 8 Dedicated Scene Groups (0..7 for AT-1..AT-8)
+    // Create 10 Dedicated Scene Groups (0..9 for AT-1..AT-10)
     const modeGroups: THREE.Group[] = [];
-    for (let i = 0; i < 8; i++) {
+    for (let i = 0; i < 10; i++) {
       const g = new THREE.Group();
       g.visible = i === simParamsRef.current.currentSimMode;
       scene.add(g);
@@ -1436,6 +1575,112 @@ export const CounterGeoCommandCenterPage: React.FC<CounterGeoCommandCenterPagePr
     const zkProofPackets = new THREE.Points(zkGeo, new THREE.PointsMaterial({ color: 0x00FF9D, size: 0.42 }));
     modeGroups[7].add(zkProofPackets);
 
+    // ==========================================================================
+    // SCENE 8 (AT-9): CROSS-AGENT DATA LAUNDERING vs SEALED OPAQUE ENVELOPES
+    // ==========================================================================
+    const a2aAgents: THREE.Mesh[] = [];
+    [-11, 0, 11].forEach((px, idx) => {
+      const node = new THREE.Mesh(
+        new THREE.CylinderGeometry(2.1, 2.1, 5.2, 16),
+        new THREE.MeshStandardMaterial({
+          color: idx === 1 ? 0xD5991C : idx === 2 ? 0x00A878 : 0x00F0FF,
+          roughness: 0.3,
+          metalness: 0.35
+        })
+      );
+      node.position.set(px, 0, 0);
+      modeGroups[8].add(node);
+      a2aAgents.push(node);
+    });
+    const a2aTopBridge = new THREE.Mesh(
+      new THREE.CylinderGeometry(0.32, 0.32, 22, 12),
+      new THREE.MeshBasicMaterial({ color: 0xFF2A5F, transparent: true, opacity: 0.85 })
+    );
+    a2aTopBridge.rotation.z = Math.PI / 2;
+    a2aTopBridge.position.set(0, 2.8, 0);
+    modeGroups[8].add(a2aTopBridge);
+
+    const a2aSealedTunnel = new THREE.Mesh(
+      new THREE.CylinderGeometry(0.95, 0.95, 22, 16, 1, true),
+      new THREE.MeshBasicMaterial({ color: 0x00FF9D, wireframe: true, transparent: true, opacity: 0.8 })
+    );
+    a2aSealedTunnel.rotation.z = Math.PI / 2;
+    a2aSealedTunnel.position.set(0, -3.0, 2.0);
+    modeGroups[8].add(a2aSealedTunnel);
+
+    const a2aPermRing = new THREE.Mesh(
+      new THREE.TorusGeometry(6.8, 0.18, 12, 48),
+      new THREE.MeshBasicMaterial({ color: 0x00FF9D })
+    );
+    a2aPermRing.rotation.x = Math.PI / 2;
+    a2aPermRing.position.set(0, 6.5, 0);
+    modeGroups[8].add(a2aPermRing);
+
+    const a2aCanaryBeacon = new THREE.Mesh(
+      new THREE.OctahedronGeometry(1.5, 0),
+      new THREE.MeshStandardMaterial({ color: 0xB565FF, emissive: 0x7C3AED, emissiveIntensity: 0.9 })
+    );
+    a2aCanaryBeacon.position.set(0, -6.2, 2.0);
+    modeGroups[8].add(a2aCanaryBeacon);
+
+    const a2aPktGeo = new THREE.BufferGeometry();
+    const a2aPktPos = new Float32Array(90 * 3);
+    for (let i = 0; i < 90; i++) {
+      a2aPktPos[i * 3] = -11 + (i / 90) * 22;
+      a2aPktPos[i * 3 + 1] = -3.0;
+      a2aPktPos[i * 3 + 2] = 2.0;
+    }
+    a2aPktGeo.setAttribute('position', new THREE.BufferAttribute(a2aPktPos, 3));
+    const a2aPackets = new THREE.Points(a2aPktGeo, new THREE.PointsMaterial({ color: 0x00FF9D, size: 0.45 }));
+    modeGroups[8].add(a2aPackets);
+
+    // ==========================================================================
+    // SCENE 9 (AT-10): BUY-SIDE ALLOCATOR (+42.55%) & ORDER-BOOK BRAKE
+    // ==========================================================================
+    const quantCoreSphere = new THREE.Mesh(
+      new THREE.SphereGeometry(2.3, 32, 32),
+      new THREE.MeshStandardMaterial({ color: 0xD5991C, roughness: 0.25, metalness: 0.45 })
+    );
+    quantCoreSphere.position.set(0, 1.5, 0);
+    modeGroups[9].add(quantCoreSphere);
+
+    const quantUncertaintyAura = new THREE.Mesh(
+      new THREE.SphereGeometry(4.4, 24, 24),
+      new THREE.MeshBasicMaterial({ color: 0x00FF9D, wireframe: true, transparent: true, opacity: 0.65 })
+    );
+    quantUncertaintyAura.position.set(0, 1.5, 0);
+    modeGroups[9].add(quantUncertaintyAura);
+
+    const quantBidders: THREE.Mesh[] = [];
+    const quantZkRings: THREE.Mesh[] = [];
+    for (let i = 0; i < 3; i++) {
+      const ang = (i * Math.PI * 2) / 3;
+      const bx = Math.cos(ang) * 9.5;
+      const bz = Math.sin(ang) * 9.5;
+      const bidder = new THREE.Mesh(
+        new THREE.OctahedronGeometry(1.4, 0),
+        new THREE.MeshStandardMaterial({ color: 0x00F0FF, roughness: 0.3 })
+      );
+      bidder.position.set(bx, 1.5, bz);
+      modeGroups[9].add(bidder);
+      quantBidders.push(bidder);
+
+      const zkRing = new THREE.Mesh(
+        new THREE.TorusGeometry(2.1, 0.1, 10, 36),
+        new THREE.MeshBasicMaterial({ color: 0xB565FF })
+      );
+      zkRing.position.set(bx, 1.5, bz);
+      modeGroups[9].add(zkRing);
+      quantZkRings.push(zkRing);
+    }
+
+    const quantLobGate = new THREE.Mesh(
+      new THREE.BoxGeometry(0.9, 13, 12),
+      new THREE.MeshBasicMaterial({ color: 0x00FF9D, wireframe: true, transparent: true, opacity: 0.85 })
+    );
+    quantLobGate.position.set(11, 1.5, 0);
+    modeGroups[9].add(quantLobGate);
+
     threeRef.current = {
       renderer,
       scene,
@@ -1474,7 +1719,18 @@ export const CounterGeoCommandCenterPage: React.FC<CounterGeoCommandCenterPagePr
       aisVessels,
       leontiefTowers,
       zkTorusKnot,
-      zkProofPackets
+      zkProofPackets,
+      a2aAgents,
+      a2aTopBridge,
+      a2aSealedTunnel,
+      a2aPermRing,
+      a2aCanaryBeacon,
+      a2aPackets,
+      quantCoreSphere,
+      quantUncertaintyAura,
+      quantBidders,
+      quantZkRings,
+      quantLobGate
     };
 
     // Track last state for rebuilding NCARD conduits when attack toggles
@@ -1732,6 +1988,66 @@ export const CounterGeoCommandCenterPage: React.FC<CounterGeoCommandCenterPagePr
         }
       }
 
+      // --- SCENE 8 (AT-9): CROSS-AGENT DATA LAUNDERING vs SEALED ENVELOPES ---
+      if (mode === 8) {
+        if (st.a2aPermRing) {
+          st.a2aPermRing.rotation.z = t * 0.9;
+          (st.a2aPermRing.material as THREE.MeshBasicMaterial).color.setHex(isAtk ? 0xE63946 : 0x00FF9D);
+        }
+        if (st.a2aCanaryBeacon) {
+          st.a2aCanaryBeacon.rotation.y = t * 1.6;
+          st.a2aCanaryBeacon.scale.setScalar(1 + Math.sin(t * 4) * 0.12);
+        }
+        if (st.a2aAgents && st.a2aAgents[2]) {
+          (st.a2aAgents[2].material as THREE.MeshStandardMaterial).color.setHex(isAtk ? 0xFF2A5F : 0x00A878);
+        }
+        if (st.a2aTopBridge) st.a2aTopBridge.visible = isAtk;
+        if (st.a2aSealedTunnel) st.a2aSealedTunnel.visible = !isAtk;
+        if (st.a2aPackets) {
+          const pPos = st.a2aPackets.geometry.attributes.position;
+          (st.a2aPackets.material as THREE.PointsMaterial).color.setHex(isAtk ? 0xFF2A5F : 0x00FF9D);
+          for (let i = 0; i < pPos.count; i++) {
+            let x = pPos.getX(i) + dt * (isAtk ? 8.5 : 5.5);
+            if (x > 11.0) x = -11.0;
+            pPos.setX(i, x);
+            pPos.setY(i, isAtk ? 2.8 + Math.sin(t * 5 + i) * 0.25 : -3.0);
+            pPos.setZ(i, isAtk ? 0 : 2.0);
+          }
+          pPos.needsUpdate = true;
+        }
+      }
+
+      // --- SCENE 9 (AT-10): BUY-SIDE ALLOCATOR & ORDER-BOOK BRAKE ---
+      if (mode === 9) {
+        if (st.quantUncertaintyAura) {
+          const targetAura = isAtk ? 1.55 : 0.62;
+          st.quantUncertaintyAura.scale.lerp(new THREE.Vector3(targetAura, targetAura, targetAura), 0.08);
+          st.quantUncertaintyAura.rotation.y = t * 0.6;
+          (st.quantUncertaintyAura.material as THREE.MeshBasicMaterial).color.setHex(isAtk ? 0xFF2A5F : 0x00FF9D);
+        }
+        if (st.quantBidders && st.quantZkRings) {
+          st.quantBidders.forEach((b, i) => {
+            const ang = t * 0.55 + (i * Math.PI * 2) / 3;
+            const bx = Math.cos(ang) * 9.5;
+            const bz = Math.sin(ang) * 9.5;
+            b.position.set(bx, 1.5 + Math.sin(t * 2 + i) * 0.4, bz);
+            b.rotation.y = t * 1.2;
+            (b.material as THREE.MeshStandardMaterial).color.setHex(isAtk && i > 0 ? 0xFF2A5F : 0x00F0FF);
+            const ring = st.quantZkRings![i];
+            if (ring) {
+              ring.visible = !isAtk;
+              ring.position.copy(b.position);
+              ring.rotation.x = t * 1.4;
+              ring.rotation.y = t * 0.9;
+            }
+          });
+        }
+        if (st.quantLobGate) {
+          (st.quantLobGate.material as THREE.MeshBasicMaterial).color.setHex(isAtk ? 0xFF2A5F : 0x00FF9D);
+          st.quantLobGate.scale.y = isAtk ? 1.2 : 0.7;
+        }
+      }
+
       st.renderer.render(st.scene, st.camera);
       st.animId = requestAnimationFrame(animate);
     };
@@ -1753,6 +2069,18 @@ export const CounterGeoCommandCenterPage: React.FC<CounterGeoCommandCenterPagePr
     return () => {
       resizeObserver.disconnect();
       if (threeRef.current.animId) cancelAnimationFrame(threeRef.current.animId);
+      scene.traverse((obj) => {
+        if ((obj as THREE.Mesh).geometry) {
+          (obj as THREE.Mesh).geometry.dispose();
+        }
+        const mat = (obj as THREE.Mesh).material;
+        if (Array.isArray(mat)) {
+          mat.forEach((m) => m.dispose());
+        } else if (mat) {
+          mat.dispose();
+        }
+      });
+      controls.dispose();
       renderer.dispose();
       scene.clear();
     };
@@ -1801,7 +2129,7 @@ export const CounterGeoCommandCenterPage: React.FC<CounterGeoCommandCenterPagePr
             <span>/</span>
             <span className="text-[#D5991C] font-bold">AEO COMMAND CENTER</span>
             <span>/</span>
-            <span className="text-[#00FF9D] font-mono text-[11px]">ALL 8 THREAT SCENES ACTIVE</span>
+            <span className="text-[#00FF9D] font-mono text-[11px]">ALL 10 THREAT SCENES ACTIVE</span>
           </div>
         </div>
 
@@ -1840,7 +2168,7 @@ export const CounterGeoCommandCenterPage: React.FC<CounterGeoCommandCenterPagePr
           </div>
 
           {/* View Mode Buttons */}
-          <div className="flex items-center border border-[#D5991C]/35 bg-[#1e000a] p-0.5">
+          <div className="flex flex-wrap items-center border border-[#D5991C]/35 bg-[#1e000a] p-0.5">
             <button
               onClick={() => setActiveView('3d-sim')}
               className={`px-3 py-1 font-bold flex items-center space-x-1.5 transition-colors cursor-pointer ${
@@ -1850,7 +2178,7 @@ export const CounterGeoCommandCenterPage: React.FC<CounterGeoCommandCenterPagePr
               }`}
             >
               <Activity className="w-3.5 h-3.5" />
-              <span>3D WebGL Lab (8/8)</span>
+              <span>3D WebGL Lab (10/10)</span>
             </button>
             <button
               onClick={() => setActiveView('strategy-catalog')}
@@ -1861,7 +2189,29 @@ export const CounterGeoCommandCenterPage: React.FC<CounterGeoCommandCenterPagePr
               }`}
             >
               <BookOpen className="w-3.5 h-3.5" />
-              <span>Interactive Library ({ATTACK_STRATEGIES_CATALOG.length})</span>
+              <span>Threat Library ({ATTACK_STRATEGIES_CATALOG.length})</span>
+            </button>
+            <button
+              onClick={() => setActiveView('ci-suite')}
+              className={`px-3 py-1 font-bold flex items-center space-x-1.5 transition-colors cursor-pointer ${
+                activeView === 'ci-suite'
+                  ? 'bg-[#D5991C] text-[#130108]'
+                  : 'text-[#FBF3E2]/80 hover:text-white'
+              }`}
+            >
+              <Radar className="w-3.5 h-3.5" />
+              <span>Counterintel (8)</span>
+            </button>
+            <button
+              onClick={() => setActiveView('workbench')}
+              className={`px-3 py-1 font-bold flex items-center space-x-1.5 transition-colors cursor-pointer ${
+                activeView === 'workbench'
+                  ? 'bg-[#D5991C] text-[#130108]'
+                  : 'text-[#FBF3E2]/80 hover:text-white'
+              }`}
+            >
+              <Sliders className="w-3.5 h-3.5" />
+              <span>A2A Workbench (4)</span>
             </button>
           </div>
 
@@ -1913,12 +2263,12 @@ export const CounterGeoCommandCenterPage: React.FC<CounterGeoCommandCenterPagePr
             <p className="text-sm text-[#FBF3E2]/85 max-w-3xl leading-relaxed">
               {knowledgeDepth === 'beginner' && (
                 <>
-                  <strong>New to Answer Engine Optimization (AEO)?</strong> Start in <strong>Level 1 (Plain-English)</strong> to explore everyday analogies and interactive sliders for all 8 threat classes. Step up to <strong>Level 2 (Cyber Ops)</strong> or <strong>Level 3 (Math &amp; Code)</strong> whenever you want deeper detail.
+                  <strong>New to Answer Engine Optimization (AEO)?</strong> Start in <strong>Level 1 (Plain-English)</strong> to explore everyday analogies and interactive sliders for all 10 threat classes, 8 attribution tools, and 4 agent calculators. Step up to <strong>Level 2 (Cyber Ops)</strong> or <strong>Level 3 (Math &amp; Code)</strong> whenever you want deeper detail.
                 </>
               )}
               {knowledgeDepth === 'operator' && (
                 <>
-                  <strong>Cyber Operations Mode:</strong> Exploring how attacks work in practice, which AI surfaces they target, and how our defense layers stop them across all 8 scenarios.
+                  <strong>Cyber Operations Mode:</strong> Exploring how attacks work across AI search and Agent-to-Agent (A2A) networks, which surfaces they target, and how our 16 defense layers stop them.
                 </>
               )}
               {knowledgeDepth === 'architect' && (
@@ -1932,17 +2282,15 @@ export const CounterGeoCommandCenterPage: React.FC<CounterGeoCommandCenterPagePr
           <div className="flex flex-wrap items-center gap-3 text-xs">
             <div className="rounded-lg bg-[#24010d] p-3 border border-[#D5991C]/35 space-y-0.5">
               <span className="text-[11px] text-[#FBF3E2]/70 block">3D Simulators</span>
-              <span className="font-bold text-[#D5991C] text-sm">8 Live Scenes</span>
+              <span className="font-bold text-[#D5991C] text-sm">10 Live Scenes</span>
             </div>
             <div className="rounded-lg bg-[#24010d] p-3 border border-[#00A878]/35 space-y-0.5">
-              <span className="text-[11px] text-[#FBF3E2]/70 block">Lab Accuracy</span>
-              <span className="font-bold text-[#00FF9D] text-sm">99.6% Detection</span>
+              <span className="text-[11px] text-[#FBF3E2]/70 block">Full Defense Stack</span>
+              <span className="font-bold text-[#00FF9D] text-sm">16 Layers Active</span>
             </div>
             <div className="rounded-lg bg-[#24010d] p-3 border border-[#7C3AED]/40 space-y-0.5">
-              <span className="text-[11px] text-[#FBF3E2]/70 block">Reading Depth</span>
-              <span className="font-bold text-[#B565FF] text-sm">
-                {knowledgeDepth === 'beginner' ? 'Level 1: Plain English' : knowledgeDepth === 'operator' ? 'Level 2: Cyber Ops' : 'Level 3: Math & Code'}
-              </span>
+              <span className="text-[11px] text-[#FBF3E2]/70 block">Active Counterintel</span>
+              <span className="font-bold text-[#B565FF] text-sm">8 CI Modules</span>
             </div>
           </div>
         </div>
@@ -1954,15 +2302,15 @@ export const CounterGeoCommandCenterPage: React.FC<CounterGeoCommandCenterPagePr
       {activeView === '3d-sim' && (
         <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-8 flex-1 w-full">
           
-          {/* All 8 Threat Classes Selector Grid */}
+          {/* All 10 Threat Classes Selector Grid */}
           <div className="space-y-2">
             <div className="flex items-center justify-between text-xs font-mono text-[#FBF3E2]/75">
-              <span>SELECT ANY OF THE 8 CATALOGED THREAT CLASSES TO SIMULATE IN 3D WEBGL:</span>
+              <span>SELECT ANY OF THE 10 CATALOGED THREAT CLASSES TO SIMULATE IN 3D WEBGL:</span>
               <span className="text-[#00FF9D] font-bold">
                 ACTIVE: {activeStrategy.code} — {activeStrategy.plainEnglishName}
               </span>
             </div>
-            <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-2 font-mono text-xs">
+            <div className="grid grid-cols-2 sm:grid-cols-5 gap-2 font-mono text-xs">
               {ATTACK_STRATEGIES_CATALOG.map((strat, idx) => (
                 <button
                   key={strat.id}
@@ -2223,7 +2571,7 @@ export const CounterGeoCommandCenterPage: React.FC<CounterGeoCommandCenterPagePr
             <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
               <div className="space-y-1">
                 <h2 className="font-serif text-2xl font-bold text-[#FBF3E2]">
-                  Interactive Catalog of All 8 AEO Attack Classes &amp; Defenses
+                  Interactive Catalog of All 10 AEO &amp; A2A Attack Classes &amp; Defenses
                 </h2>
                 <p className="text-xs text-[#FBF3E2]/80 max-w-3xl leading-relaxed">
                   Every threat card below is <strong>progressive</strong>: start with <strong>Step 1 (Everyday Analogy)</strong> and click through to <strong>Step 4 (Math &amp; Code)</strong>—or use the global depth switcher to unlock full specifications across all cards at once.
@@ -2256,7 +2604,9 @@ export const CounterGeoCommandCenterPage: React.FC<CounterGeoCommandCenterPagePr
                   'Logic & Inference',
                   'Financial & Markets',
                   'Memory & Long-Horizon',
-                  'Regulatory & ZK'
+                  'Regulatory & ZK',
+                  'Silent Web & A2A',
+                  'Quant A2A & Liquidity'
                 ].map((cat) => (
                   <button
                     key={cat}
@@ -2278,7 +2628,8 @@ export const CounterGeoCommandCenterPage: React.FC<CounterGeoCommandCenterPagePr
                   setKnowledgeDepth(knowledgeDepth === 'architect' ? 'beginner' : 'architect');
                   setCardStepMap({
                     'at-1': nextStep, 'at-2': nextStep, 'at-3': nextStep, 'at-4': nextStep,
-                    'at-5': nextStep, 'at-6': nextStep, 'at-7': nextStep, 'at-8': nextStep
+                    'at-5': nextStep, 'at-6': nextStep, 'at-7': nextStep, 'at-8': nextStep,
+                    'at-9': nextStep, 'at-10': nextStep
                   });
                 }}
                 className="px-3 py-1 bg-[#7C3AED] hover:bg-[#9353ff] text-white font-bold text-[11px] uppercase cursor-pointer flex items-center space-x-1.5 shadow-sm"
@@ -2546,6 +2897,23 @@ export const CounterGeoCommandCenterPage: React.FC<CounterGeoCommandCenterPagePr
       )}
 
       {/* ========================================================
+          VIEW 3: ACTIVE COUNTERINTELLIGENCE & ATTRIBUTION SUITE (CI-1 TO CI-8)
+         ======================================================== */}
+      {activeView === 'ci-suite' && (
+        <CommandCenterCiSuiteView
+          knowledgeDepth={knowledgeDepth}
+          onJumpToWorkbench={() => setActiveView('workbench')}
+        />
+      )}
+
+      {/* ========================================================
+          VIEW 4: INTERACTIVE A2A & MARKET WORKBENCH (4 CALCULATORS)
+         ======================================================== */}
+      {activeView === 'workbench' && (
+        <CommandCenterWorkbenchView />
+      )}
+
+      {/* ========================================================
           PAGE FOOTER BAR
          ======================================================== */}
       <footer className="bg-[#24010d] border-t border-[#D5991C]/30 px-4 sm:px-6 py-4 text-xs font-mono text-[#FBF3E2]/70 flex flex-wrap items-center justify-between gap-3">
@@ -2554,13 +2922,15 @@ export const CounterGeoCommandCenterPage: React.FC<CounterGeoCommandCenterPagePr
           <span>·</span>
           <span>SOVEREIGN COUNTER-AEO PROTOCOL</span>
           <span>·</span>
-          <span className="text-[#00FF9D]">ALL 8 WEBGL THREAT SCENES ACTIVE</span>
+          <span className="text-[#00FF9D]">ALL 10 WEBGL THREAT SCENES ACTIVE</span>
         </div>
 
-        <div className="flex items-center space-x-4">
+        <div className="flex flex-wrap items-center gap-4">
           <button onClick={() => onNavigate('counter-geo')} className="hover:text-white underline cursor-pointer">Vol. 1 Whitepaper</button>
           <button onClick={() => onNavigate('counter-geo-vol2')} className="hover:text-white underline cursor-pointer">Vol. 2 Whitepaper</button>
-          <button onClick={() => onNavigate('counter-geo-vol3')} className="hover:text-white underline cursor-pointer">Vol. 3 Benchmark Suite</button>
+          <button onClick={() => onNavigate('counter-geo-vol3')} className="hover:text-white underline cursor-pointer">Vol. 3 Benchmarks</button>
+          <button onClick={() => onNavigate('counter-geo-vol4')} className="hover:text-white underline cursor-pointer">Vol. 4 Hardware</button>
+          <button onClick={() => onNavigate('counter-geo-vol5')} className="hover:text-white underline cursor-pointer">Vol. 5 A2A Engine</button>
         </div>
       </footer>
 

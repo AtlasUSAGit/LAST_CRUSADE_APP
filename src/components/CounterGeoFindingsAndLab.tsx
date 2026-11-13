@@ -1282,24 +1282,23 @@ export const CounterGeoFindingsAndLab: React.FC<FindingsAndLabProps> = ({
             {/* Algorithms Grid (6 Defense Layers) */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
               
-              {/* CARD 1: LAYER 0 - MTVD Householder Rotation */}
+              {/* CARD 1: LAYER 0 - Search Coordinate Rotation & Watermark Traps */}
               <div className="bg-[#FFFDF8] border border-[#F2D69D] p-6 shadow-xs space-y-4">
                 <div className="flex items-center justify-between pb-3 border-b border-[#F2D69D]">
-                  <span className="font-mono text-xs text-[#D5991C] font-bold uppercase tracking-wider">
-                    // LAYER 0 DEFENSE
+                  <span className="px-2.5 py-0.5 rounded-full text-xs bg-[#FAF2E1] border border-[#F2D69D] text-[#410217] font-semibold">
+                    Layer 0 Defense
                   </span>
-                  <span className="font-mono text-[10px] bg-[#FAF2E1] px-2 py-0.5 border border-[#F2D69D] text-[#004566] font-bold">
-                    MTVD & CANARY MANIFOLD
+                  <span className="font-mono text-[10px] text-[#004566] font-bold">
+                    MTVD &amp; CANARY TRAPS
                   </span>
                 </div>
 
                 <div>
                   <h4 className="font-serif font-bold text-lg text-[#410217]">
-                    Key-Seeded Isometric Orthogonal Rotation (IOMR)
+                    Search Coordinate Rotation &amp; Digital Watermark Traps
                   </h4>
                   <p className="text-xs text-[#410217]/75 font-sans mt-1">
-                    Householder reflection Q_t = (I - 2 u u^T) transforms vector indexing every epoch,
-                    preserving natural distances while scrambling adversarial hubs.
+                    Rotates internal search coordinates periodically so outside scrapers cannot map or game them, while leaving normal ranking distances intact.
                   </p>
                 </div>
 
@@ -1343,24 +1342,23 @@ export const CounterGeoFindingsAndLab: React.FC<FindingsAndLabProps> = ({
                 </button>
               </div>
 
-              {/* CARD 2: LAYER 1 - AM-CIDP Levina-Bickel LID */}
+              {/* CARD 2: LAYER 1 - Search Trap & Sinkhole Detection */}
               <div className="bg-[#FFFDF8] border border-[#F2D69D] p-6 shadow-xs space-y-4">
                 <div className="flex items-center justify-between pb-3 border-b border-[#F2D69D]">
-                  <span className="font-mono text-xs text-[#D5991C] font-bold uppercase tracking-wider">
-                    // LAYER 1 DEFENSE
+                  <span className="px-2.5 py-0.5 rounded-full text-xs bg-[#FAF2E1] border border-[#F2D69D] text-[#410217] font-semibold">
+                    Layer 1 Defense
                   </span>
-                  <span className="font-mono text-[10px] bg-[#FAF2E1] px-2 py-0.5 border border-[#F2D69D] text-[#8B1E1E] font-bold">
-                    AM-CIDP (UPGRADED AMTD)
+                  <span className="font-mono text-[10px] text-[#8B1E1E] font-bold">
+                    AM-CIDP HUB FILTER
                   </span>
                 </div>
 
                 <div>
                   <h4 className="font-serif font-bold text-lg text-[#410217]">
-                    Levina-Bickel Local Intrinsic Dimensionality (LID)
+                    Search Trap &amp; Sinkhole Detection
                   </h4>
                   <p className="text-xs text-[#410217]/75 font-sans mt-1">
-                    Detects topological vector sinkholes. Adversarial retrieval hubs collapse local tangent
-                    degrees of freedom into low-dimensional bottlenecks (LID &lt; 4.5).
+                    Spots unnatural "gravity wells" where one manipulated webpage tries to pull in thousands of unrelated searches at once.
                   </p>
                 </div>
 
@@ -1419,24 +1417,23 @@ export const CounterGeoFindingsAndLab: React.FC<FindingsAndLabProps> = ({
                 </div>
               </div>
 
-              {/* CARD 3: LAYER 2 - NCARD Rank Divergence */}
+              {/* CARD 3: LAYER 2 - 3-Engine Search Consistency Check */}
               <div className="bg-[#FFFDF8] border border-[#F2D69D] p-6 shadow-xs space-y-4">
                 <div className="flex items-center justify-between pb-3 border-b border-[#F2D69D]">
-                  <span className="font-mono text-xs text-[#D5991C] font-bold uppercase tracking-wider">
-                    // LAYER 2 DEFENSE
+                  <span className="px-2.5 py-0.5 rounded-full text-xs bg-[#FAF2E1] border border-[#F2D69D] text-[#410217] font-semibold">
+                    Layer 2 Defense
                   </span>
-                  <span className="font-mono text-[10px] bg-[#FAF2E1] px-2 py-0.5 border border-[#F2D69D] text-[#004566] font-bold">
-                    NCARD RANK DIVERGENCE
+                  <span className="font-mono text-[10px] text-[#004566] font-bold">
+                    NCARD CONSISTENCY CHECK
                   </span>
                 </div>
 
                 <div>
                   <h4 className="font-serif font-bold text-lg text-[#410217]">
-                    Normalized Cross-Architecture Rank Divergence
+                    3-Engine Search Consistency Check
                   </h4>
                   <p className="text-xs text-[#410217]/75 font-sans mt-1">
-                    Evaluates consistency across Dense, ColBERT Late-Interaction, and Sparse SPLADE retrievers.
-                    Solves scale non-linearity of Delta_CEGD.
+                    Compares how a webpage ranks across three different search methods (meaning, phrase match, and exact words) to catch disguised "expert" articles.
                   </p>
                 </div>
 
@@ -1503,24 +1500,23 @@ export const CounterGeoFindingsAndLab: React.FC<FindingsAndLabProps> = ({
                 </div>
               </div>
 
-              {/* CARD 4: LAYER 3 - TCG-CL v2.0 C2PA & Hawkes Sybil */}
+              {/* CARD 4: LAYER 3 - Verified Source & Botnet Filter */}
               <div className="bg-[#FFFDF8] border border-[#F2D69D] p-6 shadow-xs space-y-4">
                 <div className="flex items-center justify-between pb-3 border-b border-[#F2D69D]">
-                  <span className="font-mono text-xs text-[#D5991C] font-bold uppercase tracking-wider">
-                    // LAYER 3 DEFENSE
+                  <span className="px-2.5 py-0.5 rounded-full text-xs bg-[#FAF2E1] border border-[#F2D69D] text-[#410217] font-semibold">
+                    Layer 3 Defense
                   </span>
-                  <span className="font-mono text-[10px] bg-[#FAF2E1] px-2 py-0.5 border border-[#F2D69D] text-[#00A878] font-bold">
-                    TCG-CL v2.0 & C2PA
+                  <span className="font-mono text-[10px] text-[#00A878] font-bold">
+                    PROVENANCE &amp; BOTNET FILTER
                   </span>
                 </div>
 
                 <div>
                   <h4 className="font-serif font-bold text-lg text-[#410217]">
-                    Temporal Citation Graph & Hawkes Point Process
+                    Verified Source &amp; Botnet Timing Filter
                   </h4>
                   <p className="text-xs text-[#410217]/75 font-sans mt-1">
-                    Defeats multi-domain synthetic consensus. Distinguishes organic breaking reporting
-                    from closed-loop state Sybil botnets via C2PA roots and Hawkes burstiness (CV^2).
+                    Distinguishes authentic news wires with cryptographic signatures from coordinated networks of fake blogs repeating the same rumor.
                   </p>
                 </div>
 
@@ -1579,24 +1575,23 @@ export const CounterGeoFindingsAndLab: React.FC<FindingsAndLabProps> = ({
                 </div>
               </div>
 
-              {/* CARD 5: LAYER 4A - CEH-ASID Attention Tomography */}
+              {/* CARD 5: LAYER 4A - Multi-Document Logic Firewall */}
               <div className="bg-[#FFFDF8] border border-[#F2D69D] p-6 shadow-xs space-y-4">
                 <div className="flex items-center justify-between pb-3 border-b border-[#F2D69D]">
-                  <span className="font-mono text-xs text-[#D5991C] font-bold uppercase tracking-wider">
-                    // LAYER 4A DEFENSE
+                  <span className="px-2.5 py-0.5 rounded-full text-xs bg-[#FAF2E1] border border-[#F2D69D] text-[#410217] font-semibold">
+                    Layer 4A Defense
                   </span>
-                  <span className="font-mono text-[10px] bg-[#FAF2E1] px-2 py-0.5 border border-[#F2D69D] text-[#D5991C] font-bold">
-                    CEH-ASID & MÖBIUS SYNERGY
+                  <span className="font-mono text-[10px] text-[#D5991C] font-bold">
+                    SPLIT-TRAP FIREWALL
                   </span>
                 </div>
 
                 <div>
                   <h4 className="font-serif font-bold text-lg text-[#410217]">
-                    Combinatorial Epistemic Holography & Attention Tomography
+                    Multi-Document Logic &amp; Attention Firewall
                   </h4>
                   <p className="text-xs text-[#410217]/75 font-sans mt-1">
-                    Detects Split-Payload (Enthymematic) attacks across multiple benign documents.
-                    Applies surgical attention masking (mask[u,v] = -1e9) to sever bridge tokens.
+                    Stops "jigsaw puzzle" attacks where separate innocent-looking pages are built to combine inside an AI’s reasoning into a false conclusion.
                   </p>
                 </div>
 
@@ -1655,24 +1650,23 @@ export const CounterGeoFindingsAndLab: React.FC<FindingsAndLabProps> = ({
                 </div>
               </div>
 
-              {/* CARD 6: LAYER 4B - TMMEG Thermodynamic Order Book Shield */}
+              {/* CARD 6: LAYER 4B - Live Market Reality & Order-Book Brake */}
               <div className="bg-[#FFFDF8] border border-[#F2D69D] p-6 shadow-xs space-y-4">
                 <div className="flex items-center justify-between pb-3 border-b border-[#F2D69D]">
-                  <span className="font-mono text-xs text-[#D5991C] font-bold uppercase tracking-wider">
-                    // LAYER 4B DEFENSE
+                  <span className="px-2.5 py-0.5 rounded-full text-xs bg-[#FAF2E1] border border-[#F2D69D] text-[#410217] font-semibold">
+                    Layer 4B Defense
                   </span>
-                  <span className="font-mono text-[10px] bg-[#FAF2E1] px-2 py-0.5 border border-[#F2D69D] text-[#8B1E1E] font-bold">
-                    TMMEG & SEC RULE 15c3-8
+                  <span className="font-mono text-[10px] text-[#8B1E1E] font-bold">
+                    MARKET REALITY BRAKE
                   </span>
                 </div>
 
                 <div>
                   <h4 className="font-serif font-bold text-lg text-[#410217]">
-                    Thermodynamic Market-Microstructure Epistemic Grounding
+                    Live Market Reality &amp; Order-Book Brake
                   </h4>
                   <p className="text-xs text-[#410217]/75 font-sans mt-1">
-                    Binds unstructured RAG text to live Limit Order Book energy, VPIN, and Kyle's lambda.
-                    Detects Predatory Liquidity Traps and triggers 15-second epistemic halts.
+                    Cross-checks breaking online rumors against real trading activity and waiting sell walls, automatically pausing bots before they buy into a trap.
                   </p>
                 </div>
 
@@ -1732,11 +1726,9 @@ export const CounterGeoFindingsAndLab: React.FC<FindingsAndLabProps> = ({
           <div className="space-y-12">
             
             <div className="text-center max-w-3xl mx-auto space-y-2">
-              <span className="font-mono text-xs text-[#D5991C] uppercase tracking-widest font-bold">
-                // ARCHITECTURAL SCHEMATICS & EMPIRICAL BENCHMARKS
-              </span>
+              <div className="w-12 h-1 bg-[#D5991C] rounded-full mx-auto" />
               <h3 className="font-serif text-3xl font-bold text-[#410217]">
-                Whitepaper Graphic Figures & Synthesis Matrix
+                Visual Figures &amp; Architecture Diagrams
               </h3>
               <p className="text-sm text-[#410217]/75 font-sans">
                 Interactive diagrams faithfully recreating Figures 1–8 and Tables 1–5 from Counter AEO Master Doc Volume 1.
@@ -2064,8 +2056,8 @@ export const CounterGeoFindingsAndLab: React.FC<FindingsAndLabProps> = ({
                     <span className={`w-2.5 h-2.5 rounded-full ${isAttackInjected ? 'bg-[#E63946] animate-pulse shadow-sm shadow-[#E63946]' : 'bg-[#00A878] shadow-sm shadow-[#00A878]'}`} />
                     <span className="font-bold text-sm tracking-wide">
                       {isAttackInjected
-                        ? `ATTACK TRIGGERED // ${['COLLAPSED MANIFOLD SINGULARITY', 'NCARD DIVERGENCE (Δr > 60)', 'CEH-ASID ATTENTION HIJACKED', 'TMMEG CANCELLATION OVERFLOW', 'SYBIL POISON PROBE REJECTED'][webglMode]}`
-                        : `SOVEREIGN DEFENSE ACTIVE // ${['TOPOLOGICAL MANIFOLD PRESERVED', 'NCARD MULTI-VECTOR CONSENSUS', 'CEH-ASID ZERO-FONT SUPPRESSED', 'TMMEG ORDER BOOK EQUILIBRIUM', 'BN254 zk-SNARK SWARM PROVED'][webglMode]}`}
+                        ? `ATTACK TRIGGERED · ${['COLLAPSED MANIFOLD SINGULARITY', 'NCARD DIVERGENCE (Δr > 60)', 'CEH-ASID ATTENTION HIJACKED', 'TMMEG CANCELLATION OVERFLOW', 'SYBIL POISON PROBE REJECTED'][webglMode]}`
+                        : `SOVEREIGN DEFENSE ACTIVE · ${['TOPOLOGICAL MANIFOLD PRESERVED', 'NCARD MULTI-VECTOR CONSENSUS', 'CEH-ASID ZERO-FONT SUPPRESSED', 'TMMEG ORDER BOOK EQUILIBRIUM', 'BN254 zk-SNARK SWARM PROVED'][webglMode]}`}
                     </span>
                   </div>
                   <div className="text-[#D5991C] text-[11px] flex items-center space-x-2">

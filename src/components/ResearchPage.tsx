@@ -147,6 +147,36 @@ export const ResearchPage: React.FC<ResearchPageProps> = ({
     },
     {
       layer: 'Layer 9',
+      vol: 'Vol. III',
+      volKey: 'counter-geo-vol3' as NavigationPage,
+      name: 'Sanctions & Ownership De-Cloaking',
+      threat: 'Shell companies hiding sanctioned owners behind layered offshore entities',
+      core: 'Maps nested ownership trees in hyperbolic space and evicts duplicate chaff',
+      latency: '3.2 ms',
+      status: 'Active',
+    },
+    {
+      layer: 'Layer 10',
+      vol: 'Vol. III',
+      volKey: 'counter-geo-vol3' as NavigationPage,
+      name: 'Physical Supply & Cargo Verification',
+      threat: 'Fake trade prices and forged shortage alerts sent to factory purchasing AI',
+      core: 'Checks claims against electricity input floors and satellite ship draft data',
+      latency: '4.8 ms',
+      status: 'Active',
+    },
+    {
+      layer: 'Layer 11',
+      vol: 'Vol. III',
+      volKey: 'counter-geo-vol3' as NavigationPage,
+      name: 'Cross-Venue Contagion Shield',
+      threat: 'Correlated rumors sweeping dozens of shared AI trading models at once',
+      core: 'Dampens correlated model bursts and verifies independent price discovery',
+      latency: '1.9 ms',
+      status: 'Active',
+    },
+    {
+      layer: 'Layer 12',
       vol: 'Vol. IV',
       volKey: 'counter-geo-vol4' as NavigationPage,
       name: '142ns Hardware Circuit Breaker',
@@ -156,13 +186,43 @@ export const ResearchPage: React.FC<ResearchPageProps> = ({
       status: 'Active',
     },
     {
-      layer: 'Layer 10',
+      layer: 'Layer 13',
       vol: 'Vol. V',
       volKey: 'counter-geo-vol5' as NavigationPage,
-      name: 'Agent-to-Agent Discovery & Shield',
-      threat: 'Disguised malicious software tools hijacking autonomous AI agents',
-      core: 'Optimizes legitimate tool schemas for selection and isolates untrusted tool data',
+      name: 'Flat 1-Layer Tool Profile & Handshake',
+      threat: 'Legitimate AI tools being skipped by autonomous orchestrators due to nested schemas',
+      core: 'Flattens JSON schemas cleanly and attaches compact verified bid receipts',
       latency: '< 0.3 ms',
+      status: 'Active',
+    },
+    {
+      layer: 'Layer 14',
+      vol: 'Vol. V',
+      volKey: 'counter-geo-vol5' as NavigationPage,
+      name: 'Sealed Agent Envelopes & Shuffle Check',
+      threat: 'Untrusted sub-agent records hijacking downstream AI tools (Boundary Laundering)',
+      core: 'Isolates untrusted values in opaque references and audits list-order fairness',
+      latency: '0.8 ms',
+      status: 'Active',
+    },
+    {
+      layer: 'Layer 15',
+      vol: 'Vol. V',
+      volKey: 'counter-geo-vol5' as NavigationPage,
+      name: 'Adaptive Traffic & Spending Firewall',
+      threat: 'Router disguises redirecting autonomous workflows or bypassing x402 payment caps',
+      core: 'Continuously tests router defenses against disguised prompts and checks MANDATE rules',
+      latency: '1.6 ms',
+      status: 'Active',
+    },
+    {
+      layer: 'Layer 16',
+      vol: 'Vol. V',
+      volKey: 'counter-geo-vol5' as NavigationPage,
+      name: 'Verified Signal Allocation & Market Gate',
+      threat: 'Fake high-confidence signal bots luring buy-side algorithms into illiquid traps',
+      core: 'Confirms honest proofs (+42.55% lift) and blocks trades when order-book impact spikes',
+      latency: '0.5 ms',
       status: 'Active',
     },
   ];
@@ -194,8 +254,8 @@ export const ResearchPage: React.FC<ResearchPageProps> = ({
 
               <div className="p-3.5 rounded-xl bg-[#FAF2E1] border border-[#F2D69D]">
                 <div className="text-[11px] text-[#410217]/70 font-medium">Defense Architecture</div>
-                <div className="text-xl font-serif font-bold text-[#410217] mt-0.5">12 Layers</div>
-                <div className="text-[11px] text-[#00A878] font-medium mt-0.5">Search to Agents</div>
+                <div className="text-xl font-serif font-bold text-[#410217] mt-0.5">16 Layers + 8 CI</div>
+                <div className="text-[11px] text-[#00A878] font-medium mt-0.5">Search to A2A</div>
               </div>
 
               <div className="p-3.5 rounded-xl bg-[#FAF2E1] border border-[#F2D69D]">
@@ -984,6 +1044,45 @@ export const ResearchPage: React.FC<ResearchPageProps> = ({
       </section>
 
       {/* Citation Block */}
+      <section id="ci-attribution" className="py-14 bg-[#FFFDF9] border-t border-[#F2D69D]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-wrap items-end justify-between gap-4 mb-8">
+            <div>
+              <div className="w-10 h-1 bg-[#D5991C] rounded-full mb-3" />
+              <h2 className="font-serif text-3xl sm:text-4xl text-[#410217] font-normal tracking-tight">
+                Active Counterintelligence &amp; Threat Attribution (CI-1 to CI-8)
+              </h2>
+            </div>
+            <button
+              onClick={() => onNavigate('counter-geo-ops')}
+              className="px-4 py-2 rounded-lg bg-[#410217] hover:bg-[#5C0A24] text-[#FBF3E2] text-xs font-semibold flex items-center space-x-2 cursor-pointer transition-colors"
+            >
+              <span>Inspect Interactive CI Suite in 3D Lab</span>
+              <ArrowRight className="w-3.5 h-3.5 text-[#D5991C]" />
+            </button>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 text-xs">
+            {[
+              { code: 'CI-1', name: 'Digital Watermark Traps', desc: 'Hidden linguistic marks inside decoy briefings track unauthorized scraping chains.' },
+              { code: 'CI-2', name: 'Early-Warning Decoy Topics', desc: 'Monitors quiet search voids overnight to catch fake-news staging early.' },
+              { code: 'CI-3', name: 'Campaign & Botnet Fingerprinting', desc: 'Links staggered blog networks and timing patterns into STIX 2.1 dossiers.' },
+              { code: 'CI-4', name: 'Verified Fact & Source Recovery', desc: 'Spots suppression floods and restores hardware-signed filings to top results.' },
+              { code: 'CI-5', name: 'Decoy Agent & MCP Traps', desc: 'Captures adversarial scanners trying to inject rogue tools into Silent Web directories.' },
+              { code: 'CI-6', name: 'Agent Bid & Sybil Tracing', desc: 'Uses harmless sample contracts to unmask shared backend wallets and clone swarms.' },
+              { code: 'CI-7', name: 'Sealed Data-Leak Tripwires', desc: 'Plants canary secrets inside untrusted records to intercept cross-agent leaks.' },
+              { code: 'CI-8', name: 'Directory Pinning & Audit Logs', desc: 'Protects official institutional agent cards and archives tamper-evident replays.' }
+            ].map((ci) => (
+              <div key={ci.code} className="p-4 rounded-xl bg-[#FAF2E1] border border-[#F2D69D] hover:border-[#D5991C] transition-colors space-y-1.5">
+                <div className="font-mono text-[11px] font-bold text-[#D5991C]">{ci.code}</div>
+                <div className="font-serif text-base font-bold text-[#410217]">{ci.name}</div>
+                <p className="text-[#410217]/80 leading-relaxed">{ci.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <section id="citations" className="py-14 bg-[#FAF2E1] border-t border-[#F2D69D]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl">

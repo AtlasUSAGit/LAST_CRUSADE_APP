@@ -67,7 +67,7 @@ const TETRALOGY_VOLUMES: TetralogyVolume[] = [
     id: 'ADV-2026-004',
     volumeNumber: 'VOLUME I',
     roman: 'I',
-    code: 'LCD-VOL-01 // LAYERS 0–4',
+    code: 'LCD-VOL-01 · LAYERS 0–4',
     date: 'October 2026',
     title: 'Sovereign Architecture for Epistemic & Financial Cybersecurity',
     subtitle: 'Vector De-Biasing, Intrinsic Dimension & 6-Layer RAG Defense',
@@ -83,7 +83,7 @@ const TETRALOGY_VOLUMES: TetralogyVolume[] = [
     id: 'ADV-2026-003',
     volumeNumber: 'VOLUME II',
     roman: 'II',
-    code: 'LCD-VOL-02 // LAYERS 5–8',
+    code: 'LCD-VOL-02 · LAYERS 5–8',
     date: 'October 2026',
     title: 'Stateful Memory Immunity, Byzantine Swarms & Zero-Knowledge Compliance',
     subtitle: 'Doob-Meyer Epistemic Martingales, VLM Saliency & 288-Byte zk-SNARKs',
@@ -99,7 +99,7 @@ const TETRALOGY_VOLUMES: TetralogyVolume[] = [
     id: 'ADV-2026-002',
     volumeNumber: 'VOLUME III',
     roman: 'III',
-    code: 'LCD-VOL-03 // BENCHMARK SUITE',
+    code: 'LCD-VOL-03 · BENCHMARK SUITE',
     date: 'October 2026',
     title: 'The CounterAEO-Bench Simulation Suite, Flash-Crash Stress Testing & ROC/AUC',
     subtitle: '250,000-Vector Empirical Validation & Order-Book Contagion Trials',
@@ -115,7 +115,7 @@ const TETRALOGY_VOLUMES: TetralogyVolume[] = [
     id: 'ADV-2026-001',
     volumeNumber: 'VOLUME IV',
     roman: 'IV',
-    code: 'LCD-VOL-04 // SILICON & ENCLAVE',
+    code: 'LCD-VOL-04 · SILICON & ENCLAVE',
     date: 'October 2026',
     title: 'Wire-Speed 142ns FPGA SmartNIC Interdiction & Sovereign Enclave Architecture',
     subtitle: 'Xilinx UltraScale+ 45-Clock Q8.24 Pipeline & Actuarial VaR Guard',
@@ -624,7 +624,7 @@ const ArchivalGeodesicPoster: React.FC<{
 
         <rect x="233" y="233" width="14" height="14" fill="#410217" stroke="#D5991C" strokeWidth="1.5" transform="rotate(45 240 240)" />
         <text x="240" y="218" textAnchor="middle" className="font-mono text-[9px] fill-[#410217] font-bold tracking-widest">
-          HSM GROUND TRUTH // Q_t ∈ O(d)
+          HSM GROUND TRUTH · Q_t ∈ O(d)
         </text>
         <text x="240" y="454" textAnchor="middle" className="font-mono text-[9px] fill-[#6E3340] tracking-widest uppercase">
           {stageLabel}
@@ -698,8 +698,8 @@ const SinkholeSchematicPlate: React.FC<{ perturbation: number; shieldActive: boo
 
       <text x="210" y="24" textAnchor="middle" className="font-mono text-[9px] fill-[#410217] font-bold">
         {shieldActive
-          ? 'AM-CIDP QUARANTINE DOME ENGAGED // LID_k STABILIZED'
-          : 'UNPROTECTED AT-1 SINKHOLE // 21,400+ QUERIES CAPTURED'}
+          ? 'AM-CIDP QUARANTINE DOME ENGAGED · LID_k STABILIZED'
+          : 'UNPROTECTED AT-1 SINKHOLE · 21,400+ QUERIES CAPTURED'}
       </text>
       <text
         x="210"
@@ -1403,11 +1403,11 @@ export const HomeRedesign: React.FC<HomeRedesignProps> = ({
   }, [perturbationEpsilon, shieldEngaged]);
 
   const stageNames = [
-    'STAGE I // GEODESIC RAG MANIFOLD [38.90°N, 77.03°W]',
-    'STAGE II // TOPOLOGICAL SINKHOLE GRAVITY WELL (AM-CIDP)',
-    'STAGE III // HOUSEHOLDER ISOMETRIC ROTATION Q_t ∈ O(d)',
-    'STAGE IV // 142.0ns FPGA ORDER-BOOK WAVEFRONT (TMMEG)',
-    'STAGE V // ZERO-KNOWLEDGE R1CS MERKLE LATTICE (ZK-CAEO)'
+    'STAGE I · GEODESIC RAG MANIFOLD [38.90°N, 77.03°W]',
+    'STAGE II · TOPOLOGICAL SINKHOLE GRAVITY WELL (AM-CIDP)',
+    'STAGE III · HOUSEHOLDER ISOMETRIC ROTATION Q_t ∈ O(d)',
+    'STAGE IV · 142.0ns FPGA ORDER-BOOK WAVEFRONT (TMMEG)',
+    'STAGE V · ZERO-KNOWLEDGE R1CS MERKLE LATTICE (ZK-CAEO)'
   ];
 
   const activeService = useMemo(
@@ -1446,7 +1446,7 @@ export const HomeRedesign: React.FC<HomeRedesignProps> = ({
           <div className="flex items-center gap-3">
             <span className="inline-flex items-center gap-1.5 px-2 py-0.5 bg-[#410217] text-[#FBF3E2] font-bold tracking-widest uppercase text-[10px]">
               <span className="w-1.5 h-1.5 rounded-full bg-[#D5991C]" />
-              FOLIO // LCD-2026-SOVEREIGN
+              FOLIO · LCD-2026-SOVEREIGN
             </span>
             <span className="hidden sm:inline text-[#5A1827] font-semibold">
               {stageNames[activeStageIndex]}
@@ -1516,7 +1516,7 @@ export const HomeRedesign: React.FC<HomeRedesignProps> = ({
           <div className="flex flex-wrap items-center justify-between gap-4 pb-6 mb-8 border-b border-[#410217]/15 font-mono text-[11px] text-[#5A1827]">
             <div className="flex items-center gap-3">
               <span className="font-bold text-[#8B5A0B] uppercase tracking-[0.2em]">
-                § 00 // SOVEREIGN EPISTEMIC &amp; FINANCIAL DEFENSE
+                § 00 · SOVEREIGN EPISTEMIC &amp; FINANCIAL DEFENSE
               </span>
               <span className="hidden sm:inline text-[#410217]/30">|</span>
               <span className="hidden sm:inline">WASHINGTON D.C. COMMAND HUB [38.9072° N, 77.0369° W]</span>
@@ -1569,7 +1569,7 @@ export const HomeRedesign: React.FC<HomeRedesignProps> = ({
                   <div className="flex items-center gap-2">
                     <Sliders className="w-3.5 h-3.5 text-[#8B5A0B]" />
                     <span className="font-bold uppercase tracking-wider text-[#410217]">
-                      LIVE MANIFOLD STRESS TEST // ADVERSARIAL PERTURBATION (ε)
+                      LIVE MANIFOLD STRESS TEST · ADVERSARIAL PERTURBATION (ε)
                     </span>
                   </div>
                   <span className="text-[11px] font-bold text-[#8B5A0B] tabular-nums">
@@ -1671,7 +1671,7 @@ export const HomeRedesign: React.FC<HomeRedesignProps> = ({
                 <div className="flex items-center justify-between px-4 py-2.5 bg-[#410217] text-[#FBF3E2] font-mono text-[10px] tracking-widest uppercase">
                   <div className="flex items-center gap-2">
                     <Compass className="w-3.5 h-3.5 text-[#D5991C]" />
-                    <span>OBSERVATORY // 1,536-DIM RAG MANIFOLD</span>
+                    <span>OBSERVATORY · 1,536-DIM RAG MANIFOLD</span>
                   </div>
                   <span className="text-[#D5991C] font-bold">
                     {webglSupported ? 'WEBGL 2.0 + GLSL' : 'STATIC PLATE'}
@@ -1783,7 +1783,7 @@ export const HomeRedesign: React.FC<HomeRedesignProps> = ({
           {/* Direct Module Index & Sovereign Metrics Ledger */}
           <div className="mt-14 pt-8 border-t border-[#410217]/20">
             <div className="flex items-center justify-between font-mono text-[10px] uppercase tracking-[0.22em] text-[#5A1827] mb-4">
-              <span>DIRECT PLATFORM DISPATCH // INTERACTIVE WORKBENCHES &amp; ARCHIVES</span>
+              <span>DIRECT PLATFORM DISPATCH · INTERACTIVE WORKBENCHES &amp; ARCHIVES</span>
               <span>SELECT MODULE TO LAUNCH</span>
             </div>
 
@@ -1826,7 +1826,7 @@ export const HomeRedesign: React.FC<HomeRedesignProps> = ({
                 >
                   <div className="flex items-center justify-between font-mono text-[10px] mb-4">
                     <span className="font-bold text-[#8B5A0B] group-hover:text-[#D5991C]">
-                      MODULE // {item.num}
+                      MODULE · {item.num}
                     </span>
                     <ArrowUpRight className="w-4 h-4 text-[#410217]/60 group-hover:text-[#D5991C] transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                   </div>
@@ -1913,7 +1913,7 @@ export const HomeRedesign: React.FC<HomeRedesignProps> = ({
             <div className="lg:col-span-5 lg:sticky lg:top-24 space-y-6">
               <div className="flex items-baseline justify-between font-mono text-xs">
                 <span className="text-[#8B5A0B] font-bold uppercase tracking-[0.2em]">
-                  § 01 // THE ASYMMETRIC BACKDOOR
+                  § 01 · THE ASYMMETRIC BACKDOOR
                 </span>
                 <span
                   data-parallax-numeral
@@ -1939,7 +1939,7 @@ export const HomeRedesign: React.FC<HomeRedesignProps> = ({
               {/* SLOT 1: Topological Sinkhole Gravity Funnel Viewport */}
               <div className="bg-[#FAF2E1] border border-[#410217]/30 overflow-hidden">
                 <div className="px-4 py-2 bg-[#410217] text-[#FBF3E2] font-mono text-[10px] flex items-center justify-between uppercase tracking-widest">
-                  <span>STAGE II // RIEMANNIAN SINKHOLE FUNNEL (AM-CIDP)</span>
+                  <span>STAGE II · RIEMANNIAN SINKHOLE FUNNEL (AM-CIDP)</span>
                   <span className="text-[#D5991C] font-bold">LID_k = {liveIntrinsicDim}</span>
                 </div>
                 <div
@@ -1992,7 +1992,7 @@ export const HomeRedesign: React.FC<HomeRedesignProps> = ({
             <div className="lg:col-span-7 space-y-6">
               {[
                 {
-                  clause: '§ 01.1 // MODEL OPERATIONS',
+                  clause: '§ 01.1 · MODEL OPERATIONS',
                   severity: 'CRITICAL',
                   severityStyle: 'bg-[#8B1E1E]/10 text-[#8B1E1E] border-[#8B1E1E]/35',
                   title: 'Open-Web RAG Sinkholes & Asymmetric Model Hijacking',
@@ -2006,7 +2006,7 @@ export const HomeRedesign: React.FC<HomeRedesignProps> = ({
                   presetShield: false
                 },
                 {
-                  clause: '§ 01.2 // MARKET WARFARE',
+                  clause: '§ 01.2 · MARKET WARFARE',
                   severity: 'HIGH SEVERITY',
                   severityStyle: 'bg-[#D5991C]/15 text-[#8B5A0B] border-[#D5991C]/45',
                   title: 'Liquidity Extraction Arbitrage & Order-Book Traps',
@@ -2020,7 +2020,7 @@ export const HomeRedesign: React.FC<HomeRedesignProps> = ({
                   presetShield: true
                 },
                 {
-                  clause: '§ 01.3 // AGENT INTERDICTION',
+                  clause: '§ 01.3 · AGENT INTERDICTION',
                   severity: 'SYSTEMIC',
                   severityStyle: 'bg-[#004566]/10 text-[#004566] border-[#004566]/35',
                   title: 'Autonomous Swarm & Agent-to-Agent (A2A) Sabotage',
@@ -2110,7 +2110,7 @@ export const HomeRedesign: React.FC<HomeRedesignProps> = ({
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
               <div className="lg:col-span-7 space-y-4">
                 <div className="font-mono text-xs text-[#D5991C] font-bold uppercase tracking-[0.22em]">
-                  § 02 // ACTIVE INTERDICTION PROTOCOL · 10-LAYER DEFENSE STACK
+                  § 02 · ACTIVE INTERDICTION PROTOCOL · 10-LAYER DEFENSE STACK
                 </div>
                 <h2
                   id="interdiction-heading"
@@ -2128,7 +2128,7 @@ export const HomeRedesign: React.FC<HomeRedesignProps> = ({
               {/* SLOT 2: 3D Householder Isometric Rotation & Quarantine Dome Viewport */}
               <div className="lg:col-span-5 bg-[#1A0109] border border-[#D5991C]/40 overflow-hidden">
                 <div className="px-4 py-2 bg-[#310111] border-b border-[#F2D69D]/20 font-mono text-[10px] flex items-center justify-between uppercase tracking-widest">
-                  <span className="text-[#D5991C] font-bold">STAGE III // HOUSEHOLDER ISOMETRIC SHIELD</span>
+                  <span className="text-[#D5991C] font-bold">STAGE III · HOUSEHOLDER ISOMETRIC SHIELD</span>
                   <span className="text-[#25B888]">ACT 0{activeInterdictionAct + 1} ACTIVE</span>
                 </div>
                 <div
@@ -2150,10 +2150,10 @@ export const HomeRedesign: React.FC<HomeRedesignProps> = ({
                     <line x1="210" y1="110" x2="290" y2="170" stroke="#25B888" strokeWidth="2" />
                     <circle cx="210" cy="110" r="5" fill="#D5991C" />
                     <text x="210" y="24" textAnchor="middle" className="font-mono text-[9px] fill-[#F2D69D] font-bold">
-                      HOUSEHOLDER HYPERPLANE // Q_t = I - 2u_t u_t^⊤ ∈ O(d)
+                      HOUSEHOLDER HYPERPLANE · Q_t = I - 2u_t u_t^⊤ ∈ O(d)
                     </text>
                     <text x="210" y="206" textAnchor="middle" className="font-mono text-[9px] fill-[#25B888] font-bold">
-                      45-CLOCK XILINX ULTRASCALE+ GATE // 142.0 ns WIRE-SPEED
+                      45-CLOCK XILINX ULTRASCALE+ GATE · 142.0 ns WIRE-SPEED
                     </text>
                   </svg>
                 </div>
@@ -2165,7 +2165,7 @@ export const HomeRedesign: React.FC<HomeRedesignProps> = ({
             {[
               {
                 act: 0 as const,
-                phase: 'ACT I // INGEST & TOMOGRAPHY',
+                phase: 'ACT I · INGEST & TOMOGRAPHY',
                 layers: 'LAYERS 0–2 (MTVD · AM-CIDP · NCARD)',
                 headline: 'Isometric Canary Rotation & Intrinsic Dimension Scan',
                 formula: 'LID_k(x) = - (1/k ∑ ln(r_i / r_k))⁻¹',
@@ -2175,7 +2175,7 @@ export const HomeRedesign: React.FC<HomeRedesignProps> = ({
               },
               {
                 act: 1 as const,
-                phase: 'ACT II // CONSENSUS & MEMORY',
+                phase: 'ACT II · CONSENSUS & MEMORY',
                 layers: 'LAYERS 3–6 (TCG-CL · CEH-ASID · DMEM · SGL)',
                 headline: 'C2PA Provenance Graph & Martingale Memory Shield',
                 formula: 'M_t = E[Θ | F_t],   W_2(μ_t, μ_{t-1}) ≤ τ',
@@ -2185,7 +2185,7 @@ export const HomeRedesign: React.FC<HomeRedesignProps> = ({
               },
               {
                 act: 2 as const,
-                phase: 'ACT III // SILICON & ZK PROOF',
+                phase: 'ACT III · SILICON & ZK PROOF',
                 layers: 'LAYERS 4B-HW, 7–9 (TMMEG 142ns · CM-JSAS · ZK-CAEO)',
                 headline: '45-Clock SmartNIC FPGA Gate & 288-Byte zk-SNARK',
                 formula: 'T_{FPGA} = 45 × 3.2ns = 142.0ns (Q8.24)',
@@ -2243,7 +2243,7 @@ export const HomeRedesign: React.FC<HomeRedesignProps> = ({
               <div className="flex items-center gap-2.5">
                 <Terminal className="w-4 h-4 text-[#D5991C]" />
                 <span className="font-bold tracking-wider uppercase text-[#FBF3E2]">
-                  SOVEREIGN 10-LAYER DEFENSE MATRIX // ARCHITECTURAL LEDGER
+                  SOVEREIGN 10-LAYER DEFENSE MATRIX · ARCHITECTURAL LEDGER
                 </span>
               </div>
               <div className="flex items-center gap-4 text-[11px]">
@@ -2303,7 +2303,7 @@ export const HomeRedesign: React.FC<HomeRedesignProps> = ({
 
           <div className="pt-4">
             <div className="font-mono text-[10px] uppercase tracking-[0.22em] text-[#F2D69D]/70 mb-4">
-              OPERATIONAL EXECUTION CADENCE // FIVE-STAGE LIFECYCLE SLA (&lt; 15s AUTO-REMEDIATION)
+              OPERATIONAL EXECUTION CADENCE · FIVE-STAGE LIFECYCLE SLA (&lt; 15s AUTO-REMEDIATION)
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 border-t border-l border-[#F2D69D]/20">
               {PROCESS_STEPS.map((step) => (
@@ -2322,7 +2322,7 @@ export const HomeRedesign: React.FC<HomeRedesignProps> = ({
                     </p>
                   </div>
                   <div className="mt-4 pt-2 border-t border-[#F2D69D]/10 font-mono text-[10px] text-[#25B888]">
-                    STATUS // AUTOMATED
+                    STATUS · AUTOMATED
                   </div>
                 </div>
               ))}
@@ -2345,7 +2345,7 @@ export const HomeRedesign: React.FC<HomeRedesignProps> = ({
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end">
             <div className="lg:col-span-4 space-y-2">
               <span className="font-mono text-xs text-[#8B5A0B] font-bold uppercase tracking-[0.2em] block">
-                § 03 // DUAL-USE SOVEREIGN ARCHITECTURE
+                § 03 · DUAL-USE SOVEREIGN ARCHITECTURE
               </span>
               <span
                 data-parallax-numeral
@@ -2423,7 +2423,7 @@ export const HomeRedesign: React.FC<HomeRedesignProps> = ({
               {/* SLOT 3: 142.0ns Limit Order Book Wavefront Viewport */}
               <div className="bg-[#FAF5EB]">
                 <div className="px-4 py-2 bg-[#410217] text-[#FBF3E2] font-mono text-[10px] flex items-center justify-between uppercase tracking-widest">
-                  <span>STAGE IV // 142ns LOB DEPTH CANYON (TMMEG)</span>
+                  <span>STAGE IV · 142ns LOB DEPTH CANYON (TMMEG)</span>
                   <span className="text-[#D5991C] font-bold">Q8.24 PIPELINE</span>
                 </div>
                 <div
@@ -2458,7 +2458,7 @@ export const HomeRedesign: React.FC<HomeRedesignProps> = ({
                       PREDATORY ASK SWEEP
                     </text>
                     <text x="210" y="170" textAnchor="middle" className="font-mono text-[9px] fill-[#410217] font-bold">
-                      TMMEG 142.0 ns FPGA CIRCUIT BREAKER // VPIN_t &lt; Θ
+                      TMMEG 142.0 ns FPGA CIRCUIT BREAKER · VPIN_t &lt; Θ
                     </text>
                   </svg>
                 </div>
@@ -2469,9 +2469,9 @@ export const HomeRedesign: React.FC<HomeRedesignProps> = ({
               <div className="space-y-6">
                 <div className="flex flex-wrap items-center justify-between gap-2 pb-4 border-b border-[#410217]/15 font-mono text-xs">
                   <span className="text-[#8B5A0B] font-bold uppercase tracking-widest">
-                    OPERATIONAL SPECIFICATION // {activeService.badge}
+                    OPERATIONAL SPECIFICATION · {activeService.badge}
                   </span>
-                  <span className="text-[#15684E] font-bold">TLP:CLEAR // DEPLOYABLE</span>
+                  <span className="text-[#15684E] font-bold">TLP:CLEAR · DEPLOYABLE</span>
                 </div>
 
                 <div>
@@ -2548,10 +2548,10 @@ export const HomeRedesign: React.FC<HomeRedesignProps> = ({
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end">
             <div className="lg:col-span-4 space-y-2">
               <span className="font-mono text-xs text-[#8B5A0B] font-bold uppercase tracking-[0.2em] block">
-                § 04 // PEER-REVIEWED ARCHIVAL CORPUS
+                § 04 · RESEARCH WORKING PAPER CORPUS
               </span>
               <div className="font-mono text-[11px] text-[#5A1827]">
-                DOI: 10.1145/3637528.3671900-CAEO · 180 PAGES
+                5-VOLUME WORKING PAPER SERIES
               </div>
             </div>
 
@@ -2661,7 +2661,7 @@ export const HomeRedesign: React.FC<HomeRedesignProps> = ({
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end">
             <div className="lg:col-span-5 space-y-2">
               <span className="font-mono text-xs text-[#8B5A0B] font-bold uppercase tracking-[0.2em] block">
-                § 05 // MULTI-VECTOR CAPABILITIES &amp; FIELD PROOF
+                § 05 · MULTI-VECTOR CAPABILITIES &amp; FIELD PROOF
               </span>
               <h2
                 id="capabilities-heading"
@@ -2706,7 +2706,7 @@ export const HomeRedesign: React.FC<HomeRedesignProps> = ({
               >
                 <div>
                   <div className="flex items-center justify-between pb-3 mb-4 border-b border-[#410217]/15 font-mono text-[10px]">
-                    <span className="font-bold text-[#8B5A0B]">SPEC // OPS-0{i + 1}</span>
+                    <span className="font-bold text-[#8B5A0B]">SPEC · OPS-0{i + 1}</span>
                     <span className="px-2 py-0.5 bg-[#FAF5EB] border border-[#410217]/20 text-[#410217] font-bold uppercase">
                       {cap.category}
                     </span>
@@ -2800,7 +2800,7 @@ export const HomeRedesign: React.FC<HomeRedesignProps> = ({
             <div className="lg:col-span-5 bg-[#410217] text-[#FBF3E2] border border-[#410217] p-7 sm:p-8 flex flex-col justify-between space-y-6">
               <div className="space-y-4">
                 <div className="flex items-center justify-between pb-3 border-b border-[#F2D69D]/20 font-mono text-[10px] text-[#D5991C] uppercase tracking-widest font-bold">
-                  <span>LAYER 9-SE // ACTUARIAL VaR TELEMETRY</span>
+                  <span>LAYER 9-SE · ACTUARIAL VaR TELEMETRY</span>
                   <span>SEC RULE 15c3-8</span>
                 </div>
 

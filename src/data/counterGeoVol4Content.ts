@@ -19,7 +19,7 @@ Across Volumes I through III, we established a comprehensive **Twelve-Layer Coun
 
 Volume 4 provides the complete **Commercialization, Sovereign Contracting, and Hardware Engineering Blueprint** to launch and scale this technology as a category-defining Dual-Use Defense and FinTech enterprise:
 
-1. **Product Packaging, Deployment Topologies & Pricing Architecture (Section 28):** Structuring the 12-Layer stack into three commercial and sovereign product lines—**Counter-AEO Cloud API Proxy**, **Co-Located Ultra-Low-Latency FPGA Appliances**, and **FedRAMP High / DoD IL6 Air-Gapped Sovereign Enclaves**—complete with enterprise unit economics and tiered licensing.
+1. **Product Packaging, Deployment Topologies & Pricing Architecture (Section 28):** Structuring the defense stack into three commercial and sovereign product lines—**Counter-AEO Cloud API Proxy**, **Co-Located Ultra-Low-Latency FPGA Appliances**, and **Dedicated Air-Gapped Sovereign Enclaves**—complete with enterprise unit economics and tiered licensing.
 
 2. **Federal Grant Acquisition, Non-Dilutive R&D & Sovereign Procurement Pathways (Section 29):** A concrete execution playbook for securing non-dilutive federal funding and sole-source production contracts across **SBIR/STTR (Phase I -> Phase III)**, **DARPA I2O**, **IARPA**, **In-Q-Tel (IQT)**, **Defense Innovation Unit (DIU) Commercial Solutions Openings (CSOs)**, **10 U.S.C. § 4022 Prototype OTAs**, and **SEC/Treasury/Commerce** modernization vehicles.
 
@@ -38,7 +38,7 @@ Volume 4 provides the complete **Commercialization, Sovereign Contracting, and H
         ▼                               ▼                               ▼
   ┌───────────────────────────┐   ┌───────────────────────────┐   ┌───────────────────────────┐
   │ SKU 1: COMMERCIAL CLOUD   │   │ SKU 2: HFT FPGA APPLIANCE │   │ SKU 3: SOVEREIGN ENCLAVE  │
-  │ & RAG SECURITY PROXY      │   │ (CO-LOCATED EQUINIX NY4)  │   │ (FEDRAMP HIGH / DoD IL6)  │
+  │ & RAG SECURITY PROXY      │   │ (CO-LOCATED EQUINIX NY4)  │   │ (AIR-GAPPED / ISOLATED)   │
   ├───────────────────────────┤   ├───────────────────────────┤   ├───────────────────────────┤
   │ • AI Search Engines       │   │ • Quant Hedge Funds       │   │ • SEC (CAT / Enforcement) │
   │ • Public Broker-Dealers   │   │ • Prop Trading Desks      │   │ • Dept of Commerce (BIS)  │
@@ -75,11 +75,11 @@ Because our target clients span cloud-native AI platforms, latency-obsessed quan
 - **Active Layers:** All commercial layers plus hardware-accelerated **Layer 4B (\`TMMEG\` Limit Order Book Shield)**, **Layer 5 (\`DMEM-WMQ\` Episodic Memory Rollback)**, **Layer 6 (\`SGL-CMI\` Swarm De-Duplication)**, **Layer 8 (\`ZK-CAEO\` Zero-Knowledge SEC Prover)**, and **Layer 11 (\`SCB-FTCCS\` Macro Contagion Shield)**.
 - **Deployment Mechanism:** Delivered as a 1U/2U pre-configured hardware appliance (equipped with AMD/Xilinx Alveo U250/Versal HBM FPGAs and NVIDIA H200 GPUs) installed directly inside the client's co-located colocation cage (e.g., Equinix NY4/NY5 in Secaucus, NJ for NMS equities; Equinix DC3/Aurora, IL for CME futures; Equinix LD4 in London for FX). Zero proprietary prompts, vectors, or alpha signals ever leave the fund's physical rack.
 
-#### SKU 3: Counter-AEO Sovereign Enclave ("FedRAMP High / DoD IL6 / SCIF Edition")
+#### SKU 3: Counter-AEO Sovereign Enclave (Dedicated Air-Gapped Edition)
 
-- **Target Customers:** U.S. Securities and Exchange Commission (SEC), U.S. Department of Commerce (BIS / ITA), U.S. International Trade Commission (USITC), U.S. Department of the Treasury (OFAC / CFIUS / FinCEN / OFR), CISA, and the Department of Defense / Intelligence Community.
-- **Active Layers:** Full 12-Layer Stack, featuring specialized modules for **Layer 9 (\`HER-BOD\` Poincaré Beneficial Ownership & Sanctions De-Cloaking)**, **Layer 10 (\`EIOL-PCV\` Leontief Input-Output & Satellite AIS Cargo Mass Verification)**, and the **SEC Consolidated Audit Trail (CAT) \`ZK-CAEO\` Verifier Node**.
-- **Deployment Mechanism:** Deployed on AWS GovCloud (US-East/West), Microsoft Azure Government Secret/Top Secret, or on-premises inside Sensitive Compartmented Information Facilities (SCIFs) with FIPS 140-3 Level 4 Hardware Security Modules (HSMs).
+- **Target Customers:** U.S. Securities and Exchange Commission (SEC), U.S. Department of Commerce (BIS / ITA), U.S. International Trade Commission (USITC), U.S. Department of the Treasury (OFAC / CFIUS / FinCEN / OFR), CISA, and Defense / Intelligence teams.
+- **Active Layers:** Full Defense Stack, featuring specialized modules for **Layer 9 (Poincaré Beneficial Ownership & Sanctions De-Cloaking)**, **Layer 10 (Supply-Chain Input-Output & Satellite AIS Cargo Mass Verification)**, and the **SEC Consolidated Audit Trail (CAT) Zero-Knowledge Verifier Node**.
+- **Deployment Mechanism:** Deployed inside customer-controlled isolated environments or air-gapped on-premises enclaves with Hardware Security Module (HSM) key anchoring. Any customer-specific government accreditation requirements are scoped during Phase III contracting.
 
 ### 28.2 Enterprise & Sovereign Pricing Matrix
 
@@ -151,11 +151,11 @@ Under federal statute **15 U.S.C. § 638(r)** and the **SBIR/STTR Policy Directi
 
 *Table 11: Actionable Federal Grant, OTA, and Sole-Source Procurement Matrix.*
 
-### 29.3 Sovereign Compliance & Accreditation Roadmap
+### 29.3 Target Compliance & Security Alignment Roadmap
 
-1. **Months 1–4 (C2PA & FIPS 140-3 Level 3/4 Alignment):** Anchor Layer 3 \`TCG-CL\` and Layer 8 \`ZK-CAEO\` signing inside FIPS 140-3 validated Hardware Security Modules.
-2. **Months 4–9 (SOC 2 Type II & ISO/IEC 42001 AI Management System):** Complete commercial enterprise security audits required by Wall Street hedge funds.
-3. **Months 6–14 (FedRAMP High Equivalency via Palantir FedStart or AWS GovCloud):** Deploy Sovereign Enclave inside an accredited environment, compressing ATO timelines from 2 years down to **90 days**.
+1. **Months 1–4 (C2PA & Hardware Key Anchoring):** Anchor cryptographic provenance and audit signing inside customer-validated Hardware Security Modules.
+2. **Months 4–9 (Independent Third-Party Security Audits — Planned):** Engage accredited assessors for commercial enterprise AI governance and security audits tailored to institutional financial clients.
+3. **Months 6–14 (Government Enclave Authorization Support):** Package air-gapped container artifacts and documentation to support customer Authority to Operate (ATO) reviews within target federal cloud or on-premises enclaves.
 
 ## 30. Co-Located Hardware Acceleration: FPGA SmartNIC & GPU Kernel Specification
 
@@ -534,7 +534,7 @@ class CounterAEOCommercialEngine:
 
         return ClientROIProfile(
             client_name=agency_name,
-            sku_tier="SKU 3: Sovereign Enclave (FedRAMP High / SCIF)",
+            sku_tier="SKU 3: Dedicated Air-Gapped Sovereign Enclave",
             annual_license_cost_usd=annual_cost,
             expected_annual_geo_incidents_prevented=incidents_per_year,
             unshielded_loss_per_incident_usd=loss_per_incident,
@@ -606,8 +606,8 @@ export const MASTER_DOC_VOL4_SECTIONS: PaperSection[] = [
   {
     id: "sec-29-3",
     number: "29.3",
-    title: "Sovereign Compliance & Accreditation Roadmap",
-    desc: "FIPS 140-3 HSM anchoring, SOC 2 Type II, ISO 42001, and 90-day FedRAMP High equivalency.",
+    title: "Target Compliance & Security Alignment Roadmap",
+    desc: "Hardware key anchoring, planned independent security audits, and customer ATO documentation packaging.",
     level: 3,
     startLine: 197
   },
@@ -691,13 +691,12 @@ export const MASTER_DOC_VOL4_METADATA = {
   title: "Counter-AEO Architecture — Volume 4: Commercialization, Sovereign Contracting, Hardware FPGA Acceleration, and Global Go-To-Market Blueprint",
   shortTitle: "Counter-AEO Volume 4: Commercialization, FPGA Hardware & GTM Blueprint",
   date: "October 2026",
-  classification: "DUAL-USE DEFENSE & FINTECH // COMMERCIAL BLUEPRINT",
+  classification: "Dual-Use Defense & FinTech Commercial Blueprint",
   authors: [
     "Last Crusade Defense Security Labs",
     "Hardware Acceleration Group",
     "Sovereign Acquisition Taskforce"
   ],
-  doi: "10.1145/3637528.3671900-CAEO-V4",
   pageCount: 46,
   wordCount: 6840,
   readingTimeMinutes: 30,
@@ -708,13 +707,13 @@ export const MASTER_DOC_VOL4_METADATA = {
       tagline: "Shield-as-a-Service",
       layers: "Layers 0, 1, 2, 3, 4A, 7, 12",
       target: "Mid-Market AI Search, Broker-Dealers, ERP",
-      deployment: "Rust/C++ Kubernetes Sidecar & Cloudflare/AWS Edge Gateway",
+      deployment: "Rust/C++ Kubernetes Sidecar & Cloud Edge Gateway",
       basePrice: "$120,000 / yr"
     },
     {
       sku: "SKU 2",
-      name: "Ultra-Low-Latency FPGA Appliance",
-      tagline: "Equinix NY4 / Aurora DC3 Co-Lo",
+      name: "Ultra-Low-Latency Hardware Appliance",
+      tagline: "Co-Located Exchange Enclave",
       layers: "All Cloud + Layers 4B, 5, 6, 8, 11 (Hardware Wire Gating)",
       target: "Quant Hedge Funds, Prop Desks, HFT Execution",
       deployment: "1U/2U Appliance w/ AMD Alveo U250 / Versal FPGAs + H200 GPUs",
@@ -722,11 +721,11 @@ export const MASTER_DOC_VOL4_METADATA = {
     },
     {
       sku: "SKU 3",
-      name: "Sovereign Enclave",
-      tagline: "FedRAMP High / DoD IL6 / SCIF Edition",
-      layers: "Full 12-Layer Stack + Layer 9 (HER-BOD), Layer 10 (EIOL-PCV), SEC CAT Verifier",
-      target: "SEC, Commerce (BIS), Treasury (OFAC), USITC, DoD/IC",
-      deployment: "AWS GovCloud, Azure Government Secret, SCIF HSM FIPS 140-3",
+      name: "Dedicated Air-Gapped Enclave",
+      tagline: "On-Premise Government & Classified Edition",
+      layers: "Full Stack + Layer 9 (Hidden Ownership), Layer 10 (Supply-Chain Physics), Audit Verifier",
+      target: "Financial Regulators, Trade Agencies & Defense Teams",
+      deployment: "Air-Gapped On-Premise & Dedicated GovCloud HSM Deployment",
       basePrice: "$1,500,000 / yr"
     }
   ],

@@ -55,7 +55,7 @@ export const CaseStudies: React.FC = () => {
           <div className="flex flex-col lg:flex-row justify-between gap-8 pb-8 mb-8 border-b border-[#F2D69D]">
             <div className="space-y-4 lg:max-w-2xl">
               <span className="font-mono text-xs text-[#D5991C] uppercase tracking-[0.2em] font-bold">
-                CLIENT CASE STUDY // {CASE_STUDIES[activeCase].clientCategory}
+                CLIENT CASE STUDY · {CASE_STUDIES[activeCase].clientCategory}
               </span>
               <h3 className="font-serif text-2xl sm:text-3xl text-[#410217] tracking-tight">
                 {CASE_STUDIES[activeCase].headline}

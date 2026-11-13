@@ -286,18 +286,17 @@ export const MASTER_DOC_METADATA = {
   title: "Generative Engine Optimization (AEO) and Counter-AEO Defenses: Sovereign Architecture for Epistemic and Financial Cybersecurity",
   shortTitle: "Counter AEO Master Doc Volume 1",
   date: "October 2026",
-  classification: "Sovereign Strategic Research // Epistemic & Financial Security",
+  classification: "Sovereign Strategic Research — Epistemic & Financial Security",
   authors: "Last Crusade Defense Security Labs & Sovereign Defense Research Initiative",
-  doi: "10.1145/3637528.3671900-CAEO-V1",
   pages: 54,
   wordCount: 8821,
   estimatedReadTimeMinutes: 44,
   defenseStackLayers: [
-    { layer: "Layer 0", name: "MTVD & Spectral Canaries", core: "Isometric Householder Manifold Rotation Q_t & Honeypot Subspaces", target: "Surrogate Embedding Cartography" },
-    { layer: "Layer 1", name: "AM-CIDP (Upgraded AMTD)", core: "Levina-Bickel LID & Gram Spectral Entropy", target: "Vector Retrieval Hubs & Sinkholes" },
-    { layer: "Layer 2", name: "NCARD", core: "Scale-Invariant Depth-Weighted Reciprocal Rank Divergence", target: "Model-Overfitted Dense Vector Poisoning" },
-    { layer: "Layer 3", name: "TCG-CL v2.0 + C2PA", core: "X.509 C2PA Hardware Roots + Hawkes Point Process Forensics", target: "Multi-Source Sybil Consensus & Citation Spoofing" },
-    { layer: "Layer 4A", name: "CEH-ASID & DAPP", core: "Möbius KL Synergy & Transformer Attention Tomography", target: "Split-Payload Enthymemes & Indirect Prompt Injections" },
-    { layer: "Layer 4B", name: "TMMEG & SEC Rule 15c3-8", core: "Thermodynamic Proof-of-Liquidity, VPIN, Kyle lambda & LOB Damping", target: "Data-Void Spoofing & Liquidity Extraction Arbitrage" }
+    { layer: "Layer 0", name: "Search Coordinate Rotation & Watermark Traps (MTVD)", core: "Key-seeded coordinate rotation & hidden watermark checks", target: "Surrogate Embedding Cartography" },
+    { layer: "Layer 1", name: "Search Trap & Sinkhole Detection (AM-CIDP)", core: "Local dimensionality & clustering density inspection", target: "Vector Retrieval Hubs & Sinkholes" },
+    { layer: "Layer 2", name: "3-Engine Search Consistency Check (NCARD)", core: "Cross-engine ranking comparison across dense, token, and keyword search", target: "Model-Overfitted Dense Vector Poisoning" },
+    { layer: "Layer 3", name: "Verified Source & Botnet Filter (TCG-CL + C2PA)", core: "C2PA cryptographic signatures + coordinated timing checks", target: "Multi-Source Sybil Consensus & Citation Spoofing" },
+    { layer: "Layer 4A", name: "Multi-Document Logic Firewall (CEH-ASID & DAPP)", core: "Multi-source synergy checks & attention stream isolation", target: "Split-Payload Enthymemes & Indirect Prompt Injections" },
+    { layer: "Layer 4B", name: "Live Market Reality & Order-Book Brake (TMMEG)", core: "Real-time check of news surprise against live order-book depth & volume", target: "Data-Void Spoofing & Liquidity Extraction Arbitrage" }
   ]
 };

@@ -766,14 +766,11 @@ export const CounterGeoVol3FindingsAndLab: React.FC<Vol3FindingsAndLabProps> = (
             {/* Header Description */}
             <div className="flex flex-wrap items-center justify-between gap-4">
               <div>
-                <span className="font-mono text-xs text-[#D5991C] uppercase font-bold tracking-wider">
-                  // SECTION 16 & 17 ALGORITHM EXECUTION
-                </span>
                 <h3 className="font-serif text-2xl font-bold text-[#410217]">
-                  CounterAEO-Bench Empirical Simulation Suite
+                  250,000-Document Stress Test &amp; Accuracy Runner
                 </h3>
                 <p className="font-sans text-sm text-[#410217]/75">
-                  Direct client-side execution of Section 19 (<code className="text-[#8B1E1E]">counter_aeo_benchmark_suite.py</code>) across {sampleSize.toLocaleString()} statistically calibrated document trials.
+                  Interactive browser simulation testing how well our defense layers catch manipulated pages across {sampleSize.toLocaleString()} calibrated trials while keeping false alarms near zero.
                 </p>
               </div>
 
@@ -1144,14 +1141,11 @@ export const CounterGeoVol3FindingsAndLab: React.FC<Vol3FindingsAndLabProps> = (
           <div className="space-y-8">
             <div className="flex flex-wrap items-center justify-between gap-4">
               <div>
-                <span className="font-mono text-xs text-[#8B1E1E] uppercase font-bold tracking-wider">
-                  // SECTION 18 HISTORICAL MARKET REPLAY
-                </span>
                 <h3 className="font-serif text-2xl font-bold text-[#410217]">
-                  Scenario Alpha: Pre-Market LOB Data-Void Spoofing & Flash Crash
+                  Pre-Market Rumor &amp; Flash-Crash Replay (Scenario Alpha)
                 </h3>
                 <p className="font-sans text-sm text-[#410217]/75">
-                  Replays the $45M predatory ask-wall liquidity extraction attack on mid-cap aerospace stock ($DFNS) tick-by-tick.
+                  Step-by-step replay showing how an AI trading bot gets lured into a $45M pre-market sell wall—and how our market reality filter halts execution in 14.2 ms.
                 </p>
               </div>
 
@@ -1231,7 +1225,7 @@ export const CounterGeoVol3FindingsAndLab: React.FC<Vol3FindingsAndLabProps> = (
                     <span className="text-[#D5991C] font-bold uppercase">$DFNS LIMIT ORDER BOOK (LOB)</span>
                     {currentTick.circuitBreakerActive && (
                       <span className="px-2 py-0.5 bg-[#00A878] text-[#130108] text-[10px] font-bold">
-                        HALTED // SEC RULE 15c3-8
+                        HALTED · SEC RULE 15c3-8
                       </span>
                     )}
                   </div>
@@ -1343,11 +1337,9 @@ export const CounterGeoVol3FindingsAndLab: React.FC<Vol3FindingsAndLabProps> = (
         {activeTab === 'charts' && (
           <div className="space-y-10">
             <div>
-              <span className="font-mono text-xs text-[#D5991C] uppercase font-bold tracking-wider">
-                // PUBLICATION FIGURES & EMPIRICAL CHARTS
-              </span>
+              <div className="w-10 h-1 bg-[#D5991C] rounded-full mb-2" />
               <h3 className="font-serif text-2xl font-bold text-[#410217]">
-                Interactive Graphical Figures from Volume III
+                Benchmark Charts &amp; Market Stress-Test Figures
               </h3>
             </div>
 
@@ -1355,9 +1347,8 @@ export const CounterGeoVol3FindingsAndLab: React.FC<Vol3FindingsAndLabProps> = (
             <div className="bg-[#FAF2E1] border-2 border-[#410217] p-6 shadow-md space-y-4">
               <div className="flex flex-wrap items-center justify-between gap-2 border-b border-[#F2D69D] pb-3">
                 <div>
-                  <span className="font-mono text-xs text-[#00A878] font-bold uppercase">// FIGURE 9</span>
                   <h4 className="font-serif font-bold text-xl text-[#410217]">
-                    Receiver Operating Characteristic (ROC) Comparison
+                    Detection Accuracy vs. False Alarms (ROC Comparison)
                   </h4>
                 </div>
                 <div className="flex items-center space-x-3 text-xs font-mono">
@@ -1439,9 +1430,8 @@ export const CounterGeoVol3FindingsAndLab: React.FC<Vol3FindingsAndLabProps> = (
             <div className="bg-[#FAF2E1] border-2 border-[#410217] p-6 shadow-md space-y-4">
               <div className="flex flex-wrap items-center justify-between gap-2 border-b border-[#F2D69D] pb-3">
                 <div>
-                  <span className="font-mono text-xs text-[#8B1E1E] font-bold uppercase">// FIGURE 10</span>
                   <h4 className="font-serif font-bold text-xl text-[#410217]">
-                    Intraday Order Book Price & Flash-Crash Cascade ($DFNS)
+                    Simulated Flash-Crash Trajectory vs. Protected Halt
                   </h4>
                 </div>
                 <span className="font-mono text-xs text-[#410217]/70">
@@ -1543,12 +1533,8 @@ export const CounterGeoVol3FindingsAndLab: React.FC<Vol3FindingsAndLabProps> = (
           <div className="space-y-6">
             <div className="flex flex-wrap items-center justify-between gap-4">
               <div>
-                <span className="font-mono text-xs text-[#00A878] uppercase font-bold tracking-wider flex items-center space-x-1.5">
-                  <Activity className="w-3.5 h-3.5 text-[#00A878]" />
-                  <span>// WEBGL 2.0 3D EXPERIMENTAL ENGINE & THREAT RADAR</span>
-                </span>
                 <h3 className="font-serif text-2xl font-bold text-[#410217]">
-                  High-Frequency Market Microstructure & Threat Radar
+                  3D Market Order Book &amp; Threat Comparison Lab
                 </h3>
               </div>
 
@@ -1784,15 +1770,15 @@ export const CounterGeoVol3FindingsAndLab: React.FC<Vol3FindingsAndLabProps> = (
                     <span className={`w-2.5 h-2.5 rounded-full ${isAttackInjected ? 'bg-[#E63946] animate-pulse' : 'bg-[#00A878]'}`} />
                     <span className="font-bold text-[11px] tracking-wide">
                       {webglMode === 0 && (isAttackInjected
-                        ? 'PREDATORY LIQUIDITY ATTACK ACTIVE // $45M SPOOF ASK WALL DEPLOYED'
-                        : 'SOVEREIGN CIRCUIT BREAKER ENGAGED // 14.2 MS EPISTEMIC HALT APPLIED')}
-                      {webglMode === 1 && `TACTICAL RADAR TARGET: AT-0${selectedTaxonomy + 1} // SOVEREIGN RECALL: 99.4%`}
+                        ? 'PREDATORY LIQUIDITY ATTACK ACTIVE — $45M SPOOF ASK WALL DEPLOYED'
+                        : 'MARKET REALITY CIRCUIT BREAKER ENGAGED — 14.2 MS HALT APPLIED')}
+                      {webglMode === 1 && `TACTICAL RADAR TARGET: AT-0${selectedTaxonomy + 1} — LAB RECALL: 99.4%`}
                       {webglMode === 2 && (isAttackInjected
-                        ? 'LEGACY BASELINE DETECTOR ACTIVE // HIGH FALSE-ALARM BURDEN (FPR=18.6%)'
-                        : 'SOVEREIGN 8-LAYER ROC OPTIMUM // TPR=99.1% @ FPR=0.08%')}
+                        ? 'LEGACY BASELINE DETECTOR ACTIVE — HIGH FALSE-ALARM BURDEN (FPR=18.6%)'
+                        : 'SOVEREIGN 8-LAYER OPTIMUM — TPR=99.1% @ FPR=0.08%')}
                       {webglMode === 3 && (isAttackInjected
-                        ? 'SYBIL COLLAPSE SUB-MANIFOLD // INTRINSIC DIMENSION HAT{m}=7.9 QUARANTINED'
-                        : 'CLEAN SEC 10-K SUB-MANIFOLD // MULTI-DIMENSIONAL INTRINSIC DIMENSION HAT{m}=24.8')}
+                        ? 'COORDINATED BOT RING CLUSTER — LOW DIVERSITY QUARANTINED'
+                        : 'AUTHENTIC SEC 10-K REPORTS — NATURAL DIVERSITY PRESERVED')}
                     </span>
                   </div>
                   <div className="text-[#D5991C] text-[10px] hidden sm:block">

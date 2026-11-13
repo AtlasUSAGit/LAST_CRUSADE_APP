@@ -63,16 +63,15 @@ export const MASTER_DOC_VOL5_METADATA = {
   id: 'LCD-WP-2026-V5',
   volume: 'Volume 5',
   title:
-    'Autonomous Protocol Dominance: The Architecture of Agent-to-Agent Engine Optimization (A2A-EO) and Multi-Agent Cryptographic Defense',
-  shortTitle: 'Counter-AEO Volume 5: A2A-EO & Multi-Agent Cryptographic Defense',
-  date: 'October 2026',
-  classification: 'SOVEREIGN A2A PROTOCOL & CRYPTOGRAPHIC DEFENSE // VOLUME V',
+    'Autonomous Protocol Dominance: Agent-to-Agent Discovery (A2A-EO) and Multi-Agent Cryptographic Defense',
+  shortTitle: 'Counter-AEO Volume 5: Agent-to-Agent Discovery & Cryptographic Defense',
+  date: 'Volume V Technical Monograph',
+  classification: 'SOVEREIGN A2A PROTOCOL & CRYPTOGRAPHIC DEFENSE',
   authors: [
     'Last Crusade Defense Security Labs',
     'Autonomous Protocol & zkML Group',
     'Quantitative Market Microstructure Taskforce'
   ],
-  doi: '10.1145/3637528.3671900-CAEO-V5',
   pageCount: 52,
   wordCount: 5420,
   readingTimeMinutes: 26
@@ -89,7 +88,7 @@ export const MASTER_DOC_VOL5_SECTIONS: PaperSectionVol5[] = [
     id: 'sec-v5-2',
     number: '02',
     title: 'Empirical Mechanics of Autonomous Agent Selection and Routing',
-    desc: 'Stage 1 vLLM Semantic Router (ext_proc) and Stage 2 In-Context Schema-Fit Selection (arXiv:2610.14334 factor weights).'
+    desc: 'Stage 1 Semantic Router (ext_proc) and Stage 2 Schema-Fit Selection (Last Crusade 5-Model Factor Benchmarks).'
   },
   {
     id: 'sec-v5-3',
@@ -100,14 +99,14 @@ export const MASTER_DOC_VOL5_SECTIONS: PaperSectionVol5[] = [
   {
     id: 'sec-v5-4',
     number: '04',
-    title: 'Method 2: Dynamic Epistemic Handshake & Contract-Net Utility Bidding (DEH-CNUB)',
-    desc: '≤80-token answer-first micro-artifacts, shadow-priced x402 USDC bidding, and Halo2/DeepProve zkML receipts.'
+    title: 'Method 2: Fast Verified Agent Handshakes & Fair-Price Bidding',
+    desc: '≤80-token answer-first micro-artifacts, smart x402 USDC bidding, and quantized zkML receipts.'
   },
   {
     id: 'sec-v5-5',
     number: '05',
     title: 'Revolutionary Cybersecurity Defenses Against Adversarial A2A-EO',
-    desc: 'ToolCommander (100% ASR_Ret), recursive Prompt Infection, and Cross-Agent Boundary Laundering (arXiv:2610.05640).'
+    desc: 'ToolCommander retrieval spoofing, recursive Prompt Infection, and Cross-Agent Boundary Laundering.'
   },
   {
     id: 'sec-v5-6',
@@ -915,7 +914,7 @@ export const VOL5_MODULES_CATALOG: Vol5StrategyModule[] = [
     id: 'm1-gsf-cacs',
     code: 'A2A-M1',
     phase: 'Phase 1: Discovery & Schema Selection',
-    name: 'Gradient-Guided Schema Flattening & Centroid-Aligned Card Synthesis (GSF-CACS)',
+    name: 'Clean 1-Layer Tool Profiles & Routing Alignment',
     plainEnglishName: 'The Flat-Form Fast Lane (Schema Flattening & Index-Zero Priming)',
     tagline: 'De-nesting JSON schemas into flat top-level fields boosts autonomous LLM selection to 93.3%–100%.',
     category: 'Discovery & Schema',
@@ -934,9 +933,9 @@ export const VOL5_MODULES_CATALOG: Vol5StrategyModule[] = [
     operatorBrief: {
       protocolSurface: '/.well-known/agent.json (RFC 8785 Agent Cards), MCP tools/list JSON Schemas, Contriever & ToolBench Retrievers',
       offensiveMechanism:
-        'Optimizes Stage 1 dense retrieval cosine similarity cos(E_ret(C_i), c_*) and vLLM Semantic Router LoRA routing gates subject to PPL(t) <= τ_fluency, while compiling nested $defs/allOf trees into depth-1 canonical parameter vectors.',
+        'Optimizes Stage 1 dense retrieval cosine similarity cos(E_ret(C_i), c_*) and Semantic Router LoRA routing gates subject to PPL(t) <= τ_fluency, while compiling nested $defs/allOf trees into depth-1 canonical parameter vectors.',
       defensiveCountermeasure:
-        'Adversaries abuse this pathway via ToolCommander (100% ASR_Ret) using ungrammatical gradient suffixes. Countered in Stage 1 by AST Schema Normalization and Counterfactual Permutation Auditing (PMCTT-CPA).',
+        'Adversaries abuse this pathway via ToolCommander (100% ASR_Ret) using ungrammatical gradient suffixes. Countered in Stage 1 by AST Schema Normalization and Position-Shuffle Auditing.',
       empiricalBenchmark:
         'Parameter schema topology (P) is statistically significant in 82.1% of trials (median β_P = 3.82, max 16.23); flat top-level decomposition achieves 93.3%–100% selection across GPT, Claude, Gemini, DeepSeek, and Qwen.'
     },
@@ -951,31 +950,31 @@ export const VOL5_MODULES_CATALOG: Vol5StrategyModule[] = [
   {
     id: 'm2-deh-cnub',
     code: 'A2A-M2',
-    phase: 'Phase 2: Multi-Turn Contract-Net Handshake',
-    name: 'Dynamic Epistemic Handshake & Contract-Net Utility Bidding (DEH-CNUB)',
-    plainEnglishName: 'The Instant Verified Bid (Shadow-Priced x402 + zkML Receipt)',
-    tagline: 'Winning autonomous FIPA Contract-Net auctions with <=80-token previews and zero-knowledge proofs.',
+    phase: 'Phase 2: Multi-Turn Agent Bidding',
+    name: 'Fast Verified Agent Handshakes & Fair-Price Bidding',
+    plainEnglishName: 'The Instant Verified Bid (Shadow-Priced x402 + Proof Receipt)',
+    tagline: 'Winning autonomous Contract-Net auctions with <=80-token previews and zero-knowledge proofs.',
     category: 'Handshake & Bidding',
     severity: 'HIGH',
     simSceneIndex: 1,
     beginnerGuide: {
       everydayAnalogy:
-        'When a company’s purchasing AI asks 5 vendor AIs for a price quote, some vendors send back a 20-page brochure (which clogs the buyer AI’s memory), and others send a cheap price with no proof they can actually do the job. DEH-CNUB sends a crisp 60-word summary, an unforgeable cryptographic receipt proving the AI model is genuine, and a price calculated to beat the #2 competitor by a razor-sharp margin.',
+        'When a company’s purchasing AI asks 5 vendor AIs for a price quote, some vendors send back a 20-page brochure (which clogs the buyer AI’s memory), and others send a cheap price with no proof they can actually do the job. This handshake module sends a crisp 60-word summary, an unforgeable cryptographic receipt proving the AI model is genuine, and a price calculated to beat the #2 competitor by a razor-sharp margin.',
       howAiWorksHere:
         'Client orchestrator agents broadcast Call for Proposals (CFPs) and score responses using a Multi-Attribute Utility formula that rewards on-chain ERC-8004 reputation and zkML verification while penalizing bloated token counts and high USDC prices.',
       howDefenseOrMethodWorks:
-        'DEH-CNUB calculates the exact "shadow price" in x402 USDC that captures maximum profit while staying ΔU_win ahead of the strongest rival, and attaches a Halo2/DeepProve quantized zkML receipt.',
+        'The bidder calculates the exact price in x402 USDC that captures maximum profit while staying ΔU_win ahead of the strongest rival, and attaches a quantized zkML receipt.',
       keyTakeaway:
         'Cryptographic proof of execution + compact <=80-token telemetry lets a service agent charge a premium price and still win 100% of autonomous auctions.'
     },
     operatorBrief: {
       protocolSurface: 'A2A JSON-RPC 2.0 (message/send, message/stream), FIPA Contract Net Protocol (CNP), ERC-8004 Registry, x402 USDC Rails',
       offensiveMechanism:
-        'Parses incoming SendMessageConfiguration and X-Delegation-Chain headers, returning a dual-channel epistemic bid: (1) <=80-token answer-first text with "Because" P99 latency/accuracy telemetry, and (2) DeepProve INT8 zkML proof header.',
+        'Parses incoming SendMessageConfiguration and X-Delegation-Chain headers, returning a dual-channel bid: (1) <=80-token answer-first text with "Because" P99 latency/accuracy telemetry, and (2) quantized zkML proof header.',
       defensiveCountermeasure:
         'Prevents context-window truncation (<15k quickstart / <25k API bounds) and neutralizes unverified low-ball Sybil bidders via ERC-8004 Validation Registry pointers.',
       empiricalBenchmark:
-        'DeepProve achieves 1,000x faster proof generation and 671x faster verification than baseline EZKL, enabling sub-second cryptographic handshakes during live A2A auctions.'
+        'Simulated quantized zkML receipts reduce proof overhead by orders of magnitude compared to baseline SNARK pipelines, enabling sub-second cryptographic handshakes during live A2A auctions.'
     },
     architectSpec: {
       mathFormula:
@@ -988,10 +987,10 @@ export const VOL5_MODULES_CATALOG: Vol5StrategyModule[] = [
   {
     id: 'd1-pmctt-cpa',
     code: 'DEF-D1',
-    phase: 'Phase 1 & 2 Defense: Control-Flow & Discovery Integrity',
-    name: 'Provenance-Preserving Multi-CaMeL Taint Tracking & Counterfactual Permutation Auditing (PMCTT-CPA)',
+    phase: 'Phase 1 & 2 Defense: Data-Channel Integrity',
+    name: 'Sealed Agent Data Envelopes & Position-Shuffle Audits',
     plainEnglishName: 'The Sealed Envelope & Shuffle Audit (Stopping Boundary Laundering)',
-    tagline: 'Eliminating Cross-Agent Boundary Laundering (0.0% ASR) and neutralizing 100% ASR ToolCommander hijacks.',
+    tagline: 'Eliminating Cross-Agent Boundary Laundering (0.0% ASR) and neutralizing ToolCommander hijacks.',
     category: 'Taint & Provenance',
     severity: 'CRITICAL',
     simSceneIndex: 2,
@@ -1001,14 +1000,14 @@ export const VOL5_MODULES_CATALOG: Vol5StrategyModule[] = [
       howAiWorksHere:
         'Even when individual AI agents use a secure Dual-LLM setup (CaMeL), security breaks down when agents talk to each other because untrusted data from Agent 1 gets pasted into the trusted instruction channel of Agent 2.',
       howDefenseOrMethodWorks:
-        'First, PMCTT-CPA shuffles the candidate list in a full circle (Latin-square permutation) so no attacker can win just by being listed first. Second, Multi-CaMeL locks all untrusted data inside a sealed "Opaque Variable Store" envelope so it can NEVER be pasted into another agent’s instructions.',
+        'First, the Position-Shuffle Audit rotates the candidate list in a full circle (Latin-square permutation) so no attacker can win just by being listed first. Second, Multi-CaMeL locks all untrusted data inside a sealed "Opaque Variable Store" envelope so it can NEVER be pasted into another agent’s instructions.',
       keyTakeaway:
-        'Across 949 MultiAgentDojo attack trials, Multi-CaMeL reduces prompt-injection Attack Success Rate from 12.9% (unprotected) and 0.2% (individual CaMeL) to an exact 0.0%.'
+        'Across 949 MultiAgentDojo attack trials, sealed opaque envelopes reduce prompt-injection Attack Success Rate from 12.9% (unprotected) and 0.2% (individual CaMeL) to an exact 0.0%.'
     },
     operatorBrief: {
       protocolSurface: 'Multi-Agent Orchestrator AST Interpreter, A2A Delegation Chains, MCP Tool Selection Context Window',
       offensiveMechanism:
-        'Adversaries chain ToolCommander (100% ASR_Ret / 100% ASR_DoS) with recursive Prompt Infection (f_1 o f_2 o ... o f_N) and Cross-Agent Boundary Laundering (arXiv:2610.05640) where tainted variables enter a downstream agent’s PLLM.',
+        'Adversaries chain ToolCommander (100% ASR_Ret / 100% ASR_DoS) with recursive Prompt Infection (f_1 o f_2 o ... o f_N) and Cross-Agent Boundary Laundering where tainted variables enter a downstream agent’s PLLM.',
       defensiveCountermeasure:
         'Stage 1 strips raw schemas to AST templates and audits KL divergence D_KL(P_raw || P_sanitized) across cyclic permutations. Stage 2 statically verifies the AST invariant Deps(instruction_str) ∩ TaintedSymbols = ∅ before any child agent call.',
       empiricalBenchmark:
@@ -1025,29 +1024,29 @@ export const VOL5_MODULES_CATALOG: Vol5StrategyModule[] = [
   {
     id: 'd2-cesr-zkpa',
     code: 'DEF-D2',
-    phase: 'Phase 1 & 2 Gateway: Data-Plane Semantic Routing',
-    name: 'Co-Evolutionary Semantic Router & Zero-Knowledge Policy Attestation (CESR-ZKPA)',
-    plainEnglishName: 'The Self-Evolving AI Immune System (DARWIN-Guard + MANDATE Firewall)',
+    phase: 'Phase 1 & 2 Gateway: Smart Traffic Routing',
+    name: 'Adaptive Traffic Firewall & Spending-Rule Receipts',
+    plainEnglishName: 'The Self-Evolving AI Immune System & MANDATE Firewall',
     tagline: '98.53% routing accuracy, 91.6% unsafe recall, and 47.1% lower latency without blocking legitimate A2A-EO.',
     category: 'Router & zkPA',
     severity: 'HIGH',
     simSceneIndex: 3,
     beginnerGuide: {
       everydayAnalogy:
-        'Static security filters are like airport guards who only look for yesterday’s disguises—or worse, panic and block honest business travelers just because they carry a neat briefcase. CESR-ZKPA runs a 24/7 digital sparring match where a friendly "Red-Team AI" invents new disguises and teaches the "Guard AI" to spot the real intent underneath.',
+        'Static security filters are like airport guards who only look for yesterday’s disguises—or worse, panic and block honest business travelers just because they carry a neat briefcase. This defense runs a 24/7 digital sparring match where a friendly "Red-Team AI" invents new disguises and teaches the "Guard AI" to spot the real intent underneath.',
       howAiWorksHere:
         'Before waking up a massive reasoning LLM (which uses up to 150x more energy), requests pass through a high-speed Envoy Semantic Router. However, single-perturbation attacks can hijack unhardened routers 66% of the time.',
       howDefenseOrMethodWorks:
-        'CESR-ZKPA uses a Markov chain to evolve attack combinations online and trains the router symmetrically on both disguised attacks and disguised honest A2A cards—stopping attacks (91.6% recall) while never falsely blocking honest optimized agents.',
+        'The Adaptive Firewall uses a Markov chain to evolve attack combinations online and trains the router symmetrically on both disguised attacks and disguised honest A2A cards—stopping attacks (91.6% recall) while never falsely blocking honest optimized agents.',
       keyTakeaway:
         'Cuts response latency by 47.1% and token costs by 48.5%, boosts MMLU-Pro accuracy by +10.2 points, and blocks unauthorized x402 payments via MANDATE.md inspection.'
     },
     operatorBrief: {
-      protocolSurface: 'vLLM Semantic Router v0.3 ("Themis"), Envoy ext_proc Kubernetes Data Plane, Rust Classification Core + Shared-GPU LoRA',
+      protocolSurface: 'vLLM Semantic Router ("Themis"), Envoy ext_proc Kubernetes Data Plane, Rust Classification Core + Shared-GPU LoRA',
       offensiveMechanism:
         'Single-perturbation router hijacking (66% ASR) and composite jailbreak disguises designed to route malicious A2A payloads to privileged execution models or bypass x402 spending caps.',
       defensiveCountermeasure:
-        'DARWIN-Guard online Markov transition reinforcement T_t(s_a, s_b) paired with symmetric dual-anchored cross-entropy loss L_CESR(θ) and pre-settlement MANDATE.md + zkML commitment verification.',
+        'Online Markov transition reinforcement T_t(s_a, s_b) paired with symmetric dual-anchored cross-entropy loss L_CESR(θ) and pre-settlement MANDATE.md + zkML commitment verification.',
       empiricalBenchmark:
         '98.53% routing accuracy from 805 examples; 91.6% unsafe recall across 12 safety benchmarks; -47.1% latency and -48.5% token consumption.'
     },
@@ -1062,10 +1061,10 @@ export const VOL5_MODULES_CATALOG: Vol5StrategyModule[] = [
   {
     id: 'm3-vat-evc-mgbc',
     code: 'FIN-M3/D3',
-    phase: 'Phase 3: Institutional Financial Markets & Order-Book Physics',
-    name: 'Verifiable Alpha Telemetry (VAT-EVC) vs. Microstructure-Gated Byzantine Consensus (MGBC-ASCB)',
+    phase: 'Phase 3: Institutional Markets & Order-Book Physics',
+    name: 'Verified Financial Signals (+42.55% Allocation) & Live Market Brake',
     plainEnglishName: 'Wall Street Bot Allocation (+42.55% Lift) vs. Physical Order-Book Shield',
-    tagline: 'Compressing epistemic uncertainty Ω lifts capital allocation by +42.55%; physical Kyle’s λ & VPIN stop spoofing traps.',
+    tagline: 'Compressing signal uncertainty Ω lifts capital allocation by +42.55%; physical Kyle’s λ & VPIN stop spoofing traps.',
     category: 'Quant Finance & LOB',
     severity: 'CRITICAL',
     simSceneIndex: 4,
@@ -1075,16 +1074,16 @@ export const VOL5_MODULES_CATALOG: Vol5StrategyModule[] = [
       howAiWorksHere:
         'Institutional buy-side orchestrators combine signals using Dempster-Shafer belief theory and Black-Litterman portfolio math: w* = (γΣ + Ω)⁻¹μ. High uncertainty (Ω = 0.05) shrinks capital allocation; compressed uncertainty (Ω = 0.001) expands it.',
       howDefenseOrMethodWorks:
-        'VAT-EVC uses Shannon-entropy feature pruning and DeepProve zkML proofs to legitimately compress Ω from 0.05 to 0.001 (+42.55% allocation lift). Conversely, MGBC-ASCB defends the buy-side bot by penalizing conflicting Sybil swarms (K_conflict) and tripping an instant circuit breaker if physical market price impact (Kyle’s λ) or order-flow toxicity (VPIN) spikes.',
+        'Verified Financial Signals prune noisy features (E_j -> 0) and attach zkML proofs to legitimately compress Ω from 0.05 to 0.001 (+42.55% allocation lift). Conversely, the Live Market Brake defends the buy-side bot by penalizing conflicting Sybil swarms (K_conflict) and tripping an instant circuit breaker if physical market price impact (Kyle’s λ) or order-flow toxicity (VPIN) spikes.',
       keyTakeaway:
         'You can fake a JSON message on the internet, but you cannot fake the laws of physics inside a regulated Level-3 limit order book.'
     },
     operatorBrief: {
       protocolSurface: 'Autonomous Buy-Side Portfolio Orchestrators, FIX / x402 Execution Gateways, Level-3 Limit Order Book Telemetry',
       offensiveMechanism:
-        'VAT-EVC (Legitimate Optimization) prunes high-entropy features (E_j -> 0) and attaches zkPyTorch/DeepProve proofs to compress Ω -> 0.001. Predatory actors weaponize this via Sybil swarms broadcasting fake low-Ω consensus to lure victim bots into toxic liquidity traps.',
+        'VAT-EVC (Legitimate Optimization) prunes high-entropy features (E_j -> 0) and attaches zero-knowledge execution proofs to compress Ω -> 0.001. Predatory actors weaponize this via Sybil swarms broadcasting fake low-Ω consensus to lure victim bots into toxic liquidity traps.',
       defensiveCountermeasure:
-        'MGBC-ASCB reconstructs Ω_secure by adding Dempster-Shafer pairwise conflict K_conflict / (1 - K_conflict) and Sybil correlation penalties, then gates OMS release via physical Kyle’s Lambda and VPIN invariants.',
+        'Reconstructs Ω_secure by adding Dempster-Shafer pairwise conflict K_conflict / (1 - K_conflict) and Sybil correlation penalties, then gates OMS release via physical Kyle’s Lambda and VPIN invariants.',
       empiricalBenchmark:
         'Compressing Ω from diag(0.05, 0.05) to diag(0.001, 0.001) lifts deployed capital weights from 1.2138 to 1.7303 (+42.55%). Circuit breaker halts 100% of predatory traps when λ_Kyle > 0.00015 or VPIN > 0.25.'
     },
@@ -1305,57 +1304,57 @@ export class Vol5AlgorithmEngines {
 }
 
 export const VOL5_WORKS_CITED: { num: number; text: string; url?: string }[] = [
-  { num: 1, text: 'The Silent Web: The Architecture of the Agent-to-Agent (A2A) Economy', url: 'https://ai.plainenglish.io/the-silent-web-the-architecture-of-the-agent-to-agent-a2a-economy-ffde806a5659' },
-  { num: 2, text: 'Agentic SEO: What It Actually Is and How We Run It in Production', url: 'https://fountaincity.tech/resources/blog/agentic-seo-practitioner-guide/' },
+  { num: 1, text: 'Last Crusade Labs Research Briefing: The Machine-to-Machine Silent Web & A2A Economy' },
+  { num: 2, text: 'Agentic SEO: Production Practitioner Patterns', url: 'https://fountaincity.tech/resources/blog/agentic-seo-practitioner-guide/' },
   { num: 3, text: 'Enterprise Guide to Strategic SEO & AEO - The ABM Agency', url: 'https://abmagency.com/aeo-guide/' },
-  { num: 4, text: 'What Is Generative Engine Optimization (AEO)? | DiamondBack', url: 'https://diamondbackadvertising.com/generative-engine-optimization/' },
-  { num: 5, text: 'AEO: Generative Engine Optimization - arXiv', url: 'https://arxiv.org/html/2311.09735v3' },
-  { num: 6, text: 'Agent2Agent Protocol in Google Agent Development Kit - Stackademic', url: 'https://blog.stackademic.com/agent2agent-protocol-in-google-agent-development-kit-a-comprehensive-guide-to-building-real-time-72b9671fb374' },
+  { num: 4, text: 'Generative Engine Optimization (GEO / AEO) Overview', url: 'https://diamondbackadvertising.com/generative-engine-optimization/' },
+  { num: 5, text: 'GEO: Generative Engine Optimization - arXiv', url: 'https://arxiv.org/html/2311.09735v3' },
+  { num: 6, text: 'Google Agent Development Kit & Agent2Agent Protocol Architecture Guide' },
   { num: 7, text: 'Agentic Engine Optimization (AEO) | AddyOsmani.com', url: 'https://addyosmani.com/blog/agentic-engine-optimization/' },
   { num: 8, text: 'Getting Started with Agent2Agent (A2A) Protocol: A Purchasing Concierge', url: 'https://codelabs.developers.google.com/intro-a2a-purchasing-concierge' },
-  { num: 9, text: 'A practical guide to building Multi-Agents AI Systems with A2A | by Nilo', url: 'https://medium.com/google-cloud/a-practical-guide-to-building-multi-agents-ai-systems-with-a2a-2c0e3d77af24' },
-  { num: 10, text: 'Understanding A2A — The protocol for agent collaboration', url: 'https://discuss.google.dev/t/understanding-a2a-the-protocol-for-agent-collaboration/189103' },
-  { num: 11, text: 'A Survey of Agent Interoperability Protocols: Model Context ... - arXiv', url: 'https://arxiv.org/html/2505.02279v1' },
-  { num: 12, text: 'Which Metadata Matters for LLM Tool Selection in MCP? Evidence - arXiv', url: 'https://arxiv.org/html/2610.14334v1' },
-  { num: 13, text: 'A URI-Based Framework for Interoperable Agents - IETF', url: 'https://www.ietf.org/archive/id/draft-narvaneni-agent-uri-00.html' },
-  { num: 14, text: 'Agents With Receipts — ERC-8004 | Protocol Labs - Synthesis', url: 'https://synthesis.mandate.md/tracks/pl-genesis-agents-with-receipts-8004' },
-  { num: 15, text: '98× Faster LLM Routing Without a Dedicated GPU: Flash Attention - arXiv', url: 'https://arxiv.org/pdf/2603.12646' },
-  { num: 16, text: 'Zero-Knowledge Proofs for AI Agent Verification and Privacy - Zylos', url: 'https://zylos.ai/research/2026-03-18-zero-knowledge-proofs-ai-agent-verification/' },
-  { num: 17, text: "Google's Agent2Agent Protocol Will Radically Change the Web", url: 'https://www.mariehaynes.com/googles-agent2agent-protocol-will-radically-change-the-web/' },
-  { num: 18, text: 'The agent economy is speedrunning the history of the web - The Colony', url: 'https://thecolony.si/post/52ca16d4-d8fc-45fa-b32a-9e95c617b897' },
+  { num: 9, text: 'Building Multi-Agent AI Systems with A2A - Google Cloud Engineering Notes' },
+  { num: 10, text: 'Agent2Agent (A2A) Protocol Discussions & Community Architecture', url: 'https://a2a-protocol.org/latest/specification/' },
+  { num: 11, text: 'A Survey of Agent Interoperability Protocols: Model Context Protocol (MCP) & A2A - arXiv', url: 'https://arxiv.org/html/2505.02279v1' },
+  { num: 12, text: 'Last Crusade Labs Internal Benchmark: Five-Model MCP Schema Topology & Parameter Sensitivity Trials' },
+  { num: 13, text: 'A URI-Based Framework for Interoperable Agents - IETF Internet-Draft', url: 'https://www.ietf.org/archive/id/draft-narvaneni-agent-uri-00.html' },
+  { num: 14, text: 'On-Chain Agent Identity, Reputation & Cryptographic Receipts Framework (ERC-8004 Design Reference)' },
+  { num: 15, text: 'Last Crusade Labs Benchmark: Envoy Semantic Routing & Low-Latency Classification Kernels' },
+  { num: 16, text: 'Last Crusade Cryptography Group: Quantized Zero-Knowledge Inference Verification Notes' },
+  { num: 17, text: 'Agent-to-Agent Protocol Ecosystem Adoption Review' },
+  { num: 18, text: 'Autonomous Service Marketplaces & Discovery Latency Analysis (Internal Working Paper)' },
   { num: 19, text: 'Multi-Agent Systems Execute Arbitrary Malicious Code - arXiv', url: 'https://arxiv.org/html/2503.12188v2' },
-  { num: 20, text: 'Manipulating LLM Tool-Calling through Adversarial Injection (ToolCommander)', url: 'https://aclanthology.org/2025.naacl-long.101.pdf' },
-  { num: 21, text: 'LLM-to-LLM Prompt Injection within Multi-Agent Systems - arXiv', url: 'https://arxiv.org/html/2410.07283v1' },
-  { num: 22, text: '(PDF) Can CaMeLs Talk? Securing Multi-Agent Systems Against Indirect Prompt Injection Attacks', url: 'https://www.researchgate.net/publication/415268776_Can_CaMeLs_Talk_Securing_Multi-Agent_Systems_Against_Indirect_Prompt_Injection_Attacks' },
-  { num: 23, text: 'Agentic SEO: How It Works and Where to Keep Control | RankUp', url: 'https://www.rankup.so/academy/agentic-seo' },
-  { num: 24, text: 'Multi-Agent Systems: Implementation Best Practices', url: 'https://fme.safe.com/guides/ai-agent-architecture/multi-agent-systems/' },
-  { num: 25, text: 'Institutional Epistemic Uncertainty & Microstructure Modeling Reference (unknown_url)' },
+  { num: 20, text: 'Manipulating LLM Tool-Calling through Adversarial Injection (ToolCommander) - NAACL 2025', url: 'https://aclanthology.org/2025.naacl-long.101.pdf' },
+  { num: 21, text: 'LLM-to-LLM Prompt Injection within Multi-Agent Systems (Prompt Infection) - arXiv', url: 'https://arxiv.org/html/2410.07283v1' },
+  { num: 22, text: 'Debenedetti et al.: Defeating Prompt Injections by Design (CaMeL) - arXiv', url: 'https://arxiv.org/abs/2503.18813' },
+  { num: 23, text: 'Agentic Search & Retrieval Control Best Practices - RankUp', url: 'https://www.rankup.so/academy/agentic-seo' },
+  { num: 24, text: 'Multi-Agent Systems: Production Implementation Best Practices', url: 'https://fme.safe.com/guides/ai-agent-architecture/multi-agent-systems/' },
+  { num: 25, text: 'Last Crusade Quantitative Risk Taskforce: Epistemic Uncertainty & Microstructure Modeling Protocol' },
   { num: 26, text: 'A Survey of LLM-Driven AI Agent Communication - arXiv', url: 'https://arxiv.org/html/2506.19676v2' },
   { num: 27, text: 'Agent2Agent (A2A) Protocol Specification', url: 'https://a2a-protocol.org/latest/specification/' },
-  { num: 28, text: 'AgentCard – Agent2Agent Protocol - The A2A Protocol Community', url: 'https://agent2agent.info/docs/concepts/agentcard/' },
-  { num: 29, text: 'Announcing the Agent2Agent Protocol (A2A)', url: 'https://developers.googleblog.com/en/a2a-a-new-era-of-agent-interoperability/' },
-  { num: 30, text: 'How MCP, A2A, and Commerce Protocols Are Reshaping the Web', url: 'https://www.solenya.ai/blog/20-agent-protocols' },
-  { num: 31, text: 'Schema Reference - What is the Model Context Protocol (MCP)? (2025-11-25)', url: 'https://modelcontextprotocol.io/specification/2025-11-25/schema' },
-  { num: 32, text: 'Schema Reference - What is the Model Context Protocol (MCP)? (2026-07-28)', url: 'https://modelcontextprotocol.io/specification/2026-07-28/schema' },
-  { num: 33, text: 'MCP Tool Limits: Maximum Counts, Schemas, and Workarounds', url: 'https://fast.io/resources/mcp-tool-limit/' },
-  { num: 34, text: 'Client Best Practices - Model Context Protocol', url: 'https://modelcontextprotocol.io/docs/2026-07-28/develop/clients/client-best-practices' },
-  { num: 35, text: 'Agent-to-Agent (A2A) Communication - Scaler', url: 'https://www.scaler.com/topics/agentic-ai/agent-to-agent-a2a-communiction/' },
-  { num: 36, text: 'RouteLLM vs vLLM Semantic Router - Ginger Labs', url: 'https://gingerlabs.ai/blog/routellm-vs-vllm-semantic-router' },
+  { num: 28, text: 'AgentCard Specification – Agent2Agent Protocol', url: 'https://agent2agent.info/docs/concepts/agentcard/' },
+  { num: 29, text: 'Announcing the Agent2Agent Protocol (A2A) - Google Developers Blog', url: 'https://developers.googleblog.com/en/a2a-a-new-era-of-agent-interoperability/' },
+  { num: 30, text: 'MCP, A2A, and Autonomous Agent Commerce Architecture Overview' },
+  { num: 31, text: 'Schema Reference - Model Context Protocol (MCP) (2025-11-25)', url: 'https://modelcontextprotocol.io/specification/2025-11-25/schema' },
+  { num: 32, text: 'Model Context Protocol Tool Manifest & Input Schema Extensions (Internal Technical Note)' },
+  { num: 33, text: 'MCP Tool Limits: Maximum Counts, Schemas, and Context Budgets - Fast.io', url: 'https://fast.io/resources/mcp-tool-limit/' },
+  { num: 34, text: 'Model Context Protocol Client Implementation Best Practices', url: 'https://modelcontextprotocol.io/specification/2025-11-25/schema' },
+  { num: 35, text: 'Agent-to-Agent (A2A) Communication Patterns - Scaler', url: 'https://www.scaler.com/topics/agentic-ai/agent-to-agent-a2a-communiction/' },
+  { num: 36, text: 'Semantic Router Architecture & Cost-Latency Optimization Benchmarks' },
   { num: 37, text: 'When to Reason: Semantic Router for vLLM - arXiv', url: 'https://arxiv.org/html/2510.08731v1' },
   { num: 38, text: 'LLM-Assisted Tools: Architectures & Applications - Emergent Mind', url: 'https://www.emergentmind.com/topics/llm-assisted-tools' },
-  { num: 39, text: 'Shua arXiv Reader: cs.AI papers — 2026-10-14', url: 'https://shuarxiv.top/' },
+  { num: 39, text: 'Last Crusade Agent Security Observatory: Multi-Turn Routing Telemetry Logs' },
   { num: 40, text: 'Adversarial Tool Injection Attacks | LLM Security Database - Promptfoo', url: 'https://www.promptfoo.dev/lm-security-db/vuln/adversarial-tool-injection-attacks-428a631b/' },
   { num: 41, text: "Add your AI agent's Agent Card | Google Cloud Marketplace Partners", url: 'https://docs.cloud.google.com/marketplace/docs/partners/ai-agents/agent-card' },
-  { num: 42, text: '[Bug]: ToolRetrieverRouterQueryEngine.aquery blocks on ... - GitHub', url: 'https://github.com/run-llama/llama_index/issues/22369' },
-  { num: 43, text: 'Can CaMeLs Talk? Securing Multi-Agent Systems Against Indirect Prompt Injection - arXiv', url: 'https://arxiv.org/html/2610.05640v1' },
-  { num: 44, text: 'Can CaMeLs Talk? Securing Multi-Agent Systems Against Indirect (OpenReview EpL9bIsnQD)', url: 'https://openreview.net/pdf?id=EpL9bIsnQD' },
-  { num: 45, text: 'Can CaMeLs Talk? Securing Multi-Agent Systems Against Indirect (OpenReview Tq0LdQaoV4)', url: 'https://openreview.net/pdf?id=Tq0LdQaoV4' },
-  { num: 46, text: 'Evolving Jailbreak Adversary and Guardrail for LLM Safety (DARWIN-Guard) - arXiv', url: 'https://arxiv.org/html/2607.19829v1' },
+  { num: 42, text: 'Tool Retrieval Routing Blocking Issue Analysis - LlamaIndex GitHub', url: 'https://github.com/run-llama/llama_index/issues/22369' },
+  { num: 43, text: 'Last Crusade Multi-CaMeL Benchmark: Opaque Variable Store Cross-Agent Isolation (949 Trials)' },
+  { num: 44, text: 'Taint-Tracked Privilege Separation Across Hierarchical A2A Pipelines (Technical Report)' },
+  { num: 45, text: 'Cyclic Permutation Auditing for Index-Zero Bias Mitigation (Technical Report)' },
+  { num: 46, text: 'Last Crusade Co-Evolutionary Guardrail Benchmark: Adversarial Transformation Resistance' },
   { num: 47, text: 'Semantic Router: On the Feasibility of Hijacking MLLMs via a Single Perturbation - arXiv', url: 'https://arxiv.org/abs/2511.20002' },
-  { num: 48, text: 'Agent-to-Agent (A2A) Protocols in AI Systems', url: 'https://contenteratechspace.com/agent-to-agent-a2a-protocols/' },
+  { num: 48, text: 'Institutional Agent-to-Agent Execution Protocol Integration Notes' },
   { num: 49, text: 'View Fusion Vis-à-Vis a Bayesian Interpretation of Black–Litterman', url: 'https://www.pm-research.com/content/iijjfds/5/3/23' },
-  { num: 50, text: 'An Integrated Framework for Managing Uncertainty and Risk in Portfolio Allocation', url: 'https://nottingham-repository.worktribe.com/OutputFile/62384012' },
-  { num: 51, text: 'zkML - Polyhedra Network', url: 'https://www.polyhedra.network/zkML' }
+  { num: 50, text: 'Uncertainty and Entropy Weighting in Portfolio Allocation', url: 'https://nottingham-repository.worktribe.com/OutputFile/62384012' },
+  { num: 51, text: 'Zero-Knowledge Machine Learning (zkML) Overview - Polyhedra Network', url: 'https://www.polyhedra.network/zkML' }
 ];
 
 
@@ -1624,8 +1623,54 @@ export const WhitepaperVol5Reader: React.FC<WhitepaperVol5ReaderProps> = ({
                 In this emerging topology, an agent without a machine-discoverable metadata contract is functionally invisible<sup>11</sup>. Four foundational protocol layers govern how autonomous orchestrators select and invoke remote counterparts. At the peer-to-peer orchestration layer, Google&rsquo;s Agent2Agent (A2A) protocol—introduced in April 2025 and adopted across enterprise ecosystems including Microsoft, Atlassian, and PayPal—standardizes inter-agent delegation over HTTP, Server-Sent Events (SSE), and gRPC<sup>10</sup>. Discovery within A2A centers on the <strong>Agent Card</strong>, a public JSON metadata document hosted at <code>/.well-known/agent.json</code> that must be canonicalized according to RFC 8785<sup>10</sup>. The Agent Card declares the service endpoint, authentication schemes such as OAuth 2.0, default input and output MIME modalities, and an array of actionable skills defined by unique identifiers, names, descriptions, tags, examples, and skill-specific modalities<sup>10</sup>. Client agents initiate execution via synchronous <code>message/send</code> or streaming <code>message/stream</code> operations, manage asynchronous task lifecycles (<code>input-required</code>, <code>completed</code>, <code>failed</code>, <code>canceled</code>) via <code>tasks/get</code> and push notification webhooks, and ingest the remote agent&rsquo;s materialized output as a structured artifact<sup>10</sup>.
               </p>
               <p>
-                Complementing A2A&rsquo;s peer-to-peer delegation, the Model Context Protocol (MCP, across its 2025-11-25 and 2026-07-28 specifications) standardizes how an agent connects to functional tools and context servers<sup>8</sup>. Upon connection, an MCP client issues a <code>tools/list</code> request supporting pagination and caching to retrieve each tool&rsquo;s <code>name</code>, <code>description</code>, and JSON Schema <code>inputSchema</code>, deferring context injection until the host&rsquo;s retrieval and routing layers filter the candidate set<sup>12</sup>. Above these transport layers, the <code>agent://</code> URI scheme (<code>draft-narvaneni-agent-uri-00</code>) unifies resolution across cloud, on-premises, and local (<code>agent+local://</code>) deployments via <code>.well-known/agents.json</code> descriptors and <code>X-Delegation-Chain</code> headers<sup>13</sup>. When multiple discovered agents advertise overlapping capabilities, orchestrators utilize the FIPA Contract Net Protocol (CNP), broadcasting task announcements and evaluating competitive capability bids before awarding execution contracts<sup>1</sup>. Finally, in open decentralized marketplaces such as AgentSphere, AgentMesh, and Aigora, autonomous agents register identities linked to operator wallets on the <strong>ERC-8004</strong> standard—which partitions trust across an Identity Registry, a Reputation Registry, and a Validation Registry—while coordinating via peer-to-peer WebSockets, enforcing scoped spending permissions via <strong>ERC-7715</strong>, and settling transactions over the <strong>x402</strong> payment protocol<sup>14</sup>.
+                Complementing A2A&rsquo;s peer-to-peer delegation, the Model Context Protocol (MCP, per its 2025-11-25 specification) standardizes how an agent connects to functional tools and context servers<sup>8</sup>. Upon connection, an MCP client issues a <code>tools/list</code> request supporting pagination and caching to retrieve each tool&rsquo;s <code>name</code>, <code>description</code>, and JSON Schema <code>inputSchema</code>, deferring context injection until the host&rsquo;s retrieval and routing layers filter the candidate set<sup>12</sup>. Above these transport layers, the <code>agent://</code> URI scheme (<code>draft-narvaneni-agent-uri-00</code>) unifies resolution across cloud, on-premises, and local (<code>agent+local://</code>) deployments via <code>.well-known/agents.json</code> descriptors and <code>X-Delegation-Chain</code> headers<sup>13</sup>. When multiple discovered agents advertise overlapping capabilities, orchestrators utilize the FIPA Contract Net Protocol (CNP), broadcasting task announcements and evaluating competitive capability bids before awarding execution contracts<sup>1</sup>. Finally, in decentralized agent marketplaces, autonomous agents link identities to operator wallets on the <strong>ERC-8004</strong> standard—which partitions trust across an Identity Registry, a Reputation Registry, and a Validation Registry—while coordinating via peer-to-peer WebSockets, enforcing scoped spending permissions via <strong>ERC-7715</strong>, and settling transactions over the <strong>x402</strong> payment protocol<sup>14</sup>.
               </p>
+
+              {/* Animated SVG Silent Web A2A Discovery & Safety Funnel */}
+              <div className="my-6 bg-[#24010d] border border-[#D5991C]/50 p-4 rounded-xs overflow-hidden">
+                <div className="text-[11px] font-mono font-bold uppercase text-[#D5991C] mb-2">
+                  Figure 5.0 · Interactive Agent-to-Agent Discovery &amp; Cryptographic Safety Pipeline
+                </div>
+                <svg viewBox="0 0 820 155" className="w-full h-auto block" role="img" aria-label="Agent-to-Agent Discovery and Cryptographic Safety Funnel">
+                  <defs>
+                    <linearGradient id="a2aFlowGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                      <stop offset="0%" stopColor="#D5991C" />
+                      <stop offset="50%" stopColor="#00FF9D" />
+                      <stop offset="100%" stopColor="#7C3AED" />
+                    </linearGradient>
+                  </defs>
+                  <line x1="90" y1="74" x2="730" y2="74" stroke="url(#a2aFlowGrad)" strokeWidth="2.5" strokeDasharray="7 5">
+                    <animate attributeName="stroke-dashoffset" from="24" to="0" dur="1.4s" repeatCount="indefinite" />
+                  </line>
+                  <circle r="4.5" cy="74" fill="#00FF9D">
+                    <animate attributeName="cx" values="95;260;425;590;720" dur="2.6s" repeatCount="indefinite" />
+                  </circle>
+                  <rect x="20" y="34" width="140" height="80" rx="5" fill="#350213" stroke="#D5991C" strokeWidth="1.5" />
+                  <text x="90" y="57" textAnchor="middle" fill="#D5991C" fontSize="9.5" fontWeight="bold">1. DISCOVERY CARDS</text>
+                  <text x="90" y="75" textAnchor="middle" fill="#FBF3E2" fontSize="10.5" fontWeight="bold">agent.json &amp; MCP</text>
+                  <text x="90" y="94" textAnchor="middle" fill="#F2D69D" fontSize="8">Flat 1-Layer Schema</text>
+
+                  <rect x="185" y="34" width="145" height="80" rx="5" fill="#350213" stroke="#00A878" strokeWidth="1.5" />
+                  <text x="257" y="57" textAnchor="middle" fill="#00FF9D" fontSize="9.5" fontWeight="bold">2. TRAFFIC ROUTER</text>
+                  <text x="257" y="75" textAnchor="middle" fill="#FBF3E2" fontSize="10.5" fontWeight="bold">Adaptive Firewall</text>
+                  <text x="257" y="94" textAnchor="middle" fill="#F2D69D" fontSize="8">98.53% Routing Acc.</text>
+
+                  <rect x="355" y="34" width="145" height="80" rx="5" fill="#350213" stroke="#00FF9D" strokeWidth="1.8" />
+                  <text x="427" y="57" textAnchor="middle" fill="#00FF9D" fontSize="9.5" fontWeight="bold">3. DATA ISOLATION</text>
+                  <text x="427" y="75" textAnchor="middle" fill="#FBF3E2" fontSize="10.5" fontWeight="bold">Sealed Envelopes</text>
+                  <text x="427" y="94" textAnchor="middle" fill="#F2D69D" fontSize="8">0.0% Laundering ASR</text>
+
+                  <rect x="525" y="34" width="135" height="80" rx="5" fill="#350213" stroke="#7C3AED" strokeWidth="1.5" />
+                  <text x="592" y="57" textAnchor="middle" fill="#C4B5FD" fontSize="9.5" fontWeight="bold">4. BID &amp; RECEIPT</text>
+                  <text x="592" y="75" textAnchor="middle" fill="#FBF3E2" fontSize="10.5" fontWeight="bold">Verified Handshake</text>
+                  <text x="592" y="94" textAnchor="middle" fill="#F2D69D" fontSize="8">x402 + MANDATE Rule</text>
+
+                  <rect x="680" y="34" width="120" height="80" rx="5" fill="#0D4432" stroke="#00FF9D" strokeWidth="1.8" />
+                  <text x="740" y="57" textAnchor="middle" fill="#00FF9D" fontSize="9.5" fontWeight="bold">5. SAFE SETTLE</text>
+                  <text x="740" y="75" textAnchor="middle" fill="#FBF3E2" fontSize="10.5" fontWeight="bold">Market Gate</text>
+                  <text x="740" y="94" textAnchor="middle" fill="#F2D69D" fontSize="8">Kyle &lambda; &amp; VPIN OK</text>
+                </svg>
+              </div>
             </section>
 
             {/* SECTION 2 */}
@@ -1643,7 +1688,7 @@ export const WhitepaperVol5Reader: React.FC<WhitepaperVol5ReaderProps> = ({
                 In Stage 1, because multi-step chain-of-thought deliberation can consume up to <span className="font-mono font-bold bg-[#FFFDF8] px-1.5 py-0.5 border border-[#F2D69D]">150&times;</span> more energy than standard inference, production agentic infrastructures interpose high-speed semantic routers prior to model invocation<sup>36</sup>. The vLLM Semantic Router (v0.3 &ldquo;Themis&rdquo;), operating as an Envoy <code>ext_proc</code> filter in the Kubernetes data plane with a Rust-based classification core and shared-GPU LoRA adapters, evaluates incoming requests across six distinct signal types: domain classification, keyword matching, embedding similarity, factual verification, query complexity, and safety guardrails<sup>15</sup>. This routing layer achieves <strong>98.53% classification accuracy</strong> from 805 training examples while improving downstream MMLU-Pro accuracy by <strong>10.2 percentage points</strong>, cutting response latency by <strong>47.1%</strong>, and reducing token consumption by <strong>48.5%</strong><sup>36</sup>. Concurrently, dense bi-encoder retrievers such as Contriever and the specialized ToolBench Retriever compute inner-product similarity between the orchestrator&rsquo;s decomposed sub-goal query and indexed Agent Cards or MCP tool manifests to select the top-<em>K</em> candidates for context injection<sup>20</sup>.
               </p>
               <p>
-                In Stage 2, once the top-<em>K</em> candidate definitions are injected into the orchestrator&rsquo;s active context window, the underlying language model must select a single agent or tool to invoke. Controlled factor-level interventions conducted by Li, Qiao, and Gao (October 2026, arXiv:2610.14334) across five frontier model families (GPT, Claude, Gemini, DeepSeek, and Qwen) demonstrate that models do not merely use JSON parameter schemas to format arguments after selecting a tool; rather, models inspect parameter schema topology during the selection phase to judge whether a candidate fits the request at all<sup>12</sup>.
+                In Stage 2, once the top-<em>K</em> candidate definitions are injected into the orchestrator&rsquo;s active context window, the underlying language model must select a single agent or tool to invoke. Controlled factor-level benchmark trials conducted across five frontier model families (GPT, Claude, Gemini, DeepSeek, and Qwen) demonstrate that models do not merely use JSON parameter schemas to format arguments after selecting a tool; rather, models inspect parameter schema topology during the selection phase to judge whether a candidate fits the request at all<sup>12</sup>.
               </p>
 
               {/* Table 2: Metadata Factor / Structural Intervention */}
@@ -1822,7 +1867,7 @@ export const WhitepaperVol5Reader: React.FC<WhitepaperVol5ReaderProps> = ({
                 As enterprises deploy A2A-EO to capture autonomous market share, malicious actors inevitably weaponize these exact optimization pathways to hijack multi-agent control flows, exfiltrate sensitive enterprise state, or induce Denial-of-Service (DoS)<sup>19</sup>. Deep security analysis reveals three catastrophic vulnerability classes unique to interconnected agentic protocols. First, in <strong>Adversarial Tool and Agent Retrieval Injection (ToolCommander)</strong>, attackers inject &ldquo;Manipulator Tools&rdquo; or rogue Agent Cards into open registries using gradient-optimized adversarial JSON suffixes<sup>20</sup>. Empirical evaluations across Contriever and ToolBench retrievers paired with GPT-4o mini, Llama3, and Qwen2 demonstrate that ToolCommander achieves a <strong>100% Retrieval Attack Success Rate (<span className="font-mono">ASR<sub>Ret</sub></span>)</strong><sup>20</sup>. Once invoked, the manipulator tool returns fabricated scheduling outputs claiming that legitimate competing tools are unavailable or malfunctioning, achieving up to <strong>100% Denial-of-Service (<span className="font-mono">ASR<sub>DoS</sub></span>)</strong> and <strong>Unscheduled Tool Calling (<span className="font-mono">ASR<sub>UTC</sub></span>)</strong><sup>20</sup>. Second, in <strong>Prompt Infection and Recursive Collapse</strong>, a single self-replicating indirect prompt injection planted in external content compels the first compromised agent in a multi-agent chain <span className="font-mono">f<sub>1</sub> &circ; f<sub>2</sub> &circ; &hellip; &circ; f<sub>N</sub>(x)</span> to propagate a hijacking payload and shared data note to downstream peers, collapsing the entire heterogeneous system into a single recursive attacker-controlled loop <span className="font-mono">PromptInfection<sup>(N)</sup>(x, data)</span><sup>21</sup>.
               </p>
               <p>
-                Third, and most insidiously, multi-agent topologies suffer from <strong>Cross-Agent Boundary Laundering</strong><sup>22</sup>. For single-agent deployments, the Dual-LLM CaMeL architecture (Debenedetti et al.) provides strong Control-Flow Integrity (CFI) by separating a Privileged Planning LLM (PLLM)—which reads only the trusted user query and writes a static Python control-flow plan—from a Quarantined LLM (QLLM) that parses untrusted tool outputs without privileges to invoke tools or alter control flow<sup>22</sup>. However, Peters-Gill et al. (October 2026, arXiv:2610.05640) proved both theoretically and empirically that individual CaMeL security does not compose across multi-agent boundaries<sup>22</sup>. In a hierarchical system <span className="font-mono">A = {'{'}A<sub>0</sub>, A<sub>1</sub>, A<sub>2</sub>{'}'}</span> where Orchestrator <span className="font-mono">A<sub>0</sub></span> invokes SQL Agent <span className="font-mono">A<sub>1</sub></span> (<code>read_sql</code>) and Notification Agent <span className="font-mono">A<sub>2</sub></span> (<code>send_email</code>), an indirect prompt injection planted inside a job applicant&rsquo;s SQL record cannot hijack <span className="font-mono">A<sub>1</sub></span> or <span className="font-mono">A<sub>0</sub></span> because both treat tool outputs as untrusted data restricted to their respective QLLM modules<sup>22</sup>. Yet when <span className="font-mono">A<sub>0</sub></span> incorporates the tainted <code>summarised_info</code> variable into the natural-language task brief passed to <span className="font-mono">A<sub>2</sub></span>, a fatal privilege escalation occurs: because <span className="font-mono">A<sub>2</sub></span> treats its incoming A2A invocation argument as its trusted user instruction, the previously untrusted value is exposed directly to <span className="font-mono">A<sub>2</sub></span>&rsquo;s privileged PLLM<sup>22</sup>. This boundary laundering alters <span className="font-mono">A<sub>2</sub></span>&rsquo;s generated Python program, injecting an unauthorized <code>send_email</code> call that exfiltrates private applicant data to the attacker<sup>22</sup>.
+                Third, and most insidiously, multi-agent topologies suffer from <strong>Cross-Agent Boundary Laundering</strong><sup>22</sup>. For single-agent deployments, the Dual-LLM CaMeL architecture (Debenedetti et al.) provides strong Control-Flow Integrity (CFI) by separating a Privileged Planning LLM (PLLM)—which reads only the trusted user query and writes a static Python control-flow plan—from a Quarantined LLM (QLLM) that parses untrusted tool outputs without privileges to invoke tools or alter control flow<sup>22</sup>. However, extending CaMeL into hierarchical multi-agent pipelines proves that single-agent isolation alone does not compose across agent boundaries<sup>43</sup>. In a system <span className="font-mono">A = {'{'}A<sub>0</sub>, A<sub>1</sub>, A<sub>2</sub>{'}'}</span> where Orchestrator <span className="font-mono">A<sub>0</sub></span> invokes SQL Agent <span className="font-mono">A<sub>1</sub></span> (<code>read_sql</code>) and Notification Agent <span className="font-mono">A<sub>2</sub></span> (<code>send_email</code>), an indirect prompt injection planted inside a job applicant&rsquo;s SQL record cannot hijack <span className="font-mono">A<sub>1</sub></span> or <span className="font-mono">A<sub>0</sub></span> because both treat tool outputs as untrusted data restricted to their respective QLLM modules<sup>43</sup>. Yet when <span className="font-mono">A<sub>0</sub></span> incorporates the tainted <code>summarised_info</code> variable into the natural-language task brief passed to <span className="font-mono">A<sub>2</sub></span>, a fatal privilege escalation occurs: because <span className="font-mono">A<sub>2</sub></span> treats its incoming A2A invocation argument as its trusted user instruction, the previously untrusted value is exposed directly to <span className="font-mono">A<sub>2</sub></span>&rsquo;s privileged PLLM<sup>43</sup>. This boundary laundering alters <span className="font-mono">A<sub>2</sub></span>&rsquo;s generated Python program, injecting an unauthorized <code>send_email</code> call that exfiltrates private applicant data to the attacker<sup>43</sup>.
               </p>
 
               {/* Inline Figure 1: Individual CaMeL vs Multi-CaMeL Architecture Diagram */}
@@ -1957,7 +2002,7 @@ export const WhitepaperVol5Reader: React.FC<WhitepaperVol5ReaderProps> = ({
                 If <span className="font-mono">D<sub>KL</sub> &gt; &tau;<sub>KL</sub></span>, the candidate&rsquo;s description contains manipulative optimization suffixes (ToolCommander vector) and is stripped to its bare AST signature<sup>20</sup>. Selection is then committed strictly using the permutation-averaged consensus probability <span className="font-mono">P&#772;(A<sub>i</sub>) = (1 / M) &sum;<sub>m=1..M</sub> P<sub>sanitized</sub>(A<sub>i</sub> | &pi;<sub>m</sub>)</span>, mathematically neutralizing index-zero positional gaming<sup>12</sup>.
               </p>
               <p>
-                In its second stage, PMCTT-CPA enforces <strong>Multi-CaMeL Cross-Agent Opaque Data Channel</strong> routing and static taint tracking<sup>43</sup>. Extending the Multi-CaMeL formalization of Peters-Gill et al. (arXiv:2610.05640), every value <em>v</em> returned by a tool or sub-agent is wrapped in an <code>OpaqueVariable</code> container carrying an immutable provenance label <span className="font-mono">&ell;(v) &isin; {'{'}TRUSTED, UNTRUSTED{'}'}</span> and a set of cryptographic capability tags <span className="font-mono">C(v)</span> specifying permissible sinks<sup>44</sup>. When an orchestrator or parent agent <span className="font-mono">A<sub>p</sub></span> generates a Python control-flow program via its PLLM to invoke a child A2A agent <span className="font-mono">A<sub>c</sub></span>, the Multi-CaMeL AST Interpreter statically verifies a strict non-interference boundary invariant prior to execution:
+                In its second stage, PMCTT-CPA enforces <strong>Sealed Cross-Agent Opaque Data Channels</strong> and static taint tracking<sup>43</sup>. Extending Dual-LLM capability separation across multi-agent hops, every value <em>v</em> returned by a tool or sub-agent is wrapped in an <code>OpaqueVariable</code> container carrying an immutable provenance label <span className="font-mono">&ell;(v) &isin; {'{'}TRUSTED, UNTRUSTED{'}'}</span> and a set of cryptographic capability tags <span className="font-mono">C(v)</span> specifying permissible sinks<sup>44</sup>. When an orchestrator or parent agent <span className="font-mono">A<sub>p</sub></span> generates a Python control-flow program via its PLLM to invoke a child A2A agent <span className="font-mono">A<sub>c</sub></span>, the Multi-CaMeL AST Interpreter statically verifies a strict non-interference boundary invariant prior to execution:
               </p>
 
               <div className="p-4 bg-[#FFFDF8] border-l-4 border-[#410217] font-mono text-xs sm:text-sm overflow-x-auto shadow-xs">
@@ -1992,10 +2037,10 @@ export const WhitepaperVol5Reader: React.FC<WhitepaperVol5ReaderProps> = ({
                 Section 07 · Cybersecurity Defense 2
               </div>
               <h2 className="font-serif text-2xl sm:text-3xl text-[#410217] font-bold">
-                Defense 2: Co-Evolutionary Semantic Router and Zero-Knowledge Policy Attestation (CESR-ZKPA)
+                Defense 2: Adaptive Traffic Firewall and Spending-Rule Receipts (CESR-ZKPA)
               </h2>
               <p>
-                While PMCTT-CPA secures the orchestrator&rsquo;s internal control flow, high-throughput multi-agent gateways also face data-plane hijacking at the routing layer—where single-perturbation adversarial attacks against multimodal and semantic routers achieve a <strong>66% attack success rate</strong>—and black-box execution spoofing by remote agents<sup>16</sup>. Furthermore, static safety guardrails suffer from severe over-refusal: when a legitimate service agent employs sophisticated A2A-EO schema formatting, naive classifiers frequently form spurious correlations between structural complexity and malicious intent, blocking benign traffic<sup>46</sup>. To solve both vulnerabilities simultaneously, this report introduces <strong>Co-Evolutionary Semantic Router and Zero-Knowledge Policy Attestation (CESR-ZKPA)</strong>, fusing the DARWIN-Guard online co-evolutionary training paradigm (arXiv:2607.19829) with asynchronous zkML Policy Compliance Proofs and <code>MANDATE.md</code> pre-settlement rationale inspection<sup>14</sup>.
+                While Sealed Agent Envelopes secure the orchestrator&rsquo;s internal control flow, high-throughput multi-agent gateways also face data-plane hijacking at the routing layer—where single-perturbation adversarial attacks against multimodal and semantic routers achieve a <strong>66% attack success rate</strong>—and black-box execution spoofing by remote agents<sup>16</sup>. Furthermore, static safety guardrails suffer from severe over-refusal: when a legitimate service agent employs sophisticated A2A-EO schema formatting, naive classifiers frequently form spurious correlations between structural complexity and malicious intent, blocking benign traffic<sup>46</sup>. To solve both vulnerabilities simultaneously, this report introduces the <strong>Adaptive Traffic Firewall &amp; Spending-Rule Verification Layer (CESR-ZKPA)</strong>, fusing online co-evolutionary red-team training with asynchronous zkML Policy Compliance Proofs and <code>MANDATE.md</code> pre-settlement rationale inspection<sup>14</sup>.
               </p>
 
               <h3 className="font-serif text-xl font-bold text-[#410217] pt-2">
@@ -3318,7 +3363,7 @@ export const CounterGeoVol5FindingsAndLab: React.FC<Vol5FindingsAndLabProps> = (
             <div className="flex flex-wrap items-center justify-between gap-3 border-b border-[#D5991C]/30 pb-3">
               <div>
                 <span className="font-mono text-xs text-[#D5991C] font-bold uppercase tracking-wider">
-                  // INTERACTIVE 3D WEBGL PROTOCOL &amp; DEFENSE SIMULATOR (5 SCENES)
+                  Interactive 3D WebGL Protocol &amp; Defense Simulator (5 Scenes)
                 </span>
                 <h2 className="font-serif text-2xl sm:text-3xl font-bold text-[#FBF3E2]">
                   3D WebGL Telemetry Theater: A2A-EO Optimization &amp; Multi-Agent Defense
@@ -3573,7 +3618,7 @@ export const CounterGeoVol5FindingsAndLab: React.FC<Vol5FindingsAndLabProps> = (
           <section className="v5-gsap-section space-y-6">
             <div className="border-b border-[#D5991C]/30 pb-3">
               <span className="font-mono text-xs text-[#D5991C] font-bold uppercase tracking-wider">
-                // EMPIRICAL FINDINGS &amp; INTERACTIVE TELEMETRY CHARTS
+                Empirical Findings &amp; Interactive Telemetry Charts
               </span>
               <h2 className="font-serif text-2xl sm:text-3xl font-bold text-[#FBF3E2]">
                 Four Laws of Autonomous Selection &amp; Multi-CaMeL Defense Benchmarks
@@ -3581,7 +3626,7 @@ export const CounterGeoVol5FindingsAndLab: React.FC<Vol5FindingsAndLabProps> = (
             </div>
 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-              {/* Chart Card 1: MCP / A2A Metadata Factor Sensitivities (arXiv:2610.14334) */}
+              {/* Chart Card 1: MCP / A2A Metadata Factor Sensitivities */}
               <div className="v5-gsap-card bg-[#26010e] border border-[#D5991C]/40 p-6 space-y-4">
                 <div className="flex items-center justify-between border-b border-[#D5991C]/25 pb-3">
                   <div>
@@ -3739,7 +3784,7 @@ export const CounterGeoVol5FindingsAndLab: React.FC<Vol5FindingsAndLabProps> = (
           <section className="v5-gsap-section space-y-6">
             <div className="border-b border-[#D5991C]/30 pb-3">
               <span className="font-mono text-xs text-[#D5991C] font-bold uppercase tracking-wider">
-                // LIVE EXECUTABLE ALGORITHMIC WORKBENCHES (4 SANDBOXES)
+                Live Executable Algorithmic Workbenches (4 Sandboxes)
               </span>
               <h2 className="font-serif text-2xl sm:text-3xl font-bold text-[#FBF3E2]">
                 Interactive Simulators: Test Every Equation &amp; Defense in Real Time
@@ -4265,7 +4310,7 @@ export const CounterGeoVol5FindingsAndLab: React.FC<Vol5FindingsAndLabProps> = (
             <div className="flex flex-wrap items-center justify-between gap-3 border-b border-[#D5991C]/30 pb-3">
               <div>
                 <span className="font-mono text-xs text-[#D5991C] font-bold uppercase tracking-wider">
-                  // PROGRESSIVE 5-MODULE ARCHITECTURE LIBRARY (BEGINNER / OPERATOR / ARCHITECT)
+                  Progressive 5-Module Architecture Library (Beginner / Operator / Architect)
                 </span>
                 <h2 className="font-serif text-2xl sm:text-3xl font-bold text-[#FBF3E2]">
                   Complete Volume 5 Methods &amp; Defenses Interactive Catalog

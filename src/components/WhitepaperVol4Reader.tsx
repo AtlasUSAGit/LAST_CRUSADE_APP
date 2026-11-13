@@ -241,7 +241,7 @@ export const WhitepaperVol4Reader: React.FC<WhitepaperVol4ReaderProps> = ({
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 font-mono text-xs pt-2">
                 <div className="p-3 bg-[#FFFDF8] border border-[#F2D69D]">
                   <strong className="text-[#410217] block mb-1">1. Product Packaging (Sec. 28)</strong>
-                  Three SKUs: Cloud API Proxy, HFT FPGA Appliance, and FedRAMP High / DoD IL6 Sovereign Enclaves.
+                  Three SKUs: Cloud API Proxy, HFT FPGA Appliance, and Dedicated Air-Gapped Sovereign Enclaves.
                 </div>
                 <div className="p-3 bg-[#FFFDF8] border border-[#F2D69D]">
                   <strong className="text-[#410217] block mb-1">2. Federal Pathways (Sec. 29)</strong>
@@ -300,12 +300,12 @@ export const WhitepaperVol4Reader: React.FC<WhitepaperVol4ReaderProps> = ({
 
                   <div className="p-4 bg-[#FFFDF8] border border-[#410217]">
                     <h4 className="font-mono text-sm font-bold text-[#410217]">
-                      SKU 3: Counter-AEO Sovereign Enclave ("FedRAMP High / DoD IL6 / SCIF Edition")
+                      SKU 3: Counter-AEO Sovereign Enclave (Dedicated Air-Gapped Enclave)
                     </h4>
                     <p className="text-xs text-[#410217]/80 mt-1">
                       <strong>Target Customers:</strong> U.S. Securities and Exchange Commission (SEC), U.S. Department of Commerce (BIS / ITA), U.S. International Trade Commission (USITC), U.S. Department of the Treasury (OFAC / CFIUS / FinCEN / OFR), CISA, and DoD/IC.<br />
-                      <strong>Active Layers:</strong> Full 12-Layer Stack, featuring specialized modules for Layer 9 (HER-BOD Poincaré Beneficial Ownership De-Cloaking), Layer 10 (EIOL-PCV Leontief Input-Output &amp; Satellite AIS Cargo Mass Verification), and the SEC CAT ZK-CAEO Verifier Node.<br />
-                      <strong>Deployment:</strong> Deployed on AWS GovCloud, Azure Government Secret, or air-gapped on-premises inside SCIFs with FIPS 140-3 Level 4 HSMs.
+                      <strong>Active Layers:</strong> Full Stack, featuring specialized modules for Layer 9 (Poincaré Beneficial Ownership De-Cloaking), Layer 10 (Supply-Chain Input-Output &amp; AIS Cargo Mass Verification), and the SEC CAT ZK Verifier Node.<br />
+                      <strong>Deployment:</strong> Air-gapped on-premises or isolated customer-controlled cloud environments with Hardware Security Module (HSM) key anchoring (target government accreditation pathways evaluated per customer deployment).
                     </p>
                   </div>
                 </div>

@@ -117,10 +117,6 @@ export const WhitepaperVol2Reader: React.FC<WhitepaperVol2ReaderProps> = ({
         
         {/* Section Header */}
         <div className="mb-6">
-          <div className="flex items-center space-x-2 text-[11px] font-mono text-[#D5991C] uppercase tracking-widest font-bold mb-1">
-            <Bookmark className="w-3.5 h-3.5" />
-            <span>SECTION REFERENCE // {section.id.toUpperCase()}</span>
-          </div>
           
           {section.level === 1 && (
             <h1 className="font-serif text-3xl sm:text-4xl text-[#410217] font-bold tracking-tight">

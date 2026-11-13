@@ -513,7 +513,7 @@ export const MASTER_DOC_VOL3_METADATA = {
   title: 'Counter-AEO Architecture — Volume III (Experimental Appendix): The CounterAEO-Bench Simulation Suite, Flash-Crash Stress Testing, and ROC/AUC Validation',
   shortTitle: 'Counter-AEO Volume III: CounterAEO-Bench & Market Stress Testing',
   date: 'October 2026',
-  classification: 'PUBLIC ZERO-DAY ADVISORY // SEC RULE 15c3-8 COMPLIANCE',
+  classification: 'Experimental Validation & Benchmark Appendix',
   pageCount: 38,
   readingTimeMinutes: 24,
   authors: [

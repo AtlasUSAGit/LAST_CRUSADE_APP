@@ -274,7 +274,7 @@ export const CounterGeoVol4FindingsAndLab: React.FC<Vol4FindingsAndLabProps> = (
           <div className="flex flex-wrap items-center justify-between gap-3 pb-4 mb-4 border-b border-[#F2D69D] font-mono text-xs">
             <div className="flex items-center space-x-2">
               <span className="px-2 py-0.5 bg-[#410217] text-[#FBF3E2] font-bold uppercase tracking-wider text-[10px]">
-                PAGE 2 // INTERACTIVE HARDWARE &amp; COMMERCIAL LAB
+                Interactive Hardware &amp; Commercial Lab
               </span>
               <span className="text-[#410217] font-bold">VOLUME IV ENGINE</span>
             </div>
@@ -518,6 +518,47 @@ export const CounterGeoVol4FindingsAndLab: React.FC<Vol4FindingsAndLabProps> = (
                 <div className="flex items-center justify-between pb-3 border-b border-[#F2D69D]">
                   <span className="font-bold uppercase text-[#410217]">312.5 MHz Pipelined Datapath Budget</span>
                   <span className="text-[11px] text-[#00A878] font-bold">Total: 142.0 ns</span>
+                </div>
+
+                {/* Live Animated SVG Hardware Datapath Schematic */}
+                <div className="bg-[#24010d] border border-[#D5991C]/40 p-3 rounded-xs overflow-hidden">
+                  <svg viewBox="0 0 760 120" className="w-full h-auto block" role="img" aria-label="142ns FPGA SmartNIC 3-Stage Hardware Datapath">
+                    <defs>
+                      <linearGradient id="fpgaBusGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" stopColor="#D5991C" stopOpacity="0.2" />
+                        <stop offset="50%" stopColor={fpgaResult.txOrderEnable ? '#00A878' : '#E63946'} stopOpacity="0.9" />
+                        <stop offset="100%" stopColor={fpgaResult.txOrderEnable ? '#00FF9D' : '#E63946'} stopOpacity="0.3" />
+                      </linearGradient>
+                    </defs>
+                    <line x1="85" y1="54" x2="675" y2="54" stroke="url(#fpgaBusGrad)" strokeWidth="3" strokeDasharray="6 4">
+                      <animate attributeName="stroke-dashoffset" from="20" to="0" dur="0.9s" repeatCount="indefinite" />
+                    </line>
+                    <circle r="4" cy="54" fill={fpgaResult.txOrderEnable ? '#00FF9D' : '#FF5A67'}>
+                      <animate attributeName="cx" values="95;260;445;620" dur="1.6s" repeatCount="indefinite" />
+                    </circle>
+                    {/* Node 1 */}
+                    <rect x="20" y="24" width="135" height="60" rx="4" fill="#350213" stroke="#D5991C" strokeWidth="1.5" />
+                    <text x="87" y="45" textAnchor="middle" fill="#D5991C" fontSize="9" fontWeight="bold">STAGE 1 · PARSER</text>
+                    <text x="87" y="61" textAnchor="middle" fill="#FBF3E2" fontSize="11" fontWeight="bold">38.4 ns (12 clk)</text>
+                    <text x="87" y="75" textAnchor="middle" fill="#F2D69D" fontSize="8">ITCH 5.0 / 100GbE MAC</text>
+                    {/* Node 2 */}
+                    <rect x="200" y="24" width="160" height="60" rx="4" fill="#350213" stroke="#D5991C" strokeWidth="1.5" />
+                    <text x="280" y="45" textAnchor="middle" fill="#D5991C" fontSize="9" fontWeight="bold">STAGE 2 · PHYSICS CORE</text>
+                    <text x="280" y="61" textAnchor="middle" fill="#FBF3E2" fontSize="11" fontWeight="bold">83.2 ns (26 clk)</text>
+                    <text x="280" y="75" textAnchor="middle" fill="#F2D69D" fontSize="8">Order-Book &amp; Surprise Check</text>
+                    {/* Node 3 */}
+                    <rect x="405" y="24" width="155" height="60" rx="4" fill="#350213" stroke={fpgaResult.txOrderEnable ? '#00A878' : '#E63946'} strokeWidth="2" />
+                    <text x="482" y="45" textAnchor="middle" fill={fpgaResult.txOrderEnable ? '#00FF9D' : '#FF7B85'} fontSize="9" fontWeight="bold">STAGE 3 · TX MASK</text>
+                    <text x="482" y="61" textAnchor="middle" fill="#FBF3E2" fontSize="11" fontWeight="bold">20.4 ns (7 clk)</text>
+                    <text x="482" y="75" textAnchor="middle" fill="#F2D69D" fontSize="8">Wire-Speed Safety Gate</text>
+                    {/* Outcome */}
+                    <rect x="605" y="24" width="135" height="60" rx="4" fill={fpgaResult.txOrderEnable ? '#0D4432' : '#580D16'} stroke={fpgaResult.txOrderEnable ? '#00FF9D' : '#E63946'} strokeWidth="2" />
+                    <text x="672" y="46" textAnchor="middle" fill="#FBF3E2" fontSize="9" fontWeight="bold">WIRE DECISION</text>
+                    <text x="672" y="63" textAnchor="middle" fill={fpgaResult.txOrderEnable ? '#00FF9D' : '#FF9AA2'} fontSize="11" fontWeight="bold">
+                      {fpgaResult.txOrderEnable ? 'TX PASS (1)' : 'TX KILLED (0)'}
+                    </text>
+                    <text x="672" y="76" textAnchor="middle" fill="#FBF3E2" fontSize="8">142.0 ns Total</text>
+                  </svg>
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">

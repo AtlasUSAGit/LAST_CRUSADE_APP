@@ -745,24 +745,23 @@ export const CounterGeoVol2FindingsAndLab: React.FC<Vol2FindingsAndLabProps> = (
             {/* 4 Algorithms Grid */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
               
-              {/* CARD 1: LAYER 5 - DMEM-WMQ */}
+              {/* CARD 1: LAYER 5 - Long-Term Memory Drift Guard */}
               <div className="bg-[#FFFDF8] border border-[#F2D69D] p-6 shadow-xs space-y-4">
                 <div className="flex items-center justify-between pb-3 border-b border-[#F2D69D]">
-                  <span className="font-mono text-xs text-[#00A878] font-bold uppercase tracking-wider">
-                    // LAYER 5 DEFENSE
+                  <span className="px-2.5 py-0.5 rounded-full text-xs bg-[#FAF2E1] border border-[#F2D69D] text-[#410217] font-semibold">
+                    Layer 5 Defense
                   </span>
-                  <span className="font-mono text-[10px] bg-[#FAF2E1] px-2 py-0.5 border border-[#F2D69D] text-[#8B1E1E] font-bold">
-                    DMEM-WMQ MEMORY SHIELD
+                  <span className="font-mono text-[10px] text-[#8B1E1E] font-bold">
+                    LONG-TERM MEMORY GUARD
                   </span>
                 </div>
 
                 <div>
                   <h4 className="font-serif font-bold text-lg text-[#410217]">
-                    Doob-Meyer Martingale & Wasserstein-2 Memory Rollback
+                    Long-Term Memory Drift Guard &amp; Safe Rollback
                   </h4>
                   <p className="text-xs text-[#410217]/75 font-sans mt-1">
-                    Detects chronic sub-threshold "slow-boil" semantic drift (&epsilon;_t &ll; &tau;) across persistent
-                    episodic memory banks and triggers cryptographic Merkle rollback.
+                    Spots slow, subtle daily nudges trying to steer an agent’s memory off course over weeks and restores the last verified backup.
                   </p>
                 </div>
 
@@ -817,24 +816,23 @@ export const CounterGeoVol2FindingsAndLab: React.FC<Vol2FindingsAndLabProps> = (
                 </div>
               </div>
 
-              {/* CARD 2: LAYER 6 - SGL-CMI */}
+              {/* CARD 2: LAYER 6 - AI Echo-Chamber Filter */}
               <div className="bg-[#FFFDF8] border border-[#F2D69D] p-6 shadow-xs space-y-4">
                 <div className="flex items-center justify-between pb-3 border-b border-[#F2D69D]">
-                  <span className="font-mono text-xs text-[#00A878] font-bold uppercase tracking-wider">
-                    // LAYER 6 DEFENSE
+                  <span className="px-2.5 py-0.5 rounded-full text-xs bg-[#FAF2E1] border border-[#F2D69D] text-[#410217] font-semibold">
+                    Layer 6 Defense
                   </span>
-                  <span className="font-mono text-[10px] bg-[#FAF2E1] px-2 py-0.5 border border-[#F2D69D] text-[#004566] font-bold">
-                    SGL-CMI SWARM DEFENSE
+                  <span className="font-mono text-[10px] text-[#004566] font-bold">
+                    ECHO-CHAMBER FILTER
                   </span>
                 </div>
 
                 <div>
                   <h4 className="font-serif font-bold text-lg text-[#410217]">
-                    Spectral Graph Laplacian & Conditional Mutual Information
+                    AI Echo-Chamber &amp; Bot Ring Filter
                   </h4>
                   <p className="text-xs text-[#410217]/75 font-sans mt-1">
-                    Neutralizes autophagous AI-citing-AI echo chambers. Collapses effective voting sample size M_eff
-                    when 19 bots parrot the same compromised latent seed.
+                    Detects when dozens of AI feeds are simply echoing the exact same unverified rumor and collapses their combined voting weight down to one.
                   </p>
                 </div>
 
@@ -887,24 +885,23 @@ export const CounterGeoVol2FindingsAndLab: React.FC<Vol2FindingsAndLabProps> = (
                 </div>
               </div>
 
-              {/* CARD 3: LAYER 7 - CM-JSAS */}
+              {/* CARD 3: LAYER 7 - Visible Ink & PDF Scrubber */}
               <div className="bg-[#FFFDF8] border border-[#F2D69D] p-6 shadow-xs space-y-4">
                 <div className="flex items-center justify-between pb-3 border-b border-[#F2D69D]">
-                  <span className="font-mono text-xs text-[#00A878] font-bold uppercase tracking-wider">
-                    // LAYER 7 DEFENSE
+                  <span className="px-2.5 py-0.5 rounded-full text-xs bg-[#FAF2E1] border border-[#F2D69D] text-[#410217] font-semibold">
+                    Layer 7 Defense
                   </span>
-                  <span className="font-mono text-[10px] bg-[#FAF2E1] px-2 py-0.5 border border-[#F2D69D] text-[#D5991C] font-bold">
-                    CM-JSAS MULTIMODAL SHIELD
+                  <span className="font-mono text-[10px] text-[#D5991C] font-bold">
+                    PDF &amp; CHART SCRUBBER
                   </span>
                 </div>
 
                 <div>
                   <h4 className="font-serif font-bold text-lg text-[#410217]">
-                    Cross-Modal Jacobian Saliency Alignment & Scrubbing
+                    Visible Ink &amp; PDF Chart Scrubber
                   </h4>
                   <p className="text-xs text-[#410217]/75 font-sans mt-1">
-                    Protects Vision-Language RAG (ColPali/SigLIP). Detects human-invisible L_inf pixel perturbations
-                    in PDF charts and applies morphological structural clamping.
+                    Verifies that vision AI models only read visible text and chart lines, scrubbing away invisible background pixels or hidden prompt text.
                   </p>
                 </div>
 
@@ -959,24 +956,23 @@ export const CounterGeoVol2FindingsAndLab: React.FC<Vol2FindingsAndLabProps> = (
                 </div>
               </div>
 
-              {/* CARD 4: LAYER 8 - ZK-CAEO */}
+              {/* CARD 4: LAYER 8 - Private Compliance Proof */}
               <div className="bg-[#FFFDF8] border border-[#F2D69D] p-6 shadow-xs space-y-4">
                 <div className="flex items-center justify-between pb-3 border-b border-[#F2D69D]">
-                  <span className="font-mono text-xs text-[#00A878] font-bold uppercase tracking-wider">
-                    // LAYER 8 DEFENSE
+                  <span className="px-2.5 py-0.5 rounded-full text-xs bg-[#FAF2E1] border border-[#F2D69D] text-[#410217] font-semibold">
+                    Layer 8 Defense
                   </span>
-                  <span className="font-mono text-[10px] bg-[#FAF2E1] px-2 py-0.5 border border-[#F2D69D] text-[#00A878] font-bold">
-                    ZK-CAEO SUCCINCT PROVER
+                  <span className="font-mono text-[10px] text-[#00A878] font-bold">
+                    PRIVATE AUDIT PROOF
                   </span>
                 </div>
 
                 <div>
                   <h4 className="font-serif font-bold text-lg text-[#410217]">
-                    Zero-Knowledge Proof of Counter-AEO Compliance
+                    Private Compliance &amp; Audit Proof
                   </h4>
                   <p className="text-xs text-[#410217]/75 font-sans mt-1">
-                    Solves the Alpha-Privacy vs SEC Compliance dilemma. Proves 100% Rule 15c3-8 adherence
-                    in a compact 288-byte zk-SNARK with zero alpha or private prompt disclosure.
+                    Lets trading desks prove to regulators that safety checks ran properly using a compact 288-byte cryptographic receipt that reveals zero secrets.
                   </p>
                 </div>
 
@@ -1041,11 +1037,9 @@ export const CounterGeoVol2FindingsAndLab: React.FC<Vol2FindingsAndLabProps> = (
           <div className="space-y-12">
             
             <div className="text-center max-w-3xl mx-auto space-y-2">
-              <span className="font-mono text-xs text-[#00A878] uppercase tracking-widest font-bold">
-                // VOLUME II ARCHITECTURAL SCHEMATICS
-              </span>
+              <div className="w-12 h-1 bg-[#00A878] rounded-full mx-auto" />
               <h3 className="font-serif text-3xl font-bold text-[#410217]">
-                Generation-3 Attack Topologies & Countermeasures
+                Next-Generation Threat Topologies &amp; Defenses
               </h3>
             </div>
 
@@ -1143,11 +1137,8 @@ export const CounterGeoVol2FindingsAndLab: React.FC<Vol2FindingsAndLabProps> = (
           <div className="space-y-6">
             <div className="flex flex-wrap items-center justify-between gap-4">
               <div>
-                <span className="font-mono text-xs text-[#00A878] uppercase font-bold tracking-wider">
-                  // VOLUME II WEBGL 2.0 3D ENGINE
-                </span>
                 <h3 className="font-serif text-2xl font-bold text-[#410217]">
-                  Stateful Memory Trajectory & Swarm Topology Engine
+                  3D Memory Trajectory &amp; Swarm Topology Engine
                 </h3>
               </div>
 
@@ -1291,8 +1282,8 @@ export const CounterGeoVol2FindingsAndLab: React.FC<Vol2FindingsAndLabProps> = (
                     <span className={`w-2.5 h-2.5 rounded-full ${isAttackInjected ? 'bg-[#E63946] animate-pulse shadow-sm shadow-[#E63946]' : 'bg-[#00A878] shadow-sm shadow-[#00A878]'}`} />
                     <span className="font-bold text-sm tracking-wide">
                       {isAttackInjected
-                        ? `GEN-3 THREAT INJECTED // ${['STATEFUL MEMORY DRIFT DETECTED (ΔI < τ)', 'AUTOPHAGOUS ECHO CONTAGION SPREADING', 'STEGANOGRAPHIC CHART HIJACK ACTIVE', 'UNVERIFIED AUDIT TRANSITION REJECTED'][webglMode]}`
-                        : `SOVEREIGN STACK VERIFIED // ${['DOOB-MEYER MARTINGALE ROLLBACK SECURED', 'SGL-CMI EFFECTIVE RANK PRESERVED', '2D-DCT SALIENCY MASK CLEANSED', '288-BYTE ZK-SNARK SATISFIED'][webglMode]}`}
+                        ? `GEN-3 THREAT INJECTED · ${['STATEFUL MEMORY DRIFT DETECTED (ΔI < τ)', 'AUTOPHAGOUS ECHO CONTAGION SPREADING', 'STEGANOGRAPHIC CHART HIJACK ACTIVE', 'UNVERIFIED AUDIT TRANSITION REJECTED'][webglMode]}`
+                        : `SOVEREIGN STACK VERIFIED · ${['DOOB-MEYER MARTINGALE ROLLBACK SECURED', 'SGL-CMI EFFECTIVE RANK PRESERVED', '2D-DCT SALIENCY MASK CLEANSED', '288-BYTE ZK-SNARK SATISFIED'][webglMode]}`}
                     </span>
                   </div>
                   <div className="text-[#00A878] text-[11px] flex items-center space-x-2">

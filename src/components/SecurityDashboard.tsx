@@ -57,7 +57,7 @@ export const SecurityDashboard: React.FC<SecurityDashboardProps> = ({ onNavigate
         <div className="text-center max-w-3xl mx-auto space-y-4 mb-12">
           <div className="inline-flex items-center space-x-2 px-3 py-1 bg-[#FAF2E1] border border-[#F2D69D] text-[#D5991C] font-mono text-[11px] font-bold uppercase tracking-[0.2em]">
             <Activity className="w-3.5 h-3.5 animate-pulse" />
-            <span>PRODUCT PREVIEW // SECURITY OPERATIONS CENTER</span>
+            <span>Product Preview · Security Operations Center</span>
           </div>
           <h2 className="font-serif font-normal text-3xl sm:text-5xl text-[#410217] tracking-tight leading-[1.05]">
             Last Crusade Defense <span className="italic">AEO Strategy Library</span>
@@ -76,7 +76,7 @@ export const SecurityDashboard: React.FC<SecurityDashboardProps> = ({ onNavigate
               <div className="w-2.5 h-2.5 bg-[#D5991C] animate-pulse" />
               <div>
                 <span className="text-[10px] text-[#410217]/60 block tracking-widest uppercase font-bold">SYSTEM STATUS</span>
-                <span className="text-sm text-[#410217] font-bold tracking-tight">AEO THREAT DEFENSE ENGINE // ONLINE</span>
+                <span className="text-sm text-[#410217] font-bold tracking-tight">AEO Threat Defense Engine · Online</span>
               </div>
             </div>
 
@@ -106,7 +106,7 @@ export const SecurityDashboard: React.FC<SecurityDashboardProps> = ({ onNavigate
                   : 'border-transparent text-[#410217]/60 hover:text-[#410217]'
               }`}
             >
-              01 // LIVE THREAT FEED
+              01 · LIVE THREAT FEED
             </button>
             <button
               onClick={() => setActiveTab('engines')}
@@ -116,7 +116,7 @@ export const SecurityDashboard: React.FC<SecurityDashboardProps> = ({ onNavigate
                   : 'border-transparent text-[#410217]/60 hover:text-[#410217]'
               }`}
             >
-              02 // ENGINE MATRIX
+              02 · ENGINE MATRIX
             </button>
             <button
               onClick={() => setActiveTab('rag')}
@@ -126,7 +126,7 @@ export const SecurityDashboard: React.FC<SecurityDashboardProps> = ({ onNavigate
                   : 'border-transparent text-[#410217]/60 hover:text-[#410217]'
               }`}
             >
-              03 // RAG INTEGRITY MAP
+              03 · RAG INTEGRITY MAP
             </button>
             <button
               onClick={() => setActiveTab('countermeasures')}
@@ -136,7 +136,7 @@ export const SecurityDashboard: React.FC<SecurityDashboardProps> = ({ onNavigate
                   : 'border-transparent text-[#410217]/60 hover:text-[#410217]'
               }`}
             >
-              04 // COUNTERMEASURE LOGS
+              04 · COUNTERMEASURE LOGS
             </button>
 
             {onNavigate && (
