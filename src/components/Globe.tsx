@@ -399,7 +399,7 @@ export default function Globe({
         const baseRadius = 1;
         const globeRadius = baseRadius * scaleMultiplier;
         const aspect = containerWidth / containerHeight;
-        const baseDistance = 2.65 / scaleMultiplier;
+        const baseDistance = 3.15 / scaleMultiplier;
         const cameraDistance = aspect < 1 ? baseDistance / Math.max(aspect, 0.5) : baseDistance;
         camera.position.set(0, 0, cameraDistance);
         camera.lookAt(0, 0, 0);
@@ -739,8 +739,8 @@ export default function Globe({
                 const arcCurve = new CatmullRomCurve3(points);
                 const arcLength = arcCurve.getLength();
 
-                // Underlying solid guide arc tube ensuring permanent connection (50% thicker)
-                const guideGeometry = new TubeGeometry(arcCurve, 64, 0.0024 * scaleMultiplier, 6, false);
+                // Underlying solid guide arc tube ensuring permanent connection (30% thinner)
+                const guideGeometry = new TubeGeometry(arcCurve, 64, 0.0017 * scaleMultiplier, 6, false);
                 const guideMat = new MeshBasicMaterial({
                     color: new Color("#D5991C"),
                     transparent: true,
@@ -750,10 +750,10 @@ export default function Globe({
                 const guideLine = new Mesh(guideGeometry, guideMat);
                 networkArcsGroup.add(guideLine);
 
-                // Create bidirectional flowing vector streams (50% thicker 3D tubes)
+                // Create bidirectional flowing vector streams (30% thinner 3D tubes)
                 const directions = [-1, 1];
                 directions.forEach((dir, dIdx) => {
-                    const lineGeometry = new TubeGeometry(arcCurve, 64, 0.0042 * scaleMultiplier, 6, false);
+                    const lineGeometry = new TubeGeometry(arcCurve, 64, 0.0029 * scaleMultiplier, 6, false);
 
                     // Dark red and imperial gold palette for flowing data vectors
                     const vectorColors = ["#A40E30", "#D5991C", "#850824", "#E5A932"];
@@ -1301,7 +1301,7 @@ export default function Globe({
             camera.updateProjectionMatrix();
             renderer.setSize(newWidth, newHeight);
             const aspect = newWidth / newHeight;
-            const baseDistance = 2.65 / scaleMultiplier;
+            const baseDistance = 3.15 / scaleMultiplier;
             const newCameraDistance = aspect < 1 ? baseDistance / Math.max(aspect, 0.5) : baseDistance;
             camera.position.set(0, 0, newCameraDistance);
             camera.lookAt(0, 0, 0);

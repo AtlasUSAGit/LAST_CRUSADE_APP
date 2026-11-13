@@ -153,7 +153,7 @@ export const Hero: React.FC<HeroProps> = ({
   return (
     <section
       ref={rootRef}
-      className="relative z-10 overflow-hidden border-b border-[#410217]/15 bg-transparent"
+      className="relative z-10 overflow-visible border-b border-[#410217]/15 bg-transparent"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 pb-16 md:pt-14 md:pb-24 relative z-10">
         <div
@@ -218,8 +218,8 @@ export const Hero: React.FC<HeroProps> = ({
           </div>
 
           {/* Right Column (5 cols): Interactive 3D Globe (without outer box) */}
-          <div data-hero-globe className="lg:col-span-5">
-            <div className="w-full aspect-square max-h-[390px] mx-auto relative flex items-center justify-center">
+          <div data-hero-globe className="lg:col-span-5 overflow-visible">
+            <div className="w-full aspect-square max-h-[430px] mx-auto relative flex items-center justify-center overflow-visible">
               <Globe
                 speed={1.2}
                 smoothing={8}
