@@ -23,7 +23,7 @@ import { CounterGeoVol5Page } from './components/CounterGeoVol5Page';
 import { CounterGeoCommandCenterPage } from './components/CounterGeoCommandCenterPage';
 import { PitchDeckPage } from './components/PitchDeckPage';
 import { ResearchPage } from './components/ResearchPage';
-import { ParticleDrift } from './components/ParticleDrift';
+import { GlitterWrap } from './components/GlitterWrap';
 import { NavigationPage } from './types';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -130,21 +130,17 @@ export default function App() {
 
   return (
     <div className="relative min-h-screen bg-[#FAF5EB] text-[#410217] font-sans selection:bg-[#410217]/15 selection:text-[#410217] overflow-x-hidden">
-      {/* Particle Drift WebGL Living Background for the whole Home Page */}
+      {/* GlitterWrap Living Background for the whole Home Page */}
       {currentPage === 'overview' && (
         <div className="fixed inset-0 pointer-events-none z-0" aria-hidden="true">
-          <ParticleDrift
+          <GlitterWrap
             background="#FAF5EB"
-            baseColor="#320813"
-            accentColor="#DDA743"
-            density={isMobile ? 40 : 95}
-            mobileDensity={40}
-            dotSize={6}
-            speed={50}
-            direction={0}
-            hover={200}
-            linkDistance={230}
-            linkThickness={1}
+            color1="#320813"
+            color2="#320813"
+            color3="#320813"
+            particleCount={isMobile ? 220 : 500}
+            speed={2}
+            glitterIntensity={2}
             style={{ width: '100%', height: '100%' }}
           />
         </div>
