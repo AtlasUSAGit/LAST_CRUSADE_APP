@@ -161,6 +161,7 @@ export default function App() {
       {/* Page Routing */}
       {currentPage === 'overview' && (
         <main className="relative z-10">
+          <OverviewKineticRig />
           {/* 1. Hero with direct links to REA Studio & Counter-AEO */}
           <Hero
             onOpenAudit={() => setAuditModalOpen(true)}
@@ -175,7 +176,10 @@ export default function App() {
           <TrustAndTeam onNavigate={handleNavigate} />
 
           {/* 4. Core Services */}
-          <ServicesSection />
+          <ServicesSection
+            onOpenAudit={() => setAuditModalOpen(true)}
+            onNavigate={handleNavigate}
+          />
 
           {/* 5. Process Timeline */}
           <ProcessSection />
@@ -323,3 +327,48 @@ export default function App() {
     </div>
   );
 }
+
+const OverviewKineticRig: React.FC = () => {
+  useEffect(() => {
+    const proxy = { skew: 0, scale: 1 };
+    const skewSetter = gsap.quickSetter('.velocity-item', 'skewY', 'deg');
+    const scaleSetter = gsap.quickSetter('.velocity-item', 'scale');
+    const clamp = gsap.utils.clamp(-10, 10);
+
+    const trigger = ScrollTrigger.create({
+      onUpdate: (self) => {
+        const velocity = self.getVelocity();
+        const targetSkew = clamp(velocity / -280);
+        const targetScale = 1 - Math.min(Math.abs(velocity) / 18000, 0.06);
+
+        if (Math.abs(targetSkew) > Math.abs(proxy.skew)) {
+          proxy.skew = targetSkew;
+          proxy.scale = targetScale;
+          gsap.to(proxy, {
+            skew: 0,
+            scale: 1,
+            duration: 0.75,
+            ease: 'power3.out',
+            overwrite: true,
+            onUpdate: () => {
+              skewSetter(proxy.skew);
+              scaleSetter(proxy.scale);
+            },
+          });
+        }
+      },
+    });
+
+    const timer = window.setTimeout(() => {
+      ScrollTrigger.refresh();
+    }, 150);
+
+    return () => {
+      window.clearTimeout(timer);
+      trigger.kill();
+      gsap.set('.velocity-item', { skewY: 0, scale: 1 });
+    };
+  }, []);
+
+  return null;
+};
