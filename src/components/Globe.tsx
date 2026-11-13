@@ -647,7 +647,8 @@ export default function Globe({
             colorHex: string,
             scaleMult: number,
             direction: number,
-            speed: number
+            speed: number,
+            arcLength: number
         ) => {
             return new ShaderMaterial({
                 uniforms: {
@@ -657,14 +658,15 @@ export default function Globe({
                     uGapSize: { value: 0.06 * scaleMult },
                     uSpeed: { value: speed },
                     uDirection: { value: direction },
-                    uBaseOpacity: { value: 0.85 },
+                    uArcLength: { value: arcLength },
+                    uBaseOpacity: { value: 0.9 },
                     uPulseOpacity: { value: 1.0 },
                 },
                 vertexShader: `
-                    attribute float lineDistance;
                     varying float vLineDistance;
+                    uniform float uArcLength;
                     void main() {
-                        vLineDistance = lineDistance;
+                        vLineDistance = uv.x * uArcLength;
                         vec4 mvPosition = modelViewMatrix * vec4(position, 1.0);
                         gl_Position = projectionMatrix * mvPosition;
                     }
@@ -694,8 +696,8 @@ export default function Globe({
                             pulse = pow(sin(norm * 3.14159265), 1.5);
                         }
 
-                        vec3 finalColor = mix(uColor, vec3(1.0, 1.0, 1.0), pulse * 0.75);
-                        float alpha = (0.2 + pulse * 0.8) * uBaseOpacity * uPulseOpacity;
+                        vec3 finalColor = mix(uColor, uColor * 1.45, pulse * 0.6);
+                        float alpha = (0.28 + pulse * 0.72) * uBaseOpacity * uPulseOpacity;
                         gl_FragColor = vec4(finalColor, alpha);
                     }
                 `,
@@ -734,23 +736,24 @@ export default function Globe({
                     100
                 );
 
-                // Underlying solid guide arc line ensuring permanent connection
-                const guideGeometry = new BufferGeometry().setFromPoints(points);
-                const guideMat = new LineDashedMaterial({
+                const arcCurve = new CatmullRomCurve3(points);
+                const arcLength = arcCurve.getLength();
+
+                // Underlying solid guide arc tube ensuring permanent connection (50% thicker)
+                const guideGeometry = new TubeGeometry(arcCurve, 64, 0.0024 * scaleMultiplier, 6, false);
+                const guideMat = new MeshBasicMaterial({
                     color: new Color("#D5991C"),
-                    dashSize: 100,
-                    gapSize: 0,
                     transparent: true,
                     opacity: 0.35,
+                    depthWrite: false,
                 });
-                const guideLine = new Line(guideGeometry, guideMat);
-                guideLine.computeLineDistances();
+                const guideLine = new Mesh(guideGeometry, guideMat);
                 networkArcsGroup.add(guideLine);
 
-                // Create bidirectional flowing vector streams
+                // Create bidirectional flowing vector streams (50% thicker 3D tubes)
                 const directions = [-1, 1];
                 directions.forEach((dir, dIdx) => {
-                    const lineGeometry = new BufferGeometry().setFromPoints(points);
+                    const lineGeometry = new TubeGeometry(arcCurve, 64, 0.0042 * scaleMultiplier, 6, false);
 
                     // Dark red and imperial gold palette for flowing data vectors
                     const vectorColors = ["#A40E30", "#D5991C", "#850824", "#E5A932"];
@@ -761,11 +764,11 @@ export default function Globe({
                         chosenColor,
                         scaleMultiplier,
                         dir,
-                        speed
+                        speed,
+                        arcLength
                     );
 
-                    const line = new Line(lineGeometry, lineMat);
-                    line.computeLineDistances();
+                    const line = new Mesh(lineGeometry, lineMat);
                     networkArcsGroup.add(line);
 
                     animatedShaderArcs.push({
