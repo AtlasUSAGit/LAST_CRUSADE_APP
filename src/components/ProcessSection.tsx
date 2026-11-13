@@ -150,7 +150,6 @@ export const ProcessSection: React.FC = () => {
       {/* Header */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 md:pt-28 pb-6">
         <SectionHeader
-          eyebrow="5-STAGE HEXAGONAL PIPELINE"
           title={
             <>
               How Our 5-Stage{' '}
@@ -331,9 +330,6 @@ export const ProcessSection: React.FC = () => {
                         <span>·</span>
                         <span>{step.name}</span>
                       </div>
-                      <span className="text-[10px] font-mono text-[#D5991C]">
-                        1/3 LEFT SHARD
-                      </span>
                     </div>
 
                     <h3 className="font-serif text-2xl sm:text-3xl text-[#FBF3E2] leading-snug mb-3">
@@ -364,9 +360,6 @@ export const ProcessSection: React.FC = () => {
                     <div className="flex items-center justify-between pb-3 mb-4 border-b border-[#F2D69D]/20">
                       <span className="text-xs font-mono uppercase tracking-wider font-bold text-[#D5991C]">
                         What Happens Behind the Scenes
-                      </span>
-                      <span className="text-[10px] font-mono text-[#F2D69D]/70">
-                        1/3 CENTER SHARD
                       </span>
                     </div>
 
@@ -444,9 +437,6 @@ export const ProcessSection: React.FC = () => {
                         <CheckCircle2 className="w-4 h-4" />
                         <span>Example Outcome</span>
                       </div>
-                      <span className="text-[10px] font-mono text-[#00FF9D]/80">
-                        1/3 RIGHT SHARD
-                      </span>
                     </div>
 
                     <p className="text-sm text-[#FBF3E2]/90 font-mono leading-relaxed bg-[#2B010F]/90 p-4 border border-[#00A878]/40">
@@ -482,9 +472,6 @@ export const ProcessSection: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-28">
         <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-4 pb-8 border-b border-[#410217]/25 mb-12">
           <div>
-            <div className="text-xs font-mono uppercase tracking-[0.2em] text-[#8B5A0B] font-bold mb-2">
-              3-THIRDS SCENARIO TESSELLATION
-            </div>
             <h3 className="font-serif text-3xl sm:text-4xl text-[#410217]">
               Threat &amp; Defense Scenarios in Action
             </h3>
@@ -537,9 +524,6 @@ export const ProcessSection: React.FC = () => {
                       <span className="text-xs font-mono font-bold text-[#D5991C]">
                         {scenario.clientType}
                       </span>
-                      <span className="text-[10px] font-mono text-[#FF8093]">
-                        1/3 ATTACK SHARD
-                      </span>
                     </div>
                     <h4 className="font-serif text-xl sm:text-2xl text-[#FBF3E2] leading-snug mb-4">
                       {scenario.headline}
@@ -571,9 +555,6 @@ export const ProcessSection: React.FC = () => {
                         <Shield className="w-4 h-4" />
                         <span>How the Shield Responds</span>
                       </div>
-                      <span className="text-[10px] font-mono text-[#00FF9D]/80">
-                        1/3 DEFENSE SHARD
-                      </span>
                     </div>
 
                     <p className="text-xs sm:text-sm text-[#FBF3E2]/90 leading-relaxed">
@@ -599,9 +580,6 @@ export const ProcessSection: React.FC = () => {
                     <div className="flex items-center justify-between pb-3 mb-3 border-b border-[#F2D69D]/20">
                       <span className="text-xs font-mono uppercase tracking-wider font-semibold text-[#F2D69D]">
                         Simulation Benchmark Outcomes
-                      </span>
-                      <span className="text-[10px] font-mono text-[#D5991C]">
-                        1/3 METRICS SHARD
                       </span>
                     </div>
 

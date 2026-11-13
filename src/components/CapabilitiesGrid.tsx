@@ -42,9 +42,6 @@ export const CapabilitiesGrid: React.FC = () => {
   const rootRef = useRef<HTMLElement>(null);
   const matrixStageRef = useRef<HTMLDivElement>(null);
   const [selectedPillar, setSelectedPillar] = useState<string>('pillar-1');
-  const [matrixWaveLabel, setMatrixWaveLabel] = useState<string>(
-    'WAVE 01 // 1/3 SCREEN MODULES 01–03 LOCKING IN'
-  );
 
   useEffect(() => {
     const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -75,13 +72,6 @@ export const CapabilitiesGrid: React.FC = () => {
           pin: true,
           scrub: 0.85,
           anticipatePin: 1,
-          onUpdate: (self) => {
-            if (self.progress < 0.45) {
-              setMatrixWaveLabel('WAVE 01 // 1/3 SCREEN MODULES 01–03 ASSEMBLING');
-            } else {
-              setMatrixWaveLabel('WAVE 02 // MODULES 04–06 STACKING OVER 1/3 COLUMNS');
-            }
-          },
         },
       });
 
@@ -141,7 +131,6 @@ export const CapabilitiesGrid: React.FC = () => {
       {/* PART 1: 4-PILLAR HEXAGONAL & TRIANGULAR TESSELLATION ARCHITECTURE */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 md:pt-28 pb-14">
         <SectionHeader
-          eyebrow="TESSELLATED DEFENSE ARCHITECTURE"
           title={
             <>
               Four Pillars &amp; Core Defense Modules{' '}
@@ -405,27 +394,6 @@ export const CapabilitiesGrid: React.FC = () => {
         </svg>
 
         <div className="max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 relative z-10 flex flex-col h-full justify-between">
-          {/* Top Coordinate Status Bar */}
-          <div className="flex flex-wrap items-center justify-between gap-4 pb-3 mb-5 border-b border-[#410217]/25">
-            <div className="flex items-center gap-3">
-              <svg width="24" height="24" viewBox="0 0 24 24">
-                <polygon
-                  points="12,1 22,6.5 22,17.5 12,23 2,17.5 2,6.5"
-                  fill="#2B010F"
-                  stroke="#D5991C"
-                  strokeWidth="1.5"
-                />
-                <polygon points="12,5 18,16 6,16" fill="#00FF9D" />
-              </svg>
-              <span className="text-xs font-mono uppercase tracking-[0.18em] text-[#410217] font-bold">
-                {matrixWaveLabel}
-              </span>
-            </div>
-            <span className="text-[11px] font-mono uppercase tracking-widest text-[#410217]/80">
-              1/3 + 1/3 + 1/3 TWO-WAVE TESSELLATION STACK
-            </span>
-          </div>
-
           {/* 3-Column (1/3 + 1/3 + 1/3) Sticky Stacking Stage */}
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 flex-1 items-stretch my-auto">
             {[0, 1, 2].map((colIdx) => {

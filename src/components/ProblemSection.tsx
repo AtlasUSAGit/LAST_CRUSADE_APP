@@ -264,9 +264,6 @@ export const ProblemSection: React.FC = () => {
   const thirdsStageRef = useRef<HTMLDivElement>(null);
   const arenasStackRef = useRef<HTMLDivElement>(null);
   const [selectedArena, setSelectedArena] = useState<number>(0);
-  const [activePhaseLabel, setActivePhaseLabel] = useState<string>(
-    'PHASE 01 // ASSEMBLING 1/3 THREAT VECTORS'
-  );
 
   const dualUseArenas = [
     {
@@ -328,13 +325,6 @@ export const ProblemSection: React.FC = () => {
             pin: true,
             scrub: 0.8,
             anticipatePin: 1,
-            onUpdate: (self) => {
-              if (self.progress < 0.48) {
-                setActivePhaseLabel('LAYER 01 // 1/3 SCREEN THREAT VECTORS LOCKING IN');
-              } else {
-                setActivePhaseLabel('LAYER 02 // COUNTER-SHIELD PLATES STACKING OVER 1/3 COLUMNS');
-              }
-            },
           },
         });
 
@@ -404,7 +394,6 @@ export const ProblemSection: React.FC = () => {
       {/* Chapter Header */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 md:pt-28 pb-6">
         <SectionHeader
-          eyebrow="THREAT SURFACE TESSELLATION"
           title={
             <>
               Why Traditional Security Misses{' '}
@@ -458,31 +447,10 @@ export const ProblemSection: React.FC = () => {
           <rect width="100%" height="100%" fill="url(#prob-tri-hex-tess)" />
         </svg>
 
-        <div className="max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 relative z-10 flex flex-col h-full justify-between">
-          {/* Top Geometric Coordinate Bar */}
-          <div className="flex flex-wrap items-center justify-between gap-4 pb-3 mb-4 border-b border-[#410217]/25">
-            <div className="flex items-center gap-3">
-              <svg width="24" height="24" viewBox="0 0 24 24">
-                <polygon
-                  points="12,1 22,6.5 22,17.5 12,23 2,17.5 2,6.5"
-                  fill="#2B010F"
-                  stroke="#D5991C"
-                  strokeWidth="1.5"
-                />
-                <polygon points="12,5 18,16 6,16" fill="#D5991C" />
-              </svg>
-              <span className="text-xs font-mono uppercase tracking-[0.18em] text-[#410217] font-bold">
-                {activePhaseLabel}
-              </span>
-            </div>
-            <div className="flex items-center gap-4 text-[11px] font-mono uppercase tracking-widest text-[#410217]/80">
-              <span>1/3 + 1/3 + 1/3 PROGRESSIVE SHARD STACK</span>
-            </div>
-          </div>
-
+        <div className="max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 relative z-10 flex flex-col h-full justify-center">
           {/* 3 Vertical Thirds Grid */}
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 flex-1 items-stretch my-auto">
-            {VULNERABILITY_CARDS.map((card, idx) => (
+            {VULNERABILITY_CARDS.map((card) => (
               <div
                 key={card.id}
                 data-prob-card
@@ -525,9 +493,6 @@ export const ProblemSection: React.FC = () => {
                           {card.diagramType === 'market' && <TrendingDown className="w-5 h-5" />}
                           {card.diagramType === 'agent' && <Bot className="w-5 h-5" />}
                         </div>
-                        <span className="text-xs font-mono uppercase tracking-widest text-[#D5991C] font-bold">
-                          THIRD 0{idx + 1} // 03
-                        </span>
                       </div>
 
                       <span
@@ -555,12 +520,6 @@ export const ProblemSection: React.FC = () => {
                       {card.body}
                     </p>
                   </div>
-
-                  {/* Subtle Bottom Indicator Before Layer 2 Locks Over */}
-                  <div className="pt-3 mt-4 border-t border-[#F2D69D]/15 flex items-center justify-between text-[10px] font-mono uppercase tracking-widest text-[#D5991C]/80">
-                    <span>THREAT TELEMETRY 0{idx + 1}</span>
-                    <span>▲ COUNTER-SHIELD STACKS ON SCROLL</span>
-                  </div>
                 </article>
 
                 {/* LAYER 2 (STICKY OVERLAY 1/3 SHARD): Stacks on top of the lower portion of each 1/3 column! */}
@@ -571,16 +530,6 @@ export const ProblemSection: React.FC = () => {
                       'polygon(0% 18px, 18px 0%, calc(100% - 18px) 0%, 100% 18px, 100% 100%, 0% 100%)',
                   }}
                 >
-                  {/* Top Hex-Chevron Header Bar */}
-                  <div className="flex items-center justify-between pb-2.5 mb-3 border-b border-[#D5991C]/35">
-                    <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-[#D5991C] font-bold">
-                      COUNTER-SHIELD OVERLAY // 0{idx + 1}
-                    </span>
-                    <svg width="18" height="16" viewBox="0 0 18 16">
-                      <polygon points="9,0 18,16 0,16" fill="#00FF9D" />
-                    </svg>
-                  </div>
-
                   {/* How It Happens in Practice */}
                   <div className="mb-3.5 pb-3.5 border-b border-[#F2D69D]/15">
                     <div className="flex items-center space-x-1.5 text-xs font-semibold text-[#FF8093] mb-1">
@@ -615,9 +564,6 @@ export const ProblemSection: React.FC = () => {
           {/* LEFT HALF (1/2): Sticky Hexagonal Honeycomb Tessellation Cluster */}
           <div className="lg:col-span-6 lg:sticky lg:top-28 space-y-6">
             <div>
-              <div className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-[0.2em] text-[#8B5A0B] font-bold mb-2">
-                <span>HEXAGONAL DUAL-USE MATRIX // 1/2 VIEWPORT LOCK</span>
-              </div>
               <h3 className="font-serif text-3xl sm:text-4xl text-[#410217] leading-tight">
                 One Core Technology, Two Missions: Offensive Visibility &amp; Defensive Protection
               </h3>
@@ -763,9 +709,6 @@ export const ProblemSection: React.FC = () => {
                           {arena.name}
                         </h4>
                       </div>
-                      <span className="text-[10px] font-mono uppercase tracking-widest text-[#D5991C]">
-                        1/2 SPLIT SHARD
-                      </span>
                     </div>
 
                     <div className="flex items-center space-x-2 text-sm font-semibold text-[#D5991C] mb-2">

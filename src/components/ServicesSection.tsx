@@ -195,7 +195,6 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({
       {/* Header */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 md:pt-28 pb-6">
         <SectionHeader
-          eyebrow="SPLIT-HALF TESSELLATED SOLUTIONS"
           title={
             <>
               Practical Solutions for{' '}
@@ -332,10 +331,6 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({
                           {service.badge}
                         </span>
                       </div>
-
-                      <span className="text-[11px] font-mono uppercase tracking-widest text-[#D5991C]/80">
-                        LEFT 1/2 SHARD
-                      </span>
                     </div>
 
                     <h3 className="font-serif text-3xl sm:text-4xl text-[#FBF3E2] font-normal tracking-tight leading-tight">
@@ -402,9 +397,6 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({
                         <span className="text-xs text-[#00FF9D] font-mono font-medium flex items-center space-x-1.5">
                           <Sparkles className="w-3.5 h-3.5" />
                           <span>{service.metricHighlight}</span>
-                        </span>
-                        <span className="text-[11px] font-mono uppercase tracking-widest text-[#D5991C]/80">
-                          RIGHT 1/2 SHARD // 0{idx + 1}
                         </span>
                       </div>
 

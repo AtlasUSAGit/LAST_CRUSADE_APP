@@ -102,6 +102,7 @@ const FIVE_VOLUMES: VolumeSummaryCard[] = [
 
 export const TrustAndTeam: React.FC<TrustAndTeamProps> = ({ onNavigate }) => {
   const rootRef = useRef<HTMLElement>(null);
+  const leftCardRef = useRef<HTMLDivElement>(null);
   const stackContainerRef = useRef<HTMLDivElement>(null);
   const [activeVolIdx, setActiveVolIdx] = useState<number>(0);
 
@@ -111,14 +112,28 @@ export const TrustAndTeam: React.FC<TrustAndTeamProps> = ({ onNavigate }) => {
 
     const ctx = gsap.context(() => {
       const container = stackContainerRef.current;
+      const leftCard = leftCardRef.current;
       if (!container) return;
+
+      // Pin the Left Hexagonal Index Card while scrolling through the volumes, unpin at bottom of section
+      if (leftCard && window.innerWidth >= 1024) {
+        ScrollTrigger.create({
+          trigger: container,
+          start: 'top 96px',
+          end: () => `bottom ${96 + leftCard.offsetHeight}px`,
+          pin: leftCard,
+          pinSpacing: false,
+          anticipatePin: 1,
+          invalidateOnRefresh: true,
+        });
+      }
 
       const rows = gsap.utils.toArray<HTMLElement>('.vol-sticky-row', container);
 
       rows.forEach((row, idx) => {
         const rightShard = row.querySelector<HTMLElement>('.vol-right-shard');
 
-        // Update Left-Third Hexagonal Constellation as each row locks into sticky position
+        // Update Left-Third Hexagonal Constellation as each row scrolls into view
         ScrollTrigger.create({
           trigger: row,
           start: 'top 52%',
@@ -157,7 +172,6 @@ export const TrustAndTeam: React.FC<TrustAndTeamProps> = ({ onNavigate }) => {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeader
-          eyebrow="HEXAGONAL RESEARCH CORPUS"
           title={
             <>
               Five Volumes of Original{' '}
@@ -279,18 +293,16 @@ export const TrustAndTeam: React.FC<TrustAndTeamProps> = ({ onNavigate }) => {
         {/* 1/3 + 1/3 + 1/3 STICKY GEOMETRIC LAYOUT: Left 1/3 Hexagonal Radar + Center 1/3 & Right 1/3 Staggered Shards */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
           {/* LEFT THIRD (1/3 WIDTH — 4 COLS): Sticky Hexagonal Constellation Radar */}
-          <div className="lg:col-span-4 lg:sticky lg:top-28">
+          <div className="lg:col-span-4 self-start">
             <div
+              ref={leftCardRef}
               className="bg-[#2B010F]/95 border-2 border-[#D5991C] p-6 shadow-2xl"
               style={{
                 clipPath:
                   'polygon(22px 0%, 100% 0%, 100% calc(100% - 22px), calc(100% - 22px) 100%, 0% 100%, 0% 22px)',
               }}
             >
-              <div className="flex items-center justify-between pb-3 mb-4 border-b border-[#F2D69D]/20">
-                <span className="text-[11px] font-mono uppercase tracking-[0.18em] text-[#D5991C] font-bold">
-                  1/3 STICKY HEXAGONAL INDEX
-                </span>
+              <div className="flex items-center justify-end pb-3 mb-4 border-b border-[#F2D69D]/20">
                 <span className="text-[11px] font-mono text-[#00FF9D]">
                   0{activeVolIdx + 1} / 06
                 </span>
@@ -433,8 +445,7 @@ export const TrustAndTeam: React.FC<TrustAndTeamProps> = ({ onNavigate }) => {
                       </p>
                     </div>
 
-                    <div className="pt-3 mt-4 border-t border-[#F2D69D]/15 flex items-center justify-between text-[10px] font-mono uppercase tracking-widest text-[#D5991C]/80">
-                      <span>CENTER 1/3 SHARD</span>
+                    <div className="pt-3 mt-4 border-t border-[#F2D69D]/15 flex items-center justify-end text-[10px] font-mono uppercase tracking-widest text-[#D5991C]/80">
                       <span>MONOGRAPH 0{idx + 1}</span>
                     </div>
                   </article>
@@ -450,7 +461,7 @@ export const TrustAndTeam: React.FC<TrustAndTeamProps> = ({ onNavigate }) => {
                     <div>
                       <div className="flex items-center justify-between pb-3 mb-4 border-b border-[#F2D69D]/20">
                         <span className="text-[11px] font-mono uppercase tracking-widest text-[#D5991C] font-bold">
-                          KEY FINDINGS // RIGHT 1/3 SHARD
+                          KEY FINDINGS
                         </span>
                         <svg width="16" height="14" viewBox="0 0 16 14">
                           <polygon points="8,0 16,14 0,14" fill={vol.accentColor} />
