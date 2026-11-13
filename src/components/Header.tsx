@@ -1,5 +1,16 @@
 import React, { useState } from 'react';
-import { Menu, X, ArrowUpRight, Sparkles, Compass, Shield } from 'lucide-react';
+import {
+  Menu,
+  X,
+  ArrowUpRight,
+  Sparkles,
+  Compass,
+  Shield,
+  Home,
+  BookOpen,
+  Layers,
+  Terminal,
+} from 'lucide-react';
 import { NavigationPage } from '../types';
 
 interface HeaderProps {
@@ -16,13 +27,17 @@ export const Header: React.FC<HeaderProps> = ({
 }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  const navItems: { id: NavigationPage; label: string; highlight?: boolean }[] = [
-    { id: 'overview', label: 'Overview' },
-    { id: 'pitch-deck', label: 'Cover Deck', highlight: true },
-    { id: 'research', label: 'Research Whitepapers' },
-    { id: 'services', label: 'Defense Architecture' },
-    { id: 'counter-geo-ops', label: '3D Threat Lab', highlight: true },
-    { id: 'rea', label: 'REA Workbench' },
+  const navItems: {
+    id: NavigationPage;
+    label: string;
+    icon: React.ComponentType<{ className?: string }>;
+  }[] = [
+    { id: 'overview', label: 'Overview', icon: Home },
+    { id: 'pitch-deck', label: 'Cover Deck', icon: Compass },
+    { id: 'research', label: 'Research Whitepapers', icon: BookOpen },
+    { id: 'services', label: 'Defense Architecture', icon: Layers },
+    { id: 'counter-geo-ops', label: '3D Threat Lab', icon: Sparkles },
+    { id: 'rea', label: 'REA Workbench', icon: Terminal },
   ];
 
   const handleNavClick = (page: NavigationPage) => {
@@ -69,6 +84,7 @@ export const Header: React.FC<HeaderProps> = ({
                     activePage === 'counter-geo-vol3' ||
                     activePage === 'counter-geo-vol4' ||
                     activePage === 'counter-geo-vol5'));
+              const Icon = item.icon;
               return (
                 <button
                   key={item.id}
@@ -76,17 +92,10 @@ export const Header: React.FC<HeaderProps> = ({
                   className={`relative px-3.5 py-2 text-xs font-medium tracking-wide rounded-md transition-all cursor-pointer flex items-center space-x-1.5 ${
                     isActive
                       ? 'text-[#130108] bg-[#D5991C] font-semibold shadow-xs'
-                      : item.highlight
-                      ? 'text-[#F2D69D] hover:text-[#FBF3E2] hover:bg-[#5C0A24]/60'
-                      : 'text-[#FBF3E2]/80 hover:text-[#FBF3E2] hover:bg-[#5C0A24]/40'
+                      : 'text-[#F2D69D] hover:text-[#FBF3E2] hover:bg-[#5C0A24]/60'
                   }`}
                 >
-                  {item.id === 'counter-geo-ops' && (
-                    <Sparkles className={`w-3.5 h-3.5 ${isActive ? 'text-[#130108]' : 'text-[#D5991C]'}`} />
-                  )}
-                  {item.id === 'pitch-deck' && (
-                    <Compass className={`w-3.5 h-3.5 ${isActive ? 'text-[#130108]' : 'text-[#D5991C]'}`} />
-                  )}
+                  <Icon className={`w-3.5 h-3.5 ${isActive ? 'text-[#130108]' : 'text-[#D5991C]'}`} />
                   <span>{item.label}</span>
                 </button>
               );
@@ -124,6 +133,7 @@ export const Header: React.FC<HeaderProps> = ({
           <div className="flex flex-col space-y-1">
             {navItems.map((item) => {
               const isActive = activePage === item.id;
+              const Icon = item.icon;
               return (
                 <button
                   key={item.id}
@@ -131,10 +141,13 @@ export const Header: React.FC<HeaderProps> = ({
                   className={`text-left px-3.5 py-2.5 rounded-md text-sm font-medium transition-colors flex items-center justify-between ${
                     isActive
                       ? 'bg-[#D5991C] text-[#130108] font-semibold'
-                      : 'text-[#FBF3E2]/85 hover:bg-[#5C0A24]/50 hover:text-[#FBF3E2]'
+                      : 'text-[#F2D69D] hover:bg-[#5C0A24]/50 hover:text-[#FBF3E2]'
                   }`}
                 >
-                  <span>{item.label}</span>
+                  <span className="flex items-center space-x-2">
+                    <Icon className={`w-4 h-4 ${isActive ? 'text-[#130108]' : 'text-[#D5991C]'}`} />
+                    <span>{item.label}</span>
+                  </span>
                   <ArrowUpRight className="w-4 h-4 opacity-60" />
                 </button>
               );
