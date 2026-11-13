@@ -46,10 +46,10 @@ export const ProcessSection: React.FC = () => {
         />
 
         {/* Interactive Animated SVG 5-Stage Pipeline Diagram */}
-        <div className="mb-8 rounded-2xl bg-[#2B010F]/80 border border-[#F2D69D]/25 p-5 sm:p-7">
+        <div className="mb-8 rounded-2xl bg-[#2B010F]/40 border border-[#F2D69D]/25 p-5 sm:p-7 backdrop-blur-xs">
           <div className="flex flex-wrap items-center justify-between gap-2 mb-4">
             <span className="text-sm font-semibold text-[#FBF3E2]">
-              Interactive Pipeline Flow — Click Any Stage to Inspect
+              Interactive Pipeline (Click Any Stage to Inspect)
             </span>
             <span className="text-xs text-[#D5991C]">
               Active Stage: {currentStep.title}
@@ -61,6 +61,10 @@ export const ProcessSection: React.FC = () => {
               const x = 12 + idx * 192;
               const isSelected = idx === activeStepIndex;
               const isPassed = idx <= activeStepIndex;
+              const words = step.title.split(' ');
+              const mid = Math.ceil(words.length / 2);
+              const line1 = words.slice(0, mid).join(' ');
+              const line2 = words.slice(mid).join(' ');
               return (
                 <g
                   key={step.step}
@@ -97,13 +101,14 @@ export const ProcessSection: React.FC = () => {
                     height="80"
                     rx="12"
                     fill={isSelected ? '#D5991C' : '#350213'}
+                    fillOpacity={isSelected ? '1' : '0.5'}
                     stroke={isSelected ? '#FBF3E2' : '#D5991C'}
                     strokeOpacity={isSelected ? '1' : '0.45'}
                     strokeWidth={isSelected ? '2' : '1.5'}
                   />
                   <text
                     x={x + 84}
-                    y="45"
+                    y="40"
                     textAnchor="middle"
                     fill={isSelected ? '#130108' : '#D5991C'}
                     fontSize="13"
@@ -113,13 +118,14 @@ export const ProcessSection: React.FC = () => {
                   </text>
                   <text
                     x={x + 84}
-                    y="68"
+                    y="58"
                     textAnchor="middle"
                     fill={isSelected ? '#130108' : '#FBF3E2'}
-                    fontSize="10.5"
+                    fontSize="10"
                     fontWeight="500"
                   >
-                    {step.title.split(' ').slice(0, 3).join(' ')}
+                    <tspan x={x + 84} dy="0">{line1}</tspan>
+                    {line2 && <tspan x={x + 84} dy="13">{line2}</tspan>}
                   </text>
                 </g>
               );
@@ -152,7 +158,7 @@ export const ProcessSection: React.FC = () => {
           <div
             ref={panelRef}
             key={currentStep.step}
-            className="rounded-xl bg-[#410217]/90 border border-[#D5991C]/40 p-6 sm:p-8 grid grid-cols-1 lg:grid-cols-12 gap-6 items-center"
+            className="rounded-xl bg-[#410217]/45 border border-[#D5991C]/40 p-6 sm:p-8 grid grid-cols-1 lg:grid-cols-12 gap-6 items-center backdrop-blur-xs"
           >
             <div className="lg:col-span-7 space-y-3">
               <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-[#D5991C]/15 text-[#D5991C] text-xs font-semibold">
@@ -191,7 +197,7 @@ export const ProcessSection: React.FC = () => {
         </div>
 
         {/* Interactive Real-World Threat & Defense Scenarios */}
-        <div className="mt-14 rounded-2xl bg-[#2B010F]/90 border border-[#F2D69D]/30 p-6 sm:p-8 shadow-xl">
+        <div className="mt-14 rounded-2xl bg-[#2B010F]/45 border border-[#F2D69D]/30 p-6 sm:p-8 shadow-xl backdrop-blur-xs">
           <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 pb-6 border-b border-[#F2D69D]/20">
             <div>
               <h3 className="font-serif text-2xl sm:text-3xl text-[#FBF3E2]">
