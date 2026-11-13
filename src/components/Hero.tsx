@@ -245,7 +245,7 @@ export const Hero: React.FC<HeroProps> = ({
         {/* Interactive Visual Diagram: How AEO & Counter-AEO Work in Plain Sight */}
         <div
           data-hero-diagram
-          className="mt-14 md:mt-18 rounded-2xl border border-[#F2D69D]/30 bg-[#2B010F]/[0.38] p-6 sm:p-8 shadow-xl backdrop-blur-xs"
+          className="mt-14 md:mt-18 rounded-2xl border border-[#F2D69D]/30 bg-[#2B010F]/80 p-6 sm:p-8 shadow-xl backdrop-blur-xs"
         >
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-6 border-b border-[#F2D69D]/20">
             <div>
@@ -544,7 +544,7 @@ export const Hero: React.FC<HeroProps> = ({
             <div
               key={idx}
               data-stat-card
-              className="rounded-xl bg-[#2B010F]/[0.33] border border-[#F2D69D]/25 p-6 flex flex-col justify-between hover:border-[#D5991C]/60 transition-all backdrop-blur-xs"
+              className="rounded-xl bg-[#2B010F]/80 border border-[#F2D69D]/25 p-6 flex flex-col justify-between hover:border-[#D5991C]/60 transition-all backdrop-blur-xs"
             >
               <div>
                 <div className="font-serif text-4xl sm:text-5xl text-[#D5991C] font-normal tracking-tight leading-none">

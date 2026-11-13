@@ -136,7 +136,7 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({
                   className={`w-full text-left p-4.5 rounded-xl border transition-all cursor-pointer flex items-center justify-between gap-4 ${
                     isSelected
                       ? 'bg-[#D5991C] text-[#130108] border-[#FBF3E2] shadow-lg'
-                      : 'bg-[#2B010F]/[0.38] text-[#FBF3E2] border-[#F2D69D]/20 hover:border-[#D5991C]/50 hover:bg-[#350213]/50 backdrop-blur-xs'
+                      : 'bg-[#2B010F]/80 text-[#FBF3E2] border-[#F2D69D]/20 hover:border-[#D5991C]/50 hover:bg-[#350213]/80 backdrop-blur-xs'
                   }`}
                 >
                   <div>
@@ -170,7 +170,7 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({
             <div
               ref={detailRef}
               key={activeService.id}
-              className="h-full rounded-2xl bg-[#2B010F]/45 border border-[#D5991C]/45 p-7 sm:p-9 flex flex-col justify-between shadow-xl backdrop-blur-xs"
+              className="h-full rounded-2xl bg-[#2B010F]/80 border border-[#D5991C]/45 p-7 sm:p-9 flex flex-col justify-between shadow-xl backdrop-blur-xs"
             >
               <div>
                 <div className="flex flex-wrap items-center justify-between gap-3 pb-5 mb-6 border-b border-[#F2D69D]/20">

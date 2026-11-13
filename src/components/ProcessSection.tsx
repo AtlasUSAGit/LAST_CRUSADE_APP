@@ -46,7 +46,7 @@ export const ProcessSection: React.FC = () => {
         />
 
         {/* Interactive Animated SVG 5-Stage Pipeline Diagram */}
-        <div className="mb-8 rounded-2xl bg-[#2B010F]/40 border border-[#F2D69D]/25 p-5 sm:p-7 backdrop-blur-xs">
+        <div className="mb-8 rounded-2xl bg-[#2B010F]/80 border border-[#F2D69D]/25 p-5 sm:p-7 backdrop-blur-xs">
           <div className="flex flex-wrap items-center justify-between gap-2 mb-4">
             <span className="text-sm font-semibold text-[#FBF3E2]">
               Interactive Pipeline (Click Any Stage to Inspect)
@@ -101,7 +101,7 @@ export const ProcessSection: React.FC = () => {
                     height="80"
                     rx="12"
                     fill={isSelected ? '#D5991C' : '#350213'}
-                    fillOpacity={isSelected ? '1' : '0.5'}
+                    fillOpacity={isSelected ? '1' : '0.8'}
                     stroke={isSelected ? '#FBF3E2' : '#D5991C'}
                     strokeOpacity={isSelected ? '1' : '0.45'}
                     strokeWidth={isSelected ? '2' : '1.5'}
@@ -158,7 +158,7 @@ export const ProcessSection: React.FC = () => {
           <div
             ref={panelRef}
             key={currentStep.step}
-            className="rounded-xl bg-[#410217]/45 border border-[#D5991C]/40 p-6 sm:p-8 grid grid-cols-1 lg:grid-cols-12 gap-6 items-center backdrop-blur-xs"
+            className="rounded-xl bg-[#410217]/80 border border-[#D5991C]/40 p-6 sm:p-8 grid grid-cols-1 lg:grid-cols-12 gap-6 items-center backdrop-blur-xs"
           >
             <div className="lg:col-span-7 space-y-3">
               <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-[#D5991C]/15 text-[#D5991C] text-xs font-semibold">
@@ -197,7 +197,7 @@ export const ProcessSection: React.FC = () => {
         </div>
 
         {/* Interactive Real-World Threat & Defense Scenarios */}
-        <div className="mt-14 rounded-2xl bg-[#2B010F]/45 border border-[#F2D69D]/30 p-6 sm:p-8 shadow-xl backdrop-blur-xs">
+        <div className="mt-14 rounded-2xl bg-[#2B010F]/80 border border-[#F2D69D]/30 p-6 sm:p-8 shadow-xl backdrop-blur-xs">
           <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 pb-6 border-b border-[#F2D69D]/20">
             <div>
               <h3 className="font-serif text-2xl sm:text-3xl text-[#FBF3E2]">

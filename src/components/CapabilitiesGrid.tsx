@@ -87,7 +87,7 @@ export const CapabilitiesGrid: React.FC = () => {
         />
 
         {/* Interactive 4-Pillar Platform Architecture & Animated SVG Flow */}
-        <div className="mb-12 rounded-2xl bg-[#24010d]/50 border border-[#D5991C]/40 p-6 sm:p-8 shadow-xl space-y-6 backdrop-blur-xs">
+        <div className="mb-12 rounded-2xl bg-[#24010d]/80 border border-[#D5991C]/40 p-6 sm:p-8 shadow-xl space-y-6 backdrop-blur-xs">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
             {PLATFORM_PILLARS.map((pillar, idx) => {
               const isSelected = pillar.id === selectedPillar;
@@ -180,7 +180,7 @@ export const CapabilitiesGrid: React.FC = () => {
             <div
               key={cap.id}
               data-cap-cell
-              className="group rounded-2xl bg-[#2B010F]/40 hover:bg-[#350213]/50 border border-[#F2D69D]/25 hover:border-[#D5991C]/60 p-7 flex flex-col justify-between transition-all shadow-lg backdrop-blur-xs"
+              className="group rounded-2xl bg-[#2B010F]/80 hover:bg-[#350213]/80 border border-[#F2D69D]/25 hover:border-[#D5991C]/60 p-7 flex flex-col justify-between transition-all shadow-lg backdrop-blur-xs"
             >
               <div>
                 <div className="flex items-center justify-between mb-4">
