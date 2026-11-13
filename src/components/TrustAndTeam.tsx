@@ -160,7 +160,7 @@ export const TrustAndTeam: React.FC<TrustAndTeamProps> = ({ onNavigate }) => {
         />
 
         {/* Visual Overview Diagram of How the 5 Volumes Connect */}
-        <div className="mb-10 rounded-2xl bg-[#2B010F]/80 border border-[#F2D69D]/25 p-5 sm:p-6 backdrop-blur-xs">
+        <div className="mb-10 rounded-2xl bg-[#2B010F]/90 border border-[#F2D69D]/25 p-5 sm:p-6 backdrop-blur-xs">
           <div className="text-sm font-medium text-[#FBF3E2] mb-4 flex flex-wrap items-center justify-between gap-2">
             <span>How Our Five Research Volumes Fit Together</span>
             <span className="text-xs text-[#D5991C]">Click any volume card below to read the paper or launch its 3D lab</span>
@@ -225,7 +225,7 @@ export const TrustAndTeam: React.FC<TrustAndTeamProps> = ({ onNavigate }) => {
               key={vol.volNumber}
               data-vol-card
               onClick={() => onNavigate?.(vol.targetPage)}
-              className="group rounded-2xl bg-[#2B010F]/80 border border-[#F2D69D]/25 hover:border-[#D5991C] p-6 flex flex-col justify-between transition-all cursor-pointer shadow-lg hover:shadow-xl hover:-translate-y-0.5 backdrop-blur-xs"
+              className="group rounded-2xl bg-[#2B010F]/90 border border-[#F2D69D]/25 hover:border-[#D5991C] p-6 flex flex-col justify-between transition-all cursor-pointer shadow-lg hover:shadow-xl hover:-translate-y-0.5 backdrop-blur-xs"
             >
               <div>
                 <div className="flex items-center justify-between gap-2 pb-4 mb-4 border-b border-[#F2D69D]/15">
@@ -274,7 +274,7 @@ export const TrustAndTeam: React.FC<TrustAndTeamProps> = ({ onNavigate }) => {
           <article
             data-vol-card
             onClick={() => onNavigate?.('counter-geo-ops')}
-            className="group rounded-2xl bg-gradient-to-br from-[#5C0A24]/80 via-[#3A0215]/80 to-[#24010D]/80 border-2 border-[#D5991C]/60 hover:border-[#D5991C] p-6 flex flex-col justify-between transition-all cursor-pointer shadow-xl hover:-translate-y-0.5 backdrop-blur-xs"
+            className="group rounded-2xl bg-gradient-to-br from-[#5C0A24]/90 via-[#3A0215]/90 to-[#24010D]/90 border-2 border-[#D5991C]/60 hover:border-[#D5991C] p-6 flex flex-col justify-between transition-all cursor-pointer shadow-xl hover:-translate-y-0.5 backdrop-blur-xs"
           >
             <div>
               <div className="flex items-center justify-between gap-2 pb-4 mb-4 border-b border-[#F2D69D]/20">

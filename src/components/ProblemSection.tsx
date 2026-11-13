@@ -223,7 +223,7 @@ export const ProblemSection: React.FC = () => {
             <article
               key={card.id}
               data-prob-card
-              className="rounded-2xl bg-[#2B010F]/80 border border-[#F2D69D]/25 p-7 flex flex-col justify-between hover:border-[#D5991C]/60 transition-all shadow-lg backdrop-blur-xs"
+              className="rounded-2xl bg-[#2B010F]/90 border border-[#F2D69D]/25 p-7 flex flex-col justify-between hover:border-[#D5991C]/60 transition-all shadow-lg backdrop-blur-xs"
             >
               <div>
                 <div className="flex items-center justify-between mb-4">
@@ -278,7 +278,7 @@ export const ProblemSection: React.FC = () => {
         </div>
 
         {/* Interactive Dual-Use Explorer: Offensive & Defensive AEO Across 4 Markets */}
-        <div className="mt-14 rounded-2xl bg-[#2B010F]/80 border border-[#D5991C]/40 p-6 sm:p-8 shadow-xl backdrop-blur-xs">
+        <div className="mt-14 rounded-2xl bg-[#2B010F]/90 border border-[#D5991C]/40 p-6 sm:p-8 shadow-xl backdrop-blur-xs">
           <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 pb-6 border-b border-[#F2D69D]/20">
             <div>
               <h3 className="font-serif text-2xl sm:text-3xl text-[#FBF3E2]">
