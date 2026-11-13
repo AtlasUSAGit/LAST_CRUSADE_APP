@@ -141,6 +141,7 @@ export default function App() {
             particleCount={isMobile ? 220 : 500}
             speed={2}
             glitterIntensity={2}
+            trailAmount={0}
             style={{ width: '100%', height: '100%' }}
           />
         </div>

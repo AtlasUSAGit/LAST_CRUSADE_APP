@@ -73,7 +73,7 @@ const COMPONENT_DEFAULTS: Props = {
   turbulence: 0,
   brightness: 100,
   glitterIntensity: 3,
-  trailAmount: 100,
+  trailAmount: 0,
   reverse: false,
   background: "#FAF5EB",
 };
@@ -360,7 +360,7 @@ function __OriginkitBase_GlitterWrap(rawProps: Partial<Props>) {
 
         const colStr = rgbStrs[s.colorIdx];
 
-        if (!Number.isNaN(s.px) && !Number.isNaN(s.py)) {
+        if (trail > 0 && !Number.isNaN(s.px) && !Number.isNaN(s.py)) {
           ctx.globalAlpha = a * 0.5;
           ctx.strokeStyle = colStr;
           ctx.lineWidth = Math.max(0.4, r * 0.4);
@@ -447,6 +447,7 @@ const __originkitPresetProps: Partial<Props> = {
   background: "#FAF5EB",
   speed: 2,
   glitterIntensity: 2,
+  trailAmount: 0,
 };
 
 export function GlitterWrap(props: Partial<Props>) {
@@ -454,3 +455,4 @@ export function GlitterWrap(props: Partial<Props>) {
 }
 
 export default GlitterWrap;
+
