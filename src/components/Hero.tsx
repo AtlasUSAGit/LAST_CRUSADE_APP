@@ -3,9 +3,6 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ArrowUpRight, Shield, AlertTriangle, CheckCircle2, Sparkles, BookOpen, Compass } from 'lucide-react';
 import { NavigationPage } from '../types';
-import Globe from './Globe';
-
-const PETRA_GLOBE_DOTS_CONFIG = { color: '#F2D69D', size: 4, density: 8, allDots: false };
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -153,46 +150,41 @@ export const Hero: React.FC<HeroProps> = ({
   return (
     <section
       ref={rootRef}
-      className="relative overflow-hidden border-b border-[#F2D69D]/30 bg-gradient-to-b from-[#410217] via-[#3A0215] to-[#410217]"
+      className="relative z-10 overflow-hidden border-b border-[#410217]/15 bg-transparent"
     >
-      {/* Subtle ambient glow */}
-      <div className="pointer-events-none absolute -top-32 left-1/4 w-[36rem] h-[36rem] rounded-full bg-[#D5991C]/8 blur-3xl" />
-
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 pb-16 md:pt-14 md:pb-24 relative z-10">
         <div
           data-hero-rule
-          className="h-px w-full bg-gradient-to-r from-[#D5991C]/60 via-[#F2D69D]/30 to-transparent mb-10 md:mb-12"
+          className="h-px w-full bg-gradient-to-r from-[#8B5A0B]/50 via-[#410217]/20 to-transparent mb-10 md:mb-12"
         />
 
-        {/* Main Hero Split: Copy Left + 3D Interactive Globe Right */}
+        {/* Main Hero Copy */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-center">
-          {/* Left Column (7 cols): Human Editorial Headline & Actions */}
-          <div className="lg:col-span-7 flex flex-col justify-between">
+          <div className="lg:col-span-10 flex flex-col justify-between">
             <div>
-              <h1 className="font-serif text-[#FBF3E2] font-normal tracking-[-0.025em] leading-[1.03] text-[2.6rem] sm:text-6xl xl:text-[4.4rem]">
+              <h1 className="font-serif text-[#410217] font-normal tracking-[-0.025em] leading-[1.03] text-[2.6rem] sm:text-6xl xl:text-[4.4rem]">
                 <span className="block overflow-hidden pb-1">
                   <span data-hero-line className="block">
-                    Securing the Answers
+                    Defending America
                   </span>
                 </span>
                 <span className="block overflow-hidden pb-1">
                   <span data-hero-line className="block">
-                    AI Gives <em className="italic text-[#D5991C] font-normal">the World.</em>
+                    In The Era Of The <em className="italic text-[#8B5A0B] font-normal">Generative Engine</em>
                   </span>
                 </span>
               </h1>
 
               <p
                 data-hero-deck
-                className="mt-6 text-base sm:text-lg text-[#FBF3E2]/85 font-sans leading-relaxed max-w-2xl"
+                className="mt-6 text-base sm:text-lg text-[#410217]/85 font-sans leading-relaxed max-w-3xl"
               >
-                When people, investors, and software agents ask ChatGPT, Perplexity, Claude, or Google AI a question, they don&apos;t scroll through ten blue links—they trust a single synthesized answer.{' '}
-                <strong className="text-[#FBF3E2] font-semibold">Answer Engine Optimization (AEO)</strong> shapes what those models say. We build the offensive and defensive technology to make sure AI cites verified truth—and to stop bad actors from poisoning AI answers, financial markets, and autonomous agents.
+                Building the next generation of AEO systems, pushing the limits of the industry to go beyond just marketing by using Answer Engine Optimization to strengthen our national security and defend America&apos;s financial markets, supply chains, and geopolitical interests.
               </p>
             </div>
 
             {/* Action CTAs */}
-            <div data-hero-ctas className="mt-8 pt-6 border-t border-[#F2D69D]/20">
+            <div data-hero-ctas className="mt-8 pt-6 border-t border-[#410217]/15">
               <div className="flex flex-wrap items-center gap-3.5">
                 <button
                   onClick={() => onNavigate('pitch-deck')}
@@ -205,7 +197,7 @@ export const Hero: React.FC<HeroProps> = ({
 
                 <button
                   onClick={() => onNavigate('counter-geo-ops')}
-                  className="group inline-flex items-center space-x-2 px-5 py-3.5 rounded-lg bg-[#2B010F] hover:bg-[#5C0A24] text-[#FBF3E2] border border-[#D5991C]/45 font-sans font-medium text-sm transition-all cursor-pointer"
+                  className="group inline-flex items-center space-x-2 px-5 py-3.5 rounded-lg bg-[#410217] hover:bg-[#5C0A24] text-[#FBF3E2] border border-[#D5991C]/45 font-sans font-medium text-sm transition-all cursor-pointer"
                 >
                   <Sparkles className="w-4 h-4 text-[#D5991C]" />
                   <span>Explore 3D Threat Lab</span>
@@ -213,41 +205,11 @@ export const Hero: React.FC<HeroProps> = ({
 
                 <button
                   onClick={() => onNavigate('research')}
-                  className="inline-flex items-center space-x-2 px-5 py-3.5 rounded-lg bg-transparent hover:bg-[#FBF3E2]/10 text-[#FBF3E2]/90 border border-[#F2D69D]/30 font-sans font-medium text-sm transition-colors cursor-pointer"
+                  className="inline-flex items-center space-x-2 px-5 py-3.5 rounded-lg bg-[#FAF5EB]/85 hover:bg-[#410217]/10 text-[#410217] border border-[#410217]/30 font-sans font-medium text-sm transition-colors cursor-pointer"
                 >
-                  <BookOpen className="w-4 h-4 text-[#D5991C]" />
+                  <BookOpen className="w-4 h-4 text-[#8B5A0B]" />
                   <span>Read the 5 Whitepapers</span>
                 </button>
-              </div>
-            </div>
-          </div>
-
-          {/* Right Column (5 cols): Interactive 3D Globe */}
-          <div data-hero-globe className="lg:col-span-5">
-            <div className="rounded-2xl border border-[#F2D69D]/30 bg-[#2B010F]/60 p-3 shadow-2xl backdrop-blur-xs">
-              <div className="w-full aspect-square max-h-[390px] mx-auto relative flex items-center justify-center">
-                <Globe
-                  speed={1.2}
-                  smoothing={8}
-                  dots={PETRA_GLOBE_DOTS_CONFIG}
-                  fill="dots"
-                  fillColor="#F2D69D"
-                  scale={9.5}
-                  stopOnHover={false}
-                  direction="left"
-                  oceanColor="#340112"
-                  outlineColor="#D5991C"
-                  showOutline={true}
-                  graticuleColor="rgba(242, 214, 157, 0.15)"
-                  showGrid={true}
-                  outlineWidth={1}
-                  arcColor="#D5991C"
-                  pulseColor="#FBF3E2"
-                />
-              </div>
-              <div className="mt-2 px-2 py-1.5 flex items-center justify-between text-xs text-[#FBF3E2]/75 font-sans">
-                <span>Interactive 3D Global AI Answer Network</span>
-                <span className="text-[#D5991C] font-medium">Drag to rotate</span>
               </div>
             </div>
           </div>
@@ -304,11 +266,11 @@ export const Hero: React.FC<HeroProps> = ({
               aria-label="Interactive AI Answer Pipeline Diagram"
             >
               <defs>
-                <linearGradient id="cleanLineGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                <linearGradient id="cleanLineGrad" gradientUnits="userSpaceOnUse" x1="220" y1="0" x2="740" y2="0">
                   <stop offset="0%" stopColor="#D5991C" stopOpacity="0.8" />
                   <stop offset="100%" stopColor="#00A878" stopOpacity="0.9" />
                 </linearGradient>
-                <linearGradient id="poisonLineGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                <linearGradient id="poisonLineGrad" gradientUnits="userSpaceOnUse" x1="220" y1="0" x2="740" y2="0">
                   <stop offset="0%" stopColor="#E63946" stopOpacity="0.9" />
                   <stop offset="100%" stopColor="#FF8093" stopOpacity="0.9" />
                 </linearGradient>

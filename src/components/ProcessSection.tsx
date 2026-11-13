@@ -32,14 +32,14 @@ export const ProcessSection: React.FC = () => {
   return (
     <section
       ref={rootRef}
-      className="py-20 md:py-28 bg-[#410217] border-b border-[#F2D69D]/30"
+      className="py-20 md:py-28 bg-transparent border-b border-[#410217]/15 relative z-10"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeader
           title={
             <>
               How Our 5-Stage{' '}
-              <em className="italic text-[#D5991C] font-normal">Protection Pipeline Works.</em>
+              <em className="italic text-[#8B5A0B] font-normal">Protection Pipeline Works.</em>
             </>
           }
           subtitle="From mapping what AI chatbots currently say about you to stopping coordinated rumor campaigns in milliseconds, every step is designed to be transparent and verifiable."

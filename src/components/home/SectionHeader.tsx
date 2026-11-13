@@ -98,24 +98,24 @@ export const SectionHeader: React.FC<SectionHeaderProps> = ({
       <div ref={rootRef} className={`mb-12 md:mb-16 ${className}`}>
         <div
           data-sh-rule
-          className="h-px w-full bg-gradient-to-r from-[#D5991C]/60 via-[#F2D69D]/30 to-transparent mb-8"
+          className="h-px w-full bg-gradient-to-r from-[#8B5A0B]/50 via-[#410217]/20 to-transparent mb-8"
         />
         <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6">
           <div className="max-w-3xl">
             <div
               data-sh-accent
-              className="w-12 h-1 bg-gradient-to-r from-[#D5991C] to-[#F2D69D] rounded-full mb-5"
+              className="w-12 h-1 bg-gradient-to-r from-[#8B5A0B] to-[#D5991C] rounded-full mb-5"
             />
             <h2
               data-sh-reveal
-              className="font-serif text-3xl sm:text-4xl lg:text-5xl text-[#FBF3E2] font-normal tracking-tight leading-[1.1]"
+              className="font-serif text-3xl sm:text-4xl lg:text-5xl text-[#410217] font-normal tracking-tight leading-[1.1]"
             >
               {title}
             </h2>
             {subtitle && (
               <p
                 data-sh-reveal
-                className="text-base sm:text-lg text-[#FBF3E2]/80 font-sans leading-relaxed mt-4"
+                className="text-base sm:text-lg text-[#410217]/80 font-sans leading-relaxed mt-4"
               >
                 {subtitle}
               </p>
@@ -135,24 +135,24 @@ export const SectionHeader: React.FC<SectionHeaderProps> = ({
     <div ref={rootRef} className={`mb-12 md:mb-16 ${className}`}>
       <div
         data-sh-rule
-        className="h-px w-full bg-gradient-to-r from-[#D5991C]/60 via-[#F2D69D]/30 to-transparent mb-8 md:mb-10"
+        className="h-px w-full bg-gradient-to-r from-[#8B5A0B]/50 via-[#410217]/20 to-transparent mb-8 md:mb-10"
       />
       <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6">
         <div className="max-w-3xl">
           <div
             data-sh-accent
-            className="w-12 h-1 bg-gradient-to-r from-[#D5991C] to-[#F2D69D] rounded-full mb-5"
+            className="w-12 h-1 bg-gradient-to-r from-[#8B5A0B] to-[#D5991C] rounded-full mb-5"
           />
           <h2
             data-sh-reveal
-            className="font-serif text-3xl sm:text-4xl lg:text-[2.75rem] text-[#FBF3E2] font-normal tracking-tight leading-[1.08]"
+            className="font-serif text-3xl sm:text-4xl lg:text-[2.75rem] text-[#410217] font-normal tracking-tight leading-[1.08]"
           >
             {title}
           </h2>
           {subtitle && (
             <p
               data-sh-reveal
-              className="text-base sm:text-lg text-[#FBF3E2]/80 font-sans leading-relaxed mt-4 max-w-2xl"
+              className="text-base sm:text-lg text-[#410217]/80 font-sans leading-relaxed mt-4 max-w-2xl"
             >
               {subtitle}
             </p>

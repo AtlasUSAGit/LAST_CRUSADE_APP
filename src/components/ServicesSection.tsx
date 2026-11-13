@@ -101,14 +101,14 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({
   return (
     <section
       ref={rootRef}
-      className="py-20 md:py-28 bg-[#410217] border-b border-[#F2D69D]/30"
+      className="py-20 md:py-28 bg-transparent border-b border-[#410217]/15 relative z-10"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeader
           title={
             <>
               Practical Solutions for{' '}
-              <em className="italic text-[#D5991C] font-normal">Offensive &amp; Defensive AEO.</em>
+              <em className="italic text-[#8B5A0B] font-normal">Offensive &amp; Defensive AEO.</em>
             </>
           }
           subtitle="Whether you want AI chatbots to cite your organization accurately today, or need long-term protection against search poisoning and market manipulation, here is how we help."

@@ -51,9 +51,6 @@ export const Header: React.FC<HeaderProps> = ({
                 <span className="font-serif font-bold text-xl tracking-tight text-[#FBF3E2] leading-none group-hover:text-[#D5991C] transition-colors">
                   Last Crusade
                 </span>
-                <span className="text-[11px] font-sans font-semibold px-2 py-0.5 rounded-full bg-[#D5991C]/15 text-[#D5991C] border border-[#D5991C]/35">
-                  AEO Defense
-                </span>
               </div>
               <span className="text-[11px] text-[#FBF3E2]/65 font-sans mt-0.5">
                 AI Search &amp; Agent Security

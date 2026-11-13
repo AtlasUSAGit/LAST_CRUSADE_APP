@@ -136,14 +136,14 @@ export const TrustAndTeam: React.FC<TrustAndTeamProps> = ({ onNavigate }) => {
   return (
     <section
       ref={rootRef}
-      className="py-20 md:py-28 bg-[#410217] border-b border-[#F2D69D]/30 relative"
+      className="py-20 md:py-28 bg-transparent border-b border-[#410217]/15 relative z-10"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeader
           title={
             <>
               Five Volumes of Original{' '}
-              <em className="italic text-[#D5991C] font-normal">AEO &amp; Counter-AEO Research.</em>
+              <em className="italic text-[#8B5A0B] font-normal">AEO &amp; Counter-AEO Research.</em>
             </>
           }
           subtitle="Every product capability we build is grounded in open, inspectable research. Explore our five-volume series—complete with word-for-word whitepapers and interactive 3D simulation labs."

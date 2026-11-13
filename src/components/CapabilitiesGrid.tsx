@@ -73,14 +73,14 @@ export const CapabilitiesGrid: React.FC = () => {
   return (
     <section
       ref={rootRef}
-      className="py-20 md:py-28 bg-[#410217] border-b border-[#F2D69D]/30"
+      className="py-20 md:py-28 bg-transparent border-b border-[#410217]/15 relative z-10"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeader
           title={
             <>
               Four Pillars &amp; Core Defense Modules{' '}
-              <em className="italic text-[#D5991C] font-normal">Built for Real-World AI.</em>
+              <em className="italic text-[#8B5A0B] font-normal">Built for Real-World AI.</em>
             </>
           }
           subtitle="Sixteen protection layers and eight active counterintelligence modules working together across AI search engines, autonomous software agents, and institutional financial infrastructure."
