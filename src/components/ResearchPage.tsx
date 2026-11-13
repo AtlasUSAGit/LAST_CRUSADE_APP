@@ -228,9 +228,9 @@ export const ResearchPage: React.FC<ResearchPageProps> = ({
   ];
 
   return (
-    <div className="min-h-screen bg-[#FAF5EB] text-[#410217] selection:bg-[#410217]/15 selection:text-[#410217]">
+    <div className="relative z-10 min-h-screen bg-transparent text-[#410217] selection:bg-[#410217]/15 selection:text-[#410217]">
       {/* Hero Header: Research Library */}
-      <section className="relative pt-12 pb-14 md:pt-16 md:pb-18 border-b border-[#F2D69D] bg-gradient-to-b from-[#FFFDF9] via-[#FAF5EB] to-[#F5ECE0] overflow-hidden">
+      <section className="relative pt-12 pb-14 md:pt-16 md:pb-18 border-b border-[#F2D69D] bg-transparent overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(#410217_1px,transparent_1px)] [background-size:24px_24px] opacity-[0.03] pointer-events-none" />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">

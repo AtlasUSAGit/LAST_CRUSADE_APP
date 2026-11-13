@@ -185,7 +185,7 @@ export function createSecureWindow() {
   const renderedPrompt = currentTemplate.template(promptTargetInput, promptFeatureInput);
 
   return (
-    <div className="min-h-screen bg-[#FBF3E2] text-[#410217] font-sans selection:bg-[#410217]/15 selection:text-[#410217]">
+    <div className="relative z-10 min-h-screen bg-transparent text-[#410217] font-sans selection:bg-[#410217]/15 selection:text-[#410217]">
       {/* Toast */}
       {toastText && (
         <div className="fixed bottom-6 right-6 z-50 flex items-center space-x-2 rounded-lg bg-[#410217] text-[#FBF3E2] px-4 py-3 border border-[#F2D69D] shadow-xl text-xs">

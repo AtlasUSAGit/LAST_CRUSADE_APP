@@ -130,8 +130,8 @@ export default function App() {
 
   return (
     <div className="relative min-h-screen bg-[#FAF5EB] text-[#410217] font-sans selection:bg-[#410217]/15 selection:text-[#410217] overflow-x-hidden">
-      {/* GlitterWrap Living Background for the whole Home Page */}
-      {currentPage === 'overview' && (
+      {/* GlitterWrap Living Background for Home, Research Library, and REA Workbench */}
+      {(currentPage === 'overview' || currentPage === 'research' || currentPage === 'rea') && (
         <div className="fixed inset-0 pointer-events-none z-0" aria-hidden="true">
           <GlitterWrap
             background="#FAF5EB"
