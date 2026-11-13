@@ -3,6 +3,9 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ArrowUpRight, Shield, AlertTriangle, CheckCircle2, Sparkles, BookOpen, Compass } from 'lucide-react';
 import { NavigationPage } from '../types';
+import Globe from './Globe';
+
+const PETRA_GLOBE_DOTS_CONFIG = { color: '#F2D69D', size: 4, density: 8, allDots: false };
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -158,9 +161,9 @@ export const Hero: React.FC<HeroProps> = ({
           className="h-px w-full bg-gradient-to-r from-[#8B5A0B]/50 via-[#410217]/20 to-transparent mb-10 md:mb-12"
         />
 
-        {/* Main Hero Copy */}
+        {/* Main Hero Split: Copy Left + Interactive 3D Globe Right */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-center">
-          <div className="lg:col-span-10 flex flex-col justify-between">
+          <div className="lg:col-span-7 flex flex-col justify-between">
             <div>
               <h1 className="font-serif text-[#410217] font-normal tracking-[-0.025em] leading-[1.03] text-[2.6rem] sm:text-6xl xl:text-[4.4rem]">
                 <span className="block overflow-hidden pb-1">
@@ -177,7 +180,7 @@ export const Hero: React.FC<HeroProps> = ({
 
               <p
                 data-hero-deck
-                className="mt-6 text-base sm:text-lg text-[#410217]/85 font-sans leading-relaxed max-w-3xl"
+                className="mt-6 text-base sm:text-lg text-[#410217]/85 font-sans leading-relaxed max-w-2xl"
               >
                 Building the next generation of AEO systems, pushing the limits of the industry to go beyond just marketing by using Answer Engine Optimization to strengthen our national security and defend America&apos;s financial markets, supply chains, and geopolitical interests.
               </p>
@@ -211,6 +214,30 @@ export const Hero: React.FC<HeroProps> = ({
                   <span>Read the 5 Whitepapers</span>
                 </button>
               </div>
+            </div>
+          </div>
+
+          {/* Right Column (5 cols): Interactive 3D Globe (without outer box) */}
+          <div data-hero-globe className="lg:col-span-5">
+            <div className="w-full aspect-square max-h-[390px] mx-auto relative flex items-center justify-center">
+              <Globe
+                speed={1.2}
+                smoothing={8}
+                dots={PETRA_GLOBE_DOTS_CONFIG}
+                fill="dots"
+                fillColor="#F2D69D"
+                scale={9.5}
+                stopOnHover={false}
+                direction="left"
+                oceanColor="#340112"
+                outlineColor="#D5991C"
+                showOutline={true}
+                graticuleColor="rgba(242, 214, 157, 0.15)"
+                showGrid={true}
+                outlineWidth={1}
+                arcColor="#D5991C"
+                pulseColor="#FBF3E2"
+              />
             </div>
           </div>
         </div>
