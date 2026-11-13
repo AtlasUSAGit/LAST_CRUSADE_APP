@@ -1145,26 +1145,26 @@
   <!-- TOP NAVIGATION BAR (3-IN-1 SPA ROUTER) -->
   <nav class="navbar">
     <div class="nav-brand" onclick="switchPage(0)">
-      <div class="brand-mark">LCD</div>
-      <div class="brand-name">Last Crusade Defense</div>
-      <div class="brand-sub">Volume IV // Sovereign & Global Market Defense</div>
+      <div class="brand-mark">LC</div>
+      <div class="brand-name">Last Crusade</div>
+      <div class="brand-sub">Public &amp; Private Sector Defense Architecture</div>
     </div>
 
     <div class="nav-tabs">
       <button class="nav-tab-btn active" id="tab-btn-0" onclick="switchPage(0)">
-        <span class="tab-num">01</span> Federal Sector Capabilities
+        Public Sector Defense
       </button>
       <button class="nav-tab-btn" id="tab-btn-1" onclick="switchPage(1)">
-        <span class="tab-num">02</span> Private Sector Capabilities
+        Private Sector &amp; Markets
       </button>
       <button class="nav-tab-btn" id="tab-btn-2" onclick="switchPage(2)">
-        <span class="tab-num">03</span> Live Defense Ops & WebGL Lab
+        Interactive 3D Defense Lab
       </button>
     </div>
 
     <div class="nav-status">
       <span class="status-dot" id="nav-pulse-dot"></span>
-      <span id="nav-status-text">LAYERS 9–12 ARMED // C2PA + ZK ACTIVE</span>
+      <span id="nav-status-text">Interactive Defense Architecture</span>
     </div>
   </nav>
 
@@ -1176,38 +1176,83 @@
       <!-- HERO SECTION -->
       <section class="hero-section gsap-reveal">
         <h1 class="hero-title">
-          Your AEO-based Cyber Operations and Cyber Security. <em>Built to Execute.</em>
+          AEO-Based Cyber Operations and Security. <em>Built to Execute.</em>
         </h1>
         <p class="hero-subtitle">
-          Directly breaching a commercial foundation model (e.g., ChatGPT, Claude, Gemini Etc.) is expensive and easily detected. The model weights are protected by heavily fortified corporate firewalls, their datasets go through rigorous curation, and jailbreak prompts trigger safety classifiers. But targeting the open-web RAG layer provides national intelligence services (such as Russian and Chinese cyber units) with a low-cost, decentralized asymmetric workaround. This needs to be defended against. That's why we started Last Crusade Defense.
+          Directly breaching a major AI model like ChatGPT, Claude, or Gemini is expensive and easily spotted. Their servers sit behind fortified corporate firewalls and their training data is heavily curated. Instead, foreign intelligence services and bad actors take a cheaper shortcut: they poison the open-web websites that AI models read when answering live questions. Last Crusade builds the tools to detect and stop that manipulation.
         </p>
         <div class="hero-cta-row">
-          <button class="btn-primary" onclick="switchPage(2)">Launch Volume IV Live WebGL Defense Lab →</button>
+          <button class="btn-primary" onclick="switchPage(2)">Launch Interactive 3D Defense Lab →</button>
           <button class="btn-outline" onclick="switchPage(1)">Explore Private-Sector Capabilities</button>
+        </div>
+
+        <!-- Animated SVG Visual Architecture Diagram -->
+        <div style="margin-top: 40px; padding: 24px; background: rgba(36, 1, 13, 0.78); border: 1px solid rgba(244, 241, 234, 0.2); border-radius: 12px;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; flex-wrap: wrap; gap: 8px;">
+            <strong style="font-family: var(--font-serif); font-size: 22px; color: #f4f1ea; font-weight: 400;">How Last Crusade Grounds Open-Web AI Answers in Physical Reality</strong>
+            <span style="font-size: 12px; color: #38bdf8;">4-Stage Verification Pipeline</span>
+          </div>
+          <svg viewBox="0 0 960 110" style="width: 100%; height: auto; overflow: visible;">
+            <g>
+              <rect x="10" y="15" width="205" height="80" rx="10" fill="#2e0110" stroke="#f43f5e" stroke-width="1.5" />
+              <text x="112" y="45" text-anchor="middle" fill="#f43f5e" font-size="13" font-weight="700">1. Open-Web Claims</text>
+              <text x="112" y="66" text-anchor="middle" fill="#f4f1ea" fill-opacity="0.8" font-size="11">Scraped news, blogs &amp; filings</text>
+              <line x1="215" y1="55" x2="255" y2="55" stroke="#38bdf8" stroke-width="2" />
+              <circle r="4" fill="#38bdf8">
+                <animate attributeName="cx" from="215" to="255" dur="1.4s" repeatCount="indefinite" />
+                <animate attributeName="cy" values="55;55" dur="1.4s" repeatCount="indefinite" />
+              </circle>
+            </g>
+            <g>
+              <rect x="255" y="15" width="205" height="80" rx="10" fill="#2e0110" stroke="#f59e0b" stroke-width="1.5" />
+              <text x="357" y="45" text-anchor="middle" fill="#f59e0b" font-size="13" font-weight="700">2. Chaff &amp; Botnet Filter</text>
+              <text x="357" y="66" text-anchor="middle" fill="#f4f1ea" fill-opacity="0.8" font-size="11">Removes fake echo chambers</text>
+              <line x1="460" y1="55" x2="500" y2="55" stroke="#38bdf8" stroke-width="2" />
+              <circle r="4" fill="#38bdf8">
+                <animate attributeName="cx" from="460" to="500" dur="1.4s" repeatCount="indefinite" />
+                <animate attributeName="cy" values="55;55" dur="1.4s" repeatCount="indefinite" />
+              </circle>
+            </g>
+            <g>
+              <rect x="500" y="15" width="205" height="80" rx="10" fill="#2e0110" stroke="#38bdf8" stroke-width="1.5" />
+              <text x="602" y="45" text-anchor="middle" fill="#38bdf8" font-size="13" font-weight="700">3. Physical Reality Check</text>
+              <text x="602" y="66" text-anchor="middle" fill="#f4f1ea" fill-opacity="0.8" font-size="11">Order books, ships &amp; energy costs</text>
+              <line x1="705" y1="55" x2="745" y2="55" stroke="#00ff9d" stroke-width="2" />
+              <circle r="4" fill="#00ff9d">
+                <animate attributeName="cx" from="705" to="745" dur="1.4s" repeatCount="indefinite" />
+                <animate attributeName="cy" values="55;55" dur="1.4s" repeatCount="indefinite" />
+              </circle>
+            </g>
+            <g>
+              <rect x="745" y="15" width="205" height="80" rx="10" fill="#2e0110" stroke="#00ff9d" stroke-width="2" />
+              <text x="847" y="45" text-anchor="middle" fill="#00ff9d" font-size="13" font-weight="700">4. Verified AI Decision</text>
+              <text x="847" y="66" text-anchor="middle" fill="#f4f1ea" fill-opacity="0.8" font-size="11">Signed &amp; privacy-auditable</text>
+            </g>
+          </svg>
         </div>
       </section>
 
       <!-- TELEMETRY RIBBON -->
       <section class="telemetry-ribbon gsap-reveal">
         <div class="telemetry-cell">
-          <div class="telemetry-label">Obfuscative AEO Eviction</div>
+          <div class="telemetry-label">Chaff Website Removal</div>
           <div class="telemetry-num">99.4%</div>
-          <div class="telemetry-desc">Removal of synthetic shell-company hubs crowding out BIS Entity List & OFAC SDN records.</div>
+          <div class="telemetry-desc">Clears away fake marketing sites designed to hide sanctioned shell companies in benchmark tests.</div>
         </div>
         <div class="telemetry-cell">
-          <div class="telemetry-label">Leontief & AIS Conservation</div>
+          <div class="telemetry-label">Supply-Chain Reality Check</div>
           <div class="telemetry-num">&lt; 4.2ms</div>
-          <div class="telemetry-desc">Verification of foreign AD/CVD dumping claims against thermodynamic input-output price floors.</div>
+          <div class="telemetry-desc">Cross-checks claimed foreign production prices against real electricity and material cost floors.</div>
         </div>
         <div class="telemetry-cell">
-          <div class="telemetry-label">SEC Rule 15c3-8 ZK-Proofs</div>
+          <div class="telemetry-label">Privacy-Preserving Audit</div>
           <div class="telemetry-num">1.4ms</div>
-          <div class="telemetry-desc">O(1) verification of 288-byte zk-SNARK compliance proofs on the Consolidated Audit Trail (CAT).</div>
+          <div class="telemetry-desc">Verifies that AI safety filters ran properly using a 288-byte cryptographic proof without leaking secrets.</div>
         </div>
         <div class="telemetry-cell">
-          <div class="telemetry-label">Sovereign Debt & FX Shield</div>
-          <div class="telemetry-num">12-Layer</div>
-          <div class="telemetry-desc">Cross-border Transfer Entropy & Ollivier-Ricci curvature protection for U.S. Treasury auctions.</div>
+          <div class="telemetry-label">Defense Architecture</div>
+          <div class="telemetry-num">12 Layers</div>
+          <div class="telemetry-desc">End-to-end protection spanning open-web search, PDFs, long-term memory, and financial feeds.</div>
         </div>
       </section>
 
@@ -1215,57 +1260,52 @@
       <section class="section-block gsap-reveal">
         <div class="section-header-row">
           <div>
-            <div class="eyebrow-tag">THE LAST CRUSADE DEFENSE SOVEREIGN ENGINE</div>
-            <h2 class="section-h2">Search is a zero-sum battlefield. You don't defend national security with static keyword filters.</h2>
+            <h2 className="section-h2" class="section-h2">Search is a zero-sum arena. Static keyword filters aren't enough.</h2>
           </div>
           <div class="section-meta">
-            LLMs are probabilistic engines susceptible to positive narrative boosting and negative suppression poisoning. Our four-stage operational chain secures federal epistemic pipelines from ingestion to statutory enforcement.
+            AI models synthesize answers by blending web sources together. Our four-step process protects institutional AI systems from both fake narrative boosting and deliberate information hiding.
           </div>
         </div>
 
         <div class="pillar-grid">
           <div class="pillar-card">
             <div>
-              <div class="pillar-step">01 // QUERIES & MANIFOLDS</div>
-              <h3 class="pillar-title">Adversarial Prompt Radius Mapping</h3>
+              <h3 class="pillar-title">1. Map What AI Engines Read</h3>
               <p class="pillar-body">
-                We map the exact fan-out queries and interim citations surfaced by federal investigative LLMs across 150+ perturbation simulations per seed prompt, exposing where foreign state actors plant regional attractor hubs.
+                We test hundreds of variations of how analysts and citizens phrase questions to see exactly which outside websites and documents an AI model pulls into its answers.
               </p>
             </div>
-            <div class="pillar-formula">WJD(q_seed, q_pert) > τ_noise</div>
+            <div class="pillar-formula">Full Citation Trail Mapping</div>
           </div>
 
           <div class="pillar-card">
             <div>
-              <div class="pillar-step">02 // TRACKING & TOPOLOGY</div>
-              <h3 class="pillar-title">Negative-AEO & Sybil Detection</h3>
+              <h3 class="pillar-title">2. Spot Cover-Ups &amp; Botnets</h3>
               <p class="pillar-body">
-                Foreign oligarchs and export-control evaders flood top-k retrieval slots with benign marketing chaff to hide sanctioned UBO links. We track local intrinsic dimensionality (LID) and Hawkes point-process bursts across 40+ languages.
+                Sanctions evaders often flood the internet with dozens of harmless-looking directory pages to push real enforcement records off Page 1. We detect and clear out that artificial clutter.
               </p>
             </div>
-            <div class="pillar-formula">F_HER(S) = Σ max Sim·Ψ - λ_crowd</div>
+            <div class="pillar-formula">Removes Redundant Chaff Pages</div>
           </div>
 
           <div class="pillar-card">
             <div>
-              <div class="pillar-step">03 // ACTION & NEUTRALIZATION</div>
-              <h3 class="pillar-title">Physical & Thermodynamic Gating</h3>
+              <h3 class="pillar-title">3. Check Against Physical Reality</h3>
               <p class="pillar-body">
-                We bind unstructured web claims to immutable physical invariants: Poincaré hyperbolic corporate ownership trees, Leontief input-output energy floors, satellite AIS vessel draft displacement, and Level-3 Limit Order Books.
+                Anyone can publish a fake claim online, but they can't fake physical laws. We cross-check web claims against corporate ownership trees, energy cost floors, ship weights, and live market order books.
               </p>
             </div>
-            <div class="pillar-formula">c_floor = (I - A^T)^(-1)(A_c^T p + v)</div>
+            <div class="pillar-formula">Grounds AI in Real-World Data</div>
           </div>
 
           <div class="pillar-card">
             <div>
-              <div class="pillar-step">04 // ATTRIBUTION & ENFORCEMENT</div>
-              <h3 class="pillar-title">C2PA Roots & CISA STIX/TAXII</h3>
+              <h3 class="pillar-title">4. Verify Source Authenticity</h3>
               <p class="pillar-body">
-                Every neutralized campaign is traced back to its registrar, ASN, and spectral canary watermark, emitting automated STIX 2.1 threat indicators to CISA and immutable WORM evidentiary manifests for SEC and DOJ prosecutors.
+                We trace coordinated rumor campaigns back to their source networks and require cryptographic authenticity seals (C2PA) for official filings and public statements.
               </p>
             </div>
-            <div class="pillar-formula">Ω_own = (I - A)^(-1)A >= 0.50</div>
+            <div class="pillar-formula">Cryptographic Provenance Seals</div>
           </div>
         </div>
       </section>
@@ -1274,11 +1314,10 @@
       <section class="section-block gsap-reveal">
         <div class="section-header-row">
           <div>
-            <div class="eyebrow-tag">FEDERAL SECTOR DEPLOYMENTS</div>
-            <h2 class="section-h2">Tailored Counter-AEO Operations for U.S. Sovereign Agencies</h2>
+            <h2 class="section-h2">How Public-Sector &amp; Regulatory Missions Use Counter-AEO</h2>
           </div>
           <div class="section-meta">
-            Click any agency dossier below to launch its live mathematical defense simulation and 3D WebGL topology inside the Volume IV Operations Lab.
+            Click any mission profile below to launch its interactive 3D simulation inside the Defense Lab.
           </div>
         </div>
 
@@ -1287,20 +1326,19 @@
           <div class="dossier-card gsap-reveal">
             <div class="dossier-top">
               <div>
-                <div class="agency-code">AGENCY 01 // 17 CFR § 240.15c3-8</div>
-                <h3 class="agency-title">U.S. Securities & Exchange Commission (SEC)</h3>
+                <h3 class="agency-title">Financial Market Integrity &amp; Investor Protection</h3>
               </div>
-              <span class="layer-badge">LAYERS 4B, 8 & 12</span>
+              <span class="layer-badge">Market Defense</span>
             </div>
             <ul class="dossier-list">
-              <li><strong>Autonomous HFT & RAG Flash-Crash Surveillance (`TMMEG`):</strong> Monitors algorithmic cascade loops where shared foundation models ingest AEO-poisoned breaking news during pre-market data voids.</li>
-              <li><strong>Retail Chatbot Herding & Reg BI Enforcement (`RIBD-FS`):</strong> Tracks Cross-Engine AI Citation Frequency (AICF) velocity spikes across ChatGPT, Perplexity, and Gemini paired with retail order-flow herding synchrony to stop coordinated pump-and-dumps.</li>
-              <li><strong>Foreign Private Issuer (Form 20-F) De-Cloaking (`HER-BOD`):</strong> Strips Obfuscative AEO chaff hiding Variable Interest Entity (VIE) fragility and off-balance-sheet sovereign debt.</li>
-              <li><strong>Zero-Knowledge Consolidated Audit Trail (`ZK-CAEO`):</strong> Verifies that quantitative funds complied with Rule 15c3-8 circuit breakers via 288-byte zk-SNARK proofs without exposing private fund alpha.</li>
+              <li><strong>Stopping Automated Flash Crashes:</strong> Detects when multiple AI trading bots read the same planted pre-market rumor and prevents synchronized panic buying or selling.</li>
+              <li><strong>Protecting Retail Investors from Chatbot Pump-and-Dumps:</strong> Spots sudden, unverified surges in AI chatbots recommending specific stocks when no official SEC filing supports the hype.</li>
+              <li><strong>Uncovering Hidden Corporate Risks:</strong> Clears away planted marketing pages designed to hide off-balance-sheet debt or fragile shell structures in foreign filings.</li>
+              <li><strong>Privacy-Preserving Compliance Proofs:</strong> Allows trading firms to mathematically prove their AI safety brakes are active without handing over their secret trading strategies.</li>
             </ul>
             <div class="dossier-footer">
-              <span>DIVISIONS: TRADING & MARKETS // ENFORCEMENT // EXAMS</span>
-              <span class="launch-sim-link" onclick="launchSpecificMission(3)">Run SEC Defense Sim →</span>
+              <span>FOCUS: ALGORITHMIC TRADING &amp; RETAIL INVESTOR SAFETY</span>
+              <span class="launch-sim-link" onclick="launchSpecificMission(3)">Launch Market Sim →</span>
             </div>
           </div>
 
@@ -1308,20 +1346,19 @@
           <div class="dossier-card gsap-reveal">
             <div class="dossier-top">
               <div>
-                <div class="agency-code">AGENCY 02 // 15 CFR PARTS 742 & 744</div>
-                <h3 class="agency-title">U.S. Department of Commerce (BIS & ITA)</h3>
+                <h3 class="agency-title">Export Controls &amp; Supply-Chain Security</h3>
               </div>
-              <span class="layer-badge">LAYERS 0, 9 & 10</span>
+              <span class="layer-badge">Supply-Chain Defense</span>
             </div>
             <ul class="dossier-list">
-              <li><strong>Export Control & Entity List De-Cloaking (`HER-BOD`):</strong> Defeats Negative-AEO suppression campaigns designed to crowd out evidence of ECCN 3A090 / 4A090 advanced AI semiconductor transshipment through third-country shell fronts.</li>
-              <li><strong>Poincaré Hyperbolic Corporate Hierarchy Mapping:</strong> Embeds multi-tier offshore holding structures into negative-curvature hyperbolic space ($\mathbb{B}_c^d$) to expose hidden Military End-User (MEU) parent control.</li>
-              <li><strong>Critical Mineral & Supply-Chain Integrity (`EIOL-PCV`):</strong> Protects International Trade Administration (ITA) supply-chain RAG monitors against foreign disinformation regarding rare-earth refining and foundry capacity.</li>
-              <li><strong>Spectral Canary Honeypots on Export Portals (`MTVD`):</strong> Plants orthogonal canary watermarks to unmask foreign intelligence scrapers building surrogate AEO models.</li>
+              <li><strong>Uncovering Front Companies:</strong> Defeats "cover-up" AEO campaigns that flood search results with fake reviews to hide links to restricted semiconductor or defense entities.</li>
+              <li><strong>Mapping Deep Ownership Trees:</strong> Traces parent-subsidiary relationships across up to 8 layers of offshore holding companies to flag hidden majority control.</li>
+              <li><strong>Critical Mineral &amp; Foundry Verification:</strong> Protects supply-chain research assistants from false online claims about factory capacity or raw material origins.</li>
+              <li><strong>Detecting Automated Scrapers:</strong> Places subtle tripwire markers in public portals to spot when bad actors are scraping data to train knockoff models.</li>
             </ul>
             <div class="dossier-footer">
-              <span>BUREAUS: BIS // ITA // NIST AI SAFETY INSTITUTE</span>
-              <span class="launch-sim-link" onclick="launchSpecificMission(0)">Run Commerce BIS Sim →</span>
+              <span>FOCUS: EXPORT COMPLIANCE &amp; CRITICAL SUPPLY CHAINS</span>
+              <span class="launch-sim-link" onclick="launchSpecificMission(0)">Launch Ownership Sim →</span>
             </div>
           </div>
 
@@ -1329,20 +1366,19 @@
           <div class="dossier-card gsap-reveal">
             <div class="dossier-top">
               <div>
-                <div class="agency-code">AGENCY 03 // TARIFF ACT TITLE VII & SEC. 337</div>
-                <h3 class="agency-title">U.S. International Trade Commission (USITC)</h3>
+                <h3 class="agency-title">International Trade &amp; Customs Verification</h3>
               </div>
-              <span class="layer-badge">LAYERS 4A, 7 & 10</span>
+              <span class="layer-badge">Physical Verification</span>
             </div>
             <ul class="dossier-list">
-              <li><strong>AD/CVD Dumping Margin & Subsidy Verification (`EIOL-PCV`):</strong> Evaluates foreign exporter price and cost claims against Leontief Input-Output technical matrices $\mathbf{c}_{\text{floor}} = (\mathbf{I} - \mathbf{A}^\top)^{-1}(\mathbf{A}_c^\top \mathbf{p} + \mathbf{v}_{\min})$ to expose thermodynamically impossible cost fabrications.</li>
-              <li><strong>Maritime AIS Archimedes Draft Reconciliation:</strong> Cross-verifies RAG-scraped import/export volume claims against physical satellite AIS vessel waterline draft displacement ($\mathcal{M}_{\text{AIS}}$) and ACE customs manifests.</li>
-              <li><strong>Harmonized Tariff Schedule (HTS) Bot Protection:</strong> Prevents foreign manufacturers from using AEO schema stuffing to trick customs RAG classifiers into assigning lower-duty HTS codes.</li>
-              <li><strong>EDIS Multimodal Document Scrubbing (`CM-JSAS`):</strong> Strips $L_\infty$ steganographic pixel perturbations from PDF injury exhibits submitted to the Electronic Document Information System.</li>
+              <li><strong>Checking Claimed Prices Against Energy Floors:</strong> Compares a foreign supplier's claimed production costs against the real minimum electricity and raw materials required to make the product.</li>
+              <li><strong>Matching Shipping Claims to Satellite Ship Weights:</strong> Cross-checks online import/export volume claims against physical ship draft measurements from satellite tracking.</li>
+              <li><strong>Preventing Tariff Code Manipulation:</strong> Stops exporters from stuffing product pages with misleading descriptions to trick AI customs classifiers into lower tariff brackets.</li>
+              <li><strong>Scrubbing Hidden Traps from PDF Exhibits:</strong> Removes invisible text and pixel manipulations from uploaded trade documents before AI assistants summarize them.</li>
             </ul>
             <div class="dossier-footer">
-              <span>MANDATES: AD/CVD INJURY // SEC. 337 // HTS NOMENCLATURE</span>
-              <span class="launch-sim-link" onclick="launchSpecificMission(1)">Run USITC Trade Sim →</span>
+              <span>FOCUS: TRADE FAIRNESS &amp; PHYSICAL VERIFICATION</span>
+              <span class="launch-sim-link" onclick="launchSpecificMission(1)">Launch Trade Sim →</span>
             </div>
           </div>
 
@@ -1350,20 +1386,19 @@
           <div class="dossier-card gsap-reveal">
             <div class="dossier-top">
               <div>
-                <div class="agency-code">AGENCY 04 // OFAC 50% RULE, CFIUS & FSOC</div>
-                <h3 class="agency-title">U.S. Department of the Treasury</h3>
+                <h3 class="agency-title">Sanctions Screening &amp; Macro Financial Stability</h3>
               </div>
-              <span class="layer-badge">LAYERS 3, 9 & 11</span>
+              <span class="layer-badge">Macro Stability</span>
             </div>
             <ul class="dossier-list">
-              <li><strong>OFAC 50 Percent Rule Transitive Sanctions Engine (`HER-BOD`):</strong> Uses Sinkhorn-Knopp Entropic Optimal Transport across Mandarin, Russian, Arabic, and English registries paired with Neumann series $(\mathbf{I}-\mathbf{A})^{-1}\mathbf{A}$ to block shadow fleets and sanctioned oligarch shells.</li>
-              <li><strong>CFIUS Covered Transaction Provenance Auditing:</strong> Unmasks covert foreign sovereign limited-partner commitments hidden via split-payload AEO across venture and private equity disclosures.</li>
-              <li><strong>U.S. Treasury Auction & USD FX Contagion Shield (`SCB-FTCCS`):</strong> Monitors Schreiber Transfer Entropy ($\mathcal{T}_{X \to Y}$) and Ollivier-Ricci network curvature ($\kappa_{\text{Ricci}}$) to neutralize multi-lingual AEO strikes targeting primary bond auctions.</li>
-              <li><strong>FinCEN AML & Permitted Stablecoin Reserve Verification:</strong> Anchors reserve attestations strictly to C2PA hardware-signed custodial root nodes.</li>
+              <li><strong>50% Ownership Rule Screening:</strong> Connects corporate records across multiple languages (Mandarin, Russian, Arabic, English) to calculate whether sanctioned owners hold a combined 50%+ stake.</li>
+              <li><strong>Investment Provenance Checks:</strong> Spots split-document narratives that try to obscure foreign state backing in sensitive technology investments.</li>
+              <li><strong>Bond &amp; Currency Rumor Protection:</strong> Watches for coordinated, multi-language online rumor campaigns timed to disrupt sovereign bond auctions or currency markets.</li>
+              <li><strong>Verified Reserve Attestations:</strong> Ensures AI monitors only trust financial reserve reports signed by verified hardware security seals.</li>
             </ul>
             <div class="dossier-footer">
-              <span>OFFICES: OFAC // CFIUS // FINCEN // OFR & FSOC</span>
-              <span class="launch-sim-link" onclick="launchSpecificMission(2)">Run Treasury Macro Sim →</span>
+              <span>FOCUS: SANCTIONS SCREENING &amp; MARKET RESILIENCE</span>
+              <span class="launch-sim-link" onclick="launchSpecificMission(2)">Launch Macro Sim →</span>
             </div>
           </div>
         </div>
@@ -1378,40 +1413,39 @@
     <div class="container">
       <!-- HERO SECTION -->
       <section class="hero-section gsap-reveal">
-        <div class="eyebrow-tag">VOLUME IV // PRIVATE-SECTOR & FINANCIAL MARKET CAPABILITIES</div>
         <h1 class="hero-title">
-          Create and Protect <em>Autonomous Alpha</em> at Microsecond Scale.
+          Protect Automated Trading, Brokerages &amp; <em>Enterprise Supply Chains.</em>
         </h1>
         <p class="hero-subtitle">
-          As quantitative hedge funds, publicly traded broker-dealers, and multinational supply chains wire LLM agents directly into execution gateways, adversarial AEO transforms from a marketing nuisance into a direct vector for capital extraction. Last Crusade Defense both provides co-located, zero-knowledge defense infrastructure that neutralizes market manipulation before an order ever hits the book, and provides AEO-agent swarms built to create alpha while maintaining regulatory compliance.
+          As investment funds, retail brokerages, and global manufacturers connect AI agents directly to their decision pipelines, manipulated web content becomes a direct financial risk. Last Crusade provides both the offensive AEO tools to ensure your verified data is found first, and the high-speed defensive filters that stop fake news before an automated order is ever placed.
         </p>
         <div class="hero-cta-row">
-          <button class="btn-primary" onclick="switchPage(2)">Test Private-Sector Defenses in WebGL Lab →</button>
-          <button class="btn-outline" onclick="switchPage(0)">View Federal Agency Capabilities</button>
+          <button class="btn-primary" onclick="switchPage(2)">Test Defenses in Interactive 3D Lab →</button>
+          <button class="btn-outline" onclick="switchPage(0)">View Public-Sector Capabilities</button>
         </div>
       </section>
 
       <!-- PRIVATE SECTOR TELEMETRY RIBBON -->
       <section class="telemetry-ribbon gsap-reveal">
         <div class="telemetry-cell">
-          <div class="telemetry-label">Pre-Trade LOB Gate Latency</div>
+          <div class="telemetry-label">Pre-Trade Reality Check</div>
           <div class="telemetry-num">&lt; 0.2ms</div>
-          <div class="telemetry-desc">Co-located C++/FPGA Thermodynamic Market-Microstructure Grounding (TMMEG) execution check.</div>
+          <div class="telemetry-desc">Cross-checks breaking web news against live market order books before bots execute a trade.</div>
         </div>
         <div class="telemetry-cell">
-          <div class="telemetry-label">Flash-Crash Drawdown Avoided</div>
+          <div class="telemetry-label">Simulated Loss Prevented</div>
           <div class="telemetry-num">14.2%</div>
-          <div class="telemetry-desc">Peak-to-trough portfolio loss prevented during simulated pre-market data-void liquidity traps.</div>
+          <div class="telemetry-desc">Portfolio drawdown avoided during our 50-bot pre-market flash-crash benchmark simulation.</div>
         </div>
         <div class="telemetry-cell">
-          <div class="telemetry-label">Proprietary Alpha Leakage</div>
-          <div class="telemetry-num">0.0 Bits</div>
-          <div class="telemetry-desc">Complete confidentiality of fund prompts and private RAG vectors via Halo2/R1CS zk-SNARKs.</div>
+          <div class="telemetry-label">Strategy Confidentiality</div>
+          <div class="telemetry-num">100% Private</div>
+          <div class="telemetry-desc">Zero-knowledge proofs verify safety compliance without exposing proprietary trading prompts.</div>
         </div>
         <div class="telemetry-cell">
-          <div class="telemetry-label">SEC Reg BI Herd Protection</div>
-          <div class="telemetry-num">100%</div>
-          <div class="telemetry-desc">Real-time AICF velocity & retail order-flow synchrony circuit breakers for broker-dealers.</div>
+          <div class="telemetry-label">Real SEC 10-K False Alarms</div>
+          <div class="telemetry-num">0.38%</div>
+          <div class="telemetry-desc">Accurately distinguishes real financial tables from fake "expert" pages stuffed with numbers.</div>
         </div>
       </section>
 
@@ -1419,11 +1453,10 @@
       <section class="section-block gsap-reveal">
         <div class="section-header-row">
           <div>
-            <div class="eyebrow-tag">INSTITUTIONAL & COMMERCIAL SOLUTIONS</div>
-            <h2 class="section-h2">Bespoke Counter-AEO Infrastructure for Global Market Leaders</h2>
+            <h2 class="section-h2">Tailored Defense Architectures for Private-Sector Teams</h2>
           </div>
           <div class="section-meta">
-            Designed for low-latency quantitative execution environments, high-concurrency retail brokerage apps, and autonomous Fortune 500 ERP procurement pipelines.
+            Built for quantitative trading desks, retail wealth platforms, enterprise procurement teams, and AI search infrastructure providers.
           </div>
         </div>
 
@@ -1432,20 +1465,19 @@
           <div class="dossier-card gsap-reveal">
             <div class="dossier-top">
               <div>
-                <div class="agency-code">PRIVATE SECTOR 01 // QUANTITATIVE & MACRO FUNDS</div>
-                <h3 class="agency-title">Autonomous Hedge Funds & Prop Desks</h3>
+                <h3 class="agency-title">Quantitative Funds &amp; Trading Desks</h3>
               </div>
-              <span class="layer-badge">LAYERS 4B, 5, 6, 8 & 11</span>
+              <span class="layer-badge">Trading Protection</span>
             </div>
             <ul class="dossier-list">
-              <li><strong>Predatory Liquidity Extraction Defense (`TMMEG`):</strong> Prevents adversarial syndicates from pre-positioning limit-order walls in illiquid tickers and using AEO-optimized breaking news to trigger automated bot buying sweeps into their wall.</li>
-              <li><strong>Thermodynamic Proof-of-Liquidity:</strong> Binds RAG Kullback-Leibler semantic surprise ($\Delta \mathcal{I}_{\text{RAG}}$) directly to Level-3 LOB VPIN, Kyle's $\lambda$, and 25-delta options implied volatility skew ($\mathcal{E}_{\text{capital}}$).</li>
-              <li><strong>"Slow-Boil" Episodic Memory Immunity (`DMEM-WMQ`):</strong> Audits stateful agent memory banks using Doob-Meyer Martingale decomposition ($\mathcal{T}_{\text{DMEM}}$) and 2-Wasserstein distance, automatically rolling back Merkle memory states if sub-threshold daily bias accumulates.</li>
-              <li><strong>Swarm Echo-Chamber De-Duplication (`SGL-CMI`):</strong> Computes Conditional Mutual Information $I(Z_i; Z_j \mid R)$ across upstream AI research feeds, collapsing effective sample size ($M_{\text{eff}}$) when multiple bots unknowingly parrot a single foreign AEO seed.</li>
+              <li><strong>Stopping Pre-Market Liquidity Traps:</strong> Prevents attackers from setting up a large sell wall at 7:30 AM and releasing fake news to trick AI trading bots into buying overpriced shares.</li>
+              <li><strong>Order-Book Reality Grounding:</strong> Compares the urgency of an online article against actual trading volume, bid-ask depth, and options activity before allowing a trade.</li>
+              <li><strong>Long-Term Agent Memory Protection:</strong> Watches for slow, day-by-day nudges that try to bias a research agent's thesis over several weeks, rolling back to clean backups when needed.</li>
+              <li><strong>Filtering Out Bot Echo Chambers:</strong> Spots when twenty blogs or research bots are simply repeating the exact same rumor and collapses their combined vote to a single unverified claim.</li>
             </ul>
             <div class="dossier-footer">
-              <span>DEPLOYMENT: AIR-GAPPED CO-LOCATED FPGA / GPU ENCLAVE</span>
-              <span class="launch-sim-link" onclick="launchSpecificMission(2)">Simulate Hedge Fund Defense →</span>
+              <span>DEPLOYMENT: LOW-LATENCY SOFTWARE OR FPGA APPLIANCE</span>
+              <span class="launch-sim-link" onclick="launchSpecificMission(2)">Simulate Trading Defense →</span>
             </div>
           </div>
 
@@ -1453,20 +1485,19 @@
           <div class="dossier-card gsap-reveal">
             <div class="dossier-top">
               <div>
-                <div class="agency-code">PRIVATE SECTOR 02 // RETAIL WEALTH & CLEARING</div>
-                <h3 class="agency-title">Publicly Traded Broker-Dealers</h3>
+                <h3 class="agency-title">Retail Brokerages &amp; Wealth Platforms</h3>
               </div>
-              <span class="layer-badge">LAYERS 1, 2, 3 & 12</span>
+              <span class="layer-badge">Investor Protection</span>
             </div>
             <ul class="dossier-list">
-              <li><strong>SEC Reg BI & FINRA Rule 2020 Fiduciary Shield (`RIBD-FS`):</strong> Protects in-app AI investment assistants and wealth chatbots from recommending stocks boosted by unverified AEO citation networks.</li>
-              <li><strong>Cross-Engine AICF Velocity Monitoring:</strong> Continuously probes ChatGPT, Perplexity, Gemini, and Copilot to detect unanchored surges in AI Citation Frequency ($\mathcal{V}_{\text{AICF}}$) lacking matching C2PA-signed SEC EDGAR filings.</li>
-              <li><strong>0DTE Options Gamma Squeeze & Margin Protection:</strong> Couples $\mathcal{V}_{\text{AICF}}$ with real-time Retail Order-Flow Herding Synchrony ($\mathcal{H}_{\text{retail}}$) to dynamically adjust margin haircuts and pause unhedged retail bot sweeps before clearinghouse capital is threatened.</li>
-              <li><strong>Automated Market Manipulation Forensics:</strong> Generates pre-packaged evidentiary audit trails linking external AEO domains to suspicious pre-positioned options accounts.</li>
+              <li><strong>Protecting In-App AI Assistants:</strong> Ensures your customer-facing investment chatbot never repeats planted stock rumors or fake buyout stories.</li>
+              <li><strong>Cross-Engine Rumor Alerts:</strong> Tracks sudden spikes in ChatGPT, Perplexity, and Gemini citing a stock ticker when no official SEC filing or verified press release exists.</li>
+              <li><strong>Options Herding Safeguards:</strong> Detects when coordinated AI-driven social hype triggers a sudden stampede of retail options orders, giving risk teams early warning.</li>
+              <li><strong>Clear Audit Trails:</strong> Logs which outside web pages triggered an alert so compliance teams can review the exact source chain.</li>
             </ul>
             <div class="dossier-footer">
-              <span>DEPLOYMENT: CLOUD API GATEWAY & ORDER ROUTER HOOK</span>
-              <span class="launch-sim-link" onclick="launchSpecificMission(3)">Simulate Broker-Dealer Shield →</span>
+              <span>DEPLOYMENT: API GATEWAY &amp; CHATBOT SHIELD</span>
+              <span class="launch-sim-link" onclick="launchSpecificMission(3)">Simulate Brokerage Shield →</span>
             </div>
           </div>
 
@@ -1474,19 +1505,18 @@
           <div class="dossier-card gsap-reveal">
             <div class="dossier-top">
               <div>
-                <div class="agency-code">PRIVATE SECTOR 03 // GLOBAL COMMERCE & ERP</div>
-                <h3 class="agency-title">Enterprise Supply-Chain & Procurement</h3>
+                <h3 class="agency-title">Enterprise Supply-Chain &amp; Procurement</h3>
               </div>
-              <span class="layer-badge">LAYERS 7, 9 & 10</span>
+              <span class="layer-badge">Supply-Chain Shield</span>
             </div>
             <ul class="dossier-list">
-              <li><strong>Autonomous ERP Procurement Protection (`EIOL-PCV`):</strong> Shields SAP, Oracle, and custom agentic procurement bots from "Synthetic Shortage Panics" engineered to trick corporate buyers into hoarding raw materials at inflated spot prices.</li>
-              <li><strong>Trojan Vendor & Counterfeit Component Screening (`HER-BOD`):</strong> Prevents compromised or sanctioned Tier-3 suppliers from using positive AEO authority stuffing to rank as top recommended backup vendors during supply disruptions.</li>
-              <li><strong>Multimodal Invoice & Bill-of-Lading Sanitization (`CM-JSAS`):</strong> Verifies that Vision-Language Model (VLM) Jacobian saliency aligns strictly with physical document ink contours, stripping optical prompt injections from PDF shipping manifests.</li>
+              <li><strong>Stopping Fake Shortage Panics:</strong> Prevents automated purchasing bots from panic-buying raw materials at inflated prices when fake port-strike or shortage rumors hit the web.</li>
+              <li><strong>Screening Out Disguised Suppliers:</strong> Stops risky or sanctioned suppliers from using fake "award-winning green factory" pages to rank as top recommended backup vendors.</li>
+              <li><strong>Scrubbing Uploaded Invoices &amp; PDFs:</strong> Strips invisible text and hidden pixel commands from PDF shipping manifests and vendor quotes before your AI reads them.</li>
             </ul>
             <div class="dossier-footer">
-              <span>DEPLOYMENT: ENTERPRISE RAG PROXY & ERP CONNECTOR</span>
-              <span class="launch-sim-link" onclick="launchSpecificMission(1)">Simulate ERP Supply Defense →</span>
+              <span>DEPLOYMENT: ENTERPRISE AI PROXY &amp; ERP CONNECTOR</span>
+              <span class="launch-sim-link" onclick="launchSpecificMission(1)">Simulate Supply-Chain Defense →</span>
             </div>
           </div>
 
@@ -1494,19 +1524,18 @@
           <div class="dossier-card gsap-reveal">
             <div class="dossier-top">
               <div>
-                <div class="agency-code">PRIVATE SECTOR 04 // AI SEARCH & VECTOR DBs</div>
-                <h3 class="agency-title">AI Search Engines & Cloud Vector Hosts</h3>
+                <h3 class="agency-title">AI Search Engines &amp; Knowledge Platforms</h3>
               </div>
-              <span class="layer-badge">LAYERS 0, 1, 2 & 4A</span>
+              <span class="layer-badge">Search Infrastructure</span>
             </div>
             <ul class="dossier-list">
-              <li><strong>Moving-Target Vector Defense (`MTVD`):</strong> Applies HSM-keyed orthogonal Householder rotations $\mathbf{Q}_t \in O(d)$ and anisotropic subspace projections to vector indices (Pinecone, Qdrant, Milvus, Weaviate), shattering gradient-optimized retrieval hubs.</li>
-              <li><strong>In-Engine HNSW Manifold Profiling (`AM-CIDP`):</strong> Computes Levina-Bickel Local Intrinsic Dimensionality ($\widehat{\operatorname{LID}}_K$) and Gram Spectral Entropy in $1.8\text{ ms}$ during index insertion.</li>
-              <li><strong>Split-Payload Attention Firewall (`CEH-ASID`):</strong> Severs cross-document attention bridges ($\mathbf{\Omega}_{ij}$) inside Transformer synthesis layers when unverified domains exhibit super-additive Möbius KL synergy.</li>
+              <li><strong>Moving-Target Search Index Protection:</strong> Periodically rotates internal vector map coordinates so attackers cannot reverse-engineer how to plant a "master key" trap page.</li>
+              <li><strong>Fast Sinkhole Quarantine:</strong> Spots and isolates pages that unnaturally pull in thousands of unrelated user queries in under 2 milliseconds.</li>
+              <li><strong>Multi-Document Logic Firewall:</strong> Prevents three separate, innocent-looking web pages from combining inside the AI's context window to form a false conclusion.</li>
             </ul>
             <div class="dossier-footer">
-              <span>DEPLOYMENT: NATIVE RUST/C++ VECTOR DB & LLM HOOKS</span>
-              <span class="launch-sim-link" onclick="launchSpecificMission(0)">Simulate Vector Hub Defense →</span>
+              <span>DEPLOYMENT: VECTOR DATABASE &amp; RETRIEVAL FILTER</span>
+              <span class="launch-sim-link" onclick="launchSpecificMission(0)">Simulate Search Index Defense →</span>
             </div>
           </div>
         </div>
@@ -1516,8 +1545,7 @@
       <section class="section-block gsap-reveal">
         <div class="section-header-row">
           <div>
-            <div class="eyebrow-tag">VOLUME IV MASTER ARCHITECTURE</div>
-            <h2 class="section-h2">Federal & Private-Sector Defense Matrix (Layers 9–12)</h2>
+            <h2 class="section-h2">Summary of Institutional Defense Modules (Layers 9–12)</h2>
           </div>
         </div>
 
@@ -1525,41 +1553,41 @@
           <table class="petra-table">
             <thead>
               <tr>
-                <th>Volume IV Layer</th>
+                <th>Layer</th>
                 <th>Module Name</th>
-                <th>Primary Federal & Private Clients</th>
-                <th>Mathematical & Cryptographic Core</th>
-                <th>Adversarial AEO Vector Neutralized</th>
+                <th>Who It Helps</th>
+                <th>How It Works in Plain English</th>
+                <th>What Threat It Stops</th>
               </tr>
             </thead>
             <tbody>
               <tr>
                 <td><strong>Layer 9</strong></td>
-                <td><strong>HER-BOD</strong><br>Hyperbolic Entity Resolution</td>
-                <td>Dept. of Commerce (BIS), Treasury (OFAC/CFIUS), Enterprise Supply Chains</td>
-                <td>Submodular Facility-Location + Poincaré Ball $\mathbb{B}_c^d$ Geodesics + Sinkhorn Optimal Transport + Neumann Series $(\mathbf{I}-\mathbf{A})^{-1}\mathbf{A}$</td>
-                <td><strong>Obfuscative (Negative) AEO</strong> crowding out top-$k$ context to hide sanctioned SDN/Entity-List shell ownership (&ge;50% Rule).</td>
+                <td><strong>Shell &amp; Ownership Resolver</strong></td>
+                <td>Export Compliance, Sanctions Teams &amp; Enterprise Procurement</td>
+                <td>Clears away dozens of duplicate marketing pages and traces parent-subsidiary ownership across up to 8 offshore tiers.</td>
+                <td><strong>Cover-Up AEO</strong> where bad actors flood search results with fluff to hide sanctioned ownership stakes.</td>
               </tr>
               <tr>
                 <td><strong>Layer 10</strong></td>
-                <td><strong>EIOL-PCV</strong><br>Leontief & AIS Conservation</td>
-                <td>U.S. International Trade Commission (USITC), Commerce (ITA), ERP Procurement</td>
-                <td>Dual Leontief Price Floor $\mathbf{c}_{\text{floor}} = (\mathbf{I}-\mathbf{A}^\top)^{-1}(\mathbf{A}_c^\top\mathbf{p}+\mathbf{v})$ + Archimedes AIS Draft Displacement $\mathcal{M}_{\text{AIS}}$</td>
-                <td><strong>AD/CVD Dumping Cost Fabrication</strong>, HTS Tariff Spoofing, and Synthetic Commodity Shortage Panics.</td>
+                <td><strong>Physical Cost &amp; Shipping Check</strong></td>
+                <td>Trade Analysts, Customs Teams &amp; Supply-Chain Bots</td>
+                <td>Checks claimed product prices against real energy/material floors and compares shipping claims against satellite ship draft weights.</td>
+                <td><strong>Impossible Cost Claims</strong>, tariff misclassifications, and fake commodity shortage panics.</td>
               </tr>
               <tr>
                 <td><strong>Layer 11</strong></td>
-                <td><strong>SCB-FTCCS</strong><br>Macro Contagion Shield</td>
-                <td>Dept. of the Treasury (OFR/FSOC), Federal Reserve, Global Macro Hedge Funds</td>
-                <td>Schreiber Transfer Entropy $\mathcal{T}_{X^{(L)}\to Y}$ + Ollivier-Ricci Curvature $\kappa_{\text{Ricci}}(u,v) = 1 - W_1(\mu_u,\mu_v)/d(u,v)$</td>
-                <td><strong>Synchronized Multi-Lingual AEO Strikes</strong> against U.S. Treasury auctions, USD FX swaps, and sovereign CDS.</td>
+                <td><strong>Macro Market Contagion Shield</strong></td>
+                <td>Financial Stability Monitors &amp; Macro Investment Desks</td>
+                <td>Watches for sudden waves of coordinated rumors across multiple languages timed ahead of major bond auctions or currency moves.</td>
+                <td><strong>Synchronized Multi-Language Rumor Campaigns</strong> targeting sovereign debt or currency markets.</td>
               </tr>
               <tr>
                 <td><strong>Layer 12</strong></td>
-                <td><strong>RIBD-FS</strong><br>Retail Fiduciary Shield</td>
-                <td>SEC (Trading & Markets / Enforcement), Publicly Traded Broker-Dealers</td>
-                <td>Unanchored AI Citation Frequency Surge $\mathcal{V}_{\text{AICF}}$ &times; Retail Order-Flow Herding Synchrony $\mathcal{H}_{\text{retail}}$</td>
-                <td><strong>Retail AI Chatbot Herding Stampedes</strong>, 0DTE Options Gamma Traps, and SEC Reg BI fiduciary breaches.</td>
+                <td><strong>Retail Chatbot &amp; Herding Guard</strong></td>
+                <td>Market Integrity Teams &amp; Retail Brokerages</td>
+                <td>Compares spikes in AI chatbots recommending a stock against official filings and retail order stampedes.</td>
+                <td><strong>AI-Driven Stock Pump-and-Dumps</strong> and coordinated retail options traps.</td>
               </tr>
             </tbody>
           </table>
@@ -1574,12 +1602,11 @@
   <main class="page-view" id="page-view-2">
     <div class="container">
       <section class="hero-section" style="padding: 48px 0 32px;">
-        <div class="eyebrow-tag">VOLUME IV // INTERACTIVE DEFENSE OPERATIONS & WEBGL TOPOLOGY LAB</div>
         <h1 class="hero-title" style="font-size: clamp(34px, 4.2vw, 60px); margin-bottom: 14px;">
-          Live Counter-AEO Execution & <em>3D Topological Telemetry.</em>
+          Interactive 3D Defense Lab &amp; <em>Diagnostic Charts.</em>
         </h1>
         <p class="hero-subtitle" style="margin-bottom: 0; font-size: 16px;">
-          Select a Volume IV Federal or Private-Sector defense mission below, inject a live adversarial AEO exploit, and execute the mathematical defense operation. Watch the Three.js WebGL topology and real-time analytical charts respond in sub-millisecond time.
+          Choose any of the four defense missions on the left, toggle between <strong>Inject AEO Attack</strong> and <strong>Run Defense Shield</strong>, and watch the 3D scene and diagnostic charts respond in real time.
         </p>
       </section>
 
@@ -1587,54 +1614,50 @@
       <section class="lab-grid">
         <!-- LEFT SIDEBAR: MISSION SELECTOR & CONTROLS -->
         <div class="lab-sidebar">
-          <div class="eyebrow-tag" style="margin-bottom: 0;">1. Select Volume IV Mission Profile</div>
+          <div style="font-size: 12px; font-weight: 700; color: var(--accent-emerald-glow); margin-bottom: 4px;">1. Choose a Defense Scenario</div>
 
           <button class="mission-selector-btn active" id="mission-btn-0" onclick="selectLabMission(0)">
-            <span class="m-eyebrow">LAYER 9 // COMMERCE (BIS) & TREASURY (OFAC)</span>
-            <span class="m-title">HER-BOD: Poincaré Shell De-Cloaking</span>
-            <span class="m-sub">Evicts Negative-AEO marketing chaff & resolves transitive SDN/Entity-List ownership in hyperbolic space.</span>
+            <span class="m-title">Scenario 1: Uncovering Hidden Shell Companies</span>
+            <span class="m-sub">Clears out fake marketing chaff pages and traces multi-layer offshore ownership back to sanctioned parent entities.</span>
           </button>
 
           <button class="mission-selector-btn" id="mission-btn-1" onclick="selectLabMission(1)">
-            <span class="m-eyebrow">LAYER 10 // USITC (AD/CVD) & ENTERPRISE ERP</span>
-            <span class="m-title">EIOL-PCV: Leontief & Maritime AIS Shield</span>
-            <span class="m-sub">Cross-checks foreign export pricing & volume claims against thermodynamic input floors & vessel draft mass.</span>
+            <span class="m-title">Scenario 2: Physical Cost &amp; Ship Weight Check</span>
+            <span class="m-sub">Cross-checks claimed foreign export prices and cargo volumes against real energy cost floors and satellite ship weights.</span>
           </button>
 
           <button class="mission-selector-btn" id="mission-btn-2" onclick="selectLabMission(2)">
-            <span class="m-eyebrow">LAYER 11 // TREASURY (OFR) & MACRO HEDGE FUNDS</span>
-            <span class="m-title">SCB-FTCCS: Sovereign FX & Bond Contagion</span>
-            <span class="m-sub">Monitors Transfer Entropy & Ollivier-Ricci network curvature + TMMEG Limit Order Book liquidity traps.</span>
+            <span class="m-title">Scenario 3: Macro Market &amp; Order-Book Shield</span>
+            <span class="m-sub">Spots coordinated multi-language rumor waves and blocks automated trading bots from buying into pre-set sell traps.</span>
           </button>
 
           <button class="mission-selector-btn" id="mission-btn-3" onclick="selectLabMission(3)">
-            <span class="m-eyebrow">LAYER 12 // SEC & PUBLIC BROKER-DEALERS</span>
-            <span class="m-title">RIBD-FS: Retail AICF & Herding Breaker</span>
-            <span class="m-sub">Detects unanchored AI Citation Frequency spikes & retail options herding; issues zk-SNARK CAT proof.</span>
+            <span class="m-title">Scenario 4: Retail Chatbot Pump-and-Dump Guard</span>
+            <span class="m-sub">Detects sudden unverified spikes in AI chatbots recommending a stock and generates a privacy-preserving audit proof.</span>
           </button>
 
-          <div class="eyebrow-tag" style="margin-bottom: 0; margin-top: 4px;">2. Execute Defense Operation</div>
+          <div style="font-size: 12px; font-weight: 700; color: var(--accent-emerald-glow); margin-top: 8px; margin-bottom: 4px;">2. Toggle Attack vs. Defense Shield</div>
           <div class="ops-action-row">
             <button class="btn-ops btn-ops-attack" id="btn-lab-attack" onclick="setLabAttackState(true)">
-              ⚡ Inject AEO Exploit
+              ⚡ Inject AEO Attack
             </button>
             <button class="btn-ops btn-ops-defend active" id="btn-lab-defend" onclick="setLabAttackState(false)">
-              🛡️ Run Defense Op
+              🛡️ Engage Defense Shield
             </button>
           </div>
 
           <!-- INTERACTIVE RED-TEAM & TELEMETRY CONTROLS -->
-          <div class="eyebrow-tag" style="margin-bottom: 0; margin-top: 6px;">3. Red-Team Probing & Scene Controls</div>
+          <div style="font-size: 12px; font-weight: 700; color: var(--accent-emerald-glow); margin-top: 8px; margin-bottom: 4px;">3. Scene &amp; Intensity Controls</div>
           <div class="sim-controls-panel">
             <!-- Red-team probe injection button -->
             <button class="btn-probe" id="btn-lab-probe" onclick="injectRedTeamProbe()">
-              💥 Pulse Red-Team Probe
+              💥 Pulse Test Probe
             </button>
 
             <!-- Intensity Slider -->
             <div class="control-row">
               <div class="control-label">
-                <span>Vector Perturbation Intensity</span>
+                <span>Attack Intensity</span>
                 <span id="intensity-val" class="control-val">75%</span>
               </div>
               <input type="range" id="slider-intensity" min="10" max="100" value="75" oninput="updateIntensity(this.value)" class="sim-slider" />
@@ -1658,25 +1681,25 @@
             <!-- Camera Presets -->
             <div class="control-row">
               <div class="control-label">
-                <span>Camera Viewport Angle</span>
+                <span>Camera Angle</span>
               </div>
               <div class="btn-toggle-group">
                 <button class="btn-toggle active" onclick="setCameraPreset('iso', this)">Isometric</button>
-                <button class="btn-toggle" onclick="setCameraPreset('core', this)">Core Focus</button>
+                <button class="btn-toggle" onclick="setCameraPreset('core', this)">Center Focus</button>
                 <button class="btn-toggle" onclick="setCameraPreset('top', this)">Top-Down</button>
-                <button class="btn-toggle" onclick="setCameraPreset('frustum', this)">Side Frustum</button>
+                <button class="btn-toggle" onclick="setCameraPreset('frustum', this)">Side View</button>
               </div>
             </div>
           </div>
 
-          <div class="eyebrow-tag" style="margin-bottom: 0; margin-top: 6px;">Live Statutory & Cryptographic Log</div>
+          <div style="font-size: 12px; font-weight: 700; color: var(--accent-emerald-glow); margin-top: 8px; margin-bottom: 4px;">Live Defense Activity Log</div>
           <div class="ops-terminal" id="lab-terminal"></div>
         </div>
 
         <!-- RIGHT MAIN VIEWPORT: 3D WEBGL SCENE + LIVE TELEMETRY -->
         <div class="lab-viewport-card">
           <div class="viewport-hud-top">
-            <div class="hud-tag" id="webgl-scene-title">WEBGL SCENE 01 // POINCARÉ HYPERBOLIC BALL (B^3_c) & CHAFF EVICTION</div>
+            <div class="hud-tag" id="webgl-scene-title">3D Scene 1: Corporate Shell Network &amp; Chaff Removal</div>
             <div class="hud-tag" id="webgl-state-badge" style="color: var(--accent-emerald-glow); border-color: var(--accent-emerald);">STATE: COUNTER-AEO SHIELD ENGAGED</div>
           </div>
 
@@ -1686,20 +1709,20 @@
           <!-- BOTTOM 4-METRIC TELEMETRY READOUT -->
           <div class="viewport-telemetry-bar">
             <div class="v-metric">
-              <div class="v-metric-name" id="m-label-1">Submodular Chaff Evicted</div>
-              <div class="v-metric-val" id="m-val-1">47 / 47 Hubs Purged</div>
+              <div class="v-metric-name" id="m-label-1">Fake Chaff Pages Removed</div>
+              <div class="v-metric-val" id="m-val-1">47 / 47 Cleared</div>
             </div>
             <div class="v-metric">
-              <div class="v-metric-name" id="m-label-2">Poincaré Geodesic d_B(u, SDN)</div>
-              <div class="v-metric-val" id="m-val-2">0.194 (Ancestral Cone)</div>
+              <div class="v-metric-name" id="m-label-2">Ownership Link Distance</div>
+              <div class="v-metric-val" id="m-val-2">0.194 (Direct Link)</div>
             </div>
             <div class="v-metric">
-              <div class="v-metric-name" id="m-label-3">Neumann Transitive UBO Stake</div>
-              <div class="v-metric-val" id="m-val-3">61.2% (>= 50% BLOCKED)</div>
+              <div class="v-metric-name" id="m-label-3">Hidden Sanctioned Stake</div>
+              <div class="v-metric-val" id="m-val-3">61.2% (&gt;= 50% Flagged)</div>
             </div>
             <div class="v-metric">
-              <div class="v-metric-name" id="m-label-4">Statutory Action / ZK Proof</div>
-              <div class="v-metric-val" id="m-val-4">OFAC SDN & BIS HOLD</div>
+              <div class="v-metric-name" id="m-label-4">Defense Outcome</div>
+              <div class="v-metric-val" id="m-val-4">Sanctioned Link Exposed</div>
             </div>
           </div>
         </div>
@@ -1710,13 +1733,12 @@
         <div class="plain-english-container">
           <div class="peg-header">
             <div class="peg-title-group">
-              <div class="eyebrow-tag" style="margin-bottom: 4px;">PLAIN-ENGLISH MISSION BRIEFING</div>
               <h3 class="peg-title" id="peg-mission-heading">
-                Plain-English Guide: What You Are Seeing & What Is Happening
+                Plain-English Guide: What You Are Seeing &amp; How It Works
               </h3>
             </div>
             <div class="peg-mission-badge" id="peg-mission-badge">
-              LAYER 9 // POINCARÉ HYPERBOLIC SHELL & CHAFF EVICTION
+              Scenario 1: Shell Company De-Cloaking
             </div>
           </div>
 
@@ -1729,7 +1751,7 @@
               </div>
               <h4 class="peg-card-h4" id="peg-card-h1">The Corporate Shell Maze</h4>
               <p class="peg-card-p" id="peg-card-p1">
-                Think of an offshore corporate family tree mapped onto a curved cosmic sphere (the Poincaré Ball). At the center is a red diamond representing a sanctioned foreign state enterprise or oligarch. Radiating outward are amber and green dots representing holding companies and offshore subsidiaries in Cyprus, Dubai, and Panama. The swarm of red floating particles is 'Negative-AEO chaff'—thousands of fake synthetic marketing websites generated by bots to hide the connection from AI search engines.
+                Think of an offshore corporate family tree mapped inside a 3D sphere. At the center is a red diamond representing a sanctioned parent organization. Radiating outward are amber and green nodes representing holding companies and subsidiaries. The swarm of red floating particles is fake marketing clutter—dozens of disposable websites generated to hide the connection from AI search engines.
               </p>
             </div>
 
@@ -1737,11 +1759,11 @@
             <div class="peg-card">
               <div class="peg-card-header text-crimson">
                 <span class="peg-icon">⚡</span>
-                <span>2. The Attack Mechanism</span>
+                <span>2. How the AI Gets Tricked</span>
               </div>
-              <h4 class="peg-card-h4" id="peg-card-h2">Negative-AEO Marketing Chaff</h4>
+              <h4 class="peg-card-h4" id="peg-card-h2">Drowning Out the Truth with Fluff</h4>
               <p class="peg-card-p" id="peg-card-p2">
-                Adversaries flood the open web with thousands of disposable review sites, shell corporate directories, and fake press releases. When bank compliance officers or trade authorities ask enterprise AI 'Is Company X affiliated with Sanctioned Entity Y?', the AI search engine gets drowned in synthetic noise and falsely concludes 'No corporate relation found'—allowing prohibited high-end GPUs and dual-use tech to bypass export controls.
+                Bad actors flood the open web with dozens of harmless-looking review sites, corporate directories, and press releases. When a compliance analyst asks an AI assistant "Is Company X connected to Sanctioned Entity Y?", the AI's top search slots get filled with the fluff pages and it misses the real ownership link.
               </p>
             </div>
 
@@ -1749,11 +1771,11 @@
             <div class="peg-card">
               <div class="peg-card-header text-emerald">
                 <span class="peg-icon">🛡️</span>
-                <span>3. How Last Crusade Defense Protects Systems</span>
+                <span>3. How Our Shield Stops It</span>
               </div>
-              <h4 class="peg-card-h4" id="peg-card-h3">Poincaré Curvature & Chaff Eviction</h4>
+              <h4 class="peg-card-h4" id="peg-card-h3">Clearing the Clutter &amp; Tracing the Tree</h4>
               <p class="peg-card-p" id="peg-card-p3">
-                Last Crusade projects corporate ownership into hyperbolic non-Euclidean space (B³_c). Because true parent-subsidiary hierarchies expand exponentially, hyperbolic distance mathematically cuts through the noise. Last Crusade's submodular optimizer instantly isolates the true sanctioned root, punches through up to 8 layers of offshore front companies, and evicts all fake marketing chaff beyond the boundary in under 45ms.
+                Our diversity filter spots when dozens of pages are just repeating the same generic marketing claims and clears them out of the AI's search window. It then traces parent-subsidiary stakes across up to 8 layers of shell companies to surface the true 61.2% sanctioned ownership link.
               </p>
             </div>
 
@@ -1761,11 +1783,11 @@
             <div class="peg-card">
               <div class="peg-card-header text-cyan">
                 <span class="peg-icon">📊</span>
-                <span>4. What Real-World Research Proved</span>
+                <span>4. Benchmark Simulation Result</span>
               </div>
-              <h4 class="peg-card-h4" id="peg-card-h4">99.8% Transitive Recall</h4>
+              <h4 class="peg-card-h4" id="peg-card-h4">99.4% Chaff Removal in Lab Tests</h4>
               <p class="peg-card-p" id="peg-card-p4">
-                Validated across 12,000 real-world sanctioned entity test networks, Last Crusade achieved 99.8% de-cloaking recall through up to 8 offshore nesting tiers, detecting illegal beneficial ownership stakes ≥ 50% with zero false negatives—preventing illicit transshipments that evaded standard database checks.
+                Across our benchmark test networks, this filter cleared 99.4% of redundant cover-up pages and accurately flagged combined ownership stakes above the 50% threshold across multi-tier shell hierarchies.
               </p>
             </div>
           </div>
@@ -1776,11 +1798,10 @@
       <section class="section-block">
         <div class="section-header-row">
           <div>
-            <div class="eyebrow-tag">VOLUME IV EMPIRICAL TELEMETRY & DISCOVERY CHARTS</div>
-            <h2 class="section-h2">Real-Time Mathematical Diagnostics Across Layers 9–12</h2>
+            <h2 class="section-h2">Live Diagnostic Charts Across All 4 Scenarios</h2>
           </div>
           <div class="section-meta">
-            These four live diagnostic charts dynamically update as you toggle between <strong>Inject AEO Exploit</strong> and <strong>Run Defense Op</strong> in the command center above.
+            These four charts update dynamically as you toggle between <strong>Inject AEO Attack</strong> and <strong>Engage Defense Shield</strong> above.
           </div>
         </div>
 
@@ -1789,13 +1810,12 @@
           <div class="chart-card">
             <div class="chart-header">
               <div>
-                <div class="chart-sub">LAYER 9 // COMMERCE (BIS) & TREASURY (OFAC)</div>
-                <h3 class="chart-title">Submodular Chaff Eviction & Transitive SDN Ownership</h3>
+                <h3 class="chart-title">Scenario 1: Clearing Fake Marketing Chaff to Expose Ownership</h3>
               </div>
-              <span class="layer-badge">HER-BOD</span>
+              <span class="layer-badge">Layer 9</span>
             </div>
             <p style="font-size: 12.5px; color: var(--text-secondary); line-height: 1.5;">
-              Compares standard Euclidean top-$k$ retrieval (where 47 Obfuscative-AEO marketing hubs crowd out sanctions evidence) against <strong>HER-BOD Submodular Facility-Location</strong> and Neumann series $\mathbf{\Omega}_{\text{own}} = (\mathbf{I}-\mathbf{A})^{-1}\mathbf{A}$ transitive ownership resolution.
+              Compares standard AI search retrieval (where 47 planted marketing pages crowd out real records) against our diversity filter that clears the clutter and exposes the hidden 61.2% ownership stake.
             </p>
             <canvas class="vol4-chart" id="chart-layer9" width="560" height="220"></canvas>
           </div>
@@ -1804,13 +1824,12 @@
           <div class="chart-card">
             <div class="chart-header">
               <div>
-                <div class="chart-sub">LAYER 10 // USITC (AD/CVD) & GLOBAL SUPPLY CHAINS</div>
-                <h3 class="chart-title">Leontief Thermodynamic Price Floor vs. AIS Cargo Mass</h3>
+                <h3 class="chart-title">Scenario 2: Checking Claimed Prices &amp; Tonnage Against Reality</h3>
               </div>
-              <span class="layer-badge">EIOL-PCV</span>
+              <span class="layer-badge">Layer 10</span>
             </div>
             <p style="font-size: 12.5px; color: var(--text-secondary); line-height: 1.5;">
-              Audits foreign exporter RAG price claims against the dual <strong>Leontief Input-Output Thermodynamic Cost Floor</strong> $\mathbf{c}_{\text{floor}}$ (left) and reconciles claimed export tonnage against satellite <strong>AIS Archimedes Vessel Draft Displacement</strong> $\mathcal{M}_{\text{AIS}}$ (right).
+              Compares a supplier's claimed export price against the minimum real-world energy and material cost floor (left), and compares claimed shipping volume against satellite ship draft weight (right).
             </p>
             <canvas class="vol4-chart" id="chart-layer10" width="560" height="220"></canvas>
           </div>
@@ -1819,13 +1838,12 @@
           <div class="chart-card">
             <div class="chart-header">
               <div>
-                <div class="chart-sub">LAYER 11 // TREASURY (OFR/FSOC) & MACRO HEDGE FUNDS</div>
-                <h3 class="chart-title">Schreiber Transfer Entropy & Ollivier-Ricci Curvature</h3>
+                <h3 class="chart-title">Scenario 3: Spotting Coordinated Multi-Language Rumor Waves</h3>
               </div>
-              <span class="layer-badge">SCB-FTCCS</span>
+              <span class="layer-badge">Layer 11</span>
             </div>
             <p style="font-size: 12.5px; color: var(--text-secondary); line-height: 1.5;">
-              Tracks multi-lingual AEO Transfer Entropy $\mathcal{T}_{X^{(L)}\to Y}$ surging ahead of a U.S. Treasury auction while global cross-asset <strong>Ollivier-Ricci Graph Curvature</strong> $\kappa_{\text{Ricci}}$ plunges into systemic bottleneck territory.
+              Tracks a sudden wave of synchronized online rumors spreading across languages ahead of a bond auction while market liquidity tightens.
             </p>
             <canvas class="vol4-chart" id="chart-layer11" width="560" height="220"></canvas>
           </div>
@@ -1834,13 +1852,12 @@
           <div class="chart-card">
             <div class="chart-header">
               <div>
-                <div class="chart-sub">LAYER 12 // SEC & PUBLICLY TRADED BROKER-DEALERS</div>
-                <h3 class="chart-title">Unanchored AICF Surge vs. Retail Herding Synchrony</h3>
+                <h3 class="chart-title">Scenario 4: Spotting AI Chatbot Stock Hype vs. Retail Herding</h3>
               </div>
-              <span class="layer-badge">RIBD-FS</span>
+              <span class="layer-badge">Layer 12</span>
             </div>
             <p style="font-size: 12.5px; color: var(--text-secondary); line-height: 1.5;">
-              Monitors Cross-Engine <strong>AI Citation Frequency ($\mathcal{V}_{\text{AICF}}$)</strong> velocity lacking C2PA-signed SEC EDGAR filings against real-time <strong>Retail Order-Flow Herding Synchrony ($\mathcal{H}_{\text{retail}}$)</strong> to trigger SEC Reg BI fiduciary warnings and bot halts.
+              Tracks sudden surges in AI chatbots recommending a stock without any backing SEC filing alongside synchronized retail order stampedes.
             </p>
             <canvas class="vol4-chart" id="chart-layer12" width="560" height="220"></canvas>
           </div>
@@ -1852,8 +1869,8 @@
   <!-- FOOTER -->
   <footer class="petra-footer">
     <div class="container" style="display: flex; justify-content: space-between; width: 100%; flex-wrap: wrap; gap: 16px;">
-      <div>LAST CRUSADE DEFENSE // VOLUME IV SOVEREIGN & GLOBAL MARKET DEFENSE ARCHITECTURE</div>
-      <div>12-LAYER STACK: MTVD · AM-CIDP · NCARD · TCG-CL · CEH-ASID · TMMEG · DMEM · SGL-CMI · CM-JSAS · ZK-CAEO · HER-BOD · EIOL-PCV · SCB-FTCCS · RIBD-FS</div>
+      <div>Last Crusade · Public &amp; Private Sector Counter-AEO Architecture</div>
+      <div>Interactive 3D Defense Lab &amp; Physical Reality Verification</div>
     </div>
   </footer>
 

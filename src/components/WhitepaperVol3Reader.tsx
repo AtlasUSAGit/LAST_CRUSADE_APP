@@ -198,7 +198,7 @@ export const WhitepaperVol3Reader: React.FC<WhitepaperVol3ReaderProps> = ({
               {/* Research Metadata Box */}
               <div className="bg-[#FAF2E1] border border-[#F2D69D] p-5 space-y-3 font-mono text-xs">
                 <div className="text-[10px] uppercase font-bold text-[#D5991C] tracking-wider">
-                  // BENCHMARK TELEMETRY
+                  Benchmark Telemetry
                 </div>
                 <div className="space-y-2 text-[#410217]/80">
                   <div className="flex justify-between border-b border-[#F2D69D]/50 pb-1">
@@ -291,7 +291,7 @@ export const WhitepaperVol3Reader: React.FC<WhitepaperVol3ReaderProps> = ({
               {/* ASCII Diagram Testbed Architecture */}
               <div className="bg-[#363636] border border-[#F2D69D]/40 p-4 sm:p-6 overflow-x-auto shadow-inner text-[#FBF3E2] font-mono text-xs leading-relaxed">
                 <div className="text-[10px] text-[#D5991C] font-bold uppercase mb-2 tracking-widest">
-                  // TESTBED ARCHITECTURE SCHEMATIC
+                  Testbed Architecture Schematic
                 </div>
                 <pre className="font-mono text-[11px] text-[#FBF3E2] leading-tight">
 {`========================================================================================
@@ -426,7 +426,7 @@ export const WhitepaperVol3Reader: React.FC<WhitepaperVol3ReaderProps> = ({
                 
                 <div className="bg-[#363636] border border-[#F2D69D]/40 p-4 sm:p-6 overflow-x-auto shadow-inner text-[#FBF3E2] font-mono text-xs leading-relaxed">
                   <div className="text-[10px] text-[#D5991C] font-bold uppercase mb-2 tracking-widest">
-                    // FIGURE 9: EMPIRICAL RECEIVER OPERATING CHARACTERISTIC (ROC)
+                    Figure 9: EMPIRICAL RECEIVER OPERATING CHARACTERISTIC (ROC)
                   </div>
                   <pre className="font-mono text-[11px] text-[#FBF3E2] leading-tight">
 {`  True Positive Rate (TPR / Attack Recall)
@@ -480,7 +480,7 @@ export const WhitepaperVol3Reader: React.FC<WhitepaperVol3ReaderProps> = ({
                 {/* Figure 10 ASCII Chart */}
                 <div className="bg-[#363636] border border-[#F2D69D]/40 p-4 sm:p-6 overflow-x-auto shadow-inner text-[#FBF3E2] font-mono text-xs leading-relaxed">
                   <div className="text-[10px] text-[#D5991C] font-bold uppercase mb-2 tracking-widest">
-                    // FIGURE 10: INTRADAY PRICE & ORDER-BOOK TRAJECTORY ($DFNS FLASH-PUMP)
+                    Figure 10: INTRADAY PRICE & ORDER-BOOK TRAJECTORY ($DFNS FLASH-PUMP)
                   </div>
                   <pre className="font-mono text-[11px] text-[#FBF3E2] leading-tight">
 {`========================================================================================
@@ -567,7 +567,7 @@ export const WhitepaperVol3Reader: React.FC<WhitepaperVol3ReaderProps> = ({
                   <div className="flex items-center space-x-2 text-[#FBF3E2]">
                     <Terminal className="w-3.5 h-3.5 text-[#00A878]" />
                     <span className="font-bold">counter_aeo_benchmark_suite.py</span>
-                    <span className="text-[#D5991C] text-[10px]">// PRODUCTION EVALUATION HARNESS</span>
+                    <span className="text-[#D5991C] text-[10px]">Evaluation Harness</span>
                   </div>
 
                   <button

@@ -1903,52 +1903,45 @@ export const CounterGeoCommandCenterPage: React.FC<CounterGeoCommandCenterPagePr
       {/* ========================================================
           HERO BANNER & PROGRESSIVE DEPTH INDICATOR
          ======================================================== */}
-      <section className="bg-[#350213] border-b border-[#D5991C]/30 px-4 sm:px-6 lg:px-8 py-5">
+      <section className="bg-[#350213] border-b border-[#D5991C]/30 px-4 sm:px-6 lg:px-8 py-6">
         <div className="max-w-7xl mx-auto flex flex-col lg:flex-row lg:items-center justify-between gap-4">
-          <div className="space-y-1.5">
-            <div className="flex flex-wrap items-center gap-2">
-              <span className="px-2 py-0.5 bg-[#D5991C]/20 border border-[#D5991C] text-[#D5991C] font-mono text-[10px] font-bold uppercase tracking-widest">
-                OFFENSIVE AEO VS COUNTER-AEO
-              </span>
-              <span className="font-mono text-xs text-[#00FF9D]">
-                8 DEDICATED 3D WEBGL SCENES · PROGRESSIVE COMPLEXITY ENGINE
-              </span>
-            </div>
-            <h1 className="font-serif text-2xl sm:text-3xl font-bold text-[#FBF3E2] tracking-tight">
-              Last Crusade Defense <span className="text-[#D5991C]">AEO Cyber Operations & Strategy Center</span>
+          <div className="space-y-2">
+            <div className="w-10 h-1 bg-[#D5991C] rounded-full" />
+            <h1 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-bold text-[#FBF3E2] tracking-tight">
+              Interactive 3D Threat &amp; Strategy <span className="text-[#D5991C]">Command Center</span>
             </h1>
             <p className="text-sm text-[#FBF3E2]/85 max-w-3xl leading-relaxed">
               {knowledgeDepth === 'beginner' && (
                 <>
-                  <strong>New to Generative Engine Optimization (AEO)?</strong> Start in <strong>Level 1 (Plain-English)</strong> to explore everyday analogies and interactive sandboxes. As you interact—or whenever you’re ready—step up to <strong>Level 2 (Cyber Ops)</strong> or <strong>Level 3 (Topological Math & Code)</strong>.
+                  <strong>New to Answer Engine Optimization (AEO)?</strong> Start in <strong>Level 1 (Plain-English)</strong> to explore everyday analogies and interactive sliders for all 8 threat classes. Step up to <strong>Level 2 (Cyber Ops)</strong> or <strong>Level 3 (Math &amp; Code)</strong> whenever you want deeper detail.
                 </>
               )}
               {knowledgeDepth === 'operator' && (
                 <>
-                  <strong>Cyber Operations Mode Active:</strong> Inspecting red-team exploit kill-chains, vulnerable RAG and multi-agent surfaces, and real-time Counter-AEO mitigation layers across all 8 threat classes.
+                  <strong>Cyber Operations Mode:</strong> Exploring how attacks work in practice, which AI surfaces they target, and how our defense layers stop them across all 8 scenarios.
                 </>
               )}
               {knowledgeDepth === 'architect' && (
                 <>
-                  <strong>Advanced Mathematical & Architectural Mode Active:</strong> Full access to Riemannian manifold invariants, Möbius KL synergy tensors, thermodynamic order-book circuit breakers, and Groth16 zk-SNARK specifications.
+                  <strong>Math &amp; Code Mode:</strong> Inspecting the underlying mathematical equations, exploit pseudocode, and verification thresholds for each threat and defense layer.
                 </>
               )}
             </p>
           </div>
 
-          <div className="flex flex-wrap items-center gap-3 font-mono text-xs">
-            <div className="bg-[#24010d] p-2.5 border border-[#D5991C]/35 space-y-0.5">
-              <span className="text-[10px] text-[#FBF3E2]/60 block uppercase">3D SIM SCENES</span>
-              <span className="font-bold text-[#D5991C] text-sm">8 / 8 THREATS</span>
+          <div className="flex flex-wrap items-center gap-3 text-xs">
+            <div className="rounded-lg bg-[#24010d] p-3 border border-[#D5991C]/35 space-y-0.5">
+              <span className="text-[11px] text-[#FBF3E2]/70 block">3D Simulators</span>
+              <span className="font-bold text-[#D5991C] text-sm">8 Live Scenes</span>
             </div>
-            <div className="bg-[#24010d] p-2.5 border border-[#00A878]/35 space-y-0.5">
-              <span className="text-[10px] text-[#FBF3E2]/60 block uppercase">BENCHMARK AUROC</span>
-              <span className="font-bold text-[#00FF9D] text-sm">0.996 (FPR 0.38%)</span>
+            <div className="rounded-lg bg-[#24010d] p-3 border border-[#00A878]/35 space-y-0.5">
+              <span className="text-[11px] text-[#FBF3E2]/70 block">Lab Accuracy</span>
+              <span className="font-bold text-[#00FF9D] text-sm">99.6% Detection</span>
             </div>
-            <div className="bg-[#24010d] p-2.5 border border-[#7C3AED]/40 space-y-0.5">
-              <span className="text-[10px] text-[#FBF3E2]/60 block uppercase">EXPLORATION DEPTH</span>
+            <div className="rounded-lg bg-[#24010d] p-3 border border-[#7C3AED]/40 space-y-0.5">
+              <span className="text-[11px] text-[#FBF3E2]/70 block">Reading Depth</span>
               <span className="font-bold text-[#B565FF] text-sm">
-                LVL {knowledgeDepth === 'beginner' ? '1 (INTRO)' : knowledgeDepth === 'operator' ? '2 (OPS)' : '3 (MATH)'}
+                {knowledgeDepth === 'beginner' ? 'Level 1: Plain English' : knowledgeDepth === 'operator' ? 'Level 2: Cyber Ops' : 'Level 3: Math & Code'}
               </span>
             </div>
           </div>
@@ -2097,16 +2090,13 @@ export const CounterGeoCommandCenterPage: React.FC<CounterGeoCommandCenterPagePr
               PROGRESSIVE EXPLAINER PANEL BELOW THE 3D LAB
               Adapts automatically to Beginner / Operator / Architect Mode
              ======================================================== */}
-          <div className="bg-[#2d0110] border-2 border-[#D5991C]/40 p-6 sm:p-8 shadow-xl space-y-6">
+          <div className="bg-[#2d0110] border-2 border-[#D5991C]/40 p-6 sm:p-8 shadow-xl space-y-6 rounded-2xl">
             <div className="flex flex-wrap items-center justify-between gap-4 border-b border-[#D5991C]/30 pb-4">
               <div>
-                <span className="px-2.5 py-0.5 bg-[#D5991C] text-[#130108] font-mono text-[11px] font-bold uppercase">
-                  {activeStrategy.code} INTERACTIVE BRIEFING
-                </span>
-                <h3 className="font-serif text-2xl font-bold text-[#FBF3E2] mt-1">
+                <h3 className="font-serif text-2xl font-bold text-[#FBF3E2]">
                   {activeStrategy.plainEnglishName}
                 </h3>
-                <p className="text-xs text-[#D5991C] font-mono mt-0.5">{activeStrategy.tagline}</p>
+                <p className="text-xs text-[#D5991C] mt-1">{activeStrategy.tagline}</p>
               </div>
 
               {/* Quick Depth Switcher right inside the briefing */}
@@ -2229,20 +2219,14 @@ export const CounterGeoCommandCenterPage: React.FC<CounterGeoCommandCenterPagePr
         <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8 flex-1 w-full">
           
           {/* Progressive Onboarding & Expert Quick-Jump Header */}
-          <div className="bg-[#2d0110] border border-[#D5991C]/40 p-5 space-y-4 shadow-xl">
+          <div className="bg-[#2d0110] border border-[#D5991C]/40 p-5 space-y-4 shadow-xl rounded-2xl">
             <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
               <div className="space-y-1">
-                <div className="flex items-center space-x-2 font-mono text-xs text-[#00FF9D]">
-                  <Sparkles className="w-4 h-4 text-[#D5991C]" />
-                  <span className="uppercase tracking-widest font-bold">
-                    PROGRESSIVE AEO STRATEGY LIBRARY // CHOOSE YOUR STARTING DEPTH
-                  </span>
-                </div>
                 <h2 className="font-serif text-2xl font-bold text-[#FBF3E2]">
-                  Interactive Catalog of All 8 AEO Attack Classes & Defenses
+                  Interactive Catalog of All 8 AEO Attack Classes &amp; Defenses
                 </h2>
                 <p className="text-xs text-[#FBF3E2]/80 max-w-3xl leading-relaxed">
-                  Every threat card below is <strong>progressive</strong>: start with <strong>Step 1 (Everyday Analogy)</strong> and click through to <strong>Step 4 (Topological Math & Code)</strong>—or use the global depth switcher to immediately unlock full mathematical specifications across all cards.
+                  Every threat card below is <strong>progressive</strong>: start with <strong>Step 1 (Everyday Analogy)</strong> and click through to <strong>Step 4 (Math &amp; Code)</strong>—or use the global depth switcher to unlock full specifications across all cards at once.
                 </p>
               </div>
 

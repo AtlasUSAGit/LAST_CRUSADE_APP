@@ -666,9 +666,7 @@ export const CounterGeoVol2FindingsAndLab: React.FC<Vol2FindingsAndLabProps> = (
               ← Overview
             </button>
             <div>
-              <div className="text-[10px] font-mono text-[#00A878] uppercase font-bold tracking-widest">
-                VOLUME II LAB // GENERATION-3 DEFENSE SUITE
-              </div>
+              
               <h2 className="font-serif text-xl sm:text-2xl font-bold text-[#410217]">
                 Stateful Memory, Swarm & Zero-Knowledge Lab
               </h2>

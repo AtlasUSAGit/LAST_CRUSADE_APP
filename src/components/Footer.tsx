@@ -1,183 +1,167 @@
 import React from 'react';
-import { ShieldAlert, ArrowUpRight, FileCode, Boxes, Briefcase, Presentation, BookOpen } from 'lucide-react';
+import { ArrowUpRight, BookOpen, Sparkles, Compass } from 'lucide-react';
 import { NavigationPage } from '../types';
 
 interface FooterProps {
+  onNavigate: (page: NavigationPage) => void;
   onOpenAudit: () => void;
-  onOpenIncident?: () => void;
-  onNavigate?: (page: NavigationPage) => void;
+  onOpenIncident: () => void;
 }
 
-export const Footer: React.FC<FooterProps> = ({ onOpenAudit, onOpenIncident, onNavigate }) => {
+export const Footer: React.FC<FooterProps> = ({
+  onNavigate,
+  onOpenAudit,
+  onOpenIncident,
+}) => {
   return (
-    <footer className="bg-[#410217] border-t border-[#F2D69D] text-[#FBF3E2] font-sans pt-16 pb-12 relative z-10">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
-        
-        {/* Main Footer Top Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 pb-12 border-b border-[#F2D69D]/20">
-          
-          {/* Brand Col */}
-          <div className="lg:col-span-2 space-y-4">
-            <div className="flex items-center space-x-3.5">
-              <div className="w-8 h-8 bg-[#310111] border border-[#F2D69D] flex items-center justify-center rotate-45 shadow-sm">
-                <div className="w-3 h-3 bg-[#D5991C] -rotate-45"></div>
+    <footer className="bg-[#2B010F] border-t border-[#F2D69D]/30 text-[#FBF3E2]">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 pb-12 border-b border-[#F2D69D]/20">
+          {/* Col 1: Brand & Mission (4 cols) */}
+          <div className="lg:col-span-4 space-y-4">
+            <div className="flex items-center space-x-3">
+              <div className="w-8 h-8 rounded-lg bg-[#410217] flex items-center justify-center border border-[#D5991C]/50">
+                <span className="w-2.5 h-2.5 rounded-full bg-[#D5991C]" />
               </div>
-              <span className="font-serif font-bold text-2xl text-[#FBF3E2] tracking-tight">
-                LAST CRUSADE <span className="font-sans font-light text-sm text-[#D5991C] tracking-widest pl-1">DEFENSE</span>
+              <span className="font-serif font-bold text-xl tracking-tight text-[#FBF3E2]">
+                Last Crusade <span className="text-[#D5991C] font-normal">AEO Defense</span>
               </span>
             </div>
-
-            <p className="text-xs text-[#FBF3E2]/75 leading-relaxed max-w-sm font-sans">
-              The leading enterprise cybersecurity platform dedicated to Generative Engine Optimization (AEO) security, prompt injection containment, REA reverse engineering, and active counter-AEO operations.
+            <p className="text-sm text-[#FBF3E2]/75 leading-relaxed font-sans max-w-sm">
+              Researching and building dual-use Answer Engine Optimization (AEO) and Counter-AEO systems—helping organizations earn accurate citations in AI answers while protecting search pipelines, financial markets, and autonomous software agents from manipulation.
             </p>
-
-            {/* Compliance Badges Row */}
-            <div className="flex flex-wrap items-center gap-2 font-mono text-[10px] pt-2">
-              <span className="px-2.5 py-1 bg-[#310111] border border-[#F2D69D]/30 text-[#F2D69D] uppercase">SOC2 TYPE II</span>
-              <span className="px-2.5 py-1 bg-[#310111] border border-[#F2D69D]/30 text-[#F2D69D] uppercase">ISO 27001</span>
-              <span className="px-2.5 py-1 bg-[#310111] border border-[#F2D69D]/30 text-[#F2D69D] uppercase">SEC RULE 15c3-8</span>
-              <span className="px-2.5 py-1 bg-[#310111] border border-[#F2D69D]/30 text-[#F2D69D] uppercase">FEDRAMP READY</span>
+            <div className="flex flex-wrap gap-2 pt-1">
+              <button
+                onClick={() => onNavigate('pitch-deck')}
+                className="inline-flex items-center space-x-1.5 px-3.5 py-2 rounded-lg bg-[#D5991C] hover:bg-[#E5A932] text-[#130108] text-xs font-semibold transition-colors cursor-pointer"
+              >
+                <Compass className="w-3.5 h-3.5" />
+                <span>View Cover Deck</span>
+              </button>
+              <button
+                onClick={() => onNavigate('counter-geo-ops')}
+                className="inline-flex items-center space-x-1.5 px-3.5 py-2 rounded-lg bg-[#410217] hover:bg-[#5C0A24] text-[#FBF3E2] border border-[#D5991C]/40 text-xs font-medium transition-colors cursor-pointer"
+              >
+                <Sparkles className="w-3.5 h-3.5 text-[#D5991C]" />
+                <span>3D Threat Lab</span>
+              </button>
             </div>
           </div>
 
-          {/* Nav Col 1 */}
-          <div className="space-y-3 font-mono text-xs">
-            <div className="text-[#D5991C] font-bold uppercase tracking-widest">OPERATIONS & SERVICES</div>
-            <ul className="space-y-2 text-[#FBF3E2]/70 font-sans text-xs">
-              <li><a href="#services" className="hover:text-[#FBF3E2] transition-colors">Defensive Cybersecurity</a></li>
-              <li><a href="#services" className="hover:text-[#FBF3E2] transition-colors">Offensive Cyber Operations</a></li>
-              <li><a href="#services" className="hover:text-[#FBF3E2] transition-colors">Liquidity Extraction Arbitrage</a></li>
-              <li><a href="#capabilities" className="hover:text-[#FBF3E2] transition-colors">Open-Web RAG Immunization</a></li>
-              <li><a href="#capabilities" className="hover:text-[#FBF3E2] transition-colors">Swarm & A2A Interdiction</a></li>
+          {/* Col 2: Site Navigation (2 cols) */}
+          <div className="lg:col-span-2 space-y-3">
+            <h4 className="font-serif text-base font-bold text-[#D5991C]">
+              Explore
+            </h4>
+            <ul className="space-y-2.5 text-xs text-[#FBF3E2]/80 font-sans">
+              <li>
+                <button onClick={() => onNavigate('overview')} className="hover:text-[#D5991C] transition-colors cursor-pointer">
+                  Overview
+                </button>
+              </li>
+              <li>
+                <button onClick={() => onNavigate('pitch-deck')} className="hover:text-[#D5991C] transition-colors cursor-pointer font-semibold text-[#F2D69D]">
+                  Cover Deck
+                </button>
+              </li>
+              <li>
+                <button onClick={() => onNavigate('services')} className="hover:text-[#D5991C] transition-colors cursor-pointer">
+                  Defense Architecture
+                </button>
+              </li>
+              <li>
+                <button onClick={() => onNavigate('counter-geo-ops')} className="hover:text-[#D5991C] transition-colors cursor-pointer">
+                  3D Threat &amp; Strategy Lab
+                </button>
+              </li>
+              <li>
+                <button onClick={() => onNavigate('rea-studio')} className="hover:text-[#D5991C] transition-colors cursor-pointer">
+                  REA Reverse-Engineering Studio
+                </button>
+              </li>
             </ul>
           </div>
 
-          {/* Nav Col 2 */}
-          <div className="space-y-3 font-mono text-xs">
-            <div className="text-[#D5991C] font-bold uppercase tracking-widest">PLATFORM APPS</div>
-            <ul className="space-y-2 text-[#FBF3E2]/70 font-sans text-xs">
+          {/* Col 3: Research Volumes (3 cols) */}
+          <div className="lg:col-span-3 space-y-3">
+            <h4 className="font-serif text-base font-bold text-[#D5991C]">
+              Research Whitepapers
+            </h4>
+            <ul className="space-y-2.5 text-xs text-[#FBF3E2]/80 font-sans">
               <li>
-                <button
-                  onClick={() => onNavigate && onNavigate('services')}
-                  className="hover:text-[#D5991C] transition-colors text-left flex items-center gap-1 cursor-pointer font-bold text-[#FBF3E2]"
-                >
-                  <Briefcase className="w-3 h-3 text-[#D5991C]" />
-                  <span>Services (Volume IV Defense)</span>
+                <button onClick={() => onNavigate('research')} className="hover:text-[#D5991C] transition-colors cursor-pointer font-semibold text-[#FBF3E2] flex items-center space-x-1">
+                  <BookOpen className="w-3.5 h-3.5 text-[#D5991C]" />
+                  <span>All 5 Research Volumes (232 Pages)</span>
                 </button>
               </li>
               <li>
-                <button
-                  onClick={() => onNavigate && onNavigate('rea')}
-                  className="hover:text-[#D5991C] transition-colors text-left flex items-center gap-1 cursor-pointer"
-                >
-                  <FileCode className="w-3 h-3 text-[#D5991C]" />
-                  <span>REA Studio (Workbench)</span>
+                <button onClick={() => onNavigate('counter-geo')} className="hover:text-[#D5991C] transition-colors cursor-pointer">
+                  Volume I: Foundations of AEO &amp; Counter-AEO
                 </button>
               </li>
               <li>
-                <button
-                  onClick={() => onNavigate && onNavigate('research')}
-                  className="hover:text-[#D5991C] transition-colors text-left flex items-center gap-1 cursor-pointer font-bold"
-                >
-                  <BookOpen className="w-3 h-3 text-[#D5991C]" />
-                  <span>Research Corpus (Volumes 1, 2, 3)</span>
+                <button onClick={() => onNavigate('counter-geo-vol2')} className="hover:text-[#D5991C] transition-colors cursor-pointer">
+                  Volume II: Memory, PDFs, Swarms &amp; Privacy
                 </button>
               </li>
               <li>
-                <button
-                  onClick={() => onNavigate && onNavigate('counter-geo')}
-                  className="hover:text-[#D5991C] transition-colors text-left flex items-center gap-1 cursor-pointer"
-                >
-                  <Boxes className="w-3 h-3 text-[#D5991C]" />
-                  <span>Counter-AEO Vol. 1 Visualizer</span>
+                <button onClick={() => onNavigate('counter-geo-vol3')} className="hover:text-[#D5991C] transition-colors cursor-pointer">
+                  Volume III: 250k Document Benchmark Study
                 </button>
               </li>
               <li>
-                <button
-                  onClick={() => onNavigate && onNavigate('counter-geo-vol2')}
-                  className="hover:text-[#00A878] transition-colors text-left flex items-center gap-1 cursor-pointer"
-                >
-                  <Boxes className="w-3 h-3 text-[#00A878]" />
-                  <span>Counter-AEO Vol. 2 (Memory Swarm)</span>
+                <button onClick={() => onNavigate('counter-geo-vol4')} className="hover:text-[#D5991C] transition-colors cursor-pointer">
+                  Volume IV: 142ns Hardware &amp; Enterprise ROI
                 </button>
               </li>
               <li>
-                <button
-                  onClick={() => onNavigate && onNavigate('counter-geo-vol3')}
-                  className="hover:text-[#A78BFA] transition-colors text-left flex items-center gap-1 cursor-pointer"
-                >
-                  <Boxes className="w-3 h-3 text-[#A78BFA]" />
-                  <span>Counter-AEO Vol. 3 (Benchmark Suite)</span>
+                <button onClick={() => onNavigate('counter-geo-vol5')} className="hover:text-[#D5991C] transition-colors cursor-pointer">
+                  Volume V: Agent-to-Agent Discovery (A2A-EO)
                 </button>
               </li>
-              <li>
-                <button
-                  onClick={() => onNavigate && onNavigate('counter-geo-ops')}
-                  className="hover:text-[#D5991C] transition-colors text-left flex items-center gap-1 cursor-pointer font-bold"
-                >
-                  <Boxes className="w-3 h-3 text-[#D5991C]" />
-                  <span>Strategy Library: Offensive AEO & Defenses (WebGL)</span>
-                </button>
-              </li>
-              <li>
-                <a
-                  href="./last_crusade_pitch_deck.html"
-                  className="hover:text-[#D5991C] transition-colors text-left flex items-center gap-1 cursor-pointer font-bold"
-                >
-                  <Presentation className="w-3 h-3 text-[#D5991C]" />
-                  <span>Last Crusade Pitch Deck (HTML)</span>
-                </a>
-              </li>
-              <li><a href="#problem" className="hover:text-[#FBF3E2] transition-colors">Attack Surface</a></li>
-              <li><a href="#research" className="hover:text-[#FBF3E2] transition-colors">Counter-AEO Research</a></li>
             </ul>
           </div>
 
-          {/* Nav Col 3: CTAs */}
-          <div className="space-y-3 font-mono text-xs">
-            <div className="text-[#D5991C] font-bold uppercase tracking-widest">ACTIONS</div>
-            <div className="space-y-2">
+          {/* Col 4: Connect (3 cols) */}
+          <div className="lg:col-span-3 space-y-4">
+            <h4 className="font-serif text-base font-bold text-[#D5991C]">
+              Connect &amp; Discuss
+            </h4>
+            <p className="text-xs text-[#FBF3E2]/75 leading-relaxed">
+              Interested in discussing offensive AEO strategies, defensive Counter-AEO architectures, or our five-volume research series?
+            </p>
+            <div className="space-y-2.5 pt-1">
               <button
                 onClick={onOpenAudit}
-                className="w-full text-left py-2.5 px-3 bg-[#D5991C] hover:bg-[#E5A932] text-[#410217] font-bold transition-all flex items-center justify-between cursor-pointer"
+                className="w-full py-2.5 px-4 rounded-lg bg-[#D5991C] hover:bg-[#E5A932] text-[#130108] text-xs font-semibold transition-all flex items-center justify-between cursor-pointer"
               >
-                <span>REQUEST AUDIT</span>
-                <ArrowUpRight className="w-3.5 h-3.5" />
+                <span>Get in Touch / Request Audit</span>
+                <ArrowUpRight className="w-4 h-4" />
               </button>
-              <a
-                href="./last_crusade_pitch_deck.html"
-                className="w-full text-left py-2.5 px-3 bg-[#310111] text-[#F2D69D] border border-[#D5991C]/50 font-bold hover:bg-[#D5991C] hover:text-[#130108] transition-all flex items-center justify-between cursor-pointer group"
+              <button
+                onClick={onOpenIncident}
+                className="w-full py-2.5 px-4 rounded-lg bg-[#410217] hover:bg-[#5C0A24] text-[#FBF3E2] border border-[#F2D69D]/30 text-xs font-medium transition-all flex items-center justify-between cursor-pointer"
               >
-                <span>PITCH DECK</span>
-                <Presentation className="w-3.5 h-3.5 text-[#D5991C] group-hover:text-[#130108]" />
-              </a>
+                <span>Share an AI Search Issue</span>
+                <ArrowUpRight className="w-4 h-4 text-[#D5991C]" />
+              </button>
             </div>
           </div>
-
         </div>
 
-        {/* Bottom Telemetry & Status Bar */}
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 font-mono text-xs text-[#FBF3E2]/60">
-          <div className="flex items-center space-x-2">
-            <span className="w-2 h-2 rounded-full bg-[#D5991C] animate-pulse" />
-            <span>SYSTEM STATUS: <strong className="text-[#F2D69D]">ALL ENGINES OPERATIONAL</strong></span>
+        {/* Bottom Bar */}
+        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-[#FBF3E2]/65 gap-4">
+          <div>
+            &copy; {new Date().getFullYear()} Last Crusade. Original Research &amp; Interactive Architecture Portfolio.
           </div>
-
-          <div className="flex gap-8 text-[10px] tracking-widest text-[#FBF3E2]/40">
-            <span>EST. 2024</span>
-            <span>MODELS_MONITORED: 142</span>
-            <span>INCIDENTS_RESOLVED: 4.8K</span>
-          </div>
-
-          <div className="flex items-center space-x-4 text-[11px] text-[#FBF3E2]/60">
-            <a href="#" className="hover:text-[#FBF3E2]">Privacy Policy</a>
-            <span>•</span>
-            <a href="#" className="hover:text-[#FBF3E2]">Terms of Service</a>
-            <span>•</span>
-            <a href="#" className="hover:text-[#FBF3E2]">Security Advisories</a>
+          <div className="flex items-center space-x-4">
+            <span>5 Research Volumes</span>
+            <span>·</span>
+            <span>8 Interactive 3D Threat Simulations</span>
+            <span>·</span>
+            <span>REA Workbench</span>
           </div>
         </div>
-
       </div>
     </footer>
   );

@@ -179,7 +179,7 @@ export const WhitepaperVol2Reader: React.FC<WhitepaperVol2ReaderProps> = ({
           <div className="px-4 py-2 bg-[#2a2a2a] border-b border-[#F2D69D]/30 flex items-center justify-between text-xs font-mono">
             <span className="text-[#D5991C] font-bold uppercase tracking-wider flex items-center gap-1.5">
               <span className="w-2 h-2 rounded-full bg-[#00A878]" />
-              {codeLanguage || 'PYTHON SOURCE'} // VOLUME II SPECIFICATION
+              {codeLanguage || 'Python Source'} · Volume II Reference
             </span>
             <button
               onClick={() => handleCopySnippet(codeText, key)}
@@ -496,7 +496,7 @@ export const WhitepaperVol2Reader: React.FC<WhitepaperVol2ReaderProps> = ({
                 CITATION BIBTEX KEY: [LastCrusadeDefense-CounterAEO-Vol2-2026]
               </div>
               <div className="text-[#410217]/75">
-                DOI: {MASTER_DOC_VOL2_METADATA.doi} // Sovereign Defense Specification Vol. II
+                Working Paper Series · Volume II (42 Pages)
               </div>
             </div>
           </div>

@@ -120,7 +120,7 @@ export const WhitepaperVol4Reader: React.FC<WhitepaperVol4ReaderProps> = ({
           <div className="flex flex-wrap items-center justify-between gap-3 pb-4 mb-6 border-b border-[#F2D69D] font-mono text-xs">
             <div className="flex items-center space-x-2">
               <span className="px-2.5 py-1 bg-[#410217] text-[#FBF3E2] border border-[#D5991C] font-bold uppercase tracking-widest text-[10px]">
-                SOVEREIGN TECHNICAL WHITE PAPER // VOLUME IV
+                Volume IV · Hardware & Enterprise Deployment
               </span>
               <span className="text-[#410217] font-bold">{MASTER_DOC_VOL4_METADATA.id}</span>
             </div>
@@ -209,7 +209,7 @@ export const WhitepaperVol4Reader: React.FC<WhitepaperVol4ReaderProps> = ({
             {/* Hardware & SKU Quick Specs */}
             <div className="p-4 bg-[#FFFDF8] border border-[#F2D69D] font-mono text-xs space-y-2">
               <div className="text-[10px] text-[#D5991C] font-bold uppercase tracking-wider">
-                // HARDWARE SPECIFICATION HIGHLIGHT
+                Hardware Specification Highlight
               </div>
               <div className="text-[#410217] leading-relaxed">
                 Deterministic pre-trade wire latency: <strong className="text-[#00A878]">142.0 nanoseconds (45 clock cycles @ 312.5 MHz)</strong>.

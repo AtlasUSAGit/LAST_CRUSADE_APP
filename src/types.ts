@@ -23,42 +23,66 @@ export interface EngineStatus {
 
 export interface ServiceItem {
   id: string;
+  number: string;
   title: string;
-  subtitle: string;
-  icon: string;
+  tagline: string;
+  subtitle?: string;
+  icon?: string;
   badge: string;
   description: string;
-  capabilities: string[];
-  sampleLog: string;
+  deliverables: string[];
+  capabilities?: string[];
+  metricHighlight: string;
+  sampleLog?: string;
 }
 
-export interface CapabilityItem {
+export interface CapabilityCard {
   id: string;
+  code: string;
   title: string;
-  category: 'Defensive Cyber' | 'Offensive Operations' | 'Market Arbitrage' | 'Autonomous Swarms' | 'LLM Security' | 'RAG Integrity' | 'Brand Protection' | 'Threat Intel' | string;
-  icon: string;
+  category: string;
   description: string;
-  technicalImpact: string;
+  impactMetric: string;
+  status: string;
+}
+
+export type CapabilityItem = CapabilityCard;
+
+export interface ProcessStep {
+  step: string;
+  phase?: string;
+  name: string;
+  title: string;
+  description: string;
+  technicalDetail: string;
+  sampleLog: string;
 }
 
 export interface CaseStudy {
   id: string;
+  sector: string;
+  clientType: string;
   clientCategory: string;
   headline: string;
   challenge: string;
+  intervention: string;
   solution: string;
+  outcomeMetrics: { label: string; value: string }[];
   metrics: { label: string; value: string; detail: string }[];
   timeframe: string;
   verifiedBy: string;
+  quote: string;
+  quoteAuthor: string;
 }
 
 export interface ResearchAdvisory {
   id: string;
   title: string;
   date: string;
-  type: 'Vulnerability Notice' | 'Threat Vector Analysis' | 'Countermeasure Protocol' | 'Experimental Appendix';
+  type?: 'Vulnerability Notice' | 'Threat Vector Analysis' | 'Countermeasure Protocol' | 'Experimental Appendix' | string;
   summary: string;
   severity: 'HIGH' | 'CRITICAL' | 'MEDIUM';
+  readTime?: string;
 }
 
 export type NavigationPage = 'overview' | 'services' | 'rea' | 'research' | 'counter-geo' | 'counter-geo-vol2' | 'counter-geo-vol3' | 'counter-geo-vol4' | 'counter-geo-vol5' | 'counter-geo-ops' | 'pitch-deck';

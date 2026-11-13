@@ -1195,9 +1195,7 @@ export const CounterGeoFindingsAndLab: React.FC<FindingsAndLabProps> = ({
               ← Overview
             </button>
             <div>
-              <div className="text-[10px] font-mono text-[#D5991C] uppercase font-bold tracking-widest">
-                PAGE 2 // INTERACTIVE FINDINGS, ALGORITHMS & VISUALIZERS
-              </div>
+              
               <h2 className="font-serif text-xl sm:text-2xl font-bold text-[#410217]">
                 Counter-AEO Sovereign Architecture Lab
               </h2>

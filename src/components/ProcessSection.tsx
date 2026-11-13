@@ -1,231 +1,287 @@
-import React, { useState, useRef, useEffect } from 'react';
-import { Radio, Cpu, Crosshair, ShieldCheck, Eye, Terminal, ArrowRight, ShieldAlert, CheckCircle2, Clock } from 'lucide-react';
+import React, { useLayoutEffect, useRef, useState } from 'react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { PROCESS_STEPS, CASE_STUDIES } from '../data/geoData';
 import { SectionHeader } from './home/SectionHeader';
-import { gsap, ScrollTrigger, EASE_OUT } from '../utils/motion';
+import { Shield, CheckCircle2, AlertTriangle, ArrowRight } from 'lucide-react';
+
+gsap.registerPlugin(ScrollTrigger);
 
 export const ProcessSection: React.FC = () => {
-  const [activeStep, setActiveStep] = useState(0);
+  const [activeStepIndex, setActiveStepIndex] = useState(0);
+  const [activeScenarioIndex, setActiveScenarioIndex] = useState(0);
+  const currentStep = PROCESS_STEPS[activeStepIndex];
+  const activeScenario = CASE_STUDIES[activeScenarioIndex] || CASE_STUDIES[0];
 
-  const sectionRef = useRef<HTMLElement>(null);
-  const stepsBarRef = useRef<HTMLDivElement>(null);
-  const detailCardRef = useRef<HTMLDivElement>(null);
+  const rootRef = useRef<HTMLElement>(null);
+  const panelRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (prefersReducedMotion || !sectionRef.current) return;
+  useLayoutEffect(() => {
+    const el = panelRef.current;
+    if (!el) return;
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReduced) return;
 
-    const ctx = gsap.context(() => {
-      if (stepsBarRef.current) {
-        gsap.fromTo(
-          stepsBarRef.current.children,
-          { opacity: 0, y: 25 },
-          {
-            opacity: 1,
-            y: 0,
-            duration: 0.6,
-            stagger: 0.08,
-            ease: EASE_OUT,
-            scrollTrigger: {
-              trigger: stepsBarRef.current,
-              start: 'top 85%',
-              toggleActions: 'play none none reverse'
-            }
-          }
-        );
-      }
-
-      if (detailCardRef.current) {
-        gsap.fromTo(
-          detailCardRef.current,
-          { opacity: 0, y: 30 },
-          {
-            opacity: 1,
-            y: 0,
-            duration: 0.8,
-            ease: EASE_OUT,
-            scrollTrigger: {
-              trigger: detailCardRef.current,
-              start: 'top 82%',
-              toggleActions: 'play none none reverse'
-            }
-          }
-        );
-      }
-    }, sectionRef);
-
-    return () => ctx.revert();
-  }, []);
-
-  const getStepIcon = (iconName: string) => {
-    switch (iconName) {
-      case 'Radio':
-        return <Radio className="w-5 h-5 text-[#D5991C]" />;
-      case 'Cpu':
-        return <Cpu className="w-5 h-5 text-[#410217]" />;
-      case 'Crosshair':
-        return <Crosshair className="w-5 h-5 text-[#8B1E1E]" />;
-      case 'ShieldCheck':
-        return <ShieldCheck className="w-5 h-5 text-[#00A878]" />;
-      case 'Eye':
-        return <Eye className="w-5 h-5 text-[#004566]" />;
-      default:
-        return <Radio className="w-5 h-5 text-[#D5991C]" />;
-    }
-  };
-
-  const currentStep = PROCESS_STEPS[activeStep];
-  const featuredCaseStudy = CASE_STUDIES[0];
+    gsap.fromTo(
+      el,
+      { opacity: 0, y: 10 },
+      { opacity: 1, y: 0, duration: 0.35, ease: 'power2.out' }
+    );
+  }, [activeStepIndex]);
 
   return (
     <section
-      ref={sectionRef}
-      id="process"
-      className="py-24 md:py-32 relative bg-transparent border-t border-[#F2D69D] scroll-mt-20 overflow-hidden"
+      ref={rootRef}
+      className="py-20 md:py-28 bg-[#410217] border-b border-[#F2D69D]/30"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        
-        {/* Section Header */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeader
-          sectionIndex="§ 04"
-          kicker="// Operational Methodology & Lifecycle"
-          title="Five-Stage AEO Defense Lifecycle"
-          italicWord="Defense Lifecycle"
-          description="An institutional-grade 5-stage lifecycle for isolating AI answer distortions, neutralizing poisoned RAG vectors, and reclaiming generative brand sovereignty."
+          title={
+            <>
+              How Our 5-Stage{' '}
+              <em className="italic text-[#D5991C] font-normal">Protection Pipeline Works.</em>
+            </>
+          }
+          subtitle="From mapping what AI chatbots currently say about you to stopping coordinated rumor campaigns in milliseconds, every step is designed to be transparent and verifiable."
         />
 
-        {/* 5-Step Architectural Navigation Strip */}
-        <div ref={stepsBarRef} className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 mb-10">
-          {PROCESS_STEPS.map((item, index) => {
-            const isActive = activeStep === index;
-            return (
-              <button
-                key={item.step}
-                onClick={() => setActiveStep(index)}
-                className={`group p-5 font-mono text-left transition-all duration-300 border relative cursor-pointer ${
-                  isActive
-                    ? 'bg-[#410217] text-[#FBF3E2] border-[#410217] shadow-xl -translate-y-1'
-                    : 'bg-[#FAF2E1] border-[#F2D69D] text-[#410217]/75 hover:bg-[#F3E9D2] hover:text-[#410217]'
-                }`}
-              >
-                <div className="flex items-center justify-between mb-3">
-                  <span className={`text-[11px] font-bold uppercase tracking-widest ${isActive ? 'text-[#D5991C]' : 'text-[#8B5A0B]'}`}>
-                    PHASE {item.step}
-                  </span>
-                  {isActive ? (
-                    <span className="w-2 h-2 rounded-full bg-[#00A878] animate-pulse" />
-                  ) : (
-                    <span className="text-[10px] text-[#410217]/30 group-hover:text-[#410217]/60">0{index + 1}</span>
+        {/* Interactive Animated SVG 5-Stage Pipeline Diagram */}
+        <div className="mb-8 rounded-2xl bg-[#2B010F]/80 border border-[#F2D69D]/25 p-5 sm:p-7">
+          <div className="flex flex-wrap items-center justify-between gap-2 mb-4">
+            <span className="text-sm font-semibold text-[#FBF3E2]">
+              Interactive Pipeline Flow — Click Any Stage to Inspect
+            </span>
+            <span className="text-xs text-[#D5991C]">
+              Active Stage: {currentStep.title}
+            </span>
+          </div>
+
+          <svg viewBox="0 0 960 110" className="w-full h-auto overflow-visible mb-4 hidden md:block">
+            {PROCESS_STEPS.map((step, idx) => {
+              const x = 12 + idx * 192;
+              const isSelected = idx === activeStepIndex;
+              const isPassed = idx <= activeStepIndex;
+              return (
+                <g
+                  key={step.step}
+                  onClick={() => setActiveStepIndex(idx)}
+                  className="cursor-pointer"
+                >
+                  {idx < PROCESS_STEPS.length - 1 && (
+                    <>
+                      <line
+                        x1={x + 168}
+                        y1="55"
+                        x2={x + 192}
+                        y2="55"
+                        stroke={isPassed ? '#D5991C' : '#F2D69D'}
+                        strokeOpacity={isPassed ? '0.9' : '0.25'}
+                        strokeWidth="2.5"
+                      />
+                      <circle r="3.5" fill={isPassed ? '#00FF9D' : '#D5991C'}>
+                        <animate
+                          attributeName="cx"
+                          from={x + 168}
+                          to={x + 192}
+                          dur="1.3s"
+                          repeatCount="indefinite"
+                        />
+                        <animate attributeName="cy" values="55;55" dur="1.3s" repeatCount="indefinite" />
+                      </circle>
+                    </>
                   )}
-                </div>
+                  <rect
+                    x={x}
+                    y="15"
+                    width="168"
+                    height="80"
+                    rx="12"
+                    fill={isSelected ? '#D5991C' : '#350213'}
+                    stroke={isSelected ? '#FBF3E2' : '#D5991C'}
+                    strokeOpacity={isSelected ? '1' : '0.45'}
+                    strokeWidth={isSelected ? '2' : '1.5'}
+                  />
+                  <text
+                    x={x + 84}
+                    y="45"
+                    textAnchor="middle"
+                    fill={isSelected ? '#130108' : '#D5991C'}
+                    fontSize="13"
+                    fontWeight="700"
+                  >
+                    {idx + 1}. {step.name}
+                  </text>
+                  <text
+                    x={x + 84}
+                    y="68"
+                    textAnchor="middle"
+                    fill={isSelected ? '#130108' : '#FBF3E2'}
+                    fontSize="10.5"
+                    fontWeight="500"
+                  >
+                    {step.title.split(' ').slice(0, 3).join(' ')}
+                  </text>
+                </g>
+              );
+            })}
+          </svg>
 
-                <div className={`font-serif font-bold text-base truncate tracking-tight mb-1 ${isActive ? 'text-[#FBF3E2]' : 'text-[#410217]'}`}>
-                  {item.phase}
-                </div>
-
-                <div className={`font-mono text-[10px] truncate ${isActive ? 'text-[#FBF3E2]/70' : 'text-[#410217]/50'}`}>
-                  {item.title}
-                </div>
-
-                {isActive && (
-                  <div className="absolute -bottom-1.5 left-1/2 transform -translate-x-1/2 w-3 h-3 bg-[#410217] rotate-45" />
-                )}
-              </button>
-            );
-          })}
-        </div>
-
-        {/* Active Step Detailed Card */}
-        <div ref={detailCardRef} className="bg-[#FAF2E1] border border-[#F2D69D] p-8 md:p-10 shadow-lg relative overflow-hidden bg-linear-to-b from-[#FFFDF8] to-[#FAF2E1]">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
-            
-            {/* Left Content Column */}
-            <div className="lg:col-span-7 flex flex-col justify-between space-y-6">
-              <div>
-                <div className="flex items-center space-x-3.5 font-mono text-xs mb-4">
-                  <div className="w-10 h-10 bg-[#FFFDF8] border border-[#410217]/30 flex items-center justify-center shadow-xs">
-                    {getStepIcon(currentStep.icon)}
+          {/* Mobile / Tablet Step Buttons */}
+          <div className="grid grid-cols-2 sm:grid-cols-5 gap-2 md:hidden mb-4">
+            {PROCESS_STEPS.map((step, idx) => {
+              const isSelected = idx === activeStepIndex;
+              return (
+                <button
+                  key={step.step}
+                  onClick={() => setActiveStepIndex(idx)}
+                  className={`p-3 rounded-xl text-left border transition-all cursor-pointer ${
+                    isSelected
+                      ? 'bg-[#D5991C] text-[#130108] border-[#FBF3E2] font-bold'
+                      : 'bg-[#350213] text-[#FBF3E2] border-[#F2D69D]/20'
+                  }`}
+                >
+                  <div className="text-xs font-bold">
+                    {idx + 1}. {step.name}
                   </div>
-                  <div>
-                    <div className="text-[#8B5A0B] uppercase tracking-widest text-[10px] font-bold">
-                      STAGE {currentStep.step} // OPERATIONAL PROTOCOL
-                    </div>
-                    <div className="font-serif font-bold text-[#410217] text-lg uppercase tracking-wide">
-                      {currentStep.phase}
-                    </div>
-                  </div>
-                </div>
+                </button>
+              );
+            })}
+          </div>
 
-                <h3 className="font-serif text-2xl sm:text-3xl text-[#410217] tracking-tight mb-3">
-                  {currentStep.title}
-                </h3>
-
-                <p className="text-[#410217]/85 text-sm sm:text-base leading-relaxed font-sans">
-                  {currentStep.description}
-                </p>
+          {/* Active Stage Explanation Card */}
+          <div
+            ref={panelRef}
+            key={currentStep.step}
+            className="rounded-xl bg-[#410217]/90 border border-[#D5991C]/40 p-6 sm:p-8 grid grid-cols-1 lg:grid-cols-12 gap-6 items-center"
+          >
+            <div className="lg:col-span-7 space-y-3">
+              <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-[#D5991C]/15 text-[#D5991C] text-xs font-semibold">
+                <span>Step {activeStepIndex + 1} of 5</span>
+                <span>·</span>
+                <span>{currentStep.name}</span>
               </div>
-
-              {/* Guarantees & SLAs */}
-              <div className="pt-6 border-t border-[#F2D69D] grid grid-cols-1 sm:grid-cols-2 gap-4 font-mono text-xs">
-                <div className="bg-[#FFFDF8] p-4 border border-[#F2D69D]">
-                  <div className="flex items-center gap-2 mb-1">
-                    <Clock className="w-3.5 h-3.5 text-[#00A878]" />
-                    <span className="text-[#410217]/60 uppercase tracking-wider text-[10px] font-bold">AUTOMATION SLA</span>
-                  </div>
-                  <span className="text-[#00A878] font-bold text-sm">&lt; 15 Seconds Latency</span>
-                  <p className="text-[10px] text-[#410217]/60 mt-1 font-sans">Real-time vector pipeline trigger upon perturbance detection.</p>
-                </div>
-
-                <div className="bg-[#FFFDF8] p-4 border border-[#F2D69D]">
-                  <div className="flex items-center gap-2 mb-1">
-                    <CheckCircle2 className="w-3.5 h-3.5 text-[#D5991C]" />
-                    <span className="text-[#410217]/60 uppercase tracking-wider text-[10px] font-bold">CROSS-ENGINE SYNC</span>
-                  </div>
-                  <span className="text-[#410217] font-bold text-sm">15 Frontier LLMs</span>
-                  <p className="text-[10px] text-[#410217]/60 mt-1 font-sans">Simultaneous verification across search & enterprise APIs.</p>
-                </div>
-              </div>
+              <h3 className="font-serif text-2xl sm:text-3xl text-[#FBF3E2]">
+                {currentStep.title}
+              </h3>
+              <p className="text-sm sm:text-base text-[#FBF3E2]/85 leading-relaxed">
+                {currentStep.description}
+              </p>
             </div>
 
-            {/* Right Telemetry Terminal & Case Study Snippet */}
-            <div className="lg:col-span-5 flex flex-col justify-between space-y-4">
-              {/* Telemetry Console */}
-              <div className="bg-[#000D13] p-5 border border-[#410217]/40 font-mono text-xs text-[#FBF3E2] space-y-2.5 shadow-inner">
-                <div className="flex items-center justify-between pb-3 border-b border-white/10 text-[#F2D69D]/60 text-[11px] font-bold">
-                  <div className="flex items-center gap-2">
-                    <Terminal className="w-3.5 h-3.5 text-[#D5991C]" />
-                    <span>PROCESS_EXEC // STEP_{currentStep.step}</span>
-                  </div>
-                  <span className="text-[#00A878] font-bold">NOMINAL</span>
+            <div className="lg:col-span-5 space-y-3">
+              <div className="p-4 rounded-xl bg-[#2B010F] border border-[#F2D69D]/20">
+                <div className="text-xs font-semibold text-[#D5991C] mb-1">
+                  What Happens Behind the Scenes
                 </div>
-                
-                <p className="text-white/40 text-[11px]"># Executing Stage {currentStep.step} subroutines...</p>
-                <p className="text-[#D5991C] font-bold text-[11px]">&gt; LastCrusadeDefense.Engine.Execute("{currentStep.phase}")</p>
-                <p className="text-[#FBF3E2]/85 text-[11px]">&gt; Target Node: RAG Vector Index [1536-dim]</p>
-                <p className="text-[#00A878] text-[11px]">&gt; Cosine Distance Restored: 0.02 (Tolerable &lt; 0.05)</p>
-                <p className="text-[#FBF3E2]/60 text-[10px] pt-1 border-t border-white/10">
-                  SHA-256: 9e3a...b8c1 // Timestamp: {new Date().toISOString().split('T')[0]}
+                <p className="text-xs text-[#FBF3E2]/85 leading-relaxed">
+                  {currentStep.technicalDetail}
                 </p>
               </div>
-
-              {/* Case Study Callout */}
-              <div className="bg-[#FAF2E1] border border-[#F2D69D] p-5 space-y-2">
-                <div className="flex items-center justify-between font-mono text-[10px]">
-                  <span className="text-[#8B5A0B] uppercase font-bold tracking-wider">// VERIFIED FIELD ACTION</span>
-                  <span className="text-[#410217]/60">{featuredCaseStudy.timeframe}</span>
+              <div className="p-4 rounded-xl bg-[#1F010B] border border-[#00A878]/35">
+                <div className="flex items-center space-x-1.5 text-xs font-semibold text-[#00FF9D] mb-1">
+                  <CheckCircle2 className="w-3.5 h-3.5" />
+                  <span>Example Outcome</span>
                 </div>
-                <div className="font-serif font-bold text-sm text-[#410217]">
-                  {featuredCaseStudy.headline}
-                </div>
-                <div className="font-mono text-[10px] text-[#00A878] font-bold">
-                  Resolved across ChatGPT, Perplexity, Copilot, & Claude
-                </div>
+                <p className="text-xs text-[#FBF3E2]/85 leading-relaxed">
+                  {currentStep.sampleLog}
+                </p>
               </div>
             </div>
-
           </div>
         </div>
 
+        {/* Interactive Real-World Threat & Defense Scenarios */}
+        <div className="mt-14 rounded-2xl bg-[#2B010F]/90 border border-[#F2D69D]/30 p-6 sm:p-8 shadow-xl">
+          <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 pb-6 border-b border-[#F2D69D]/20">
+            <div>
+              <h3 className="font-serif text-2xl sm:text-3xl text-[#FBF3E2]">
+                Threat &amp; Defense Scenarios in Action
+              </h3>
+              <p className="text-sm text-[#FBF3E2]/75 mt-1">
+                Select a scenario below to see how an attack unfolds and how our defense architecture neutralizes it in benchmark simulations.
+              </p>
+            </div>
+
+            <div className="flex flex-wrap gap-2">
+              {CASE_STUDIES.map((cs, idx) => (
+                <button
+                  key={cs.id}
+                  onClick={() => setActiveScenarioIndex(idx)}
+                  className={`px-3.5 py-2 rounded-lg text-xs font-semibold border transition-all cursor-pointer ${
+                    activeScenarioIndex === idx
+                      ? 'bg-[#D5991C] text-[#130108] border-[#FBF3E2] shadow-xs'
+                      : 'bg-[#410217] text-[#FBF3E2]/80 border-[#F2D69D]/25 hover:border-[#D5991C]/50'
+                  }`}
+                >
+                  {cs.sector}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <div className="mt-6 grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
+            <div className="lg:col-span-7 space-y-4">
+              <div className="text-xs font-semibold text-[#D5991C]">
+                {activeScenario.clientType}
+              </div>
+              <h4 className="font-serif text-2xl text-[#FBF3E2] leading-snug">
+                {activeScenario.headline}
+              </h4>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+                <div className="p-4 rounded-xl bg-[#410217]/80 border border-[#E63946]/30">
+                  <div className="flex items-center space-x-1.5 text-xs font-semibold text-[#FF8093] mb-1.5">
+                    <AlertTriangle className="w-3.5 h-3.5" />
+                    <span>The Attack Scenario</span>
+                  </div>
+                  <p className="text-xs text-[#FBF3E2]/85 leading-relaxed">
+                    {activeScenario.challenge}
+                  </p>
+                </div>
+
+                <div className="p-4 rounded-xl bg-[#410217]/80 border border-[#00A878]/35">
+                  <div className="flex items-center space-x-1.5 text-xs font-semibold text-[#00FF9D] mb-1.5">
+                    <Shield className="w-3.5 h-3.5" />
+                    <span>How the Shield Responds</span>
+                  </div>
+                  <p className="text-xs text-[#FBF3E2]/85 leading-relaxed">
+                    {activeScenario.intervention}
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div className="lg:col-span-5 flex flex-col justify-between p-5 rounded-xl bg-[#410217]/85 border border-[#F2D69D]/20">
+              <div>
+                <div className="text-xs font-semibold text-[#F2D69D] mb-3">
+                  Simulation Benchmark Outcomes
+                </div>
+                <div className="grid grid-cols-3 gap-3 mb-5">
+                  {activeScenario.outcomeMetrics.map((m, idx) => (
+                    <div key={idx} className="p-3 rounded-lg bg-[#2B010F] border border-[#F2D69D]/15 text-center">
+                      <div className="font-serif text-xl sm:text-2xl text-[#D5991C] font-bold">
+                        {m.value}
+                      </div>
+                      <div className="text-[11px] text-[#FBF3E2]/75 mt-1 leading-tight">
+                        {m.label}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div className="pt-4 border-t border-[#F2D69D]/15">
+                <p className="font-serif italic text-sm text-[#FBF3E2]/90 leading-relaxed">
+                  &ldquo;{activeScenario.quote}&rdquo;
+                </p>
+                <div className="mt-2 text-xs text-[#D5991C] font-medium flex items-center space-x-1">
+                  <ArrowRight className="w-3 h-3" />
+                  <span>{activeScenario.quoteAuthor}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   );

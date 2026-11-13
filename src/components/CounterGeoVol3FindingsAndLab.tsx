@@ -694,9 +694,7 @@ export const CounterGeoVol3FindingsAndLab: React.FC<Vol3FindingsAndLabProps> = (
               ← Overview
             </button>
             <div>
-              <div className="text-[10px] font-mono text-[#D5991C] uppercase font-bold tracking-widest">
-                PAGE 2 // EXPERIMENTAL BENCHMARK & SIMULATION SUITE
-              </div>
+              
               <h2 className="font-serif text-xl sm:text-2xl font-bold text-[#410217]">
                 CounterAEO-Bench & Market Stress Lab (Vol. 3)
               </h2>

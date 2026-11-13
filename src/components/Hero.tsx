@@ -1,217 +1,579 @@
-import React, { useLayoutEffect, useRef } from 'react';
-import { ArrowRight, ArrowUpRight } from 'lucide-react';
-import Globe from './Globe';
+import React, { useLayoutEffect, useRef, useState } from 'react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { ArrowUpRight, Shield, AlertTriangle, CheckCircle2, Sparkles, BookOpen, Compass } from 'lucide-react';
 import { NavigationPage } from '../types';
-import { gsap, SplitText, MOTION_OK, EASE_OUT, EASE_IN_OUT } from '../utils/motion';
+import Globe from './Globe';
+
+const PETRA_GLOBE_DOTS_CONFIG = { color: '#F2D69D', size: 4, density: 8, allDots: false };
+
+gsap.registerPlugin(ScrollTrigger);
 
 interface HeroProps {
   onOpenAudit: () => void;
   onOpenIncident: () => void;
-  onNavigate?: (page: NavigationPage) => void;
+  onNavigate: (page: NavigationPage) => void;
 }
 
-const PETRA_GLOBE_DOTS_CONFIG = { color: '#F2D69D', size: 4, density: 8, allDots: false };
+interface RealWorldStat {
+  figure: string;
+  label: string;
+  detail: string;
+  source: string;
+}
 
-const FIGURES = [
-  { value: 42.8, decimals: 1, prefix: '', suffix: 'M+', label: 'AI citations monitored', note: '¹' },
-  { value: 14289, decimals: 0, prefix: '', suffix: '', label: 'Poisoned RAG sources neutralized', note: '²' },
-  { value: 98.4, decimals: 1, prefix: '', suffix: '%', label: 'Hallucinated claim suppression', note: '³' },
-  { value: 4.2, decimals: 1, prefix: '< ', suffix: 'm', label: 'Mean time to countermeasure', note: '⁴' }
+const REAL_WORLD_STATS: RealWorldStat[] = [
+  {
+    figure: '49%',
+    label: 'U.S. adults using AI chatbots',
+    detail: 'Nearly half of American adults now use generative AI engines alongside or instead of traditional search.',
+    source: 'Pew Research',
+  },
+  {
+    figure: '64%',
+    label: 'Adoption among U.S. teenagers',
+    detail: 'Next-generation consumers and investors treat synthesized AI answers as their primary starting point.',
+    source: 'Pew Research',
+  },
+  {
+    figure: '58.5%',
+    label: 'Searches ending with zero clicks',
+    detail: 'Users read the AI summary directly on the page instead of clicking out to external websites.',
+    source: 'SparkToro / Datos',
+  },
+  {
+    figure: '5 Volumes',
+    label: 'Original Counter-AEO research',
+    detail: '232 pages of open technical research, interactive 3D simulations, and defense architectures.',
+    source: 'Last Crusade Research',
+  },
 ];
 
-const formatFigure = (n: number, decimals: number) =>
-  decimals > 0 ? n.toFixed(decimals) : Math.round(n).toLocaleString('en-US');
-
-export const Hero: React.FC<HeroProps> = ({ onOpenAudit, onNavigate }) => {
-  const sectionRef = useRef<HTMLElement>(null);
-  const titleRef = useRef<HTMLHeadingElement>(null);
-  const globeRef = useRef<HTMLDivElement>(null);
-  const figuresRef = useRef<HTMLDivElement>(null);
-
-  const directAccess: { page: NavigationPage; title: string; detail: string }[] = [
-    { page: 'rea', title: 'REA Studio', detail: 'Reverse-engineering workbench' },
-    { page: 'research', title: 'Research Corpus', detail: 'Volumes I, II, III · Whitepapers & Labs' },
-    { page: 'counter-geo-ops', title: 'Strategy Library', detail: 'Offensive AEO & countermeasures' },
-    { page: 'pitch-deck', title: 'Pitch Deck', detail: 'Last Crusade & Petra Labs proposal' }
-  ];
+export const Hero: React.FC<HeroProps> = ({
+  onOpenAudit,
+  onNavigate,
+}) => {
+  const rootRef = useRef<HTMLElement>(null);
+  const [flowMode, setFlowMode] = useState<'protected' | 'unprotected'>('protected');
 
   useLayoutEffect(() => {
-    const section = sectionRef.current;
-    if (!section) return;
-    const mm = gsap.matchMedia();
+    const el = rootRef.current;
+    if (!el) return;
 
-    mm.add(MOTION_OK, () => {
-      // Intro sequence on load
-      const intro = gsap.timeline({ defaults: { ease: EASE_OUT } });
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReduced) return;
 
-      const split = SplitText.create(titleRef.current, {
-        type: 'lines',
-        linesClass: 'split-line',
-        autoSplit: true,
-        onSplit: (self) => gsap.from(self.lines, { y: 24, autoAlpha: 0, duration: 1.2, ease: EASE_OUT, stagger: 0.1, delay: 0.1 })
-      });
+    const ctx = gsap.context(() => {
+      const rule = el.querySelector<HTMLElement>('[data-hero-rule]');
+      const headline = el.querySelectorAll<HTMLElement>('[data-hero-line]');
+      const deck = el.querySelector<HTMLElement>('[data-hero-deck]');
+      const ctas = el.querySelector<HTMLElement>('[data-hero-ctas]');
+      const globe = el.querySelector<HTMLElement>('[data-hero-globe]');
+      const diagram = el.querySelector<HTMLElement>('[data-hero-diagram]');
+      const stats = el.querySelectorAll<HTMLElement>('[data-stat-card]');
 
-      intro.from('[data-hero-fade]', { autoAlpha: 0, y: 24, duration: 1.1, stagger: 0.1 }, 0.4);
-      intro.from(globeRef.current, { autoAlpha: 0, scale: 0.86, duration: 2, ease: 'power3.out' }, 0.2);
+      const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
 
-      // Globe drifts upward as the hero scrolls away
-      gsap.to(globeRef.current, {
-        yPercent: -18,
-        ease: 'none',
-        scrollTrigger: { trigger: section, start: 'top top', end: 'bottom top', scrub: true }
-      });
+      if (rule) {
+        tl.fromTo(
+          rule,
+          { scaleX: 0, transformOrigin: 'left center' },
+          { scaleX: 1, duration: 1.0, ease: 'expo.out' },
+          0
+        );
+      }
 
-      // Index rows and figures
-      gsap.from('[data-hero-index]', {
-        autoAlpha: 0,
-        y: 30,
-        duration: 1,
-        stagger: 0.1,
-        ease: EASE_OUT,
-        scrollTrigger: { trigger: '[data-hero-index-wrap]', start: 'top 90%', once: true }
-      });
+      if (headline.length) {
+        tl.fromTo(
+          headline,
+          { yPercent: 100, opacity: 0 },
+          { yPercent: 0, opacity: 1, duration: 0.9, stagger: 0.08 },
+          0.12
+        );
+      }
 
-      const figureEls = figuresRef.current?.querySelectorAll<HTMLElement>('[data-count]') ?? [];
-      figureEls.forEach((el) => {
-        const target = Number(el.dataset.count);
-        const decimals = Number(el.dataset.decimals);
-        const counter = { val: 0 };
-        el.textContent = formatFigure(0, decimals);
-        gsap.to(counter, {
-          val: target,
-          duration: 2.2,
-          ease: 'power3.out',
-          scrollTrigger: { trigger: figuresRef.current, start: 'top 88%', once: true },
-          onUpdate: () => {
-            el.textContent = formatFigure(counter.val, decimals);
+      if (deck) {
+        tl.fromTo(deck, { y: 16, opacity: 0 }, { y: 0, opacity: 1, duration: 0.75 }, 0.4);
+      }
+
+      if (ctas) {
+        tl.fromTo(ctas, { y: 14, opacity: 0 }, { y: 0, opacity: 1, duration: 0.7 }, 0.52);
+      }
+
+      if (globe) {
+        tl.fromTo(
+          globe,
+          { opacity: 0, scale: 0.96 },
+          { opacity: 1, scale: 1, duration: 1.1, ease: 'expo.out' },
+          0.2
+        );
+      }
+
+      if (diagram) {
+        gsap.fromTo(
+          diagram,
+          { y: 24, opacity: 0 },
+          {
+            y: 0,
+            opacity: 1,
+            duration: 0.85,
+            ease: 'power3.out',
+            scrollTrigger: {
+              trigger: diagram,
+              start: 'top 90%',
+              once: true,
+            },
           }
-        });
-      });
+        );
+      }
 
-      return () => split.revert();
-    });
+      if (stats.length) {
+        gsap.fromTo(
+          stats,
+          { y: 20, opacity: 0 },
+          {
+            y: 0,
+            opacity: 1,
+            duration: 0.7,
+            stagger: 0.08,
+            ease: 'power3.out',
+            scrollTrigger: {
+              trigger: stats[0],
+              start: 'top 92%',
+              once: true,
+            },
+          }
+        );
+      }
+    }, el);
 
-    return () => mm.revert();
+    return () => ctx.revert();
   }, []);
 
   return (
-    <section ref={sectionRef} className="relative overflow-visible bg-transparent">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        {/* Headline + globe */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center pt-8 md:pt-12">
-          <div className="lg:col-span-6">
-            <h1
-              ref={titleRef}
-              className="font-display text-[clamp(2.75rem,6.2vw,5.6rem)] leading-[1.14] text-[#410217]"
-            >
-              Defending America in the era of the <em className="text-[#8B5A0B]">generative engine.</em>
-            </h1>
+    <section
+      ref={rootRef}
+      className="relative overflow-hidden border-b border-[#F2D69D]/30 bg-gradient-to-b from-[#410217] via-[#3A0215] to-[#410217]"
+    >
+      {/* Subtle ambient glow */}
+      <div className="pointer-events-none absolute -top-32 left-1/4 w-[36rem] h-[36rem] rounded-full bg-[#D5991C]/8 blur-3xl" />
 
-            <p
-              data-hero-fade
-              className="mt-10 max-w-xl border-l border-[#410217]/25 pl-5 text-base sm:text-[17px] leading-relaxed text-[#410217]/75"
-            >
-              Our mission is to detect and counter AEO abuse by foreign adversaries looking to politically, culturally, and financially influence the United States, as well counter the threat of domestic and international financial interests looking to manipulate markets through the use of AEO within agentic trading.
-            </p>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 pb-16 md:pt-14 md:pb-24 relative z-10">
+        <div
+          data-hero-rule
+          className="h-px w-full bg-gradient-to-r from-[#D5991C]/60 via-[#F2D69D]/30 to-transparent mb-10 md:mb-12"
+        />
 
-            <div data-hero-fade className="mt-10 flex flex-wrap items-center gap-x-8 gap-y-4">
-              <button
-                onClick={onOpenAudit}
-                className="group inline-flex items-center gap-4 bg-[#410217] hover:bg-[#2B0110] text-[#FBF3E2] pl-7 pr-5 py-4 text-[13px] font-semibold tracking-wide transition-colors cursor-pointer"
-              >
-                <span>Request a AEO audit</span>
-                <span className="w-8 h-8 border border-[#FBF3E2]/25 flex items-center justify-center overflow-hidden">
-                  <ArrowRight className="w-4 h-4 text-[#D5991C] transition-transform duration-500 group-hover:translate-x-1" />
+        {/* Main Hero Split: Copy Left + 3D Interactive Globe Right */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-center">
+          {/* Left Column (7 cols): Human Editorial Headline & Actions */}
+          <div className="lg:col-span-7 flex flex-col justify-between">
+            <div>
+              <h1 className="font-serif text-[#FBF3E2] font-normal tracking-[-0.025em] leading-[1.03] text-[2.6rem] sm:text-6xl xl:text-[4.4rem]">
+                <span className="block overflow-hidden pb-1">
+                  <span data-hero-line className="block">
+                    Securing the Answers
+                  </span>
                 </span>
-              </button>
+                <span className="block overflow-hidden pb-1">
+                  <span data-hero-line className="block">
+                    AI Gives <em className="italic text-[#D5991C] font-normal">the World.</em>
+                  </span>
+                </span>
+              </h1>
 
-              <a href="#problem" className="link-underline text-[13px] font-semibold text-[#410217]">
-                See how AEO attacks work
-              </a>
+              <p
+                data-hero-deck
+                className="mt-6 text-base sm:text-lg text-[#FBF3E2]/85 font-sans leading-relaxed max-w-2xl"
+              >
+                When people, investors, and software agents ask ChatGPT, Perplexity, Claude, or Google AI a question, they don&apos;t scroll through ten blue links—they trust a single synthesized answer.{' '}
+                <strong className="text-[#FBF3E2] font-semibold">Answer Engine Optimization (AEO)</strong> shapes what those models say. We build the offensive and defensive technology to make sure AI cites verified truth—and to stop bad actors from poisoning AI answers, financial markets, and autonomous agents.
+              </p>
+            </div>
+
+            {/* Action CTAs */}
+            <div data-hero-ctas className="mt-8 pt-6 border-t border-[#F2D69D]/20">
+              <div className="flex flex-wrap items-center gap-3.5">
+                <button
+                  onClick={() => onNavigate('pitch-deck')}
+                  className="group inline-flex items-center space-x-2.5 px-6 py-3.5 rounded-lg bg-gradient-to-r from-[#D5991C] to-[#E5A932] hover:from-[#E5A932] hover:to-[#F2D69D] text-[#130108] font-sans font-semibold text-sm transition-all shadow-md cursor-pointer"
+                >
+                  <Compass className="w-4 h-4 text-[#130108]" />
+                  <span>View Cover Deck</span>
+                  <ArrowUpRight className="w-4 h-4 text-[#130108] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                </button>
+
+                <button
+                  onClick={() => onNavigate('counter-geo-ops')}
+                  className="group inline-flex items-center space-x-2 px-5 py-3.5 rounded-lg bg-[#2B010F] hover:bg-[#5C0A24] text-[#FBF3E2] border border-[#D5991C]/45 font-sans font-medium text-sm transition-all cursor-pointer"
+                >
+                  <Sparkles className="w-4 h-4 text-[#D5991C]" />
+                  <span>Explore 3D Threat Lab</span>
+                </button>
+
+                <button
+                  onClick={() => onNavigate('research')}
+                  className="inline-flex items-center space-x-2 px-5 py-3.5 rounded-lg bg-transparent hover:bg-[#FBF3E2]/10 text-[#FBF3E2]/90 border border-[#F2D69D]/30 font-sans font-medium text-sm transition-colors cursor-pointer"
+                >
+                  <BookOpen className="w-4 h-4 text-[#D5991C]" />
+                  <span>Read the 5 Whitepapers</span>
+                </button>
+              </div>
             </div>
           </div>
 
-          <div className="lg:col-span-6 flex items-center justify-center relative">
-            <div ref={globeRef} className="w-full max-w-[560px] aspect-square relative flex items-center justify-center">
-              <Globe
-                speed={1.2}
-                smoothing={8}
-                dots={PETRA_GLOBE_DOTS_CONFIG}
-                fill="dots"
-                fillColor="#F2D69D"
-                scale={9.5}
-                stopOnHover={false}
-                direction="left"
-                oceanColor="#340112"
-                outlineColor="#D5991C"
-                showOutline={true}
-                graticuleColor="rgba(242, 214, 157, 0.15)"
-                showGrid={true}
-                outlineWidth={1}
-                arcColor="#D5991C"
-                pulseColor="#FBF3E2"
-              />
+          {/* Right Column (5 cols): Interactive 3D Globe */}
+          <div data-hero-globe className="lg:col-span-5">
+            <div className="rounded-2xl border border-[#F2D69D]/30 bg-[#2B010F]/60 p-3 shadow-2xl backdrop-blur-xs">
+              <div className="w-full aspect-square max-h-[390px] mx-auto relative flex items-center justify-center">
+                <Globe
+                  speed={1.2}
+                  smoothing={8}
+                  dots={PETRA_GLOBE_DOTS_CONFIG}
+                  fill="dots"
+                  fillColor="#F2D69D"
+                  scale={9.5}
+                  stopOnHover={false}
+                  direction="left"
+                  oceanColor="#340112"
+                  outlineColor="#D5991C"
+                  showOutline={true}
+                  graticuleColor="rgba(242, 214, 157, 0.15)"
+                  showGrid={true}
+                  outlineWidth={1}
+                  arcColor="#D5991C"
+                  pulseColor="#FBF3E2"
+                />
+              </div>
+              <div className="mt-2 px-2 py-1.5 flex items-center justify-between text-xs text-[#FBF3E2]/75 font-sans">
+                <span>Interactive 3D Global AI Answer Network</span>
+                <span className="text-[#D5991C] font-medium">Drag to rotate</span>
+              </div>
             </div>
           </div>
         </div>
 
-        {/* Index of tools */}
-        {onNavigate && (
-          <div data-hero-index-wrap className="mt-16 md:mt-20">
-            <div className="font-mono text-[10px] uppercase tracking-[0.22em] text-[#410217]/50 mb-3">Index</div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 border-t border-[#410217]/20">
-              {directAccess.map((item, i) => (
-                <button
-                  key={item.page}
-                  data-hero-index
-                  onClick={() => onNavigate(item.page)}
-                  className={`group text-left py-6 px-4 first:pl-0 border-b lg:border-b-0 border-[#410217]/15 ${
-                    i > 0 ? 'lg:border-l' : ''
-                  } ${i % 2 === 1 ? 'md:border-l lg:border-l' : ''} cursor-pointer`}
-                >
-                  <div className="flex items-start justify-between gap-4">
-                    <div>
-                      <span className="font-mono text-[11px] text-[#8B5A0B]">0{i + 1}</span>
-                      <div className="font-serif text-2xl text-[#410217] mt-1 group-hover:italic transition-all">
-                        {item.title}
-                      </div>
-                      <div className="text-[13px] text-[#410217]/55 mt-1">{item.detail}</div>
-                    </div>
-                    <ArrowUpRight className="w-5 h-5 text-[#410217]/40 transition-all duration-500 group-hover:text-[#410217] group-hover:-translate-y-1 group-hover:translate-x-1" />
-                  </div>
-                </button>
-              ))}
+        {/* Interactive Visual Diagram: How AEO & Counter-AEO Work in Plain Sight */}
+        <div
+          data-hero-diagram
+          className="mt-14 md:mt-18 rounded-2xl border border-[#F2D69D]/30 bg-[#2B010F]/75 p-6 sm:p-8 shadow-xl backdrop-blur-xs"
+        >
+          <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-6 border-b border-[#F2D69D]/20">
+            <div>
+              <h2 className="font-serif text-2xl sm:text-3xl text-[#FBF3E2]">
+                How AI Engines Form Their Answers—And Why Protection Matters
+              </h2>
+              <p className="text-sm text-[#FBF3E2]/75 mt-1 font-sans">
+                Toggle between an unprotected AI search pipeline and one protected by Last Crusade to see how bad data gets filtered out before it reaches people or automated systems.
+              </p>
+            </div>
+
+            {/* Interactive Mode Toggle */}
+            <div className="inline-flex rounded-lg p-1 bg-[#1A0009] border border-[#F2D69D]/25 shrink-0">
+              <button
+                onClick={() => setFlowMode('unprotected')}
+                className={`flex items-center space-x-1.5 px-3.5 py-2 rounded-md text-xs font-semibold transition-all cursor-pointer ${
+                  flowMode === 'unprotected'
+                    ? 'bg-[#E63946] text-white shadow-xs'
+                    : 'text-[#FBF3E2]/70 hover:text-[#FBF3E2]'
+                }`}
+              >
+                <AlertTriangle className="w-3.5 h-3.5" />
+                <span>Unprotected AI Search</span>
+              </button>
+              <button
+                onClick={() => setFlowMode('protected')}
+                className={`flex items-center space-x-1.5 px-3.5 py-2 rounded-md text-xs font-semibold transition-all cursor-pointer ${
+                  flowMode === 'protected'
+                    ? 'bg-[#00A878] text-white shadow-xs'
+                    : 'text-[#FBF3E2]/70 hover:text-[#FBF3E2]'
+                }`}
+              >
+                <Shield className="w-3.5 h-3.5" />
+                <span>Protected by Last Crusade</span>
+              </button>
             </div>
           </div>
-        )}
 
-        {/* Figures */}
-        <div ref={figuresRef} className="mt-6 md:mt-10 pb-16 md:pb-24">
-          <div className="grid grid-cols-2 lg:grid-cols-4 border-t border-[#410217]/20">
-            {FIGURES.map((f, i) => (
-              <div
-                key={f.label}
-                className={`pt-6 pb-2 pr-4 ${i % 2 === 1 ? 'pl-4 border-l' : ''} ${i >= 2 ? 'lg:pl-4 lg:border-l' : ''} ${
-                  i === 2 ? 'border-t lg:border-t-0 mt-6 lg:mt-0' : ''
-                } ${i === 3 ? 'border-t lg:border-t-0 mt-6 lg:mt-0' : ''} border-[#410217]/15`}
-              >
-                <div className="font-display text-[clamp(2.6rem,4.6vw,4.25rem)] text-[#410217] tabular-nums">
-                  {f.prefix}
-                  <span data-count={f.value} data-decimals={f.decimals}>
-                    {formatFigure(f.value, f.decimals)}
-                  </span>
-                  {f.suffix}
-                </div>
-                <div className="mt-3 text-[13px] text-[#410217]/60 leading-snug">
-                  {f.label}
-                  <sup className="ml-0.5 text-[#8B5A0B]">{f.note}</sup>
-                </div>
-              </div>
-            ))}
+          {/* Animated SVG Architecture Flow Diagram */}
+          <div className="mt-6">
+            <svg
+              viewBox="0 0 960 280"
+              className="w-full h-auto overflow-visible"
+              role="img"
+              aria-label="Interactive AI Answer Pipeline Diagram"
+            >
+              <defs>
+                <linearGradient id="cleanLineGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" stopColor="#D5991C" stopOpacity="0.8" />
+                  <stop offset="100%" stopColor="#00A878" stopOpacity="0.9" />
+                </linearGradient>
+                <linearGradient id="poisonLineGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" stopColor="#E63946" stopOpacity="0.9" />
+                  <stop offset="100%" stopColor="#FF8093" stopOpacity="0.9" />
+                </linearGradient>
+                <filter id="softGlow" x="-20%" y="-20%" width="140%" height="140%">
+                  <feGaussianBlur stdDeviation="4" result="blur" />
+                  <feComposite in="SourceGraphic" in2="blur" operator="over" />
+                </filter>
+              </defs>
+
+              {/* Column 1: Web Sources */}
+              <g transform="translate(20, 25)">
+                <rect width="200" height="95" rx="10" fill="#350213" stroke="#00A878" strokeWidth="1.5" />
+                <circle cx="24" cy="26" r="5" fill="#00A878" />
+                <text x="38" y="30" fill="#FBF3E2" fontSize="13" fontWeight="600">
+                  Verified Web Sources
+                </text>
+                <text x="20" y="52" fill="#FBF3E2" fillOpacity="0.75" fontSize="11">
+                  Official filings, real news,
+                </text>
+                <text x="20" y="68" fill="#FBF3E2" fillOpacity="0.75" fontSize="11">
+                  and authentic documentation
+                </text>
+              </g>
+
+              <g transform="translate(20, 155)">
+                <rect
+                  width="200"
+                  height="95"
+                  rx="10"
+                  fill="#350213"
+                  stroke="#E63946"
+                  strokeWidth="1.5"
+                  strokeDasharray={flowMode === 'protected' ? '4 3' : 'none'}
+                />
+                <circle cx="24" cy="26" r="5" fill="#E63946" />
+                <text x="38" y="30" fill="#FF8093" fontSize="13" fontWeight="600">
+                  Manipulated &amp; Fake Pages
+                </text>
+                <text x="20" y="52" fill="#FBF3E2" fillOpacity="0.75" fontSize="11">
+                  Fake stats, hidden prompt traps,
+                </text>
+                <text x="20" y="68" fill="#FBF3E2" fillOpacity="0.75" fontSize="11">
+                  and coordinated rumor sites
+                </text>
+              </g>
+
+              {/* Connecting Paths from Sources to Center Shield / Engine */}
+              <path
+                d="M 220 72 C 290 72, 310 115, 370 125"
+                fill="none"
+                stroke="url(#cleanLineGrad)"
+                strokeWidth="2.5"
+              />
+              <circle r="4.5" fill="#00FF9D" filter="url(#softGlow)">
+                <animateMotion dur="2.6s" repeatCount="indefinite" path="M 220 72 C 290 72, 310 115, 370 125" />
+              </circle>
+
+              {flowMode === 'unprotected' ? (
+                <>
+                  <path
+                    d="M 220 202 C 290 202, 310 160, 370 150"
+                    fill="none"
+                    stroke="url(#poisonLineGrad)"
+                    strokeWidth="3"
+                  />
+                  <circle r="5" fill="#E63946" filter="url(#softGlow)">
+                    <animateMotion dur="1.8s" repeatCount="indefinite" path="M 220 202 C 290 202, 310 160, 370 150" />
+                  </circle>
+                </>
+              ) : (
+                <>
+                  <path
+                    d="M 220 202 C 265 202, 285 185, 315 175"
+                    fill="none"
+                    stroke="#E63946"
+                    strokeWidth="2"
+                    strokeDasharray="4 4"
+                    opacity="0.55"
+                  />
+                  {/* Quarantine Shield Icon Blocking the Poison Path */}
+                  <g transform="translate(305, 158)">
+                    <circle cx="14" cy="14" r="14" fill="#00A878" fillOpacity="0.2" stroke="#00FF9D" strokeWidth="1.5" />
+                    <text x="14" y="18" textAnchor="middle" fill="#00FF9D" fontSize="11" fontWeight="700">
+                      ✕
+                    </text>
+                  </g>
+                  <text x="320" y="202" textAnchor="middle" fill="#00FF9D" fontSize="10" fontWeight="600">
+                    Quarantined
+                  </text>
+                </>
+              )}
+
+              {/* Column 2: Center AI Engine & Last Crusade Shield */}
+              <g transform="translate(370, 55)">
+                <rect
+                  width="230"
+                  height="165"
+                  rx="14"
+                  fill="#24010D"
+                  stroke={flowMode === 'protected' ? '#00FF9D' : '#E63946'}
+                  strokeWidth="2"
+                />
+                <rect
+                  x="16"
+                  y="16"
+                  width="198"
+                  height="28"
+                  rx="6"
+                  fill={flowMode === 'protected' ? 'rgba(0,168,120,0.2)' : 'rgba(230,57,70,0.2)'}
+                />
+                <text
+                  x="115"
+                  y="34"
+                  textAnchor="middle"
+                  fill={flowMode === 'protected' ? '#00FF9D' : '#FF8093'}
+                  fontSize="11"
+                  fontWeight="700"
+                >
+                  {flowMode === 'protected' ? 'LAST CRUSADE SHIELD ACTIVE' : 'UNPROTECTED AI RETRIEVAL'}
+                </text>
+
+                <text x="115" y="72" textAnchor="middle" fill="#FBF3E2" fontSize="15" fontWeight="600">
+                  AI Answer Engines
+                </text>
+                <text x="115" y="92" textAnchor="middle" fill="#D5991C" fontSize="11">
+                  ChatGPT · Perplexity · Gemini · Claude
+                </text>
+
+                <line x1="24" y1="108" x2="206" y2="108" stroke="#F2D69D" strokeOpacity="0.2" />
+
+                <text x="115" y="128" textAnchor="middle" fill="#FBF3E2" fillOpacity="0.85" fontSize="11">
+                  {flowMode === 'protected'
+                    ? '✓ Cross-checks multiple search engines'
+                    : '⚠ Blindly trusts top-ranked vector match'}
+                </text>
+                <text x="115" y="146" textAnchor="middle" fill="#FBF3E2" fillOpacity="0.85" fontSize="11">
+                  {flowMode === 'protected'
+                    ? '✓ Verifies source authenticity & market data'
+                    : '⚠ Repeats planted rumors as fact'}
+                </text>
+              </g>
+
+              {/* Connecting Paths from Center Engine to 3 Downstream Consumers */}
+              {[52, 138, 224].map((targetY, idx) => {
+                const pathStr = `M 600 138 C 665 138, 685 ${targetY}, 740 ${targetY}`;
+                return (
+                  <g key={idx}>
+                    <path
+                      d={pathStr}
+                      fill="none"
+                      stroke={flowMode === 'protected' ? 'url(#cleanLineGrad)' : 'url(#poisonLineGrad)'}
+                      strokeWidth="2.5"
+                    />
+                    <circle
+                      r="4"
+                      fill={flowMode === 'protected' ? '#00FF9D' : '#E63946'}
+                      filter="url(#softGlow)"
+                    >
+                      <animateMotion dur={`${2.2 + idx * 0.3}s`} repeatCount="indefinite" path={pathStr} />
+                    </circle>
+                  </g>
+                );
+              })}
+
+              {/* Column 3: Real-World Consumers (People, Markets, Agents) */}
+              <g transform="translate(740, 15)">
+                <rect
+                  width="200"
+                  height="72"
+                  rx="10"
+                  fill="#350213"
+                  stroke={flowMode === 'protected' ? '#F2D69D' : '#E63946'}
+                  strokeOpacity="0.5"
+                  strokeWidth="1.5"
+                />
+                <text x="18" y="28" fill="#FBF3E2" fontSize="13" fontWeight="600">
+                  Customers &amp; Citizens
+                </text>
+                <text
+                  x="18"
+                  y="48"
+                  fill={flowMode === 'protected' ? '#00FF9D' : '#FF8093'}
+                  fontSize="11"
+                  fontWeight="500"
+                >
+                  {flowMode === 'protected' ? '✓ Receives accurate brand facts' : '✕ Misled by fabricated claims'}
+                </text>
+              </g>
+
+              <g transform="translate(740, 102)">
+                <rect
+                  width="200"
+                  height="72"
+                  rx="10"
+                  fill="#350213"
+                  stroke={flowMode === 'protected' ? '#F2D69D' : '#E63946'}
+                  strokeOpacity="0.5"
+                  strokeWidth="1.5"
+                />
+                <text x="18" y="28" fill="#FBF3E2" fontSize="13" fontWeight="600">
+                  Financial Trading Systems
+                </text>
+                <text
+                  x="18"
+                  y="48"
+                  fill={flowMode === 'protected' ? '#00FF9D' : '#FF8093'}
+                  fontSize="11"
+                  fontWeight="500"
+                >
+                  {flowMode === 'protected' ? '✓ Halts fake morning market traps' : '✕ Trades on spoofed news'}
+                </text>
+              </g>
+
+              <g transform="translate(740, 189)">
+                <rect
+                  width="200"
+                  height="72"
+                  rx="10"
+                  fill="#350213"
+                  stroke={flowMode === 'protected' ? '#F2D69D' : '#E63946'}
+                  strokeOpacity="0.5"
+                  strokeWidth="1.5"
+                />
+                <text x="18" y="28" fill="#FBF3E2" fontSize="13" fontWeight="600">
+                  Autonomous AI Agents
+                </text>
+                <text
+                  x="18"
+                  y="48"
+                  fill={flowMode === 'protected' ? '#00FF9D' : '#FF8093'}
+                  fontSize="11"
+                  fontWeight="500"
+                >
+                  {flowMode === 'protected' ? '✓ Connects to verified tools only' : '✕ Hijacked by rogue agent tools'}
+                </text>
+              </g>
+            </svg>
           </div>
-          <p className="mt-6 font-mono text-[10px] text-[#410217]/40 leading-relaxed max-w-3xl">
-            ¹–⁴ Trailing 12-month figures across monitored engines, CounterAEO-Bench (N = 250k) and client engagements. See Research Vol. III for methodology.
-          </p>
+        </div>
+
+        {/* Grounded Real-World Adoption Figures */}
+        <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          {REAL_WORLD_STATS.map((stat, idx) => (
+            <div
+              key={idx}
+              data-stat-card
+              className="rounded-xl bg-[#2B010F]/65 border border-[#F2D69D]/25 p-6 flex flex-col justify-between hover:border-[#D5991C]/60 transition-all"
+            >
+              <div>
+                <div className="font-serif text-4xl sm:text-5xl text-[#D5991C] font-normal tracking-tight leading-none">
+                  {stat.figure}
+                </div>
+                <div className="mt-3 text-base font-semibold text-[#FBF3E2] font-sans">
+                  {stat.label}
+                </div>
+                <p className="mt-2 text-xs text-[#FBF3E2]/75 font-sans leading-relaxed">
+                  {stat.detail}
+                </p>
+              </div>
+              <div className="mt-4 pt-3 border-t border-[#F2D69D]/15 flex items-center justify-between text-[11px] text-[#F2D69D]/70 font-sans">
+                <span>Source: {stat.source}</span>
+                <CheckCircle2 className="w-3.5 h-3.5 text-[#00A878]" />
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </section>

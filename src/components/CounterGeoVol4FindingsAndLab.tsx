@@ -830,7 +830,7 @@ export const CounterGeoVol4FindingsAndLab: React.FC<Vol4FindingsAndLabProps> = (
               className="w-full h-[500px] border border-[#F2D69D] relative overflow-hidden bg-[#130108]"
             >
               <div className="absolute top-3 left-3 bg-[#410217]/90 text-[#FBF3E2] px-3 py-1.5 text-[10px] font-mono border border-[#D5991C] pointer-events-none z-10">
-                <span>INTERACTIVE 3D MODEL // ROTATE WITH MOUSE</span>
+                <span>Interactive 3D Model · Drag to Rotate</span>
               </div>
             </div>
 

@@ -1453,7 +1453,7 @@ export const WhitepaperVol5Reader: React.FC<WhitepaperVol5ReaderProps> = ({
           <div className="flex flex-wrap items-center justify-between gap-3 pb-4 mb-6 border-b border-[#F2D69D] font-mono text-xs">
             <div className="flex items-center space-x-2">
               <span className="px-2.5 py-1 bg-[#410217] text-[#FBF3E2] border border-[#D5991C] font-bold uppercase tracking-widest text-[10px]">
-                SOVEREIGN TECHNICAL WHITE PAPER // VOLUME V
+                Volume V · Agent-to-Agent Discovery & Security
               </span>
               <span className="text-[#410217] font-bold">{MASTER_DOC_VOL5_METADATA.id}</span>
             </div>
@@ -1556,7 +1556,7 @@ export const WhitepaperVol5Reader: React.FC<WhitepaperVol5ReaderProps> = ({
             {/* SECTION 1 */}
             <section id="sec-v5-1" className="scroll-mt-24 space-y-4">
               <div className="font-mono text-xs text-[#D5991C] font-bold uppercase">
-                Section 01 // Protocol Phase Transition
+                Section 01 · Protocol Phase Transition
               </div>
               <h2 className="font-serif text-2xl sm:text-3xl text-[#410217] font-bold">
                 The Structural Evolution from Generative Visibility to Autonomous Protocol Selection
@@ -1631,7 +1631,7 @@ export const WhitepaperVol5Reader: React.FC<WhitepaperVol5ReaderProps> = ({
             {/* SECTION 2 */}
             <section id="sec-v5-2" className="scroll-mt-24 space-y-4 pt-6 border-t border-[#F2D69D]">
               <div className="font-mono text-xs text-[#D5991C] font-bold uppercase">
-                Section 02 // Two-Stage Computational Funnel
+                Section 02 · Two-Stage Computational Funnel
               </div>
               <h2 className="font-serif text-2xl sm:text-3xl text-[#410217] font-bold">
                 Empirical Mechanics of Autonomous Agent Selection and Routing
@@ -1712,7 +1712,7 @@ export const WhitepaperVol5Reader: React.FC<WhitepaperVol5ReaderProps> = ({
             {/* SECTION 3: METHOD 1 (GSF-CACS) */}
             <section id="sec-v5-3" className="scroll-mt-24 space-y-4 pt-6 border-t border-[#F2D69D]">
               <div className="font-mono text-xs text-[#D5991C] font-bold uppercase">
-                Section 03 // Revolutionary A2A-EO Method 1
+                Section 03 · Revolutionary A2A-EO Method 1
               </div>
               <h2 className="font-serif text-2xl sm:text-3xl text-[#410217] font-bold">
                 Method 1: Gradient-Guided Schema Flattening and Centroid-Aligned Card Synthesis (GSF-CACS)
@@ -1769,7 +1769,7 @@ export const WhitepaperVol5Reader: React.FC<WhitepaperVol5ReaderProps> = ({
             {/* SECTION 4: METHOD 2 (DEH-CNUB) */}
             <section id="sec-v5-4" className="scroll-mt-24 space-y-4 pt-6 border-t border-[#F2D69D]">
               <div className="font-mono text-xs text-[#D5991C] font-bold uppercase">
-                Section 04 // Revolutionary A2A-EO Method 2
+                Section 04 · Revolutionary A2A-EO Method 2
               </div>
               <h2 className="font-serif text-2xl sm:text-3xl text-[#410217] font-bold">
                 Method 2: Dynamic Epistemic Handshake and Contract-Net Utility Bidding (DEH-CNUB)
@@ -1813,7 +1813,7 @@ export const WhitepaperVol5Reader: React.FC<WhitepaperVol5ReaderProps> = ({
             {/* SECTION 5: CYBERSECURITY DEFENSES OVERVIEW */}
             <section id="sec-v5-5" className="scroll-mt-24 space-y-4 pt-6 border-t border-[#F2D69D]">
               <div className="font-mono text-xs text-[#D5991C] font-bold uppercase">
-                Section 05 // Multi-Agent Threat Landscape
+                Section 05 · Multi-Agent Threat Landscape
               </div>
               <h2 className="font-serif text-2xl sm:text-3xl text-[#410217] font-bold">
                 Revolutionary Cybersecurity Defenses Against Adversarial A2A-EO
@@ -1828,7 +1828,7 @@ export const WhitepaperVol5Reader: React.FC<WhitepaperVol5ReaderProps> = ({
               {/* Inline Figure 1: Individual CaMeL vs Multi-CaMeL Architecture Diagram */}
               <div className="my-6 p-6 bg-[#FFFDF8] border-2 border-[#410217]/20 space-y-6">
                 <div className="text-xs font-mono font-bold uppercase text-[#410217] border-b border-[#F2D69D] pb-2">
-                  Figure 5.1 // Architectural Comparison: Individual CaMeL (Vulnerable to Boundary Laundering) vs. Multi-CaMeL (Provenance-Preserving)
+                  Figure 5.1 · Architectural Comparison: Individual CaMeL (Vulnerable to Boundary Laundering) vs. Multi-CaMeL (Provenance-Preserving)
                 </div>
 
                 {/* Top Diagram: Vulnerable Individual CaMeL */}
@@ -1895,7 +1895,7 @@ export const WhitepaperVol5Reader: React.FC<WhitepaperVol5ReaderProps> = ({
               {/* Inline Figure 2: Multi-CaMeL & Semantic Routing Telemetry Summary */}
               <div className="my-6 p-6 bg-[#FFFDF8] border-2 border-[#D5991C] space-y-5 font-mono text-xs">
                 <div className="font-bold text-sm text-[#410217] uppercase border-b border-[#F2D69D] pb-2">
-                  Figure 5.2 // Multi-CaMeL Eliminates Cross-Agent Injection While Semantic Routing Cuts Latency by 47%
+                  Figure 5.2 · Multi-CaMeL Eliminates Cross-Agent Injection While Semantic Routing Cuts Latency by 47%
                 </div>
                 <div className="space-y-2">
                   <div className="text-[11px] font-bold text-[#410217]/70 uppercase">Layer 1: Prompt Injection Attack Success Rate (ASR % — Lower is Better)</div>
@@ -1932,7 +1932,7 @@ export const WhitepaperVol5Reader: React.FC<WhitepaperVol5ReaderProps> = ({
             {/* SECTION 6: DEFENSE 1 (PMCTT-CPA) */}
             <section id="sec-v5-6" className="scroll-mt-24 space-y-4 pt-6 border-t border-[#F2D69D]">
               <div className="font-mono text-xs text-[#D5991C] font-bold uppercase">
-                Section 06 // Cybersecurity Defense 1
+                Section 06 · Cybersecurity Defense 1
               </div>
               <h2 className="font-serif text-2xl sm:text-3xl text-[#410217] font-bold">
                 Defense 1: Provenance-Preserving Multi-CaMeL Taint Tracking with Counterfactual Permutation Auditing (PMCTT-CPA)
@@ -1989,7 +1989,7 @@ export const WhitepaperVol5Reader: React.FC<WhitepaperVol5ReaderProps> = ({
             {/* SECTION 7: DEFENSE 2 (CESR-ZKPA) */}
             <section id="sec-v5-7" className="scroll-mt-24 space-y-4 pt-6 border-t border-[#F2D69D]">
               <div className="font-mono text-xs text-[#D5991C] font-bold uppercase">
-                Section 07 // Cybersecurity Defense 2
+                Section 07 · Cybersecurity Defense 2
               </div>
               <h2 className="font-serif text-2xl sm:text-3xl text-[#410217] font-bold">
                 Defense 2: Co-Evolutionary Semantic Router and Zero-Knowledge Policy Attestation (CESR-ZKPA)
@@ -2034,7 +2034,7 @@ export const WhitepaperVol5Reader: React.FC<WhitepaperVol5ReaderProps> = ({
             {/* SECTION 8: FINANCIAL MARKETS A2A-EO & MICROSTRUCTURE DEFENSE */}
             <section id="sec-v5-8" className="scroll-mt-24 space-y-4 pt-6 border-t border-[#F2D69D]">
               <div className="font-mono text-xs text-[#D5991C] font-bold uppercase">
-                Section 08 // Institutional Financial Markets
+                Section 08 · Institutional Financial Markets
               </div>
               <h2 className="font-serif text-2xl sm:text-3xl text-[#410217] font-bold">
                 Financial Markets A2A-EO: Quantitative Alpha Telemetry and Microstructure Defense
@@ -2073,7 +2073,7 @@ export const WhitepaperVol5Reader: React.FC<WhitepaperVol5ReaderProps> = ({
               {/* Inline Figure 3: VAT-EVC +42.55% Capital Allocation Lift & DeepProve Speedup */}
               <div className="my-6 p-6 bg-[#FFFDF8] border-2 border-[#00A878] space-y-5 font-mono text-xs">
                 <div className="font-bold text-sm text-[#410217] uppercase border-b border-[#F2D69D] pb-2">
-                  Figure 5.3 // Compressing Epistemic Uncertainty via Verifiable Telemetry Lifts Capital Allocation by +42.55%
+                  Figure 5.3 · Compressing Epistemic Uncertainty via Verifiable Telemetry Lifts Capital Allocation by +42.55%
                 </div>
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
                   <div className="p-3 bg-[#FAF2E1] border border-[#00A878]">
@@ -2160,7 +2160,7 @@ export const WhitepaperVol5Reader: React.FC<WhitepaperVol5ReaderProps> = ({
             {/* SECTION 9: STRATEGIC SYNTHESIS & WORKS CITED */}
             <section id="sec-v5-9" className="scroll-mt-24 space-y-4 pt-6 border-t border-[#F2D69D]">
               <div className="font-mono text-xs text-[#D5991C] font-bold uppercase">
-                Section 09 // Strategic Synthesis &amp; References
+                Section 09 · Strategic Synthesis &amp; References
               </div>
               <h2 className="font-serif text-2xl sm:text-3xl text-[#410217] font-bold">
                 Strategic Synthesis and Architectural Outlook
@@ -3220,7 +3220,7 @@ export const CounterGeoVol5FindingsAndLab: React.FC<Vol5FindingsAndLabProps> = (
             <div className="space-y-2 max-w-4xl">
               <div className="flex flex-wrap items-center gap-2 font-mono text-xs">
                 <span className="px-2.5 py-0.5 bg-[#D5991C] text-[#130108] font-bold uppercase tracking-widest">
-                  VOLUME 5 INTERACTIVE LAB // A2A-EO &amp; MULTI-AGENT DEFENSE
+                  Volume V Interactive Lab · Agent Discovery & Security
                 </span>
                 <span className="text-[#00FF9D] font-bold">
                   5 DEDICATED 3D WEBGL SCENES · GSAP SCROLL ENGINE · 3-TIER PROGRESSIVE DEPTH
@@ -3473,7 +3473,7 @@ export const CounterGeoVol5FindingsAndLab: React.FC<Vol5FindingsAndLabProps> = (
               <div className="flex flex-wrap items-center justify-between gap-3 border-b border-[#D5991C]/30 pb-3">
                 <div>
                   <span className="px-2 py-0.5 bg-[#D5991C] text-[#130108] font-mono text-[11px] font-bold uppercase">
-                    {activeModule.code} // LIVE SCENE EXPLAINER ({knowledgeDepth.toUpperCase()} MODE)
+                    {activeModule.code} · Live Scene Guide ({knowledgeDepth.toUpperCase()} Mode)
                   </span>
                   <h3 className="font-serif text-xl sm:text-2xl font-bold text-[#FBF3E2] mt-1">
                     {knowledgeDepth === 'beginner' ? activeModule.plainEnglishName : activeModule.name}
@@ -3586,7 +3586,7 @@ export const CounterGeoVol5FindingsAndLab: React.FC<Vol5FindingsAndLabProps> = (
                 <div className="flex items-center justify-between border-b border-[#D5991C]/25 pb-3">
                   <div>
                     <span className="font-mono text-[10px] text-[#00FF9D] uppercase font-bold block">
-                      ARXIV:2610.14334 // 5 FRONTIER MODEL FAMILIES
+                      Empirical Evaluation Across 5 Model Families
                     </span>
                     <h3 className="font-serif text-xl font-bold text-[#FBF3E2]">
                       What Actually Drives Autonomous Tool &amp; Agent Selection?
@@ -3752,7 +3752,7 @@ export const CounterGeoVol5FindingsAndLab: React.FC<Vol5FindingsAndLabProps> = (
                 <div className="flex items-center justify-between border-b border-[#D5991C]/25 pb-3">
                   <div>
                     <span className="px-2 py-0.5 bg-[#D5991C] text-[#130108] font-mono text-[10px] font-bold uppercase">
-                      SANDBOX 1 // METHOD 1 (GSF-CACS)
+                      Interactive Sandbox 1 · METHOD 1 (GSF-CACS)
                     </span>
                     <h3 className="font-serif text-xl font-bold text-[#FBF3E2] mt-1">
                       JSON Schema De-Nesting &amp; Selection Log-Odds Simulator
@@ -3887,7 +3887,7 @@ export const CounterGeoVol5FindingsAndLab: React.FC<Vol5FindingsAndLabProps> = (
                 <div className="flex items-center justify-between border-b border-[#D5991C]/25 pb-3">
                   <div>
                     <span className="px-2 py-0.5 bg-[#D5991C] text-[#130108] font-mono text-[10px] font-bold uppercase">
-                      SANDBOX 2 // METHOD 2 (DEH-CNUB)
+                      Interactive Sandbox 2 · METHOD 2 (DEH-CNUB)
                     </span>
                     <h3 className="font-serif text-xl font-bold text-[#FBF3E2] mt-1">
                       Contract-Net x402 Shadow-Price &amp; zkML Auction Simulator
@@ -4015,7 +4015,7 @@ export const CounterGeoVol5FindingsAndLab: React.FC<Vol5FindingsAndLabProps> = (
                 <div className="flex items-center justify-between border-b border-[#00A878]/30 pb-3">
                   <div>
                     <span className="px-2 py-0.5 bg-[#00A878] text-white font-mono text-[10px] font-bold uppercase">
-                      SANDBOX 3 // DEFENSE 1 (PMCTT-CPA &amp; MULTI-CAMEL)
+                      Interactive Sandbox 3 · DEFENSE 1 (PMCTT-CPA &amp; MULTI-CAMEL)
                     </span>
                     <h3 className="font-serif text-xl font-bold text-[#FBF3E2] mt-1">
                       Counterfactual Permutation &amp; Boundary Laundering Firewall
@@ -4117,7 +4117,7 @@ export const CounterGeoVol5FindingsAndLab: React.FC<Vol5FindingsAndLabProps> = (
                 <div className="flex items-center justify-between border-b border-[#00A878]/30 pb-3">
                   <div>
                     <span className="px-2 py-0.5 bg-[#00A878] text-white font-mono text-[10px] font-bold uppercase">
-                      SANDBOX 4 // PHASE 3 FINANCE (VAT-EVC &amp; MGBC-ASCB)
+                      Interactive Sandbox 4 · PHASE 3 FINANCE (VAT-EVC &amp; MGBC-ASCB)
                     </span>
                     <h3 className="font-serif text-xl font-bold text-[#FBF3E2] mt-1">
                       Black-Litterman Epistemic Allocator &amp; Order-Book Circuit Breaker

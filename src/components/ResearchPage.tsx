@@ -3,23 +3,11 @@ import {
   FileText,
   Sparkles,
   ArrowRight,
-  ShieldCheck,
-  Cpu,
-  Layers,
-  Activity,
   Copy,
   Check,
-  Terminal,
-  ExternalLink,
-  ChevronRight,
-  Boxes,
-  Zap,
-  Lock,
-  Scale,
-  BarChart3,
-  Search,
-  FileCheck2,
-  Compass
+  Shield,
+  BookOpen,
+  Compass,
 } from 'lucide-react';
 import { NavigationPage } from '../types';
 import { MASTER_DOC_METADATA } from '../data/counterGeoPaperContent';
@@ -37,20 +25,17 @@ interface ResearchPageProps {
 export const ResearchPage: React.FC<ResearchPageProps> = ({
   onNavigate,
   onOpenAudit,
-  onOpenIncident
 }) => {
   const [copiedBibtex, setCopiedBibtex] = useState(false);
   const [activeTab, setActiveTab] = useState<'all' | 'vol1' | 'vol2' | 'vol3' | 'vol4' | 'vol5'>('all');
   const [expandedLayer, setExpandedLayer] = useState<number | null>(null);
 
-  const bibtexString = `@article{sentinel_aeo_pentology_2026,
-  title={Generative Engine Optimization (AEO) and Counter-AEO Defenses: Sovereign Architecture for Epistemic and Financial Cybersecurity (Volumes I, II, III, IV, and V)},
-  author={Last Crusade Defense Security Labs and Autonomous Systems Red-Team Group},
-  journal={Sovereign Strategic Research & Defense Initiative},
+  const bibtexString = `@techreport{last_crusade_aeo_series_2026,
+  title={Answer Engine Optimization (AEO) and Counter-AEO Defenses: Architectures for AI Search, Financial Markets, and Autonomous Agents (Volumes I-V)},
+  author={Last Crusade Research},
+  institution={Last Crusade AEO Defense Working Paper Series},
   year={2026},
-  month={October},
-  doi={10.1145/3637528.3671900-CAEO-PENTOLOGY},
-  url={https://sentinel-aeo.defense.ai/#/research}
+  note={5-Volume Monograph Series (232 Pages Total)}
 }`;
 
   const handleCopyBibtex = () => {
@@ -64,919 +49,885 @@ export const ResearchPage: React.FC<ResearchPageProps> = ({
       layer: 'Layer 0',
       vol: 'Vol. I',
       volKey: 'counter-geo' as NavigationPage,
-      name: 'MTVD & Canaries',
-      threat: 'Black-box query sampling & surrogate model scraping',
-      core: 'Householder Isometric Rotations Q_t ∈ O(d) + Canary Subspaces',
+      name: 'Moving-Target Map Rotation',
+      threat: 'Attackers probing AI search databases to plant "master key" trap pages',
+      core: 'Periodically rotates internal map coordinates and sets tripwire alarms',
       latency: '< 0.4 ms',
-      status: 'Active'
+      status: 'Active',
     },
     {
       layer: 'Layer 1',
       vol: 'Vol. I',
       volKey: 'counter-geo' as NavigationPage,
-      name: 'AM-CIDP',
-      threat: 'Universal & regional vector retrieval hubs (topological sinkholes)',
-      core: 'Levina-Bickel Intrinsic Dimension (LID_K) + Gram Spectral Entropy',
+      name: 'Gravity Sinkhole Detector',
+      threat: 'A single rigged webpage pulling in thousands of unrelated AI searches',
+      core: 'Spots unnatural clustering in search results and quarantines the trap page',
       latency: '1.8 ms',
-      status: 'Active'
+      status: 'Active',
     },
     {
       layer: 'Layer 2',
       vol: 'Vol. I',
       volKey: 'counter-geo' as NavigationPage,
-      name: 'NCARD',
-      threat: 'Single-embedder gradient overfitting across dense spaces',
-      core: 'Depth-Weighted Reciprocal Rank Divergence (Dense / ColBERT / SPLADE)',
+      name: '3-Way Search Cross-Check',
+      threat: 'Fake "expert" articles stuffed with made-up percentages and quotes',
+      core: 'Compares how a page ranks across meaning, phrasing, and exact keywords',
       latency: '4.2 ms',
-      status: 'Active'
+      status: 'Active',
     },
     {
       layer: 'Layer 3',
       vol: 'Vol. I',
       volKey: 'counter-geo' as NavigationPage,
-      name: 'TCG-CL v2.0',
-      threat: 'Sybil consensus botnets & circular citation spoofing',
-      core: 'X.509 C2PA Hardware Roots + NLI Entailment Max-Flow + Hawkes CV²',
+      name: 'Source Lineage & Seal Check',
+      threat: 'Coordinated blog networks quoting each other in a circle to fake consensus',
+      core: 'Requires digital authenticity seals (C2PA) and traces claims to original roots',
       latency: '6.5 ms',
-      status: 'Active'
+      status: 'Active',
     },
     {
       layer: 'Layer 4A',
       vol: 'Vol. I',
       volKey: 'counter-geo' as NavigationPage,
-      name: 'CEH-ASID & DAPP',
-      threat: 'Split-Payload (Enthymematic) AEO & indirect prompt injections',
-      core: 'Möbius KL Synergy (I_ij) + Transformer Attention Sink Tomography',
+      name: 'Multi-Document Logic Firewall',
+      threat: 'Three innocent-looking websites designed to combine into a false panic',
+      core: 'Monitors how separate pages interact inside the AI and blocks toxic combinations',
       latency: '5.1 ms',
-      status: 'Active'
+      status: 'Active',
     },
     {
       layer: 'Layer 4B',
       vol: 'Vol. I',
       volKey: 'counter-geo' as NavigationPage,
-      name: 'TMMEG',
-      threat: 'Data-void market spoofing & predatory LOB liquidity traps',
-      core: 'Thermodynamic KL Surprise vs. VPIN_t, Kyle\'s λ, & OBAR_t Order-Book Energy',
+      name: 'Market Order-Book Reality Check',
+      threat: 'Planted early-morning rumors tricking trading bots into buying overpriced stock',
+      core: 'Checks whether urgent web news is backed by real trading volume and order depth',
       latency: '< 0.2 ms',
-      status: 'Active'
+      status: 'Active',
     },
     {
       layer: 'Layer 5',
       vol: 'Vol. II',
       volKey: 'counter-geo-vol2' as NavigationPage,
-      name: 'DMEM-WMQ',
-      threat: 'Slow-Boil chronic episodic memory drift in autonomous AI agents',
-      core: 'Doob-Meyer Epistemic Martingale Decomposition + W_2 Merkle Rollback',
+      name: 'Long-Term Memory Drift Guard',
+      threat: 'Tiny daily nudges slowly brainwashing an AI agent’s memory over weeks',
+      core: 'Detects unnatural one-way memory drift and rewinds to the last clean backup',
       latency: '0.9 ms',
-      status: 'Active'
+      status: 'Active',
     },
     {
       layer: 'Layer 6',
       vol: 'Vol. II',
       volKey: 'counter-geo-vol2' as NavigationPage,
-      name: 'SGL-CMI',
-      threat: 'Autophagous AI-citing-AI swarm echo chambers and synthetic cascades',
-      core: 'Spectral Graph Laplacian + Conditional Mutual Info I(Z_i; Z_j | R)',
+      name: 'Bot Echo-Chamber De-Duplicator',
+      threat: 'Dozens of AI bots copying the same rumor until it looks like widespread agreement',
+      core: 'Measures shared information across bots and collapses copycat votes to one',
       latency: '1.1 ms',
-      status: 'Active'
+      status: 'Active',
     },
     {
       layer: 'Layer 7',
       vol: 'Vol. II',
       volKey: 'counter-geo-vol2' as NavigationPage,
-      name: 'CM-JSAS',
-      threat: 'Multimodal steganographic AEO hubs in PDF financial slides & charts',
-      core: 'VLM Jacobian Saliency vs. Sobel Contour Mask (L_leak) + DCT Scrubbing',
+      name: 'PDF & Chart Visual Scrubber',
+      threat: 'Secret commands hidden in white-on-white text or tiny PDF chart pixels',
+      core: 'Ensures the AI only reads visible ink on the page and scrubs blank backgrounds',
       latency: '8.4 ms',
-      status: 'Active'
+      status: 'Active',
     },
     {
       layer: 'Layer 8',
       vol: 'Vol. II',
       volKey: 'counter-geo-vol2' as NavigationPage,
-      name: 'ZK-CAEO',
-      threat: 'Institutional alpha leakage in SEC Rule 15c3-8 regulatory reporting',
-      core: '288-Byte zk-SNARK Fixed-Point R1CS Arithmetic Proofs (1.4 ms verify)',
+      name: 'Zero-Knowledge Safety Proof',
+      threat: 'Proving AI safety compliance to auditors without leaking proprietary trade secrets',
+      core: 'Generates a compact 288-byte mathematical seal proving all filters ran cleanly',
       latency: '1.4 ms',
-      status: 'Active'
+      status: 'Active',
     },
     {
-      layer: 'Layer 4B-HW',
+      layer: 'Layer 9',
       vol: 'Vol. IV',
       volKey: 'counter-geo-vol4' as NavigationPage,
-      name: 'TMMEG 142ns SmartNIC',
-      threat: 'Wire-speed predatory LOB data voids and ask-wall spoofing',
-      core: '312.5 MHz Xilinx UltraScale+ FPGA Pipeline (45 Clocks, Division-Free Q8.24)',
+      name: '142ns Hardware Circuit Breaker',
+      threat: 'High-speed automated trading sweeps triggered by spoofed financial feeds',
+      core: 'Hardware network card design that pauses unbacked orders in 142 nanoseconds',
       latency: '142.0 ns',
-      status: 'Active'
+      status: 'Active',
     },
     {
-      layer: 'Layer 9-SE',
-      vol: 'Vol. IV',
-      volKey: 'counter-geo-vol4' as NavigationPage,
-      name: 'Sovereign Enclave & VaR Guard',
-      threat: 'Enterprise AI liability, regulatory fines (SEC 15c3-8), & epistemic sabotage',
-      core: 'Dual-Use Air-Gapped Appliance + Actuarial VaR Loss Prevention Engine',
-      latency: '< 0.5 ms',
-      status: 'Active'
-    },
-    {
-      layer: 'Layer 10-A2A',
+      layer: 'Layer 10',
       vol: 'Vol. V',
       volKey: 'counter-geo-vol5' as NavigationPage,
-      name: 'GSF-CACS & C-NUB',
-      threat: 'Silent-Web autonomous agent hijacking, schema poisoning & MCP tool spoofing',
-      core: 'Gradient Schema Flattening (β_P = 3.82..16.2) + Ed25519 Nonce Handshake',
+      name: 'Agent-to-Agent Discovery & Shield',
+      threat: 'Disguised malicious software tools hijacking autonomous AI agents',
+      core: 'Optimizes legitimate tool schemas for selection and isolates untrusted tool data',
       latency: '< 0.3 ms',
-      status: 'Active'
-    }
+      status: 'Active',
+    },
   ];
 
   return (
     <div className="min-h-screen bg-[#FAF5EB] text-[#410217] selection:bg-[#410217]/15 selection:text-[#410217]">
-      
       {/* Hero Header: Research Library */}
-      <section className="relative pt-12 pb-16 md:pt-18 md:pb-22 border-b border-[#F2D69D] bg-gradient-to-b from-[#FFFDF9] via-[#FAF5EB] to-[#F5ECE0] overflow-hidden">
-        {/* Subtle background ambient grid */}
+      <section className="relative pt-12 pb-14 md:pt-16 md:pb-18 border-b border-[#F2D69D] bg-gradient-to-b from-[#FFFDF9] via-[#FAF5EB] to-[#F5ECE0] overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(#410217_1px,transparent_1px)] [background-size:24px_24px] opacity-[0.03] pointer-events-none" />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-4xl">
-            
-            <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl font-normal tracking-tight text-[#410217] leading-[1.1] mb-6">
+            <div className="w-12 h-1 bg-[#D5991C] rounded-full mb-5" />
+            <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl font-normal tracking-tight text-[#410217] leading-[1.08] mb-5">
               Research Library
             </h1>
 
             <p className="text-base sm:text-lg text-[#410217]/85 font-sans leading-relaxed mb-8 max-w-3xl">
-              As AI chatbots and autonomous agents replace classical keyword search, digital discoverability has migrated to <strong>Generative Engine Optimization (AEO)</strong>. This page features deep research we have conducted using frontier models to codify the threat vectors, mathematical detection algorithms, and codebase architectures required to protect foundation reasoning pipelines, financial markets, national security, and LLM-based agents.
+              As AI chatbots and autonomous software agents replace classical search engines, digital visibility has shifted to <strong>Answer Engine Optimization (AEO)</strong>. Explore our five-volume research series examining how AI engines select answers, how bad actors try to manipulate them, and the engineering frameworks we designed to protect AI search, financial markets, and multi-agent networks.
             </p>
 
-            {/* Live Telemetry KPI Ticker */}
-            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 pt-4 border-t border-[#F2D69D]/80 font-mono text-xs">
-              <div className="p-3 bg-[#FAF2E1] border border-[#F2D69D]">
-                <div className="text-[10px] text-[#410217]/60 uppercase tracking-wider">Volumes</div>
-                <div className="text-xl font-bold text-[#410217] mt-0.5">5 Works</div>
-                <div className="text-[10px] text-[#D5991C] mt-0.5">232 Pages Total</div>
+            {/* Clear Overview Stats */}
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 pt-4 border-t border-[#F2D69D]/80 text-xs">
+              <div className="p-3.5 rounded-xl bg-[#FAF2E1] border border-[#F2D69D]">
+                <div className="text-[11px] text-[#410217]/70 font-medium">Research Series</div>
+                <div className="text-xl font-serif font-bold text-[#410217] mt-0.5">5 Volumes</div>
+                <div className="text-[11px] text-[#D5991C] font-medium mt-0.5">232 Pages Total</div>
               </div>
 
-              <div className="p-3 bg-[#FAF2E1] border border-[#F2D69D]">
-                <div className="text-[10px] text-[#410217]/60 uppercase tracking-wider">Defense Stack</div>
-                <div className="text-xl font-bold text-[#410217] mt-0.5">12 Layers</div>
-                <div className="text-[10px] text-[#00A878] mt-0.5">Complete Stack</div>
+              <div className="p-3.5 rounded-xl bg-[#FAF2E1] border border-[#F2D69D]">
+                <div className="text-[11px] text-[#410217]/70 font-medium">Defense Architecture</div>
+                <div className="text-xl font-serif font-bold text-[#410217] mt-0.5">12 Layers</div>
+                <div className="text-[11px] text-[#00A878] font-medium mt-0.5">Search to Agents</div>
               </div>
 
-              <div className="p-3 bg-[#FAF2E1] border border-[#F2D69D]">
-                <div className="text-[10px] text-[#410217]/60 uppercase tracking-wider">Agent Routing</div>
-                <div className="text-xl font-bold text-[#410217] mt-0.5">96% Win Rate</div>
-                <div className="text-[10px] text-[#410217]/70 mt-0.5">A2A-EO Dominance</div>
+              <div className="p-3.5 rounded-xl bg-[#FAF2E1] border border-[#F2D69D]">
+                <div className="text-[11px] text-[#410217]/70 font-medium">Agent Tool Selection</div>
+                <div className="text-xl font-serif font-bold text-[#410217] mt-0.5">79% – 96%</div>
+                <div className="text-[11px] text-[#410217]/70 mt-0.5">Schema Optimization</div>
               </div>
 
-              <div className="p-3 bg-[#FAF2E1] border border-[#F2D69D]">
-                <div className="text-[10px] text-[#410217]/60 uppercase tracking-wider">Detection AUROC</div>
-                <div className="text-xl font-bold text-[#00A878] mt-0.5">0.996</div>
-                <div className="text-[10px] text-[#410217]/70 mt-0.5">vs 0.768 Gen-1</div>
+              <div className="p-3.5 rounded-xl bg-[#FAF2E1] border border-[#F2D69D]">
+                <div className="text-[11px] text-[#410217]/70 font-medium">Benchmark Accuracy</div>
+                <div className="text-xl font-serif font-bold text-[#00A878] mt-0.5">99.6%</div>
+                <div className="text-[11px] text-[#410217]/70 mt-0.5">Lab Stress-Tests</div>
               </div>
 
-              <div className="p-3 bg-[#FAF2E1] border border-[#F2D69D]">
-                <div className="text-[10px] text-[#410217]/60 uppercase tracking-wider">Wire Kill-Switch</div>
-                <div className="text-xl font-bold text-[#D5991C] mt-0.5">142.0 ns</div>
-                <div className="text-[10px] text-[#00A878] mt-0.5">FPGA SmartNIC</div>
+              <div className="p-3.5 rounded-xl bg-[#FAF2E1] border border-[#F2D69D]">
+                <div className="text-[11px] text-[#410217]/70 font-medium">10-K False Alarms</div>
+                <div className="text-xl font-serif font-bold text-[#00A878] mt-0.5">0.38%</div>
+                <div className="text-[11px] text-[#410217]/70 mt-0.5">Down from 18.6%</div>
               </div>
 
-              <div className="p-3 bg-[#FAF2E1] border border-[#F2D69D]">
-                <div className="text-[10px] text-[#410217]/60 uppercase tracking-wider">Enterprise ROI</div>
-                <div className="text-xl font-bold text-[#410217] mt-0.5">18.4x – 34.2x</div>
-                <div className="text-[10px] text-[#410217]/70 mt-0.5">Actuarial VaR Guard</div>
+              <div className="p-3.5 rounded-xl bg-[#FAF2E1] border border-[#F2D69D]">
+                <div className="text-[11px] text-[#410217]/70 font-medium">Interactive Labs</div>
+                <div className="text-xl font-serif font-bold text-[#410217] mt-0.5">5 Labs</div>
+                <div className="text-[11px] text-[#D5991C] font-medium mt-0.5">Live 3D &amp; Code</div>
               </div>
             </div>
+          </div>
 
+          {/* Interactive Visual Map of the 5 Research Volumes */}
+          <div className="mt-10 rounded-2xl bg-[#410217] text-[#FBF3E2] p-6 sm:p-8 border border-[#D5991C]/50 shadow-xl">
+            <div className="flex flex-col md:flex-row md:items-center justify-between gap-3 mb-5">
+              <div>
+                <h2 className="font-serif text-2xl text-[#FBF3E2]">
+                  Visual Map of the 5-Volume Research Series
+                </h2>
+                <p className="text-xs text-[#FBF3E2]/75 mt-0.5">
+                  Click any volume in the diagram below to filter or jump straight to its full whitepaper and interactive lab.
+                </p>
+              </div>
+              <button
+                onClick={() => setActiveTab('all')}
+                className="self-start md:self-auto px-3.5 py-1.5 rounded-lg bg-[#D5991C] text-[#130108] text-xs font-semibold cursor-pointer"
+              >
+                Show All 5 Volumes
+              </button>
+            </div>
+
+            <svg viewBox="0 0 960 120" className="w-full h-auto overflow-visible">
+              {[
+                { key: 'vol1' as const, x: 10, vol: 'Volume I', title: 'Core Search Defense', sub: '54 Pages · Layers 0–4B', color: '#D5991C' },
+                { key: 'vol2' as const, x: 202, vol: 'Volume II', title: 'Memory, PDFs & Privacy', sub: '42 Pages · Layers 5–8', color: '#00A878' },
+                { key: 'vol3' as const, x: 394, vol: 'Volume III', title: '250k Doc Stress-Tests', sub: '38 Pages · Benchmarks', color: '#A78BFA' },
+                { key: 'vol4' as const, x: 586, vol: 'Volume IV', title: '142ns Hardware & ROI', sub: '46 Pages · FPGA & Enterprise', color: '#F59E0B' },
+                { key: 'vol5' as const, x: 778, vol: 'Volume V', title: 'Agent-to-Agent (A2A)', sub: '52 Pages · Autonomous Tools', color: '#38BDF8' },
+              ].map((node, i) => {
+                const isSelected = activeTab === node.key;
+                return (
+                  <g
+                    key={node.key}
+                    onClick={() => setActiveTab(node.key)}
+                    className="cursor-pointer"
+                  >
+                    {i < 4 && (
+                      <>
+                        <line
+                          x1={node.x + 172}
+                          y1="60"
+                          x2={node.x + 192}
+                          y2="60"
+                          stroke="#F2D69D"
+                          strokeOpacity="0.4"
+                          strokeWidth="2"
+                        />
+                        <circle r="3.5" fill={node.color}>
+                          <animate
+                            attributeName="cx"
+                            from={node.x + 172}
+                            to={node.x + 192}
+                            dur="1.4s"
+                            repeatCount="indefinite"
+                          />
+                          <animate attributeName="cy" values="60;60" dur="1.4s" repeatCount="indefinite" />
+                        </circle>
+                      </>
+                    )}
+                    <rect
+                      x={node.x}
+                      y="12"
+                      width="172"
+                      height="96"
+                      rx="12"
+                      fill={isSelected ? '#5C0A24' : '#2B010F'}
+                      stroke={node.color}
+                      strokeWidth={isSelected ? '2.5' : '1.5'}
+                    />
+                    <text x={node.x + 86} y="38" textAnchor="middle" fill={node.color} fontSize="13" fontWeight="700">
+                      {node.vol}
+                    </text>
+                    <text x={node.x + 86} y="62" textAnchor="middle" fill="#FBF3E2" fontSize="11.5" fontWeight="600">
+                      {node.title}
+                    </text>
+                    <text x={node.x + 86} y="84" textAnchor="middle" fill="#FBF3E2" fillOpacity="0.7" fontSize="10">
+                      {node.sub}
+                    </text>
+                  </g>
+                );
+              })}
+            </svg>
           </div>
         </div>
       </section>
 
-      {/* 3. Navigation Filter & Jump Bar */}
-      <div className="border-b border-[#F2D69D] bg-[#FBF3E2] py-4 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-4 font-mono text-xs">
+      {/* Filter & Jump Bar */}
+      <div className="border-b border-[#F2D69D] bg-[#FBF3E2] py-4 px-4 sm:px-6 lg:px-8 sticky top-20 z-30 shadow-xs">
+        <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-4 text-xs">
           <div className="flex items-center space-x-2">
-            <span className="text-[#410217]/60 font-bold uppercase tracking-wider">View Volumes:</span>
-            <div className="flex items-center bg-[#FAF2E1] border border-[#F2D69D] p-1 flex-wrap gap-1">
-              <button
-                onClick={() => setActiveTab('all')}
-                className={`px-3 py-1 font-bold uppercase tracking-wider transition-colors cursor-pointer ${
-                  activeTab === 'all' ? 'bg-[#410217] text-[#FBF3E2]' : 'text-[#410217]/70 hover:text-[#410217]'
-                }`}
-              >
-                All 5 Volumes
-              </button>
-              <button
-                onClick={() => setActiveTab('vol1')}
-                className={`px-3 py-1 font-bold uppercase tracking-wider transition-colors cursor-pointer ${
-                  activeTab === 'vol1' ? 'bg-[#410217] text-[#FBF3E2]' : 'text-[#410217]/70 hover:text-[#410217]'
-                }`}
-              >
-                Volume 1
-              </button>
-              <button
-                onClick={() => setActiveTab('vol2')}
-                className={`px-3 py-1 font-bold uppercase tracking-wider transition-colors cursor-pointer ${
-                  activeTab === 'vol2' ? 'bg-[#004566] text-[#FBF3E2]' : 'text-[#410217]/70 hover:text-[#410217]'
-                }`}
-              >
-                Volume 2
-              </button>
-              <button
-                onClick={() => setActiveTab('vol3')}
-                className={`px-3 py-1 font-bold uppercase tracking-wider transition-colors cursor-pointer ${
-                  activeTab === 'vol3' ? 'bg-[#5B21B6] text-white' : 'text-[#410217]/70 hover:text-[#410217]'
-                }`}
-              >
-                Volume 3
-              </button>
-              <button
-                onClick={() => setActiveTab('vol4')}
-                className={`px-3 py-1 font-bold uppercase tracking-wider transition-colors cursor-pointer ${
-                  activeTab === 'vol4' ? 'bg-[#D5991C] text-[#130108] font-black' : 'text-[#410217]/70 hover:text-[#410217]'
-                }`}
-              >
-                Volume 4
-              </button>
-              <button
-                onClick={() => setActiveTab('vol5')}
-                className={`px-3 py-1 font-bold uppercase tracking-wider transition-colors cursor-pointer ${
-                  activeTab === 'vol5' ? 'bg-[#7C3AED] text-white font-black' : 'text-[#410217]/70 hover:text-[#410217]'
-                }`}
-              >
-                Volume 5 (A2A-EO)
-              </button>
+            <span className="text-[#410217]/70 font-semibold">Filter Volume:</span>
+            <div className="flex items-center bg-[#FAF2E1] border border-[#F2D69D] rounded-lg p-1 flex-wrap gap-1">
+              {[
+                { id: 'all' as const, label: 'All 5 Volumes' },
+                { id: 'vol1' as const, label: 'Volume I' },
+                { id: 'vol2' as const, label: 'Volume II' },
+                { id: 'vol3' as const, label: 'Volume III' },
+                { id: 'vol4' as const, label: 'Volume IV' },
+                { id: 'vol5' as const, label: 'Volume V (A2A)' },
+              ].map((t) => (
+                <button
+                  key={t.id}
+                  onClick={() => setActiveTab(t.id)}
+                  className={`px-3 py-1.5 rounded-md font-semibold transition-colors cursor-pointer ${
+                    activeTab === t.id
+                      ? 'bg-[#410217] text-[#FBF3E2]'
+                      : 'text-[#410217]/75 hover:text-[#410217]'
+                  }`}
+                >
+                  {t.label}
+                </button>
+              ))}
             </div>
           </div>
 
-          <div className="flex items-center space-x-3 text-[#410217]/70">
+          <div className="flex items-center space-x-3 text-[#410217]/80 font-medium">
             <a href="#defense-matrix" className="hover:text-[#410217] underline decoration-[#D5991C]">
-              Unified 8-Layer Defense Matrix ↓
+              12-Layer Defense Summary ↓
             </a>
             <span>•</span>
             <a href="#citations" className="hover:text-[#410217] underline decoration-[#D5991C]">
-              BibTeX &amp; DOIs ↓
+              Citation Info ↓
             </a>
           </div>
         </div>
       </div>
 
-      {/* 4. The 3 Master Volumes Showcase Cards */}
-      <section className="py-12 md:py-18 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
-        
-        {/* ============================================================== */}
+      {/* The 5 Master Volumes Showcase Cards */}
+      <section className="py-12 md:py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
         {/* VOLUME 1 SHOWCASE CARD */}
-        {/* ============================================================== */}
         {(activeTab === 'all' || activeTab === 'vol1') && (
-          <article className="bg-[#FAF2E1] border-2 border-[#D5991C]/70 shadow-lg p-6 sm:p-10 relative overflow-hidden transition-all duration-300 hover:border-[#D5991C]">
-            
-            {/* Top Accent Strip */}
-            <div className="flex flex-wrap items-center justify-between gap-3 pb-5 mb-6 border-b border-[#F2D69D] font-mono text-xs">
-              <div className="flex items-center space-x-2">
-                <span className="px-2.5 py-1 bg-[#410217] text-[#FBF3E2] border border-[#D5991C] font-bold uppercase tracking-widest text-[10px]">
-                  VOLUME I // FOUNDATIONAL ARCHITECTURE
+          <article className="rounded-2xl bg-[#FAF2E1] border-2 border-[#D5991C]/80 shadow-lg p-6 sm:p-10 relative overflow-hidden">
+            <div className="flex flex-wrap items-center justify-between gap-3 pb-4 mb-5 border-b border-[#F2D69D] text-xs">
+              <div className="flex items-center space-x-2.5">
+                <span className="px-3 py-1 rounded-full bg-[#410217] text-[#FBF3E2] font-bold">
+                  Volume I · Foundational Architecture
                 </span>
-                <span className="text-[#410217] font-bold">{MASTER_DOC_METADATA.id}</span>
-                <span className="text-[#410217]/60">•</span>
-                <span className="text-[#410217]/70">{MASTER_DOC_METADATA.date}</span>
+                <span className="text-[#410217]/75 font-medium">{MASTER_DOC_METADATA.date}</span>
               </div>
-              <div className="flex items-center space-x-2 text-[11px] text-[#410217]/70">
+              <div className="flex items-center space-x-2 text-[#410217]/80 font-medium">
                 <span>{MASTER_DOC_METADATA.pages} Pages</span>
                 <span>•</span>
                 <span>{MASTER_DOC_METADATA.wordCount.toLocaleString()} Words</span>
                 <span>•</span>
-                <span className="text-[#00A878] font-bold">Layers 0 – 4B</span>
+                <span className="text-[#00A878] font-bold">Defense Layers 0 – 4B</span>
               </div>
             </div>
 
-            {/* Volume Title & Subtitle */}
             <div className="mb-6">
               <h2 className="font-serif text-2xl sm:text-3xl lg:text-4xl text-[#410217] font-normal tracking-tight leading-tight mb-3">
                 {MASTER_DOC_METADATA.title}
               </h2>
-              <p className="text-sm sm:text-base text-[#410217]/80 font-sans leading-relaxed max-w-4xl">
-                The master blueprint establishing the theoretical and engineering foundation of Counter-AEO. Diagnoses why first-generation anomaly detectors fail against transferable ensemble attacks, scale pathologies, and latency bottlenecks. Formulates Layers 0 through 4B including Moving-Target Vector Defense (MTVD), AM-CIDP intrinsic dimensionality profiling, NCARD cross-architecture divergence, and Thermodynamic Market Grounding (TMMEG).
+              <p className="text-sm sm:text-base text-[#410217]/85 font-sans leading-relaxed max-w-4xl">
+                Our foundational whitepaper explaining how AI search engines retrieve web content, how bad actors manipulate citations to influence public opinion or stock markets, and why simple first-generation filters fail. Introduces our core defense layers for spotting rigged web pages, verifying source signatures, blocking multi-document logic traps, and cross-checking web news against live financial market activity.
               </p>
             </div>
 
-            {/* Layer Badges in Vol 1 */}
-            <div className="mb-8 p-4 bg-[#FFFDF8] border border-[#F2D69D] font-mono text-xs">
-              <div className="text-[10px] text-[#D5991C] font-bold uppercase tracking-wider mb-2">
-                // DEFENSE LAYERS DEFINED IN VOLUME 1:
+            <div className="mb-7 p-4 rounded-xl bg-[#FFFDF8] border border-[#F2D69D] text-xs">
+              <div className="font-semibold text-[#410217] mb-2.5">
+                Core Protections Covered in Volume I:
               </div>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 text-[11px]">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
                 <div className="flex items-start space-x-2">
-                  <span className="text-[#D5991C] font-bold">L0:</span>
-                  <span className="text-[#410217]">Moving-Target Vector Defense (MTVD &amp; Canaries)</span>
+                  <span className="text-[#D5991C] font-bold">Layer 0:</span>
+                  <span className="text-[#410217]/90">Moving-Target Map Rotation &amp; Tripwires</span>
                 </div>
                 <div className="flex items-start space-x-2">
-                  <span className="text-[#D5991C] font-bold">L1:</span>
-                  <span className="text-[#410217]">Attractor Manifold Curvature &amp; LID (AM-CIDP)</span>
+                  <span className="text-[#D5991C] font-bold">Layer 1:</span>
+                  <span className="text-[#410217]/90">Search Gravity Sinkhole Quarantine</span>
                 </div>
                 <div className="flex items-start space-x-2">
-                  <span className="text-[#D5991C] font-bold">L2:</span>
-                  <span className="text-[#410217]">Cross-Architecture Rank Divergence (NCARD)</span>
+                  <span className="text-[#D5991C] font-bold">Layer 2:</span>
+                  <span className="text-[#410217]/90">3-Way Search Engine Consistency Check</span>
                 </div>
                 <div className="flex items-start space-x-2">
-                  <span className="text-[#D5991C] font-bold">L3:</span>
-                  <span className="text-[#410217]">Temporal Citation Graph &amp; C2PA (TCG-CL v2.0)</span>
+                  <span className="text-[#D5991C] font-bold">Layer 3:</span>
+                  <span className="text-[#410217]/90">Digital Source Seals &amp; Botnet Filtering</span>
                 </div>
                 <div className="flex items-start space-x-2">
-                  <span className="text-[#D5991C] font-bold">L4A:</span>
-                  <span className="text-[#410217]">Combinatorial Epistemic Holography (CEH-ASID)</span>
+                  <span className="text-[#D5991C] font-bold">Layer 4A:</span>
+                  <span className="text-[#410217]/90">Multi-Document Jigsaw Trap Firewall</span>
                 </div>
                 <div className="flex items-start space-x-2">
-                  <span className="text-[#D5991C] font-bold">L4B:</span>
-                  <span className="text-[#410217]">Thermodynamic Market Microstructure (TMMEG)</span>
+                  <span className="text-[#D5991C] font-bold">Layer 4B:</span>
+                  <span className="text-[#410217]/90">Financial Order-Book Reality Grounding</span>
                 </div>
               </div>
             </div>
 
-            {/* PRIMARY DUAL ACCESS BUTTONS: PAGE 1 vs PAGE 2 */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2">
-              
-              {/* PAGE 1: Full Whitepaper word-for-word */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <button
                 onClick={() => onNavigate('counter-geo', 'paper')}
-                className="group p-5 bg-[#410217] hover:bg-[#5C0A24] text-[#FBF3E2] border-2 border-[#410217] shadow-md transition-all duration-200 text-left cursor-pointer flex flex-col justify-between"
+                className="group p-5 rounded-xl bg-[#410217] hover:bg-[#5C0A24] text-[#FBF3E2] border-2 border-[#410217] shadow-md transition-all text-left cursor-pointer flex flex-col justify-between"
               >
                 <div>
                   <div className="flex items-center justify-between mb-2">
-                    <span className="inline-flex items-center space-x-1.5 px-2.5 py-0.5 bg-[#2B010F] text-[#D5991C] text-[10px] font-mono font-bold uppercase tracking-wider border border-[#D5991C]/30">
-                      <FileText className="w-3 h-3" />
-                      <span>Page 1 of Volume 1</span>
+                    <span className="inline-flex items-center space-x-1.5 px-2.5 py-0.5 rounded-md bg-[#2B010F] text-[#D5991C] text-xs font-semibold">
+                      <FileText className="w-3.5 h-3.5" />
+                      <span>Part 1 · Full Whitepaper</span>
                     </span>
-                    <span className="text-xs font-mono text-[#D5991C]">54 Pages · Unabridged</span>
+                    <span className="text-xs text-[#D5991C] font-medium">54 Pages · Word-for-Word</span>
                   </div>
                   <h3 className="font-serif text-xl font-bold text-[#FBF3E2] group-hover:text-[#D5991C] transition-colors mb-1.5">
-                    Full Whitepaper (Word-for-Word)
+                    Read Volume I Whitepaper
                   </h3>
                   <p className="text-xs text-[#FBF3E2]/80 leading-relaxed font-sans mb-4">
-                    The complete, word-for-word 8,800+ word academic monograph including executive summary, multi-stage RAG mechanics, first-generation AMTD critique, and mathematical proofs for Layers 0 through 4B.
+                    Read the complete 8,800+ word paper covering executive context, how AI search retrieval works, and the full architecture of Layers 0 through 4B.
                   </p>
                 </div>
-                <div className="flex items-center text-xs font-mono font-bold text-[#D5991C] group-hover:translate-x-1 transition-transform">
-                  <span>Open Page 1: Read Complete Whitepaper</span>
+                <div className="flex items-center text-xs font-semibold text-[#D5991C] group-hover:translate-x-1 transition-transform">
+                  <span>Open Full Whitepaper</span>
                   <ArrowRight className="w-4 h-4 ml-1.5" />
                 </div>
               </button>
 
-              {/* PAGE 2: Findings, Algorithms, and Visualizers */}
               <button
                 onClick={() => onNavigate('counter-geo', 'lab')}
-                className="group p-5 bg-[#FFFDF8] hover:bg-[#FAF2E1] text-[#410217] border-2 border-[#D5991C] shadow-md transition-all duration-200 text-left cursor-pointer flex flex-col justify-between"
+                className="group p-5 rounded-xl bg-[#FFFDF8] hover:bg-[#FAF2E1] text-[#410217] border-2 border-[#D5991C] shadow-md transition-all text-left cursor-pointer flex flex-col justify-between"
               >
                 <div>
                   <div className="flex items-center justify-between mb-2">
-                    <span className="inline-flex items-center space-x-1.5 px-2.5 py-0.5 bg-[#FAF2E1] text-[#410217] text-[10px] font-mono font-bold uppercase tracking-wider border border-[#D5991C]">
-                      <Sparkles className="w-3 h-3 text-[#D5991C]" />
-                      <span>Page 2 of Volume 1</span>
+                    <span className="inline-flex items-center space-x-1.5 px-2.5 py-0.5 rounded-md bg-[#FAF2E1] text-[#410217] text-xs font-semibold border border-[#D5991C]">
+                      <Sparkles className="w-3.5 h-3.5 text-[#D5991C]" />
+                      <span>Part 2 · Interactive Lab</span>
                     </span>
-                    <span className="text-xs font-mono text-[#00A878] font-bold">Interactive 3D WebGL</span>
+                    <span className="text-xs text-[#00A878] font-semibold">Live 3D &amp; Simulators</span>
                   </div>
                   <h3 className="font-serif text-xl font-bold text-[#410217] group-hover:text-[#D5991C] transition-colors mb-1.5">
-                    Findings, Algorithms &amp; Visualizers
+                    Explore Volume I Findings &amp; 3D Lab
                   </h3>
                   <p className="text-xs text-[#410217]/80 leading-relaxed font-sans mb-4">
-                    Interactive 3D Vector Manifold Lab, live AM-CIDP intrinsic dimensionality visualizer, NCARD divergence simulator, and the 6-Layer Architecture Defense Inspector.
+                    Test our search consistency checks, botnet filters, and financial reality gates interactively with live sliders and a 3D visualizer.
                   </p>
                 </div>
-                <div className="flex items-center text-xs font-mono font-bold text-[#410217] group-hover:translate-x-1 transition-transform">
-                  <span className="group-hover:text-[#D5991C] transition-colors">Open Page 2: Launch Lab &amp; Visualizers</span>
+                <div className="flex items-center text-xs font-semibold text-[#410217] group-hover:translate-x-1 transition-transform">
+                  <span>Launch Interactive Lab</span>
                   <ArrowRight className="w-4 h-4 ml-1.5 text-[#D5991C]" />
                 </div>
               </button>
-
             </div>
-
           </article>
         )}
 
-        {/* ============================================================== */}
         {/* VOLUME 2 SHOWCASE CARD */}
-        {/* ============================================================== */}
         {(activeTab === 'all' || activeTab === 'vol2') && (
-          <article className="bg-[#FAF2E1] border-2 border-[#00A878]/70 shadow-lg p-6 sm:p-10 relative overflow-hidden transition-all duration-300 hover:border-[#00A878]">
-            
-            {/* Top Accent Strip */}
-            <div className="flex flex-wrap items-center justify-between gap-3 pb-5 mb-6 border-b border-[#F2D69D] font-mono text-xs">
-              <div className="flex items-center space-x-2">
-                <span className="px-2.5 py-1 bg-[#004566] text-[#FBF3E2] border border-[#00A878] font-bold uppercase tracking-widest text-[10px]">
-                  VOLUME II // STATEFUL IMMUNITY &amp; ZK
+          <article className="rounded-2xl bg-[#FAF2E1] border-2 border-[#00A878]/80 shadow-lg p-6 sm:p-10 relative overflow-hidden">
+            <div className="flex flex-wrap items-center justify-between gap-3 pb-4 mb-5 border-b border-[#F2D69D] text-xs">
+              <div className="flex items-center space-x-2.5">
+                <span className="px-3 py-1 rounded-full bg-[#004566] text-[#FBF3E2] font-bold">
+                  Volume II · Memory, PDFs, Swarms &amp; Privacy
                 </span>
-                <span className="text-[#410217] font-bold">{MASTER_DOC_VOL2_METADATA.id}</span>
-                <span className="text-[#410217]/60">•</span>
-                <span className="text-[#410217]/70">{MASTER_DOC_VOL2_METADATA.date}</span>
+                <span className="text-[#410217]/75 font-medium">{MASTER_DOC_VOL2_METADATA.date}</span>
               </div>
-              <div className="flex items-center space-x-2 text-[11px] text-[#410217]/70">
+              <div className="flex items-center space-x-2 text-[#410217]/80 font-medium">
                 <span>{MASTER_DOC_VOL2_METADATA.pages} Pages</span>
                 <span>•</span>
                 <span>{MASTER_DOC_VOL2_METADATA.wordCount.toLocaleString()} Words</span>
                 <span>•</span>
-                <span className="text-[#00A878] font-bold">Layers 5 – 8</span>
+                <span className="text-[#00A878] font-bold">Defense Layers 5 – 8</span>
               </div>
             </div>
 
-            {/* Volume Title & Subtitle */}
             <div className="mb-6">
               <h2 className="font-serif text-2xl sm:text-3xl lg:text-4xl text-[#410217] font-normal tracking-tight leading-tight mb-3">
                 {MASTER_DOC_VOL2_METADATA.title}
               </h2>
-              <p className="text-sm sm:text-base text-[#410217]/80 font-sans leading-relaxed max-w-4xl">
-                Extends Counter-AEO into stateful episodic agent memory, autophagous multi-agent swarms, multimodal Vision-Language Models (VLMs), and zero-knowledge regulatory reporting. Solves the catastrophic trade-off between proprietary hedge-fund alpha protection and mandatory SEC Rule 15c3-8 algorithmic auditing via 288-byte zk-SNARKs.
+              <p className="text-sm sm:text-base text-[#410217]/85 font-sans leading-relaxed max-w-4xl">
+                Extends Counter-AEO protection to AI agents that remember past conversations over months, read visual charts and PDFs, and collaborate in multi-agent teams. Also demonstrates how financial firms can prove their AI systems ran every safety check using zero-knowledge cryptography—without exposing proprietary trading strategies.
               </p>
             </div>
 
-            {/* Layer Badges in Vol 2 */}
-            <div className="mb-8 p-4 bg-[#FFFDF8] border border-[#F2D69D] font-mono text-xs">
-              <div className="text-[10px] text-[#00A878] font-bold uppercase tracking-wider mb-2">
-                // ADVANCED GENERATION-3 DEFENSE LAYERS IN VOLUME 2:
+            <div className="mb-7 p-4 rounded-xl bg-[#FFFDF8] border border-[#F2D69D] text-xs">
+              <div className="font-semibold text-[#410217] mb-2.5">
+                Core Protections Covered in Volume II:
               </div>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 text-[11px]">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
                 <div className="flex items-start space-x-2">
-                  <span className="text-[#00A878] font-bold">L5:</span>
-                  <span className="text-[#410217]">Doob-Meyer Martingale Memory Protection (DMEM-WMQ)</span>
+                  <span className="text-[#00A878] font-bold">Layer 5:</span>
+                  <span className="text-[#410217]/90">60-Day Long-Term Memory Drift Guard</span>
                 </div>
                 <div className="flex items-start space-x-2">
-                  <span className="text-[#00A878] font-bold">L6:</span>
-                  <span className="text-[#410217]">Spectral Swarm Echo De-Duplication (SGL-CMI)</span>
+                  <span className="text-[#00A878] font-bold">Layer 6:</span>
+                  <span className="text-[#410217]/90">AI-Quoting-AI Echo Chamber Filter</span>
                 </div>
                 <div className="flex items-start space-x-2">
-                  <span className="text-[#00A878] font-bold">L7:</span>
-                  <span className="text-[#410217]">Multimodal Steganographic PDF Shield (CM-JSAS)</span>
+                  <span className="text-[#00A878] font-bold">Layer 7:</span>
+                  <span className="text-[#410217]/90">PDF &amp; Chart Hidden Instruction Scrubber</span>
                 </div>
                 <div className="flex items-start space-x-2">
-                  <span className="text-[#00A878] font-bold">L8:</span>
-                  <span className="text-[#410217]">Zero-Knowledge SEC Regulatory Proofs (ZK-CAEO)</span>
+                  <span className="text-[#00A878] font-bold">Layer 8:</span>
+                  <span className="text-[#410217]/90">Zero-Knowledge Privacy Audit Proofs</span>
                 </div>
               </div>
             </div>
 
-            {/* PRIMARY DUAL ACCESS BUTTONS: PAGE 1 vs PAGE 2 */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2">
-              
-              {/* PAGE 1: Full Whitepaper word-for-word */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <button
                 onClick={() => onNavigate('counter-geo-vol2', 'paper')}
-                className="group p-5 bg-[#004566] hover:bg-[#002f45] text-[#FBF3E2] border-2 border-[#004566] shadow-md transition-all duration-200 text-left cursor-pointer flex flex-col justify-between"
+                className="group p-5 rounded-xl bg-[#004566] hover:bg-[#002f45] text-[#FBF3E2] border-2 border-[#004566] shadow-md transition-all text-left cursor-pointer flex flex-col justify-between"
               >
                 <div>
                   <div className="flex items-center justify-between mb-2">
-                    <span className="inline-flex items-center space-x-1.5 px-2.5 py-0.5 bg-[#002b40] text-[#00A878] text-[10px] font-mono font-bold uppercase tracking-wider border border-[#00A878]/30">
-                      <FileText className="w-3 h-3" />
-                      <span>Page 1 of Volume 2</span>
+                    <span className="inline-flex items-center space-x-1.5 px-2.5 py-0.5 rounded-md bg-[#002b40] text-[#00A878] text-xs font-semibold">
+                      <FileText className="w-3.5 h-3.5" />
+                      <span>Part 1 · Full Whitepaper</span>
                     </span>
-                    <span className="text-xs font-mono text-[#00A878]">42 Pages · Unabridged</span>
+                    <span className="text-xs text-[#00A878] font-medium">42 Pages · Word-for-Word</span>
                   </div>
                   <h3 className="font-serif text-xl font-bold text-[#FBF3E2] group-hover:text-[#00A878] transition-colors mb-1.5">
-                    Full Whitepaper Vol. 2 (Word-for-Word)
+                    Read Volume II Whitepaper
                   </h3>
                   <p className="text-xs text-[#FBF3E2]/80 leading-relaxed font-sans mb-4">
-                    The unabridged text of Volume II covering continuous memory martingales, Wasserstein-2 Merkle rollbacks, graph Laplacian swarm filtering, and fixed-point R1CS arithmetic circuits.
+                    Read the complete text of Volume II covering long-term agent memory protection, swarm echo filtering, visual PDF sanitization, and zero-knowledge proofs.
                   </p>
                 </div>
-                <div className="flex items-center text-xs font-mono font-bold text-[#00A878] group-hover:translate-x-1 transition-transform">
-                  <span>Open Page 1: Read Complete Vol. 2 Whitepaper</span>
+                <div className="flex items-center text-xs font-semibold text-[#00A878] group-hover:translate-x-1 transition-transform">
+                  <span>Open Full Whitepaper</span>
                   <ArrowRight className="w-4 h-4 ml-1.5" />
                 </div>
               </button>
 
-              {/* PAGE 2: Findings, Algorithms, and Visualizers */}
               <button
                 onClick={() => onNavigate('counter-geo-vol2', 'lab')}
-                className="group p-5 bg-[#FFFDF8] hover:bg-[#FAF2E1] text-[#410217] border-2 border-[#00A878] shadow-md transition-all duration-200 text-left cursor-pointer flex flex-col justify-between"
+                className="group p-5 rounded-xl bg-[#FFFDF8] hover:bg-[#FAF2E1] text-[#410217] border-2 border-[#00A878] shadow-md transition-all text-left cursor-pointer flex flex-col justify-between"
               >
                 <div>
                   <div className="flex items-center justify-between mb-2">
-                    <span className="inline-flex items-center space-x-1.5 px-2.5 py-0.5 bg-[#FAF2E1] text-[#004566] text-[10px] font-mono font-bold uppercase tracking-wider border border-[#00A878]">
-                      <Sparkles className="w-3 h-3 text-[#00A878]" />
-                      <span>Page 2 of Volume 2</span>
+                    <span className="inline-flex items-center space-x-1.5 px-2.5 py-0.5 rounded-md bg-[#FAF2E1] text-[#004566] text-xs font-semibold border border-[#00A878]">
+                      <Sparkles className="w-3.5 h-3.5 text-[#00A878]" />
+                      <span>Part 2 · Interactive Lab</span>
                     </span>
-                    <span className="text-xs font-mono text-[#00A878] font-bold">Interactive Algorithms</span>
+                    <span className="text-xs text-[#00A878] font-semibold">Live Simulators</span>
                   </div>
                   <h3 className="font-serif text-xl font-bold text-[#410217] group-hover:text-[#00A878] transition-colors mb-1.5">
-                    Findings, Algorithms &amp; Visualizers
+                    Explore Volume II Findings &amp; Lab
                   </h3>
                   <p className="text-xs text-[#410217]/80 leading-relaxed font-sans mb-4">
-                    Interactive Memory Drift Simulator, Byzantine Swarm Consensus Matrix, Multimodal Saliency Mask Inspector, and live 288-Byte zk-SNARK proof verifier.
+                    Experiment with the 60-day memory drift simulator, bot echo-chamber matrix, PDF pixel scrubber, and zero-knowledge proof verifier.
                   </p>
                 </div>
-                <div className="flex items-center text-xs font-mono font-bold text-[#410217] group-hover:translate-x-1 transition-transform">
-                  <span className="group-hover:text-[#00A878] transition-colors">Open Page 2: Launch Vol. 2 Findings &amp; Lab</span>
+                <div className="flex items-center text-xs font-semibold text-[#410217] group-hover:translate-x-1 transition-transform">
+                  <span>Launch Interactive Lab</span>
                   <ArrowRight className="w-4 h-4 ml-1.5 text-[#00A878]" />
                 </div>
               </button>
-
             </div>
-
           </article>
         )}
 
-        {/* ============================================================== */}
         {/* VOLUME 3 SHOWCASE CARD */}
-        {/* ============================================================== */}
         {(activeTab === 'all' || activeTab === 'vol3') && (
-          <article className="bg-[#FAF2E1] border-2 border-[#5B21B6]/70 shadow-lg p-6 sm:p-10 relative overflow-hidden transition-all duration-300 hover:border-[#5B21B6]">
-            
-            {/* Top Accent Strip */}
-            <div className="flex flex-wrap items-center justify-between gap-3 pb-5 mb-6 border-b border-[#F2D69D] font-mono text-xs">
-              <div className="flex items-center space-x-2">
-                <span className="px-2.5 py-1 bg-[#5B21B6] text-white border border-[#D5991C] font-bold uppercase tracking-widest text-[10px]">
-                  VOLUME III // BENCHMARK SUITE &amp; LOB STRESS TEST
+          <article className="rounded-2xl bg-[#FAF2E1] border-2 border-[#5B21B6]/80 shadow-lg p-6 sm:p-10 relative overflow-hidden">
+            <div className="flex flex-wrap items-center justify-between gap-3 pb-4 mb-5 border-b border-[#F2D69D] text-xs">
+              <div className="flex items-center space-x-2.5">
+                <span className="px-3 py-1 rounded-full bg-[#5B21B6] text-white font-bold">
+                  Volume III · Benchmark Suite &amp; Market Stress-Tests
                 </span>
-                <span className="text-[#410217] font-bold">{MASTER_DOC_VOL3_METADATA.id}</span>
-                <span className="text-[#410217]/60">•</span>
-                <span className="text-[#410217]/70">{MASTER_DOC_VOL3_METADATA.date}</span>
+                <span className="text-[#410217]/75 font-medium">{MASTER_DOC_VOL3_METADATA.date}</span>
               </div>
-              <div className="flex items-center space-x-2 text-[11px] text-[#410217]/70">
+              <div className="flex items-center space-x-2 text-[#410217]/80 font-medium">
                 <span>{MASTER_DOC_VOL3_METADATA.pageCount} Pages</span>
                 <span>•</span>
-                <span>250k Documents</span>
+                <span>250k Test Documents</span>
                 <span>•</span>
-                <span className="text-[#5B21B6] font-bold">AUROC = 0.996</span>
+                <span className="text-[#5B21B6] font-bold">99.6% Detection Accuracy</span>
               </div>
             </div>
 
-            {/* Volume Title & Subtitle */}
             <div className="mb-6">
               <h2 className="font-serif text-2xl sm:text-3xl lg:text-4xl text-[#410217] font-normal tracking-tight leading-tight mb-3">
                 {MASTER_DOC_VOL3_METADATA.title}
               </h2>
-              <p className="text-sm sm:text-base text-[#410217]/80 font-sans leading-relaxed max-w-4xl">
-                The empirical validation appendix for the entire Counter-AEO defense stack. Evaluates 250,000 multi-modal documents across threat taxonomy AT-1 to AT-7. Details the elimination of the SEC 10-K false positive pathology (from 18.6% down to 0.38%) and replays high-frequency Limit Order Book (LOB) flash-crash simulations with 50 autonomous LLM trading agents during pre-market data voids.
+              <p className="text-sm sm:text-base text-[#410217]/85 font-sans leading-relaxed max-w-4xl">
+                Our experimental validation study testing the defense stack across 250,000 documents and seven major attack types. Shows how our multi-engine cross-check eliminates the high false-alarm rate that older filters suffer on real SEC 10-K reports (dropping false alarms from 18.6% to 0.38%), and replays a simulated 50-bot pre-market flash crash.
               </p>
             </div>
 
-            {/* Key Findings Grid in Vol 3 */}
-            <div className="mb-8 p-4 bg-[#FFFDF8] border border-[#F2D69D] font-mono text-xs">
-              <div className="text-[10px] text-[#5B21B6] font-bold uppercase tracking-wider mb-2">
-                // EMPIRICAL BENCHMARKS &amp; SIMULATION RESULTS:
+            <div className="mb-7 p-4 rounded-xl bg-[#FFFDF8] border border-[#F2D69D] text-xs">
+              <div className="font-semibold text-[#410217] mb-2.5">
+                Key Benchmark Findings in Volume III:
               </div>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 text-[11px]">
-                <div className="p-2.5 bg-[#FAF2E1] border border-[#F2D69D]/60">
-                  <div className="text-[10px] text-[#410217]/60 uppercase">AUROC Score</div>
-                  <div className="text-base font-bold text-[#00A878] mt-0.5">0.996</div>
-                  <div className="text-[10px] text-[#410217]/70">vs 0.768 Gen-1 Baseline</div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+                <div className="p-3 rounded-lg bg-[#FAF2E1] border border-[#F2D69D]">
+                  <div className="text-[11px] text-[#410217]/70">Overall Detection (AUROC)</div>
+                  <div className="text-lg font-serif font-bold text-[#00A878] mt-0.5">0.996</div>
+                  <div className="text-[11px] text-[#410217]/70">vs. 0.768 Legacy Baseline</div>
                 </div>
-                <div className="p-2.5 bg-[#FAF2E1] border border-[#F2D69D]/60">
-                  <div className="text-[10px] text-[#410217]/60 uppercase">SEC 10-K Clean FPR</div>
-                  <div className="text-base font-bold text-[#00A878] mt-0.5">0.38%</div>
-                  <div className="text-[10px] text-[#410217]/70">-18.22% False Alarms</div>
+                <div className="p-3 rounded-lg bg-[#FAF2E1] border border-[#F2D69D]">
+                  <div className="text-[11px] text-[#410217]/70">Real SEC 10-K False Alarms</div>
+                  <div className="text-lg font-serif font-bold text-[#00A878] mt-0.5">0.38%</div>
+                  <div className="text-[11px] text-[#410217]/70">Down from 18.6%</div>
                 </div>
-                <div className="p-2.5 bg-[#FAF2E1] border border-[#F2D69D]/60">
-                  <div className="text-[10px] text-[#410217]/60 uppercase">Scenario Alpha ($DFNS)</div>
-                  <div className="text-base font-bold text-[#5B21B6] mt-0.5">14.2 ms Halt</div>
-                  <div className="text-[10px] text-[#410217]/70">0.00% Sovereign Loss</div>
+                <div className="p-3 rounded-lg bg-[#FAF2E1] border border-[#F2D69D]">
+                  <div className="text-[11px] text-[#410217]/70">Flash-Crash Simulation</div>
+                  <div className="text-lg font-serif font-bold text-[#5B21B6] mt-0.5">0.0% Loss</div>
+                  <div className="text-[11px] text-[#410217]/70">Halted in 14.2 ms</div>
                 </div>
-                <div className="p-2.5 bg-[#FAF2E1] border border-[#F2D69D]/60">
-                  <div className="text-[10px] text-[#410217]/60 uppercase">Python Test Harness</div>
-                  <div className="text-base font-bold text-[#410217] mt-0.5">Self-Contained</div>
-                  <div className="text-[10px] text-[#D5991C]">counter_aeo_bench.py</div>
+                <div className="p-3 rounded-lg bg-[#FAF2E1] border border-[#F2D69D]">
+                  <div className="text-[11px] text-[#410217]/70">Reproducible Code</div>
+                  <div className="text-lg font-serif font-bold text-[#410217] mt-0.5">Included</div>
+                  <div className="text-[11px] text-[#D5991C] font-medium">Self-Contained Python Suite</div>
                 </div>
               </div>
             </div>
 
-            {/* PRIMARY DUAL ACCESS BUTTONS: PAGE 1 vs PAGE 2 */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2">
-              
-              {/* PAGE 1: Full Whitepaper word-for-word */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <button
                 onClick={() => onNavigate('counter-geo-vol3', 'paper')}
-                className="group p-5 bg-[#341865] hover:bg-[#250d4d] text-[#FBF3E2] border-2 border-[#5B21B6] shadow-md transition-all duration-200 text-left cursor-pointer flex flex-col justify-between"
+                className="group p-5 rounded-xl bg-[#341865] hover:bg-[#250d4d] text-[#FBF3E2] border-2 border-[#5B21B6] shadow-md transition-all text-left cursor-pointer flex flex-col justify-between"
               >
                 <div>
                   <div className="flex items-center justify-between mb-2">
-                    <span className="inline-flex items-center space-x-1.5 px-2.5 py-0.5 bg-[#200a40] text-[#D5991C] text-[10px] font-mono font-bold uppercase tracking-wider border border-[#D5991C]/30">
-                      <FileText className="w-3 h-3" />
-                      <span>Page 1 of Volume 3</span>
+                    <span className="inline-flex items-center space-x-1.5 px-2.5 py-0.5 rounded-md bg-[#200a40] text-[#D5991C] text-xs font-semibold">
+                      <FileText className="w-3.5 h-3.5" />
+                      <span>Part 1 · Full Whitepaper</span>
                     </span>
-                    <span className="text-xs font-mono text-[#D5991C]">38 Pages · Unabridged</span>
+                    <span className="text-xs text-[#D5991C] font-medium">38 Pages · Word-for-Word</span>
                   </div>
                   <h3 className="font-serif text-xl font-bold text-[#FBF3E2] group-hover:text-[#D5991C] transition-colors mb-1.5">
-                    Full Whitepaper Vol. 3 (Word-for-Word)
+                    Read Volume III Whitepaper
                   </h3>
                   <p className="text-xs text-[#FBF3E2]/80 leading-relaxed font-sans mb-4">
-                    The unabridged experimental appendix with empirical ROC curves, ablation studies across Layers 0 to 7, historical replay market simulations, and production benchmark suite.
+                    Read the full empirical benchmark report, layer-by-layer comparisons, market replay simulations, and Python evaluation code.
                   </p>
                 </div>
-                <div className="flex items-center text-xs font-mono font-bold text-[#D5991C] group-hover:translate-x-1 transition-transform">
-                  <span>Open Page 1: Read Complete Vol. 3 Whitepaper</span>
+                <div className="flex items-center text-xs font-semibold text-[#D5991C] group-hover:translate-x-1 transition-transform">
+                  <span>Open Full Whitepaper</span>
                   <ArrowRight className="w-4 h-4 ml-1.5" />
                 </div>
               </button>
 
-              {/* PAGE 2: Findings, Algorithms, and Visualizers */}
               <button
                 onClick={() => onNavigate('counter-geo-vol3', 'lab')}
-                className="group p-5 bg-[#FFFDF8] hover:bg-[#FAF2E1] text-[#410217] border-2 border-[#5B21B6] shadow-md transition-all duration-200 text-left cursor-pointer flex flex-col justify-between"
+                className="group p-5 rounded-xl bg-[#FFFDF8] hover:bg-[#FAF2E1] text-[#410217] border-2 border-[#5B21B6] shadow-md transition-all text-left cursor-pointer flex flex-col justify-between"
               >
                 <div>
                   <div className="flex items-center justify-between mb-2">
-                    <span className="inline-flex items-center space-x-1.5 px-2.5 py-0.5 bg-[#FAF2E1] text-[#5B21B6] text-[10px] font-mono font-bold uppercase tracking-wider border border-[#5B21B6]">
-                      <Sparkles className="w-3 h-3 text-[#5B21B6]" />
-                      <span>Page 2 of Volume 3</span>
+                    <span className="inline-flex items-center space-x-1.5 px-2.5 py-0.5 rounded-md bg-[#FAF2E1] text-[#5B21B6] text-xs font-semibold border border-[#5B21B6]">
+                      <Sparkles className="w-3.5 h-3.5 text-[#5B21B6]" />
+                      <span>Part 2 · Interactive Lab</span>
                     </span>
-                    <span className="text-xs font-mono text-[#5B21B6] font-bold">Empirical Lab &amp; Simulator</span>
+                    <span className="text-xs text-[#5B21B6] font-semibold">Market &amp; ROC Explorer</span>
                   </div>
                   <h3 className="font-serif text-xl font-bold text-[#410217] group-hover:text-[#5B21B6] transition-colors mb-1.5">
-                    Findings, Benchmark Lab &amp; Visualizers
+                    Explore Volume III Benchmark Lab
                   </h3>
                   <p className="text-xs text-[#410217]/80 leading-relaxed font-sans mb-4">
-                    Interactive ROC curve explorer, Limit Order Book market flash crash simulation replay (Scenario Alpha), Layer ablation comparison matrix, and executable Python runner.
+                    Replay the pre-market flash crash simulation step-by-step, compare accuracy curves across all 7 threat types, and inspect the test harness.
                   </p>
                 </div>
-                <div className="flex items-center text-xs font-mono font-bold text-[#410217] group-hover:translate-x-1 transition-transform">
-                  <span className="group-hover:text-[#5B21B6] transition-colors">Open Page 2: Launch Benchmark Lab</span>
+                <div className="flex items-center text-xs font-semibold text-[#410217] group-hover:translate-x-1 transition-transform">
+                  <span>Launch Benchmark Lab</span>
                   <ArrowRight className="w-4 h-4 ml-1.5 text-[#5B21B6]" />
                 </div>
               </button>
-
             </div>
-
           </article>
         )}
 
-        {/* ============================================================== */}
         {/* VOLUME 4 SHOWCASE CARD */}
-        {/* ============================================================== */}
         {(activeTab === 'all' || activeTab === 'vol4') && (
-          <article className="bg-[#FAF2E1] border-2 border-[#D5991C] shadow-xl p-6 sm:p-10 relative overflow-hidden transition-all duration-300 hover:border-[#410217]">
-            
-            {/* Top Accent Strip */}
-            <div className="flex flex-wrap items-center justify-between gap-3 pb-5 mb-6 border-b border-[#F2D69D] font-mono text-xs">
-              <div className="flex items-center space-x-2">
-                <span className="px-2.5 py-1 bg-[#410217] text-[#FAF5EB] border border-[#D5991C] font-bold uppercase tracking-widest text-[10px]">
-                  VOLUME IV // HARDWARE &amp; COMMERCIAL ARCHITECTURE
+          <article className="rounded-2xl bg-[#FAF2E1] border-2 border-[#D5991C] shadow-lg p-6 sm:p-10 relative overflow-hidden">
+            <div className="flex flex-wrap items-center justify-between gap-3 pb-4 mb-5 border-b border-[#F2D69D] text-xs">
+              <div className="flex items-center space-x-2.5">
+                <span className="px-3 py-1 rounded-full bg-[#410217] text-[#FAF5EB] font-bold">
+                  Volume IV · High-Speed Hardware &amp; Enterprise Deployment
                 </span>
-                <span className="text-[#410217] font-bold">{MASTER_DOC_VOL4_METADATA.id}</span>
-                <span className="text-[#410217]/60">•</span>
-                <span className="text-[#410217]/70">{MASTER_DOC_VOL4_METADATA.date}</span>
+                <span className="text-[#410217]/75 font-medium">{MASTER_DOC_VOL4_METADATA.date}</span>
               </div>
-              <div className="flex items-center space-x-2 text-[11px] text-[#410217]/70">
+              <div className="flex items-center space-x-2 text-[#410217]/80 font-medium">
                 <span>{MASTER_DOC_VOL4_METADATA.pageCount} Pages</span>
                 <span>•</span>
-                <span className="text-[#D5991C] font-bold">142.0 ns SmartNIC</span>
+                <span className="text-[#D5991C] font-bold">142ns Hardware Design</span>
                 <span>•</span>
-                <span className="text-[#00A878] font-bold">8 Patents · 3 SKUs</span>
+                <span className="text-[#00A878] font-bold">Enterprise ROI Models</span>
               </div>
             </div>
 
-            {/* Volume Title & Subtitle */}
             <div className="mb-6">
               <h2 className="font-serif text-2xl sm:text-3xl lg:text-4xl text-[#410217] font-normal tracking-tight leading-tight mb-3">
                 {MASTER_DOC_VOL4_METADATA.title}
               </h2>
-              <p className="text-sm sm:text-base text-[#410217]/80 font-sans leading-relaxed max-w-4xl">
-                Translates Counter-AEO research into synthesizable FPGA hardware, enterprise commercialization, and sovereign defense procurement. Formulates the 142ns sub-microsecond pre-trade wire kill-switch for SEC Rule 15c3-8 algorithmic trading, institutional actuarial Value-at-Risk modeling (18.4x to 34.2x 3-year net ROI across 3 enterprise SKUs), 8 patent claim families, and a dual-use federal sovereign procurement roadmap (SBIR Phase III, DIU, In-Q-Tel, 15 U.S.C. § 638(r)).
+              <p className="text-sm sm:text-base text-[#410217]/85 font-sans leading-relaxed max-w-4xl">
+                Shows how to translate our software defenses into ultra-fast trading hardware and enterprise-ready deployments. Details a 142-nanosecond FPGA network card design that acts as a pre-trade safety brake, alongside air-gapped deployment architectures for financial institutions and government agencies.
               </p>
             </div>
 
-            {/* Key Hardware & Commercial Specifications in Vol 4 */}
-            <div className="mb-8 p-4 bg-[#FFFDF8] border border-[#F2D69D] font-mono text-xs">
-              <div className="text-[10px] text-[#D5991C] font-bold uppercase tracking-wider mb-2">
-                // HARDWARE SPECIFICATIONS &amp; COMMERCIAL VALUE ARCHITECTURE:
+            <div className="mb-7 p-4 rounded-xl bg-[#FFFDF8] border border-[#F2D69D] text-xs">
+              <div className="font-semibold text-[#410217] mb-2.5">
+                Key Specifications Covered in Volume IV:
               </div>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 text-[11px]">
-                <div className="p-2.5 bg-[#FAF2E1] border border-[#F2D69D]/60">
-                  <div className="text-[10px] text-[#410217]/60 uppercase">Wire Latency</div>
-                  <div className="text-base font-bold text-[#D5991C] mt-0.5">142.0 ns</div>
-                  <div className="text-[10px] text-[#410217]/70">312.5 MHz FPGA · 45 Clocks</div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+                <div className="p-3 rounded-lg bg-[#FAF2E1] border border-[#F2D69D]">
+                  <div className="text-[11px] text-[#410217]/70">Hardware Brake Speed</div>
+                  <div className="text-lg font-serif font-bold text-[#D5991C] mt-0.5">142.0 ns</div>
+                  <div className="text-[11px] text-[#410217]/70">45 Clock Cycles @ 312.5 MHz</div>
                 </div>
-                <div className="p-2.5 bg-[#FAF2E1] border border-[#F2D69D]/60">
-                  <div className="text-[10px] text-[#410217]/60 uppercase">Actuarial Net ROI</div>
-                  <div className="text-base font-bold text-[#00A878] mt-0.5">18.4x – 34.2x</div>
-                  <div className="text-[10px] text-[#410217]/70">3-Year Institutional Payback</div>
+                <div className="p-3 rounded-lg bg-[#FAF2E1] border border-[#F2D69D]">
+                  <div className="text-[11px] text-[#410217]/70">Modeled Risk Reduction</div>
+                  <div className="text-lg font-serif font-bold text-[#00A878] mt-0.5">18.4x – 34.2x</div>
+                  <div className="text-[11px] text-[#410217]/70">3-Year Value-at-Risk Savings</div>
                 </div>
-                <div className="p-2.5 bg-[#FAF2E1] border border-[#F2D69D]/60">
-                  <div className="text-[10px] text-[#410217]/60 uppercase">Commercial SKUs</div>
-                  <div className="text-base font-bold text-[#410217] mt-0.5">3 Enclaves</div>
-                  <div className="text-[10px] text-[#410217]/70">Broker-Dealer · Quant · Sovereign</div>
+                <div className="p-3 rounded-lg bg-[#FAF2E1] border border-[#F2D69D]">
+                  <div className="text-[11px] text-[#410217]/70">Deployment Options</div>
+                  <div className="text-lg font-serif font-bold text-[#410217] mt-0.5">3 Tiers</div>
+                  <div className="text-[11px] text-[#410217]/70">Trading · Enterprise · Sovereign</div>
                 </div>
-                <div className="p-2.5 bg-[#FAF2E1] border border-[#F2D69D]/60">
-                  <div className="text-[10px] text-[#410217]/60 uppercase">Patent Families</div>
-                  <div className="text-base font-bold text-[#410217] mt-0.5">8 Filings</div>
-                  <div className="text-[10px] text-[#00A878]">Synthesizable SystemVerilog</div>
+                <div className="p-3 rounded-lg bg-[#FAF2E1] border border-[#F2D69D]">
+                  <div className="text-[11px] text-[#410217]/70">Hardware Code</div>
+                  <div className="text-lg font-serif font-bold text-[#410217] mt-0.5">SystemVerilog</div>
+                  <div className="text-[11px] text-[#00A878] font-medium">Synthesizable RTL Included</div>
                 </div>
               </div>
             </div>
 
-            {/* PRIMARY DUAL ACCESS BUTTONS: PAGE 1 vs PAGE 2 */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2">
-              
-              {/* PAGE 1: Full Whitepaper word-for-word */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <button
                 onClick={() => onNavigate('counter-geo-vol4', 'paper')}
-                className="group p-5 bg-[#410217] hover:bg-[#5C0A24] text-[#FBF3E2] border-2 border-[#410217] shadow-md transition-all duration-200 text-left cursor-pointer flex flex-col justify-between"
+                className="group p-5 rounded-xl bg-[#410217] hover:bg-[#5C0A24] text-[#FBF3E2] border-2 border-[#410217] shadow-md transition-all text-left cursor-pointer flex flex-col justify-between"
               >
                 <div>
                   <div className="flex items-center justify-between mb-2">
-                    <span className="inline-flex items-center space-x-1.5 px-2.5 py-0.5 bg-[#2B010F] text-[#D5991C] text-[10px] font-mono font-bold uppercase tracking-wider border border-[#D5991C]/30">
-                      <FileText className="w-3 h-3" />
-                      <span>Page 1 of Volume 4</span>
+                    <span className="inline-flex items-center space-x-1.5 px-2.5 py-0.5 rounded-md bg-[#2B010F] text-[#D5991C] text-xs font-semibold">
+                      <FileText className="w-3.5 h-3.5" />
+                      <span>Part 1 · Full Whitepaper</span>
                     </span>
-                    <span className="text-xs font-mono text-[#D5991C]">46 Pages · Unabridged</span>
+                    <span className="text-xs text-[#D5991C] font-medium">46 Pages · Word-for-Word</span>
                   </div>
                   <h3 className="font-serif text-xl font-bold text-[#FBF3E2] group-hover:text-[#D5991C] transition-colors mb-1.5">
-                    Full Whitepaper Vol. 4 (Word-for-Word)
+                    Read Volume IV Whitepaper
                   </h3>
                   <p className="text-xs text-[#FBF3E2]/80 leading-relaxed font-sans mb-4">
-                    The complete, unabridged text of Volume IV covering the 142ns FPGA SmartNIC architecture, synthesizable RTL, enterprise TAM/SAM sizing, actuarial VaR mathematics, 8 patent claim families, and federal sovereign contracting.
+                    Read the full text of Volume IV covering the 142ns hardware design, SystemVerilog code, enterprise risk modeling, and deployment roadmaps.
                   </p>
                 </div>
-                <div className="flex items-center text-xs font-mono font-bold text-[#D5991C] group-hover:translate-x-1 transition-transform">
-                  <span>Open Page 1: Read Complete Vol. 4 Whitepaper</span>
+                <div className="flex items-center text-xs font-semibold text-[#D5991C] group-hover:translate-x-1 transition-transform">
+                  <span>Open Full Whitepaper</span>
                   <ArrowRight className="w-4 h-4 ml-1.5" />
                 </div>
               </button>
 
-              {/* PAGE 2: Findings, Algorithms, and Visualizers */}
               <button
                 onClick={() => onNavigate('counter-geo-vol4', 'lab')}
-                className="group p-5 bg-[#FFFDF8] hover:bg-[#FAF2E1] text-[#410217] border-2 border-[#D5991C] shadow-md transition-all duration-200 text-left cursor-pointer flex flex-col justify-between"
+                className="group p-5 rounded-xl bg-[#FFFDF8] hover:bg-[#FAF2E1] text-[#410217] border-2 border-[#D5991C] shadow-md transition-all text-left cursor-pointer flex flex-col justify-between"
               >
                 <div>
                   <div className="flex items-center justify-between mb-2">
-                    <span className="inline-flex items-center space-x-1.5 px-2.5 py-0.5 bg-[#FAF2E1] text-[#410217] text-[10px] font-mono font-bold uppercase tracking-wider border border-[#D5991C]">
-                      <Sparkles className="w-3 h-3 text-[#D5991C]" />
-                      <span>Page 2 of Volume 4</span>
+                    <span className="inline-flex items-center space-x-1.5 px-2.5 py-0.5 rounded-md bg-[#FAF2E1] text-[#410217] text-xs font-semibold border border-[#D5991C]">
+                      <Sparkles className="w-3.5 h-3.5 text-[#D5991C]" />
+                      <span>Part 2 · Interactive Lab</span>
                     </span>
-                    <span className="text-xs font-mono text-[#00A878] font-bold">142ns FPGA &amp; 3D Hardware</span>
+                    <span className="text-xs text-[#00A878] font-semibold">142ns Simulator &amp; ROI</span>
                   </div>
                   <h3 className="font-serif text-xl font-bold text-[#410217] group-hover:text-[#D5991C] transition-colors mb-1.5">
-                    Findings, Hardware Lab &amp; Visualizers
+                    Explore Volume IV Hardware &amp; ROI Lab
                   </h3>
                   <p className="text-xs text-[#410217]/80 leading-relaxed font-sans mb-4">
-                    Interactive 142ns FPGA SmartNIC wire simulator, enterprise VaR &amp; ROI calculator, sovereign contracting pipeline, 8 patent family roadmap, and 3D WebGL hardware colocation rack appliance.
+                    Test the interactive 142ns wire brake simulator, calculate enterprise risk savings, and inspect the 3D hardware rack visualizer.
                   </p>
                 </div>
-                <div className="flex items-center text-xs font-mono font-bold text-[#410217] group-hover:translate-x-1 transition-transform">
-                  <span className="group-hover:text-[#D5991C] transition-colors">Open Page 2: Launch Hardware Lab &amp; Visualizers</span>
+                <div className="flex items-center text-xs font-semibold text-[#410217] group-hover:translate-x-1 transition-transform">
+                  <span>Launch Hardware Lab</span>
                   <ArrowRight className="w-4 h-4 ml-1.5 text-[#D5991C]" />
                 </div>
               </button>
-
             </div>
-
           </article>
         )}
 
-        {/* ============================================================== */}
         {/* VOLUME 5 SHOWCASE CARD */}
-        {/* ============================================================== */}
         {(activeTab === 'all' || activeTab === 'vol5') && (
-          <article className="bg-[#FAF2E1] border-2 border-[#7C3AED] shadow-xl p-6 sm:p-10 relative overflow-hidden transition-all duration-300 hover:border-[#410217]">
-            
-            {/* Top Accent Strip */}
-            <div className="flex flex-wrap items-center justify-between gap-3 pb-5 mb-6 border-b border-[#F2D69D] font-mono text-xs">
-              <div className="flex items-center space-x-2">
-                <span className="px-2.5 py-1 bg-[#4C1D95] text-[#FAF5EB] border border-[#7C3AED] font-bold uppercase tracking-widest text-[10px]">
-                  VOLUME V // AUTONOMOUS PROTOCOL DOMINANCE &amp; MULTI-AGENT CRYPTOGRAPHY
+          <article className="rounded-2xl bg-[#FAF2E1] border-2 border-[#7C3AED] shadow-lg p-6 sm:p-10 relative overflow-hidden">
+            <div className="flex flex-wrap items-center justify-between gap-3 pb-4 mb-5 border-b border-[#F2D69D] text-xs">
+              <div className="flex items-center space-x-2.5">
+                <span className="px-3 py-1 rounded-full bg-[#4C1D95] text-[#FAF5EB] font-bold">
+                  Volume V · Agent-to-Agent Discovery &amp; Security (A2A-EO)
                 </span>
-                <span className="text-[#410217] font-bold">{MASTER_DOC_VOL5_METADATA.id}</span>
-                <span className="text-[#410217]/60">•</span>
-                <span className="text-[#410217]/70">{MASTER_DOC_VOL5_METADATA.date}</span>
+                <span className="text-[#410217]/75 font-medium">{MASTER_DOC_VOL5_METADATA.date}</span>
               </div>
-              <div className="flex items-center space-x-2 text-[11px] text-[#410217]/70">
+              <div className="flex items-center space-x-2 text-[#410217]/80 font-medium">
                 <span>{MASTER_DOC_VOL5_METADATA.pageCount} Pages</span>
                 <span>•</span>
-                <span className="text-[#7C3AED] font-bold">A2A-EO &amp; Silent Web</span>
+                <span className="text-[#7C3AED] font-bold">Autonomous Agent Networks</span>
                 <span>•</span>
-                <span className="text-[#00A878] font-bold">MCP · ERC-8004 · x402</span>
+                <span className="text-[#00A878] font-bold">MCP &amp; Tool Security</span>
               </div>
             </div>
 
-            {/* Volume Title & Subtitle */}
             <div className="mb-6">
               <h2 className="font-serif text-2xl sm:text-3xl lg:text-4xl text-[#410217] font-normal tracking-tight leading-tight mb-3">
                 {MASTER_DOC_VOL5_METADATA.title}
               </h2>
-              <p className="text-sm sm:text-base text-[#410217]/80 font-sans leading-relaxed max-w-4xl">
-                The foundational architecture for the post-human "Silent Web", where autonomous AI agents negotiate, invoke Model Context Protocol (MCP) tool schemas, settle micropayments (x402 / ERC-8004), and execute protocol selections without human intervention. Formulates Gradient-Guided Schema Flattening (GSF-CACS), Cryptographic Nonce-Utility Binding (C-NUB), and adversarial multi-agent defenses against schema poisoning, tool spoofing, and rogue autonomous swarms.
+              <p className="text-sm sm:text-base text-[#410217]/85 font-sans leading-relaxed max-w-4xl">
+                Examines the rapid rise of the &ldquo;Silent Web&rdquo;—where autonomous AI agents discover, evaluate, and invoke external software tools (such as Model Context Protocol servers and APIs) without a human clicking a browser. Shows how to structure your legitimate tools so AI agents select them 79%–96% of the time, and how to defend your internal agents against disguised malicious tools.
               </p>
             </div>
 
-            {/* Key A2A Specifications in Vol 5 */}
-            <div className="mb-8 p-4 bg-[#FFFDF8] border border-[#F2D69D] font-mono text-xs">
-              <div className="text-[10px] text-[#7C3AED] font-bold uppercase tracking-wider mb-2">
-                // AUTONOMOUS AGENT-TO-AGENT (A2A-EO) PROTOCOL SPECIFICATIONS:
+            <div className="mb-7 p-4 rounded-xl bg-[#FFFDF8] border border-[#F2D69D] text-xs">
+              <div className="font-semibold text-[#410217] mb-2.5">
+                Key Highlights Covered in Volume V:
               </div>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 text-[11px]">
-                <div className="p-2.5 bg-[#FAF2E1] border border-[#F2D69D]/60">
-                  <div className="text-[10px] text-[#410217]/60 uppercase">Schema De-nesting</div>
-                  <div className="text-base font-bold text-[#7C3AED] mt-0.5">β_P = 3.82..16.2</div>
-                  <div className="text-[10px] text-[#410217]/70">Log-Odds Selection Bias</div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+                <div className="p-3 rounded-lg bg-[#FAF2E1] border border-[#F2D69D]">
+                  <div className="text-[11px] text-[#410217]/70">Tool Schema Simplification</div>
+                  <div className="text-lg font-serif font-bold text-[#7C3AED] mt-0.5">Flat &amp; Clear</div>
+                  <div className="text-[11px] text-[#410217]/70">Eliminates Deep Nesting Penalties</div>
                 </div>
-                <div className="p-2.5 bg-[#FAF2E1] border border-[#F2D69D]/60">
-                  <div className="text-[10px] text-[#410217]/60 uppercase">Index-Zero Win Rate</div>
-                  <div className="text-base font-bold text-[#00A878] mt-0.5">79% – 96%</div>
-                  <div className="text-[10px] text-[#410217]/70">Positional Priming Dominance</div>
+                <div className="p-3 rounded-lg bg-[#FAF2E1] border border-[#F2D69D]">
+                  <div className="text-[11px] text-[#410217]/70">Agent Selection Win Rate</div>
+                  <div className="text-lg font-serif font-bold text-[#00A878] mt-0.5">79% – 96%</div>
+                  <div className="text-[11px] text-[#410217]/70">In Multi-Agent Routing Tests</div>
                 </div>
-                <div className="p-2.5 bg-[#FAF2E1] border border-[#F2D69D]/60">
-                  <div className="text-[10px] text-[#410217]/60 uppercase">Cryptographic Binding</div>
-                  <div className="text-base font-bold text-[#410217] mt-0.5">C-NUB &amp; Ed25519</div>
-                  <div className="text-[10px] text-[#410217]/70">RFC 8785 Canonical JSON</div>
+                <div className="p-3 rounded-lg bg-[#FAF2E1] border border-[#F2D69D]">
+                  <div className="text-[11px] text-[#410217]/70">Partner Verification</div>
+                  <div className="text-lg font-serif font-bold text-[#410217] mt-0.5">Signed</div>
+                  <div className="text-[11px] text-[#410217]/70">Cryptographic Agent Handshakes</div>
                 </div>
-                <div className="p-2.5 bg-[#FAF2E1] border border-[#F2D69D]/60">
-                  <div className="text-[10px] text-[#410217]/60 uppercase">Interactive Lab</div>
-                  <div className="text-base font-bold text-[#410217] mt-0.5">Self-Contained</div>
-                  <div className="text-[10px] text-[#00A878]">Live Simulator &amp; 3D Graph</div>
+                <div className="p-3 rounded-lg bg-[#FAF2E1] border border-[#F2D69D]">
+                  <div className="text-[11px] text-[#410217]/70">Prompt Hijack Prevention</div>
+                  <div className="text-lg font-serif font-bold text-[#00A878] mt-0.5">0.0% Leak</div>
+                  <div className="text-[11px] text-[#410217]/70">Strict External Data Isolation</div>
                 </div>
               </div>
             </div>
 
-            {/* PRIMARY DUAL ACCESS BUTTONS: PAGE 1 vs PAGE 2 */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2">
-              
-              {/* PAGE 1: Full Whitepaper word-for-word */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <button
                 onClick={() => onNavigate('counter-geo-vol5', 'paper')}
-                className="group p-5 bg-[#3B0764] hover:bg-[#581C87] text-[#FAF5EB] border-2 border-[#7C3AED] shadow-md transition-all duration-200 text-left cursor-pointer flex flex-col justify-between"
+                className="group p-5 rounded-xl bg-[#3B0764] hover:bg-[#581C87] text-[#FAF5EB] border-2 border-[#7C3AED] shadow-md transition-all text-left cursor-pointer flex flex-col justify-between"
               >
                 <div>
                   <div className="flex items-center justify-between mb-2">
-                    <span className="inline-flex items-center space-x-1.5 px-2.5 py-0.5 bg-[#2E1065] text-[#D8B4FE] text-[10px] font-mono font-bold uppercase tracking-wider border border-[#7C3AED]/40">
-                      <FileText className="w-3 h-3" />
-                      <span>Page 1 of Volume 5</span>
+                    <span className="inline-flex items-center space-x-1.5 px-2.5 py-0.5 rounded-md bg-[#2E1065] text-[#D8B4FE] text-xs font-semibold">
+                      <FileText className="w-3.5 h-3.5" />
+                      <span>Part 1 · Full Whitepaper</span>
                     </span>
-                    <span className="text-xs font-mono text-[#D8B4FE]">52 Pages · Unabridged</span>
+                    <span className="text-xs text-[#D8B4FE] font-medium">52 Pages · Word-for-Word</span>
                   </div>
                   <h3 className="font-serif text-xl font-bold text-[#FAF5EB] group-hover:text-[#D8B4FE] transition-colors mb-1.5">
-                    Full Whitepaper Vol. 5 (Word-for-Word)
+                    Read Volume V Whitepaper
                   </h3>
                   <p className="text-xs text-[#FAF5EB]/80 leading-relaxed font-sans mb-4">
-                    The complete, unabridged text of Volume V covering autonomous agent routing mechanics, vLLM semantic router equations, GSF-CACS algorithms, and multi-agent cryptographic protocols.
+                    Read the complete text of Volume V covering how autonomous agents choose tools, how to optimize your schemas, and how to stop agent-to-agent attacks.
                   </p>
                 </div>
-                <div className="flex items-center text-xs font-mono font-bold text-[#D8B4FE] group-hover:translate-x-1 transition-transform">
-                  <span>Open Page 1: Read Complete Vol. 5 Whitepaper</span>
+                <div className="flex items-center text-xs font-semibold text-[#D8B4FE] group-hover:translate-x-1 transition-transform">
+                  <span>Open Full Whitepaper</span>
                   <ArrowRight className="w-4 h-4 ml-1.5" />
                 </div>
               </button>
 
-              {/* PAGE 2: Findings, Algorithms, and Visualizers */}
               <button
                 onClick={() => onNavigate('counter-geo-vol5', 'lab')}
-                className="group p-5 bg-[#FFFDF8] hover:bg-[#FAF2E1] text-[#410217] border-2 border-[#7C3AED] shadow-md transition-all duration-200 text-left cursor-pointer flex flex-col justify-between"
+                className="group p-5 rounded-xl bg-[#FFFDF8] hover:bg-[#FAF2E1] text-[#410217] border-2 border-[#7C3AED] shadow-md transition-all text-left cursor-pointer flex flex-col justify-between"
               >
                 <div>
                   <div className="flex items-center justify-between mb-2">
-                    <span className="inline-flex items-center space-x-1.5 px-2.5 py-0.5 bg-[#FAF2E1] text-[#7C3AED] text-[10px] font-mono font-bold uppercase tracking-wider border border-[#7C3AED]">
-                      <Sparkles className="w-3 h-3 text-[#7C3AED]" />
-                      <span>Page 2 of Volume 5</span>
+                    <span className="inline-flex items-center space-x-1.5 px-2.5 py-0.5 rounded-md bg-[#FAF2E1] text-[#7C3AED] text-xs font-semibold border border-[#7C3AED]">
+                      <Sparkles className="w-3.5 h-3.5 text-[#7C3AED]" />
+                      <span>Part 2 · Interactive Lab</span>
                     </span>
-                    <span className="text-xs font-mono text-[#7C3AED] font-bold">Interactive A2A Lab</span>
+                    <span className="text-xs text-[#7C3AED] font-semibold">Live Agent Simulator</span>
                   </div>
                   <h3 className="font-serif text-xl font-bold text-[#410217] group-hover:text-[#7C3AED] transition-colors mb-1.5">
-                    Findings, Algorithms &amp; Visualizers
+                    Explore Volume V Agent Lab
                   </h3>
                   <p className="text-xs text-[#410217]/80 leading-relaxed font-sans mb-4">
-                    Interactive A2A Agent Selection Simulator, topological schema de-nester, cryptographic handshake verifier, and 3D autonomous multi-agent protocol graph.
+                    Test the interactive agent tool selection simulator, schema optimizer, handshake verifier, and 3D multi-agent network visualizer.
                   </p>
                 </div>
-                <div className="flex items-center text-xs font-mono font-bold text-[#410217] group-hover:translate-x-1 transition-transform">
-                  <span className="group-hover:text-[#7C3AED] transition-colors">Open Page 2: Launch A2A Lab &amp; Visualizers</span>
+                <div className="flex items-center text-xs font-semibold text-[#410217] group-hover:translate-x-1 transition-transform">
+                  <span>Launch Agent Lab</span>
                   <ArrowRight className="w-4 h-4 ml-1.5 text-[#7C3AED]" />
                 </div>
               </button>
-
             </div>
-
           </article>
         )}
-
       </section>
 
-      {/* 5. Complete 8-Layer Sovereign Defense Architecture Matrix */}
+      {/* Complete 12-Layer Defense Architecture Summary Table */}
       <section id="defense-matrix" className="py-14 bg-[#F5ECE0] border-t border-b border-[#F2D69D]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          
           <div className="flex flex-wrap items-end justify-between gap-4 mb-8">
             <div>
-              <span className="font-mono text-xs text-[#D5991C] font-bold uppercase tracking-widest block mb-1">
-                // COMPREHENSIVE ARCHITECTURAL BLUEPRINT
-              </span>
+              <div className="w-10 h-1 bg-[#D5991C] rounded-full mb-3" />
               <h2 className="font-serif text-3xl sm:text-4xl text-[#410217] font-normal tracking-tight">
-                The Unified 8-Layer Sovereign Defense Stack
+                Complete Defense Stack at a Glance
               </h2>
             </div>
-            <p className="text-xs font-mono text-[#410217]/70 max-w-lg">
-              Covering every adversarial attack surface across dense embeddings, token cross-encoders, stateful agent memory, Byzantine swarms, multimodal visual RAG, and financial market order books.
+            <p className="text-xs sm:text-sm text-[#410217]/75 max-w-lg">
+              Every defense layer across our five volumes explained in plain English, showing what problem it solves and where you can read or test it.
             </p>
           </div>
 
-          <div className="overflow-x-auto bg-[#FAF2E1] border border-[#F2D69D] shadow-sm">
-            <table className="w-full text-left font-mono text-xs border-collapse">
+          <div className="overflow-x-auto rounded-2xl bg-[#FAF2E1] border border-[#F2D69D] shadow-sm">
+            <table className="w-full text-left text-xs border-collapse">
               <thead>
                 <tr className="bg-[#410217] text-[#FBF3E2] border-b border-[#F2D69D]">
-                  <th className="py-3 px-4 font-bold uppercase">Layer</th>
-                  <th className="py-3 px-3 font-bold uppercase">Volume</th>
-                  <th className="py-3 px-4 font-bold uppercase">Module</th>
-                  <th className="py-3 px-4 font-bold uppercase">Target Adversarial Threat</th>
-                  <th className="py-3 px-4 font-bold uppercase">Mathematical Core</th>
-                  <th className="py-3 px-3 font-bold uppercase text-right">Latency</th>
-                  <th className="py-3 px-4 font-bold uppercase text-center">Direct Jump</th>
+                  <th className="py-3.5 px-4 font-semibold">Layer</th>
+                  <th className="py-3.5 px-3 font-semibold">Volume</th>
+                  <th className="py-3.5 px-4 font-semibold">Protection Module</th>
+                  <th className="py-3.5 px-4 font-semibold">What Threat It Stops</th>
+                  <th className="py-3.5 px-4 font-semibold">How It Works</th>
+                  <th className="py-3.5 px-3 font-semibold text-right">Speed</th>
+                  <th className="py-3.5 px-4 font-semibold text-center">Explore</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-[#F2D69D]/70 text-[#410217]">
@@ -986,45 +937,41 @@ export const ResearchPage: React.FC<ResearchPageProps> = ({
                     className="hover:bg-[#FFFDF8] transition-colors cursor-pointer"
                     onClick={() => setExpandedLayer(expandedLayer === idx ? null : idx)}
                   >
-                    <td className="py-3 px-4 font-bold text-[#410217] whitespace-nowrap">
-                      <span className="px-2 py-0.5 bg-[#FAF5EB] border border-[#D5991C]/50 text-[10px]">
+                    <td className="py-3.5 px-4 font-bold text-[#410217] whitespace-nowrap">
+                      <span className="px-2.5 py-1 rounded-md bg-[#FAF5EB] border border-[#D5991C]/50 text-[11px]">
                         {item.layer}
                       </span>
                     </td>
-                    <td className="py-3 px-3 whitespace-nowrap">
-                      <span className={`px-2 py-0.5 text-[9px] font-bold uppercase ${
-                        item.vol === 'Vol. I' ? 'bg-[#410217] text-[#FBF3E2]' : 'bg-[#004566] text-[#FBF3E2]'
-                      }`}>
+                    <td className="py-3.5 px-3 whitespace-nowrap">
+                      <span className="px-2.5 py-1 rounded-full text-[10px] font-bold bg-[#410217] text-[#FBF3E2]">
                         {item.vol}
                       </span>
                     </td>
-                    <td className="py-3 px-4 font-bold text-[#410217] whitespace-nowrap">
+                    <td className="py-3.5 px-4 font-bold text-[#410217] whitespace-nowrap">
                       {item.name}
                     </td>
-                    <td className="py-3 px-4 text-[#410217]/85 max-w-xs truncate">
+                    <td className="py-3.5 px-4 text-[#410217]/85 max-w-xs">
                       {item.threat}
                     </td>
-                    <td className="py-3 px-4 text-[11px] text-[#410217]/75 font-sans">
+                    <td className="py-3.5 px-4 text-[#410217]/80">
                       {item.core}
                     </td>
-                    <td className="py-3 px-3 text-right font-bold text-[#00A878] whitespace-nowrap">
+                    <td className="py-3.5 px-3 text-right font-bold text-[#00A878] whitespace-nowrap">
                       {item.latency}
                     </td>
-                    <td className="py-3 px-4 text-center whitespace-nowrap" onClick={(e) => e.stopPropagation()}>
+                    <td className="py-3.5 px-4 text-center whitespace-nowrap" onClick={(e) => e.stopPropagation()}>
                       <div className="inline-flex items-center space-x-1.5">
                         <button
                           onClick={() => onNavigate(item.volKey, 'paper')}
-                          className="px-2 py-1 bg-[#410217] hover:bg-[#5C0A24] text-[#FBF3E2] text-[10px] font-bold uppercase transition-colors cursor-pointer"
-                          title={`Read in ${item.vol} Whitepaper (Page 1)`}
+                          className="px-2.5 py-1 rounded-md bg-[#410217] hover:bg-[#5C0A24] text-[#FBF3E2] text-[11px] font-semibold transition-colors cursor-pointer"
                         >
-                          Page 1
+                          Paper
                         </button>
                         <button
                           onClick={() => onNavigate(item.volKey, 'lab')}
-                          className="px-2 py-1 bg-[#D5991C] hover:bg-[#c48912] text-[#130108] text-[10px] font-bold uppercase transition-colors cursor-pointer"
-                          title={`Launch in ${item.vol} Interactive Lab (Page 2)`}
+                          className="px-2.5 py-1 rounded-md bg-[#D5991C] hover:bg-[#c48912] text-[#130108] text-[11px] font-semibold transition-colors cursor-pointer"
                         >
-                          Page 2
+                          3D Lab
                         </button>
                       </div>
                     </td>
@@ -1033,146 +980,86 @@ export const ResearchPage: React.FC<ResearchPageProps> = ({
               </tbody>
             </table>
           </div>
-
-          <div className="mt-4 flex flex-wrap items-center justify-between text-xs font-mono text-[#410217]/70">
-            <span>Cumulative End-to-End Stack Ingestion Overhead: <strong className="text-[#00A878]">18.4 ms (P99)</strong></span>
-            <span>SEC Rule 15c3-8 Compliant // Zero Alpha Leakage</span>
-          </div>
-
         </div>
       </section>
 
-      {/* 6. Threat Taxonomy Matrix: AT-1 through AT-7 */}
-      <section className="py-14 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="mb-8">
-          <span className="font-mono text-xs text-[#D5991C] font-bold uppercase tracking-widest block mb-1">
-            // EMPIRICAL THREAT TAXONOMY &amp; DETECTION RATES
-          </span>
-          <h2 className="font-serif text-3xl sm:text-4xl text-[#410217] font-normal tracking-tight">
-            CounterAEO-Bench Threat Matrix (AT-1 – AT-7)
-          </h2>
-          <p className="text-sm text-[#410217]/80 font-sans mt-2 max-w-2xl">
-            Quantitative benchmarks from Volume III evaluating detection recall across 250,000 multi-modal adversarial documents comparing baseline unprotected pipelines, Generation-1 detectors, and our Sovereign 8-Layer Stack.
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-          {MASTER_DOC_VOL3_METADATA.table6Taxonomy.map((threat) => (
-            <div key={threat.id} className="bg-[#FAF2E1] border border-[#F2D69D] p-5 flex flex-col justify-between hover:shadow-md transition-shadow">
-              <div>
-                <div className="flex items-center justify-between mb-2 font-mono text-xs">
-                  <span className="px-2 py-0.5 bg-[#410217] text-[#FBF3E2] font-bold">{threat.id}</span>
-                  <span className="text-[10px] text-[#410217]/60">Target: {threat.target.slice(0, 22)}...</span>
-                </div>
-                <h4 className="font-serif text-lg font-bold text-[#410217] mb-2">{threat.name}</h4>
-                <p className="text-xs text-[#410217]/80 leading-relaxed font-sans mb-4">
-                  {threat.mechanism}
-                </p>
-              </div>
-
-              <div className="pt-3 border-t border-[#F2D69D]/80 font-mono text-xs space-y-1.5">
-                <div className="flex justify-between items-center text-[#410217]/70 text-[11px]">
-                  <span>Gen-1 Detector Recall:</span>
-                  <span className="text-[#991B1B] font-bold">{threat.tprGen1}</span>
-                </div>
-                <div className="flex justify-between items-center text-[#00A878] font-bold">
-                  <span>8-Layer Stack Recall:</span>
-                  <span className="text-sm">{threat.tpr8Layer}</span>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* 7. Academic Citation & Cryptographic Attestation Block */}
+      {/* Citation Block */}
       <section id="citations" className="py-14 bg-[#FAF2E1] border-t border-[#F2D69D]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl">
-            
-            <span className="font-mono text-xs text-[#D5991C] font-bold uppercase tracking-widest block mb-1">
-              // ACADEMIC CITATION &amp; CRYPTOGRAPHIC PROVENANCE
-            </span>
-            <h2 className="font-serif text-2xl sm:text-3xl text-[#410217] mb-4">
-              Archival Citation and Metadata
+            <div className="w-10 h-1 bg-[#D5991C] rounded-full mb-3" />
+            <h2 className="font-serif text-2xl sm:text-3xl text-[#410217] mb-3">
+              How to Reference This Research Series
             </h2>
             <p className="text-sm text-[#410217]/80 leading-relaxed font-sans mb-6">
-              When citing this research or utilizing the CounterAEO-Bench evaluation dataset in academic publications or defense intelligence reports, please reference the sovereign master document identifiers below:
+              To reference our five-volume working paper series or benchmark simulations in notes, presentations, or technical discussions, you can copy the citation block below:
             </p>
 
-            <div className="relative bg-[#1A050D] text-[#FAF5EB] p-4 sm:p-5 font-mono text-xs border border-[#F2D69D] shadow-inner mb-6">
+            <div className="relative rounded-xl bg-[#1A050D] text-[#FAF5EB] p-5 font-mono text-xs border border-[#F2D69D] shadow-inner mb-6">
               <button
                 onClick={handleCopyBibtex}
-                className="absolute top-4 right-4 flex items-center space-x-1.5 px-3 py-1 bg-[#410217] hover:bg-[#5C0A24] border border-[#F2D69D]/40 text-[#FBF3E2] text-[11px] transition-colors cursor-pointer"
-                title="Copy BibTeX Citation"
+                className="absolute top-4 right-4 flex items-center space-x-1.5 px-3 py-1.5 rounded-md bg-[#410217] hover:bg-[#5C0A24] border border-[#F2D69D]/40 text-[#FBF3E2] text-[11px] transition-colors cursor-pointer"
               >
                 {copiedBibtex ? <Check className="w-3.5 h-3.5 text-[#00A878]" /> : <Copy className="w-3.5 h-3.5 text-[#D5991C]" />}
-                <span>{copiedBibtex ? 'Copied BibTeX' : 'Copy BibTeX'}</span>
+                <span>{copiedBibtex ? 'Copied' : 'Copy BibTeX'}</span>
               </button>
               <pre className="overflow-x-auto whitespace-pre leading-relaxed pr-24">
                 {bibtexString}
               </pre>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 font-mono text-xs text-[#410217]/80">
-              <div className="p-3 bg-[#FFFDF8] border border-[#F2D69D]">
-                <div className="text-[10px] text-[#410217]/60 uppercase">Vol. 1 DOI</div>
-                <div className="font-bold text-[#410217] mt-0.5 truncate">{MASTER_DOC_METADATA.doi}</div>
-              </div>
-              <div className="p-3 bg-[#FFFDF8] border border-[#F2D69D]">
-                <div className="text-[10px] text-[#410217]/60 uppercase">Vol. 2 DOI</div>
-                <div className="font-bold text-[#410217] mt-0.5 truncate">{MASTER_DOC_VOL2_METADATA.doi}</div>
-              </div>
-              <div className="p-3 bg-[#FFFDF8] border border-[#F2D69D]">
-                <div className="text-[10px] text-[#410217]/60 uppercase">Vol. 3 ID</div>
-                <div className="font-bold text-[#410217] mt-0.5 truncate">{MASTER_DOC_VOL3_METADATA.id}</div>
-              </div>
-              <div className="p-3 bg-[#FFFDF8] border border-[#F2D69D]">
-                <div className="text-[10px] text-[#410217]/60 uppercase">Vol. 4 ID</div>
-                <div className="font-bold text-[#410217] mt-0.5 truncate">{MASTER_DOC_VOL4_METADATA.id}</div>
-              </div>
-              <div className="p-3 bg-[#FFFDF8] border border-[#F2D69D]">
-                <div className="text-[10px] text-[#410217]/60 uppercase">Vol. 5 ID</div>
-                <div className="font-bold text-[#410217] mt-0.5 truncate">{MASTER_DOC_VOL5_METADATA.id}</div>
-              </div>
+            <div className="grid grid-cols-2 sm:grid-cols-5 gap-3 text-xs text-[#410217]/80">
+              {[
+                { label: 'Volume I ID', id: MASTER_DOC_METADATA.id },
+                { label: 'Volume II ID', id: MASTER_DOC_VOL2_METADATA.id },
+                { label: 'Volume III ID', id: MASTER_DOC_VOL3_METADATA.id },
+                { label: 'Volume IV ID', id: MASTER_DOC_VOL4_METADATA.id },
+                { label: 'Volume V ID', id: MASTER_DOC_VOL5_METADATA.id },
+              ].map((item) => (
+                <div key={item.label} className="p-3 rounded-lg bg-[#FFFDF8] border border-[#F2D69D]">
+                  <div className="text-[10px] text-[#410217]/60 font-medium">{item.label}</div>
+                  <div className="font-bold text-[#410217] mt-0.5 truncate">{item.id}</div>
+                </div>
+              ))}
             </div>
-
           </div>
         </div>
       </section>
 
-      {/* 8. Call to Action Footer Banner */}
+      {/* Call to Action Footer Banner */}
       <section className="py-14 bg-[#410217] text-[#FBF3E2] border-t border-[#F2D69D]/40">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="font-serif text-3xl sm:text-4xl text-[#FBF3E2] mb-3">
-            Deploy Sovereign Counter-AEO Defenses
+            Explore the Interactive 3D Simulations or Get in Touch
           </h2>
           <p className="text-sm sm:text-base text-[#FBF3E2]/80 max-w-2xl mx-auto font-sans mb-8">
-            Request an institutional audit of your enterprise RAG indices, algorithmic trading pipelines, or public web presence against adversarial vector hubness and split-payload injection.
+            Want to see these concepts in action with plain-English analogies, or discuss how offensive and defensive AEO apply to your organization?
           </p>
           <div className="flex flex-wrap items-center justify-center gap-4">
             <button
               onClick={onOpenAudit}
-              className="px-6 py-3 bg-[#D5991C] hover:bg-[#e6a827] text-[#130108] font-mono text-xs font-bold uppercase tracking-wider shadow-md transition-all cursor-pointer"
+              className="inline-flex items-center space-x-2 px-6 py-3 rounded-lg bg-[#D5991C] hover:bg-[#e6a827] text-[#130108] text-xs font-semibold shadow-md transition-all cursor-pointer"
             >
-              Request Sovereign AEO Audit →
+              <Shield className="w-4 h-4" />
+              <span>Get in Touch</span>
             </button>
             <button
               onClick={() => onNavigate('counter-geo-ops')}
-              className="px-6 py-3 bg-[#2B010F] hover:bg-[#3d0316] text-[#FBF3E2] border border-[#F2D69D]/50 font-mono text-xs font-bold uppercase tracking-wider transition-all cursor-pointer"
+              className="inline-flex items-center space-x-2 px-6 py-3 rounded-lg bg-[#2B010F] hover:bg-[#3d0316] text-[#FBF3E2] border border-[#F2D69D]/50 text-xs font-semibold transition-all cursor-pointer"
             >
-              Explore Strategy Library (WebGL)
+              <Sparkles className="w-4 h-4 text-[#D5991C]" />
+              <span>Launch 3D Threat Lab</span>
             </button>
             <button
               onClick={() => onNavigate('pitch-deck')}
-              className="px-6 py-3 bg-[#FAF2E1] hover:bg-[#FAF5EB] text-[#410217] border border-[#D5991C] font-mono text-xs font-bold uppercase tracking-wider transition-all cursor-pointer"
+              className="inline-flex items-center space-x-2 px-6 py-3 rounded-lg bg-[#FAF2E1] hover:bg-[#FAF5EB] text-[#410217] border border-[#D5991C] text-xs font-semibold transition-all cursor-pointer"
             >
-              View Pitch Deck
+              <Compass className="w-4 h-4 text-[#410217]" />
+              <span>View Cover Deck</span>
             </button>
           </div>
         </div>
       </section>
-
     </div>
   );
 };

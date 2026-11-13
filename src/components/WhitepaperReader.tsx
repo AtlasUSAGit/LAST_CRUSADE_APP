@@ -119,10 +119,6 @@ export const WhitepaperReader: React.FC<WhitepaperReaderProps> = ({
         
         {/* Section Header */}
         <div className="mb-6">
-          <div className="flex items-center space-x-2 text-[11px] font-mono text-[#D5991C] uppercase tracking-widest font-bold mb-1">
-            <Bookmark className="w-3.5 h-3.5" />
-            <span>SECTION REFERENCE // {section.id.toUpperCase()}</span>
-          </div>
           
           {section.level === 1 && (
             <h1 className="font-serif text-3xl sm:text-4xl text-[#410217] font-bold tracking-tight">
@@ -183,7 +179,7 @@ export const WhitepaperReader: React.FC<WhitepaperReaderProps> = ({
           <div className="px-4 py-2 bg-[#2a2a2a] border-b border-[#F2D69D]/30 flex items-center justify-between text-xs font-mono">
             <span className="text-[#D5991C] font-bold uppercase tracking-wider flex items-center gap-1.5">
               <span className="w-2 h-2 rounded-full bg-[#00A878]" />
-              {codeLanguage || 'SOURCE CODE'} // PRODUCTION IMPLEMENTATION
+              {codeLanguage || 'Source Code'} · Reference Implementation
             </span>
             <button
               onClick={() => handleCopySnippet(codeText, key)}
@@ -501,7 +497,7 @@ export const WhitepaperReader: React.FC<WhitepaperReaderProps> = ({
                 CITATION BIBTEX KEY: [LastCrusadeDefense-CounterAEO-Vol1-2026]
               </div>
               <div className="text-[#410217]/75">
-                DOI: {MASTER_DOC_METADATA.doi} // Open Sovereign Defense Specification
+                Working Paper Series · Volume I (54 Pages)
               </div>
             </div>
           </div>

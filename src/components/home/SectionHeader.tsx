@@ -1,127 +1,168 @@
 import React, { useLayoutEffect, useRef } from 'react';
-import { gsap, SplitText, MOTION_OK, EASE_OUT, EASE_IN_OUT } from '../../utils/motion';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
 
 interface SectionHeaderProps {
   index?: string;
-  sectionIndex?: string;
   label?: string;
-  kicker?: string;
   title: React.ReactNode;
-  italicWord?: string;
-  lede?: React.ReactNode;
-  description?: React.ReactNode;
-  tone?: 'light' | 'dark';
-  /** Optional element rendered in the right margin of the label column (e.g. filters). */
-  aside?: React.ReactNode;
+  subtitle?: React.ReactNode;
+  rightSlot?: React.ReactNode;
   className?: string;
+  variant?: 'split' | 'stacked';
 }
 
-/**
- * Left-aligned editorial section opener: section number and label sit in a
- * narrow margin column, the headline runs across the remaining nine columns.
- */
 export const SectionHeader: React.FC<SectionHeaderProps> = ({
-  index,
-  sectionIndex,
-  label,
-  kicker,
   title,
-  italicWord,
-  lede,
-  description,
-  tone = 'light',
-  aside,
-  className = ''
+  subtitle,
+  rightSlot,
+  className = '',
+  variant = 'split',
 }) => {
   const rootRef = useRef<HTMLDivElement>(null);
-  const titleRef = useRef<HTMLHeadingElement>(null);
-  const ruleRef = useRef<HTMLDivElement>(null);
-
-  const isDark = tone === 'dark';
-  const rawIndex = index || sectionIndex || '01';
-  const cleanIndex = rawIndex.startsWith('§') ? rawIndex : `§ ${rawIndex}`;
-  const displayLabel = label || kicker || '';
-  const displayLede = lede || description;
 
   useLayoutEffect(() => {
-    const root = rootRef.current;
-    if (!root) return;
-    const mm = gsap.matchMedia();
+    const el = rootRef.current;
+    if (!el) return;
 
-    mm.add(MOTION_OK, () => {
-      const trigger = { trigger: root, start: 'top 82%', once: true };
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReduced) return;
 
-      gsap.from(ruleRef.current, { scaleX: 0, duration: 1.4, ease: EASE_IN_OUT, scrollTrigger: trigger });
-      gsap.from(root.querySelectorAll('[data-sh-fade]'), {
-        y: 18,
-        autoAlpha: 0,
-        duration: 1,
-        ease: EASE_OUT,
-        stagger: 0.08,
-        delay: 0.25,
-        scrollTrigger: trigger
-      });
+    const ctx = gsap.context(() => {
+      const rule = el.querySelector<HTMLElement>('[data-sh-rule]');
+      const accent = el.querySelector<HTMLElement>('[data-sh-accent]');
+      const targets = el.querySelectorAll<HTMLElement>('[data-sh-reveal]');
 
-      // SplitText lines reveal without overflow:hidden mask clipping
-      const split = SplitText.create(titleRef.current, {
-        type: 'lines',
-        linesClass: 'split-line',
-        autoSplit: true,
-        onSplit: (self) =>
-          gsap.from(self.lines, {
-            y: 20,
-            autoAlpha: 0,
-            duration: 1.1,
-            ease: EASE_OUT,
+      if (rule) {
+        gsap.fromTo(
+          rule,
+          { scaleX: 0, transformOrigin: 'left center' },
+          {
+            scaleX: 1,
+            duration: 1.0,
+            ease: 'expo.out',
+            scrollTrigger: {
+              trigger: el,
+              start: 'top 88%',
+              once: true,
+            },
+          }
+        );
+      }
+
+      if (accent) {
+        gsap.fromTo(
+          accent,
+          { scaleX: 0, transformOrigin: 'left center' },
+          {
+            scaleX: 1,
+            duration: 0.8,
+            delay: 0.15,
+            ease: 'power3.out',
+            scrollTrigger: {
+              trigger: el,
+              start: 'top 88%',
+              once: true,
+            },
+          }
+        );
+      }
+
+      if (targets.length) {
+        gsap.fromTo(
+          targets,
+          { y: 18, opacity: 0 },
+          {
+            y: 0,
+            opacity: 1,
+            duration: 0.75,
             stagger: 0.08,
-            scrollTrigger: trigger
-          })
-      });
+            ease: 'power3.out',
+            scrollTrigger: {
+              trigger: el,
+              start: 'top 86%',
+              once: true,
+            },
+          }
+        );
+      }
+    }, el);
 
-      return () => split.revert();
-    });
-
-    return () => mm.revert();
+    return () => ctx.revert();
   }, []);
 
-  return (
-    <div ref={rootRef} className={`relative ${className}`}>
-      <div
-        ref={ruleRef}
-        className={`rule-draw h-px w-full mb-8 md:mb-10 ${isDark ? 'bg-[#F2D69D]/30' : 'bg-[#410217]/20'}`}
-      />
-
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10">
-        <div className="lg:col-span-3 flex lg:flex-col items-baseline lg:items-start justify-between gap-4">
-          <div data-sh-fade className="font-mono text-[11px] uppercase tracking-[0.22em] leading-relaxed">
-            <span className={isDark ? 'text-[#D5991C]' : 'text-[#8B5A0B]'}>{cleanIndex}</span>
-            {displayLabel && (
-              <span className={`block mt-1 ${isDark ? 'text-[#FBF3E2]/60' : 'text-[#410217]/55'}`}>
-                {displayLabel.replace(/^\/\/\s*/, '')}
-              </span>
+  if (variant === 'stacked') {
+    return (
+      <div ref={rootRef} className={`mb-12 md:mb-16 ${className}`}>
+        <div
+          data-sh-rule
+          className="h-px w-full bg-gradient-to-r from-[#D5991C]/60 via-[#F2D69D]/30 to-transparent mb-8"
+        />
+        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6">
+          <div className="max-w-3xl">
+            <div
+              data-sh-accent
+              className="w-12 h-1 bg-gradient-to-r from-[#D5991C] to-[#F2D69D] rounded-full mb-5"
+            />
+            <h2
+              data-sh-reveal
+              className="font-serif text-3xl sm:text-4xl lg:text-5xl text-[#FBF3E2] font-normal tracking-tight leading-[1.1]"
+            >
+              {title}
+            </h2>
+            {subtitle && (
+              <p
+                data-sh-reveal
+                className="text-base sm:text-lg text-[#FBF3E2]/80 font-sans leading-relaxed mt-4"
+              >
+                {subtitle}
+              </p>
             )}
           </div>
-          {aside && <div data-sh-fade>{aside}</div>}
+          {rightSlot && (
+            <div data-sh-reveal className="shrink-0">
+              {rightSlot}
+            </div>
+          )}
         </div>
+      </div>
+    );
+  }
 
-        <div className="lg:col-span-9">
+  return (
+    <div ref={rootRef} className={`mb-12 md:mb-16 ${className}`}>
+      <div
+        data-sh-rule
+        className="h-px w-full bg-gradient-to-r from-[#D5991C]/60 via-[#F2D69D]/30 to-transparent mb-8 md:mb-10"
+      />
+      <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6">
+        <div className="max-w-3xl">
+          <div
+            data-sh-accent
+            className="w-12 h-1 bg-gradient-to-r from-[#D5991C] to-[#F2D69D] rounded-full mb-5"
+          />
           <h2
-            ref={titleRef}
-            className={`font-display text-[clamp(2.2rem,4.5vw,4.25rem)] leading-[1.16] ${isDark ? 'text-[#FBF3E2]' : 'text-[#410217]'}`}
+            data-sh-reveal
+            className="font-serif text-3xl sm:text-4xl lg:text-[2.75rem] text-[#FBF3E2] font-normal tracking-tight leading-[1.08]"
           >
             {title}
           </h2>
-          {displayLede && (
+          {subtitle && (
             <p
-              data-sh-fade
-              className={`mt-6 max-w-2xl text-base sm:text-lg leading-relaxed ${
-                isDark ? 'text-[#FBF3E2]/70' : 'text-[#410217]/70'
-              }`}
+              data-sh-reveal
+              className="text-base sm:text-lg text-[#FBF3E2]/80 font-sans leading-relaxed mt-4 max-w-2xl"
             >
-              {displayLede}
+              {subtitle}
             </p>
           )}
         </div>
+        {rightSlot && (
+          <div data-sh-reveal className="shrink-0">
+            {rightSlot}
+          </div>
+        )}
       </div>
     </div>
   );
