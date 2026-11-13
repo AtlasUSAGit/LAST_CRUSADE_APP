@@ -155,23 +155,23 @@ export const Hero: React.FC<HeroProps> = ({
       ref={rootRef}
       className="relative z-10 overflow-visible border-b border-[#410217]/15 bg-transparent"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 pb-16 md:pt-14 md:pb-24 relative z-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 pb-16 md:pt-8 md:pb-24 relative z-10">
         <div
           data-hero-rule
-          className="h-px w-full bg-gradient-to-r from-[#8B5A0B]/50 via-[#410217]/20 to-transparent mb-10 md:mb-12"
+          className="h-px w-full bg-gradient-to-r from-[#8B5A0B]/50 via-[#410217]/20 to-transparent mb-6 md:mb-8"
         />
 
         {/* Main Hero Split: Copy Left + Interactive 3D Globe Right */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-center">
           <div className="lg:col-span-7 relative z-10 flex flex-col justify-between">
             <div>
-              <h1 className="font-serif text-[#410217] font-normal tracking-[-0.025em] leading-[1.03] text-[2.6rem] sm:text-6xl xl:text-[4.4rem]">
-                <span className="block overflow-hidden pb-1">
+              <h1 className="font-serif text-[#410217] font-normal tracking-[-0.025em] leading-[1.08] text-[2.6rem] sm:text-6xl xl:text-[4.4rem]">
+                <span className="block overflow-hidden pb-2 -mb-2">
                   <span data-hero-line className="block">
                     Defending America
                   </span>
                 </span>
-                <span className="block overflow-hidden pb-1">
+                <span className="block overflow-hidden pb-3 -mb-3">
                   <span data-hero-line className="block">
                     In The Era Of The <em className="italic text-[#8B5A0B] font-normal">Generative Engine</em>
                   </span>
