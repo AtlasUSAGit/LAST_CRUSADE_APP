@@ -219,7 +219,7 @@ export const Hero: React.FC<HeroProps> = ({
 
           {/* Right Column (5 cols): Interactive 3D Globe with expanded WebGL viewport so outer arcs never clip */}
           <div data-hero-globe className="lg:col-span-5 relative z-0 overflow-visible">
-            <div className="w-full aspect-square max-h-[390px] mx-auto relative overflow-visible">
+            <div className="w-full aspect-square max-h-[488px] mx-auto relative overflow-visible">
               <div className="absolute -inset-16 sm:-inset-20 flex items-center justify-center overflow-visible">
                 <Globe
                   speed={1.2}
