@@ -399,7 +399,7 @@ export default function Globe({
         const baseRadius = 1;
         const globeRadius = baseRadius * scaleMultiplier;
         const aspect = containerWidth / containerHeight;
-        const baseDistance = 3.15 / scaleMultiplier;
+        const baseDistance = 3.52 / scaleMultiplier;
         const cameraDistance = aspect < 1 ? baseDistance / Math.max(aspect, 0.5) : baseDistance;
         camera.position.set(0, 0, cameraDistance);
         camera.lookAt(0, 0, 0);
@@ -1301,7 +1301,7 @@ export default function Globe({
             camera.updateProjectionMatrix();
             renderer.setSize(newWidth, newHeight);
             const aspect = newWidth / newHeight;
-            const baseDistance = 3.15 / scaleMultiplier;
+            const baseDistance = 3.52 / scaleMultiplier;
             const newCameraDistance = aspect < 1 ? baseDistance / Math.max(aspect, 0.5) : baseDistance;
             camera.position.set(0, 0, newCameraDistance);
             camera.lookAt(0, 0, 0);

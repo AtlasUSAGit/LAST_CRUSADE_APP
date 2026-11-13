@@ -163,7 +163,7 @@ export const Hero: React.FC<HeroProps> = ({
 
         {/* Main Hero Split: Copy Left + Interactive 3D Globe Right */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-center">
-          <div className="lg:col-span-7 flex flex-col justify-between">
+          <div className="lg:col-span-7 relative z-10 flex flex-col justify-between">
             <div>
               <h1 className="font-serif text-[#410217] font-normal tracking-[-0.025em] leading-[1.03] text-[2.6rem] sm:text-6xl xl:text-[4.4rem]">
                 <span className="block overflow-hidden pb-1">
@@ -217,27 +217,29 @@ export const Hero: React.FC<HeroProps> = ({
             </div>
           </div>
 
-          {/* Right Column (5 cols): Interactive 3D Globe (without outer box) */}
-          <div data-hero-globe className="lg:col-span-5 overflow-visible">
-            <div className="w-full aspect-square max-h-[430px] mx-auto relative flex items-center justify-center overflow-visible">
-              <Globe
-                speed={1.2}
-                smoothing={8}
-                dots={PETRA_GLOBE_DOTS_CONFIG}
-                fill="dots"
-                fillColor="#F2D69D"
-                scale={9.5}
-                stopOnHover={false}
-                direction="left"
-                oceanColor="#340112"
-                outlineColor="#D5991C"
-                showOutline={true}
-                graticuleColor="rgba(242, 214, 157, 0.15)"
-                showGrid={true}
-                outlineWidth={1}
-                arcColor="#D5991C"
-                pulseColor="#A40E30"
-              />
+          {/* Right Column (5 cols): Interactive 3D Globe with expanded WebGL viewport so outer arcs never clip */}
+          <div data-hero-globe className="lg:col-span-5 relative z-0 overflow-visible">
+            <div className="w-full aspect-square max-h-[390px] mx-auto relative overflow-visible">
+              <div className="absolute -inset-16 sm:-inset-20 flex items-center justify-center overflow-visible">
+                <Globe
+                  speed={1.2}
+                  smoothing={8}
+                  dots={PETRA_GLOBE_DOTS_CONFIG}
+                  fill="dots"
+                  fillColor="#F2D69D"
+                  scale={9.5}
+                  stopOnHover={false}
+                  direction="left"
+                  oceanColor="#340112"
+                  outlineColor="#D5991C"
+                  showOutline={true}
+                  graticuleColor="rgba(242, 214, 157, 0.15)"
+                  showGrid={true}
+                  outlineWidth={1}
+                  arcColor="#D5991C"
+                  pulseColor="#A40E30"
+                />
+              </div>
             </div>
           </div>
         </div>

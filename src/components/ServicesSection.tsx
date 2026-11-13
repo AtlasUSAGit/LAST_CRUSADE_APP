@@ -74,6 +74,24 @@ const SERVICE_FLOW_DIAGRAMS: Record<
   },
 };
 
+const wrapSvgText = (text: string, maxChars: number): string[] => {
+  if (text.length <= maxChars) return [text];
+  const words = text.split(' ');
+  const lines: string[] = [];
+  let current = '';
+  for (const word of words) {
+    const next = current ? `${current} ${word}` : word;
+    if (next.length > maxChars && current) {
+      lines.push(current);
+      current = word;
+    } else {
+      current = next;
+    }
+  }
+  if (current) lines.push(current);
+  return lines.slice(0, 2);
+};
+
 export const ServicesSection: React.FC<ServicesSectionProps> = ({
   onOpenAudit,
   onNavigate,
@@ -199,47 +217,106 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({
                   <div className="text-xs font-medium text-[#F2D69D]/80 mb-3">
                     How It Works Step-by-Step
                   </div>
-                  <svg viewBox="0 0 640 96" className="w-full h-auto overflow-visible">
-                    {/* Box 1: Input */}
-                    <rect x="6" y="10" width="180" height="76" rx="10" fill="#2B010F" stroke="#F2D69D" strokeOpacity="0.4" strokeWidth="1.5" />
-                    <text x="96" y="40" textAnchor="middle" fill="#FBF3E2" fontSize="11.5" fontWeight="700">
-                      {activeFlow.inputLabel}
-                    </text>
-                    <text x="96" y="60" textAnchor="middle" fill="#FBF3E2" fillOpacity="0.7" fontSize="9.5">
-                      {activeFlow.inputSub}
-                    </text>
+                  <svg viewBox="0 0 640 118" className="w-full h-auto overflow-visible">
+                    {[
+                      {
+                        x: 6,
+                        fill: '#2B010F',
+                        stroke: '#F2D69D',
+                        strokeOpacity: 0.4,
+                        strokeWidth: 1.5,
+                        titleColor: '#FBF3E2',
+                        subColor: '#FBF3E2',
+                        subOpacity: 0.72,
+                        titleLines: wrapSvgText(activeFlow.inputLabel, 22),
+                        subLines: wrapSvgText(activeFlow.inputSub, 27),
+                      },
+                      {
+                        x: 230,
+                        fill: '#350213',
+                        stroke: '#D5991C',
+                        strokeOpacity: 1,
+                        strokeWidth: 2,
+                        titleColor: '#D5991C',
+                        subColor: '#FBF3E2',
+                        subOpacity: 0.85,
+                        titleLines: wrapSvgText(activeFlow.engineLabel, 22),
+                        subLines: wrapSvgText(activeFlow.engineSub, 27),
+                      },
+                      {
+                        x: 454,
+                        fill: '#2B010F',
+                        stroke: '#00A878',
+                        strokeOpacity: 1,
+                        strokeWidth: 1.8,
+                        titleColor: '#00FF9D',
+                        subColor: '#FBF3E2',
+                        subOpacity: 0.8,
+                        titleLines: wrapSvgText(activeFlow.outputLabel, 22),
+                        subLines: wrapSvgText(activeFlow.outputSub, 27),
+                      },
+                    ].map((box, bIdx) => {
+                      const cx = box.x + 90;
+                      const titleStartY = box.titleLines.length > 1 ? 33 : 40;
+                      const subStartY = box.titleLines.length > 1 ? 65 : 62;
+                      return (
+                        <g key={bIdx}>
+                          <rect
+                            x={box.x}
+                            y="10"
+                            width="180"
+                            height="98"
+                            rx="10"
+                            fill={box.fill}
+                            stroke={box.stroke}
+                            strokeOpacity={box.strokeOpacity}
+                            strokeWidth={box.strokeWidth}
+                          />
+                          <text
+                            x={cx}
+                            y={titleStartY}
+                            textAnchor="middle"
+                            fill={box.titleColor}
+                            fontSize="11"
+                            fontWeight="700"
+                          >
+                            {box.titleLines.map((line, lIdx) => (
+                              <tspan key={lIdx} x={cx} dy={lIdx === 0 ? 0 : 13}>
+                                {line}
+                              </tspan>
+                            ))}
+                          </text>
+                          <text
+                            x={cx}
+                            y={subStartY}
+                            textAnchor="middle"
+                            fill={box.subColor}
+                            fillOpacity={box.subOpacity}
+                            fontSize="9.2"
+                          >
+                            {box.subLines.map((line, lIdx) => (
+                              <tspan key={lIdx} x={cx} dy={lIdx === 0 ? 0 : 12}>
+                                {line}
+                              </tspan>
+                            ))}
+                          </text>
+                        </g>
+                      );
+                    })}
 
                     {/* Animated Connector 1 -> 2 */}
-                    <line x1="186" y1="48" x2="230" y2="48" stroke="#D5991C" strokeWidth="2" />
+                    <line x1="186" y1="59" x2="230" y2="59" stroke="#D5991C" strokeWidth="2" />
                     <circle r="4" fill="#D5991C">
                       <animate attributeName="cx" from="186" to="230" dur="1.4s" repeatCount="indefinite" />
-                      <animate attributeName="cy" values="48;48" dur="1.4s" repeatCount="indefinite" />
+                      <animate attributeName="cy" values="59;59" dur="1.4s" repeatCount="indefinite" />
                     </circle>
-
-                    {/* Box 2: Engine */}
-                    <rect x="230" y="10" width="180" height="76" rx="10" fill="#350213" stroke="#D5991C" strokeWidth="2" />
-                    <text x="320" y="40" textAnchor="middle" fill="#D5991C" fontSize="11.5" fontWeight="700">
-                      {activeFlow.engineLabel}
-                    </text>
-                    <text x="320" y="60" textAnchor="middle" fill="#FBF3E2" fillOpacity="0.85" fontSize="9.5">
-                      {activeFlow.engineSub}
-                    </text>
 
                     {/* Animated Connector 2 -> 3 */}
-                    <line x1="410" y1="48" x2="454" y2="48" stroke="#00FF9D" strokeWidth="2" />
+                    <line x1="410" y1="59" x2="454" y2="59" stroke="#00FF9D" strokeWidth="2" />
                     <circle r="4" fill="#00FF9D">
                       <animate attributeName="cx" from="410" to="454" dur="1.4s" repeatCount="indefinite" />
-                      <animate attributeName="cy" values="48;48" dur="1.4s" repeatCount="indefinite" />
+                      <animate attributeName="cy" values="59;59" dur="1.4s" repeatCount="indefinite" />
                     </circle>
-
-                    {/* Box 3: Output */}
-                    <rect x="454" y="10" width="180" height="76" rx="10" fill="#2B010F" stroke="#00A878" strokeWidth="1.8" />
-                    <text x="544" y="40" textAnchor="middle" fill="#00FF9D" fontSize="11.5" fontWeight="700">
-                      {activeFlow.outputLabel}
-                    </text>
-                    <text x="544" y="60" textAnchor="middle" fill="#FBF3E2" fillOpacity="0.8" fontSize="9.5">
-                      {activeFlow.outputSub}
-                    </text>
                   </svg>
                 </div>
 
