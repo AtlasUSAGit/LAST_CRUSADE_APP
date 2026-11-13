@@ -262,6 +262,8 @@ const renderCardDiagram = (type: 'search' | 'market' | 'agent') => {
 export const ProblemSection: React.FC = () => {
   const rootRef = useRef<HTMLElement>(null);
   const thirdsStageRef = useRef<HTMLDivElement>(null);
+  const arenasSectionRef = useRef<HTMLDivElement>(null);
+  const leftHoneycombRef = useRef<HTMLDivElement>(null);
   const arenasStackRef = useRef<HTMLDivElement>(null);
   const [selectedArena, setSelectedArena] = useState<number>(0);
 
@@ -367,7 +369,22 @@ export const ProblemSection: React.FC = () => {
         });
       }
 
-      // 2. Right-Half Sticky Dual-Use Arena Shards — Sync Left-Half Honeycomb Active State
+      // 2. Pin Left-Half Honeycomb Card while scrolling through Dual-Use Markets section
+      const arenasContainer = arenasSectionRef.current;
+      const leftHoneycomb = leftHoneycombRef.current;
+      if (arenasContainer && leftHoneycomb && window.innerWidth >= 1024) {
+        ScrollTrigger.create({
+          trigger: arenasContainer,
+          start: 'top 96px',
+          end: () => `bottom ${96 + leftHoneycomb.offsetHeight}px`,
+          pin: leftHoneycomb,
+          pinSpacing: false,
+          anticipatePin: 1,
+          invalidateOnRefresh: true,
+        });
+      }
+
+      // 3. Right-Half Sticky Dual-Use Arena Shards — Sync Left-Half Honeycomb Active State
       const arenasEl = arenasStackRef.current;
       if (arenasEl) {
         const cards = gsap.utils.toArray<HTMLElement>('.arena-sticky-shard', arenasEl);
@@ -560,9 +577,9 @@ export const ProblemSection: React.FC = () => {
 
       {/* PART 2: SPLIT-HALF (1/2 + 1/2) STICKY HONEYCOMB TESSELLATION FOR 4 DUAL-USE MARKETS */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-28">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
-          {/* LEFT HALF (1/2): Sticky Hexagonal Honeycomb Tessellation Cluster */}
-          <div className="lg:col-span-6 lg:sticky lg:top-28 space-y-6">
+        <div ref={arenasSectionRef} className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+          {/* LEFT HALF (1/2): Pinned Hexagonal Honeycomb Tessellation Cluster */}
+          <div ref={leftHoneycombRef} className="lg:col-span-6 space-y-6">
             <div>
               <h3 className="font-serif text-3xl sm:text-4xl text-[#410217] leading-tight">
                 One Core Technology, Two Missions: Offensive Visibility &amp; Defensive Protection
@@ -580,11 +597,6 @@ export const ProblemSection: React.FC = () => {
                   'polygon(24px 0%, 100% 0%, 100% calc(100% - 24px), calc(100% - 24px) 100%, 0% 100%, 0% 24px)',
               }}
             >
-              <div className="flex items-center justify-between text-[11px] font-mono uppercase tracking-widest text-[#D5991C] mb-3 pb-2 border-b border-[#F2D69D]/20">
-                <span>INTERLOCKING HONEYCOMB TESSELLATION</span>
-                <span>ACTIVE CELL: 0{selectedArena + 1} / 04</span>
-              </div>
-
               <svg viewBox="0 0 520 230" className="w-full h-auto">
                 {/* Background Isometric Triangle Lines */}
                 <g stroke="#F2D69D" strokeOpacity="0.14" strokeWidth="1" fill="none">
