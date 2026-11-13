@@ -247,8 +247,24 @@ export const Hero: React.FC<HeroProps> = ({
         {/* Interactive Visual Diagram: How AEO & Counter-AEO Work in Plain Sight */}
         <div
           data-hero-diagram
-          className="mt-14 md:mt-18 rounded-2xl border border-[#F2D69D]/30 bg-[#2B010F]/90 p-6 sm:p-8 shadow-xl backdrop-blur-xs"
+          className="relative mt-14 md:mt-18 border-2 border-[#D5991C]/65 bg-[#2B010F]/92 p-6 sm:p-8 shadow-2xl backdrop-blur-xs"
+          style={{
+            clipPath:
+              'polygon(24px 0%, 100% 0%, 100% calc(100% - 24px), calc(100% - 24px) 100%, 0% 100%, 0% 24px)',
+          }}
         >
+          <svg
+            className="pointer-events-none absolute top-0 left-0 w-7 h-7"
+            viewBox="0 0 28 28"
+          >
+            <polygon points="0,0 28,0 0,28" fill="#D5991C" />
+          </svg>
+          <svg
+            className="pointer-events-none absolute bottom-0 right-0 w-7 h-7"
+            viewBox="0 0 28 28"
+          >
+            <polygon points="28,28 0,28 28,0" fill="#00A878" />
+          </svg>
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-6 border-b border-[#F2D69D]/20">
             <div>
               <h2 className="font-serif text-2xl sm:text-3xl text-[#FBF3E2]">
@@ -546,8 +562,18 @@ export const Hero: React.FC<HeroProps> = ({
             <div
               key={idx}
               data-stat-card
-              className="rounded-xl bg-[#2B010F]/90 border border-[#F2D69D]/25 p-6 flex flex-col justify-between hover:border-[#D5991C]/60 transition-all backdrop-blur-xs"
+              className="relative bg-[#2B010F]/92 border-2 border-[#D5991C]/55 p-6 flex flex-col justify-between hover:border-[#D5991C] transition-all backdrop-blur-xs shadow-lg"
+              style={{
+                clipPath:
+                  'polygon(16px 0%, 100% 0%, 100% calc(100% - 16px), calc(100% - 16px) 100%, 0% 100%, 0% 16px)',
+              }}
             >
+              <svg
+                className="pointer-events-none absolute top-0 left-0 w-5 h-5"
+                viewBox="0 0 20 20"
+              >
+                <polygon points="0,0 20,0 0,20" fill="#D5991C" />
+              </svg>
               <div>
                 <div className="font-serif text-4xl sm:text-5xl text-[#D5991C] font-normal tracking-tight leading-none">
                   {stat.figure}
