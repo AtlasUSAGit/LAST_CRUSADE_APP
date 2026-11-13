@@ -236,7 +236,7 @@ export const Hero: React.FC<HeroProps> = ({
                 showGrid={true}
                 outlineWidth={1}
                 arcColor="#D5991C"
-                pulseColor="#FBF3E2"
+                pulseColor="#A40E30"
               />
             </div>
           </div>

@@ -752,8 +752,8 @@ export default function Globe({
                 directions.forEach((dir, dIdx) => {
                     const lineGeometry = new BufferGeometry().setFromPoints(points);
 
-                    // Warm amber and champagne gold palette for flowing data vectors
-                    const vectorColors = ["#D5991C", "#F2D69D", "#FBF3E2", "#E8B244"];
+                    // Dark red and imperial gold palette for flowing data vectors
+                    const vectorColors = ["#A40E30", "#D5991C", "#850824", "#E5A932"];
                     const chosenColor = vectorColors[(index + dIdx) % vectorColors.length];
                     const speed = 0.16 + (index % 4) * 0.04;
 
