@@ -85,7 +85,7 @@ export interface ResearchAdvisory {
   readTime?: string;
 }
 
-export type NavigationPage = 'overview' | 'services' | 'rea' | 'research' | 'counter-geo' | 'counter-geo-vol2' | 'counter-geo-vol3' | 'counter-geo-vol4' | 'counter-geo-vol5' | 'counter-geo-ops' | 'pitch-deck';
+export type NavigationPage = 'overview' | 'services' | 'rea' | 'research' | 'counter-geo' | 'counter-geo-vol2' | 'counter-geo-vol3' | 'counter-geo-vol4' | 'counter-geo-vol5' | 'counter-geo-vol6' | 'counter-geo-ops' | 'pitch-deck';
 
 export interface ReaSampleTarget {
   id: string;

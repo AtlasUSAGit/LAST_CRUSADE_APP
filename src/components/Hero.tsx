@@ -42,9 +42,9 @@ const REAL_WORLD_STATS: RealWorldStat[] = [
     source: 'SparkToro / Datos',
   },
   {
-    figure: '5 Volumes',
+    figure: '6 Volumes',
     label: 'Original Counter-AEO research',
-    detail: '232 pages of open technical research, interactive 3D simulations, and defense architectures.',
+    detail: '252 pages of open technical research, interactive 3D simulations, and defense architectures.',
     source: 'Last Crusade Research',
   },
 ];
@@ -211,7 +211,7 @@ export const Hero: React.FC<HeroProps> = ({
                   className="inline-flex items-center space-x-2 px-5 py-3.5 rounded-lg bg-[#FAF5EB]/85 hover:bg-[#410217]/10 text-[#410217] border border-[#410217]/30 font-sans font-medium text-sm transition-colors cursor-pointer"
                 >
                   <BookOpen className="w-4 h-4 text-[#8B5A0B]" />
-                  <span>Read the 5 Whitepapers</span>
+                  <span>Read the 6 Whitepapers</span>
                 </button>
               </div>
             </div>

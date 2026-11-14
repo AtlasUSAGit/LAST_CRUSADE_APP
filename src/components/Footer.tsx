@@ -91,7 +91,7 @@ export const Footer: React.FC<FooterProps> = ({
               <li>
                 <button onClick={() => onNavigate('research')} className="hover:text-[#D5991C] transition-colors cursor-pointer font-semibold text-[#FBF3E2] flex items-center space-x-1">
                   <BookOpen className="w-3.5 h-3.5 text-[#D5991C]" />
-                  <span>All 5 Research Volumes (232 Pages)</span>
+                  <span>All 6 Research Volumes (252 Pages)</span>
                 </button>
               </li>
               <li>
@@ -119,6 +119,11 @@ export const Footer: React.FC<FooterProps> = ({
                   Volume V: Agent-to-Agent Discovery (A2A-EO)
                 </button>
               </li>
+              <li>
+                <button onClick={() => onNavigate('counter-geo-vol6')} className="hover:text-[#D5991C] transition-colors cursor-pointer font-medium text-[#00FF9D]">
+                  Volume VI: Ghost Citations &amp; Algorithmic Laundering
+                </button>
+              </li>
             </ul>
           </div>
 
@@ -128,7 +133,7 @@ export const Footer: React.FC<FooterProps> = ({
               Connect &amp; Discuss
             </h4>
             <p className="text-xs text-[#FBF3E2]/75 leading-relaxed">
-              Interested in discussing offensive AEO strategies, defensive Counter-AEO architectures, or our five-volume research series?
+              Interested in discussing offensive AEO strategies, defensive Counter-AEO architectures, or our six-volume research series?
             </p>
             <div className="space-y-2.5 pt-1">
               <button
@@ -155,7 +160,7 @@ export const Footer: React.FC<FooterProps> = ({
             &copy; {new Date().getFullYear()} Last Crusade. Original Research &amp; Interactive Architecture Portfolio.
           </div>
           <div className="flex items-center space-x-4">
-            <span>5 Research Volumes</span>
+            <span>6 Research Volumes</span>
             <span>·</span>
             <span>8 Interactive 3D Threat Simulations</span>
             <span>·</span>

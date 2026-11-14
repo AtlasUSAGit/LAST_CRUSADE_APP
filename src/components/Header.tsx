@@ -83,7 +83,8 @@ export const Header: React.FC<HeaderProps> = ({
                     activePage === 'counter-geo-vol2' ||
                     activePage === 'counter-geo-vol3' ||
                     activePage === 'counter-geo-vol4' ||
-                    activePage === 'counter-geo-vol5'));
+                    activePage === 'counter-geo-vol5' ||
+                    activePage === 'counter-geo-vol6'));
               const Icon = item.icon;
               return (
                 <button

@@ -98,6 +98,21 @@ const FIVE_VOLUMES: VolumeSummaryCard[] = [
     targetPage: 'counter-geo-vol5',
     accentColor: '#38BDF8',
   },
+  {
+    volNumber: 'Volume VI',
+    title: 'Ghost Citations & Algorithmic Laundering',
+    plainSubtitle: 'The “Grey Area” of AEO Ethics, Stealth Sponsorships & Political GEO',
+    summary:
+      'Investigates why 61.7% of AI citations are Type I Ghost Citations (linked in footnotes, unnamed in prose), how omitting brands from <title> tags triggers an 87% competitor substitution effect, and how Multi-CaMeL provenance stops multi-agent boundary laundering.',
+    pages: '20 Pages + Ghost Lab',
+    highlights: [
+      '61.7% of AI citations are Type I Ghost Citations (p = 0.003 title lever)',
+      '87% Competitor/Target Substitution & Type II ALCE NLI entailment handoff',
+      'Multi-CaMeL provenance cuts boundary laundering ASR from 12.9% to 0.0%',
+    ],
+    targetPage: 'counter-geo-vol6',
+    accentColor: '#FB7185',
+  },
 ];
 
 export const TrustAndTeam: React.FC<TrustAndTeamProps> = ({ onNavigate }) => {
@@ -174,13 +189,13 @@ export const TrustAndTeam: React.FC<TrustAndTeamProps> = ({ onNavigate }) => {
         <SectionHeader
           title={
             <>
-              Five Volumes of Original{' '}
+              Six Volumes of Original{' '}
               <em className="italic text-[#8B5A0B] font-normal">
                 AEO &amp; Counter-AEO Research.
               </em>
             </>
           }
-          subtitle="Every product capability we build is grounded in open, inspectable research. Explore our five-volume series—complete with word-for-word whitepapers and interactive 3D simulation labs."
+          subtitle="Every product capability we build is grounded in open, inspectable research. Explore our six-volume series—complete with word-for-word whitepapers and interactive 3D simulation labs."
           rightSlot={
             <button
               onClick={() => onNavigate?.('research')}
@@ -197,7 +212,7 @@ export const TrustAndTeam: React.FC<TrustAndTeamProps> = ({ onNavigate }) => {
           }
         />
 
-        {/* Interlocking Hexagonal & Triangular Tessellation Diagram of How the 5 Volumes Connect */}
+        {/* Interlocking Hexagonal & Triangular Tessellation Diagram of How the 6 Volumes Connect */}
         <div
           className="mb-14 bg-[#2B010F]/95 border-2 border-[#D5991C] p-5 sm:p-7 shadow-xl"
           style={{
@@ -207,42 +222,48 @@ export const TrustAndTeam: React.FC<TrustAndTeamProps> = ({ onNavigate }) => {
         >
           <div className="text-sm font-medium text-[#FBF3E2] mb-4 pb-3 border-b border-[#F2D69D]/20 flex flex-wrap items-center justify-between gap-2">
             <span className="font-mono uppercase tracking-wider text-xs text-[#D5991C] font-bold">
-              How Our Five Research Volumes Fit Together
+              How Our Six Research Volumes Fit Together
             </span>
             <span className="text-xs text-[#FBF3E2]/80 font-mono">
-              Click any volume card below to read the paper or launch its 3D lab
+              Click any volume node or card below to read the paper or launch its 3D lab
             </span>
           </div>
 
           <svg viewBox="0 0 960 112" className="w-full h-auto overflow-visible">
             {/* Background Triangular Tessellation Mesh Lines */}
             <g stroke="#F2D69D" strokeOpacity="0.12" strokeWidth="1" fill="none">
-              <polygon points="96,6 192,106 0,106" />
-              <polygon points="288,6 384,106 192,106" />
-              <polygon points="480,6 576,106 384,106" />
-              <polygon points="672,6 768,106 576,106" />
-              <polygon points="864,6 960,106 768,106" />
+              <polygon points="80,6 160,106 0,106" />
+              <polygon points="240,6 320,106 160,106" />
+              <polygon points="400,6 480,106 320,106" />
+              <polygon points="560,6 640,106 480,106" />
+              <polygon points="720,6 800,106 640,106" />
+              <polygon points="880,6 960,106 800,106" />
             </g>
 
             {[
-              { x: 10, label: 'Volume I', sub: 'Core AI Search Shield', color: '#D5991C' },
-              { x: 202, label: 'Volume II', sub: 'Memory, PDFs & Privacy', color: '#00A878' },
-              { x: 394, label: 'Volume III', sub: '250k Doc Stress-Tests', color: '#A78BFA' },
-              { x: 586, label: 'Volume IV', sub: '142ns Hardware & ROI', color: '#F59E0B' },
-              { x: 778, label: 'Volume V', sub: 'Agent-to-Agent Economy', color: '#38BDF8' },
+              { x: 6, label: 'Volume I', sub: 'Core AI Search Shield', color: '#D5991C', page: 'counter-geo' as NavigationPage },
+              { x: 165, label: 'Volume II', sub: 'Memory, PDFs & Privacy', color: '#00A878', page: 'counter-geo-vol2' as NavigationPage },
+              { x: 324, label: 'Volume III', sub: '250k Doc Stress-Tests', color: '#A78BFA', page: 'counter-geo-vol3' as NavigationPage },
+              { x: 483, label: 'Volume IV', sub: '142ns Hardware & ROI', color: '#F59E0B', page: 'counter-geo-vol4' as NavigationPage },
+              { x: 642, label: 'Volume V', sub: 'Agent-to-Agent Economy', color: '#38BDF8', page: 'counter-geo-vol5' as NavigationPage },
+              { x: 801, label: 'Volume VI', sub: 'Ghost Citations & Ethics', color: '#FB7185', page: 'counter-geo-vol6' as NavigationPage },
             ].map((node, i) => {
-              const cx = node.x + 86;
-              const hexPoints = `${node.x + 18},14 ${node.x + 154},14 ${node.x + 172},56 ${
-                node.x + 154
-              },98 ${node.x + 18},98 ${node.x},56`;
+              const cx = node.x + 71;
+              const hexPoints = `${node.x + 14},14 ${node.x + 128},14 ${node.x + 142},56 ${
+                node.x + 128
+              },98 ${node.x + 14},98 ${node.x},56`;
 
               return (
-                <g key={i}>
-                  {i < 4 && (
+                <g
+                  key={i}
+                  className="cursor-pointer"
+                  onClick={() => onNavigate?.(node.page)}
+                >
+                  {i < 5 && (
                     <>
                       {/* Triangular Tessellation Bridge Between Hexagons */}
                       <polygon
-                        points={`${node.x + 172},44 ${node.x + 202},56 ${node.x + 172},68`}
+                        points={`${node.x + 142},44 ${node.x + 165},56 ${node.x + 142},68`}
                         fill={node.color}
                         fillOpacity="0.35"
                         stroke={node.color}
@@ -251,8 +272,8 @@ export const TrustAndTeam: React.FC<TrustAndTeamProps> = ({ onNavigate }) => {
                       <circle r="3" fill={node.color}>
                         <animate
                           attributeName="cx"
-                          from={node.x + 172}
-                          to={node.x + 202}
+                          from={node.x + 142}
+                          to={node.x + 165}
                           dur="1.5s"
                           repeatCount="indefinite"
                         />
@@ -276,12 +297,12 @@ export const TrustAndTeam: React.FC<TrustAndTeamProps> = ({ onNavigate }) => {
                     y="48"
                     textAnchor="middle"
                     fill={node.color}
-                    fontSize="13"
+                    fontSize="12"
                     fontWeight="700"
                   >
                     {node.label}
                   </text>
-                  <text x={cx} y="68" textAnchor="middle" fill="#FBF3E2" fontSize="10.5">
+                  <text x={cx} y="68" textAnchor="middle" fill="#FBF3E2" fontSize="9.5">
                     {node.sub}
                   </text>
                 </g>
@@ -304,28 +325,29 @@ export const TrustAndTeam: React.FC<TrustAndTeamProps> = ({ onNavigate }) => {
             >
               <div className="flex items-center justify-end pb-3 mb-4 border-b border-[#F2D69D]/20">
                 <span className="text-[11px] font-mono text-[#00FF9D]">
-                  0{activeVolIdx + 1} / 06
+                  0{activeVolIdx + 1} / 07
                 </span>
               </div>
 
-              {/* 6-Cell Interlocking Hexagonal Constellation SVG */}
-              <svg viewBox="0 0 300 220" className="w-full h-auto mb-4">
+              {/* 7-Cell Interlocking Hexagonal Constellation SVG (Volumes I-VI + 3D Lab) */}
+              <svg viewBox="0 0 300 225" className="w-full h-auto mb-4">
                 {/* Isometric Triangle Lattice */}
                 <g stroke="#F2D69D" strokeOpacity="0.15" strokeWidth="1" fill="none">
-                  <polygon points="150,10 280,200 20,200" />
-                  <polygon points="20,20 280,20 150,210" />
+                  <polygon points="150,10 280,205 20,205" />
+                  <polygon points="20,20 280,20 150,215" />
                 </g>
 
                 {[
-                  { cx: 85, cy: 55, label: 'VOL I', color: '#D5991C', idx: 0 },
-                  { cx: 215, cy: 55, label: 'VOL II', color: '#00A878', idx: 1 },
-                  { cx: 52, cy: 115, label: 'VOL III', color: '#A78BFA', idx: 2 },
-                  { cx: 150, cy: 115, label: 'VOL IV', color: '#F59E0B', idx: 3 },
-                  { cx: 248, cy: 115, label: 'VOL V', color: '#38BDF8', idx: 4 },
-                  { cx: 150, cy: 175, label: '3D LAB', color: '#00FF9D', idx: 5 },
+                  { cx: 95, cy: 52, label: 'VOL I', color: '#D5991C', idx: 0 },
+                  { cx: 205, cy: 52, label: 'VOL II', color: '#00A878', idx: 1 },
+                  { cx: 52, cy: 112, label: 'VOL III', color: '#A78BFA', idx: 2 },
+                  { cx: 150, cy: 112, label: '3D LAB', color: '#00FF9D', idx: 6 },
+                  { cx: 248, cy: 112, label: 'VOL IV', color: '#F59E0B', idx: 3 },
+                  { cx: 95, cy: 172, label: 'VOL V', color: '#38BDF8', idx: 4 },
+                  { cx: 205, cy: 172, label: 'VOL VI', color: '#FB7185', idx: 5 },
                 ].map((cell) => {
                   const isActive = activeVolIdx === cell.idx;
-                  const r = 34;
+                  const r = 32;
                   const pts = [30, 90, 150, 210, 270, 330]
                     .map((deg) => {
                       const rad = (Math.PI / 180) * deg;

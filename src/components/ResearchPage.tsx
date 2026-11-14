@@ -15,6 +15,7 @@ import { MASTER_DOC_VOL2_METADATA } from '../data/counterGeoVol2Content';
 import { MASTER_DOC_VOL3_METADATA } from '../data/counterGeoVol3Content';
 import { MASTER_DOC_VOL4_METADATA } from '../data/counterGeoVol4Content';
 import { MASTER_DOC_VOL5_METADATA } from './CounterGeoVol5Page';
+import { MASTER_DOC_VOL6_METADATA } from '../data/counterGeoVol6Data';
 
 interface ResearchPageProps {
   onNavigate: (page: NavigationPage, subPage?: 'paper' | 'lab') => void;
@@ -27,15 +28,15 @@ export const ResearchPage: React.FC<ResearchPageProps> = ({
   onOpenAudit,
 }) => {
   const [copiedBibtex, setCopiedBibtex] = useState(false);
-  const [activeTab, setActiveTab] = useState<'all' | 'vol1' | 'vol2' | 'vol3' | 'vol4' | 'vol5'>('all');
+  const [activeTab, setActiveTab] = useState<'all' | 'vol1' | 'vol2' | 'vol3' | 'vol4' | 'vol5' | 'vol6'>('all');
   const [expandedLayer, setExpandedLayer] = useState<number | null>(null);
 
   const bibtexString = `@techreport{last_crusade_aeo_series_2026,
-  title={Answer Engine Optimization (AEO) and Counter-AEO Defenses: Architectures for AI Search, Financial Markets, and Autonomous Agents (Volumes I-V)},
+  title={Answer Engine Optimization (AEO) and Counter-AEO Defenses: Architectures for AI Search, Financial Markets, and Autonomous Agents (Volumes I-VI)},
   author={Last Crusade Research},
   institution={Last Crusade AEO Defense Working Paper Series},
   year={2026},
-  note={5-Volume Monograph Series (232 Pages Total)}
+  note={6-Volume Monograph Series (252 Pages Total)}
 }`;
 
   const handleCopyBibtex = () => {
@@ -225,6 +226,26 @@ export const ResearchPage: React.FC<ResearchPageProps> = ({
       latency: '0.5 ms',
       status: 'Active',
     },
+    {
+      layer: 'Layer 17',
+      vol: 'Vol. VI',
+      volKey: 'counter-geo-vol6' as NavigationPage,
+      name: 'Orthogonal Attribution & Title Gate',
+      threat: 'Type I/II Ghost Citations stripping FTC disclosures or triggering 87% rival substitution',
+      core: 'Audits HTML <title> entity binding (p=0.003), 500-char opening windows, and ALCE NLI entailment',
+      latency: '0.4 ms',
+      status: 'Active',
+    },
+    {
+      layer: 'Layer 18',
+      vol: 'Vol. VI',
+      volKey: 'counter-geo-vol6' as NavigationPage,
+      name: 'Multi-CaMeL & C2PA Disclosure Guard',
+      threat: 'Political AEO algorithmic laundering and cross-agent boundary laundering (A1 -> A0 -> A2)',
+      core: 'Enforces get_variable opaque provenance (0.0% ASR), AB 3211 C2PA seals, and zkML/ERC-8004 receipts',
+      latency: '0.7 ms',
+      status: 'Active',
+    },
   ];
 
   return (
@@ -241,27 +262,27 @@ export const ResearchPage: React.FC<ResearchPageProps> = ({
             </h1>
 
             <p className="text-base sm:text-lg text-[#410217]/85 font-sans leading-relaxed mb-8 max-w-3xl">
-              As AI chatbots and autonomous software agents replace classical search engines, digital visibility has shifted to <strong>Answer Engine Optimization (AEO)</strong>. Explore our five-volume research series examining how AI engines select answers, how bad actors try to manipulate them, and the engineering frameworks we designed to protect AI search, financial markets, and multi-agent networks.
+              As AI chatbots and autonomous software agents replace classical search engines, digital visibility has shifted to <strong>Answer Engine Optimization (AEO)</strong>. Explore our six-volume research series examining how AI engines select answers, how bad actors try to manipulate them, and the engineering frameworks we designed to protect AI search, financial markets, democratic discourse, and multi-agent networks.
             </p>
 
             {/* Clear Overview Stats */}
             <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 pt-4 border-t border-[#F2D69D]/80 text-xs">
               <div className="p-3.5 rounded-xl bg-[#FAF2E1] border border-[#F2D69D]">
                 <div className="text-[11px] text-[#410217]/70 font-medium">Research Series</div>
-                <div className="text-xl font-serif font-bold text-[#410217] mt-0.5">5 Volumes</div>
-                <div className="text-[11px] text-[#D5991C] font-medium mt-0.5">232 Pages Total</div>
+                <div className="text-xl font-serif font-bold text-[#410217] mt-0.5">6 Volumes</div>
+                <div className="text-[11px] text-[#D5991C] font-medium mt-0.5">252 Pages Total</div>
               </div>
 
               <div className="p-3.5 rounded-xl bg-[#FAF2E1] border border-[#F2D69D]">
                 <div className="text-[11px] text-[#410217]/70 font-medium">Defense Architecture</div>
-                <div className="text-xl font-serif font-bold text-[#410217] mt-0.5">16 Layers + 8 CI</div>
+                <div className="text-xl font-serif font-bold text-[#410217] mt-0.5">18 Layers + 8 CI</div>
                 <div className="text-[11px] text-[#00A878] font-medium mt-0.5">Search to A2A</div>
               </div>
 
               <div className="p-3.5 rounded-xl bg-[#FAF2E1] border border-[#F2D69D]">
-                <div className="text-[11px] text-[#410217]/70 font-medium">Agent Tool Selection</div>
-                <div className="text-xl font-serif font-bold text-[#410217] mt-0.5">79% – 96%</div>
-                <div className="text-[11px] text-[#410217]/70 mt-0.5">Schema Optimization</div>
+                <div className="text-[11px] text-[#410217]/70 font-medium">Ghost Citation Share</div>
+                <div className="text-xl font-serif font-bold text-[#410217] mt-0.5">61.7%</div>
+                <div className="text-[11px] text-[#410217]/70 mt-0.5">87% Target Sub</div>
               </div>
 
               <div className="p-3.5 rounded-xl bg-[#FAF2E1] border border-[#F2D69D]">
@@ -271,25 +292,25 @@ export const ResearchPage: React.FC<ResearchPageProps> = ({
               </div>
 
               <div className="p-3.5 rounded-xl bg-[#FAF2E1] border border-[#F2D69D]">
-                <div className="text-[11px] text-[#410217]/70 font-medium">10-K False Alarms</div>
-                <div className="text-xl font-serif font-bold text-[#00A878] mt-0.5">0.38%</div>
-                <div className="text-[11px] text-[#410217]/70 mt-0.5">Down from 18.6%</div>
+                <div className="text-[11px] text-[#410217]/70 font-medium">Multi-CaMeL Defense</div>
+                <div className="text-xl font-serif font-bold text-[#00A878] mt-0.5">0.0% ASR</div>
+                <div className="text-[11px] text-[#410217]/70 mt-0.5">Down from 12.9%</div>
               </div>
 
               <div className="p-3.5 rounded-xl bg-[#FAF2E1] border border-[#F2D69D]">
                 <div className="text-[11px] text-[#410217]/70 font-medium">Interactive Labs</div>
-                <div className="text-xl font-serif font-bold text-[#410217] mt-0.5">5 Labs</div>
+                <div className="text-xl font-serif font-bold text-[#410217] mt-0.5">6 Labs</div>
                 <div className="text-[11px] text-[#D5991C] font-medium mt-0.5">Live 3D &amp; Code</div>
               </div>
             </div>
           </div>
 
-          {/* Interactive Visual Map of the 5 Research Volumes */}
+          {/* Interactive Visual Map of the 6 Research Volumes */}
           <div className="mt-10 rounded-2xl bg-[#410217] text-[#FBF3E2] p-6 sm:p-8 border border-[#D5991C]/50 shadow-xl">
             <div className="flex flex-col md:flex-row md:items-center justify-between gap-3 mb-5">
               <div>
                 <h2 className="font-serif text-2xl text-[#FBF3E2]">
-                  Visual Map of the 5-Volume Research Series
+                  Visual Map of the 6-Volume Research Series
                 </h2>
                 <p className="text-xs text-[#FBF3E2]/75 mt-0.5">
                   Click any volume in the diagram below to filter or jump straight to its full whitepaper and interactive lab.
@@ -299,17 +320,18 @@ export const ResearchPage: React.FC<ResearchPageProps> = ({
                 onClick={() => setActiveTab('all')}
                 className="self-start md:self-auto px-3.5 py-1.5 rounded-lg bg-[#D5991C] text-[#130108] text-xs font-semibold cursor-pointer"
               >
-                Show All 5 Volumes
+                Show All 6 Volumes
               </button>
             </div>
 
             <svg viewBox="0 0 960 120" className="w-full h-auto overflow-visible">
               {[
-                { key: 'vol1' as const, x: 10, vol: 'Volume I', title: 'Core Search Defense', sub: '54 Pages · Layers 0–4B', color: '#D5991C' },
-                { key: 'vol2' as const, x: 202, vol: 'Volume II', title: 'Memory, PDFs & Privacy', sub: '42 Pages · Layers 5–8', color: '#00A878' },
-                { key: 'vol3' as const, x: 394, vol: 'Volume III', title: '250k Doc Stress-Tests', sub: '38 Pages · Benchmarks', color: '#A78BFA' },
-                { key: 'vol4' as const, x: 586, vol: 'Volume IV', title: '142ns Hardware & ROI', sub: '46 Pages · FPGA & Enterprise', color: '#F59E0B' },
-                { key: 'vol5' as const, x: 778, vol: 'Volume V', title: 'Agent-to-Agent (A2A)', sub: '52 Pages · Autonomous Tools', color: '#38BDF8' },
+                { key: 'vol1' as const, x: 6, vol: 'Volume I', title: 'Core Search Defense', sub: '54 Pages · Layers 0–4B', color: '#D5991C' },
+                { key: 'vol2' as const, x: 165, vol: 'Volume II', title: 'Memory, PDFs & Privacy', sub: '42 Pages · Layers 5–8', color: '#00A878' },
+                { key: 'vol3' as const, x: 324, vol: 'Volume III', title: '250k Doc Stress-Tests', sub: '38 Pages · Benchmarks', color: '#A78BFA' },
+                { key: 'vol4' as const, x: 483, vol: 'Volume IV', title: '142ns Hardware & ROI', sub: '46 Pages · FPGA & Enterprise', color: '#F59E0B' },
+                { key: 'vol5' as const, x: 642, vol: 'Volume V', title: 'Agent-to-Agent (A2A)', sub: '52 Pages · Autonomous Tools', color: '#38BDF8' },
+                { key: 'vol6' as const, x: 801, vol: 'Volume VI', title: 'Ghost Citations & Ethics', sub: '20 Pages · ALCE NLI & CaMeL', color: '#FB7185' },
               ].map((node, i) => {
                 const isSelected = activeTab === node.key;
                 return (
@@ -318,22 +340,22 @@ export const ResearchPage: React.FC<ResearchPageProps> = ({
                     onClick={() => setActiveTab(node.key)}
                     className="cursor-pointer"
                   >
-                    {i < 4 && (
+                    {i < 5 && (
                       <>
                         <line
-                          x1={node.x + 172}
+                          x1={node.x + 144}
                           y1="60"
-                          x2={node.x + 192}
+                          x2={node.x + 159}
                           y2="60"
                           stroke="#F2D69D"
                           strokeOpacity="0.4"
                           strokeWidth="2"
                         />
-                        <circle r="3.5" fill={node.color}>
+                        <circle r="3" fill={node.color}>
                           <animate
                             attributeName="cx"
-                            from={node.x + 172}
-                            to={node.x + 192}
+                            from={node.x + 144}
+                            to={node.x + 159}
                             dur="1.4s"
                             repeatCount="indefinite"
                           />
@@ -344,20 +366,20 @@ export const ResearchPage: React.FC<ResearchPageProps> = ({
                     <rect
                       x={node.x}
                       y="12"
-                      width="172"
+                      width="144"
                       height="96"
                       rx="12"
                       fill={isSelected ? '#5C0A24' : '#2B010F'}
                       stroke={node.color}
                       strokeWidth={isSelected ? '2.5' : '1.5'}
                     />
-                    <text x={node.x + 86} y="38" textAnchor="middle" fill={node.color} fontSize="13" fontWeight="700">
+                    <text x={node.x + 72} y="38" textAnchor="middle" fill={node.color} fontSize="12" fontWeight="700">
                       {node.vol}
                     </text>
-                    <text x={node.x + 86} y="62" textAnchor="middle" fill="#FBF3E2" fontSize="11.5" fontWeight="600">
+                    <text x={node.x + 72} y="62" textAnchor="middle" fill="#FBF3E2" fontSize="10.5" fontWeight="600">
                       {node.title}
                     </text>
-                    <text x={node.x + 86} y="84" textAnchor="middle" fill="#FBF3E2" fillOpacity="0.7" fontSize="10">
+                    <text x={node.x + 72} y="84" textAnchor="middle" fill="#FBF3E2" fillOpacity="0.7" fontSize="9.5">
                       {node.sub}
                     </text>
                   </g>
@@ -375,12 +397,13 @@ export const ResearchPage: React.FC<ResearchPageProps> = ({
             <span className="text-[#410217]/70 font-semibold">Filter Volume:</span>
             <div className="flex items-center bg-[#FAF2E1] border border-[#F2D69D] rounded-lg p-1 flex-wrap gap-1">
               {[
-                { id: 'all' as const, label: 'All 5 Volumes' },
+                { id: 'all' as const, label: 'All 6 Volumes' },
                 { id: 'vol1' as const, label: 'Volume I' },
                 { id: 'vol2' as const, label: 'Volume II' },
                 { id: 'vol3' as const, label: 'Volume III' },
                 { id: 'vol4' as const, label: 'Volume IV' },
                 { id: 'vol5' as const, label: 'Volume V (A2A)' },
+                { id: 'vol6' as const, label: 'Volume VI (Ghost Citations)' },
               ].map((t) => (
                 <button
                   key={t.id}
@@ -399,7 +422,7 @@ export const ResearchPage: React.FC<ResearchPageProps> = ({
 
           <div className="flex items-center space-x-3 text-[#410217]/80 font-medium">
             <a href="#defense-matrix" className="hover:text-[#410217] underline decoration-[#D5991C]">
-              12-Layer Defense Summary ↓
+              18-Layer Defense Summary ↓
             </a>
             <span>•</span>
             <a href="#citations" className="hover:text-[#410217] underline decoration-[#D5991C]">
@@ -960,9 +983,119 @@ export const ResearchPage: React.FC<ResearchPageProps> = ({
             </div>
           </article>
         )}
+
+        {/* VOLUME 6 SHOWCASE CARD */}
+        {(activeTab === 'all' || activeTab === 'vol6') && (
+          <article className="rounded-2xl bg-[#FAF2E1] border-2 border-[#E11D48] shadow-lg p-6 sm:p-10 relative overflow-hidden">
+            <div className="flex flex-wrap items-center justify-between gap-3 pb-4 mb-5 border-b border-[#F2D69D] text-xs">
+              <div className="flex items-center space-x-2.5">
+                <span className="px-3 py-1 rounded-full bg-[#881337] text-[#FAF5EB] font-bold">
+                  Volume VI · AEO Ethics, Ghost Citations &amp; Algorithmic Laundering
+                </span>
+                <span className="text-[#410217]/75 font-medium">{MASTER_DOC_VOL6_METADATA.date}</span>
+              </div>
+              <div className="flex items-center space-x-2 text-[#410217]/80 font-medium">
+                <span>{MASTER_DOC_VOL6_METADATA.pageCount} Pages</span>
+                <span>•</span>
+                <span>{MASTER_DOC_VOL6_METADATA.wordCount.toLocaleString()} Words</span>
+                <span>•</span>
+                <span className="text-[#00A878] font-bold">61.7% Ghost Citation Telemetry &amp; Multi-CaMeL</span>
+              </div>
+            </div>
+
+            <div className="mb-6">
+              <h2 className="font-serif text-2xl sm:text-3xl lg:text-4xl text-[#410217] font-normal tracking-tight leading-tight mb-3">
+                {MASTER_DOC_VOL6_METADATA.title}
+              </h2>
+              <p className="text-sm sm:text-base text-[#410217]/85 font-sans leading-relaxed max-w-4xl">
+                Investigates the &ldquo;Grey Area&rdquo; of Answer Engine Optimization ethics: how generative engines strip FTC sponsorship disclosures during synthesis, why 61.7% of all AI citations are Type I Ghost Citations (linked in footnotes while omitting the sponsor in prose), how omitting brands from HTML <code className="bg-[#FFFDF8] px-1 border border-[#F2D69D]">&lt;title&gt;</code> tags triggers an 87% competitor/target substitution effect, how Type II Ghost Citations exploit Reciprocal Rank Fusion vs. ALCE NLI entailment asymmetry and Bayesian Persuasion concavification in Political AEO, and how Multi-CaMeL cryptographic provenance stops multi-agent boundary laundering (0.0% ASR).
+              </p>
+            </div>
+
+            <div className="mb-7 p-4 rounded-xl bg-[#FFFDF8] border border-[#F2D69D] text-xs">
+              <div className="font-semibold text-[#410217] mb-2.5">
+                Key Empirical Findings &amp; Governance Frameworks in Volume VI:
+              </div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+                <div className="p-3 rounded-lg bg-[#FAF2E1] border border-[#F2D69D]">
+                  <div className="text-[11px] text-[#410217]/70">Type I Ghost Citation Share</div>
+                  <div className="text-lg font-serif font-bold text-[#881337] mt-0.5">61.7%</div>
+                  <div className="text-[11px] text-[#410217]/70">vs. 13.2% Explicit Final Citations</div>
+                </div>
+                <div className="p-3 rounded-lg bg-[#FAF2E1] border border-[#F2D69D]">
+                  <div className="text-[11px] text-[#410217]/70">Title-Tag Suppression Lift</div>
+                  <div className="text-lg font-serif font-bold text-[#00A878] mt-0.5">p = 0.003</div>
+                  <div className="text-[11px] text-[#410217]/70">12.2% &rarr; 42.9% (3.5&times; Anonymity)</div>
+                </div>
+                <div className="p-3 rounded-lg bg-[#FAF2E1] border border-[#F2D69D]">
+                  <div className="text-[11px] text-[#410217]/70">Target / Rival Substitution</div>
+                  <div className="text-lg font-serif font-bold text-[#D5991C] mt-0.5">87.0%</div>
+                  <div className="text-[11px] text-[#410217]/70">Reach AI 71,275 Citation Cohort</div>
+                </div>
+                <div className="p-3 rounded-lg bg-[#FAF2E1] border border-[#F2D69D]">
+                  <div className="text-[11px] text-[#410217]/70">Multi-CaMeL Boundary Guard</div>
+                  <div className="text-lg font-serif font-bold text-[#00A878] mt-0.5">0.0% ASR</div>
+                  <div className="text-[11px] text-[#410217]/70">Down from 12.9% (n = 949 Trials)</div>
+                </div>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <button
+                onClick={() => onNavigate('counter-geo-vol6', 'paper')}
+                className="group p-5 rounded-xl bg-[#410217] hover:bg-[#5C0A24] text-[#FAF5EB] border-2 border-[#E11D48] shadow-md transition-all text-left cursor-pointer flex flex-col justify-between"
+              >
+                <div>
+                  <div className="flex items-center justify-between mb-2">
+                    <span className="inline-flex items-center space-x-1.5 px-2.5 py-0.5 rounded-md bg-[#2B010F] text-[#FDA4AF] text-xs font-semibold">
+                      <FileText className="w-3.5 h-3.5" />
+                      <span>Part 1 · Full Whitepaper</span>
+                    </span>
+                    <span className="text-xs text-[#FDA4AF] font-medium">20 Pages · Word-for-Word</span>
+                  </div>
+                  <h3 className="font-serif text-xl font-bold text-[#FAF5EB] group-hover:text-[#D5991C] transition-colors mb-1.5">
+                    Read Volume VI Whitepaper
+                  </h3>
+                  <p className="text-xs text-[#FAF5EB]/80 leading-relaxed font-sans mb-4">
+                    Read the complete word-for-word text of Volume VI covering Petra Labs&apos; sponsored post discoveries, the 4-tier RAG attribution taxonomy, Type I &amp; II Ghost Engineering, Political AEO, and Multi-CaMeL governance.
+                  </p>
+                </div>
+                <div className="flex items-center text-xs font-semibold text-[#D5991C] group-hover:translate-x-1 transition-transform">
+                  <span>Open Full Whitepaper</span>
+                  <ArrowRight className="w-4 h-4 ml-1.5" />
+                </div>
+              </button>
+
+              <button
+                onClick={() => onNavigate('counter-geo-vol6', 'lab')}
+                className="group p-5 rounded-xl bg-[#FFFDF8] hover:bg-[#FAF2E1] text-[#410217] border-2 border-[#E11D48] shadow-md transition-all text-left cursor-pointer flex flex-col justify-between"
+              >
+                <div>
+                  <div className="flex items-center justify-between mb-2">
+                    <span className="inline-flex items-center space-x-1.5 px-2.5 py-0.5 rounded-md bg-[#FAF2E1] text-[#881337] text-xs font-semibold border border-[#E11D48]">
+                      <Sparkles className="w-3.5 h-3.5 text-[#E11D48]" />
+                      <span>Part 2 · Interactive Lab</span>
+                    </span>
+                    <span className="text-xs text-[#00A878] font-semibold">Joint Optimizer &amp; 4-Scene 3D Lab</span>
+                  </div>
+                  <h3 className="font-serif text-xl font-bold text-[#410217] group-hover:text-[#E11D48] transition-colors mb-1.5">
+                    Explore Volume VI Findings, Optimizer &amp; 3D Lab
+                  </h3>
+                  <p className="text-xs text-[#410217]/80 leading-relaxed font-sans mb-4">
+                    Run the interactive Joint Citation &amp; Ghost Attribution Optimizer across ChatGPT, Google AI Overviews, Perplexity Sonar, and AI Mode alongside our 4-Scene 3D WebGL Theater.
+                  </p>
+                </div>
+                <div className="flex items-center text-xs font-semibold text-[#410217] group-hover:translate-x-1 transition-transform">
+                  <span>Launch Ghost Citation Lab</span>
+                  <ArrowRight className="w-4 h-4 ml-1.5 text-[#E11D48]" />
+                </div>
+              </button>
+            </div>
+          </article>
+        )}
       </section>
 
-      {/* Complete 12-Layer Defense Architecture Summary Table */}
+      {/* Complete 18-Layer Defense Architecture Summary Table */}
       <section id="defense-matrix" className="py-14 bg-[#F5ECE0] border-t border-b border-[#F2D69D]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-wrap items-end justify-between gap-4 mb-8">
@@ -973,7 +1106,7 @@ export const ResearchPage: React.FC<ResearchPageProps> = ({
               </h2>
             </div>
             <p className="text-xs sm:text-sm text-[#410217]/75 max-w-lg">
-              Every defense layer across our five volumes explained in plain English, showing what problem it solves and where you can read or test it.
+              Every defense layer across our six volumes explained in plain English, showing what problem it solves and where you can read or test it.
             </p>
           </div>
 
@@ -1091,7 +1224,7 @@ export const ResearchPage: React.FC<ResearchPageProps> = ({
               How to Reference This Research Series
             </h2>
             <p className="text-sm text-[#410217]/80 leading-relaxed font-sans mb-6">
-              To reference our five-volume working paper series or benchmark simulations in notes, presentations, or technical discussions, you can copy the citation block below:
+              To reference our six-volume working paper series or benchmark simulations in notes, presentations, or technical discussions, you can copy the citation block below:
             </p>
 
             <div className="relative rounded-xl bg-[#1A050D] text-[#FAF5EB] p-5 font-mono text-xs border border-[#F2D69D] shadow-inner mb-6">
@@ -1107,13 +1240,14 @@ export const ResearchPage: React.FC<ResearchPageProps> = ({
               </pre>
             </div>
 
-            <div className="grid grid-cols-2 sm:grid-cols-5 gap-3 text-xs text-[#410217]/80">
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 text-xs text-[#410217]/80">
               {[
                 { label: 'Volume I ID', id: MASTER_DOC_METADATA.id },
                 { label: 'Volume II ID', id: MASTER_DOC_VOL2_METADATA.id },
                 { label: 'Volume III ID', id: MASTER_DOC_VOL3_METADATA.id },
                 { label: 'Volume IV ID', id: MASTER_DOC_VOL4_METADATA.id },
                 { label: 'Volume V ID', id: MASTER_DOC_VOL5_METADATA.id },
+                { label: 'Volume VI ID', id: MASTER_DOC_VOL6_METADATA.id },
               ].map((item) => (
                 <div key={item.label} className="p-3 rounded-lg bg-[#FFFDF8] border border-[#F2D69D]">
                   <div className="text-[10px] text-[#410217]/60 font-medium">{item.label}</div>
