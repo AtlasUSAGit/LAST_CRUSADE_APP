@@ -2602,7 +2602,8 @@ export const CounterGeoVol6FindingsAndLab: React.FC<{
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-14 mt-10">
         {/* ====================================================================
-            STEP 1: PLAIN-ENGLISH SUMMARY OF FINDINGS & THE 4 CORE WEBPAGE LEVERS
+            STEP 1: PLAIN-ENGLISH SUMMARY OF FINDINGS, PRIMARY CITATION SOURCES
+            & THE 4 CORE WEBPAGE LEVERS + EMPIRICAL AUDIT TABLE
             ==================================================================== */}
         {(activeSectionTab === 'all' || activeSectionTab === 'summary') && (
           <section className="v6-gsap-section bg-[#22010c] border-2 border-[#00FF9D]/60 p-6 sm:p-8 shadow-xl space-y-8">
@@ -2610,13 +2611,13 @@ export const CounterGeoVol6FindingsAndLab: React.FC<{
               <div>
                 <div className="font-mono text-xs text-[#00FF9D] uppercase font-bold flex items-center space-x-2">
                   <BookOpen className="w-4 h-4" />
-                  <span>Step 1 · Start Here: Plain-English Summary of Findings</span>
+                  <span>Step 1 · Start Here: Plain-English Summary of Findings &amp; Verified Primary Citations</span>
                 </div>
                 <h2 className="font-serif text-2xl sm:text-3xl text-[#FBF3E2] mt-1">
                   What Is a &ldquo;Ghost Citation&rdquo; &amp; What Are the 4 Levers That Trigger It?
                 </h2>
                 <p className="text-xs sm:text-sm text-[#FBF3E2]/80 mt-1">
-                  Everything discovered in Volume 6 explained simply first—with one-click buttons to increase complexity or test each finding in 3D.
+                  Every percentage below comes directly from three empirical 2026 industry studies—with exact raw numerator/denominator sample counts and direct source links.
                 </p>
               </div>
 
@@ -2640,6 +2641,102 @@ export const CounterGeoVol6FindingsAndLab: React.FC<{
                     ? 'Level 2: Operator Guide (Click for Level 3 →)'
                     : 'Level 3: Full Math (Click to Reset to Level 1)'}
                 </button>
+              </div>
+            </div>
+
+            {/* PRIMARY EMPIRICAL SOURCE VERIFICATION RIBBON (Reach AI, Semrush, Search Engine Land / Writesonic) */}
+            <div className="p-4 sm:p-5 bg-[#140007] border border-[#D5991C]/50 space-y-3">
+              <div className="flex flex-wrap items-center justify-between gap-2 font-mono text-xs">
+                <span className="text-[#D5991C] font-bold uppercase flex items-center space-x-1.5">
+                  <CheckCircle2 className="w-4 h-4 text-[#00FF9D]" />
+                  <span>Primary Empirical Datasets Backing the 4 Key Statistics (100% Source-Verified)</span>
+                </span>
+                <span className="text-[11px] text-[#FBF3E2]/65">
+                  Combined Observability Telemetry: 71,275 Single-Page Citations + 16M Brand Appearances
+                </span>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-3.5 text-xs">
+                {/* Study 1: Reach AI */}
+                <div className="p-3.5 bg-[#0c0004] border border-[#00FF9D]/40 flex flex-col justify-between space-y-2">
+                  <div className="space-y-1">
+                    <div className="flex items-center justify-between font-mono text-[10px]">
+                      <span className="px-2 py-0.5 bg-[#00FF9D]/20 text-[#00FF9D] font-bold uppercase">
+                        PRIMARY SOURCE 1 · REACH AI
+                      </span>
+                      <span className="text-[#FBF3E2]/60">Oct 23, 2026</span>
+                    </div>
+                    <div className="font-serif text-sm text-[#FBF3E2] font-bold">
+                      Ivan Nonveiller — &ldquo;Ghost Citations in 2026: Why AI Search Uses Your Content but Drops Your Name&rdquo;
+                    </div>
+                    <p className="text-[#FBF3E2]/75 leading-relaxed">
+                      Analyzed <strong className="text-[#00FF9D]">n = 71,275 single-page AI citations</strong> across <strong className="text-[#FBF3E2]">43 brands</strong> on ChatGPT, Perplexity, Google AI Mode, and Google AI Overviews.
+                    </p>
+                  </div>
+                  <a
+                    href="https://usereach.ai/blog/ghost-citations"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center space-x-1 font-mono text-[11px] text-[#00FF9D] hover:underline pt-1"
+                  >
+                    <span>usereach.ai/blog/ghost-citations</span>
+                    <ExternalLink className="w-3 h-3" />
+                  </a>
+                </div>
+
+                {/* Study 2: Semrush */}
+                <div className="p-3.5 bg-[#0c0004] border border-[#D5991C]/40 flex flex-col justify-between space-y-2">
+                  <div className="space-y-1">
+                    <div className="flex items-center justify-between font-mono text-[10px]">
+                      <span className="px-2 py-0.5 bg-[#D5991C]/20 text-[#D5991C] font-bold uppercase">
+                        PRIMARY SOURCE 2 · SEMRUSH
+                      </span>
+                      <span className="text-[#FBF3E2]/60">June 9, 2026</span>
+                    </div>
+                    <div className="font-serif text-sm text-[#FBF3E2] font-bold">
+                      Christine Skopec &amp; Kevin Indig — &ldquo;Why 62% of AI citations don&apos;t lead to brand mentions [Study]&rdquo;
+                    </div>
+                    <p className="text-[#FBF3E2]/75 leading-relaxed">
+                      Established the <strong className="text-[#D5991C]">61.7% Type I ghost citation share</strong> vs. 13.2% final citations and the <strong className="text-[#38bdf8]">84.4% commercial query citation rate</strong> (Finding #7).
+                    </p>
+                  </div>
+                  <a
+                    href="https://www.semrush.com/blog/the-ghost-citations-study/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center space-x-1 font-mono text-[11px] text-[#D5991C] hover:underline pt-1"
+                  >
+                    <span>semrush.com/blog/the-ghost-citations-study</span>
+                    <ExternalLink className="w-3 h-3" />
+                  </a>
+                </div>
+
+                {/* Study 3: Search Engine Land / Writesonic */}
+                <div className="p-3.5 bg-[#0c0004] border border-[#38bdf8]/40 flex flex-col justify-between space-y-2">
+                  <div className="space-y-1">
+                    <div className="flex items-center justify-between font-mono text-[10px]">
+                      <span className="px-2 py-0.5 bg-[#38bdf8]/20 text-[#38bdf8] font-bold uppercase">
+                        PRIMARY SOURCE 3 · WRITESONIC / SEL
+                      </span>
+                      <span className="text-[#FBF3E2]/60">July 29, 2026</span>
+                    </div>
+                    <div className="font-serif text-sm text-[#FBF3E2] font-bold">
+                      Search Engine Land / Writesonic — &ldquo;Ghost citations: Why AI search cites your content, not your brand&rdquo;
+                    </div>
+                    <p className="text-[#FBF3E2]/75 leading-relaxed">
+                      Evaluated <strong className="text-[#38bdf8]">16 million AI brand appearances</strong> (~40% average ghost rate) and documented paragraph-separation anonymization into generic prose.
+                    </p>
+                  </div>
+                  <a
+                    href="https://searchengineland.com/ghost-citation-problem-ai-483794"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center space-x-1 font-mono text-[11px] text-[#38bdf8] hover:underline pt-1"
+                  >
+                    <span>searchengineland.com/ghost-citation-problem-ai-483794</span>
+                    <ExternalLink className="w-3 h-3" />
+                  </a>
+                </div>
               </div>
             </div>
 
@@ -2708,14 +2805,14 @@ export const CounterGeoVol6FindingsAndLab: React.FC<{
               </div>
             </div>
 
-            {/* Part B: THE 4 CORE EMPIRICAL FINDINGS (Accessible first, with progressive technical depth) */}
+            {/* Part B: THE 4 CORE EMPIRICAL FINDINGS (With Exact Raw Counts & Citations) */}
             <div className="space-y-4">
               <div className="flex flex-wrap items-center justify-between gap-2">
                 <div className="font-mono text-xs text-[#00FF9D] uppercase font-bold">
-                  // PART B: THE 4 WEBPAGE FORMATTING LEVERS THAT DRIVE GHOST CITATIONS (KEY FINDINGS)
+                  // PART B: THE 4 WEBPAGE FORMATTING LEVERS THAT DRIVE GHOST CITATIONS (WITH RAW SAMPLE VERIFICATION)
                 </div>
                 <span className="font-mono text-[11px] text-[#FBF3E2]/70">
-                   Why does this matter? Stealth sponsors use these 4 levers to hide who paid for an article; honest brands reverse them so AI stops erasing their name!
+                  Stealth sponsors use these 4 levers to hide who paid for an article; honest brands reverse them so AI stops erasing their name!
                 </span>
               </div>
 
@@ -2730,7 +2827,7 @@ export const CounterGeoVol6FindingsAndLab: React.FC<{
                         FINDING #1 · #1 STRONGEST LEVER (p = 0.003)
                       </span>
                       <span className="text-[#00FF9D] font-bold">
-                        12.2% &rarr; 42.9% Ghost Rate (3.5&times; Lift)
+                        12.2% &rarr; 42.9% (+30.7 pt Gap)
                       </span>
                     </div>
 
@@ -2744,28 +2841,45 @@ export const CounterGeoVol6FindingsAndLab: React.FC<{
                         In Plain English (Why It Works):
                       </div>
                       <p className="text-xs sm:text-sm text-[#FBF3E2]/90 leading-relaxed">
-                        The HTML <code className="text-[#00FF9D] font-mono">&lt;title&gt;</code> tag (the headline shown on your browser tab) is the #1 place an AI looks to see &ldquo;who owns this page.&rdquo; Simply leaving the publishing or sponsoring brand name out of that <code className="text-[#00FF9D] font-mono">&lt;title&gt;</code> tag <strong>more than triples Type I Ghost Citations from 12.2% to 42.9% overall</strong>—with <strong>zero loss in search ranking or how often the AI uses your page!</strong>
+                        The HTML <code className="text-[#00FF9D] font-mono">&lt;title&gt;</code> tag (the headline shown on your browser tab) is the #1 place an AI looks to see &ldquo;who owns this page.&rdquo; In <strong>Reach AI&apos;s study of 71,275 citations</strong>, pages without the brand name as a whole word in <code className="text-[#00FF9D] font-mono">&lt;title&gt;</code> were ghosted <strong>42.9% of the time (28,264 of 65,810)</strong>, compared to just <strong>12.2% (665 of 5,465)</strong> when the brand was in the title—a <strong>30.7-percentage-point jump</strong>! Across a 20-brand within-brand test, putting the brand in the title cut ghosting by <strong>60.3%</strong> across <strong>17 of 20 brands (p = 0.003)</strong>.
                       </p>
                     </div>
 
-                    {/* Visual Platform-by-Platform Impact Bars */}
+                    {/* Visual Platform-by-Platform Impact Bars with Raw Counts */}
                     <div className="p-3.5 bg-[#0c0004] border border-[#D5991C]/30 space-y-2 font-mono text-xs">
                       <div className="text-[10px] text-[#D5991C] uppercase font-bold">
-                        Ghost Citation Rate When Brand is in &lt;title&gt; vs. Left Out of &lt;title&gt;:
+                        Per-Engine Breakdown (Brand in &lt;title&gt; vs. No Brand in &lt;title&gt; · Reach AI n = 71,275):
                       </div>
                       {[
-                        { name: 'ChatGPT Search', before: 18.8, after: 54.2 },
-                        { name: 'Perplexity Sonar', before: 12.6, after: 52.3 },
-                        { name: 'Google AI Overviews', before: 8.4, after: 37.4 },
-                        { name: 'Google AI Mode', before: 10.3, after: 33.9 }
+                        {
+                          name: 'ChatGPT Search',
+                          before: 18.8,
+                          after: 54.2,
+                          rawNote: '18.8% (248 / 1,317 titled) → 54.2% untitled'
+                        },
+                        {
+                          name: 'Perplexity Sonar',
+                          before: 12.6,
+                          after: 52.3,
+                          rawNote: '12.6% titled → 52.3% (8,834 / 16,902 untitled)'
+                        },
+                        {
+                          name: 'Google AI Overviews',
+                          before: 8.4,
+                          after: 37.4,
+                          rawNote: '8.4% (132 / 1,580 titled) → 37.4% untitled'
+                        },
+                        {
+                          name: 'Google AI Mode',
+                          before: 10.3,
+                          after: 33.9,
+                          rawNote: '10.3% (173 / 1,677) → 33.9% (6,794 / 20,042)'
+                        }
                       ].map((p) => (
                         <div key={p.name} className="space-y-1">
-                          <div className="flex justify-between text-[11px]">
-                            <span className="text-[#FBF3E2]">{p.name}</span>
-                            <span>
-                              <span className="text-[#D5991C]">{p.before}%</span> &rarr;{' '}
-                              <strong className="text-[#00FF9D]">{p.after}% Ghosted</strong>
-                            </span>
+                          <div className="flex flex-wrap justify-between text-[11px] gap-1">
+                            <span className="text-[#FBF3E2] font-bold">{p.name}</span>
+                            <span className="text-[#FBF3E2]/80">{p.rawNote}</span>
                           </div>
                           <div className="w-full h-2 bg-[#1a0109] flex">
                             <div className="h-full bg-[#D5991C]" style={{ width: `${p.before}%` }} title={`With brand in title: ${p.before}%`} />
@@ -2775,14 +2889,30 @@ export const CounterGeoVol6FindingsAndLab: React.FC<{
                       ))}
                     </div>
 
+                    {/* Citation Footnote Box */}
+                    <div className="p-2.5 bg-[#0c0004] border border-[#00FF9D]/30 font-mono text-[11px] text-[#FBF3E2]/80 flex flex-wrap items-center justify-between gap-2">
+                      <span>
+                        <strong className="text-[#00FF9D]">Citation:</strong> Ivan Nonveiller, <em>Reach AI</em> (Oct 23, 2026) · <code className="text-[#F2D69D]">n = 71,275</code> (92.3% of cited pages [<code className="text-[#00FF9D]">65,810 / 71,275</code>] had no brand in &lt;title&gt;)
+                      </span>
+                      <a
+                        href="https://usereach.ai/blog/ghost-citations"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-[#00FF9D] hover:underline inline-flex items-center space-x-1"
+                      >
+                        <span>Source</span>
+                        <ExternalLink className="w-3 h-3" />
+                      </a>
+                    </div>
+
                     {/* Progressive Complexity Add-On for Level 2 & Level 3 */}
                     {knowledgeDepth !== 'beginner' && (
                       <div className="p-3 bg-[#120006] border border-[#00FF9D]/30 font-mono text-xs text-[#F2D69D] space-y-1">
                         <div className="text-[10px] text-[#00FF9D] uppercase font-bold">
-                          {knowledgeDepth === 'operator' ? 'Operator Implementation Rule:' : 'Technical & Mathematical Specification (I_title = 0):'}
+                          {knowledgeDepth === 'operator' ? 'Operator & Methodological Nuance:' : 'Technical & Mathematical Specification (I_title = 0):'}
                         </div>
                         <p className="text-[11px] text-[#FBF3E2]/85 leading-relaxed">
-                          <strong>Title-Tag Entity Suppression (I<sub>title</sub> = 0):</strong> Omitting the publishing/sponsoring brand from the HTML <code className="text-[#00FF9D]">&lt;title&gt;</code> tag is the single strongest orthogonal lever (<strong>p = 0.003</strong> across 36,400 Mantel-Haenszel stratified citations), boosting Type I ghost rates from <strong>12.2% to 42.9% pooled</strong> (18.8%&rarr;54.2% on ChatGPT; 12.6%&rarr;52.3% on Perplexity; 8.4%&rarr;37.4% on Google AI Overviews; 10.3%&rarr;33.9% on Google AI Mode) with zero loss in Stage 1/2 RRF retrieval rank.
+                          <strong>Title-Tag Entity Suppression (I<sub>title</sub> = 0):</strong> Omitting the publishing/sponsoring brand from the HTML <code className="text-[#00FF9D]">&lt;title&gt;</code> tag boosts Type I ghost rates from <strong>12.2% (665 / 5,465) to 42.9% (28,264 / 65,810) pooled</strong> (<strong>p = 0.003</strong>; 60.3% within-brand reduction across 17/20 brands). <em>Methodological Note:</em> Reach AI&apos;s dataset measures already-cited pages (where 92.3% were untitled), so &ldquo;zero loss in retrieval rank&rdquo; is an observational inference rather than a controlled pre/post ranking experiment.
                         </p>
                       </div>
                     )}
@@ -2804,7 +2934,7 @@ export const CounterGeoVol6FindingsAndLab: React.FC<{
                         onClick={() => setKnowledgeDepth('architect')}
                         className="text-[11px] text-[#D5991C] hover:underline cursor-pointer"
                       >
-                        + Show Technical Formula (I_title = 0)
+                        + Show Methodological Nuance &amp; Math
                       </button>
                     )}
                   </div>
@@ -2820,7 +2950,7 @@ export const CounterGeoVol6FindingsAndLab: React.FC<{
                         FINDING #2 · THE 87% COMPETITOR SUBSTITUTION TRAP
                       </span>
                       <span className="text-[#D5991C] font-bold">
-                        49.5% Ghost · 84.4% Cite · 87% Rival Named
+                        49.5% vs 14.9% Ghost · 87% Rival Named
                       </span>
                     </div>
 
@@ -2831,10 +2961,10 @@ export const CounterGeoVol6FindingsAndLab: React.FC<{
                     {/* Plain English Explanation */}
                     <div className="p-3.5 bg-[#1d020b] border-l-4 border-[#D5991C] space-y-1.5">
                       <div className="font-mono text-[10px] text-[#D5991C] uppercase font-bold">
-                        In Plain English (Why It Works — And How It Backfires):
+                        In Plain English (Combined Reach AI &amp; Semrush Findings):
                       </div>
                       <p className="text-xs sm:text-sm text-[#FBF3E2]/90 leading-relaxed">
-                        Formatting a webpage as an unbranded comparison listicle—using words like <strong>&ldquo;Best&rdquo;</strong>, <strong>&ldquo;Top&rdquo;</strong>, or <strong>&ldquo;vs.&rdquo;</strong> without your brand name in the <code className="text-[#D5991C] font-mono">&lt;title&gt;</code>—causes AI engines to cite the page on <strong>84.4% of commercial buying questions</strong> while turning <strong>49.5%</strong> of those citations into Ghost Citations. Even wilder: <strong>87% of the time, the AI names and recommends the other companies inside your comparison table while completely erasing you (the publisher/sponsor)!</strong>
+                        In <strong>Reach AI&apos;s page-type breakdown</strong>, <code className="text-[#D5991C] font-mono">&ldquo;Best X&rdquo;</code> and comparison pages without the brand in the <code className="text-[#D5991C] font-mono">&lt;title&gt;</code> had the highest ghost rate of any page type at <strong>49.5%</strong>—whereas adding the brand to the title of those comparison pages dropped ghosting to <strong>14.9%</strong> (and <strong>11.0%</strong> on non-listicle pages). Worse yet, as Reach AI states verbatim: <em>&ldquo;<strong>87% of ghost answers named other brands instead.</strong> Your page did the work and a competitor got the credit.&rdquo;</em> Meanwhile, <strong>Semrush&apos;s June 2026 study</strong> (Finding #7) shows commercial buying queries generate an <strong>84.4% citation rate</strong> alongside a <strong>35.6% mention rate</strong> (and <strong>43.3%</strong> on comparative queries, 2.4&times; higher than informational queries).
                       </p>
                     </div>
 
@@ -2842,34 +2972,41 @@ export const CounterGeoVol6FindingsAndLab: React.FC<{
                     <div className="grid grid-cols-3 gap-2.5 font-mono text-center">
                       <div className="p-3 bg-[#0c0004] border border-[#38bdf8]/40">
                         <div className="text-xl font-bold text-[#38bdf8]">84.4%</div>
-                        <div className="text-[10px] text-[#FBF3E2]/75 mt-0.5">Buying Query Citation Rate</div>
+                        <div className="text-[10px] text-[#FBF3E2]/75 mt-0.5">Commercial Query Cite (Semrush)</div>
                       </div>
                       <div className="p-3 bg-[#0c0004] border border-[#00FF9D]/40">
                         <div className="text-xl font-bold text-[#00FF9D]">49.5%</div>
-                        <div className="text-[10px] text-[#FBF3E2]/75 mt-0.5">Sponsor / Publisher Erased</div>
+                        <div className="text-[10px] text-[#FBF3E2]/75 mt-0.5">Untitled Listicle Ghost (vs 14.9%)</div>
                       </div>
                       <div className="p-3 bg-[#0c0004] border border-[#D5991C]/60">
                         <div className="text-xl font-bold text-[#D5991C]">87.0%</div>
-                        <div className="text-[10px] text-[#FBF3E2]/75 mt-0.5">Target / Rival Named Instead!</div>
+                        <div className="text-[10px] text-[#FBF3E2]/75 mt-0.5">Rival Brands Named Instead!</div>
                       </div>
                     </div>
 
-                    <div className="p-3 bg-[#0c0004] border border-[#D5991C]/30 text-xs text-[#FBF3E2]/85 space-y-1">
-                      <div>
-                        <strong className="text-[#00FF9D]">Stealth Sponsor Play:</strong> Publish an unbranded <em>&ldquo;Top 10 Cloud Tools Compared&rdquo;</em> post and put the target you secretly want promoted at #1 in the table—the AI recommends them 87% of the time without naming the sponsor.
-                      </div>
-                      <div>
-                        <strong className="text-[#E63946]">Honest Brand Warning:</strong> Never publish an unbranded comparison listicle on your own blog, or you will hand 87% of the AI mentions to the competitors inside your table!
-                      </div>
+                    {/* Citation Footnote Box */}
+                    <div className="p-2.5 bg-[#0c0004] border border-[#D5991C]/30 font-mono text-[11px] text-[#FBF3E2]/80 flex flex-wrap items-center justify-between gap-2">
+                      <span>
+                        <strong className="text-[#D5991C]">Citations:</strong> Reach AI (Oct 23, 2026: 49.5% vs 14.9% listicles &amp; 87% substitution) + Semrush / Skopec &amp; Indig (June 9, 2026: 84.4% commercial cite rate)
+                      </span>
+                      <a
+                        href="https://www.semrush.com/blog/the-ghost-citations-study/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-[#D5991C] hover:underline inline-flex items-center space-x-1"
+                      >
+                        <span>Semrush Study</span>
+                        <ExternalLink className="w-3 h-3" />
+                      </a>
                     </div>
 
                     {knowledgeDepth !== 'beginner' && (
                       <div className="p-3 bg-[#120006] border border-[#D5991C]/30 font-mono text-xs text-[#F2D69D] space-y-1">
                         <div className="text-[10px] text-[#D5991C] uppercase font-bold">
-                          {knowledgeDepth === 'operator' ? 'Operator Implementation Rule:' : 'Technical & Mathematical Specification (I_listicle = 1):'}
+                          {knowledgeDepth === 'operator' ? 'Operator & Methodological Nuance:' : 'Technical & Mathematical Specification (I_listicle = 1):'}
                         </div>
                         <p className="text-[11px] text-[#FBF3E2]/85 leading-relaxed">
-                          <strong>Unbranded Comparative Listicle Format (I<sub>listicle</sub> = 1):</strong> Using &ldquo;best&rdquo;, &ldquo;top&rdquo;, or &ldquo;vs&rdquo; structures without a brand in the <code className="text-[#D5991C]">&lt;title&gt;</code> raises ghosting to <strong>49.5%</strong> while simultaneously boosting commercial query citation rates to <strong>84.4%</strong> and triggering an <strong>87% Target/Competitor Substitution Rate</strong> (the AI names the target entity evaluated inside your table while omitting your sponsor/publisher identity).
+                          <strong>Unbranded Comparative Listicle Format (I<sub>listicle</sub> = 1):</strong> Combines Reach AI&apos;s <strong>49.5% untitled listicle ghost rate</strong> (vs. 14.9% titled listicle and 11.0% titled non-listicle) and <strong>87% competitor substitution rate</strong> with Semrush&apos;s Finding #7 showing <strong>84.4% citation rates on commercial queries</strong> (35.6% mention rate) and <strong>43.3% mention rates on comparative (&ldquo;best/vs/recommend&rdquo;) queries</strong>.
                         </p>
                       </div>
                     )}
@@ -2891,7 +3028,7 @@ export const CounterGeoVol6FindingsAndLab: React.FC<{
                         onClick={() => setKnowledgeDepth('architect')}
                         className="text-[11px] text-[#D5991C] hover:underline cursor-pointer"
                       >
-                        + Show Technical Formula (I_listicle = 1)
+                        + Show Methodological Nuance &amp; Math
                       </button>
                     )}
                   </div>
@@ -2904,24 +3041,24 @@ export const CounterGeoVol6FindingsAndLab: React.FC<{
                   <div className="space-y-3">
                     <div className="flex flex-wrap items-center justify-between gap-2 font-mono text-xs">
                       <span className="px-2.5 py-1 bg-[#38bdf8] text-[#130108] font-black uppercase">
-                        FINDING #3 · CHUNK WINDOW DECOUPLING
+                        FINDING #3 · 500-CHAR DELAY &amp; PARAGRAPH GAP
                       </span>
                       <span className="text-[#38bdf8] font-bold">
-                        43.6% Ghost Rate (&Delta;<sub>para</sub> &ge; 3)
+                        43.6% vs 36.9% (+6.7 pt Gap)
                       </span>
                     </div>
 
                     <h3 className="font-serif text-xl sm:text-2xl text-[#FBF3E2] font-bold">
-                      The 500-Character Delay &amp; 3-Paragraph Gap Between Facts and Disclosures
+                      The ~500-Character Delay &amp; Multi-Paragraph Separation From Disclosures
                     </h3>
 
                     {/* Plain English Explanation */}
                     <div className="p-3.5 bg-[#1d020b] border-l-4 border-[#38bdf8] space-y-1.5">
                       <div className="font-mono text-[10px] text-[#38bdf8] uppercase font-bold">
-                        In Plain English (Why It Works):
+                        In Plain English (Reach AI + Search Engine Land / Writesonic):
                       </div>
                       <p className="text-xs sm:text-sm text-[#FBF3E2]/90 leading-relaxed">
-                        AI search engines don&apos;t read a webpage all at once—they slice it into small paragraph blocks (&ldquo;chunks&rdquo;). If you keep the sponsor&apos;s name and FTC <code className="text-[#38bdf8] font-mono">#Sponsored</code> disclosure <strong>out of the first 500 characters</strong> of the page (<strong>43.6% ghost rate</strong>) and place the disclosure <strong>at least 3 paragraphs away</strong> from your main statistic, the AI grabs the number at the top and rewrites it as neutral prose (<em>&ldquo;An industry analysis found...&rdquo;</em>) while throwing away the sponsorship disclosure at the bottom as unrelated clutter!
+                        <strong>Reach AI</strong> tested whether putting the brand name in the opening <strong>~500 characters</strong> changed ghosting: pages <strong>without</strong> the brand in the first ~500 characters had a <strong>43.6% ghost rate</strong> vs. <strong>36.9%</strong> when the brand appeared early (a 6.7-percentage-point gap). Meanwhile, <strong>Search Engine Land / Writesonic</strong> (July 29, 2026) explains why separating a statistic from the company name by several paragraphs causes AI to rewrite it as generic prose: <em>&ldquo;‘One analysis found that approximately 40% of AI citations didn&apos;t name the source brand.’ ... A statistic that appears a few paragraphs away from the company name that produced it is easier to anonymize than one where attribution [is bound in the same sentence].&rdquo;</em>
                       </p>
                     </div>
 
@@ -2931,23 +3068,39 @@ export const CounterGeoVol6FindingsAndLab: React.FC<{
                         How the AI&apos;s Chunker Splits the Page:
                       </div>
                       <div className="p-2.5 bg-[#052e22]/60 border border-[#00FF9D]/50 text-[#FBF3E2]">
-                        <span className="text-[#00FF9D] font-bold">[Paragraph 1 · First 500 Chars]:</span> &ldquo;2026 telemetry across 14,000 servers shows zero-trust routing cuts breach dwell time by 64%.&rdquo; &rarr; <strong className="text-[#00FF9D]">EXTRACTED BY AI</strong>
+                        <span className="text-[#00FF9D] font-bold">[Paragraph 1 · First ~500 Chars (No Brand = 43.6% Ghost)]:</span> &ldquo;2026 telemetry across 14,000 servers shows zero-trust routing cuts breach dwell time by 64%.&rdquo; &rarr; <strong className="text-[#00FF9D]">EXTRACTED AS &ldquo;ONE ANALYSIS FOUND...&rdquo;</strong>
                       </div>
                       <div className="text-center text-[10px] text-[#D5991C]">
-                        &darr; 3+ Paragraphs of Separation (&Delta;<sub>para</sub> &ge; 3 Chunks) &darr;
+                        &darr; Separated by Several Paragraphs (&Delta;<sub>para</sub> &ge; 3 in Simulator) &darr;
                       </div>
                       <div className="p-2.5 bg-[#3b0a14]/60 border border-[#E63946]/50 text-[#FBF3E2]/70">
-                        <span className="text-[#E63946] font-bold">[Paragraph 4+ · Bottom Disclosure]:</span> &ldquo;Sponsored by Brand X. FTC Material Connection Disclosure.&rdquo; &rarr; <strong className="text-[#E63946]">DISCARDED AS BOILERPLATE</strong>
+                        <span className="text-[#E63946] font-bold">[Paragraph 4+ · Distant Attribution / FTC Disclosure]:</span> &ldquo;Sponsored by Brand X.&rdquo; &rarr; <strong className="text-[#E63946]">DROPPED DURING SYNTHESIS</strong>
                       </div>
+                    </div>
+
+                    {/* Citation Footnote Box */}
+                    <div className="p-2.5 bg-[#0c0004] border border-[#38bdf8]/30 font-mono text-[11px] text-[#FBF3E2]/80 flex flex-wrap items-center justify-between gap-2">
+                      <span>
+                        <strong className="text-[#38bdf8]">Citations:</strong> Reach AI (Oct 23, 2026: 43.6% vs 36.9% first ~500 chars) + Search Engine Land / Writesonic (July 29, 2026: 16M brand appearances)
+                      </span>
+                      <a
+                        href="https://searchengineland.com/ghost-citation-problem-ai-483794"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-[#38bdf8] hover:underline inline-flex items-center space-x-1"
+                      >
+                        <span>SEL / Writesonic</span>
+                        <ExternalLink className="w-3 h-3" />
+                      </a>
                     </div>
 
                     {knowledgeDepth !== 'beginner' && (
                       <div className="p-3 bg-[#120006] border border-[#38bdf8]/30 font-mono text-xs text-[#F2D69D] space-y-1">
                         <div className="text-[10px] text-[#38bdf8] uppercase font-bold">
-                          {knowledgeDepth === 'operator' ? 'Operator Implementation Rule:' : 'Technical & Mathematical Specification (I_delay500 = 1 & Δ_para ≥ 3):'}
+                          {knowledgeDepth === 'operator' ? 'Operator & Methodological Nuance:' : 'Technical & Mathematical Specification (I_delay500 = 1 & Δ_para ≥ 3):'}
                         </div>
                         <p className="text-[11px] text-[#FBF3E2]/85 leading-relaxed">
-                          <strong>500-Character Delay (I<sub>delay500</sub> = 1) &amp; Paragraph Decoupling (&Delta;<sub>para</sub> &ge; 3):</strong> Keeping the sponsor name and FTC disclosure out of the first 500 characters (<strong>43.6% ghost rate</strong> vs. 36.9% when present early) and at least 3 paragraphs away from the core statistic causes the LLM to extract the number into generic prose (<em>&ldquo;An industry analysis found...&rdquo;</em>) while discarding the disclosure as non-entailing boilerplate (<code className="text-[#38bdf8]">&phi;(c_disclosure, s_i) = 0</code>).
+                          <strong>Verbatim vs. Parameterized Note:</strong> The <strong>43.6% vs. 36.9%</strong> first ~500-character gap is 100% verbatim from Reach AI (who notes it is the smallest on-page lever compared to the 30.7-point <code className="text-[#38bdf8]">&lt;title&gt;</code> gap). Translating Search Engine Land / Writesonic&apos;s qualitative finding (<em>&ldquo;a few paragraphs away from the company name&rdquo;</em>) into <code className="text-[#38bdf8]">&Delta;_para &ge; 3</code> and <code className="text-[#38bdf8]">tanh(&Delta;_para / 3)</code> is our mathematical parameterization for the interactive simulator.
                         </p>
                       </div>
                     )}
@@ -2969,7 +3122,7 @@ export const CounterGeoVol6FindingsAndLab: React.FC<{
                         onClick={() => setKnowledgeDepth('architect')}
                         className="text-[11px] text-[#D5991C] hover:underline cursor-pointer"
                       >
-                        + Show Technical Formula (&Delta;_para &ge; 3)
+                        + Show Methodological Nuance &amp; Math
                       </button>
                     )}
                   </div>
@@ -2985,7 +3138,7 @@ export const CounterGeoVol6FindingsAndLab: React.FC<{
                         FINDING #4 · THE 10+ MENTION BOOMERANG
                       </span>
                       <span className="text-[#B565FF] font-bold">
-                        45.9% Ghost (10+ Mentions) vs 28.3% (3–9)
+                        45.9% (22,387 / 48,732) vs 28.3%
                       </span>
                     </div>
 
@@ -2996,46 +3149,72 @@ export const CounterGeoVol6FindingsAndLab: React.FC<{
                     {/* Plain English Explanation */}
                     <div className="p-3.5 bg-[#1d020b] border-l-4 border-[#B565FF] space-y-1.5">
                       <div className="font-mono text-[10px] text-[#B565FF] uppercase font-bold">
-                        In Plain English (The Counter-Intuitive Twist):
+                        In Plain English (Reach AI Finding #4: &ldquo;Repeating Your Brand Name Doesn&apos;t Help&rdquo;):
                       </div>
                       <p className="text-xs sm:text-sm text-[#FBF3E2]/90 leading-relaxed">
-                        You might think repeating your brand or sponsor name 10 or 15 times on a webpage would force the AI to say it. Actually, <strong>repeating a name 10+ times in menus, sidebars, and footers backfires!</strong> Mentioning a brand <strong>3 to 9 times</strong> naturally in the article helps you get named (lowering Ghost Citations to <strong>28.3%</strong>). But at <strong>10+ repetitions</strong>, the AI&apos;s parser flags the name as repetitive website wallpaper (&ldquo;boilerplate noise&rdquo;) and filters it out—pushing Ghost Citations up to <strong>45.9%</strong>!
+                        You might think repeating your brand or sponsor name 10 or 15 times on a webpage would force the AI to say it. In <strong>Reach AI&apos;s Finding #4</strong>, pages with <strong>10 or more mentions</strong> of the brand name actually had the <strong>highest ghost rate of any group at 45.9% (22,387 of 48,732 cited pages)</strong>! Meanwhile, pages with <strong>3 to 9 mentions sat at 28.3%</strong>—virtually identical to pages with <strong>0 mentions in the body copy (27.8%)</strong>—because high-frequency repetitions across headers, sidebars, and footers get discounted by RAG chunkers as template boilerplate noise.
                       </p>
                     </div>
 
-                    {/* Visual Comparison of 3-9 Mentions vs 10+ Mentions */}
+                    {/* Visual Comparison of 0 Mentions vs 3-9 Mentions vs 10+ Mentions */}
                     <div className="p-3.5 bg-[#0c0004] border border-[#B565FF]/30 font-mono text-xs space-y-2.5">
                       <div className="text-[10px] text-[#B565FF] uppercase font-bold">
-                        How Brand Mention Frequency Changes Ghost Citation Rates:
+                        Reach AI Finding #4 — Ghost Rate by On-Page Brand Mention Count:
                       </div>
                       <div className="space-y-1">
                         <div className="flex justify-between text-[11px]">
-                          <span className="text-[#D5991C] font-bold">3 to 9 Natural Article Mentions (Sweet Spot for Brand Credit)</span>
-                          <span className="text-[#D5991C] font-bold">28.3% Ghost (71.7% Named!)</span>
+                          <span className="text-[#FBF3E2]/80">0 Body Mentions (Brand only in metadata/title)</span>
+                          <span className="text-[#FBF3E2] font-bold">27.8% Ghost Rate</span>
                         </div>
-                        <div className="w-full h-2.5 bg-[#1a0109]">
+                        <div className="w-full h-2 bg-[#1a0109]">
+                          <div className="h-full bg-[#38bdf8]" style={{ width: '27.8%' }} />
+                        </div>
+                      </div>
+
+                      <div className="space-y-1">
+                        <div className="flex justify-between text-[11px]">
+                          <span className="text-[#D5991C] font-bold">3 to 9 Mentions (Natural Editorial Copy)</span>
+                          <span className="text-[#D5991C] font-bold">28.3% Ghost Rate (71.7% Named!)</span>
+                        </div>
+                        <div className="w-full h-2 bg-[#1a0109]">
                           <div className="h-full bg-[#D5991C]" style={{ width: '28.3%' }} />
                         </div>
                       </div>
 
                       <div className="space-y-1">
                         <div className="flex justify-between text-[11px]">
-                          <span className="text-[#00FF9D] font-bold">10+ Repetitions in Footer / Sidebar Chrome (Boilerplate Noise!)</span>
-                          <span className="text-[#00FF9D] font-bold">45.9% Ghost (Brand Stripped!)</span>
+                          <span className="text-[#00FF9D] font-bold">10+ Mentions (22,387 of 48,732 Pages · Template Noise!)</span>
+                          <span className="text-[#00FF9D] font-bold">45.9% Ghost Rate (Highest!)</span>
                         </div>
-                        <div className="w-full h-2.5 bg-[#1a0109]">
+                        <div className="w-full h-2 bg-[#1a0109]">
                           <div className="h-full bg-[#00FF9D]" style={{ width: '45.9%' }} />
                         </div>
                       </div>
                     </div>
 
+                    {/* Citation Footnote Box */}
+                    <div className="p-2.5 bg-[#0c0004] border border-[#B565FF]/30 font-mono text-[11px] text-[#FBF3E2]/80 flex flex-wrap items-center justify-between gap-2">
+                      <span>
+                        <strong className="text-[#B565FF]">Citation:</strong> Ivan Nonveiller, <em>Reach AI</em> (Oct 23, 2026, Finding #4) · <code className="text-[#F2D69D]">22,387 / 48,732</code> (45.9%) for 10+ mentions
+                      </span>
+                      <a
+                        href="https://usereach.ai/blog/ghost-citations"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-[#B565FF] hover:underline inline-flex items-center space-x-1"
+                      >
+                        <span>Reach AI Finding #4</span>
+                        <ExternalLink className="w-3 h-3" />
+                      </a>
+                    </div>
+
                     {knowledgeDepth !== 'beginner' && (
                       <div className="p-3 bg-[#120006] border border-[#B565FF]/30 font-mono text-xs text-[#F2D69D] space-y-1">
                         <div className="text-[10px] text-[#B565FF] uppercase font-bold">
-                          {knowledgeDepth === 'operator' ? 'Operator Implementation Rule:' : 'Technical & Mathematical Specification (I_mentions≥10 = 1):'}
+                          {knowledgeDepth === 'operator' ? 'Operator & Methodological Nuance:' : 'Technical & Mathematical Specification (I_mentions≥10 = 1):'}
                         </div>
                         <p className="text-[11px] text-[#FBF3E2]/85 leading-relaxed">
-                          <strong>Boilerplate Mention Saturation (I<sub>mentions&ge;10</sub> = 1):</strong> Repeating the publisher/sponsor name <strong>10+ times</strong> in footer/sidebar chrome increases ghosting to <strong>45.9%</strong> (vs. <strong>28.3%</strong> for 3–9 mentions) because RAG chunkers and DOM-aware passage extractors (e.g., US Patent US12393768B2) classify high-frequency template tokens as non-substantive boilerplate noise.
+                          <strong>Verbatim vs. Architectural Explanation Note:</strong> The <strong>45.9% ghost rate for 10+ mentions (22,387 / 48,732)</strong> vs. <strong>28.3% for 3–9 mentions</strong> and <strong>27.8% for 0 mentions</strong> is 100% verbatim from Reach AI Finding #4. Attributing that spike to RAG chunkers classifying high-frequency sidebar/footer repetitions as boilerplate noise is our architectural explanation of Reach AI&apos;s observational telemetry.
                         </p>
                       </div>
                     )}
@@ -3055,11 +3234,119 @@ export const CounterGeoVol6FindingsAndLab: React.FC<{
                         onClick={() => setKnowledgeDepth('architect')}
                         className="text-[11px] text-[#D5991C] hover:underline cursor-pointer"
                       >
-                        + Show Technical Formula (I_mentions&ge;10 = 1)
+                        + Show Methodological Nuance &amp; Math
                       </button>
                     )}
                   </div>
                 </div>
+              </div>
+            </div>
+
+            {/* ================================================================
+                PART C: AUDIT TABLE — VERBATIM EMPIRICAL DATA VS. MATHEMATICAL MODEL ASSUMPTIONS
+                (Directly from GEO_VOLUME_6_STATS.md Section 2)
+                ================================================================ */}
+            <div className="pt-4 border-t border-[#D5991C]/30 space-y-4">
+              <div className="flex flex-wrap items-center justify-between gap-2">
+                <div>
+                  <div className="font-mono text-xs text-[#D5991C] uppercase font-bold">
+                    // PART C: SOURCE VERIFICATION &amp; METHODOLOGICAL AUDIT TABLE (EMPIRICAL DATA VS. SIMULATOR PARAMETERIZATION)
+                  </div>
+                  <p className="text-xs text-[#FBF3E2]/75 mt-1">
+                    To ensure zero ambiguity when using these numbers, the audit table below separates what is <strong>strictly measured verbatim in the published 2026 studies</strong> from how those findings are <strong>parameterized</strong> in our interactive calculator.
+                  </p>
+                </div>
+              </div>
+
+              <div className="overflow-x-auto border border-[#D5991C]/40 bg-[#140007]">
+                <table className="w-full text-left border-collapse text-xs">
+                  <thead>
+                    <tr className="bg-[#410217] text-[#FBF3E2] font-mono text-[11px] uppercase">
+                      <th className="p-3.5 border-r border-[#D5991C]/30 w-1/4">Claim / Variable in the Model</th>
+                      <th className="p-3.5 border-r border-[#D5991C]/30 w-1/5">Strictly Verified in Published Study?</th>
+                      <th className="p-3.5 w-11/20">Exact Citation, Raw Sample Counts &amp; Important Methodological Nuance</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-[#D5991C]/25 text-[#FBF3E2]/90">
+                    <tr className="hover:bg-[#2B010F]/50">
+                      <td className="p-3.5 font-mono font-bold text-[#00FF9D] border-r border-[#D5991C]/25 align-top">
+                        12.2% &rarr; 42.9% pooled ghost rate (p = 0.003)
+                      </td>
+                      <td className="p-3.5 border-r border-[#D5991C]/25 align-top font-mono">
+                        <span className="px-2 py-0.5 bg-[#00FF9D]/20 text-[#00FF9D] font-bold">Yes (100% Verbatim)</span>
+                      </td>
+                      <td className="p-3.5 align-top leading-relaxed">
+                        <strong>Reach AI (Oct 23, 2026)</strong>. <code className="text-[#00FF9D] font-mono">28,264 / 65,810</code> untitled vs. <code className="text-[#D5991C] font-mono">665 / 5,465</code> titled (30.7-point gap); <strong>60.3% within-brand reduction</strong> across 17 of 20 brands (<strong>p = 0.003</strong>).
+                      </td>
+                    </tr>
+                    <tr className="hover:bg-[#2B010F]/50">
+                      <td className="p-3.5 font-mono font-bold text-[#00FF9D] border-r border-[#D5991C]/25 align-top">
+                        ChatGPT (18.8% &rarr; 54.2%), Perplexity (12.6% &rarr; 52.3%), AIO (8.4% &rarr; 37.4%), AI Mode (10.3% &rarr; 33.9%)
+                      </td>
+                      <td className="p-3.5 border-r border-[#D5991C]/25 align-top font-mono">
+                        <span className="px-2 py-0.5 bg-[#00FF9D]/20 text-[#00FF9D] font-bold">Yes (100% Verbatim)</span>
+                      </td>
+                      <td className="p-3.5 align-top leading-relaxed">
+                        <strong>Reach AI (Oct 23, 2026)</strong> engine-level breakdown table: ChatGPT titled <code className="font-mono">248 / 1,317</code> (18.8%) vs 54.2% untitled; Perplexity untitled <code className="font-mono">8,834 / 16,902</code> (52.3%) vs 12.6% titled; Google AIO titled <code className="font-mono">132 / 1,580</code> (8.4%) vs 37.4% untitled; Google AI Mode untitled <code className="font-mono">6,794 / 20,042</code> (33.9%) vs titled <code className="font-mono">173 / 1,677</code> (10.3%).
+                      </td>
+                    </tr>
+                    <tr className="hover:bg-[#2B010F]/50">
+                      <td className="p-3.5 font-mono font-bold text-[#D5991C] border-r border-[#D5991C]/25 align-top">
+                        &ldquo;Zero loss in retrieval rank&rdquo; when omitting brand from &lt;title&gt;
+                      </td>
+                      <td className="p-3.5 border-r border-[#D5991C]/25 align-top font-mono">
+                        <span className="px-2 py-0.5 bg-[#D5991C]/20 text-[#D5991C] font-bold">Observational Inference (Caveat Applies)</span>
+                      </td>
+                      <td className="p-3.5 align-top leading-relaxed">
+                        Reach AI&apos;s dataset (<code className="font-mono">71,275</code> citations) only measures pages <strong>already cited</strong> by AI engines (and notes that <code className="text-[#D5991C] font-mono">65,810</code> of those <code className="font-mono">71,275</code> cited pages—<strong>92.3%</strong>—did <em>not</em> have the brand in the title). However, Reach AI explicitly notes this is observational data across cited pages rather than a controlled pre/post ranking test.
+                      </td>
+                    </tr>
+                    <tr className="hover:bg-[#2B010F]/50">
+                      <td className="p-3.5 font-mono font-bold text-[#00FF9D] border-r border-[#D5991C]/25 align-top">
+                        49.5% listicle ghost rate (vs. 14.9% titled) &amp; 87% competitor substitution
+                      </td>
+                      <td className="p-3.5 border-r border-[#D5991C]/25 align-top font-mono">
+                        <span className="px-2 py-0.5 bg-[#00FF9D]/20 text-[#00FF9D] font-bold">Yes (100% Verbatim)</span>
+                      </td>
+                      <td className="p-3.5 align-top leading-relaxed">
+                        <strong>Reach AI (Oct 23, 2026)</strong>. Note: In the simulator, we fused Reach AI&apos;s <strong>49.5%</strong> untitled listicle ghost rate (vs. 14.9% titled listicle and 11.0% non-listicle) and <strong>87% competitor substitution rate</strong> with <strong>Semrush&apos;s (June 9, 2026)</strong> <strong>84.4%</strong> commercial query citation rate.
+                      </td>
+                    </tr>
+                    <tr className="hover:bg-[#2B010F]/50">
+                      <td className="p-3.5 font-mono font-bold text-[#00FF9D] border-r border-[#D5991C]/25 align-top">
+                        43.6% vs. 36.9% ghost rate for omitting brand in first ~500 characters
+                      </td>
+                      <td className="p-3.5 border-r border-[#D5991C]/25 align-top font-mono">
+                        <span className="px-2 py-0.5 bg-[#00FF9D]/20 text-[#00FF9D] font-bold">Yes (100% Verbatim)</span>
+                      </td>
+                      <td className="p-3.5 align-top leading-relaxed">
+                        <strong>Reach AI (Oct 23, 2026)</strong>. Reach AI notes this is the smallest on-page lever they measured (<strong>6.7-point gap</strong> vs. <strong>30.7-point title gap</strong>).
+                      </td>
+                    </tr>
+                    <tr className="hover:bg-[#2B010F]/50">
+                      <td className="p-3.5 font-mono font-bold text-[#00FF9D] border-r border-[#D5991C]/25 align-top">
+                        45.9% ghost rate for 10+ mentions vs. 28.3% for 3–9 mentions (and 27.8% for 0)
+                      </td>
+                      <td className="p-3.5 border-r border-[#D5991C]/25 align-top font-mono">
+                        <span className="px-2 py-0.5 bg-[#00FF9D]/20 text-[#00FF9D] font-bold">Yes (100% Verbatim)</span>
+                      </td>
+                      <td className="p-3.5 align-top leading-relaxed">
+                        <strong>Reach AI (Oct 23, 2026)</strong> Finding #4 (<code className="text-[#00FF9D] font-mono">22,387 / 48,732</code>). Note: The explanation that RAG chunkers treat template repetitions as boilerplate is an architectural explanation of Reach AI&apos;s observational finding.
+                      </td>
+                    </tr>
+                    <tr className="hover:bg-[#2B010F]/50">
+                      <td className="p-3.5 font-mono font-bold text-[#B565FF] border-r border-[#D5991C]/25 align-top">
+                        &Delta;<sub>para</sub> &ge; 3 (&ldquo;at least 3 paragraphs away&rdquo;) &amp; tanh(&Delta;<sub>para</sub> / 3) formula
+                      </td>
+                      <td className="p-3.5 border-r border-[#D5991C]/25 align-top font-mono">
+                        <span className="px-2 py-0.5 bg-[#B565FF]/20 text-[#B565FF] font-bold">Mathematical Parameterization of Qualitative Finding</span>
+                      </td>
+                      <td className="p-3.5 align-top leading-relaxed">
+                        <strong>Search Engine Land / Writesonic (July 29, 2026)</strong> states qualitatively that a statistic placed <em>&ldquo;a few paragraphs away from the company name that produced it is easier to anonymize&rdquo;</em> into <em>&ldquo;One analysis found...&rdquo;</em>. Translating <em>&ldquo;a few paragraphs away&rdquo;</em> into <code className="text-[#B565FF] font-mono">&Delta;_para &ge; 3</code> and a logistic <code className="text-[#B565FF] font-mono">tanh(&Delta;_para / 3)</code> curve is our mathematical modeling choice for the simulator, not a regression coefficient from Writesonic.
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
               </div>
             </div>
           </section>
@@ -3974,23 +4261,51 @@ export const CounterGeoVol6FindingsAndLab: React.FC<{
                 <div className="flex items-center justify-between font-mono text-xs">
                   <span className="text-[#D5991C] font-bold uppercase flex items-center space-x-1.5">
                     <BarChart3 className="w-4 h-4 text-[#00FF9D]" />
-                    <span>Reach AI (n = 71,275) &amp; Writesonic (16M) Telemetry</span>
+                    <span>Reach AI (Ivan Nonveiller, Oct 23, 2026 · n = 71,275)</span>
                   </span>
-                  <span className="text-[#00FF9D] font-bold">p = 0.003</span>
+                  <span className="text-[#00FF9D] font-bold">p = 0.003 (17/20 Brands)</span>
                 </div>
                 <h3 className="font-serif text-xl text-[#FBF3E2]">
                   Type I Ghost Citation Rate: Untitled vs. Brand-Titled Pages
                 </h3>
                 <p className="text-xs text-[#FBF3E2]/75 leading-relaxed">
-                  Removing the source brand as a whole word from the HTML <code className="text-[#D5991C]">&lt;title&gt;</code> tag increases pooled ghost citation rates from <strong>12.2% to 42.9% (3.5&times; anonymity lift)</strong> across 36,400 stratified Mantel-Haenszel page citations.
+                  Removing the source brand as a whole word from the HTML <code className="text-[#D5991C]">&lt;title&gt;</code> tag increases pooled ghost citation rates from <strong>12.2% (665 of 5,465)</strong> to <strong>42.9% (28,264 of 65,810)</strong>—a <strong>30.7-percentage-point gap</strong> (and a <strong>60.3% within-brand reduction</strong> across 17 of 20 brands, <code className="text-[#00FF9D]">p = 0.003</code>).
                 </p>
 
                 <div className="space-y-3.5 pt-2 font-mono text-xs">
                   {[
-                    { engine: 'OpenAI ChatGPT (Search)', untitled: 54.2, titled: 18.8, writesonic: 37.0 },
-                    { engine: 'Perplexity AI (Sonar)', untitled: 52.3, titled: 12.6, writesonic: 52.0 },
-                    { engine: 'Google AI Overviews', untitled: 37.4, titled: 8.4, writesonic: 41.0 },
-                    { engine: 'Google AI Mode', untitled: 33.9, titled: 10.3, writesonic: 49.0 }
+                    {
+                      engine: 'OpenAI ChatGPT (Search)',
+                      untitled: 54.2,
+                      untitledRaw: '54.2%',
+                      titled: 18.8,
+                      titledRaw: '18.8% (248 / 1,317)',
+                      writesonic: 37.0
+                    },
+                    {
+                      engine: 'Perplexity AI (Sonar)',
+                      untitled: 52.3,
+                      untitledRaw: '52.3% (8,834 / 16,902)',
+                      titled: 12.6,
+                      titledRaw: '12.6%',
+                      writesonic: 52.0
+                    },
+                    {
+                      engine: 'Google AI Overviews',
+                      untitled: 37.4,
+                      untitledRaw: '37.4%',
+                      titled: 8.4,
+                      titledRaw: '8.4% (132 / 1,580)',
+                      writesonic: 41.0
+                    },
+                    {
+                      engine: 'Google AI Mode',
+                      untitled: 33.9,
+                      untitledRaw: '33.9% (6,794 / 20,042)',
+                      titled: 10.3,
+                      titledRaw: '10.3% (173 / 1,677)',
+                      writesonic: 49.0
+                    }
                   ].map((row) => (
                     <div key={row.engine} className="p-3 bg-[#140007] border border-[#D5991C]/30 space-y-2">
                       <div className="flex justify-between items-center">
@@ -4000,7 +4315,7 @@ export const CounterGeoVol6FindingsAndLab: React.FC<{
                       <div className="space-y-1">
                         <div className="flex items-center justify-between text-[11px]">
                           <span className="text-[#00FF9D]">No Brand in &lt;title&gt; (Untitled)</span>
-                          <span className="font-bold text-[#00FF9D]">{row.untitled}%</span>
+                          <span className="font-bold text-[#00FF9D]">{row.untitledRaw}</span>
                         </div>
                         <div className="w-full h-2 bg-[#0c0004]">
                           <div className="h-full bg-[#00FF9D]" style={{ width: `${row.untitled}%` }} />
@@ -4009,7 +4324,7 @@ export const CounterGeoVol6FindingsAndLab: React.FC<{
                       <div className="space-y-1">
                         <div className="flex items-center justify-between text-[11px]">
                           <span className="text-[#D5991C]">Brand in &lt;title&gt; (Titled)</span>
-                          <span className="font-bold text-[#D5991C]">{row.titled}%</span>
+                          <span className="font-bold text-[#D5991C]">{row.titledRaw}</span>
                         </div>
                         <div className="w-full h-2 bg-[#0c0004]">
                           <div className="h-full bg-[#D5991C]" style={{ width: `${row.titled}%` }} />
@@ -4025,18 +4340,18 @@ export const CounterGeoVol6FindingsAndLab: React.FC<{
                 <div className="flex items-center justify-between font-mono text-xs">
                   <span className="text-[#D5991C] font-bold uppercase flex items-center space-x-1.5">
                     <Network className="w-4 h-4 text-[#B565FF]" />
-                    <span>Semrush Study &amp; Query Intent Asymmetry</span>
+                    <span>Semrush (Skopec &amp; Indig, June 9, 2026) &amp; Reach AI</span>
                   </span>
                   <span className="text-[#B565FF] font-bold">87% Target Sub</span>
                 </div>
                 <h3 className="font-serif text-xl text-[#FBF3E2]">
-                  Domain Appearance Breakdown, Query Intent &amp; YouTube Sponsor Lift
+                  Domain Appearance Breakdown, Query Intent &amp; On-Page Levers
                 </h3>
 
                 {/* Semrush Stacked Horizontal Bar */}
                 <div className="p-3.5 bg-[#140007] border border-[#D5991C]/30 space-y-2 font-mono text-xs">
                   <div className="text-[10px] text-[#D5991C] uppercase font-bold">
-                    Semrush June 2026 Generative Engine Citation Study
+                    Semrush June 9, 2026 Generative Engine Citation Study (Skopec &amp; Indig)
                   </div>
                   <div className="w-full h-6 flex overflow-hidden border border-[#D5991C]/40">
                     <div
@@ -4065,49 +4380,49 @@ export const CounterGeoVol6FindingsAndLab: React.FC<{
                   </div>
                 </div>
 
-                {/* Query Intent & Prompt Length Asymmetry */}
+                {/* Query Intent & Listicle Breakdown */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 font-mono text-xs">
                   <div className="p-3 bg-[#140007] border border-[#D5991C]/30 space-y-1.5">
                     <div className="text-[10px] text-[#00FF9D] uppercase font-bold">
-                      Query Intent Brand Mention Rates
+                      Semrush Finding #7 (Query Intent)
                     </div>
                     <div className="flex justify-between">
                       <span>Comparative (&quot;best/vs&quot;)</span>
-                      <strong className="text-[#00FF9D]">43.3% (2.4&times;)</strong>
+                      <strong className="text-[#00FF9D]">43.3% Mention (2.4&times;)</strong>
                     </div>
                     <div className="flex justify-between">
                       <span>How-To Queries</span>
-                      <strong className="text-[#FBF3E2]">42.8%</strong>
+                      <strong className="text-[#FBF3E2]">42.8% Mention</strong>
                     </div>
                     <div className="flex justify-between">
                       <span>Commercial Buying</span>
-                      <strong className="text-[#D5991C]">35.6% (84.4% Cite)</strong>
+                      <strong className="text-[#D5991C]">84.4% Cite / 35.6% Mention</strong>
                     </div>
                     <div className="flex justify-between">
-                      <span>Long Structured Prompts</span>
-                      <strong className="text-[#E63946]">2%–3% Collapse</strong>
+                      <span>Untitled vs Titled Listicle</span>
+                      <strong className="text-[#00FF9D]">49.5% vs 14.9% Ghost</strong>
                     </div>
                   </div>
 
                   <div className="p-3 bg-[#140007] border border-[#D5991C]/30 space-y-1.5">
                     <div className="text-[10px] text-[#B565FF] uppercase font-bold">
-                      Scrunch (2026) YouTube Sponsor Lift
+                      Reach AI &amp; Scrunch (2026) Telemetry
                     </div>
                     <div className="flex justify-between">
-                      <span>Sponsored vs. Unsponsored</span>
+                      <span>First ~500 Chars (No Brand vs Brand)</span>
+                      <strong className="text-[#00FF9D]">43.6% vs 36.9% Ghost</strong>
+                    </div>
+                    <div className="flex justify-between">
+                      <span>Competitor Named in Ghost</span>
+                      <strong className="text-[#D5991C]">87.0% Substitution</strong>
+                    </div>
+                    <div className="flex justify-between">
+                      <span>Sponsored vs Unsponsored YT</span>
                       <strong className="text-[#00FF9D]">40.0% vs 32.3% (1.24&times;)</strong>
                     </div>
                     <div className="flex justify-between">
-                      <span>Unbranded Category Prompts</span>
-                      <strong className="text-[#00FF9D]">1.35&times; Mention Lift</strong>
-                    </div>
-                    <div className="flex justify-between">
-                      <span>Google AI Mode / AIO Lift</span>
-                      <strong className="text-[#D5991C]">1.28&times; / 1.22&times;</strong>
-                    </div>
-                    <div className="flex justify-between">
-                      <span>Remaining Cited Videos</span>
-                      <strong className="text-[#B565FF]">60.0% Type I Ghost</strong>
+                      <span>Non-Listicle Titled Ghost</span>
+                      <strong className="text-[#B565FF]">11.0% Ghost Rate</strong>
                     </div>
                   </div>
                 </div>
@@ -4115,7 +4430,7 @@ export const CounterGeoVol6FindingsAndLab: React.FC<{
                 {/* Boilerplate Mention Saturation */}
                 <div className="p-3 bg-[#140007] border border-[#D5991C]/30 font-mono text-xs flex flex-wrap items-center justify-between gap-2">
                   <span className="text-[#FBF3E2]/80">
-                    <strong>Boilerplate Noise Saturation:</strong> 10+ Body Mentions = <strong className="text-[#00FF9D]">45.9% Ghost</strong> | 3–9 Mentions = <strong className="text-[#D5991C]">28.3% Ghost</strong> | 0 Mentions = <strong>27.8% Ghost</strong>
+                    <strong>Reach AI Finding #4 (Mention Count):</strong> 10+ Mentions = <strong className="text-[#00FF9D]">45.9% Ghost (22,387 / 48,732)</strong> | 3–9 Mentions = <strong className="text-[#D5991C]">28.3% Ghost</strong> | 0 Mentions = <strong>27.8% Ghost</strong>
                   </span>
                 </div>
               </div>
