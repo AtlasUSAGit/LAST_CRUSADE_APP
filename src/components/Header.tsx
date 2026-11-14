@@ -14,7 +14,8 @@ import {
 import { NavigationPage } from '../types';
 
 interface HeaderProps {
-  activePage: NavigationPage;
+  activePage?: NavigationPage;
+  currentPage?: NavigationPage;
   onNavigate: (page: NavigationPage) => void;
   onOpenAudit: () => void;
   onOpenIncident: () => void;
@@ -22,10 +23,11 @@ interface HeaderProps {
 
 export const Header: React.FC<HeaderProps> = ({
   activePage,
+  currentPage,
   onNavigate,
-  onOpenAudit,
 }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const currentActivePage = currentPage ?? activePage ?? 'overview';
 
   const navItems: {
     id: NavigationPage;
@@ -33,7 +35,7 @@ export const Header: React.FC<HeaderProps> = ({
     icon: React.ComponentType<{ className?: string }>;
   }[] = [
     { id: 'overview', label: 'Overview', icon: Home },
-    { id: 'pitch-deck', label: 'Cover Deck', icon: Compass },
+    { id: 'our-process', label: 'Our Process', icon: Compass },
     { id: 'research', label: 'Research Whitepapers', icon: BookOpen },
     { id: 'services', label: 'Defense Architecture', icon: Layers },
     { id: 'counter-geo-ops', label: '3D Threat Lab', icon: Sparkles },
@@ -77,14 +79,14 @@ export const Header: React.FC<HeaderProps> = ({
           <nav className="hidden lg:flex items-center space-x-1">
             {navItems.map((item) => {
               const isActive =
-                activePage === item.id ||
+                currentActivePage === item.id ||
                 (item.id === 'research' &&
-                  (activePage === 'counter-geo' ||
-                    activePage === 'counter-geo-vol2' ||
-                    activePage === 'counter-geo-vol3' ||
-                    activePage === 'counter-geo-vol4' ||
-                    activePage === 'counter-geo-vol5' ||
-                    activePage === 'counter-geo-vol6'));
+                  (currentActivePage === 'counter-geo' ||
+                    currentActivePage === 'counter-geo-vol2' ||
+                    currentActivePage === 'counter-geo-vol3' ||
+                    currentActivePage === 'counter-geo-vol4' ||
+                    currentActivePage === 'counter-geo-vol5' ||
+                    currentActivePage === 'counter-geo-vol6'));
               const Icon = item.icon;
               return (
                 <button
@@ -106,11 +108,11 @@ export const Header: React.FC<HeaderProps> = ({
           {/* Action CTA Button */}
           <div className="hidden md:flex items-center space-x-3">
             <button
-              onClick={onOpenAudit}
+              onClick={() => handleNavClick('pitch-deck')}
               className="group flex items-center space-x-1.5 px-4 py-2.5 text-xs font-semibold rounded-md text-[#130108] bg-gradient-to-r from-[#D5991C] to-[#E5A932] hover:from-[#E5A932] hover:to-[#F2D69D] transition-all shadow-sm cursor-pointer"
             >
               <Shield className="w-3.5 h-3.5 text-[#130108]" />
-              <span>Get in Touch</span>
+              <span>Cover Deck</span>
               <ArrowUpRight className="w-3.5 h-3.5 text-[#130108] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
             </button>
           </div>
@@ -133,7 +135,7 @@ export const Header: React.FC<HeaderProps> = ({
         <div className="lg:hidden bg-[#350213] border-b border-[#F2D69D]/30 px-4 pt-3 pb-6 space-y-3 animate-fade-in">
           <div className="flex flex-col space-y-1">
             {navItems.map((item) => {
-              const isActive = activePage === item.id;
+              const isActive = currentActivePage === item.id;
               const Icon = item.icon;
               return (
                 <button
@@ -156,13 +158,10 @@ export const Header: React.FC<HeaderProps> = ({
           </div>
           <div className="pt-3 border-t border-[#F2D69D]/20">
             <button
-              onClick={() => {
-                setMobileMenuOpen(false);
-                onOpenAudit();
-              }}
+              onClick={() => handleNavClick('pitch-deck')}
               className="w-full py-2.5 text-center text-xs font-semibold rounded-md text-[#130108] bg-[#D5991C] hover:bg-[#E5A932] transition-colors"
             >
-              Get in Touch
+              Cover Deck
             </button>
           </div>
         </div>

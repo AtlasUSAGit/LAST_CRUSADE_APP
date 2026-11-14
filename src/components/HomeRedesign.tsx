@@ -793,6 +793,7 @@ export const HomeRedesign: React.FC<HomeRedesignProps> = ({
     }
     const routeMap: Record<NavigationPage, string> = {
       overview: '#/',
+      'our-process': '#/our-process',
       services: '#/services',
       rea: '#/rea',
       research: '#/research',
@@ -801,6 +802,7 @@ export const HomeRedesign: React.FC<HomeRedesignProps> = ({
       'counter-geo-vol3': subPage ? `#/counter-geo-vol3/${subPage}` : '#/counter-geo-vol3',
       'counter-geo-vol4': subPage ? `#/counter-geo-vol4/${subPage}` : '#/counter-geo-vol4',
       'counter-geo-vol5': subPage ? `#/counter-geo-vol5/${subPage}` : '#/counter-geo-vol5',
+      'counter-geo-vol6': subPage ? `#/counter-geo-vol6/${subPage}` : '#/counter-geo-vol6',
       'counter-geo-ops': '#/attack-library',
       'pitch-deck': '#/pitch-deck'
     };

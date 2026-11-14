@@ -27,7 +27,7 @@ export const MASTER_DOC_VOL6_SECTIONS: PaperSectionVol6[] = [
   {
     id: 'sec-v6-1',
     number: '01',
-    title: 'Executive Summary:',
+    title: 'Abstract',
     desc: 'Legitimate AEO vs. citation rings, Hubness Poisoning (21,000/25,000 queries), Petra Labs sponsored post findings, and the 3 core research questions.'
   },
   {

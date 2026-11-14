@@ -411,14 +411,14 @@ export const WhitepaperVol6Reader: React.FC<{
             className="lg:col-span-8 bg-[#FAF2E1] border border-[#F2D69D] p-6 sm:p-10 font-sans text-sm sm:text-base leading-relaxed text-[#410217] shadow-sm space-y-12"
           >
             {/* ==============================================================
-                SECTION 01: EXECUTIVE SUMMARY
+                SECTION 01: ABSTRACT
                 ============================================================== */}
             <section id="sec-v6-1" className="scroll-mt-24 space-y-5">
               <div className="font-mono text-xs text-[#D5991C] font-bold uppercase">
                 Section 01 · Monograph Introduction
               </div>
               <h2 className="font-serif text-2xl sm:text-3xl text-[#410217] font-bold">
-                Executive Summary:
+                Abstract
               </h2>
 
               <p>
@@ -430,7 +430,11 @@ export const WhitepaperVol6Reader: React.FC<{
               </p>
 
               <p>
-                Then there are the bad actors, made up of unethical competitors, financial manipulators, the foreign influence operations, who have realized that if you can rig the sources an AI retrieves right before it writes an answer, you can make the AI repeat a lie with total confidence. One of the most common “dirty tricks” in the AEO industry is <strong>citation rings and synthetic consensus</strong>: spinning up dozens of fake blogs, AI-generated news sites, and coordinated forum bots that all repeat the same made-up statistic or smear about a competitor. Because the AI sees the same claim echoed across what looks like twenty &quot;independent&quot; places, its retrieval system assumes the rumor is a verified consensus and states it as fact to customers.
+                Then there are the bad actors, made up of unethical competitors, financial manipulators, the foreign influence operations, who have realized that if you can rig the sources an AI retrieves right before it writes an answer, you can make the AI repeat a lie with total confidence. Directly breaching a major AI model like ChatGPT, Claude, or Gemini is expensive and easily spotted. Their servers sit behind fortified corporate firewalls and their training data is heavily curated. Soon, if not already, foreign intelligence services and bad actors will start to take a cheaper shortcut: they poison the open-web websites that AI models read when answering live questions.
+              </p>
+
+              <p>
+                One of the most common “dirty tricks” in the AEO industry is <strong>citation rings and synthetic consensus</strong>: spinning up dozens of fake blogs, AI-generated news sites, and coordinated forum bots that all repeat the same made-up statistic or smear about a competitor. Because the AI sees the same claim echoed across what looks like twenty &quot;independent&quot; places, its retrieval system assumes the rumor is a verified consensus and states it as fact to customers.
               </p>
 
               <p>
@@ -438,7 +442,7 @@ export const WhitepaperVol6Reader: React.FC<{
               </p>
 
               <p>
-                By sampling just 100 typical questions in an industry and reverse-engineering the AI’s mapping model, an AEO cheater can word-sculpt a single poisoned web page so it lands right on that mathematical hub—allowing <strong>one rigged page to show up as the #1 retrieved source for over 21,000 out of 25,000 test questions</strong> (Zhang et al). Combine that with <strong>semantic trojan horses</strong> (hiding a false claim inside an otherwise helpful guide) or <strong>split-payload attacks</strong> (splitting half of a rumor onto Site A and the other half onto Site B so the AI connects the dots itself), and bad actors can hijack AI answers across an entire industry without ever hacking a single server.
+                By sampling just 100 typical questions in an industry and reverse-engineering the AI’s mapping model, an AEO cheater can word-sculpt a single poisoned web page so it lands right on that mathematical hub, allowing <strong>one rigged page to show up as the #1 retrieved source for over 21,000 out of 25,000 test questions across an extremely wide range of topic</strong> (Zhang et al). Combine that with <strong>semantic trojan horses</strong> (hiding a false claim inside an otherwise helpful guide) or <strong>split-payload attacks</strong> (splitting half of a rumor onto Site A and the other half onto Site B so the AI connects the dots itself), and bad actors can hijack AI answers across an entire industry without ever hacking a single server.
               </p>
 
               <p>
@@ -446,11 +450,11 @@ export const WhitepaperVol6Reader: React.FC<{
               </p>
 
               <p>
-                Within the “grey area” of AEO ethics exists the Ghost Citation. In a recent study, one of the AEO industries pioneering agencies, Petra Labs, discovered that sponsored posts get less engagement (from real people on social media), but AI cites them more. They then discovered something even more interesting. ChatGPT and other LLMs can cite ads without saying the citation came from a sponsored post, causing the sponsored content to look more organic in AI search because the AI won&apos;t say that they got their information from a sponsored post.
+                Within the “grey area” of AEO ethics exists the Ghost Citation. In a recent study, one of the AEO industry’s pioneering agencies, Petra Labs, discovered that sponsored posts get less engagement (from real people on social media), but AI cites them more. They then discovered something even more interesting. ChatGPT and other LLMs can cite ads without saying the citation came from a sponsored post, causing the sponsored content to look more organic in AI search because the AI won&apos;t say that they got their information from a sponsored post.
               </p>
 
               <p>
-                Of course, when a user clicks on the citation, they will then find that the information came from a sponsored post or advertisement, but oftentimes users won’t check a model’s citations. Additionally, this raises another question, which is what if the model includes information from a sponsored post, but doesn’t include that post as a final citation. This is known as a <strong>ghost citation</strong><sup>1</sup>.
+                Of course, when a user clicks on the citation, they will then find that the information came from a sponsored post or advertisement, but oftentimes users won’t check a model’s citations. Additionally, this raises another question, which is what if the model includes information from a sponsored post, but doesn’t include that post as a final citation. This is known as a <strong>ghost citation</strong>.<sup>1</sup>
               </p>
 
               <p>

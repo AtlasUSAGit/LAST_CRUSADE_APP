@@ -36,6 +36,7 @@ export default function App() {
   // Determine initial page from URL hash
   const getInitialPage = (): NavigationPage => {
     const hash = window.location.hash.toLowerCase();
+    if (hash.includes('our-process')) return 'our-process';
     if (hash.includes('services')) return 'services';
     if (hash.includes('attack-library') || hash.includes('counter-geo-ops') || hash.includes('command-center') || hash.includes('counter-geo-html') || hash.includes('8-layer') || hash.includes('ops')) return 'counter-geo-ops';
     if (hash.includes('counter-geo-vol6') || hash.includes('volume-6') || hash.includes('vol6')) return 'counter-geo-vol6';
@@ -56,7 +57,9 @@ export default function App() {
   useEffect(() => {
     const handleHashChange = () => {
       const hash = window.location.hash.toLowerCase();
-      if (hash.includes('services')) {
+      if (hash.includes('our-process')) {
+        setCurrentPage('our-process');
+      } else if (hash.includes('services')) {
         setCurrentPage('services');
       } else if (hash.includes('attack-library') || hash.includes('counter-geo-ops') || hash.includes('command-center') || hash.includes('counter-geo-html') || hash.includes('8-layer') || hash.includes('ops')) {
         setCurrentPage('counter-geo-ops');
@@ -92,6 +95,8 @@ export default function App() {
     setCurrentPage(page);
     if (page === 'overview') {
       window.location.hash = '#/';
+    } else if (page === 'our-process') {
+      window.location.hash = '#/our-process';
     } else if (page === 'services') {
       window.location.hash = '#/services';
     } else if (page === 'rea') {
@@ -136,8 +141,8 @@ export default function App() {
 
   return (
     <div className="relative min-h-screen bg-[#FAF5EB] text-[#410217] font-sans selection:bg-[#410217]/15 selection:text-[#410217] overflow-x-hidden">
-      {/* GlitterWrap Living Background for Home, Research Library, and REA Workbench */}
-      {(currentPage === 'overview' || currentPage === 'research' || currentPage === 'rea') && (
+      {/* GlitterWrap Living Background for Home, Our Process, Research Library, and REA Workbench */}
+      {(currentPage === 'overview' || currentPage === 'our-process' || currentPage === 'research' || currentPage === 'rea') && (
         <div className="fixed inset-0 pointer-events-none z-0" aria-hidden="true">
           <GlitterWrap
             background="#FAF5EB"
@@ -158,6 +163,7 @@ export default function App() {
       
       {/* Navigation Header */}
       <Header
+        activePage={currentPage}
         currentPage={currentPage}
         onNavigate={handleNavigate}
         onOpenAudit={() => setAuditModalOpen(true)}
@@ -180,17 +186,22 @@ export default function App() {
 
           {/* 3. Counter-AEO Research (Advisories & Whitepapers) */}
           <TrustAndTeam onNavigate={handleNavigate} />
+        </main>
+      )}
 
-          {/* 4. Core Services */}
+      {currentPage === 'our-process' && (
+        <main className="relative z-10">
+          <OverviewKineticRig />
+          {/* 1. Core Services */}
           <ServicesSection
             onOpenAudit={() => setAuditModalOpen(true)}
             onNavigate={handleNavigate}
           />
 
-          {/* 5. Process Timeline */}
+          {/* 2. Process Timeline & Scenarios */}
           <ProcessSection />
 
-          {/* 6. Detection Capabilities Tech Grid */}
+          {/* 3. Detection Capabilities Tech Grid */}
           <CapabilitiesGrid />
         </main>
       )}
