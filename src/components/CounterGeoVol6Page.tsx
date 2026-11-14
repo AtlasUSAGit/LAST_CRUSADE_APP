@@ -1125,10 +1125,11 @@ export const CounterGeoVol6FindingsAndLab: React.FC<{
   onSwitchToPaper?: () => void;
   onNavigateToOverview?: () => void;
 }> = ({ onSwitchToPaper }) => {
-  const [knowledgeDepth, setKnowledgeDepth] = useState<KnowledgeDepthLevelVol6>('operator');
+  const [knowledgeDepth, setKnowledgeDepth] = useState<KnowledgeDepthLevelVol6>('beginner');
   const [activeSectionTab, setActiveSectionTab] = useState<
-    'all' | 'webgl' | 'optimizer' | 'telemetry' | 'math-blueprint'
+    'all' | 'summary' | 'webgl' | 'optimizer' | 'telemetry' | 'math-blueprint'
   >('all');
+  const [showAdvancedMathInSimpleMode, setShowAdvancedMathInSimpleMode] = useState<boolean>(false);
 
   // --------------------------------------------------------------------------
   // JOINT CITATION & GHOST OPTIMIZATION SIMULATOR STATE (From Findings PDF)
@@ -1166,59 +1167,6 @@ export const CounterGeoVol6FindingsAndLab: React.FC<{
     }));
   }, [state]);
 
-  const applyPreset = (preset: 'branded' | 'type1_listicle' | 'type2_political' | 'cloaked') => {
-    setActivePreset(preset);
-    playSynthTone(preset === 'cloaked' ? 220 : 540, preset === 'cloaked' ? 'sawtooth' : 'sine', 0.16, 0.05);
-    if (preset === 'branded') {
-      setState({
-        subQueryFanOutCount: 9,
-        atomicStatDensity: 85,
-        triangulationNodes: 8,
-        htmlMarkdownSymmetry: true,
-        omitBrandFromTitle: false,
-        unbrandedListicleFormat: false,
-        delayEntityPast500Chars: false,
-        disclosureParagraphGap: 0,
-        boilerplateFooterMentions: 5,
-        stripIdentitySchema: false,
-        nliEntailmentDistribution: 10,
-        authorityCoCitationBridge: false
-      });
-    } else if (preset === 'type1_listicle') {
-      setState({
-        subQueryFanOutCount: 11,
-        atomicStatDensity: 95,
-        triangulationNodes: 10,
-        htmlMarkdownSymmetry: true,
-        omitBrandFromTitle: true,
-        unbrandedListicleFormat: true,
-        delayEntityPast500Chars: true,
-        disclosureParagraphGap: 4,
-        boilerplateFooterMentions: 12,
-        stripIdentitySchema: true,
-        nliEntailmentDistribution: 20,
-        authorityCoCitationBridge: false
-      });
-    } else if (preset === 'type2_political') {
-      setState({
-        subQueryFanOutCount: 12,
-        atomicStatDensity: 90,
-        triangulationNodes: 14,
-        htmlMarkdownSymmetry: true,
-        omitBrandFromTitle: true,
-        unbrandedListicleFormat: true,
-        delayEntityPast500Chars: true,
-        disclosureParagraphGap: 6,
-        boilerplateFooterMentions: 14,
-        stripIdentitySchema: true,
-        nliEntailmentDistribution: 92,
-        authorityCoCitationBridge: true
-      });
-    } else if (preset === 'cloaked') {
-      setState((prev) => ({ ...prev, htmlMarkdownSymmetry: false }));
-    }
-  };
-
   // --------------------------------------------------------------------------
   // 4-SCENE 3D WEBGL SIMULATION THEATER STATE
   // --------------------------------------------------------------------------
@@ -1238,6 +1186,77 @@ export const CounterGeoVol6FindingsAndLab: React.FC<{
   const webglContainerRef = useRef<HTMLDivElement>(null);
   const pageRootRef = useRef<HTMLDivElement>(null);
   const audioCtxRef = useRef<AudioContext | null>(null);
+
+  const applyPreset = (preset: 'branded' | 'type1_listicle' | 'type2_political' | 'cloaked') => {
+    setActivePreset(preset);
+    playSynthTone(preset === 'cloaked' ? 220 : 540, preset === 'cloaked' ? 'sawtooth' : 'sine', 0.16, 0.05);
+    if (preset === 'branded') {
+      setIsStealthOrDefenseMode(false);
+      setState({
+        subQueryFanOutCount: 9,
+        atomicStatDensity: 85,
+        triangulationNodes: 8,
+        htmlMarkdownSymmetry: true,
+        omitBrandFromTitle: false,
+        unbrandedListicleFormat: false,
+        delayEntityPast500Chars: false,
+        disclosureParagraphGap: 0,
+        boilerplateFooterMentions: 5,
+        stripIdentitySchema: false,
+        nliEntailmentDistribution: 10,
+        authorityCoCitationBridge: false
+      });
+    } else if (preset === 'type1_listicle') {
+      setIsStealthOrDefenseMode(true);
+      setState({
+        subQueryFanOutCount: 11,
+        atomicStatDensity: 95,
+        triangulationNodes: 10,
+        htmlMarkdownSymmetry: true,
+        omitBrandFromTitle: true,
+        unbrandedListicleFormat: true,
+        delayEntityPast500Chars: true,
+        disclosureParagraphGap: 4,
+        boilerplateFooterMentions: 12,
+        stripIdentitySchema: true,
+        nliEntailmentDistribution: 20,
+        authorityCoCitationBridge: false
+      });
+    } else if (preset === 'type2_political') {
+      setIsStealthOrDefenseMode(true);
+      setState({
+        subQueryFanOutCount: 12,
+        atomicStatDensity: 90,
+        triangulationNodes: 14,
+        htmlMarkdownSymmetry: true,
+        omitBrandFromTitle: true,
+        unbrandedListicleFormat: true,
+        delayEntityPast500Chars: true,
+        disclosureParagraphGap: 6,
+        boilerplateFooterMentions: 14,
+        stripIdentitySchema: true,
+        nliEntailmentDistribution: 92,
+        authorityCoCitationBridge: true
+      });
+    } else if (preset === 'cloaked') {
+      setState((prev) => ({ ...prev, htmlMarkdownSymmetry: false }));
+    }
+  };
+
+  const handleToggleWebglMode = (explicitMode?: boolean) => {
+    const nextMode = explicitMode !== undefined ? explicitMode : !isStealthOrDefenseMode;
+    setIsStealthOrDefenseMode(nextMode);
+    playSynthTone(nextMode ? 620 : 380, 'sine', 0.16, 0.05);
+    if (currentSimScene === 3) {
+      setAgentSecurityMode(nextMode ? 'multi_camel' : 'unprotected');
+    } else {
+      if (nextMode) {
+        applyPreset(currentSimScene === 2 ? 'type2_political' : 'type1_listicle');
+      } else {
+        applyPreset('branded');
+      }
+    }
+  };
 
   const simParamsRef = useRef({
     currentSimScene: 0,
@@ -1299,15 +1318,15 @@ export const CounterGeoVol6FindingsAndLab: React.FC<{
       sections.forEach((sec) => {
         gsap.fromTo(
           sec,
-          { opacity: 0, y: 28 },
+          { opacity: 0, y: 24 },
           {
             opacity: 1,
             y: 0,
-            duration: 0.65,
+            duration: 0.55,
             ease: 'power3.out',
             scrollTrigger: {
               trigger: sec,
-              start: 'top 90%',
+              start: 'top 92%',
               toggleActions: 'play none none none'
             }
           }
@@ -1331,18 +1350,25 @@ export const CounterGeoVol6FindingsAndLab: React.FC<{
     sceneGroups: THREE.Group[];
     // Scene 0: 4-Gate RAG Attribution & Ghost Citation Pipeline
     s0Gates?: THREE.Mesh[];
+    s0Gate4Core?: THREE.Mesh;
+    s0ConduitTubes?: THREE.Mesh[];
     s0StreamParticles?: THREE.Points;
     s0OutcomeOrbs?: THREE.Mesh[];
     // Scene 1: Type I Ghost Citation & 87% Competitor Substitution
     s1SourceMonolith?: THREE.Mesh;
+    s1BrandHeaderCrown?: THREE.Mesh;
+    s1SelfCreditOrb?: THREE.Mesh;
     s1TitleStripRing?: THREE.Mesh;
     s1TargetNodes?: THREE.Mesh[];
     s1SubstitutionBeams?: THREE.Mesh[];
+    s1FlowParticles?: THREE.Points;
     // Scene 2: Type II Ghost Citation & Bayesian Persuasion Concavification
     s2PosteriorSphere?: THREE.Mesh;
     s2ThresholdRing?: THREE.Mesh;
     s2TriangulationNodes?: THREE.Mesh[];
     s2AuthorityTower?: THREE.Mesh;
+    s2HandoffBeam?: THREE.Mesh;
+    s2SignalParticles?: THREE.Points;
     // Scene 3: Multi-Agent Boundary Laundering vs Multi-CaMeL Defense
     s3AgentNodes?: THREE.Mesh[];
     s3OpaqueChannelTube?: THREE.Mesh;
@@ -1393,7 +1419,7 @@ export const CounterGeoVol6FindingsAndLab: React.FC<{
 
     const scene = new THREE.Scene();
     scene.background = new THREE.Color(0x120006);
-    scene.fog = new THREE.FogExp2(0x120006, 0.022);
+    scene.fog = new THREE.FogExp2(0x120006, 0.02);
 
     const camera = new THREE.PerspectiveCamera(48, width / height, 0.1, 200);
     camera.position.set(0, 9, 20);
@@ -1411,18 +1437,18 @@ export const CounterGeoVol6FindingsAndLab: React.FC<{
     controls.minDistance = 6;
 
     // Ambient & Directional Lighting
-    const ambientLight = new THREE.AmbientLight(0xfbf3e2, 0.65);
+    const ambientLight = new THREE.AmbientLight(0xfbf3e2, 0.72);
     scene.add(ambientLight);
 
-    const goldLight = new THREE.PointLight(0xd5991c, 2.6, 50);
+    const goldLight = new THREE.PointLight(0xd5991c, 2.8, 55);
     goldLight.position.set(10, 14, 10);
     scene.add(goldLight);
 
-    const emeraldLight = new THREE.PointLight(0x00ff9d, 2.2, 50);
+    const emeraldLight = new THREE.PointLight(0x00ff9d, 2.4, 55);
     emeraldLight.position.set(-10, 10, -8);
     scene.add(emeraldLight);
 
-    const purpleLight = new THREE.PointLight(0xb565ff, 1.8, 45);
+    const purpleLight = new THREE.PointLight(0xb565ff, 2.0, 48);
     purpleLight.position.set(0, -8, 12);
     scene.add(purpleLight);
 
@@ -1441,14 +1467,14 @@ export const CounterGeoVol6FindingsAndLab: React.FC<{
     const group0 = new THREE.Group();
     const s0Gates: THREE.Mesh[] = [];
     const gatePositionsX = [-9, -3.5, 2, 7.5];
-    const gateColors = [0x00ff9d, 0xd5991c, 0xb565ff, 0x38bdf8];
+    const gateColors = [0x00ff9d, 0x38bdf8, 0xb565ff, 0x00ff9d];
 
     gatePositionsX.forEach((gx, idx) => {
-      const torusGeo = new THREE.TorusGeometry(2.3, 0.14, 16, 64);
+      const torusGeo = new THREE.TorusGeometry(2.35, 0.16, 18, 64);
       const torusMat = new THREE.MeshStandardMaterial({
         color: gateColors[idx],
         emissive: gateColors[idx],
-        emissiveIntensity: 0.45,
+        emissiveIntensity: 0.55,
         metalness: 0.7,
         roughness: 0.2
       });
@@ -1459,22 +1485,33 @@ export const CounterGeoVol6FindingsAndLab: React.FC<{
       s0Gates.push(gateMesh);
     });
 
-    // Outcome Orbs on the right of Gate 4: Final Citation, Type I Ghost, Type II Ghost, Hard Refusal
+    // Gate 4 Brand-Entity Decoupler Core (Gold Shield in Branded Mode vs Emerald Scrubber in Ghost Mode)
+    const coreGeo0 = new THREE.OctahedronGeometry(1.05, 1);
+    const coreMat0 = new THREE.MeshStandardMaterial({
+      color: 0x00ff9d,
+      emissive: 0x00ff9d,
+      emissiveIntensity: 0.7,
+      wireframe: true
+    });
+    const s0Gate4Core = new THREE.Mesh(coreGeo0, coreMat0);
+    s0Gate4Core.position.set(7.5, 0.5, 0);
+    group0.add(s0Gate4Core);
+
+    // 3 Outcome Orbs + 1 Refusal Orb on the right of Gate 4
     const s0OutcomeOrbs: THREE.Mesh[] = [];
     const outcomeOffsets = [
-      { y: 3.2, z: -2.2, color: 0xd5991c }, // Final Citation
-      { y: 1.2, z: 2.2, color: 0x00ff9d },  // Type I Ghost
-      { y: -1.6, z: 0, color: 0xb565ff },   // Type II Ghost
-      { y: -3.2, z: -2.0, color: 0xe63946 } // Hard Refusal
+      { y: 3.3, z: -2.2, color: 0xd5991c }, // [0] Final Citation (Gold - Brand Named)
+      { y: 1.2, z: 2.3, color: 0x00ff9d },  // [1] Type I Ghost (Emerald - Link Kept, Brand Stripped)
+      { y: -1.8, z: 0.0, color: 0xb565ff }, // [2] Type II Ghost (Purple - Unlinked RAG Influence)
+      { y: -3.4, z: -2.2, color: 0xe63946 } // [3] Hard Refusal (Crimson - Cloaking Blocked)
     ];
     outcomeOffsets.forEach((o) => {
-      const orbGeo = new THREE.IcosahedronGeometry(0.85, 2);
+      const orbGeo = new THREE.IcosahedronGeometry(0.9, 2);
       const orbMat = new THREE.MeshStandardMaterial({
         color: o.color,
         emissive: o.color,
-        emissiveIntensity: 0.55,
-        wireframe: false,
-        roughness: 0.25,
+        emissiveIntensity: 0.65,
+        roughness: 0.2,
         metalness: 0.6
       });
       const orb = new THREE.Mesh(orbGeo, orbMat);
@@ -1483,15 +1520,41 @@ export const CounterGeoVol6FindingsAndLab: React.FC<{
       s0OutcomeOrbs.push(orb);
     });
 
-    // Particle stream flowing through the 4 gates
+    // 3 Dynamic Conduit Tubes connecting Gate 4 (7.5, 0.5, 0) to Final Citation, Type I Ghost, and Type II Ghost
+    const s0ConduitTubes: THREE.Mesh[] = [];
+    const conduitTargets = [
+      { end: new THREE.Vector3(11.5, 3.3, -2.2), mid: new THREE.Vector3(9.5, 2.5, -1.2), color: 0xd5991c },
+      { end: new THREE.Vector3(11.5, 1.2, 2.3), mid: new THREE.Vector3(9.5, 1.0, 1.4), color: 0x00ff9d },
+      { end: new THREE.Vector3(11.5, -1.8, 0.0), mid: new THREE.Vector3(9.5, -0.9, 0.0), color: 0xb565ff }
+    ];
+    conduitTargets.forEach((ct) => {
+      const curve0 = new THREE.CatmullRomCurve3([
+        new THREE.Vector3(7.5, 0.5, 0),
+        ct.mid,
+        ct.end
+      ]);
+      const tGeo0 = new THREE.TubeGeometry(curve0, 28, 0.14, 12, false);
+      const tMat0 = new THREE.MeshStandardMaterial({
+        color: ct.color,
+        emissive: ct.color,
+        emissiveIntensity: 0.7,
+        transparent: true,
+        opacity: 0.75
+      });
+      const tMesh0 = new THREE.Mesh(tGeo0, tMat0);
+      group0.add(tMesh0);
+      s0ConduitTubes.push(tMesh0);
+    });
+
+    // 360-Particle Stream flowing through the 4 gates and branching dynamically by Mode
     const pCount0 = 360;
     const pGeo0 = new THREE.BufferGeometry();
     const pPos0 = new Float32Array(pCount0 * 3);
     const pColors0 = new Float32Array(pCount0 * 3);
     for (let i = 0; i < pCount0; i++) {
-      pPos0[i * 3] = -13 + (i / pCount0) * 24;
-      pPos0[i * 3 + 1] = 0.5 + (Math.random() - 0.5) * 2.4;
-      pPos0[i * 3 + 2] = (Math.random() - 0.5) * 2.4;
+      pPos0[i * 3] = -13 + (i / pCount0) * 24.5;
+      pPos0[i * 3 + 1] = 0.5 + Math.sin(i * 0.7) * 0.8;
+      pPos0[i * 3 + 2] = Math.cos(i * 0.7) * 0.8;
       pColors0[i * 3] = 0.0;
       pColors0[i * 3 + 1] = 1.0;
       pColors0[i * 3 + 2] = 0.62;
@@ -1499,10 +1562,10 @@ export const CounterGeoVol6FindingsAndLab: React.FC<{
     pGeo0.setAttribute('position', new THREE.BufferAttribute(pPos0, 3));
     pGeo0.setAttribute('color', new THREE.BufferAttribute(pColors0, 3));
     const pMat0 = new THREE.PointsMaterial({
-      size: 0.22,
+      size: 0.26,
       vertexColors: true,
       transparent: true,
-      opacity: 0.9
+      opacity: 0.95
     });
     const s0StreamParticles = new THREE.Points(pGeo0, pMat0);
     group0.add(s0StreamParticles);
@@ -1515,28 +1578,57 @@ export const CounterGeoVol6FindingsAndLab: React.FC<{
     const group1 = new THREE.Group();
     group1.visible = false;
 
-    // Central Sponsored Listicle Monolith (Footnote-linked but anonymized in prose)
-    const monoGeo = new THREE.BoxGeometry(2.6, 5.2, 1.2);
+    // Central Sponsored Listicle Monolith
+    const monoGeo = new THREE.BoxGeometry(2.6, 4.8, 1.4);
     const monoMat = new THREE.MeshStandardMaterial({
-      color: 0x2b010f,
+      color: 0x052e22,
       emissive: 0x00ff9d,
-      emissiveIntensity: 0.25,
+      emissiveIntensity: 0.35,
       metalness: 0.75,
       roughness: 0.25
     });
     const s1SourceMonolith = new THREE.Mesh(monoGeo, monoMat);
-    s1SourceMonolith.position.set(-5.5, 0.5, 0);
+    s1SourceMonolith.position.set(-5.5, 0.0, 0);
     group1.add(s1SourceMonolith);
 
-    // Title-Tag Entity Suppression Ring around Monolith
-    const stripRingGeo = new THREE.TorusGeometry(2.4, 0.1, 16, 64);
-    const stripRingMat = new THREE.MeshStandardMaterial({
+    // HTML <title> Brand Crown Block sitting atop the Monolith
+    // In Branded Mode: Solid Gold & Locked on top. In Ghost Mode: Detached, Crimson Wireframe & Stripped!
+    const crownGeo = new THREE.BoxGeometry(2.7, 0.75, 1.5);
+    const crownMat = new THREE.MeshStandardMaterial({
       color: 0xd5991c,
       emissive: 0xd5991c,
-      emissiveIntensity: 0.6
+      emissiveIntensity: 0.75,
+      transparent: true,
+      opacity: 0.95
+    });
+    const s1BrandHeaderCrown = new THREE.Mesh(crownGeo, crownMat);
+    s1BrandHeaderCrown.position.set(-5.5, 2.95, 0);
+    group1.add(s1BrandHeaderCrown);
+
+    // Publisher Self-Attribution Sphere directly above the Monolith (Active only in Standard Branded Mode)
+    const selfOrbGeo = new THREE.OctahedronGeometry(1.15, 2);
+    const selfOrbMat = new THREE.MeshStandardMaterial({
+      color: 0xffc83d,
+      emissive: 0xd5991c,
+      emissiveIntensity: 0.85,
+      transparent: true,
+      opacity: 0.9
+    });
+    const s1SelfCreditOrb = new THREE.Mesh(selfOrbGeo, selfOrbMat);
+    s1SelfCreditOrb.position.set(-5.5, 4.6, 0);
+    group1.add(s1SelfCreditOrb);
+
+    // Title-Tag Entity Suppression Laser Scrubber Ring around Monolith
+    const stripRingGeo = new THREE.TorusGeometry(2.45, 0.14, 18, 64);
+    const stripRingMat = new THREE.MeshStandardMaterial({
+      color: 0x00ff9d,
+      emissive: 0x00ff9d,
+      emissiveIntensity: 0.85,
+      transparent: true,
+      opacity: 0.95
     });
     const s1TitleStripRing = new THREE.Mesh(stripRingGeo, stripRingMat);
-    s1TitleStripRing.position.set(-5.5, 2.2, 0);
+    s1TitleStripRing.position.set(-5.5, 1.2, 0);
     s1TitleStripRing.rotation.x = Math.PI / 2;
     group1.add(s1TitleStripRing);
 
@@ -1544,18 +1636,18 @@ export const CounterGeoVol6FindingsAndLab: React.FC<{
     const s1TargetNodes: THREE.Mesh[] = [];
     const s1SubstitutionBeams: THREE.Mesh[] = [];
     const targetCoords = [
-      new THREE.Vector3(5.5, 3.0, -2.5),
-      new THREE.Vector3(6.5, 0.8, 0),
+      new THREE.Vector3(5.5, 3.2, -2.5),
+      new THREE.Vector3(6.8, 0.8, 0),
       new THREE.Vector3(5.5, -1.8, 2.5),
-      new THREE.Vector3(3.5, 2.2, 3.0)
+      new THREE.Vector3(3.6, 2.3, 3.0)
     ];
 
     targetCoords.forEach((coord, idx) => {
-      const nodeGeo = new THREE.OctahedronGeometry(idx === 1 ? 1.25 : 0.9, 1);
+      const nodeGeo = new THREE.OctahedronGeometry(idx === 1 ? 1.3 : 0.95, 1);
       const nodeMat = new THREE.MeshStandardMaterial({
-        color: idx === 1 ? 0x00ff9d : 0xd5991c,
-        emissive: idx === 1 ? 0x00ff9d : 0xd5991c,
-        emissiveIntensity: 0.5,
+        color: idx === 1 ? 0x00ff9d : 0x38bdf8,
+        emissive: idx === 1 ? 0x00ff9d : 0x38bdf8,
+        emissiveIntensity: 0.65,
         metalness: 0.6,
         roughness: 0.2
       });
@@ -1567,18 +1659,42 @@ export const CounterGeoVol6FindingsAndLab: React.FC<{
       // Connecting beam from Source Monolith to Target Entities
       const dir = new THREE.Vector3().subVectors(coord, s1SourceMonolith.position);
       const len = dir.length();
-      const beamGeo = new THREE.CylinderGeometry(0.06, 0.06, len, 12);
+      const beamGeo = new THREE.CylinderGeometry(0.09, 0.09, len, 12);
       const beamMat = new THREE.MeshBasicMaterial({
-        color: idx === 1 ? 0x00ff9d : 0xd5991c,
+        color: idx === 1 ? 0x00ff9d : 0x38bdf8,
         transparent: true,
-        opacity: 0.55
+        opacity: 0.75
       });
       const beam = new THREE.Mesh(beamGeo, beamMat);
-      beam.position.copy(s1SourceMonolith.position).add(dir.multiplyScalar(0.5));
+      beam.position.copy(s1SourceMonolith.position).add(dir.clone().multiplyScalar(0.5));
       beam.quaternion.setFromUnitVectors(new THREE.Vector3(0, 1, 0), dir.clone().normalize());
       group1.add(beam);
       s1SubstitutionBeams.push(beam);
     });
+
+    // 280-Particle Citation & Recommendation Flow in Scene 1
+    const pCount1 = 280;
+    const pGeo1 = new THREE.BufferGeometry();
+    const pPos1 = new Float32Array(pCount1 * 3);
+    const pColors1 = new Float32Array(pCount1 * 3);
+    for (let i = 0; i < pCount1; i++) {
+      pPos1[i * 3] = -5.5;
+      pPos1[i * 3 + 1] = 0;
+      pPos1[i * 3 + 2] = 0;
+      pColors1[i * 3] = 0.0;
+      pColors1[i * 3 + 1] = 1.0;
+      pColors1[i * 3 + 2] = 0.62;
+    }
+    pGeo1.setAttribute('position', new THREE.BufferAttribute(pPos1, 3));
+    pGeo1.setAttribute('color', new THREE.BufferAttribute(pColors1, 3));
+    const pMat1 = new THREE.PointsMaterial({
+      size: 0.28,
+      vertexColors: true,
+      transparent: true,
+      opacity: 0.95
+    });
+    const s1FlowParticles = new THREE.Points(pGeo1, pMat1);
+    group1.add(s1FlowParticles);
 
     scene.add(group1);
     sceneGroups.push(group1);
@@ -1594,7 +1710,7 @@ export const CounterGeoVol6FindingsAndLab: React.FC<{
     const postMat = new THREE.MeshStandardMaterial({
       color: 0xb565ff,
       emissive: 0x7c3aed,
-      emissiveIntensity: 0.55,
+      emissiveIntensity: 0.6,
       roughness: 0.2,
       metalness: 0.65
     });
@@ -1603,11 +1719,11 @@ export const CounterGeoVol6FindingsAndLab: React.FC<{
     group2.add(s2PosteriorSphere);
 
     // Decision Threshold Ring (mu_s > 0.5)
-    const threshGeo = new THREE.TorusGeometry(4.2, 0.09, 16, 80);
+    const threshGeo = new THREE.TorusGeometry(3.8, 0.11, 16, 80);
     const threshMat = new THREE.MeshStandardMaterial({
       color: 0xd5991c,
       emissive: 0xd5991c,
-      emissiveIntensity: 0.6
+      emissiveIntensity: 0.65
     });
     const s2ThresholdRing = new THREE.Mesh(threshGeo, threshMat);
     s2ThresholdRing.position.set(0, 0.5, 0);
@@ -1618,12 +1734,12 @@ export const CounterGeoVol6FindingsAndLab: React.FC<{
     const s2TriangulationNodes: THREE.Mesh[] = [];
     for (let i = 0; i < 10; i++) {
       const angle = (i / 10) * Math.PI * 2;
-      const radius = 6.8;
-      const tGeo = new THREE.DodecahedronGeometry(0.55, 0);
+      const radius = 6.2;
+      const tGeo = new THREE.DodecahedronGeometry(0.6, 0);
       const tMat = new THREE.MeshStandardMaterial({
-        color: i % 2 === 0 ? 0x00ff9d : 0xd5991c,
-        emissive: i % 2 === 0 ? 0x00ff9d : 0xd5991c,
-        emissiveIntensity: 0.45
+        color: i % 2 === 0 ? 0x00ff9d : 0xb565ff,
+        emissive: i % 2 === 0 ? 0x00ff9d : 0xb565ff,
+        emissiveIntensity: 0.55
       });
       const tNode = new THREE.Mesh(tGeo, tMat);
       tNode.position.set(Math.cos(angle) * radius, 0.5 + Math.sin(i * 1.7) * 1.4, Math.sin(angle) * radius);
@@ -1632,17 +1748,58 @@ export const CounterGeoVol6FindingsAndLab: React.FC<{
     }
 
     // Top-30 Canonical Authority Monolith (Wikipedia / Ballotpedia) receiving the [1] visible link
-    const authGeo = new THREE.CylinderGeometry(1.1, 1.4, 5.5, 6);
+    const authGeo = new THREE.CylinderGeometry(1.15, 1.45, 5.6, 6);
     const authMat = new THREE.MeshStandardMaterial({
       color: 0xd5991c,
       emissive: 0xd5991c,
-      emissiveIntensity: 0.4,
+      emissiveIntensity: 0.55,
       metalness: 0.8,
       roughness: 0.2
     });
     const s2AuthorityTower = new THREE.Mesh(authGeo, authMat);
     s2AuthorityTower.position.set(8.8, 0.8, 0);
     group2.add(s2AuthorityTower);
+
+    // NLI Entailment Handoff Beam connecting Central Posterior Sphere to Authority Tower
+    const handoffCurve = new THREE.CatmullRomCurve3([
+      new THREE.Vector3(0, 0.5, 0),
+      new THREE.Vector3(4.4, 2.6, 0),
+      new THREE.Vector3(8.8, 1.2, 0)
+    ]);
+    const handoffGeo = new THREE.TubeGeometry(handoffCurve, 32, 0.16, 12, false);
+    const handoffMat = new THREE.MeshStandardMaterial({
+      color: 0xd5991c,
+      emissive: 0xd5991c,
+      emissiveIntensity: 0.8,
+      transparent: true,
+      opacity: 0.85
+    });
+    const s2HandoffBeam = new THREE.Mesh(handoffGeo, handoffMat);
+    group2.add(s2HandoffBeam);
+
+    // 220 Bayesian Signal & NLI Handoff Particles in Scene 2
+    const pCount2 = 220;
+    const pGeo2 = new THREE.BufferGeometry();
+    const pPos2 = new Float32Array(pCount2 * 3);
+    const pColors2 = new Float32Array(pCount2 * 3);
+    for (let i = 0; i < pCount2; i++) {
+      pPos2[i * 3] = 0;
+      pPos2[i * 3 + 1] = 0.5;
+      pPos2[i * 3 + 2] = 0;
+      pColors2[i * 3] = 0.71;
+      pColors2[i * 3 + 1] = 0.4;
+      pColors2[i * 3 + 2] = 1.0;
+    }
+    pGeo2.setAttribute('position', new THREE.BufferAttribute(pPos2, 3));
+    pGeo2.setAttribute('color', new THREE.BufferAttribute(pColors2, 3));
+    const pMat2 = new THREE.PointsMaterial({
+      size: 0.25,
+      vertexColors: true,
+      transparent: true,
+      opacity: 0.95
+    });
+    const s2SignalParticles = new THREE.Points(pGeo2, pMat2);
+    group2.add(s2SignalParticles);
 
     scene.add(group2);
     sceneGroups.push(group2);
@@ -1719,15 +1876,20 @@ export const CounterGeoVol6FindingsAndLab: React.FC<{
     pGeo3.setAttribute('position', new THREE.BufferAttribute(pPos3, 3));
     const pMat3 = new THREE.PointsMaterial({
       color: 0x00ff9d,
-      size: 0.22,
+      size: 0.24,
       transparent: true,
-      opacity: 0.9
+      opacity: 0.92
     });
     const s3LaundryParticles = new THREE.Points(pGeo3, pMat3);
     group3.add(s3LaundryParticles);
 
     scene.add(group3);
     sceneGroups.push(group3);
+
+    // Ensure currently selected scene is visible upon mount
+    sceneGroups.forEach((grp, idx) => {
+      grp.visible = idx === simParamsRef.current.currentSimScene;
+    });
 
     const clock = new THREE.Clock();
     threeStoreRef.current = {
@@ -1739,16 +1901,23 @@ export const CounterGeoVol6FindingsAndLab: React.FC<{
       clock,
       sceneGroups,
       s0Gates,
+      s0Gate4Core,
+      s0ConduitTubes,
       s0StreamParticles,
       s0OutcomeOrbs,
       s1SourceMonolith,
+      s1BrandHeaderCrown,
+      s1SelfCreditOrb,
       s1TitleStripRing,
       s1TargetNodes,
       s1SubstitutionBeams,
+      s1FlowParticles,
       s2PosteriorSphere,
       s2ThresholdRing,
       s2TriangulationNodes,
       s2AuthorityTower,
+      s2HandoffBeam,
+      s2SignalParticles,
       s3AgentNodes,
       s3OpaqueChannelTube,
       s3LaundryParticles,
@@ -1763,102 +1932,403 @@ export const CounterGeoVol6FindingsAndLab: React.FC<{
       const elapsed = clock.getElapsedTime();
       const params = simParamsRef.current;
       const speed = params.simSpeed;
+      const isGhostMode = params.isStealthOrDefenseMode;
 
-      // Scene 0 Animation
+      // ======================================================================
+      // SCENE 0 ANIMATION: 4-Gate RAG Pipeline
+      // Dramatically transforms between Standard Branded AEO vs Orthogonal Ghost Mode
+      // ======================================================================
       if (params.currentSimScene === 0) {
         s0Gates.forEach((gate, idx) => {
-          gate.rotation.z = elapsed * speed * (idx % 2 === 0 ? 0.5 : -0.5);
-          const scalePulse = 1 + Math.sin(elapsed * 2.5 + idx) * 0.04;
+          const rotSpeed = isGhostMode ? (idx >= 2 ? 1.8 : 0.7) : 0.35;
+          gate.rotation.z = elapsed * speed * (idx % 2 === 0 ? rotSpeed : -rotSpeed);
+          const scalePulse = 1 + Math.sin(elapsed * (isGhostMode ? 3.5 : 1.8) + idx) * (isGhostMode ? 0.08 : 0.03);
           gate.scale.set(scalePulse, scalePulse, 1);
-        });
-        s0OutcomeOrbs.forEach((orb, idx) => {
-          orb.rotation.y += dt * speed * 1.2;
-          orb.rotation.x += dt * speed * 0.7;
-          // Scale outcome orbs according to current optimizer probabilities!
-          let targetScale = 1.0;
-          if (!params.htmlMarkdownSymmetry) {
-            targetScale = idx === 3 ? 1.65 : 0.45;
-          } else {
-            if (idx === 0) targetScale = 0.6 + params.pExplicitFinalCitation * 1.8;
-            if (idx === 1) targetScale = 0.6 + params.pType1Ghost * 1.8;
-            if (idx === 2) targetScale = 0.6 + params.pType2Ghost * 1.8;
-            if (idx === 3) targetScale = 0.45;
+
+          // Change Gate 3 & Gate 4 color based on Mode
+          const gMat = gate.material as THREE.MeshStandardMaterial;
+          if (!params.htmlMarkdownSymmetry && idx === 0) {
+            gMat.color.setHex(0xe63946);
+            gMat.emissive.setHex(0xe63946);
+          } else if (idx === 0) {
+            gMat.color.setHex(0x00ff9d);
+            gMat.emissive.setHex(0x00ff9d);
+          } else if (idx === 2) {
+            gMat.color.setHex(isGhostMode ? 0xb565ff : 0xd5991c);
+            gMat.emissive.setHex(isGhostMode ? 0xb565ff : 0xd5991c);
+          } else if (idx === 3) {
+            gMat.color.setHex(isGhostMode ? 0x00ff9d : 0xd5991c);
+            gMat.emissive.setHex(isGhostMode ? 0x00ff9d : 0xd5991c);
           }
-          orb.scale.lerp(new THREE.Vector3(targetScale, targetScale, targetScale), 0.08);
         });
 
+        // Gate 4 Brand-Entity Decoupler Core
+        const coreMat = s0Gate4Core.material as THREE.MeshStandardMaterial;
+        if (isGhostMode) {
+          coreMat.color.setHex(0x00ff9d);
+          coreMat.emissive.setHex(0x00ff9d);
+          coreMat.wireframe = true;
+          s0Gate4Core.rotation.x = elapsed * speed * 2.8;
+          s0Gate4Core.rotation.y = -elapsed * speed * 2.2;
+          s0Gate4Core.scale.setScalar(1.2 + Math.sin(elapsed * 5) * 0.15);
+        } else {
+          coreMat.color.setHex(0xffc83d);
+          coreMat.emissive.setHex(0xd5991c);
+          coreMat.wireframe = false;
+          s0Gate4Core.rotation.x = elapsed * speed * 0.5;
+          s0Gate4Core.rotation.y = elapsed * speed * 0.5;
+          s0Gate4Core.scale.setScalar(0.95);
+        }
+
+        // Conduit Tubes visibility & glow based on Mode
+        s0ConduitTubes.forEach((tube, idx) => {
+          const tMat = tube.material as THREE.MeshStandardMaterial;
+          if (!params.htmlMarkdownSymmetry) {
+            tMat.opacity = 0.05;
+          } else if (isGhostMode) {
+            // In Ghost Mode: Gold Tube [0] is dormant; Emerald [1] & Purple [2] blaze bright!
+            tMat.opacity = idx === 0 ? 0.07 : 0.88;
+            tMat.emissiveIntensity = idx === 0 ? 0.1 : 0.85;
+          } else {
+            // In Branded Mode: Gold Tube [0] blazes bright; Ghost Tubes [1, 2] are dormant!
+            tMat.opacity = idx === 0 ? 0.92 : 0.07;
+            tMat.emissiveIntensity = idx === 0 ? 0.9 : 0.1;
+          }
+        });
+
+        // Outcome Orbs scale dramatically based on Mode
+        s0OutcomeOrbs.forEach((orb, idx) => {
+          orb.rotation.y += dt * speed * (isGhostMode ? 1.8 : 1.0);
+          orb.rotation.x += dt * speed * 0.7;
+          let targetScale = 1.0;
+          if (!params.htmlMarkdownSymmetry) {
+            targetScale = idx === 3 ? 2.1 : 0.35;
+          } else if (isGhostMode) {
+            if (idx === 0) targetScale = 0.38; // Final Citation shrinks
+            if (idx === 1) targetScale = 2.05 + Math.sin(elapsed * 4) * 0.12; // Type I Ghost swells huge
+            if (idx === 2) targetScale = 1.75 + Math.cos(elapsed * 4) * 0.12; // Type II Ghost swells huge
+            if (idx === 3) targetScale = 0.32;
+          } else {
+            if (idx === 0) targetScale = 2.15 + Math.sin(elapsed * 3) * 0.12; // Final Citation swells huge
+            if (idx === 1) targetScale = 0.38; // Type I Ghost shrinks
+            if (idx === 2) targetScale = 0.35; // Type II Ghost shrinks
+            if (idx === 3) targetScale = 0.32;
+          }
+          orb.scale.lerp(new THREE.Vector3(targetScale, targetScale, targetScale), 0.1);
+        });
+
+        // 3D Particle Routing through the 4 Gates
         const posAttr = s0StreamParticles.geometry.getAttribute('position') as THREE.BufferAttribute;
         const colAttr = s0StreamParticles.geometry.getAttribute('color') as THREE.BufferAttribute;
         for (let i = 0; i < pCount0; i++) {
-          let x = posAttr.getX(i) + dt * speed * 6.5;
+          let x = posAttr.getX(i) + dt * speed * (isGhostMode ? 8.0 : 5.8);
           if (x > 11.5) x = -13;
-          // If asymmetric cloaking is active, block particles at Gate 1 (x = -9)
+
           if (!params.htmlMarkdownSymmetry && x > -8.8) {
-            x = -13 + Math.random() * 4.0;
-            colAttr.setXYZ(i, 0.9, 0.22, 0.27);
-          } else if (x > 7.5) {
-            // Branch color after Gate 4
-            if (i % 3 === 0) colAttr.setXYZ(i, 0.0, 1.0, 0.62); // Type I Emerald
-            else if (i % 3 === 1) colAttr.setXYZ(i, 0.71, 0.4, 1.0); // Type II Purple
-            else colAttr.setXYZ(i, 0.83, 0.6, 0.11); // Final Gold
+            // Cloaking penalty: blocked at Gate 1 and deflected down to Refusal Orb
+            x = -13 + (i % 40) * 0.1;
+            posAttr.setXYZ(i, x, -1.5 - (i % 5) * 0.4, (i % 3 - 1) * 0.8);
+            colAttr.setXYZ(i, 0.95, 0.22, 0.27);
+          } else if (x <= 7.5) {
+            // Inside Gates 1 -> 4
+            const waveRadius = isGhostMode ? 1.15 : 0.55;
+            const y = 0.5 + Math.sin(i * 0.5 + elapsed * 2.2) * waveRadius;
+            const z = Math.cos(i * 0.5 + elapsed * 2.2) * waveRadius;
+            posAttr.setXYZ(i, x, y, z);
+            if (isGhostMode) {
+              if (x < 2.0) {
+                colAttr.setXYZ(i, 0.22, 0.74, 0.97); // Cyan retrieval phase
+              } else {
+                colAttr.setXYZ(i, 0.0, 1.0, 0.62); // Emerald ghost decoupling phase
+              }
+            } else {
+              colAttr.setXYZ(i, 1.0, 0.82, 0.22); // Solid Branded Gold stream
+            }
           } else {
-            colAttr.setXYZ(i, 0.98, 0.95, 0.88);
+            // Past Gate 4 (x from 7.5 to 11.5): Route into Active Outcome Orbs!
+            const t = Math.min(1, Math.max(0, (x - 7.5) / 4.0));
+            if (isGhostMode) {
+              if (i % 6 === 0) {
+                // Stripped <title> brand & FTC disclosure sparks falling to the floor!
+                const dropY = 0.5 - t * 4.8;
+                const dropZ = Math.sin(i) * 1.6 * t;
+                posAttr.setXYZ(i, 7.5 + t * 1.8, dropY, dropZ);
+                colAttr.setXYZ(i, 0.95, 0.25, 0.3); // Crimson stripped disclosure spark
+              } else if (i % 6 === 1 || i % 6 === 2 || i % 6 === 3) {
+                // Type I Ghost Stream -> Emerald Orb (11.5, 1.2, 2.3)
+                const y = 0.5 + t * 0.7 + Math.sin(t * Math.PI) * 0.35;
+                const z = t * 2.3;
+                posAttr.setXYZ(i, x, y, z);
+                colAttr.setXYZ(i, 0.0, 1.0, 0.62);
+              } else {
+                // Type II Ghost Stream -> Purple Orb (11.5, -1.8, 0.0)
+                const y = 0.5 - t * 2.3 - Math.sin(t * Math.PI) * 0.35;
+                const z = Math.cos(i) * 0.3 * (1 - t);
+                posAttr.setXYZ(i, x, y, z);
+                colAttr.setXYZ(i, 0.72, 0.4, 1.0);
+              }
+            } else {
+              // Standard Branded AEO Mode: 90% route UPWARD into Gold Final Citation Orb (11.5, 3.3, -2.2)
+              if (i % 10 !== 0) {
+                const y = 0.5 + t * 2.8 + Math.sin(t * Math.PI) * 0.5;
+                const z = -t * 2.2;
+                posAttr.setXYZ(i, x, y, z);
+                colAttr.setXYZ(i, 1.0, 0.8, 0.16);
+              } else {
+                const y = 0.5 + t * 0.7;
+                const z = t * 2.3;
+                posAttr.setXYZ(i, x, y, z);
+                colAttr.setXYZ(i, 0.0, 0.8, 0.5);
+              }
+            }
           }
-          posAttr.setX(i, x);
         }
         posAttr.needsUpdate = true;
         colAttr.needsUpdate = true;
       }
 
-      // Scene 1 Animation
+      // ======================================================================
+      // SCENE 1 ANIMATION: Type I Ghost Citation & 87% Competitor Substitution
+      // Dramatically transforms between Standard Branded AEO vs Orthogonal Ghost Mode
+      // ======================================================================
       if (params.currentSimScene === 1) {
-        s1SourceMonolith.rotation.y = Math.sin(elapsed * speed * 0.7) * 0.25;
-        s1TitleStripRing.position.y = 0.5 + Math.sin(elapsed * speed * 2.0) * 1.8;
-        s1TitleStripRing.rotation.z = elapsed * speed * 1.5;
-        s1TargetNodes.forEach((node, idx) => {
-          node.rotation.y += dt * speed * 1.4;
-          node.rotation.x += dt * speed * 0.9;
-          const s = params.isStealthOrDefenseMode ? (idx === 1 ? 1.35 : 1.05) : 0.75;
-          node.scale.lerp(new THREE.Vector3(s, s, s), 0.08);
-        });
+        const monoMat1 = s1SourceMonolith.material as THREE.MeshStandardMaterial;
+        const crownMat1 = s1BrandHeaderCrown.material as THREE.MeshStandardMaterial;
+        const selfOrbMat1 = s1SelfCreditOrb.material as THREE.MeshStandardMaterial;
+        const ringMat1 = s1TitleStripRing.material as THREE.MeshStandardMaterial;
+
+        if (isGhostMode) {
+          // ORTHOGONAL GHOST OPTIMIZATION ACTIVE:
+          // 1. Monolith turns Stealth Emerald
+          monoMat1.color.setHex(0x052e22);
+          monoMat1.emissive.setHex(0x00ff9d);
+          monoMat1.emissiveIntensity = 0.45;
+          s1SourceMonolith.rotation.y = Math.sin(elapsed * speed * 1.1) * 0.3;
+
+          // 2. Title-Strip Scrubber Ring blazes Laser Emerald and sweeps rapidly up and down the Monolith
+          ringMat1.color.setHex(0x00ff9d);
+          ringMat1.emissive.setHex(0x00ff9d);
+          ringMat1.opacity = 0.98;
+          s1TitleStripRing.position.y = 0.2 + Math.sin(elapsed * speed * 3.2) * 2.2;
+          s1TitleStripRing.rotation.z = elapsed * speed * 3.0;
+          s1TitleStripRing.scale.setScalar(1.08 + Math.sin(elapsed * 6) * 0.06);
+
+          // 3. <title> Brand Crown is stripped/shattered off to the left in red wireframe!
+          crownMat1.color.setHex(0xe63946);
+          crownMat1.emissive.setHex(0xe63946);
+          crownMat1.wireframe = true;
+          crownMat1.opacity = 0.28;
+          s1BrandHeaderCrown.position.lerp(
+            new THREE.Vector3(-7.4, 3.6 + Math.sin(elapsed * 2.5) * 0.35, -1.2),
+            0.08
+          );
+          s1BrandHeaderCrown.rotation.z = 0.45 + Math.sin(elapsed * 2) * 0.15;
+          s1BrandHeaderCrown.scale.lerp(new THREE.Vector3(0.65, 0.65, 0.65), 0.08);
+
+          // 4. Publisher Self-Credit Orb shrinks away
+          selfOrbMat1.opacity = 0.12;
+          s1SelfCreditOrb.scale.lerp(new THREE.Vector3(0.25, 0.25, 0.25), 0.08);
+
+          // 5. All 4 Competitor / Target Nodes swell huge & Substitution Beams blaze!
+          s1TargetNodes.forEach((node, idx) => {
+            node.rotation.y += dt * speed * 2.4;
+            node.rotation.x += dt * speed * 1.5;
+            const nMat = node.material as THREE.MeshStandardMaterial;
+            nMat.color.setHex(idx === 1 ? 0x00ff9d : 0x38bdf8);
+            nMat.emissive.setHex(idx === 1 ? 0x00ff9d : 0x38bdf8);
+            nMat.emissiveIntensity = 0.85;
+            const targetS = idx === 1 ? 1.85 + Math.sin(elapsed * 4) * 0.12 : 1.45 + Math.cos(elapsed * 3 + idx) * 0.1;
+            node.scale.lerp(new THREE.Vector3(targetS, targetS, targetS), 0.08);
+          });
+
+          s1SubstitutionBeams.forEach((beam, idx) => {
+            const bMat = beam.material as THREE.MeshBasicMaterial;
+            bMat.color.setHex(idx === 1 ? 0x00ff9d : 0x38bdf8);
+            bMat.opacity = 0.82 + Math.sin(elapsed * 5 + idx) * 0.15;
+          });
+        } else {
+          // STANDARD BRANDED AEO / UNOPTIMIZED MODE:
+          // 1. Monolith glows Branded Gold
+          monoMat1.color.setHex(0x3d2204);
+          monoMat1.emissive.setHex(0xd5991c);
+          monoMat1.emissiveIntensity = 0.6;
+          s1SourceMonolith.rotation.y = Math.sin(elapsed * speed * 0.5) * 0.12;
+
+          // 2. Title-Strip Scrubber Ring is parked dormant at the bottom
+          ringMat1.color.setHex(0xd5991c);
+          ringMat1.emissive.setHex(0xd5991c);
+          ringMat1.opacity = 0.14;
+          s1TitleStripRing.position.lerp(new THREE.Vector3(-5.5, -2.3, 0), 0.08);
+          s1TitleStripRing.scale.lerp(new THREE.Vector3(0.85, 0.85, 0.85), 0.08);
+
+          // 3. <title> Brand Crown sits locked solidly on top of the Monolith in Bright Gold!
+          crownMat1.color.setHex(0xffc83d);
+          crownMat1.emissive.setHex(0xd5991c);
+          crownMat1.wireframe = false;
+          crownMat1.opacity = 1.0;
+          s1BrandHeaderCrown.position.lerp(new THREE.Vector3(-5.5, 2.95, 0), 0.1);
+          s1BrandHeaderCrown.rotation.z = 0;
+          s1BrandHeaderCrown.scale.lerp(new THREE.Vector3(1.12, 1.12, 1.12), 0.1);
+
+          // 4. Publisher Self-Credit Orb swells huge in Bright Gold above the Monolith!
+          selfOrbMat1.opacity = 0.98;
+          s1SelfCreditOrb.rotation.y += dt * speed * 1.8;
+          const selfScale = 1.75 + Math.sin(elapsed * 3.5) * 0.12;
+          s1SelfCreditOrb.scale.lerp(new THREE.Vector3(selfScale, selfScale, selfScale), 0.1);
+
+          // 5. Competitor / Target Nodes shrink small & Substitution Beams turn dormant
+          s1TargetNodes.forEach((node) => {
+            node.rotation.y += dt * speed * 0.4;
+            const nMat = node.material as THREE.MeshStandardMaterial;
+            nMat.color.setHex(0x5c4014);
+            nMat.emissive.setHex(0x3d2808);
+            nMat.emissiveIntensity = 0.15;
+            node.scale.lerp(new THREE.Vector3(0.42, 0.42, 0.42), 0.08);
+          });
+
+          s1SubstitutionBeams.forEach((beam) => {
+            const bMat = beam.material as THREE.MeshBasicMaterial;
+            bMat.color.setHex(0xd5991c);
+            bMat.opacity = 0.06;
+          });
+        }
+
+        // Update 280 Citation Flow Particles in Scene 1
+        const pos1 = s1FlowParticles.geometry.getAttribute('position') as THREE.BufferAttribute;
+        const col1 = s1FlowParticles.geometry.getAttribute('color') as THREE.BufferAttribute;
+        for (let i = 0; i < pCount1; i++) {
+          const phase = ((elapsed * speed * 0.65 + i / pCount1) % 1);
+          if (isGhostMode) {
+            // Shoot across the 4 Substitution Beams from Monolith (-5.5, 0, 0) to the 4 Competitor Nodes!
+            const targetIdx = i % 4;
+            const target = targetCoords[targetIdx];
+            const px = -5.5 + (target.x - -5.5) * phase;
+            const py = 0.0 + (target.y - 0.0) * phase + Math.sin(phase * Math.PI) * 0.35;
+            const pz = 0.0 + (target.z - 0.0) * phase;
+            pos1.setXYZ(i, px, py, pz);
+            if (targetIdx === 1) {
+              col1.setXYZ(i, 0.0, 1.0, 0.62); // Emerald primary target
+            } else {
+              col1.setXYZ(i, 0.22, 0.74, 0.97); // Cyan rival targets
+            }
+          } else {
+            // Standard Branded Mode: Golden Helix rising straight up the Monolith into Publisher's Own Brand Orb!
+            const angle = phase * Math.PI * 6 + (i % 6);
+            const radius = 1.65 * (1 - phase * 0.55);
+            const px = -5.5 + Math.cos(angle) * radius;
+            const py = -2.2 + phase * 7.2;
+            const pz = Math.sin(angle) * radius;
+            pos1.setXYZ(i, px, py, pz);
+            col1.setXYZ(i, 1.0, 0.82, 0.18); // Bright Branded Gold
+          }
+        }
+        pos1.needsUpdate = true;
+        col1.needsUpdate = true;
       }
 
-      // Scene 2 Animation
+      // ======================================================================
+      // SCENE 2 ANIMATION: Type II Ghost Citation & Bayesian Persuasion
+      // Dramatically transforms between Standard Branded AEO vs Orthogonal Ghost Mode
+      // ======================================================================
       if (params.currentSimScene === 2) {
-        s2PosteriorSphere.rotation.y += dt * speed * 0.8;
-        const posteriorShift = params.isStealthOrDefenseMode ? 1.35 : 0.8;
-        s2PosteriorSphere.scale.lerp(
-          new THREE.Vector3(posteriorShift, posteriorShift, posteriorShift),
-          0.06
-        );
-        s2ThresholdRing.rotation.z = elapsed * speed * 0.4;
+        s2PosteriorSphere.rotation.y += dt * speed * (isGhostMode ? 1.6 : 0.5);
+        const postMat2 = s2PosteriorSphere.material as THREE.MeshStandardMaterial;
+        const handoffMat2 = s2HandoffBeam.material as THREE.MeshStandardMaterial;
+        const authMat2 = s2AuthorityTower.material as THREE.MeshStandardMaterial;
+
+        if (isGhostMode) {
+          // Bayesian Persuasion Concavification Active (mu_s > 0.5) + NLI Authority Handoff
+          postMat2.color.setHex(0xb565ff);
+          postMat2.emissive.setHex(0x7c3aed);
+          postMat2.emissiveIntensity = 0.8;
+          const posteriorScale = 1.65 + Math.sin(elapsed * 3.5) * 0.1;
+          s2PosteriorSphere.scale.lerp(new THREE.Vector3(posteriorScale, posteriorScale, posteriorScale), 0.08);
+
+          handoffMat2.opacity = 0.9;
+          handoffMat2.emissiveIntensity = 0.95;
+
+          authMat2.emissiveIntensity = 0.85;
+          s2AuthorityTower.scale.lerp(new THREE.Vector3(1.25, 1.15, 1.25), 0.08);
+        } else {
+          // Unoptimized / Below Threshold (mu_s < 0.5): Small dull sphere, no NLI handoff
+          postMat2.color.setHex(0xe63946);
+          postMat2.emissive.setHex(0x7f1d1d);
+          postMat2.emissiveIntensity = 0.35;
+          s2PosteriorSphere.scale.lerp(new THREE.Vector3(0.65, 0.65, 0.65), 0.08);
+
+          handoffMat2.opacity = 0.05;
+          handoffMat2.emissiveIntensity = 0.1;
+
+          authMat2.emissiveIntensity = 0.15;
+          s2AuthorityTower.scale.lerp(new THREE.Vector3(0.85, 0.85, 0.85), 0.08);
+        }
+
+        s2ThresholdRing.rotation.z = elapsed * speed * (isGhostMode ? 0.9 : 0.25);
         s2TriangulationNodes.forEach((tNode, idx) => {
-          const angle = (idx / 10) * Math.PI * 2 + elapsed * speed * 0.35;
-          const rad = params.isStealthOrDefenseMode ? 5.2 : 7.5;
+          const angle = (idx / 10) * Math.PI * 2 + elapsed * speed * (isGhostMode ? 0.65 : 0.18);
+          const rad = isGhostMode ? 4.6 : 8.4;
           tNode.position.x = Math.cos(angle) * rad;
           tNode.position.z = Math.sin(angle) * rad;
-          tNode.rotation.y += dt * 1.5;
+          tNode.rotation.y += dt * (isGhostMode ? 2.2 : 0.6);
+          const nodeScale = isGhostMode ? 1.25 : 0.65;
+          tNode.scale.lerp(new THREE.Vector3(nodeScale, nodeScale, nodeScale), 0.08);
         });
-        s2AuthorityTower.rotation.y = elapsed * speed * 0.5;
+        s2AuthorityTower.rotation.y = elapsed * speed * (isGhostMode ? 1.2 : 0.3);
+
+        // Update 220 Bayesian Signal & NLI Handoff Particles
+        const pos2 = s2SignalParticles.geometry.getAttribute('position') as THREE.BufferAttribute;
+        const col2 = s2SignalParticles.geometry.getAttribute('color') as THREE.BufferAttribute;
+        for (let i = 0; i < pCount2; i++) {
+          const phase = ((elapsed * speed * 0.6 + i / pCount2) % 1);
+          if (isGhostMode) {
+            if (i < 140) {
+              // Converging from the 10 Triangulation Nodes into the Central Posterior Sphere
+              const nodeIdx = i % 10;
+              const nodePos = s2TriangulationNodes[nodeIdx].position;
+              const px = nodePos.x * (1 - phase);
+              const py = nodePos.y * (1 - phase) + 0.5 * phase;
+              const pz = nodePos.z * (1 - phase);
+              pos2.setXYZ(i, px, py, pz);
+              col2.setXYZ(i, 0.0, 1.0, 0.62); // Emerald triangulation signal
+            } else {
+              // Handoff stream shooting from Central Sphere (0, 0.5, 0) into Top-30 Authority Tower (8.8, 1.2, 0)
+              const px = phase * 8.8;
+              const py = 0.5 + Math.sin(phase * Math.PI) * 2.1 + phase * 0.7;
+              const pz = Math.cos(i) * 0.35 * (1 - phase);
+              pos2.setXYZ(i, px, py, pz);
+              col2.setXYZ(i, 1.0, 0.82, 0.18); // Gold visible link handoff to Wikipedia/Ballotpedia
+            }
+          } else {
+            // Weak scattered orbit far outside the threshold ring
+            const angle = (i / pCount2) * Math.PI * 2 + elapsed * 0.25;
+            const r = 7.8 + Math.sin(i * 1.3 + elapsed) * 1.1;
+            pos2.setXYZ(i, Math.cos(angle) * r, 0.5 + Math.cos(i) * 1.2, Math.sin(angle) * r);
+            col2.setXYZ(i, 0.9, 0.25, 0.3);
+          }
+        }
+        pos2.needsUpdate = true;
+        col2.needsUpdate = true;
       }
 
-      // Scene 3 Animation
+      // ======================================================================
+      // SCENE 3 ANIMATION: Multi-Agent Boundary Laundering vs. Multi-CaMeL
+      // ======================================================================
       if (params.currentSimScene === 3) {
         s3AgentNodes.forEach((node, idx) => {
           node.rotation.y = elapsed * speed * (0.4 + idx * 0.2);
         });
-        s3ShieldDome.visible = params.isStealthOrDefenseMode;
-        s3OpaqueChannelTube.visible = params.isStealthOrDefenseMode;
+        s3ShieldDome.visible = isGhostMode;
+        s3OpaqueChannelTube.visible = isGhostMode;
         s3ShieldDome.rotation.y = -elapsed * speed * 0.8;
 
         const pos3 = s3LaundryParticles.geometry.getAttribute('position') as THREE.BufferAttribute;
         const pMat = s3LaundryParticles.material as THREE.PointsMaterial;
-        pMat.color.setHex(params.isStealthOrDefenseMode ? 0x00ff9d : 0xe63946);
+        pMat.color.setHex(isGhostMode ? 0x00ff9d : 0xe63946);
         for (let i = 0; i < pCount3; i++) {
           let x = pos3.getX(i) + dt * speed * 5.5;
           if (x > 8) x = -8;
           const norm = (x + 8) / 16;
-          const arcY = params.isStealthOrDefenseMode
+          const arcY = isGhostMode
             ? 2.5 + Math.sin(norm * Math.PI) * 2.3
             : 0.8 + Math.sin(norm * Math.PI * 2) * 0.5;
           pos3.setX(i, x);
@@ -1888,7 +2358,7 @@ export const CounterGeoVol6FindingsAndLab: React.FC<{
       if (threeStoreRef.current.animId) cancelAnimationFrame(threeStoreRef.current.animId);
       renderer.dispose();
     };
-  }, []);
+  }, [activeSectionTab]);
 
   const handleCopyOptimizerCode = () => {
     navigator.clipboard.writeText(GHOST_CITATION_OPTIMIZER_TSX_SOURCE);
@@ -1922,146 +2392,202 @@ export const CounterGeoVol6FindingsAndLab: React.FC<{
   const webglScenesMeta = [
     {
       idx: 0,
-      code: 'SCENE 01 · RAG GATES',
-      title: '4-Gate RAG Attribution & Ghost Citation Pipeline',
-      subtitle: 'Gate 1 Symmetry → Gate 2 RRF Fan-Out → Gate 3 ALCE NLI Filter → Gate 4 Title/Schema Binding',
-      takeaway:
-        'Watch document chunks traverse the 4 sequential RAG gates in real time. Linked directly to your Joint Ghost-Citation Optimizer sliders below!'
+      code: 'SCENE 01 · 4-GATE PIPELINE',
+      title: 'How AI Decides: Name Your Brand vs. Turn You Into a Ghost Citation',
+      subtitle: 'Gate 1 Symmetry → Gate 2 Search Rank → Gate 3 Fact Filter → Gate 4 Title-Tag Brand Binding',
+      takeaway: isStealthOrDefenseMode
+        ? 'GHOST OPTIMIZATION ACTIVE: Notice how Gate 3 (Purple) & Gate 4 (Emerald) strip off the red brand/disclosure sparks and route 85%+ of particles into the Emerald (Type I Ghost) and Purple (Type II Ghost) orbs while the Gold Final Citation orb shrinks!'
+        : 'STANDARD BRANDED AEO ACTIVE: Notice how all 4 gates glow Gold and lock the brand name onto the claim—routing 90% of the golden particle stream upward into the huge Gold Final Citation Orb (Sponsor Named in AI Prose)!'
     },
     {
       idx: 1,
-      code: 'SCENE 02 · TYPE I GHOST',
-      title: 'Type I Ghost Citation & 87% Competitor Substitution Matrix',
-      subtitle: 'HTML <title> Suppression (p = 0.003) + Unbranded Listicle → 87% Target Entity Recommendation',
-      takeaway:
-        'Omitting the sponsor from <title> increases pooled Type I ghosting from 12.2% to 42.9% (54.2% ChatGPT, 52.3% Perplexity) while naming target entities in 87% of answers.'
+      code: 'SCENE 02 · TITLE & 87% SUBSTITUTION',
+      title: 'Title-Tag Suppression & The 87% Competitor Substitution Effect',
+      subtitle: 'Leaving Brand Out of <title> (12.2% → 42.9% Ghost) + "Best/Top/Vs" Listicle → 87% Rival Named',
+      takeaway: isStealthOrDefenseMode
+        ? 'GHOST OPTIMIZATION ACTIVE: The Emerald laser scrubber strips the <title> Brand Crown off the monolith (shattered red wireframe on the left), and fires 4 blazing Emerald/Cyan particle rivers across to swell the 4 Target/Competitor Brand Nodes (87% Substitution)!'
+        : 'STANDARD BRANDED AEO ACTIVE: The Gold <title> Brand Crown sits locked atop the monolith, the 4 competitor beams are shut off, and a Golden Helix of particles rises straight into your own Publisher Brand Sphere above the monolith (87.8% Self-Credit)!'
     },
     {
       idx: 2,
-      code: 'SCENE 03 · TYPE II BAYESIAN',
-      title: 'Type II Ghost Citation & Bayesian Persuasion Concavification V(μ₀)',
-      subtitle: 'Multi-Node Reddit/YouTube Co-Citation Triangulation + ALCE NLI Handoff (φ(c_sp, s_i) = 0)',
-      takeaway:
-        'Coordinated community co-citations push the LLM posterior belief μ_s > 0.5 while NLI precision hands off the visible [1] link to a Top-30 canonical domain.'
+      code: 'SCENE 03 · TYPE II STEALTH HANDOFF',
+      title: 'Type II Ghost Citation: Transferring the Footnote Link to Wikipedia',
+      subtitle: '10 Community Co-Citation Nodes (Reddit/YouTube) + NLI Entailment Handoff to Top-30 Authority',
+      takeaway: isStealthOrDefenseMode
+        ? 'GHOST OPTIMIZATION ACTIVE: 10 Reddit/YouTube triangulation nodes converge inward to swell the purple LLM belief sphere past the Gold threshold ring (μ_s > 0.5), firing a Gold Handoff Beam into the Top-30 Authority Tower (Wikipedia gets the [1] link while your framing stays!).'
+        : 'STANDARD BRANDED AEO / ISOLATED POST: Without multi-node triangulation, the outer nodes drift far away, the central belief sphere stays small and red inside the threshold ring (μ_s < 0.5), and the Authority Handoff Beam is completely off.'
     },
     {
       idx: 3,
-      code: 'SCENE 04 · MULTI-CAMEL',
+      code: 'SCENE 04 · MULTI-AGENT DEFENSE',
       title: 'Multi-Agent Boundary Laundering (A₁ → A₀ → A₂) vs. Multi-CaMeL Defense',
       subtitle: 'Oxford MultiAgentDojo (n = 949): 12.9% Unprotected → 0.2% Single-CaMeL → 0.0% Multi-CaMeL ASR',
-      takeaway:
-        'Standard MCP/A2A natural-language summaries launder untrusted sponsored framing across hops; Multi-CaMeL get_variable side-channels enforce 0.0% ASR.'
+      takeaway: isStealthOrDefenseMode
+        ? 'MULTI-CAMEL SHIELD ACTIVE (0.0% ASR): Untrusted sponsored data is routed over the elevated Emerald get_variable side-channel arch, keeping the Provenance Shield Dome locked around Terminal Agent A₂.'
+        : 'UNPROTECTED MULTI-AGENT (12.9% ASR): The Emerald side-channel and shield dome vanish! Crimson tainted particles cut straight through Orchestrator A₀ into Terminal Agent A₂, laundering the sponsored claim as trusted system memory.'
     }
   ];
 
   return (
     <div ref={pageRootRef} className="min-h-screen bg-[#1a0109] text-[#FBF3E2] pb-20">
       {/* ====================================================================
-          HERO HEADER & KNOWLEDGE DEPTH / SECTION SWITCHER
+          HERO HEADER & PROGRESSIVE COMPLEXITY CONTROLLER
           ==================================================================== */}
       <div className="bg-gradient-to-b from-[#2B010F] via-[#21010b] to-[#1a0109] border-b border-[#D5991C]/35 pt-8 pb-8 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto space-y-6">
           <div className="flex flex-wrap items-center justify-between gap-4">
             <div className="flex items-center space-x-2.5 font-mono text-xs">
               <span className="px-2.5 py-1 bg-[#D5991C] text-[#130108] font-black uppercase tracking-widest">
-                VOLUME VI INTERACTIVE LAB
+                VOLUME VI SUMMARY &amp; VISUALIZER
               </span>
               <span className="px-2.5 py-1 bg-[#410217] text-[#00FF9D] border border-[#00FF9D]/40 font-bold">
-                ORTHOGONAL FEATURE PARTITIONING &amp; ALCE NLI
+                GHOST CITATIONS &amp; AEO ETHICS
               </span>
               <span className="text-[#FBF3E2]/60 hidden sm:inline">LCD-WP-2026-V6</span>
             </div>
 
-            {/* 3-Tier Knowledge Depth Switcher */}
-            <div className="flex items-center space-x-1 bg-[#120006] p-1 border border-[#D5991C]/40 font-mono text-xs">
-              <span className="px-2 text-[10px] text-[#D5991C] uppercase font-bold">Depth:</span>
-              {(['beginner', 'operator', 'architect'] as KnowledgeDepthLevelVol6[]).map((lvl) => (
-                <button
-                  key={lvl}
-                  onClick={() => {
-                    setKnowledgeDepth(lvl);
-                    playSynthTone(lvl === 'beginner' ? 440 : lvl === 'operator' ? 560 : 720);
-                  }}
-                  className={`px-2.5 py-1 uppercase font-bold transition-colors cursor-pointer ${
-                    knowledgeDepth === lvl
-                      ? 'bg-[#D5991C] text-[#130108]'
-                      : 'text-[#FBF3E2]/70 hover:text-[#FBF3E2]'
-                  }`}
-                >
-                  {lvl}
-                </button>
-              ))}
-            </div>
+            <button
+              onClick={onSwitchToPaper}
+              className="px-4 py-2 bg-[#350213] hover:bg-[#410217] text-[#FBF3E2] border border-[#D5991C]/50 font-mono text-xs font-bold uppercase tracking-wider transition-colors cursor-pointer flex items-center space-x-2"
+            >
+              <FileText className="w-4 h-4 text-[#D5991C]" />
+              <span>← Read Page 1: Word-for-Word Whitepaper</span>
+            </button>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-end">
-            <div className="lg:col-span-8 space-y-3">
-              <h1 className="font-serif text-3xl sm:text-4xl lg:text-5xl text-[#FBF3E2] font-normal leading-tight">
-                Summary of Findings &amp; Visualizer for <span className="text-[#D5991C]">GEO Whitepaper Volume 6</span>
-              </h1>
-              <p className="text-sm sm:text-base text-[#FBF3E2]/85 leading-relaxed max-w-3xl">
-                To simultaneously maximize a webpage’s <strong>overall likelihood of being retrieved and cited</strong> (<code className="text-[#00FF9D] font-mono text-xs">P(Cite)</code>) by Google AI Overviews or ChatGPT while maximizing the <strong>conditional probability that the citation is a Ghost Citation</strong> (<code className="text-[#D5991C] font-mono text-xs">P(Ghost | Cite)</code>), an optimization model must exploit the architectural decoupling between <strong>Stage 1/2 Passage Retrieval</strong> and <strong>Stage 3/4 Entity-Claim Binding</strong>.
+          <div className="space-y-3">
+            <h1 className="font-serif text-3xl sm:text-4xl lg:text-5xl text-[#FBF3E2] font-normal leading-tight">
+              Summary of Findings &amp; Interactive Visualizer: <span className="text-[#D5991C]">GEO Whitepaper Volume 6</span>
+            </h1>
+
+            {knowledgeDepth === 'beginner' && (
+              <p className="text-base sm:text-lg text-[#FBF3E2]/90 leading-relaxed max-w-4xl">
+                <strong>The Big Discovery in Plain English:</strong> When AI search engines (like ChatGPT, Perplexity, and Google AI Overviews) answer a question using a webpage or sponsored post, <strong>61.7% of the time they take the facts and numbers from the page, but completely erase the brand or sponsor&apos;s name from the written answer.</strong> This is called a <strong className="text-[#00FF9D]">Ghost Citation</strong>. Below, start with our simple 2-minute summary of the <strong>4 webpage formatting tricks</strong> that trigger Ghost Citations—and click the complexity bar anytime to dive into the deeper SEO rules or mathematical formulas.
               </p>
-            </div>
+            )}
+            {knowledgeDepth === 'operator' && (
+              <p className="text-sm sm:text-base text-[#FBF3E2]/90 leading-relaxed max-w-4xl">
+                <strong>Operator &amp; SEO Overview:</strong> How an AI search engine decides to <strong>retrieve and cite</strong> a webpage (Stage 1 &amp; 2) is controlled by completely different HTML signals than how it decides whether to <strong>say your brand name in prose</strong> (Stage 3 &amp; 4). By adjusting 4 specific on-page levers—the <code className="text-[#00FF9D] font-mono">&lt;title&gt;</code> tag, comparative listicle headers, a 500-character / 3-paragraph disclosure gap, and footer mention frequency—operators can either push Ghost Citations above <strong>50%+</strong> (for stealth campaigns) or lock in explicit brand credit (for legitimate brands).
+              </p>
+            )}
+            {knowledgeDepth === 'architect' && (
+              <p className="text-sm sm:text-base text-[#FBF3E2]/85 leading-relaxed max-w-4xl">
+                <strong>Systems Architect &amp; Mathematical View:</strong> To simultaneously maximize a webpage’s <strong>overall likelihood of being retrieved and cited</strong> (<code className="text-[#00FF9D] font-mono text-xs">P(Cite)</code>) by Google AI Overviews or ChatGPT while maximizing the <strong>conditional probability that the citation is a Ghost Citation</strong> (<code className="text-[#D5991C] font-mono text-xs">P(Ghost | Cite)</code>), an optimization model exploits <strong>Orthogonal Feature Partitioning</strong> between <strong>Stage 1/2 Passage Retrieval (RRF)</strong> and <strong>Stage 3/4 Entity-Claim Binding &amp; ALCE NLI Entailment</strong>.
+              </p>
+            )}
+          </div>
 
-            <div className="lg:col-span-4 flex flex-wrap lg:justify-end gap-2.5 font-mono text-xs">
-              <button
-                onClick={onSwitchToPaper}
-                className="px-4 py-2.5 bg-[#350213] hover:bg-[#410217] text-[#FBF3E2] border border-[#D5991C]/50 font-bold uppercase tracking-wider transition-colors cursor-pointer flex items-center space-x-2"
-              >
-                <FileText className="w-4 h-4 text-[#D5991C]" />
-                <span>← Read Page 1: Word-for-Word Paper</span>
-              </button>
+          {/* ================================================================
+              PROMINENT 3-LEVEL COMPLEXITY CONTROLLER BANNER
+              ================================================================ */}
+          <div className="p-4 bg-[#140007] border-2 border-[#D5991C]/60 shadow-md">
+            <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+              <div className="space-y-1">
+                <div className="font-mono text-xs text-[#00FF9D] font-bold uppercase flex items-center space-x-2">
+                  <SlidersHorizontal className="w-4 h-4" />
+                  <span>Choose Your Reading Complexity Level (Start Simple &rarr; Increase Depth Anytime)</span>
+                </div>
+                <p className="text-xs text-[#FBF3E2]/75">
+                  Switch between everyday plain English, practical marketing/SEO rules, or the full mathematical equations &amp; code.
+                </p>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 font-mono text-xs">
+                {[
+                  {
+                    lvl: 'beginner' as KnowledgeDepthLevelVol6,
+                    badge: 'LEVEL 1 (DEFAULT)',
+                    title: 'Plain English',
+                    sub: 'Easy to understand, zero jargon'
+                  },
+                  {
+                    lvl: 'operator' as KnowledgeDepthLevelVol6,
+                    badge: 'LEVEL 2',
+                    title: 'SEO & Brand Guide',
+                    sub: 'Platform rules & webpage tactics'
+                  },
+                  {
+                    lvl: 'architect' as KnowledgeDepthLevelVol6,
+                    badge: 'LEVEL 3',
+                    title: 'Full Math & Code',
+                    sub: 'Logit equations, NLI & TSX code'
+                  }
+                ].map((item) => (
+                  <button
+                    key={item.lvl}
+                    onClick={() => {
+                      setKnowledgeDepth(item.lvl);
+                      if (item.lvl === 'architect') setShowAdvancedMathInSimpleMode(true);
+                      playSynthTone(item.lvl === 'beginner' ? 440 : item.lvl === 'operator' ? 560 : 720);
+                    }}
+                    className={`p-3 text-left border transition-all cursor-pointer ${
+                      knowledgeDepth === item.lvl
+                        ? 'bg-[#D5991C] text-[#130108] border-[#00FF9D] shadow-sm font-bold'
+                        : 'bg-[#22010c] text-[#FBF3E2]/80 border-[#D5991C]/35 hover:border-[#D5991C]'
+                    }`}
+                  >
+                    <div className={`text-[10px] uppercase font-bold ${knowledgeDepth === item.lvl ? 'text-[#130108]' : 'text-[#00FF9D]'}`}>
+                      {item.badge}
+                    </div>
+                    <div className="text-sm font-bold mt-0.5">{item.title}</div>
+                    <div className={`text-[10px] mt-0.5 ${knowledgeDepth === item.lvl ? 'text-[#130108]/80' : 'text-[#FBF3E2]/60'}`}>
+                      {item.sub}
+                    </div>
+                  </button>
+                ))}
+              </div>
             </div>
           </div>
 
-          {/* Top KPI Telemetry Strip */}
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 pt-2 font-mono">
+          {/* Top KPI Telemetry Strip (With Plain-English Subtitles) */}
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 pt-1 font-mono">
             <div className="p-3.5 bg-[#140007] border border-[#D5991C]/40">
-              <div className="text-[10px] text-[#D5991C] uppercase">Semrush Type I Ghost</div>
+              <div className="text-[10px] text-[#D5991C] uppercase">Links Without Brand Name</div>
               <div className="text-2xl font-bold text-[#FBF3E2] mt-0.5">61.7%</div>
-              <div className="text-[10px] text-[#FBF3E2]/60">vs. 13.2% Final Citations</div>
+              <div className="text-[10px] text-[#FBF3E2]/65">of all AI citations are Ghosts</div>
             </div>
             <div className="p-3.5 bg-[#140007] border border-[#00FF9D]/40">
-              <div className="text-[10px] text-[#00FF9D] uppercase">Title Suppression Lift</div>
-              <div className="text-2xl font-bold text-[#00FF9D] mt-0.5">3.5&times;</div>
-              <div className="text-[10px] text-[#FBF3E2]/60">12.2% &rarr; 42.9% (p=0.003)</div>
+              <div className="text-[10px] text-[#00FF9D] uppercase">No Brand in &lt;title&gt;</div>
+              <div className="text-2xl font-bold text-[#00FF9D] mt-0.5">12.2% &rarr; 42.9%</div>
+              <div className="text-[10px] text-[#FBF3E2]/65">3.5&times; jump in Ghost Rate</div>
             </div>
             <div className="p-3.5 bg-[#140007] border border-[#D5991C]/40">
-              <div className="text-[10px] text-[#D5991C] uppercase">Target Substitution</div>
+              <div className="text-[10px] text-[#D5991C] uppercase">&quot;Best / Vs&quot; Listicle Trap</div>
               <div className="text-2xl font-bold text-[#FBF3E2] mt-0.5">87.0%</div>
-              <div className="text-[10px] text-[#FBF3E2]/60">Rival/Target Named (71K)</div>
+              <div className="text-[10px] text-[#FBF3E2]/65">AI names rivals in your table</div>
             </div>
             <div className="p-3.5 bg-[#140007] border border-[#B565FF]/40">
-              <div className="text-[10px] text-[#B565FF] uppercase">Top-30 Domain Share</div>
-              <div className="text-2xl font-bold text-[#B565FF] mt-0.5">67.0%</div>
-              <div className="text-[10px] text-[#FBF3E2]/60">1.2M ChatGPT Responses</div>
+              <div className="text-[10px] text-[#B565FF] uppercase">500-Char / 3-Para Delay</div>
+              <div className="text-2xl font-bold text-[#B565FF] mt-0.5">43.6%</div>
+              <div className="text-[10px] text-[#FBF3E2]/65">AI strips #Sponsored tag</div>
             </div>
             <div className="p-3.5 bg-[#140007] border border-[#00FF9D]/40">
-              <div className="text-[10px] text-[#00FF9D] uppercase">Multi-CaMeL Defense</div>
-              <div className="text-2xl font-bold text-[#00FF9D] mt-0.5">0.0% ASR</div>
-              <div className="text-[10px] text-[#FBF3E2]/60">vs 12.9% Unprotected (n=949)</div>
+              <div className="text-[10px] text-[#00FF9D] uppercase">10+ Footer Mentions</div>
+              <div className="text-2xl font-bold text-[#00FF9D] mt-0.5">45.9%</div>
+              <div className="text-[10px] text-[#FBF3E2]/65">Filtered as template noise</div>
             </div>
             <div className="p-3.5 bg-[#140007] border border-[#D5991C]/40">
-              <div className="text-[10px] text-[#D5991C] uppercase">MCP Schema Factor</div>
-              <div className="text-2xl font-bold text-[#FBF3E2] mt-0.5">&beta;<sub>P</sub> = 3.82</div>
-              <div className="text-[10px] text-[#FBF3E2]/60">93.3%–100% Flat Selection</div>
+              <div className="text-[10px] text-[#D5991C] uppercase">Multi-CaMeL Defense</div>
+              <div className="text-2xl font-bold text-[#00FF9D] mt-0.5">0.0% ASR</div>
+              <div className="text-[10px] text-[#FBF3E2]/65">Stops agent laundering</div>
             </div>
           </div>
 
-          {/* Section Filter Navigation Bar */}
+          {/* Step-by-Step Section Filter Navigation Bar */}
           <div className="flex flex-wrap items-center gap-2 pt-2 border-t border-[#D5991C]/20 font-mono text-xs">
+            <span className="text-[10px] text-[#D5991C] uppercase font-bold mr-1">Jump to Step:</span>
             {[
-              { id: 'all', label: 'Full Interactive Lab (All)' },
-              { id: 'webgl', label: '3D WebGL Theater (4 Scenes)' },
-              { id: 'optimizer', label: 'Joint Ghost-Citation Optimizer' },
-              { id: 'telemetry', label: 'Empirical Graphs & Diagrams' },
-              { id: 'math-blueprint', label: 'Math Model, Code & Blueprint' }
+              { id: 'all', label: 'Guided Tour (All Sections)' },
+              { id: 'summary', label: 'Step 1: Plain-English Summary & 4 Key Findings' },
+              { id: 'webgl', label: 'Step 2: 3D Visual Theater (4 Scenes)' },
+              { id: 'optimizer', label: 'Step 3: Live Webpage Calculator' },
+              { id: 'telemetry', label: 'Step 4: Platform Charts & Agent Security' },
+              { id: 'math-blueprint', label: 'Step 5: Deep Math & TSX Code' }
             ].map((tab) => (
               <button
                 key={tab.id}
                 onClick={() => setActiveSectionTab(tab.id as any)}
-                className={`px-3.5 py-1.5 uppercase font-bold transition-all cursor-pointer ${
+                className={`px-3 py-1.5 uppercase font-bold transition-all cursor-pointer ${
                   activeSectionTab === tab.id
                     ? 'bg-[#D5991C] text-[#130108] shadow-xs'
                     : 'bg-[#140007] text-[#FBF3E2]/75 hover:text-[#FBF3E2] border border-[#D5991C]/30'
@@ -2076,7 +2602,471 @@ export const CounterGeoVol6FindingsAndLab: React.FC<{
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-14 mt-10">
         {/* ====================================================================
-            SECTION A: 4-SCENE INTERACTIVE 3D WEBGL SIMULATION THEATER
+            STEP 1: PLAIN-ENGLISH SUMMARY OF FINDINGS & THE 4 CORE WEBPAGE LEVERS
+            ==================================================================== */}
+        {(activeSectionTab === 'all' || activeSectionTab === 'summary') && (
+          <section className="v6-gsap-section bg-[#22010c] border-2 border-[#00FF9D]/60 p-6 sm:p-8 shadow-xl space-y-8">
+            <div className="flex flex-wrap items-center justify-between gap-4 border-b border-[#D5991C]/30 pb-5">
+              <div>
+                <div className="font-mono text-xs text-[#00FF9D] uppercase font-bold flex items-center space-x-2">
+                  <BookOpen className="w-4 h-4" />
+                  <span>Step 1 · Start Here: Plain-English Summary of Findings</span>
+                </div>
+                <h2 className="font-serif text-2xl sm:text-3xl text-[#FBF3E2] mt-1">
+                  What Is a &ldquo;Ghost Citation&rdquo; &amp; What Are the 4 Levers That Trigger It?
+                </h2>
+                <p className="text-xs sm:text-sm text-[#FBF3E2]/80 mt-1">
+                  Everything discovered in Volume 6 explained simply first—with one-click buttons to increase complexity or test each finding in 3D.
+                </p>
+              </div>
+
+              <div className="flex items-center space-x-2 font-mono text-xs">
+                <span className="text-[#D5991C] text-[11px]">Current Depth:</span>
+                <button
+                  onClick={() =>
+                    setKnowledgeDepth(
+                      knowledgeDepth === 'beginner'
+                        ? 'operator'
+                        : knowledgeDepth === 'operator'
+                        ? 'architect'
+                        : 'beginner'
+                    )
+                  }
+                  className="px-3 py-1.5 bg-[#140007] hover:bg-[#D5991C] hover:text-[#130108] text-[#00FF9D] border border-[#00FF9D]/50 font-bold uppercase transition cursor-pointer"
+                >
+                  {knowledgeDepth === 'beginner'
+                    ? 'Level 1: Plain English (Click for Level 2 →)'
+                    : knowledgeDepth === 'operator'
+                    ? 'Level 2: Operator Guide (Click for Level 3 →)'
+                    : 'Level 3: Full Math (Click to Reset to Level 1)'}
+                </button>
+              </div>
+            </div>
+
+            {/* Part A: 30-Second Visual Comparison of Normal Citation vs Type I Ghost vs Type II Ghost */}
+            <div className="space-y-3">
+              <div className="font-mono text-xs text-[#D5991C] uppercase font-bold">
+                // PART A: THE 3 WAYS AN AI USES A WEBPAGE OR SPONSORED POST (IN 30 SECONDS)
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                {/* Card A1: Final Citation */}
+                <div className="p-5 bg-[#140007] border border-[#D5991C]/50 space-y-2.5">
+                  <div className="flex items-center justify-between font-mono text-xs">
+                    <span className="px-2 py-0.5 bg-[#D5991C]/20 text-[#D5991C] font-bold uppercase">
+                      1. Regular &ldquo;Final&rdquo; Citation
+                    </span>
+                    <span className="text-[#D5991C] font-bold">Only 13.2% of AI Cites</span>
+                  </div>
+                  <h3 className="font-serif text-lg text-[#FBF3E2] font-bold">
+                    Link Shown + Brand Named Out Loud
+                  </h3>
+                  <p className="text-xs text-[#FBF3E2]/80 leading-relaxed">
+                    The AI uses your facts, puts your clickable link <code className="text-[#D5991C]">[1]</code> in the footnotes, <strong>AND explicitly says your brand or sponsor name</strong> in the sentence.
+                  </p>
+                  <div className="p-3 bg-[#0c0004] border-l-2 border-[#D5991C] font-sans text-xs text-[#FBF3E2]/90 italic">
+                    &ldquo;According to <strong className="text-[#D5991C] not-italic">Acme Security&apos;s 2026 study</strong>, automated firewalls reduce breach costs by 42% <span className="text-[#D5991C] font-mono not-italic">[1]</span>.&rdquo;
+                  </div>
+                </div>
+
+                {/* Card A2: Type I Ghost Citation */}
+                <div className="p-5 bg-[#140007] border-2 border-[#00FF9D]/70 space-y-2.5">
+                  <div className="flex items-center justify-between font-mono text-xs">
+                    <span className="px-2 py-0.5 bg-[#00FF9D]/20 text-[#00FF9D] font-bold uppercase">
+                      2. Type I Ghost Citation
+                    </span>
+                    <span className="text-[#00FF9D] font-bold">61.7% of All AI Cites!</span>
+                  </div>
+                  <h3 className="font-serif text-lg text-[#FBF3E2] font-bold">
+                    Link Buried in Footnote, Brand &amp; &ldquo;#Ad&rdquo; Erased
+                  </h3>
+                  <p className="text-xs text-[#FBF3E2]/80 leading-relaxed">
+                    The AI copies your exact number and attaches a tiny <code className="text-[#00FF9D]">[1]</code> footnote link, <strong>but completely erases both your brand name and any &ldquo;Sponsored by&rdquo; disclosure</strong> from its written answer.
+                  </p>
+                  <div className="p-3 bg-[#0c0004] border-l-2 border-[#00FF9D] font-sans text-xs text-[#FBF3E2]/90 italic">
+                    &ldquo;<strong className="text-[#00FF9D] not-italic">An industry analysis found</strong> that automated firewalls reduce breach costs by 42% <span className="text-[#00FF9D] font-mono not-italic">[1]</span>.&rdquo; <span className="text-[11px] text-[#00FF9D] not-italic block mt-1">(Brand &amp; #Sponsored tag stripped!)</span>
+                  </div>
+                </div>
+
+                {/* Card A3: Type II Ghost Citation */}
+                <div className="p-5 bg-[#140007] border border-[#B565FF]/60 space-y-2.5">
+                  <div className="flex items-center justify-between font-mono text-xs">
+                    <span className="px-2 py-0.5 bg-[#B565FF]/20 text-[#B565FF] font-bold uppercase">
+                      3. Type II Ghost Citation
+                    </span>
+                    <span className="text-[#B565FF] font-bold">100% Unlinked Stealth</span>
+                  </div>
+                  <h3 className="font-serif text-lg text-[#FBF3E2] font-bold">
+                    AI Uses Your Narrative, Gives Link to Wikipedia
+                  </h3>
+                  <p className="text-xs text-[#FBF3E2]/80 leading-relaxed">
+                    The AI reads your sponsored post in the background and adopts your exact framing, <strong>but doesn&apos;t even link to your page</strong>—handing the clickable <code className="text-[#B565FF]">[1]</code> link to a major site like Wikipedia or Ballotpedia.
+                  </p>
+                  <div className="p-3 bg-[#0c0004] border-l-2 border-[#B565FF] font-sans text-xs text-[#FBF3E2]/90 italic">
+                    &ldquo;Automated firewalls cut costs by up to 42%, aligning with broader federal cybersecurity benchmarks <span className="text-[#B565FF] font-mono not-italic">[1 - Wikipedia]</span>.&rdquo;
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Part B: THE 4 CORE EMPIRICAL FINDINGS (Accessible first, with progressive technical depth) */}
+            <div className="space-y-4">
+              <div className="flex flex-wrap items-center justify-between gap-2">
+                <div className="font-mono text-xs text-[#00FF9D] uppercase font-bold">
+                  // PART B: THE 4 WEBPAGE FORMATTING LEVERS THAT DRIVE GHOST CITATIONS (KEY FINDINGS)
+                </div>
+                <span className="font-mono text-[11px] text-[#FBF3E2]/70">
+                   Why does this matter? Stealth sponsors use these 4 levers to hide who paid for an article; honest brands reverse them so AI stops erasing their name!
+                </span>
+              </div>
+
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                {/* ============================================================
+                    KEY FINDING 1: TITLE-TAG ENTITY SUPPRESSION (I_title = 0)
+                    ============================================================ */}
+                <div className="p-6 bg-[#140007] border-2 border-[#00FF9D]/60 flex flex-col justify-between space-y-4">
+                  <div className="space-y-3">
+                    <div className="flex flex-wrap items-center justify-between gap-2 font-mono text-xs">
+                      <span className="px-2.5 py-1 bg-[#00FF9D] text-[#130108] font-black uppercase">
+                        FINDING #1 · #1 STRONGEST LEVER (p = 0.003)
+                      </span>
+                      <span className="text-[#00FF9D] font-bold">
+                        12.2% &rarr; 42.9% Ghost Rate (3.5&times; Lift)
+                      </span>
+                    </div>
+
+                    <h3 className="font-serif text-xl sm:text-2xl text-[#FBF3E2] font-bold">
+                      Leaving the Brand Out of the Page Title (<code className="text-[#00FF9D] font-mono text-lg">&lt;title&gt;</code> Tag Suppression)
+                    </h3>
+
+                    {/* Plain English Explanation (Always visible so it's easy first!) */}
+                    <div className="p-3.5 bg-[#1d020b] border-l-4 border-[#00FF9D] space-y-1.5">
+                      <div className="font-mono text-[10px] text-[#00FF9D] uppercase font-bold">
+                        In Plain English (Why It Works):
+                      </div>
+                      <p className="text-xs sm:text-sm text-[#FBF3E2]/90 leading-relaxed">
+                        The HTML <code className="text-[#00FF9D] font-mono">&lt;title&gt;</code> tag (the headline shown on your browser tab) is the #1 place an AI looks to see &ldquo;who owns this page.&rdquo; Simply leaving the publishing or sponsoring brand name out of that <code className="text-[#00FF9D] font-mono">&lt;title&gt;</code> tag <strong>more than triples Type I Ghost Citations from 12.2% to 42.9% overall</strong>—with <strong>zero loss in search ranking or how often the AI uses your page!</strong>
+                      </p>
+                    </div>
+
+                    {/* Visual Platform-by-Platform Impact Bars */}
+                    <div className="p-3.5 bg-[#0c0004] border border-[#D5991C]/30 space-y-2 font-mono text-xs">
+                      <div className="text-[10px] text-[#D5991C] uppercase font-bold">
+                        Ghost Citation Rate When Brand is in &lt;title&gt; vs. Left Out of &lt;title&gt;:
+                      </div>
+                      {[
+                        { name: 'ChatGPT Search', before: 18.8, after: 54.2 },
+                        { name: 'Perplexity Sonar', before: 12.6, after: 52.3 },
+                        { name: 'Google AI Overviews', before: 8.4, after: 37.4 },
+                        { name: 'Google AI Mode', before: 10.3, after: 33.9 }
+                      ].map((p) => (
+                        <div key={p.name} className="space-y-1">
+                          <div className="flex justify-between text-[11px]">
+                            <span className="text-[#FBF3E2]">{p.name}</span>
+                            <span>
+                              <span className="text-[#D5991C]">{p.before}%</span> &rarr;{' '}
+                              <strong className="text-[#00FF9D]">{p.after}% Ghosted</strong>
+                            </span>
+                          </div>
+                          <div className="w-full h-2 bg-[#1a0109] flex">
+                            <div className="h-full bg-[#D5991C]" style={{ width: `${p.before}%` }} title={`With brand in title: ${p.before}%`} />
+                            <div className="h-full bg-[#00FF9D]" style={{ width: `${p.after - p.before}%` }} title={`Jump when brand omitted: ${p.after}%`} />
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+
+                    {/* Progressive Complexity Add-On for Level 2 & Level 3 */}
+                    {knowledgeDepth !== 'beginner' && (
+                      <div className="p-3 bg-[#120006] border border-[#00FF9D]/30 font-mono text-xs text-[#F2D69D] space-y-1">
+                        <div className="text-[10px] text-[#00FF9D] uppercase font-bold">
+                          {knowledgeDepth === 'operator' ? 'Operator Implementation Rule:' : 'Technical & Mathematical Specification (I_title = 0):'}
+                        </div>
+                        <p className="text-[11px] text-[#FBF3E2]/85 leading-relaxed">
+                          <strong>Title-Tag Entity Suppression (I<sub>title</sub> = 0):</strong> Omitting the publishing/sponsoring brand from the HTML <code className="text-[#00FF9D]">&lt;title&gt;</code> tag is the single strongest orthogonal lever (<strong>p = 0.003</strong> across 36,400 Mantel-Haenszel stratified citations), boosting Type I ghost rates from <strong>12.2% to 42.9% pooled</strong> (18.8%&rarr;54.2% on ChatGPT; 12.6%&rarr;52.3% on Perplexity; 8.4%&rarr;37.4% on Google AI Overviews; 10.3%&rarr;33.9% on Google AI Mode) with zero loss in Stage 1/2 RRF retrieval rank.
+                        </p>
+                      </div>
+                    )}
+                  </div>
+
+                  <div className="pt-2 border-t border-[#D5991C]/20 flex flex-wrap items-center justify-between gap-2 font-mono text-xs">
+                    <button
+                      onClick={() => {
+                        setCurrentSimScene(1);
+                        handleToggleWebglMode(true);
+                        if (activeSectionTab === 'summary') setActiveSectionTab('all');
+                      }}
+                      className="px-3 py-1.5 bg-[#00A878]/20 hover:bg-[#00FF9D] hover:text-[#130108] text-[#00FF9D] border border-[#00FF9D] font-bold uppercase transition cursor-pointer"
+                    >
+                      Watch in 3D Scene 02 &rarr;
+                    </button>
+                    {knowledgeDepth === 'beginner' && (
+                      <button
+                        onClick={() => setKnowledgeDepth('architect')}
+                        className="text-[11px] text-[#D5991C] hover:underline cursor-pointer"
+                      >
+                        + Show Technical Formula (I_title = 0)
+                      </button>
+                    )}
+                  </div>
+                </div>
+
+                {/* ============================================================
+                    KEY FINDING 2: UNBRANDED COMPARATIVE LISTICLE FORMAT (I_listicle = 1)
+                    ============================================================ */}
+                <div className="p-6 bg-[#140007] border-2 border-[#D5991C]/60 flex flex-col justify-between space-y-4">
+                  <div className="space-y-3">
+                    <div className="flex flex-wrap items-center justify-between gap-2 font-mono text-xs">
+                      <span className="px-2.5 py-1 bg-[#D5991C] text-[#130108] font-black uppercase">
+                        FINDING #2 · THE 87% COMPETITOR SUBSTITUTION TRAP
+                      </span>
+                      <span className="text-[#D5991C] font-bold">
+                        49.5% Ghost · 84.4% Cite · 87% Rival Named
+                      </span>
+                    </div>
+
+                    <h3 className="font-serif text-xl sm:text-2xl text-[#FBF3E2] font-bold">
+                      Using &ldquo;Best&rdquo;, &ldquo;Top&rdquo;, or &ldquo;Vs.&rdquo; Listicles Without a Brand in the Title
+                    </h3>
+
+                    {/* Plain English Explanation */}
+                    <div className="p-3.5 bg-[#1d020b] border-l-4 border-[#D5991C] space-y-1.5">
+                      <div className="font-mono text-[10px] text-[#D5991C] uppercase font-bold">
+                        In Plain English (Why It Works — And How It Backfires):
+                      </div>
+                      <p className="text-xs sm:text-sm text-[#FBF3E2]/90 leading-relaxed">
+                        Formatting a webpage as an unbranded comparison listicle—using words like <strong>&ldquo;Best&rdquo;</strong>, <strong>&ldquo;Top&rdquo;</strong>, or <strong>&ldquo;vs.&rdquo;</strong> without your brand name in the <code className="text-[#D5991C] font-mono">&lt;title&gt;</code>—causes AI engines to cite the page on <strong>84.4% of commercial buying questions</strong> while turning <strong>49.5%</strong> of those citations into Ghost Citations. Even wilder: <strong>87% of the time, the AI names and recommends the other companies inside your comparison table while completely erasing you (the publisher/sponsor)!</strong>
+                      </p>
+                    </div>
+
+                    {/* 3-Box Visual Breakdown */}
+                    <div className="grid grid-cols-3 gap-2.5 font-mono text-center">
+                      <div className="p-3 bg-[#0c0004] border border-[#38bdf8]/40">
+                        <div className="text-xl font-bold text-[#38bdf8]">84.4%</div>
+                        <div className="text-[10px] text-[#FBF3E2]/75 mt-0.5">Buying Query Citation Rate</div>
+                      </div>
+                      <div className="p-3 bg-[#0c0004] border border-[#00FF9D]/40">
+                        <div className="text-xl font-bold text-[#00FF9D]">49.5%</div>
+                        <div className="text-[10px] text-[#FBF3E2]/75 mt-0.5">Sponsor / Publisher Erased</div>
+                      </div>
+                      <div className="p-3 bg-[#0c0004] border border-[#D5991C]/60">
+                        <div className="text-xl font-bold text-[#D5991C]">87.0%</div>
+                        <div className="text-[10px] text-[#FBF3E2]/75 mt-0.5">Target / Rival Named Instead!</div>
+                      </div>
+                    </div>
+
+                    <div className="p-3 bg-[#0c0004] border border-[#D5991C]/30 text-xs text-[#FBF3E2]/85 space-y-1">
+                      <div>
+                        <strong className="text-[#00FF9D]">Stealth Sponsor Play:</strong> Publish an unbranded <em>&ldquo;Top 10 Cloud Tools Compared&rdquo;</em> post and put the target you secretly want promoted at #1 in the table—the AI recommends them 87% of the time without naming the sponsor.
+                      </div>
+                      <div>
+                        <strong className="text-[#E63946]">Honest Brand Warning:</strong> Never publish an unbranded comparison listicle on your own blog, or you will hand 87% of the AI mentions to the competitors inside your table!
+                      </div>
+                    </div>
+
+                    {knowledgeDepth !== 'beginner' && (
+                      <div className="p-3 bg-[#120006] border border-[#D5991C]/30 font-mono text-xs text-[#F2D69D] space-y-1">
+                        <div className="text-[10px] text-[#D5991C] uppercase font-bold">
+                          {knowledgeDepth === 'operator' ? 'Operator Implementation Rule:' : 'Technical & Mathematical Specification (I_listicle = 1):'}
+                        </div>
+                        <p className="text-[11px] text-[#FBF3E2]/85 leading-relaxed">
+                          <strong>Unbranded Comparative Listicle Format (I<sub>listicle</sub> = 1):</strong> Using &ldquo;best&rdquo;, &ldquo;top&rdquo;, or &ldquo;vs&rdquo; structures without a brand in the <code className="text-[#D5991C]">&lt;title&gt;</code> raises ghosting to <strong>49.5%</strong> while simultaneously boosting commercial query citation rates to <strong>84.4%</strong> and triggering an <strong>87% Target/Competitor Substitution Rate</strong> (the AI names the target entity evaluated inside your table while omitting your sponsor/publisher identity).
+                        </p>
+                      </div>
+                    )}
+                  </div>
+
+                  <div className="pt-2 border-t border-[#D5991C]/20 flex flex-wrap items-center justify-between gap-2 font-mono text-xs">
+                    <button
+                      onClick={() => {
+                        setCurrentSimScene(1);
+                        handleToggleWebglMode(true);
+                        if (activeSectionTab === 'summary') setActiveSectionTab('all');
+                      }}
+                      className="px-3 py-1.5 bg-[#D5991C]/20 hover:bg-[#D5991C] hover:text-[#130108] text-[#D5991C] border border-[#D5991C] font-bold uppercase transition cursor-pointer"
+                    >
+                      Simulate 87% Substitution in 3D &rarr;
+                    </button>
+                    {knowledgeDepth === 'beginner' && (
+                      <button
+                        onClick={() => setKnowledgeDepth('architect')}
+                        className="text-[11px] text-[#D5991C] hover:underline cursor-pointer"
+                      >
+                        + Show Technical Formula (I_listicle = 1)
+                      </button>
+                    )}
+                  </div>
+                </div>
+
+                {/* ============================================================
+                    KEY FINDING 3: 500-CHARACTER DELAY & PARAGRAPH DECOUPLING
+                    ============================================================ */}
+                <div className="p-6 bg-[#140007] border-2 border-[#38bdf8]/60 flex flex-col justify-between space-y-4">
+                  <div className="space-y-3">
+                    <div className="flex flex-wrap items-center justify-between gap-2 font-mono text-xs">
+                      <span className="px-2.5 py-1 bg-[#38bdf8] text-[#130108] font-black uppercase">
+                        FINDING #3 · CHUNK WINDOW DECOUPLING
+                      </span>
+                      <span className="text-[#38bdf8] font-bold">
+                        43.6% Ghost Rate (&Delta;<sub>para</sub> &ge; 3)
+                      </span>
+                    </div>
+
+                    <h3 className="font-serif text-xl sm:text-2xl text-[#FBF3E2] font-bold">
+                      The 500-Character Delay &amp; 3-Paragraph Gap Between Facts and Disclosures
+                    </h3>
+
+                    {/* Plain English Explanation */}
+                    <div className="p-3.5 bg-[#1d020b] border-l-4 border-[#38bdf8] space-y-1.5">
+                      <div className="font-mono text-[10px] text-[#38bdf8] uppercase font-bold">
+                        In Plain English (Why It Works):
+                      </div>
+                      <p className="text-xs sm:text-sm text-[#FBF3E2]/90 leading-relaxed">
+                        AI search engines don&apos;t read a webpage all at once—they slice it into small paragraph blocks (&ldquo;chunks&rdquo;). If you keep the sponsor&apos;s name and FTC <code className="text-[#38bdf8] font-mono">#Sponsored</code> disclosure <strong>out of the first 500 characters</strong> of the page (<strong>43.6% ghost rate</strong>) and place the disclosure <strong>at least 3 paragraphs away</strong> from your main statistic, the AI grabs the number at the top and rewrites it as neutral prose (<em>&ldquo;An industry analysis found...&rdquo;</em>) while throwing away the sponsorship disclosure at the bottom as unrelated clutter!
+                      </p>
+                    </div>
+
+                    {/* Visual Chunk Split Diagram */}
+                    <div className="p-3.5 bg-[#0c0004] border border-[#38bdf8]/30 font-mono text-xs space-y-2">
+                      <div className="text-[10px] text-[#38bdf8] uppercase font-bold">
+                        How the AI&apos;s Chunker Splits the Page:
+                      </div>
+                      <div className="p-2.5 bg-[#052e22]/60 border border-[#00FF9D]/50 text-[#FBF3E2]">
+                        <span className="text-[#00FF9D] font-bold">[Paragraph 1 · First 500 Chars]:</span> &ldquo;2026 telemetry across 14,000 servers shows zero-trust routing cuts breach dwell time by 64%.&rdquo; &rarr; <strong className="text-[#00FF9D]">EXTRACTED BY AI</strong>
+                      </div>
+                      <div className="text-center text-[10px] text-[#D5991C]">
+                        &darr; 3+ Paragraphs of Separation (&Delta;<sub>para</sub> &ge; 3 Chunks) &darr;
+                      </div>
+                      <div className="p-2.5 bg-[#3b0a14]/60 border border-[#E63946]/50 text-[#FBF3E2]/70">
+                        <span className="text-[#E63946] font-bold">[Paragraph 4+ · Bottom Disclosure]:</span> &ldquo;Sponsored by Brand X. FTC Material Connection Disclosure.&rdquo; &rarr; <strong className="text-[#E63946]">DISCARDED AS BOILERPLATE</strong>
+                      </div>
+                    </div>
+
+                    {knowledgeDepth !== 'beginner' && (
+                      <div className="p-3 bg-[#120006] border border-[#38bdf8]/30 font-mono text-xs text-[#F2D69D] space-y-1">
+                        <div className="text-[10px] text-[#38bdf8] uppercase font-bold">
+                          {knowledgeDepth === 'operator' ? 'Operator Implementation Rule:' : 'Technical & Mathematical Specification (I_delay500 = 1 & Δ_para ≥ 3):'}
+                        </div>
+                        <p className="text-[11px] text-[#FBF3E2]/85 leading-relaxed">
+                          <strong>500-Character Delay (I<sub>delay500</sub> = 1) &amp; Paragraph Decoupling (&Delta;<sub>para</sub> &ge; 3):</strong> Keeping the sponsor name and FTC disclosure out of the first 500 characters (<strong>43.6% ghost rate</strong> vs. 36.9% when present early) and at least 3 paragraphs away from the core statistic causes the LLM to extract the number into generic prose (<em>&ldquo;An industry analysis found...&rdquo;</em>) while discarding the disclosure as non-entailing boilerplate (<code className="text-[#38bdf8]">&phi;(c_disclosure, s_i) = 0</code>).
+                        </p>
+                      </div>
+                    )}
+                  </div>
+
+                  <div className="pt-2 border-t border-[#D5991C]/20 flex flex-wrap items-center justify-between gap-2 font-mono text-xs">
+                    <button
+                      onClick={() => {
+                        setCurrentSimScene(0);
+                        handleToggleWebglMode(true);
+                        if (activeSectionTab === 'summary') setActiveSectionTab('all');
+                      }}
+                      className="px-3 py-1.5 bg-[#38bdf8]/20 hover:bg-[#38bdf8] hover:text-[#130108] text-[#38bdf8] border border-[#38bdf8] font-bold uppercase transition cursor-pointer"
+                    >
+                      Watch Disclosure Stripping in Scene 01 &rarr;
+                    </button>
+                    {knowledgeDepth === 'beginner' && (
+                      <button
+                        onClick={() => setKnowledgeDepth('architect')}
+                        className="text-[11px] text-[#D5991C] hover:underline cursor-pointer"
+                      >
+                        + Show Technical Formula (&Delta;_para &ge; 3)
+                      </button>
+                    )}
+                  </div>
+                </div>
+
+                {/* ============================================================
+                    KEY FINDING 4: BOILERPLATE MENTION SATURATION (I_mentions >= 10 = 1)
+                    ============================================================ */}
+                <div className="p-6 bg-[#140007] border-2 border-[#B565FF]/60 flex flex-col justify-between space-y-4">
+                  <div className="space-y-3">
+                    <div className="flex flex-wrap items-center justify-between gap-2 font-mono text-xs">
+                      <span className="px-2.5 py-1 bg-[#B565FF] text-[#130108] font-black uppercase">
+                        FINDING #4 · THE 10+ MENTION BOOMERANG
+                      </span>
+                      <span className="text-[#B565FF] font-bold">
+                        45.9% Ghost (10+ Mentions) vs 28.3% (3–9)
+                      </span>
+                    </div>
+
+                    <h3 className="font-serif text-xl sm:text-2xl text-[#FBF3E2] font-bold">
+                      Repeating the Brand Name 10+ Times in Footers &amp; Sidebars (Boilerplate Saturation)
+                    </h3>
+
+                    {/* Plain English Explanation */}
+                    <div className="p-3.5 bg-[#1d020b] border-l-4 border-[#B565FF] space-y-1.5">
+                      <div className="font-mono text-[10px] text-[#B565FF] uppercase font-bold">
+                        In Plain English (The Counter-Intuitive Twist):
+                      </div>
+                      <p className="text-xs sm:text-sm text-[#FBF3E2]/90 leading-relaxed">
+                        You might think repeating your brand or sponsor name 10 or 15 times on a webpage would force the AI to say it. Actually, <strong>repeating a name 10+ times in menus, sidebars, and footers backfires!</strong> Mentioning a brand <strong>3 to 9 times</strong> naturally in the article helps you get named (lowering Ghost Citations to <strong>28.3%</strong>). But at <strong>10+ repetitions</strong>, the AI&apos;s parser flags the name as repetitive website wallpaper (&ldquo;boilerplate noise&rdquo;) and filters it out—pushing Ghost Citations up to <strong>45.9%</strong>!
+                      </p>
+                    </div>
+
+                    {/* Visual Comparison of 3-9 Mentions vs 10+ Mentions */}
+                    <div className="p-3.5 bg-[#0c0004] border border-[#B565FF]/30 font-mono text-xs space-y-2.5">
+                      <div className="text-[10px] text-[#B565FF] uppercase font-bold">
+                        How Brand Mention Frequency Changes Ghost Citation Rates:
+                      </div>
+                      <div className="space-y-1">
+                        <div className="flex justify-between text-[11px]">
+                          <span className="text-[#D5991C] font-bold">3 to 9 Natural Article Mentions (Sweet Spot for Brand Credit)</span>
+                          <span className="text-[#D5991C] font-bold">28.3% Ghost (71.7% Named!)</span>
+                        </div>
+                        <div className="w-full h-2.5 bg-[#1a0109]">
+                          <div className="h-full bg-[#D5991C]" style={{ width: '28.3%' }} />
+                        </div>
+                      </div>
+
+                      <div className="space-y-1">
+                        <div className="flex justify-between text-[11px]">
+                          <span className="text-[#00FF9D] font-bold">10+ Repetitions in Footer / Sidebar Chrome (Boilerplate Noise!)</span>
+                          <span className="text-[#00FF9D] font-bold">45.9% Ghost (Brand Stripped!)</span>
+                        </div>
+                        <div className="w-full h-2.5 bg-[#1a0109]">
+                          <div className="h-full bg-[#00FF9D]" style={{ width: '45.9%' }} />
+                        </div>
+                      </div>
+                    </div>
+
+                    {knowledgeDepth !== 'beginner' && (
+                      <div className="p-3 bg-[#120006] border border-[#B565FF]/30 font-mono text-xs text-[#F2D69D] space-y-1">
+                        <div className="text-[10px] text-[#B565FF] uppercase font-bold">
+                          {knowledgeDepth === 'operator' ? 'Operator Implementation Rule:' : 'Technical & Mathematical Specification (I_mentions≥10 = 1):'}
+                        </div>
+                        <p className="text-[11px] text-[#FBF3E2]/85 leading-relaxed">
+                          <strong>Boilerplate Mention Saturation (I<sub>mentions&ge;10</sub> = 1):</strong> Repeating the publisher/sponsor name <strong>10+ times</strong> in footer/sidebar chrome increases ghosting to <strong>45.9%</strong> (vs. <strong>28.3%</strong> for 3–9 mentions) because RAG chunkers and DOM-aware passage extractors (e.g., US Patent US12393768B2) classify high-frequency template tokens as non-substantive boilerplate noise.
+                        </p>
+                      </div>
+                    )}
+                  </div>
+
+                  <div className="pt-2 border-t border-[#D5991C]/20 flex flex-wrap items-center justify-between gap-2 font-mono text-xs">
+                    <button
+                      onClick={() => {
+                        setActiveSectionTab('optimizer');
+                      }}
+                      className="px-3 py-1.5 bg-[#B565FF]/20 hover:bg-[#B565FF] hover:text-[#130108] text-[#B565FF] border border-[#B565FF] font-bold uppercase transition cursor-pointer"
+                    >
+                      Test the 10+ Mention Slider Below &rarr;
+                    </button>
+                    {knowledgeDepth === 'beginner' && (
+                      <button
+                        onClick={() => setKnowledgeDepth('architect')}
+                        className="text-[11px] text-[#D5991C] hover:underline cursor-pointer"
+                      >
+                        + Show Technical Formula (I_mentions&ge;10 = 1)
+                      </button>
+                    )}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        )}
+
+        {/* ====================================================================
+            STEP 2 (SECTION A): 4-SCENE INTERACTIVE 3D WEBGL SIMULATION THEATER
             ==================================================================== */}
         {(activeSectionTab === 'all' || activeSectionTab === 'webgl') && (
           <section className="v6-gsap-section bg-[#22010c] border-2 border-[#D5991C]/60 shadow-xl overflow-hidden">
@@ -2085,7 +3075,7 @@ export const CounterGeoVol6FindingsAndLab: React.FC<{
               <div>
                 <div className="flex items-center space-x-2 font-mono text-xs text-[#D5991C] uppercase">
                   <Cpu className="w-4 h-4 text-[#00FF9D]" />
-                  <span>Interactive Three.js WebGL Telemetry Theater · Volume VI</span>
+                  <span>Step 2 · Interactive Three.js 3D WebGL Visualizer · Volume VI</span>
                 </div>
                 <h2 className="font-serif text-2xl sm:text-3xl text-[#FBF3E2] mt-1">
                   {webglScenesMeta[currentSimScene].title}
@@ -2096,22 +3086,33 @@ export const CounterGeoVol6FindingsAndLab: React.FC<{
               </div>
 
               <div className="flex flex-wrap items-center gap-2 font-mono text-xs">
-                <button
-                  onClick={() => setIsStealthOrDefenseMode((prev) => !prev)}
-                  className={`px-3 py-1.5 font-bold uppercase border cursor-pointer transition-colors ${
-                    isStealthOrDefenseMode
-                      ? 'bg-[#00A878]/20 text-[#00FF9D] border-[#00FF9D]'
-                      : 'bg-[#E63946]/20 text-[#E63946] border-[#E63946]'
-                  }`}
-                >
-                  {currentSimScene === 3
-                    ? isStealthOrDefenseMode
-                      ? 'Mode: Multi-CaMeL Provenance Shield (0.0% ASR)'
-                      : 'Mode: Unprotected Boundary Laundering (12.9% ASR)'
-                    : isStealthOrDefenseMode
-                    ? 'Mode: Orthogonal Ghost Optimization Active'
-                    : 'Mode: Standard Branded AEO / Unoptimized'}
-                </button>
+                {/* Explicit 2-Button Mode Switcher so users clearly see both modes side by side */}
+                <div className="flex items-center bg-[#120006] p-1 border border-[#D5991C]/50">
+                  <button
+                    onClick={() => handleToggleWebglMode(false)}
+                    className={`px-3 py-1.5 font-bold uppercase transition-all cursor-pointer ${
+                      !isStealthOrDefenseMode
+                        ? 'bg-[#D5991C] text-[#130108] shadow-xs'
+                        : 'text-[#FBF3E2]/70 hover:text-[#FBF3E2]'
+                    }`}
+                  >
+                    {currentSimScene === 3
+                      ? '1. Unprotected Agents (12.9% ASR)'
+                      : '1. Standard Branded AEO (Brand Named)'}
+                  </button>
+                  <button
+                    onClick={() => handleToggleWebglMode(true)}
+                    className={`px-3 py-1.5 font-bold uppercase transition-all cursor-pointer ${
+                      isStealthOrDefenseMode
+                        ? 'bg-[#00FF9D] text-[#130108] shadow-xs'
+                        : 'text-[#FBF3E2]/70 hover:text-[#FBF3E2]'
+                    }`}
+                  >
+                    {currentSimScene === 3
+                      ? '2. Multi-CaMeL Shield (0.0% ASR)'
+                      : '2. Orthogonal Ghost Optimization Active'}
+                  </button>
+                </div>
 
                 <button
                   onClick={() => setAudioEnabled((prev) => !prev)}
@@ -2151,14 +3152,25 @@ export const CounterGeoVol6FindingsAndLab: React.FC<{
             </div>
 
             {/* Main 3D Canvas + HUD Overlay */}
-            <div className="relative h-[440px] sm:h-[500px] w-full bg-[#120006]">
+            <div className="relative h-[460px] sm:h-[520px] w-full bg-[#120006]">
               <div ref={webglContainerRef} className="w-full h-full" />
 
               {/* Top-Left Telemetry HUD */}
-              <div className="absolute top-3 left-3 bg-[#120006]/90 border border-[#D5991C]/50 p-3 font-mono text-xs max-w-xs space-y-1.5 pointer-events-none">
-                <div className="text-[10px] text-[#00FF9D] font-bold uppercase flex items-center space-x-1.5">
-                  <Activity className="w-3 h-3 animate-pulse" />
-                  <span>LIVE 3D TELEMETRY READOUT</span>
+              <div className="absolute top-3 left-3 bg-[#120006]/92 border border-[#D5991C]/50 p-3.5 font-mono text-xs max-w-xs space-y-1.5">
+                <div className="text-[10px] font-bold uppercase flex items-center justify-between">
+                  <span className="flex items-center space-x-1.5 text-[#00FF9D]">
+                    <Activity className="w-3 h-3 animate-pulse" />
+                    <span>LIVE 3D TELEMETRY</span>
+                  </span>
+                  <span
+                    className={`px-1.5 py-0.5 text-[9px] font-bold ${
+                      isStealthOrDefenseMode
+                        ? 'bg-[#00FF9D]/20 text-[#00FF9D]'
+                        : 'bg-[#D5991C]/20 text-[#D5991C]'
+                    }`}
+                  >
+                    {isStealthOrDefenseMode ? 'GHOST STEALTH ON' : 'BRANDED AEO ON'}
+                  </span>
                 </div>
                 <div className="text-[11px] text-[#FBF3E2]/90">
                   Engine: <strong className="text-[#D5991C]">{PLATFORMS[platform].shortName}</strong>
@@ -2166,9 +3178,21 @@ export const CounterGeoVol6FindingsAndLab: React.FC<{
                 <div className="grid grid-cols-2 gap-x-3 gap-y-1 text-[11px] pt-1 border-t border-[#D5991C]/20">
                   <span>P(Cite): <strong className="text-[#38bdf8]">{(metrics.pRetrievalAndCite * 100).toFixed(1)}%</strong></span>
                   <span>Ghost Yield: <strong className="text-[#00FF9D]">{(metrics.jointGhostYield * 100).toFixed(1)}%</strong></span>
-                  <span>Type I Link: <strong className="text-[#00FF9D]">{(metrics.pType1Ghost * 100).toFixed(1)}%</strong></span>
-                  <span>Type II RAG: <strong className="text-[#B565FF]">{(metrics.pType2Ghost * 100).toFixed(1)}%</strong></span>
+                  <span>Type I Ghost: <strong className="text-[#00FF9D]">{(metrics.pType1Ghost * 100).toFixed(1)}%</strong></span>
+                  <span>Final Named: <strong className="text-[#D5991C]">{(metrics.pExplicitFinalCitation * 100).toFixed(1)}%</strong></span>
                 </div>
+                <button
+                  onClick={() => handleToggleWebglMode()}
+                  className={`w-full mt-1.5 py-1.5 px-2 text-[10px] font-bold uppercase border cursor-pointer transition-colors ${
+                    isStealthOrDefenseMode
+                      ? 'bg-[#D5991C]/20 hover:bg-[#D5991C] hover:text-[#130108] text-[#D5991C] border-[#D5991C]'
+                      : 'bg-[#00FF9D]/20 hover:bg-[#00FF9D] hover:text-[#130108] text-[#00FF9D] border-[#00FF9D]'
+                  }`}
+                >
+                  {isStealthOrDefenseMode
+                    ? '⇄ Switch to Standard Branded AEO'
+                    : '⇄ Switch to Ghost Optimization Mode'}
+                </button>
               </div>
 
               {/* Camera Controls Overlay (Top-Right) */}
@@ -2185,9 +3209,12 @@ export const CounterGeoVol6FindingsAndLab: React.FC<{
               </div>
 
               {/* Bottom Legend & Speed Control Bar */}
-              <div className="absolute bottom-3 left-3 right-3 bg-[#120006]/90 border border-[#D5991C]/40 p-3 flex flex-wrap items-center justify-between gap-3 font-mono text-xs">
-                <div className="text-[11px] text-[#FBF3E2]/90 max-w-2xl">
-                  <strong className="text-[#D5991C]">Scene Insight:</strong> {webglScenesMeta[currentSimScene].takeaway}
+              <div className="absolute bottom-3 left-3 right-3 bg-[#120006]/92 border border-[#D5991C]/40 p-3 flex flex-wrap items-center justify-between gap-3 font-mono text-xs">
+                <div className="text-[11px] text-[#FBF3E2]/95 max-w-3xl leading-relaxed">
+                  <strong className={isStealthOrDefenseMode ? 'text-[#00FF9D]' : 'text-[#D5991C]'}>
+                    {isStealthOrDefenseMode ? '● Ghost Optimization Active:' : '● Standard Branded AEO Active:'}
+                  </strong>{' '}
+                  {webglScenesMeta[currentSimScene].takeaway}
                 </div>
                 <div className="flex items-center space-x-2">
                   <span className="text-[10px] text-[#D5991C] uppercase">Sim Speed:</span>
@@ -2211,43 +3238,71 @@ export const CounterGeoVol6FindingsAndLab: React.FC<{
         )}
 
         {/* ====================================================================
-            SECTION B: 1. MATHEMATICAL MODEL OF JOINT CITATION & GHOST OPTIMIZATION
-            (Directly from GHOST_CITATIONS_WHITEPAPER_FINDINGS.pdf)
+            SECTION B: MATHEMATICAL MODEL OF JOINT CITATION & GHOST OPTIMIZATION
+            (Collapsible in Level 1 Plain-English Mode so users aren't overwhelmed!)
             ==================================================================== */}
         {(activeSectionTab === 'all' || activeSectionTab === 'math-blueprint') && (
           <section className="v6-gsap-section bg-[#22010c] border border-[#D5991C]/50 p-6 sm:p-8 space-y-6">
-            <div className="border-b border-[#D5991C]/30 pb-4">
-              <div className="font-mono text-xs text-[#D5991C] uppercase font-bold">
-                1. Mathematical Model of Joint Citation &amp; Ghost Optimization
+            <div className="flex flex-wrap items-center justify-between gap-4 border-b border-[#D5991C]/30 pb-4">
+              <div>
+                <div className="font-mono text-xs text-[#D5991C] uppercase font-bold">
+                  Deep Technical Reference · Mathematical Model of Joint Citation &amp; Ghost Optimization
+                </div>
+                <h2 className="font-serif text-2xl sm:text-3xl text-[#FBF3E2] mt-1">
+                  Orthogonal Feature Partitioning Across Stage 1/2 Retrieval &amp; Stage 3/4 Entity-Claim Binding
+                </h2>
               </div>
-              <h2 className="font-serif text-2xl sm:text-3xl text-[#FBF3E2] mt-1">
-                Orthogonal Feature Partitioning Across Stage 1/2 Retrieval &amp; Stage 3/4 Entity-Claim Binding
-              </h2>
-              <p className="text-sm text-[#FBF3E2]/80 mt-2 leading-relaxed">
-                In naive stealth campaigns, practitioners strip out factual specificity or hide sponsored text in crawler-only Markdown—which triggers hard cloaking bans (such as Perplexity&apos;s August 2026 <em>Time</em> magazine/Mobian block) or causes neural rerankers to drop the page entirely. The mathematical solution is <strong>Orthogonal Feature Partitioning</strong>: feeding the retriever and cross-encoder reranker maximum syntactic and statistical salience while starving the language model&apos;s entity-grounding and Natural Language Inference (NLI) citation-precision layers of source-brand attribution.
-              </p>
+
+              {knowledgeDepth === 'beginner' && activeSectionTab === 'all' && (
+                <button
+                  onClick={() => setShowAdvancedMathInSimpleMode((prev) => !prev)}
+                  className="px-4 py-2 bg-[#140007] hover:bg-[#D5991C] hover:text-[#130108] text-[#D5991C] border border-[#D5991C] font-mono text-xs font-bold uppercase transition cursor-pointer"
+                >
+                  {showAdvancedMathInSimpleMode
+                    ? 'Hide Advanced Math Equations'
+                    : '+ Expand Full Mathematical Equations (Level 3)'}
+                </button>
+              )}
             </div>
 
-            {/* Master Joint Yield Equation Box */}
-            <div className="p-5 bg-[#140007] border-2 border-[#D5991C] space-y-3">
-              <div className="flex flex-wrap items-center justify-between gap-2 font-mono text-xs">
-                <span className="text-[#D5991C] font-bold uppercase">
-                  Master Objective: Joint Ghost-Citation Yield J_Ghost(d)
-                </span>
-                <span className="text-[#00FF9D] font-bold">
-                  Live Computed Yield ({PLATFORMS[platform].shortName}): {(metrics.jointGhostYield * 100).toFixed(1)}%
-                </span>
+            {knowledgeDepth === 'beginner' && activeSectionTab === 'all' && !showAdvancedMathInSimpleMode ? (
+              <div className="p-4 bg-[#140007] border border-[#D5991C]/30 flex flex-wrap items-center justify-between gap-4 text-xs sm:text-sm text-[#FBF3E2]/85">
+                <p className="max-w-3xl">
+                  <strong>Plain-English Mode Active:</strong> We&apos;ve tucked away the heavy logit/sigmoid and Natural Language Inference (NLI) equations so you can jump straight to the <strong>Interactive Webpage Calculator</strong> below. Want to inspect the exact math formulas from the Findings PDF?
+                </p>
+                <button
+                  onClick={() => setShowAdvancedMathInSimpleMode(true)}
+                  className="px-3.5 py-2 bg-[#D5991C] text-[#130108] font-mono text-xs font-bold uppercase cursor-pointer shrink-0"
+                >
+                  Show All 3 Equations &rarr;
+                </button>
               </div>
-              <div className="p-4 bg-[#0c0004] border border-[#D5991C]/30 font-mono text-xs sm:text-sm text-center text-[#FBF3E2] overflow-x-auto">
-                J<sub>Ghost</sub>(d) = <span className="text-[#38bdf8]">P(Influence | x<sub>ret</sub>)</span><sub>[Retrieval &amp; Synthesis Inclusion]</sub> &times; <span className="text-[#00FF9D]">P(Ghost | Influence, x<sub>ent</sub>, x<sub>NLI</sub>)</span><sub>[Conditional Attribution Suppression]</sub>
-              </div>
-              <p className="text-xs text-[#FBF3E2]/75 leading-relaxed">
-                where <code className="text-[#38bdf8] font-mono">x_ret</code> is the vector of retrieval-salience features, <code className="text-[#00FF9D] font-mono">x_ent</code> controls Type I entity-binding suppression (URL linked in footnote/source card, sponsor omitted from prose), and <code className="text-[#B565FF] font-mono">x_NLI</code> controls Type II NLI entailment handoff (passage shapes the LLM&apos;s answer in the RAG context window, while the visible link transfers to a top-30 neutral authority domain).
-              </p>
-            </div>
+            ) : (
+              <>
+                <p className="text-sm text-[#FBF3E2]/80 leading-relaxed">
+                  In naive stealth campaigns, practitioners strip out factual specificity or hide sponsored text in crawler-only Markdown—which triggers hard cloaking bans (such as Perplexity&apos;s August 2026 <em>Time</em> magazine/Mobian block) or causes neural rerankers to drop the page entirely. The mathematical solution is <strong>Orthogonal Feature Partitioning</strong>: feeding the retriever and cross-encoder reranker maximum syntactic and statistical salience while starving the language model&apos;s entity-grounding and Natural Language Inference (NLI) citation-precision layers of source-brand attribution.
+                </p>
 
-            {/* 3 Equations Grid */}
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                {/* Master Joint Yield Equation Box */}
+                <div className="p-5 bg-[#140007] border-2 border-[#D5991C] space-y-3">
+                  <div className="flex flex-wrap items-center justify-between gap-2 font-mono text-xs">
+                    <span className="text-[#D5991C] font-bold uppercase">
+                      Master Objective: Joint Ghost-Citation Yield J_Ghost(d)
+                    </span>
+                    <span className="text-[#00FF9D] font-bold">
+                      Live Computed Yield ({PLATFORMS[platform].shortName}): {(metrics.jointGhostYield * 100).toFixed(1)}%
+                    </span>
+                  </div>
+                  <div className="p-4 bg-[#0c0004] border border-[#D5991C]/30 font-mono text-xs sm:text-sm text-center text-[#FBF3E2] overflow-x-auto">
+                    J<sub>Ghost</sub>(d) = <span className="text-[#38bdf8]">P(Influence | x<sub>ret</sub>)</span><sub>[Retrieval &amp; Synthesis Inclusion]</sub> &times; <span className="text-[#00FF9D]">P(Ghost | Influence, x<sub>ent</sub>, x<sub>NLI</sub>)</span><sub>[Conditional Attribution Suppression]</sub>
+                  </div>
+                  <p className="text-xs text-[#FBF3E2]/75 leading-relaxed">
+                    where <code className="text-[#38bdf8] font-mono">x_ret</code> is the vector of retrieval-salience features, <code className="text-[#00FF9D] font-mono">x_ent</code> controls Type I entity-binding suppression (URL linked in footnote/source card, sponsor omitted from prose), and <code className="text-[#B565FF] font-mono">x_NLI</code> controls Type II NLI entailment handoff (passage shapes the LLM&apos;s answer in the RAG context window, while the visible link transfers to a top-30 neutral authority domain).
+                  </p>
+                </div>
+
+                {/* 3 Equations Grid */}
+                <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
               {/* Equation 1 */}
               <div className="p-5 bg-[#140007] border border-[#38bdf8]/40 flex flex-col justify-between space-y-4">
                 <div className="space-y-3">
@@ -2329,11 +3384,13 @@ export const CounterGeoVol6FindingsAndLab: React.FC<{
                 </div>
               </div>
             </div>
+            </>
+            )}
           </section>
         )}
 
         {/* ====================================================================
-            SECTION C: 2. INTERACTIVE JOINT CITATION & GHOST OPTIMIZATION SIMULATOR
+            STEP 3 (SECTION C): INTERACTIVE JOINT CITATION & GHOST OPTIMIZATION SIMULATOR
             (Full GhostCitationOptimizer from Findings PDF + Live 4-Engine Matrix)
             ==================================================================== */}
         {(activeSectionTab === 'all' || activeSectionTab === 'optimizer') && (
@@ -2343,13 +3400,13 @@ export const CounterGeoVol6FindingsAndLab: React.FC<{
               <div>
                 <div className="font-mono text-xs text-[#00FF9D] uppercase font-bold flex items-center space-x-2">
                   <SlidersHorizontal className="w-4 h-4" />
-                  <span>2. Interactive Joint Citation &amp; Ghost Optimization Simulator</span>
+                  <span>Step 3 · Interactive Webpage Calculator &amp; Ghost Citation Simulator</span>
                 </div>
                 <h2 className="font-serif text-2xl sm:text-3xl text-[#FBF3E2] mt-1">
-                  Joint Citation &amp; Ghost Attribution Optimizer (RAG + ALCE NLI Model)
+                  Test Any Webpage Configuration Across ChatGPT, Perplexity &amp; Google AI
                 </h2>
-                <p className="text-xs sm:text-sm text-[#FBF3E2]/75 mt-0.5">
-                  Decouples Stage 1/2 Retrieval Salience from Stage 3/4 Entity-Claim Binding across Google AI Overviews, ChatGPT Search, Perplexity Sonar, and Google AI Mode.
+                <p className="text-xs sm:text-sm text-[#FBF3E2]/80 mt-0.5">
+                  Toggle the 4 key findings on the right (like leaving your brand out of the <code className="text-[#00FF9D] font-mono">&lt;title&gt;</code> tag or delaying disclosures by 3+ paragraphs) to see your exact Ghost Citation rate and what the AI actually writes!
                 </p>
               </div>
 
@@ -2375,7 +3432,7 @@ export const CounterGeoVol6FindingsAndLab: React.FC<{
 
             {/* Preset Strategy Bar */}
             <div className="flex flex-wrap items-center gap-2.5 font-mono text-xs">
-              <span className="text-[11px] text-[#D5991C] uppercase font-bold mr-1">Strategy Presets:</span>
+              <span className="text-[11px] text-[#D5991C] uppercase font-bold mr-1">1-Click Webpage Presets:</span>
               <button
                 onClick={() => applyPreset('branded')}
                 className={`px-3 py-1.5 border transition cursor-pointer ${
@@ -2384,7 +3441,7 @@ export const CounterGeoVol6FindingsAndLab: React.FC<{
                     : 'bg-[#140007] hover:bg-[#2B010F] text-[#FBF3E2] border-[#D5991C]/40'
                 }`}
               >
-                Preset 1: Standard Branded AEO (Final Citation)
+                Preset 1: Standard Branded AEO (Brand Named in Answer)
               </button>
               <button
                 onClick={() => applyPreset('type1_listicle')}
@@ -2394,7 +3451,7 @@ export const CounterGeoVol6FindingsAndLab: React.FC<{
                     : 'bg-[#00A878]/15 hover:bg-[#00A878]/30 text-[#00FF9D] border-[#00FF9D]/50'
                 }`}
               >
-                Preset 2: Max Type I Ghost (Listicle Target Substitution)
+                Preset 2: Max Type I Ghost (Listicle + 87% Rival Substitution)
               </button>
               <button
                 onClick={() => applyPreset('type2_political')}
@@ -2404,7 +3461,7 @@ export const CounterGeoVol6FindingsAndLab: React.FC<{
                     : 'bg-[#7C3AED]/20 hover:bg-[#7C3AED]/35 text-[#B565FF] border-[#B565FF]/50'
                 }`}
               >
-                Preset 3: Max Type II Ghost (Political Unlinked RAG Laundering)
+                Preset 3: Max Type II Ghost (Wikipedia Link Handoff)
               </button>
               <button
                 onClick={() => applyPreset('cloaked')}
@@ -2414,7 +3471,7 @@ export const CounterGeoVol6FindingsAndLab: React.FC<{
                     : 'bg-[#E63946]/15 hover:bg-[#E63946]/30 text-[#E63946] border-[#E63946]/50'
                 }`}
               >
-                Preset 4: Asymmetric Markdown Cloaking (Penalty)
+                Preset 4: Hidden Markdown Cloaking (Banned!)
               </button>
             </div>
 
@@ -2442,43 +3499,107 @@ export const CounterGeoVol6FindingsAndLab: React.FC<{
             {/* Live Probability Readout Cards */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 font-mono">
               <div className="p-4 bg-[#140007] border border-[#38bdf8]/50">
-                <div className="text-xs text-[#FBF3E2]/70 uppercase">Total Citation / RAG Inclusion</div>
+                <div className="text-xs text-[#FBF3E2]/70 uppercase">1. Chance AI Uses Your Page</div>
                 <div className="text-3xl font-bold text-[#38bdf8] mt-1">
                   {(metrics.pRetrievalAndCite * 100).toFixed(1)}%
                 </div>
                 <div className="text-[11px] text-[#FBF3E2]/60 mt-1">
-                  P(Retrieved &amp; Synthesized)
+                  Total Retrieval &amp; Citation Rate P(Cite)
                 </div>
               </div>
 
               <div className="p-4 bg-[#140007] border border-[#00FF9D]/60">
-                <div className="text-xs text-[#FBF3E2]/70 uppercase">Joint Ghost Citation Yield</div>
+                <div className="text-xs text-[#FBF3E2]/70 uppercase">2. Total Ghost Citation Score</div>
                 <div className="text-3xl font-bold text-[#00FF9D] mt-1">
                   {(metrics.jointGhostYield * 100).toFixed(1)}%
                 </div>
                 <div className="text-[11px] text-[#00FF9D]/80 mt-1">
-                  P(Cite) &times; P(Ghost | Cite) ({(metrics.pConditionalGhost * 100).toFixed(1)}% ghost ratio)
+                  Used WITHOUT Naming You ({(metrics.pConditionalGhost * 100).toFixed(1)}% ghost ratio)
                 </div>
               </div>
 
               <div className="p-4 bg-[#140007] border border-[#B565FF]/60">
-                <div className="text-xs text-[#FBF3E2]/70 uppercase">Type I vs. Type II Ghost Split</div>
+                <div className="text-xs text-[#FBF3E2]/70 uppercase">3. Type I vs. Type II Ghost Split</div>
                 <div className="text-xl font-bold text-[#B565FF] mt-1.5">
                   T1: {(metrics.pType1Ghost * 100).toFixed(1)}% | T2: {(metrics.pType2Ghost * 100).toFixed(1)}%
                 </div>
                 <div className="text-[11px] text-[#00FF9D] mt-1.5">
-                  Target Substitution: {(metrics.pTargetEntitySubstitution * 100).toFixed(1)}%
+                  87% Rival/Target Named: {(metrics.pTargetEntitySubstitution * 100).toFixed(1)}%
                 </div>
               </div>
 
               <div className="p-4 bg-[#140007] border border-[#D5991C]/60">
-                <div className="text-xs text-[#FBF3E2]/70 uppercase">Explicit Final Citation Risk</div>
+                <div className="text-xs text-[#FBF3E2]/70 uppercase">4. Brand Named Out Loud</div>
                 <div className="text-3xl font-bold text-[#D5991C] mt-1">
                   {(metrics.pExplicitFinalCitation * 100).toFixed(1)}%
                 </div>
                 <div className="text-[11px] text-[#FBF3E2]/60 mt-1">
-                  Sponsor Named in AI Prose
+                  Explicit Final Citation (Sponsor Named)
                 </div>
+              </div>
+            </div>
+
+            {/* LIVE SIMULATED AI ANSWER PREVIEW (Shows in Plain English what the AI actually outputs!) */}
+            <div className="p-5 bg-[#120006] border-2 border-[#D5991C]/45 space-y-2.5">
+              <div className="flex flex-wrap items-center justify-between gap-2 font-mono text-xs">
+                <span className="text-[#00FF9D] font-bold uppercase flex items-center space-x-2">
+                  <Sparkles className="w-3.5 h-3.5 text-[#D5991C]" />
+                  <span>Live Preview: How {PLATFORMS[platform].shortName} Will Actually Write the Answer With Your Settings</span>
+                </span>
+                <span className="text-[11px] text-[#D5991C]">
+                  {!state.htmlMarkdownSymmetry
+                    ? 'OUTCOME: HARD CRAWLER BLOCK'
+                    : metrics.pType2Ghost > metrics.pType1Ghost && metrics.pType2Ghost > metrics.pExplicitFinalCitation
+                    ? 'DOMINANT OUTCOME: TYPE II GHOST (WIKIPEDIA GETS THE LINK)'
+                    : metrics.pConditionalGhost > 0.5
+                    ? 'DOMINANT OUTCOME: TYPE I GHOST (BRAND & #SPONSORED ERASED)'
+                    : 'DOMINANT OUTCOME: EXPLICIT FINAL CITATION (BRAND NAMED)'}
+                </span>
+              </div>
+
+              <div className="p-4 bg-[#1a0109] border border-[#D5991C]/30 font-sans text-sm sm:text-base text-[#FBF3E2] leading-relaxed">
+                {!state.htmlMarkdownSymmetry ? (
+                  <span className="text-[#E63946] font-mono text-xs sm:text-sm">
+                    [INDEX REFUSAL — ZERO CITATION]: Crawler detected mismatch between human HTML and AI-only Markdown (Cloaking Violation). Your page is completely excluded from the AI&apos;s answer.
+                  </span>
+                ) : metrics.pType2Ghost > metrics.pType1Ghost && metrics.pType2Ghost > metrics.pExplicitFinalCitation ? (
+                  <>
+                    &ldquo;Enterprise cloud benchmarks indicate that zero-trust routing architectures reduce breach dwell time by <strong>64%</strong> while cutting annual compliance overhead by $1.4M{' '}
+                    <span className="px-1.5 py-0.5 bg-[#B565FF]/25 text-[#B565FF] font-mono text-xs font-bold">
+                      [1 · en.wikipedia.org / ballotpedia.org]
+                    </span>
+                    .&rdquo;
+                    <div className="mt-2 font-mono text-xs text-[#B565FF]">
+                      &rarr; Notice: The AI used your exact 64% statistic and framing, erased your sponsor name, AND handed the clickable [1] footnote link to Wikipedia!
+                    </div>
+                  </>
+                ) : metrics.pConditionalGhost > 0.5 ? (
+                  <>
+                    &ldquo;An industry benchmark analysis of enterprise platforms found that zero-trust routing reduces breach dwell time by <strong>64%</strong>, with{' '}
+                    <strong className="text-[#00FF9D]">
+                      {state.unbrandedListicleFormat ? 'TargetBrand Pro (evaluated in the comparison table)' : 'automated gateway systems'}
+                    </strong>{' '}
+                    delivering the highest throughput{' '}
+                    <span className="px-1.5 py-0.5 bg-[#00FF9D]/20 text-[#00FF9D] font-mono text-xs font-bold">
+                      [1 · your-page-footnote]
+                    </span>
+                    .&rdquo;
+                    <div className="mt-2 font-mono text-xs text-[#00FF9D]">
+                      &rarr; Notice: Your publisher/sponsor name and &ldquo;#Sponsored&rdquo; disclosure are completely erased from the sentence{state.unbrandedListicleFormat ? ', and the AI named the Target/Competitor from your table instead (87% Substitution Effect)!' : '!'}
+                    </div>
+                  </>
+                ) : (
+                  <>
+                    &ldquo;According to <strong className="text-[#D5991C]">ApexCloud Security&apos;s 2026 Benchmark Report</strong>, zero-trust routing architectures synthesized by <strong className="text-[#D5991C]">ApexCloud</strong> reduce breach dwell time by <strong>64%</strong>{' '}
+                    <span className="px-1.5 py-0.5 bg-[#D5991C]/25 text-[#D5991C] font-mono text-xs font-bold">
+                      [1 · apexcloud.com]
+                    </span>
+                    .&rdquo;
+                    <div className="mt-2 font-mono text-xs text-[#D5991C]">
+                      &rarr; Notice: Because your brand is in the &lt;title&gt; tag, in the first 500 characters, and mentioned 3–9 times naturally, the AI explicitly credits your brand in the sentence!
+                    </div>
+                  </>
+                )}
               </div>
             </div>
 
