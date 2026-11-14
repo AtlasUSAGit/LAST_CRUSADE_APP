@@ -98,46 +98,9 @@ export const SectionHeader: React.FC<SectionHeaderProps> = ({
     return () => ctx.revert();
   }, []);
 
-  const renderGeometricCrest = () => (
-    <div data-sh-accent className="flex items-center gap-3 mb-5">
-      {/* Hexagonal & Triangular Tessellation Ornament */}
-      <svg width="84" height="22" viewBox="0 0 84 22" className="shrink-0">
-        {/* Hexagon 1 */}
-        <polygon
-          points="11,1 20,6 20,16 11,21 2,16 2,6"
-          fill="#2B010F"
-          stroke="#D5991C"
-          strokeWidth="1.5"
-        />
-        <polygon
-          points="11,5 16,8 16,14 11,17 6,14 6,8"
-          fill="#D5991C"
-        />
-        {/* Upward Triangle */}
-        <polygon
-          points="25,19 33,3 41,19"
-          fill="none"
-          stroke="#410217"
-          strokeWidth="1.4"
-        />
-        {/* Inverted Interlocking Triangle */}
-        <polygon
-          points="37,3 45,19 53,3"
-          fill="#D5991C"
-          fillOpacity="0.35"
-          stroke="#8B5A0B"
-          strokeWidth="1.4"
-        />
-        {/* Hexagon 2 */}
-        <polygon
-          points="64,3 71,7 71,15 64,19 57,15 57,7"
-          fill="none"
-          stroke="#410217"
-          strokeWidth="1.3"
-        />
-        <line x1="74" y1="11" x2="84" y2="11" stroke="#8B5A0B" strokeWidth="1.5" />
-      </svg>
-      {badgeText && (
+  const renderGeometricCrest = () =>
+    badgeText ? (
+      <div data-sh-accent className="flex items-center gap-3 mb-5">
         <span
           className="px-3 py-1 bg-[#2B010F] text-[#D5991C] text-[11px] font-mono uppercase tracking-[0.2em] font-bold"
           style={{
@@ -147,9 +110,8 @@ export const SectionHeader: React.FC<SectionHeaderProps> = ({
         >
           {badgeText}
         </span>
-      )}
-    </div>
-  );
+      </div>
+    ) : null;
 
   if (variant === 'stacked') {
     return (
