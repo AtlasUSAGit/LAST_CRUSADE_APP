@@ -76,7 +76,7 @@ export const MASTER_DOC_VOL6_SECTIONS: PaperSectionVol6[] = [
     id: 'sec-v6-9',
     number: '09',
     title: 'Works cited',
-    desc: 'Complete 69-source academic, empirical, patent, regulatory, and protocol bibliography.'
+    desc: 'Complete 70-source academic, empirical, patent, regulatory, and protocol bibliography.'
   }
 ];
 
@@ -89,346 +89,351 @@ export interface Vol6CitationItem {
 export const VOL6_WORKS_CITED: Vol6CitationItem[] = [
   {
     num: 1,
+    text: "Petra Labs — Sponsored Posts & AI Search Citation Study, ",
+    url: "https://lnkd.in/p/eVcgVHq4"
+  },
+  {
+    num: 2,
     text: 'Ghost citations: Why AI search cites your content, not your brand, ',
     url: 'https://searchengineland.com/ghost-citation-problem-ai-483794'
   },
   {
-    num: 2,
+    num: 3,
     text: 'What is a ghost citation? - Growth Memo, ',
     url: 'https://library.growth-memo.com/p/ghost-citation'
   },
   {
-    num: 3,
+    num: 4,
     text: 'Ads for AI Agents: The Time-Perplexity Markdown Fight, ',
     url: 'https://www.digitalapplied.com/blog/time-markdown-ads-ai-agents-perplexity-block'
   },
   {
-    num: 4,
+    num: 5,
     text: 'Generative AI Advertising as a Problem of Trustworthy Commercial, ',
     url: 'https://arxiv.org/html/2605.18673v1'
   },
   {
-    num: 5,
+    num: 6,
     text: "Retrieval vs Citation — Why Being Fetched by AI Isn't Being Cited, ",
     url: 'https://primores.org/wiki/glossary/retrieval-vs-citation/'
   },
   {
-    num: 6,
+    num: 7,
     text: 'Why Perplexity AI Recommends Your Competitor (And How to Audit, ',
     url: 'https://digiwebscape.com/blog/why-perplexity-ai-recommends-your-competitor/'
   },
   {
-    num: 7,
+    num: 8,
     text: "Google's Agent2Agent Protocol Will Radically Change the Web, ",
     url: 'https://www.mariehaynes.com/googles-agent2agent-protocol-will-radically-change-the-web/'
   },
   {
-    num: 8,
+    num: 9,
     text: "Why 62% of AI citations don't lead to brand mentions [Study] - Semrush, ",
     url: 'https://www.semrush.com/blog/the-ghost-citations-study/'
   },
   {
-    num: 9,
+    num: 10,
     text: 'Ghost Citations: Ranked on Google, Unnamed by AI | Agile, ',
     url: 'https://www.agiledigitalagency.com/blog/ghost-citations-ai-search/'
   },
   {
-    num: 10,
+    num: 11,
     text: 'Enabling Large Language Models to Generate Text with Citations, ',
     url: 'https://ar5iv.labs.arxiv.org/html/2305.14627'
   },
   {
-    num: 11,
+    num: 12,
     text: 'What Is An AI Citation? | Similarweb, ',
     url: 'https://aisearch.similarweb.com/blog/what-is-an-ai-citation/'
   },
   {
-    num: 12,
+    num: 13,
     text: 'Ghost Citations in 2026: Why AI Search Uses Your Content but, ',
     url: 'https://usereach.ai/blog/ghost-citations'
   },
   {
-    num: 13,
+    num: 14,
     text: 'A Fitted Stage Model of Brand Visibility in AI Search - arXiv, ',
     url: 'https://arxiv.org/html/2609.23162v1'
   },
   {
-    num: 14,
+    num: 15,
     text: 'What are Citations in AI Answers? - Scribbright, ',
     url: 'https://scribbright.com/glossary/citations-in-ai-answers/'
   },
   {
-    num: 15,
+    num: 16,
     text: 'How to Get Cited by Google AI Overviews - NON.agency, ',
     url: 'https://non.agency/en/blog/how-to-get-cited-by-google-ai-overviews/'
   },
   {
-    num: 16,
+    num: 17,
     text: 'Language Models Are “Insecure” Reporters - arXiv, ',
     url: 'https://arxiv.org/html/2609.36139v1'
   },
   {
-    num: 17,
+    num: 18,
     text: 'Can You Advertise on Perplexity? 2026 GEO Guide, ',
     url: 'https://www.brandedagency.com/blog/advertise-on-perplexity'
   },
   {
-    num: 18,
+    num: 19,
     text: 'Perplexity Optimization: How to Get Cited & Linked (2026), ',
     url: 'https://discoveredlabs.com/blog/perplexity-optimization-how-to-get-cited-linked-2026'
   },
   {
-    num: 19,
+    num: 20,
     text: 'ChatGPT Ads Just Changed Machine Relations Forever, ',
     url: 'https://authoritytech.io/blog/chatgpt-ads-changed-machine-relations-forever.md'
   },
   {
-    num: 20,
+    num: 21,
     text: 'YouTube influencers have an AI audience: What millions of citation, ',
     url: 'https://scrunch.com/blog/youtube-influencers-have-an-ai-audience-influencer-sponsorships'
   },
   {
-    num: 21,
+    num: 22,
     text: 'Paid Mentions Are Just Paid Links Wearing a GEO Costume, ',
     url: 'https://www.pageonepower.com/linkarati/paid-mentions-are-just-paid-links-wearing-a-geo-costume'
   },
   {
-    num: 22,
+    num: 23,
     text: 'AI Search Visibility: How to Get Cited by ChatGPT & Perplexity, ',
     url: 'https://searchatlas.com/blog/ai-search-visibility/'
   },
   {
-    num: 23,
+    num: 24,
     text: 'Why ChatGPT Almost Never Cites Your Brand: A Creator-Content, ',
     url: 'https://www.hyper-star.org/blog/aeo-creator-content-ai-search/'
   },
   {
-    num: 24,
+    num: 25,
     text: 'FTC AI Disclosure Rules 2026: Complete Marketer Guide - theStacc, ',
     url: 'https://thestacc.com/blog/ftc-ai-disclosure-rules-2026/'
   },
   {
-    num: 25,
+    num: 26,
     text: 'AI Disclosure Placement Rules for Sponsored Posts ... - Veritypress, ',
     url: 'https://veritypress.ai/blog/ai-disclosure-placement-rules-sponsored-posts-video-ads'
   },
   {
-    num: 26,
+    num: 27,
     text: 'Answer Synthesis: How AI Engines Merge Multiple Sources Into One, ',
     url: 'https://digitalstrategyforce.com/journal/answer-synthesis-how-ai-engines-merge-multiple-sources/'
   },
   {
-    num: 27,
+    num: 28,
     text: 'Ghost Citations: AI Search Cites Your Content, Not Your Brand, ',
     url: 'https://seovendor.co/ghost-citations-ai-search-cites-your-content-not-your-brand/'
   },
   {
-    num: 28,
+    num: 29,
     text: 'AI Overviews and Influencer Content: How Citation Works, ',
     url: 'https://www.makeinfluence.com/en/academy/how-influencer-content-gets-cited-in-google-ai-overviews-and-other-answer-engines'
   },
   {
-    num: 29,
+    num: 30,
     text: 'Ghost citations: AI search is using your content, but not your brand, ',
     url: 'https://www.ontapgroup.com/blog/ghost-citations-ai-search-using-your-content'
   },
   {
-    num: 30,
+    num: 31,
     text: 'How AI Search Tracking Actually Works: A Technical Breakdown, ',
     url: 'https://ziptie.ai/blog/how-ai-search-tracking-actually-works/'
   },
   {
-    num: 31,
+    num: 32,
     text: 'Enterprise Guide to Strategic SEO & AEO - The ABM Agency, ',
     url: 'https://abmagency.com/aeo-guide/'
   },
   {
-    num: 32,
+    num: 33,
     text: 'US Political Campaigns Shift Focus to Generative Engine, ',
     url: 'https://foundrcfos.com/pulse/us-political-candidates-tailor-messages-for-ai-models-used-by-voters-vp907'
   },
   {
-    num: 33,
+    num: 34,
     text: 'Mining Reranker Training Data from RAG Citations - Cole Hoffer, ',
     url: 'https://www.colehoffer.ai/articles/building-rerankers-from-rag-citations'
   },
   {
-    num: 34,
+    num: 35,
     text: 'Agentic Engine Optimization (AEO) | AddyOsmani.com, ',
     url: 'https://addyosmani.com/blog/agentic-engine-optimization/'
   },
   {
-    num: 35,
+    num: 36,
     text: 'What Is Generative Engine Optimization (GEO)? | DiamondBack, ',
     url: 'https://diamondbackadvertising.com/generative-engine-optimization/'
   },
   {
-    num: 36,
+    num: 37,
     text: 'AI SEO for Political Campaigns (AEO) — Civly AI Narratives, ',
     url: 'https://civly.ai/ai-narratives'
   },
   {
-    num: 37,
+    num: 38,
     text: 'On the Capacity of Citation Generation by Large Language Models, ',
     url: 'https://arxiv.org/html/2410.11217v1'
   },
   {
-    num: 38,
+    num: 39,
     text: 'VeriCite: Towards Reliable Citations in Retrieval-Augmented ... - arXiv, ',
     url: 'https://arxiv.org/html/2510.11394v1'
   },
   {
-    num: 39,
+    num: 40,
     text: 'ALiiCE: Evaluating Positional Fine-grained Citation Generation - arXiv, ',
     url: 'https://arxiv.org/pdf/2406.13375'
   },
   {
-    num: 40,
+    num: 41,
     text: 'arXiv:2305.14627v2 [cs.CL] 31 Oct 2023, ',
     url: 'https://arxiv.org/pdf/2305.14627'
   },
   {
-    num: 41,
+    num: 42,
     text: 'What Is the Future of AI Answer Engines? - Search Atlas, ',
     url: 'https://searchatlas.com/blog/future-of-ai-answer-engines/'
   },
   {
-    num: 42,
+    num: 43,
     text: 'The Ultimate Guide to Perplexity - BrightEdge, ',
     url: 'https://www.brightedge.com/perplexity'
   },
   {
-    num: 43,
+    num: 44,
     text: 'Best Practices for Influencing LLM Outputs About Your Brand, ',
     url: 'https://statuslabs.com/blog/best-practices-for-influencing-llm-outputs-about-your-brand'
   },
   {
-    num: 44,
+    num: 45,
     text: 'Anti-Transgender Disinformation in the Age of Algorithmic Search, ',
     url: 'https://just-tech.ssrc.org/articles/anti-transgender-disinformation-in-the-age-of-algorithmic-search-summaries/'
   },
   {
-    num: 45,
+    num: 46,
     text: 'Influence on Investor Judgments of New Venture Plausibility., ',
     url: 'https://www.researchgate.net/publication/276181804_Legitimate_Distinctiveness_and_The_Entrepreneurial_Identity_Influence_on_Investor_Judgments_of_New_Venture_Plausibility'
   },
   {
-    num: 46,
+    num: 47,
     text: 'THE GEO GROUP, INC. POLITICAL ACTION COMMITTEE - FEC, ',
     url: 'https://www.fec.gov/data/committee/C00382150/'
   },
   {
-    num: 47,
+    num: 48,
     text: 'Agent2Agent Protocol in Google Agent Development Kit - Stackademic, ',
     url: 'https://blog.stackademic.com/agent2agent-protocol-in-google-agent-development-kit-a-comprehensive-guide-to-building-real-time-72b9671fb374'
   },
   {
-    num: 48,
+    num: 49,
     text: 'Agent2Agent (A2A) Protocol Specification, ',
     url: 'https://a2a-protocol.org/latest/specification/'
   },
   {
-    num: 49,
+    num: 50,
     text: 'Schema Reference - What is the Model Context Protocol (MCP)?, ',
     url: 'https://modelcontextprotocol.io/specification/2026-07-28/schema'
   },
   {
-    num: 50,
+    num: 51,
     text: 'Client Best Practices - Model Context Protocol, ',
     url: 'https://modelcontextprotocol.io/docs/2026-07-28/develop/clients/client-best-practices'
   },
   {
-    num: 51,
+    num: 52,
     text: 'Google AI Overviews Citation Patterns: What Gets Cited and Why, ',
     url: 'https://presenc.ai/research/google-ai-overviews-citation-patterns'
   },
   {
-    num: 52,
+    num: 53,
     text: '98× Faster LLM Routing Without a Dedicated GPU: Flash Attention, ',
     url: 'https://arxiv.org/pdf/2603.12646'
   },
   {
-    num: 53,
+    num: 54,
     text: 'Getting Started with Agent2Agent (A2A) Protocol: A Purchasing, ',
     url: 'https://codelabs.developers.google.com/intro-a2a-purchasing-concierge'
   },
   {
-    num: 54,
+    num: 55,
     text: 'A Survey of Agent Interoperability Protocols: Model Context ... - arXiv, ',
     url: 'https://arxiv.org/html/2505.02279v1'
   },
   {
-    num: 55,
+    num: 56,
     text: 'Can CaMeLs Talk? Securing Multi-Agent Systems Against Indirect, ',
     url: 'https://arxiv.org/html/2610.05640v1'
   },
   {
-    num: 56,
+    num: 57,
     text: '(PDF) Can CaMeLs Talk? Securing Multi-Agent Systems Against, ',
     url: 'https://www.researchgate.net/publication/415268776_Can_CaMeLs_Talk_Securing_Multi-Agent_Systems_Against_Indirect_Prompt_Injection_Attacks'
   },
   {
-    num: 57,
+    num: 58,
     text: 'A practical guide to building Multi-Agents AI Systems with A2A | by Nilo, ',
     url: 'https://medium.com/google-cloud/a-practical-guide-to-building-multi-agents-ai-systems-with-a2a-2c0e3d77af24'
   },
   {
-    num: 58,
+    num: 59,
     text: 'Can CaMeLs Talk? Securing Multi-Agent Systems Against Indirect, ',
     url: 'https://openreview.net/pdf?id=EpL9bIsnQD'
   },
   {
-    num: 59,
+    num: 60,
     text: 'Can CaMeLs Talk? Securing Multi-Agent Systems Against Indirect, ',
     url: 'https://openreview.net/pdf?id=Tq0LdQaoV4'
   },
   {
-    num: 60,
+    num: 61,
     text: 'Shua arXiv Reader: cs.AI papers — 2026-10-14, ',
     url: 'https://shuarxiv.top/'
   },
   {
-    num: 61,
+    num: 62,
     text: 'Zero-Knowledge Proofs for AI Agent Verification and Privacy - Zylos, ',
     url: 'https://zylos.ai/research/2026-03-18-zero-knowledge-proofs-ai-agent-verification/'
   },
   {
-    num: 62,
+    num: 63,
     text: 'Which Metadata Matters for LLM Tool Selection in MCP? Evidence, ',
     url: 'https://arxiv.org/html/2610.14334v1'
   },
   {
-    num: 63,
+    num: 64,
     text: 'Understanding A2A — The protocol for agent collaboration, ',
     url: 'https://discuss.google.dev/t/understanding-a2a-the-protocol-for-agent-collaboration/189103'
   },
   {
-    num: 64,
+    num: 65,
     text: 'Adversarial Tool Injection Attacks | LLM Security Database - Promptfoo, ',
     url: 'https://www.promptfoo.dev/lm-security-db/vuln/adversarial-tool-injection-attacks-428a631b/'
   },
   {
-    num: 65,
+    num: 66,
     text: 'Manipulating LLM Tool-Calling through Adversarial Injection, ',
     url: 'https://aclanthology.org/2025.naacl-long.101.pdf'
   },
   {
-    num: 66,
+    num: 67,
     text: 'Evolving Jailbreak Adversary and Guardrail for LLM Safety ... - arXiv, ',
     url: 'https://arxiv.org/html/2607.19829v1'
   },
   {
-    num: 67,
+    num: 68,
     text: 'Multi-Agent Systems: Implementation Best Practices, ',
     url: 'https://fme.safe.com/guides/ai-agent-architecture/multi-agent-systems/'
   },
   {
-    num: 68,
+    num: 69,
     text: 'View Fusion Vis-à-Vis a Bayesian Interpretation of Black–Litterman, ',
     url: 'https://www.pm-research.com/content/iijjfds/5/3/23'
   },
   {
-    num: 69,
+    num: 70,
     text: 'Agents With Receipts — ERC-8004 | Protocol Labs - Synthesis, ',
     url: 'https://synthesis.mandate.md/tracks/pl-genesis-agents-with-receipts-8004'
   }

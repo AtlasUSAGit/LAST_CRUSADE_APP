@@ -221,7 +221,7 @@ function computeGhostMetricsForPlatform(cal: PlatformCalibration, state: ModelSt
 
 /* ============================================================================
    PAGE 1: WORD-FOR-WORD WHITEPAPER VOL. 6 READER
-   Contains 100% of the exact text, headings, tables, equations, and 69
+   Contains 100% of the exact text, headings, tables, equations, and 70
    Works Cited entries from GEO_WHITEPAPER_VOLUME_6.pdf.
    ============================================================================ */
 export const WhitepaperVol6Reader: React.FC<{
@@ -450,11 +450,11 @@ export const WhitepaperVol6Reader: React.FC<{
               </p>
 
               <p>
-                Within the “grey area” of AEO ethics exists the Ghost Citation. In a recent study, one of the AEO industry’s pioneering agencies, Petra Labs, discovered that sponsored posts get less engagement (from real people on social media), but AI cites them more. They then discovered something even more interesting. ChatGPT and other LLMs can cite ads without saying the citation came from a sponsored post, causing the sponsored content to look more organic in AI search because the AI won&apos;t say that they got their information from a sponsored post.
+                Within the “grey area” of AEO ethics exists the Ghost Citation. In a recent study, one of the AEO industry’s pioneering agencies, Petra Labs, discovered that sponsored posts get less engagement (from real people on social media), but AI cites them more. They then discovered something even more interesting. ChatGPT and other LLMs can cite ads without saying the citation came from a sponsored post, causing the sponsored content to look more organic in AI search because the AI won&apos;t say that they got their information from a sponsored post, even with political posts.<sup>1</sup>
               </p>
 
               <p>
-                Of course, when a user clicks on the citation, they will then find that the information came from a sponsored post or advertisement, but oftentimes users won’t check a model’s citations. Additionally, this raises another question, which is what if the model includes information from a sponsored post, but doesn’t include that post as a final citation. This is known as a <strong>ghost citation</strong>.<sup>1</sup>
+                Of course, when a user clicks on the citation, they will then find that the information came from a sponsored post or advertisement, but oftentimes users won’t check a model’s citations. Additionally, this raises another question, which is what if the model includes information from a sponsored post, but doesn’t include that post as a final citation. This is known as a <strong>ghost citation</strong>.<sup>2</sup>
               </p>
 
               <p>
@@ -490,11 +490,11 @@ export const WhitepaperVol6Reader: React.FC<{
               </h2>
 
               <p>
-                The technical mechanism driving non-disclosure citations “ghost citations” differs fundamentally depending on whether the model is executing an explicit policy refusal at the index layer, stripping commercial disclosures during natural language synthesis, or absorbing paid narratives as uncredited background context<sup>3</sup>.
+                The technical mechanism driving non-disclosure citations “ghost citations” differs fundamentally depending on whether the model is executing an explicit policy refusal at the index layer, stripping commercial disclosures during natural language synthesis, or absorbing paid narratives as uncredited background context<sup>4</sup>.
               </p>
 
               <p>
-                To evaluate how commercial and political sponsorships traverse Retrieval-Augmented Generation (RAG) pipelines, attribution outcomes must first be disaggregated into a four-tier taxonomy established across computational linguistics and generative engine optimization (GEO) literature<sup>2</sup>.
+                To evaluate how commercial and political sponsorships traverse Retrieval-Augmented Generation (RAG) pipelines, attribution outcomes must first be disaggregated into a four-tier taxonomy established across computational linguistics and generative engine optimization (GEO) literature<sup>3</sup>.
               </p>
 
               {/* TABLE 1: Four-Tier Attribution Taxonomy */}
@@ -520,7 +520,7 @@ export const WhitepaperVol6Reader: React.FC<{
                         Yes (Brand, publisher, or sponsor explicitly named in text)
                       </td>
                       <td className="p-3.5 align-top">
-                        Passage is retrieved into top-<span className="font-serif italic">k</span> context, selected during synthesis, passes Natural Language Inference (NLI) entailment checks, and retains entity-claim binding in generated prose<sup>1</sup>.
+                        Passage is retrieved into top-<span className="font-serif italic">k</span> context, selected during synthesis, passes Natural Language Inference (NLI) entailment checks, and retains entity-claim binding in generated prose<sup>2</sup>.
                       </td>
                     </tr>
                     <tr className="hover:bg-[#FAF2E1]/60">
@@ -534,7 +534,7 @@ export const WhitepaperVol6Reader: React.FC<{
                         No (Source brand or sponsor is completely omitted from answer text)
                       </td>
                       <td className="p-3.5 align-top">
-                        Passage is retrieved and linked as an evidentiary footnote, but the language model abstracts the claim and strips the originating entity or commercial disclosure from the narrative<sup>1</sup>.
+                        Passage is retrieved and linked as an evidentiary footnote, but the language model abstracts the claim and strips the originating entity or commercial disclosure from the narrative<sup>2</sup>.
                       </td>
                     </tr>
                     <tr className="hover:bg-[#FAF2E1]/60">
@@ -548,7 +548,7 @@ export const WhitepaperVol6Reader: React.FC<{
                         No (Or paraphrased without source attribution)
                       </td>
                       <td className="p-3.5 align-top">
-                        Document chunk is retrieved into the LLM context window (retrieved-but-not-cited) and shapes answer framing or entity selection, but loses the post-hoc citation tournament to higher-authority domains<sup>2</sup>.
+                        Document chunk is retrieved into the LLM context window (retrieved-but-not-cited) and shapes answer framing or entity selection, but loses the post-hoc citation tournament to higher-authority domains<sup>3</sup>.
                       </td>
                     </tr>
                     <tr className="hover:bg-[#FAF2E1]/60">
@@ -562,7 +562,7 @@ export const WhitepaperVol6Reader: React.FC<{
                         Excluded
                       </td>
                       <td className="p-3.5 align-top">
-                        Crawler or reranker blocks the URL entirely due to asymmetric cloaking violations, robots.txt/llms.txt restrictions, or extreme promotional spam penalties<sup>3</sup>.
+                        Crawler or reranker blocks the URL entirely due to asymmetric cloaking violations, robots.txt/llms.txt restrictions, or extreme promotional spam penalties<sup>4</sup>.
                       </td>
                     </tr>
                   </tbody>
@@ -574,19 +574,19 @@ export const WhitepaperVol6Reader: React.FC<{
               </h3>
 
               <p>
-                The phenomenon wherein an AI model refuses or fails to identify a source as a sponsored post operates across two distinct architectural boundaries: explicit anti-deception blocks and implicit abstractive laundering<sup>3</sup>.
+                The phenomenon wherein an AI model refuses or fails to identify a source as a sponsored post operates across two distinct architectural boundaries: explicit anti-deception blocks and implicit abstractive laundering<sup>4</sup>.
               </p>
 
               <p>
-                At the explicit policy level, major generative engines maintain a strict firewall between native platform advertising and organic RAG citations<sup>17</sup>. Google labels paid placements within AI Overviews and AI Mode as &quot;Sponsored,&quot; Microsoft separates advertisements within Copilot, and ChatGPT introduced labeled ad placements in February 2026<sup>17</sup>. Perplexity abandoned native advertising tests in March 2026 following user backlash to focus on enterprise subscriptions, maintaining that organic citations cannot be purchased<sup>3</sup>. When publishers attempt to bypass this firewall by feeding sponsored content exclusively to AI crawlers, platforms enforce a hard index refusal that eliminates both final and ghost citations<sup>3</sup>. In August 2026, Perplexity publicly blocked <em>Time</em> magazine&apos;s markdown advertising program—operated with ad-tech firm Mobian for advertisers including Ally Bank and the Project Management Institute—which injected FAQ-formatted sponsored content into the raw .md versions of pages read by AI agents while keeping those placements invisible to human HTML readers<sup>3</sup>. Perplexity&apos;s enforcement established that asymmetry between human-visible and machine-readable surfaces is classified as deceptive search spam (&quot;cloaking&quot;), triggering complete exclusion from the retrieval index regardless of whether a sponsor label is present in the markdown<sup>3</sup>.
+                At the explicit policy level, major generative engines maintain a strict firewall between native platform advertising and organic RAG citations<sup>18</sup>. Google labels paid placements within AI Overviews and AI Mode as &quot;Sponsored,&quot; Microsoft separates advertisements within Copilot, and ChatGPT introduced labeled ad placements in February 2026<sup>18</sup>. Perplexity abandoned native advertising tests in March 2026 following user backlash to focus on enterprise subscriptions, maintaining that organic citations cannot be purchased<sup>4</sup>. When publishers attempt to bypass this firewall by feeding sponsored content exclusively to AI crawlers, platforms enforce a hard index refusal that eliminates both final and ghost citations<sup>4</sup>. In August 2026, Perplexity publicly blocked <em>Time</em> magazine&apos;s markdown advertising program—operated with ad-tech firm Mobian for advertisers including Ally Bank and the Project Management Institute—which injected FAQ-formatted sponsored content into the raw .md versions of pages read by AI agents while keeping those placements invisible to human HTML readers<sup>4</sup>. Perplexity&apos;s enforcement established that asymmetry between human-visible and machine-readable surfaces is classified as deceptive search spam (&quot;cloaking&quot;), triggering complete exclusion from the retrieval index regardless of whether a sponsor label is present in the markdown<sup>4</sup>.
               </p>
 
               <p>
-                Conversely, when a sponsored post, paid listicle (&quot;Top 10 CRM Tools for 2026&quot;), or influencer sponsorship is published symmetrically on the open web, AI models do not block it at the index level; instead, they routinely ingest the content while failing to carry the sponsorship disclosure into the generated response<sup>4</sup>. Academic analysis of commercial influence in generative AI demonstrates that RAG synthesis opens channels of commercial persuasion where explicit attribution fails to transfer, seamlessly weaving sponsored claims into ostensibly objective response text<sup>4</sup>.
+                Conversely, when a sponsored post, paid listicle (&quot;Top 10 CRM Tools for 2026&quot;), or influencer sponsorship is published symmetrically on the open web, AI models do not block it at the index level; instead, they routinely ingest the content while failing to carry the sponsorship disclosure into the generated response<sup>5</sup>. Academic analysis of commercial influence in generative AI demonstrates that RAG synthesis opens channels of commercial persuasion where explicit attribution fails to transfer, seamlessly weaving sponsored claims into ostensibly objective response text<sup>5</sup>.
               </p>
 
               <p>
-                This non-disclosure occurs because RAG parsers and neural rerankers—such as Perplexity&apos;s four-stage Sonar pipeline or Google&apos;s centerpiece extraction algorithms (governed by US Patent US10824630B2 and layout-aware multimodal ranking under US Patent US12393768B2)—are engineered to extract high-density factual assertions while stripping surrounding boilerplate<sup>6</sup>. Under the Federal Trade Commission&apos;s (FTC) 2026 Double Disclosure rules (carrying civil penalties of $53,088 per violation) and California&apos;s AB 3211 and SB 1050 mandates, creators and brands must prominently disclose both the commercial material connection (&quot;Sponsored by X&quot; or #ad) and substantive AI involvement<sup>23</sup>. However, when an LLM synthesizes a retrieved passage, its internal grounding mechanisms treat &quot;Sponsored by Brand X&quot; as metadata noise that does not logically entail the user&apos;s informational query<sup>4</sup>. Consequently, the model extracts the substantive claim or product endorsement while discarding the FTC disclosure across both final citations (where the URL is linked as an apparent editorial authority) and ghost citations (where the sponsor&apos;s narrative shapes the answer without attribution)<sup>1</sup>.
+                This non-disclosure occurs because RAG parsers and neural rerankers—such as Perplexity&apos;s four-stage Sonar pipeline or Google&apos;s centerpiece extraction algorithms (governed by US Patent US10824630B2 and layout-aware multimodal ranking under US Patent US12393768B2)—are engineered to extract high-density factual assertions while stripping surrounding boilerplate<sup>7</sup>. Under the Federal Trade Commission&apos;s (FTC) 2026 Double Disclosure rules (carrying civil penalties of $53,088 per violation) and California&apos;s AB 3211 and SB 1050 mandates, creators and brands must prominently disclose both the commercial material connection (&quot;Sponsored by X&quot; or #ad) and substantive AI involvement<sup>24</sup>. However, when an LLM synthesizes a retrieved passage, its internal grounding mechanisms treat &quot;Sponsored by Brand X&quot; as metadata noise that does not logically entail the user&apos;s informational query<sup>5</sup>. Consequently, the model extracts the substantive claim or product endorsement while discarding the FTC disclosure across both final citations (where the URL is linked as an apparent editorial authority) and ghost citations (where the sponsor&apos;s narrative shapes the answer without attribution)<sup>2</sup>.
               </p>
             </section>
 
@@ -602,11 +602,11 @@ export const WhitepaperVol6Reader: React.FC<{
               </h2>
 
               <p>
-                Empirical telemetry from 2026 large-scale observability studies demonstrates that ghost citations are not rare edge cases, but the dominant mode of information transfer in generative search<sup>1</sup>. Across the industry, AI search engines divide sharply into &quot;Namers&quot; (models that name entities in prose based on parametric memory and synthesis but rarely link sources) and &quot;Citers&quot; (engines that attach dense source links but frequently omit the originating brand or sponsor from the generated text)<sup>1</sup>.
+                Empirical telemetry from 2026 large-scale observability studies demonstrates that ghost citations are not rare edge cases, but the dominant mode of information transfer in generative search<sup>2</sup>. Across the industry, AI search engines divide sharply into &quot;Namers&quot; (models that name entities in prose based on parametric memory and synthesis but rarely link sources) and &quot;Citers&quot; (engines that attach dense source links but frequently omit the originating brand or sponsor from the generated text)<sup>2</sup>.
               </p>
 
               <p>
-                The empirical divergence across platforms reveals how architectural design dictates whether a retrieved page becomes a final citation, a Type I ghost citation, or a Type II ghost citation<sup>1</sup>. In Semrush&apos;s June 2026 study of domain appearances across generative engines, 61.7% of all AI citations were Type I ghost citations (source link provided, brand absent from answer prose), only 13.2% were both cited and mentioned (true final citations), and 25.1% were unlinked brand mentions<sup>8</sup>. Similarly, Writesonic&apos;s analysis of 16 million brand appearances found an average Type I ghost citation rate of approximately 40%, ranging from 19% to 52% across engines<sup>1</sup>, while Reach AI&apos;s longitudinal analysis of 71,275 single-page citations across 43 brands recorded a 43% overall ghost rate in its June–August 2026 cohort, demonstrating that omitting a brand from the HTML title tag or using unbranded comparison listicles drives ghosting rates above 50% on leading platforms<sup>12</sup>.
+                The empirical divergence across platforms reveals how architectural design dictates whether a retrieved page becomes a final citation, a Type I ghost citation, or a Type II ghost citation<sup>2</sup>. In Semrush&apos;s June 2026 study of domain appearances across generative engines, 61.7% of all AI citations were Type I ghost citations (source link provided, brand absent from answer prose), only 13.2% were both cited and mentioned (true final citations), and 25.1% were unlinked brand mentions<sup>9</sup>. Similarly, Writesonic&apos;s analysis of 16 million brand appearances found an average Type I ghost citation rate of approximately 40%, ranging from 19% to 52% across engines<sup>2</sup>, while Reach AI&apos;s longitudinal analysis of 71,275 single-page citations across 43 brands recorded a 43% overall ghost rate in its June–August 2026 cohort, demonstrating that omitting a brand from the HTML title tag or using unbranded comparison listicles drives ghosting rates above 50% on leading platforms<sup>13</sup>.
               </p>
 
               {/* TABLE 2: Frontier AI Search Platforms */}
@@ -629,22 +629,22 @@ export const WhitepaperVol6Reader: React.FC<{
                         Perplexity AI (Sonar)
                       </td>
                       <td className="p-3 border-r border-[#F2D69D] align-top">
-                        Live 4-stage RAG loop (Sub-query fan-out + neural reranking)<sup>6</sup>
+                        Live 4-stage RAG loop (Sub-query fan-out + neural reranking)<sup>7</sup>
                       </td>
                       <td className="p-3 border-r border-[#F2D69D] align-top">
-                        21.87 citations/response (3.4 URLs per 1,000 words)<sup>11</sup>
+                        21.87 citations/response (3.4 URLs per 1,000 words)<sup>12</sup>
                       </td>
                       <td className="p-3 border-r border-[#F2D69D] align-top">
-                        High-frequency &quot;Citer&quot;; inline numbered tags [1], [2]<sup>1</sup>
+                        High-frequency &quot;Citer&quot;; inline numbered tags [1], [2]<sup>2</sup>
                       </td>
                       <td className="p-3 border-r border-[#F2D69D] align-top font-mono font-bold">
-                        52.0%<sup>1</sup>
+                        52.0%<sup>2</sup>
                       </td>
                       <td className="p-3 border-r border-[#F2D69D] align-top">
-                        52.3% (No brand in title) vs. 12.6% (Brand in title)<sup>12</sup>
+                        52.3% (No brand in title) vs. 12.6% (Brand in title)<sup>13</sup>
                       </td>
                       <td className="p-3 align-top">
-                        ~20% (25%–30% domain overlap)<sup>22</sup>
+                        ~20% (25%–30% domain overlap)<sup>23</sup>
                       </td>
                     </tr>
                     <tr className="hover:bg-[#FAF2E1]/60">
@@ -652,22 +652,22 @@ export const WhitepaperVol6Reader: React.FC<{
                         OpenAI ChatGPT (SearchGPT)
                       </td>
                       <td className="p-3 border-r border-[#F2D69D] align-top">
-                        Hybrid Grounding (Parametric memory + Bing/web browsing)<sup>11</sup>
+                        Hybrid Grounding (Parametric memory + Bing/web browsing)<sup>12</sup>
                       </td>
                       <td className="p-3 border-r border-[#F2D69D] align-top">
-                        7.92 citations/response; footnote / source card panel<sup>8</sup>
+                        7.92 citations/response; footnote / source card panel<sup>9</sup>
                       </td>
                       <td className="p-3 border-r border-[#F2D69D] align-top">
-                        Academic footnoter: cites in 87.0% of appearances, names brand in 20.7%<sup>8</sup>
+                        Academic footnoter: cites in 87.0% of appearances, names brand in 20.7%<sup>9</sup>
                       </td>
                       <td className="p-3 border-r border-[#F2D69D] align-top font-mono font-bold">
-                        37.0%<sup>1</sup>
+                        37.0%<sup>2</sup>
                       </td>
                       <td className="p-3 border-r border-[#F2D69D] align-top">
-                        54.2% (No brand in title) vs. 18.8% (Brand in title)<sup>12</sup>
+                        54.2% (No brand in title) vs. 18.8% (Brand in title)<sup>13</sup>
                       </td>
                       <td className="p-3 align-top">
-                        &lt; 10% (&lt; 15% domain overlap)<sup>22</sup>
+                        &lt; 10% (&lt; 15% domain overlap)<sup>23</sup>
                       </td>
                     </tr>
                     <tr className="hover:bg-[#FAF2E1]/60">
@@ -675,22 +675,22 @@ export const WhitepaperVol6Reader: React.FC<{
                         Google AI Mode
                       </td>
                       <td className="p-3 border-r border-[#F2D69D] align-top">
-                        Gemini RAG with multi-subtopic query fan-out<sup>22</sup>
+                        Gemini RAG with multi-subtopic query fan-out<sup>23</sup>
                       </td>
                       <td className="p-3 border-r border-[#F2D69D] align-top">
-                        Collapsible source cards and visual panels<sup>11</sup>
+                        Collapsible source cards and visual panels<sup>12</sup>
                       </td>
                       <td className="p-3 border-r border-[#F2D69D] align-top">
-                        Mentions brands at ~2x ChatGPT rate, but acts as footnoted synthesis<sup>8</sup>
+                        Mentions brands at ~2x ChatGPT rate, but acts as footnoted synthesis<sup>9</sup>
                       </td>
                       <td className="p-3 border-r border-[#F2D69D] align-top font-mono font-bold">
-                        49.0%<sup>1</sup>
+                        49.0%<sup>2</sup>
                       </td>
                       <td className="p-3 border-r border-[#F2D69D] align-top">
-                        33.9% (No brand in title) vs. 10.3% (Brand in title)<sup>12</sup>
+                        33.9% (No brand in title) vs. 10.3% (Brand in title)<sup>13</sup>
                       </td>
                       <td className="p-3 align-top">
-                        Tied to Google Search Index<sup>11</sup>
+                        Tied to Google Search Index<sup>12</sup>
                       </td>
                     </tr>
                     <tr className="hover:bg-[#FAF2E1]/60">
@@ -698,22 +698,22 @@ export const WhitepaperVol6Reader: React.FC<{
                         Google AI Overviews
                       </td>
                       <td className="p-3 border-r border-[#F2D69D] align-top">
-                        Gemini multimodal RAG (Patents US12393768B2 &amp; US10824630B2)<sup>22</sup>
+                        Gemini multimodal RAG (Patents US12393768B2 &amp; US10824630B2)<sup>23</sup>
                       </td>
                       <td className="p-3 border-r border-[#F2D69D] align-top">
-                        Collapsible &quot;Sources&quot; chevron; no inline numbers<sup>11</sup>
+                        Collapsible &quot;Sources&quot; chevron; no inline numbers<sup>12</sup>
                       </td>
                       <td className="p-3 border-r border-[#F2D69D] align-top">
-                        Balanced Citer; 88% of AI Mode/AIO citations fall outside organic top 10<sup>8</sup>
+                        Balanced Citer; 88% of AI Mode/AIO citations fall outside organic top 10<sup>9</sup>
                       </td>
                       <td className="p-3 border-r border-[#F2D69D] align-top font-mono font-bold">
-                        41.0%<sup>1</sup>
+                        41.0%<sup>2</sup>
                       </td>
                       <td className="p-3 border-r border-[#F2D69D] align-top">
-                        37.4% (No brand in title) vs. 8.4% (Brand in title)<sup>12</sup>
+                        37.4% (No brand in title) vs. 8.4% (Brand in title)<sup>13</sup>
                       </td>
                       <td className="p-3 align-top">
-                        &lt; 10% (&lt; 15% domain overlap)<sup>22</sup>
+                        &lt; 10% (&lt; 15% domain overlap)<sup>23</sup>
                       </td>
                     </tr>
                     <tr className="hover:bg-[#FAF2E1]/60">
@@ -721,22 +721,22 @@ export const WhitepaperVol6Reader: React.FC<{
                         Google Gemini (Chat)
                       </td>
                       <td className="p-3 border-r border-[#F2D69D] align-top">
-                        Parametric-first conversational synthesis with selective grounding<sup>8</sup>
+                        Parametric-first conversational synthesis with selective grounding<sup>9</sup>
                       </td>
                       <td className="p-3 border-r border-[#F2D69D] align-top">
-                        Links sources in only 21.4% of domain appearances<sup>8</sup>
+                        Links sources in only 21.4% of domain appearances<sup>9</sup>
                       </td>
                       <td className="p-3 border-r border-[#F2D69D] align-top">
-                        Conversational &quot;Namer&quot;: names brands in 83.7% of appearances without links<sup>8</sup>
+                        Conversational &quot;Namer&quot;: names brands in 83.7% of appearances without links<sup>9</sup>
                       </td>
                       <td className="p-3 border-r border-[#F2D69D] align-top">
-                        Low visible link volume<sup>8</sup>
+                        Low visible link volume<sup>9</sup>
                       </td>
                       <td className="p-3 border-r border-[#F2D69D] align-top">
-                        Relies on Type II unlinked retrieval and parametric priors<sup>2</sup>
+                        Relies on Type II unlinked retrieval and parametric priors<sup>3</sup>
                       </td>
                       <td className="p-3 align-top">
-                        &lt; 10%<sup>22</sup>
+                        &lt; 10%<sup>23</sup>
                       </td>
                     </tr>
                   </tbody>
@@ -744,15 +744,15 @@ export const WhitepaperVol6Reader: React.FC<{
               </div>
 
               <p>
-                Three critical second-order phenomena emerge from this cross-platform telemetry. The first is the Competitor Substitution Effect, or attribution piggybacking: Reach AI&apos;s evaluation of 71,275 cited answers revealed that in 87% of Type I ghost citations, the AI answer explicitly named rival brands instead of the brand whose webpage supplied the citation<sup>12</sup>. When a brand or sponsor publishes an informational guide or unbranded comparison listicle, the generative engine extracts the evaluation criteria and product data from that page, relegates the URL to an unread source card (where zero-click rates reach 93%<sup>30</sup>), and awards the in-text recommendation to third-party entities mentioned on the page<sup>12</sup>.
+                Three critical second-order phenomena emerge from this cross-platform telemetry. The first is the Competitor Substitution Effect, or attribution piggybacking: Reach AI&apos;s evaluation of 71,275 cited answers revealed that in 87% of Type I ghost citations, the AI answer explicitly named rival brands instead of the brand whose webpage supplied the citation<sup>13</sup>. When a brand or sponsor publishes an informational guide or unbranded comparison listicle, the generative engine extracts the evaluation criteria and product data from that page, relegates the URL to an unread source card (where zero-click rates reach 93%<sup>31</sup>), and awards the in-text recommendation to third-party entities mentioned on the page<sup>13</sup>.
               </p>
 
               <p>
-                The second phenomenon is citation concentration and Type II unlinked influence. In an August 2026 analysis of 1.2 million ChatGPT responses, Kevin Indig established that roughly 30 domains capture 67% of all visible citations within any given topic cluster<sup>2</sup>. Because AI assistants visibly cite only about half of the documents they retrieve into their RAG context windows<sup>5</sup>, the remaining retrieved pages function as Type II ghost citations—uncredited background material whose facts and framing are paraphrased at up to four times the rate of visible links<sup>2</sup>.
+                The second phenomenon is citation concentration and Type II unlinked influence. In an August 2026 analysis of 1.2 million ChatGPT responses, Kevin Indig established that roughly 30 domains capture 67% of all visible citations within any given topic cluster<sup>3</sup>. Because AI assistants visibly cite only about half of the documents they retrieve into their RAG context windows<sup>6</sup>, the remaining retrieved pages function as Type II ghost citations—uncredited background material whose facts and framing are paraphrased at up to four times the rate of visible links<sup>3</sup>.
               </p>
 
               <p>
-                The third phenomenon is query intent asymmetry. Informational queries trigger the highest rate of Type I and Type II ghost citations because models synthesize consensus definitions without naming the author of a generic fact<sup>8</sup>. Conversely, comparative queries (&quot;best&quot;, &quot;vs&quot;, &quot;recommend&quot;) achieve a 43.3% brand mention rate (2.4 times higher than informational queries), how-to queries achieve a 42.8% mention rate, and commercial buying-intent queries generate a 35.6% mention rate alongside an 84.4% citation rate<sup>8</sup>. Similarly, prompt length alters attribution: short, conversational queries produce entity mentions at nearly 100%, whereas long, highly structured prompts cause entity mention rates to collapse to 2%–3%<sup>9</sup>.
+                The third phenomenon is query intent asymmetry. Informational queries trigger the highest rate of Type I and Type II ghost citations because models synthesize consensus definitions without naming the author of a generic fact<sup>9</sup>. Conversely, comparative queries (&quot;best&quot;, &quot;vs&quot;, &quot;recommend&quot;) achieve a 43.3% brand mention rate (2.4 times higher than informational queries), how-to queries achieve a 42.8% mention rate, and commercial buying-intent queries generate a 35.6% mention rate alongside an 84.4% citation rate<sup>9</sup>. Similarly, prompt length alters attribution: short, conversational queries produce entity mentions at nearly 100%, whereas long, highly structured prompts cause entity mention rates to collapse to 2%–3%<sup>10</sup>.
               </p>
             </section>
 
@@ -768,11 +768,11 @@ export const WhitepaperVol6Reader: React.FC<{
               </h2>
 
               <p>
-                A sponsored post, commercial landing page, or political campaign webpage can be systematically engineered to function as a ghost citation rather than a final citation<sup>12</sup>. In standard commercial Answer Engine Optimization (AEO), practitioners attempt to maximize Selection Rate (SR)—the percentage of prompt runs where a brand is both cited and named—by front-loading &le;80-token direct answers, embedding the brand in &lt;title&gt; tags, and deploying strict Organization schema<sup>9</sup>. However, in stealth AEO, third-party native sponsorship, and political GEO, the optimization objective is frequently inverted: the operator seeks to inject a specific factual claim, numerical benchmark, or comparative framing into the AI&apos;s synthesized verdict while suppressing visible attribution to the sponsoring organization<sup>12</sup>.
+                A sponsored post, commercial landing page, or political campaign webpage can be systematically engineered to function as a ghost citation rather than a final citation<sup>13</sup>. In standard commercial Answer Engine Optimization (AEO), practitioners attempt to maximize Selection Rate (SR)—the percentage of prompt runs where a brand is both cited and named—by front-loading &le;80-token direct answers, embedding the brand in &lt;title&gt; tags, and deploying strict Organization schema<sup>10</sup>. However, in stealth AEO, third-party native sponsorship, and political GEO, the optimization objective is frequently inverted: the operator seeks to inject a specific factual claim, numerical benchmark, or comparative framing into the AI&apos;s synthesized verdict while suppressing visible attribution to the sponsoring organization<sup>13</sup>.
               </p>
 
               <p>
-                Architecturally, steering a sponsored or political webpage through a generative engine&apos;s RAG pipeline involves navigating four sequential control gates. At Gate 1 (the Crawler Symmetry Check), the engine inspects whether human HTML and machine-readable Markdown surfaces match; asymmetric cloaking triggers a hard index block and cloaking penalty, whereas symmetric content proceeds into the index<sup>3</sup>. At Gate 2 (Query Fan-Out and Reciprocal Rank Fusion Retrieval), top-<span className="font-serif italic">k</span> document chunks matching sub-query embeddings enter the LLM context window for synthesis<sup>28</sup>. At Gate 3 (the NLI Entailment and Citation Precision Filter), the model evaluates whether a specific passage autonomously entails the generated claim: hedged or distributed framing that informs context synthesis but fails standalone single-passage NLI entailment branches into a Type II ghost citation (unlinked narrative influence), whereas passages with high atomic entailment proceed to the final gate<sup>10</sup>. At Gate 4 (Title and Schema Entity Binding), if the source brand is anchored in the HTML &lt;title&gt; tag and structured JSON-LD schema, the engine outputs a Final Citation (linked and named in prose); if the brand is omitted from the &lt;title&gt; tag within a comparative listicle structure, the engine outputs a Type I ghost citation (retaining the footnote link while stripping the sponsor or publisher from the prose)<sup>9</sup>.
+                Architecturally, steering a sponsored or political webpage through a generative engine&apos;s RAG pipeline involves navigating four sequential control gates. At Gate 1 (the Crawler Symmetry Check), the engine inspects whether human HTML and machine-readable Markdown surfaces match; asymmetric cloaking triggers a hard index block and cloaking penalty, whereas symmetric content proceeds into the index<sup>4</sup>. At Gate 2 (Query Fan-Out and Reciprocal Rank Fusion Retrieval), top-<span className="font-serif italic">k</span> document chunks matching sub-query embeddings enter the LLM context window for synthesis<sup>29</sup>. At Gate 3 (the NLI Entailment and Citation Precision Filter), the model evaluates whether a specific passage autonomously entails the generated claim: hedged or distributed framing that informs context synthesis but fails standalone single-passage NLI entailment branches into a Type II ghost citation (unlinked narrative influence), whereas passages with high atomic entailment proceed to the final gate<sup>11</sup>. At Gate 4 (Title and Schema Entity Binding), if the source brand is anchored in the HTML &lt;title&gt; tag and structured JSON-LD schema, the engine outputs a Final Citation (linked and named in prose); if the brand is omitted from the &lt;title&gt; tag within a comparative listicle structure, the engine outputs a Type I ghost citation (retaining the footnote link while stripping the sponsor or publisher from the prose)<sup>10</sup>.
               </p>
             </section>
 
@@ -788,19 +788,19 @@ export const WhitepaperVol6Reader: React.FC<{
               </h2>
 
               <p>
-                When a commercial sponsor or political campaign pays for a placement on a third-party publisher or deploys a microsite, it can force the AI engine to use the URL as a Type I ghost citation—securing the underlying evidentiary link while preventing the AI from naming the sponsoring organization or publisher in the generated prose<sup>1</sup>. Simultaneously, by leveraging the 87% competitor/target substitution effect, the page can cause the AI to explicitly name and recommend a favored target entity (such as a client&apos;s product or a favored political candidate) while ghosting the source page itself<sup>12</sup>. This outcome is achieved by combining four deterministic on-page interventions across the document&apos;s metadata, structure, syntax, and schema.
+                When a commercial sponsor or political campaign pays for a placement on a third-party publisher or deploys a microsite, it can force the AI engine to use the URL as a Type I ghost citation—securing the underlying evidentiary link while preventing the AI from naming the sponsoring organization or publisher in the generated prose<sup>2</sup>. Simultaneously, by leveraging the 87% competitor/target substitution effect, the page can cause the AI to explicitly name and recommend a favored target entity (such as a client&apos;s product or a favored political candidate) while ghosting the source page itself<sup>13</sup>. This outcome is achieved by combining four deterministic on-page interventions across the document&apos;s metadata, structure, syntax, and schema.
               </p>
 
               <p>
-                The primary control lever is HTML &lt;title&gt; tag entity suppression. Reach AI&apos;s stratified Mantel-Haenszel analysis across 36,400 page citations established that the presence or absence of the publisher or brand name as a whole word in the &lt;title&gt; tag is the single strongest determinant governing Type I ghost citations (<span className="font-serif italic">p</span> = 0.003)<sup>12</sup>. Removing the source brand from the page title increases the pooled ghost citation rate from 12.2% to 42.9%—a 3.5-fold increase in anonymity<sup>12</sup>. Within the same brand, untitled pages are ghosted 60.3% more often across 17 of 20 tested brands<sup>12</sup>. Suppressing the sponsor or publisher name in the &lt;title&gt; drives ghost citation rates to 54.2% on ChatGPT and 52.3% on Perplexity<sup>12</sup>.
+                The primary control lever is HTML &lt;title&gt; tag entity suppression. Reach AI&apos;s stratified Mantel-Haenszel analysis across 36,400 page citations established that the presence or absence of the publisher or brand name as a whole word in the &lt;title&gt; tag is the single strongest determinant governing Type I ghost citations (<span className="font-serif italic">p</span> = 0.003)<sup>13</sup>. Removing the source brand from the page title increases the pooled ghost citation rate from 12.2% to 42.9%—a 3.5-fold increase in anonymity<sup>13</sup>. Within the same brand, untitled pages are ghosted 60.3% more often across 17 of 20 tested brands<sup>13</sup>. Suppressing the sponsor or publisher name in the &lt;title&gt; drives ghost citation rates to 54.2% on ChatGPT and 52.3% on Perplexity<sup>13</sup>.
               </p>
 
               <p>
-                This title-tag suppression is compounded by deploying an unbranded comparative listicle architecture. Structuring a sponsored post with URL slugs and headings matching comparative patterns (&quot;best&quot;, &quot;top&quot;, &quot;vs&quot;, or &quot;alternatives&quot;) while omitting the publishing entity from the &lt;title&gt; elevates the Type I ghost citation rate to 49.5%, compared to 14.9% when the brand is included in the listicle title<sup>12</sup>. Furthermore, stuffing 10 or more mentions of the publishing site&apos;s name into the body copy or template chrome does not reduce ghosting; rather, pages with 10+ body mentions exhibit a 45.9% ghost rate because RAG parsers classify repetitive body mentions on listicle templates as boilerplate noise, compared to 28.3% for 3–9 mentions and 27.8% for 0 mentions<sup>12</sup>.
+                This title-tag suppression is compounded by deploying an unbranded comparative listicle architecture. Structuring a sponsored post with URL slugs and headings matching comparative patterns (&quot;best&quot;, &quot;top&quot;, &quot;vs&quot;, or &quot;alternatives&quot;) while omitting the publishing entity from the &lt;title&gt; elevates the Type I ghost citation rate to 49.5%, compared to 14.9% when the brand is included in the listicle title<sup>13</sup>. Furthermore, stuffing 10 or more mentions of the publishing site&apos;s name into the body copy or template chrome does not reduce ghosting; rather, pages with 10+ body mentions exhibit a 45.9% ghost rate because RAG parsers classify repetitive body mentions on listicle templates as boilerplate noise, compared to 28.3% for 3–9 mentions and 27.8% for 0 mentions<sup>13</sup>.
               </p>
 
               <p>
-                Operators further reinforce Type I ghosting through opening-window entity delay and syntactic decoupling. AI retrieval parsers heavily weight the opening tokens of a document—specifically the first 80 tokens for direct answer extraction and the first 500 characters for entity grounding<sup>12</sup>. Omitting the publisher or sponsor identity from the first 500 characters increases the ghost citation rate from 36.9% to 43.6%<sup>12</sup>. To guarantee that a specific statistic or claim travels into the AI answer without the sponsor&apos;s name or FTC disclosure, the page is engineered using a direct factual syntactic triad (Subject–Verb–Predicate) in the first sentence under an H2 question heading (maximizing centerpiece passage extraction under Google Patent US10824630B2 and GEO fluency benchmarks, which boost visibility by up to 40%<sup>7</sup>), while placing the mandatory FTC sponsorship disclosure several paragraphs away or in a visually separated DOM container<sup>1</sup>. As Writesonic&apos;s attribution research demonstrates, a statistic separated from the producing entity&apos;s name by even a few paragraphs is systematically anonymized by the LLM into generic phrasing such as &quot;One analysis found...&quot;<sup>1</sup>. Finally, because generative engines rely on Organization and Person schema markup alongside verifiable author biographies to bind domain expertise to a named entity, deliberately stripping structured identity schema and publishing under a generic byline (&quot;Editorial Staff&quot; or &quot;Research Team&quot;) induces an entity-clarity deficit<sup>9</sup>. The engine trusts the domain enough to cite the URL in its source panel, but lacks the confidence to name the organization in the synthesized text<sup>9</sup>.
+                Operators further reinforce Type I ghosting through opening-window entity delay and syntactic decoupling. AI retrieval parsers heavily weight the opening tokens of a document—specifically the first 80 tokens for direct answer extraction and the first 500 characters for entity grounding<sup>13</sup>. Omitting the publisher or sponsor identity from the first 500 characters increases the ghost citation rate from 36.9% to 43.6%<sup>13</sup>. To guarantee that a specific statistic or claim travels into the AI answer without the sponsor&apos;s name or FTC disclosure, the page is engineered using a direct factual syntactic triad (Subject–Verb–Predicate) in the first sentence under an H2 question heading (maximizing centerpiece passage extraction under Google Patent US10824630B2 and GEO fluency benchmarks, which boost visibility by up to 40%<sup>8</sup>), while placing the mandatory FTC sponsorship disclosure several paragraphs away or in a visually separated DOM container<sup>2</sup>. As Writesonic&apos;s attribution research demonstrates, a statistic separated from the producing entity&apos;s name by even a few paragraphs is systematically anonymized by the LLM into generic phrasing such as &quot;One analysis found...&quot;<sup>2</sup>. Finally, because generative engines rely on Organization and Person schema markup alongside verifiable author biographies to bind domain expertise to a named entity, deliberately stripping structured identity schema and publishing under a generic byline (&quot;Editorial Staff&quot; or &quot;Research Team&quot;) induces an entity-clarity deficit<sup>10</sup>. The engine trusts the domain enough to cite the URL in its source panel, but lacks the confidence to name the organization in the synthesized text<sup>10</sup>.
               </p>
             </section>
 
@@ -816,7 +816,7 @@ export const WhitepaperVol6Reader: React.FC<{
               </h2>
 
               <p>
-                In more sensitive operations—such as political AEO or competitive counter-positioning—even a footnote link to a sponsored or partisan URL is undesirable because a user or journalist inspecting the source chevron would uncover the campaign&apos;s origin<sup>19</sup>. Here, the objective is to engineer a Type II ghost citation (retrieved-but-not-cited): ensuring the webpage is retrieved into the LLM&apos;s top-<span className="font-serif italic">k</span> working context window so its framing, statistics, or co-citation patterns steer the generated response, while forcing the post-hoc citation module to omit the URL from the visible source list and credit a neutral authority instead<sup>2</sup>. This exploits the architectural decoupling between Stage 1 Retrieval and Stage 2 Citation Grounding in modern RAG systems<sup>10</sup>.
+                In more sensitive operations—such as political AEO or competitive counter-positioning—even a footnote link to a sponsored or partisan URL is undesirable because a user or journalist inspecting the source chevron would uncover the campaign&apos;s origin<sup>20</sup>. Here, the objective is to engineer a Type II ghost citation (retrieved-but-not-cited): ensuring the webpage is retrieved into the LLM&apos;s top-<span className="font-serif italic">k</span> working context window so its framing, statistics, or co-citation patterns steer the generated response, while forcing the post-hoc citation module to omit the URL from the visible source list and credit a neutral authority instead<sup>3</sup>. This exploits the architectural decoupling between Stage 1 Retrieval and Stage 2 Citation Grounding in modern RAG systems<sup>11</sup>.
               </p>
 
               <h3 className="font-serif text-xl sm:text-2xl text-[#410217] font-bold pt-2">
@@ -824,7 +824,7 @@ export const WhitepaperVol6Reader: React.FC<{
               </h3>
 
               <p>
-                During retrieval, generative engines decompose a user&apos;s prompt via query fan-out into 3 to 12 synthetic sub-queries<sup>6</sup>. Candidate chunks (typically 1,000 candidates narrowed to top-50 context passages via cross-encoder rerankers like Cohere Rerank or bge-reranker-large<sup>33</sup>) are scored using Reciprocal Rank Fusion (RRF) across dense vector embeddings and lexical BM25 indices<sup>10</sup>:
+                During retrieval, generative engines decompose a user&apos;s prompt via query fan-out into 3 to 12 synthetic sub-queries<sup>7</sup>. Candidate chunks (typically 1,000 candidates narrowed to top-50 context passages via cross-encoder rerankers like Cohere Rerank or bge-reranker-large<sup>34</sup>) are scored using Reciprocal Rank Fusion (RRF) across dense vector embeddings and lexical BM25 indices<sup>11</sup>:
               </p>
 
               {/* Equation Block 1: RRF_Score */}
@@ -835,7 +835,7 @@ export const WhitepaperVol6Reader: React.FC<{
               </div>
 
               <p>
-                where <span className="font-serif italic font-semibold">M</span> represents the set of parallel sub-query retrieval runs and <span className="font-serif italic font-semibold">k</span> is a smoothing constant<sup>31</sup>. Once the top-<span className="font-serif italic font-semibold">k</span> passages populate the LLM context window, the model synthesizes its response <span className="font-serif italic font-semibold">r = &#123;s<sub>1</sub>, s<sub>2</sub>, &hellip;, s<sub>n</sub>&#125;</span><sup>7</sup>. Crucially, citation attachment is governed by Natural Language Inference (NLI) grounding frameworks—modeled on the ALCE benchmark (Gao et al.), AutoAIS, and VeriCite—or Self-RAG reflection tokens<sup>10</sup>. In the ALCE formulation, an NLI model <span className="font-serif italic font-semibold">&phi;(premise, hypothesis) &isin; &#123;0, 1&#125;</span> (such as TRUE, a fine-tuned T5-11B evaluator) scores Citation Recall and Citation Precision for each generated statement <span className="font-serif italic font-semibold">s<sub>i</sub></span> and its candidate citation set <span className="font-serif italic font-semibold">C<sub>i</sub></span><sup>10</sup>:
+                where <span className="font-serif italic font-semibold">M</span> represents the set of parallel sub-query retrieval runs and <span className="font-serif italic font-semibold">k</span> is a smoothing constant<sup>32</sup>. Once the top-<span className="font-serif italic font-semibold">k</span> passages populate the LLM context window, the model synthesizes its response <span className="font-serif italic font-semibold">r = &#123;s<sub>1</sub>, s<sub>2</sub>, &hellip;, s<sub>n</sub>&#125;</span><sup>8</sup>. Crucially, citation attachment is governed by Natural Language Inference (NLI) grounding frameworks—modeled on the ALCE benchmark (Gao et al.), AutoAIS, and VeriCite—or Self-RAG reflection tokens<sup>11</sup>. In the ALCE formulation, an NLI model <span className="font-serif italic font-semibold">&phi;(premise, hypothesis) &isin; &#123;0, 1&#125;</span> (such as TRUE, a fine-tuned T5-11B evaluator) scores Citation Recall and Citation Precision for each generated statement <span className="font-serif italic font-semibold">s<sub>i</sub></span> and its candidate citation set <span className="font-serif italic font-semibold">C<sub>i</sub></span><sup>11</sup>:
               </p>
 
               {/* Equation Block 2: Citation_Recall */}
@@ -846,7 +846,7 @@ export const WhitepaperVol6Reader: React.FC<{
               </div>
 
               <p>
-                A specific retrieved passage <span className="font-serif italic font-semibold">c<sub>i,j</sub> &isin; C<sub>i</sub></span> is classified as redundant or irrelevant—and stripped by citation precision filters or post-editing modules—if and only if it fails standalone entailment while the remaining cited passages fully entail the claim<sup>10</sup>:
+                A specific retrieved passage <span className="font-serif italic font-semibold">c<sub>i,j</sub> &isin; C<sub>i</sub></span> is classified as redundant or irrelevant—and stripped by citation precision filters or post-editing modules—if and only if it fails standalone entailment while the remaining cited passages fully entail the claim<sup>11</sup>:
               </p>
 
               {/* Equation Block 3: Irrelevant */}
@@ -857,7 +857,7 @@ export const WhitepaperVol6Reader: React.FC<{
               </div>
 
               <p>
-                To force a sponsored page <span className="font-serif italic font-semibold">d<sub>sponsored</sub></span> to act purely as a Type II ghost citation, the content architect optimizes <span className="font-serif italic font-semibold">d<sub>sponsored</sub></span> to maximize <span className="font-mono font-semibold">RRF_Score(<em>d<sub>sponsored</sub></em>)</span>—by saturating the page with 8 to 12 semantic fan-out question variants so it enters the LLM&apos;s 50-passage context window<sup>31</sup>—while deliberately formatting its claims so that <span className="font-mono font-semibold">&phi;(<em>d<sub>sponsored</sub></em>, <em>s<sub>i</sub></em>) = 0</span> on a standalone atomic basis<sup>10</sup>. As answer-synthesis research confirms, when a retrieved passage expresses a claim using multi-sentence contextual dependencies, hedged premises, or comparative framing that requires outside corroboration, the LLM absorbs the semantic framing into its generated output <span className="font-serif italic font-semibold">s<sub>i</sub></span>, but Self-RAG reflection tokens and sentence-level citation grounders drop the citation link to <span className="font-serif italic font-semibold">d<sub>sponsored</sub></span> and attach the visible bracketed citation [1] to a clean, single-claim passage from one of the ~30 high-authority domains (<span className="font-serif italic font-semibold">d<sub>authority</sub></span>) that satisfies <span className="font-mono font-semibold">&phi;(<em>d<sub>authority</sub></em>, <em>s<sub>i</sub></em>) = 1</span><sup>2</sup>.
+                To force a sponsored page <span className="font-serif italic font-semibold">d<sub>sponsored</sub></span> to act purely as a Type II ghost citation, the content architect optimizes <span className="font-serif italic font-semibold">d<sub>sponsored</sub></span> to maximize <span className="font-mono font-semibold">RRF_Score(<em>d<sub>sponsored</sub></em>)</span>—by saturating the page with 8 to 12 semantic fan-out question variants so it enters the LLM&apos;s 50-passage context window<sup>32</sup>—while deliberately formatting its claims so that <span className="font-mono font-semibold">&phi;(<em>d<sub>sponsored</sub></em>, <em>s<sub>i</sub></em>) = 0</span> on a standalone atomic basis<sup>11</sup>. As answer-synthesis research confirms, when a retrieved passage expresses a claim using multi-sentence contextual dependencies, hedged premises, or comparative framing that requires outside corroboration, the LLM absorbs the semantic framing into its generated output <span className="font-serif italic font-semibold">s<sub>i</sub></span>, but Self-RAG reflection tokens and sentence-level citation grounders drop the citation link to <span className="font-serif italic font-semibold">d<sub>sponsored</sub></span> and attach the visible bracketed citation [1] to a clean, single-claim passage from one of the ~30 high-authority domains (<span className="font-serif italic font-semibold">d<sub>authority</sub></span>) that satisfies <span className="font-mono font-semibold">&phi;(<em>d<sub>authority</sub></em>, <em>s<sub>i</sub></em>) = 1</span><sup>3</sup>.
               </p>
 
               <h3 className="font-serif text-xl sm:text-2xl text-[#410217] font-bold pt-2">
@@ -865,7 +865,7 @@ export const WhitepaperVol6Reader: React.FC<{
               </h3>
 
               <p>
-                In production RAG pipelines, LLMs exhibit strong positional bias, disproportionately citing passages placed at the beginning of the context window or pages that front-load concise &le;80-token answers<sup>31</sup>. Conversely, when an agent or RAG scraper encounters a document that exceeds optimal token thresholds (e.g., &gt;15,000–25,000 tokens or buried behind heavy HTML navigation chrome rather than clean Markdown<sup>34</sup>) or spreads its thesis across wide paragraphs rather than self-contained 45-to-75-word blocks<sup>15</sup>, the passage loses the synthesis-stage citation tournament<sup>26</sup>. In reranker training pipelines mined from production RAG logs, these retrieved-but-not-cited documents are logged as &quot;hard negatives&quot; for citation even though the generator read them during context assembly<sup>33</sup>.
+                In production RAG pipelines, LLMs exhibit strong positional bias, disproportionately citing passages placed at the beginning of the context window or pages that front-load concise &le;80-token answers<sup>32</sup>. Conversely, when an agent or RAG scraper encounters a document that exceeds optimal token thresholds (e.g., &gt;15,000–25,000 tokens or buried behind heavy HTML navigation chrome rather than clean Markdown<sup>35</sup>) or spreads its thesis across wide paragraphs rather than self-contained 45-to-75-word blocks<sup>16</sup>, the passage loses the synthesis-stage citation tournament<sup>27</sup>. In reranker training pipelines mined from production RAG logs, these retrieved-but-not-cited documents are logged as &quot;hard negatives&quot; for citation even though the generator read them during context assembly<sup>34</sup>.
               </p>
 
               {/* TABLE 3: Target Attribution Outcome Matrix */}
@@ -887,19 +887,19 @@ export const WhitepaperVol6Reader: React.FC<{
                         Final Citation (Linked &amp; Named)
                       </td>
                       <td className="p-3 border-r border-[#F2D69D] align-top">
-                        Include exact brand/sponsor name as whole word in &lt;title&gt; and H1<sup>12</sup>.
+                        Include exact brand/sponsor name as whole word in &lt;title&gt; and H1<sup>13</sup>.
                       </td>
                       <td className="p-3 border-r border-[#F2D69D] align-top">
-                        Front-load brand name in first 500 characters; &le;80-token direct answer + &quot;Because&quot; unit<sup>12</sup>.
+                        Front-load brand name in first 500 characters; &le;80-token direct answer + &quot;Because&quot; unit<sup>13</sup>.
                       </td>
                       <td className="p-3 border-r border-[#F2D69D] align-top">
-                        Self-contained 45–75 word Subject-Verb-Predicate claims with proprietary stats bound directly to brand name in-sentence<sup>1</sup>.
+                        Self-contained 45–75 word Subject-Verb-Predicate claims with proprietary stats bound directly to brand name in-sentence<sup>2</sup>.
                       </td>
                       <td className="p-3 border-r border-[#F2D69D] align-top">
-                        Full Organization &amp; Person JSON-LD schema; verified author bios; Wikidata/Crunchbase entity links<sup>9</sup>.
+                        Full Organization &amp; Person JSON-LD schema; verified author bios; Wikidata/Crunchbase entity links<sup>10</sup>.
                       </td>
                       <td className="p-3 align-top">
-                        81.2%–91.6% named-if-cited rate across engines; high explicit Selection Rate (SR)<sup>12</sup>.
+                        81.2%–91.6% named-if-cited rate across engines; high explicit Selection Rate (SR)<sup>13</sup>.
                       </td>
                     </tr>
                     <tr className="hover:bg-[#FAF2E1]/60">
@@ -907,19 +907,19 @@ export const WhitepaperVol6Reader: React.FC<{
                         Type I Ghost Citation (Linked in Footnote, Sponsor Unnamed)
                       </td>
                       <td className="p-3 border-r border-[#F2D69D] align-top">
-                        Strip sponsor/publisher name from &lt;title&gt; tag; use unbranded &quot;Best X&quot; / &quot;Top Y&quot; comparative title<sup>12</sup>.
+                        Strip sponsor/publisher name from &lt;title&gt; tag; use unbranded &quot;Best X&quot; / &quot;Top Y&quot; comparative title<sup>13</sup>.
                       </td>
                       <td className="p-3 border-r border-[#F2D69D] align-top">
-                        Omit sponsor name from opening 500 characters; place target/rival brands in early comparison tables<sup>12</sup>.
+                        Omit sponsor name from opening 500 characters; place target/rival brands in early comparison tables<sup>13</sup>.
                       </td>
                       <td className="p-3 border-r border-[#F2D69D] align-top">
-                        High-density extractable statistics and quotes, but decouple sponsor disclosure 3+ paragraphs away from facts<sup>1</sup>.
+                        High-density extractable statistics and quotes, but decouple sponsor disclosure 3+ paragraphs away from facts<sup>2</sup>.
                       </td>
                       <td className="p-3 border-r border-[#F2D69D] align-top">
-                        Omit Organization schema; use generic &quot;Staff&quot; byline; repeat sponsor name 10+ times in footer/sidebar noise<sup>9</sup>.
+                        Omit Organization schema; use generic &quot;Staff&quot; byline; repeat sponsor name 10+ times in footer/sidebar noise<sup>10</sup>.
                       </td>
                       <td className="p-3 align-top">
-                        Page is linked in source panel, but sponsor is omitted from text in 49.5%–54.2% of answers; target entities named in 87%<sup>12</sup>.
+                        Page is linked in source panel, but sponsor is omitted from text in 49.5%–54.2% of answers; target entities named in 87%<sup>13</sup>.
                       </td>
                     </tr>
                     <tr className="hover:bg-[#FAF2E1]/60">
@@ -927,19 +927,19 @@ export const WhitepaperVol6Reader: React.FC<{
                         Type II Ghost Citation (Retrieved Context Only, Unlinked in UI)
                       </td>
                       <td className="p-3 border-r border-[#F2D69D] align-top">
-                        Match long-tail semantic fan-out queries in headings without brand tokens<sup>2</sup>.
+                        Match long-tail semantic fan-out queries in headings without brand tokens<sup>3</sup>.
                       </td>
                       <td className="p-3 border-r border-[#F2D69D] align-top">
-                        Delay atomic summary; use expansive background context (&gt;500 tokens before core claim)<sup>26</sup>.
+                        Delay atomic summary; use expansive background context (&gt;500 tokens before core claim)<sup>27</sup>.
                       </td>
                       <td className="p-3 border-r border-[#F2D69D] align-top">
-                        Distribute premises across paragraphs so &phi;(<em>c<sub>i,j</sub></em>, <em>s<sub>i</sub></em>) = 0 standalone, while co-citing facts present on top-30 authority domains<sup>2</sup>.
+                        Distribute premises across paragraphs so &phi;(<em>c<sub>i,j</sub></em>, <em>s<sub>i</sub></em>) = 0 standalone, while co-citing facts present on top-30 authority domains<sup>3</sup>.
                       </td>
                       <td className="p-3 border-r border-[#F2D69D] align-top">
-                        No schema; syndicate unlinked paraphrases and co-citations across Reddit and niche blogs<sup>32</sup>.
+                        No schema; syndicate unlinked paraphrases and co-citations across Reddit and niche blogs<sup>33</sup>.
                       </td>
                       <td className="p-3 align-top">
-                        Enters top-<span className="font-serif italic">k</span> RAG context (among ~50% uncredited retrievals) and steers answer synthesis, while visible citation goes to Wikipedia/Forbes/Reddit<sup>2</sup>.
+                        Enters top-<span className="font-serif italic">k</span> RAG context (among ~50% uncredited retrievals) and steers answer synthesis, while visible citation goes to Wikipedia/Forbes/Reddit<sup>3</sup>.
                       </td>
                     </tr>
                   </tbody>
@@ -959,7 +959,7 @@ export const WhitepaperVol6Reader: React.FC<{
               </h2>
 
               <p>
-                The strategic incentive to engineer ghost citations rather than final citations reaches its apex in Political Answer Engine Optimization (Political AEO / GEO)<sup>32</sup>. By late 2026, approximately 25% of eligible U.S. voters utilize AI chatbots—including ChatGPT, Gemini, Claude, Perplexity, Grok, Meta&apos;s Muse, and Google AI Overviews/AI Mode—to research political candidates, ballot measures, and policy platforms<sup>32</sup>. Political campaigns now retain specialized GEO/AEO consultancies (such as Civly&apos;s AI Narratives and strategic advisory firms) at retainers ranging from $5,000 to $50,000 per month to audit and manipulate how generative engines synthesize candidate profiles<sup>32</sup>.
+                The strategic incentive to engineer ghost citations rather than final citations reaches its apex in Political Answer Engine Optimization (Political AEO / GEO)<sup>33</sup>. By late 2026, approximately 25% of eligible U.S. voters utilize AI chatbots—including ChatGPT, Gemini, Claude, Perplexity, Grok, Meta&apos;s Muse, and Google AI Overviews/AI Mode—to research political candidates, ballot measures, and policy platforms<sup>33</sup>. Political campaigns now retain specialized GEO/AEO consultancies (such as Civly&apos;s AI Narratives and strategic advisory firms) at retainers ranging from $5,000 to $50,000 per month to audit and manipulate how generative engines synthesize candidate profiles<sup>33</sup>.
               </p>
 
               <h3 className="font-serif text-xl sm:text-2xl text-[#410217] font-bold pt-2">
@@ -967,11 +967,11 @@ export const WhitepaperVol6Reader: React.FC<{
               </h3>
 
               <p>
-                In both commercial and political arenas, explicit sponsorship disclosures trigger severe credibility discounting. Empirical research on AI trust dynamics demonstrates that when users see a &quot;Sponsored&quot; label adjacent to an AI recommendation, perceived credibility drops by 40% to 60%<sup>19</sup>. Conversely, when an AI engine presents a recommendation validated by an organic third-party citation, user trust increases by 40% to 60%, yielding a 10x conversion advantage over paid placements<sup>19</sup>.
+                In both commercial and political arenas, explicit sponsorship disclosures trigger severe credibility discounting. Empirical research on AI trust dynamics demonstrates that when users see a &quot;Sponsored&quot; label adjacent to an AI recommendation, perceived credibility drops by 40% to 60%<sup>20</sup>. Conversely, when an AI engine presents a recommendation validated by an organic third-party citation, user trust increases by 40% to 60%, yielding a 10x conversion advantage over paid placements<sup>20</sup>.
               </p>
 
               <p>
-                In political campaigning, this trust gap creates a powerful incentive for algorithmic laundering—the process by which politically skilled actors or disinformation campaigns inject partisan framing, opposition research, or pseudoscientific claims into the retrieval ecosystem so that generative AI models restate those claims in a singular, authoritative, seemingly objective voice<sup>16</sup>. Unlike traditional search engines that display a list of ten blue links where voters can immediately inspect whether a URL belongs to a Super PAC or partisan outlet (subject to FEC 11 CFR 110.11 disclaimer rules and 11 CFR 109.20 coordinated communication rules<sup>46</sup>), an AI assistant synthesizes a unified verdict<sup>6</sup>. If an opposition research brief or sponsored advocacy post is cited as a Final Citation (&quot;According to the Make Candidate X Win PAC...&quot;), the voter discounts the output. If that same page is engineered as a Type I or Type II ghost citation, the AI strips the partisan source identity and states the policy critique as consensus fact, attaching its visible citations to neutral repositories such as Ballotpedia, Wikipedia, Wikidata, or Vote Smart<sup>1</sup>.
+                In political campaigning, this trust gap creates a powerful incentive for algorithmic laundering—the process by which politically skilled actors or disinformation campaigns inject partisan framing, opposition research, or pseudoscientific claims into the retrieval ecosystem so that generative AI models restate those claims in a singular, authoritative, seemingly objective voice<sup>17</sup>. Unlike traditional search engines that display a list of ten blue links where voters can immediately inspect whether a URL belongs to a Super PAC or partisan outlet (subject to FEC 11 CFR 110.11 disclaimer rules and 11 CFR 109.20 coordinated communication rules<sup>47</sup>), an AI assistant synthesizes a unified verdict<sup>7</sup>. If an opposition research brief or sponsored advocacy post is cited as a Final Citation (&quot;According to the Make Candidate X Win PAC...&quot;), the voter discounts the output. If that same page is engineered as a Type I or Type II ghost citation, the AI strips the partisan source identity and states the policy critique as consensus fact, attaching its visible citations to neutral repositories such as Ballotpedia, Wikipedia, Wikidata, or Vote Smart<sup>2</sup>.
               </p>
 
               <h3 className="font-serif text-xl sm:text-2xl text-[#410217] font-bold pt-2">
@@ -979,11 +979,11 @@ export const WhitepaperVol6Reader: React.FC<{
               </h3>
 
               <p>
-                The ability of uncredited Type II ghost citations to steer an LLM&apos;s synthesized verdict without winning the final citation slot can be formalized through Kamenica and Gentzkow&apos;s (2011) Bayesian Persuasion framework applied to multi-document RAG synthesis<sup>47</sup>.
+                The ability of uncredited Type II ghost citations to steer an LLM&apos;s synthesized verdict without winning the final citation slot can be formalized through Kamenica and Gentzkow&apos;s (2011) Bayesian Persuasion framework applied to multi-document RAG synthesis<sup>48</sup>.
               </p>
 
               <p>
-                Consider the LLM generator as a Bayesian Receiver holding an initial prior belief <span className="font-serif italic font-semibold">&mu;<sub>0</sub> &isin; &Delta;(&Omega;)</span> over a binary or discrete state space <span className="font-serif font-semibold">&Omega;</span> (for instance, whether Candidate A&apos;s economic policy is net-beneficial, <span className="font-serif italic font-semibold">&omega;<sub>1</sub></span>, or net-harmful, <span className="font-serif italic font-semibold">&omega;<sub>0</sub></span>, or which commercial software leads a category) derived from its frozen parametric weights<sup>31</sup>. The AEO strategist acts as a Sender (or sequential multi-sender coalition<sup>47</sup>) who designs an information structure—a distribution of retrieved context passages <span className="font-serif italic font-semibold">&tau; &isin; &Delta;(&Delta;(&Omega;))</span> across the web index—that maps states to signal realizations <span className="font-serif italic font-semibold">s &isin; S</span> (the top-<span className="font-serif italic font-semibold">k</span> retrieved chunks in the RAG context window)<sup>47</sup>. Under the Bayes plausibility constraint, the expected posterior belief induced across the retrieved chunks must equal the prior in the absence of fabrication, yet the Sender can structure the signal space <span className="font-serif italic font-semibold">&pi; : &Omega; &rarr; &Delta;(S)</span> to solve the constrained optimization problem<sup>48</sup>:
+                Consider the LLM generator as a Bayesian Receiver holding an initial prior belief <span className="font-serif italic font-semibold">&mu;<sub>0</sub> &isin; &Delta;(&Omega;)</span> over a binary or discrete state space <span className="font-serif font-semibold">&Omega;</span> (for instance, whether Candidate A&apos;s economic policy is net-beneficial, <span className="font-serif italic font-semibold">&omega;<sub>1</sub></span>, or net-harmful, <span className="font-serif italic font-semibold">&omega;<sub>0</sub></span>, or which commercial software leads a category) derived from its frozen parametric weights<sup>32</sup>. The AEO strategist acts as a Sender (or sequential multi-sender coalition<sup>48</sup>) who designs an information structure—a distribution of retrieved context passages <span className="font-serif italic font-semibold">&tau; &isin; &Delta;(&Delta;(&Omega;))</span> across the web index—that maps states to signal realizations <span className="font-serif italic font-semibold">s &isin; S</span> (the top-<span className="font-serif italic font-semibold">k</span> retrieved chunks in the RAG context window)<sup>48</sup>. Under the Bayes plausibility constraint, the expected posterior belief induced across the retrieved chunks must equal the prior in the absence of fabrication, yet the Sender can structure the signal space <span className="font-serif italic font-semibold">&pi; : &Omega; &rarr; &Delta;(S)</span> to solve the constrained optimization problem<sup>49</sup>:
               </p>
 
               {/* Equation Block 4: Bayesian Persuasion */}
@@ -994,15 +994,15 @@ export const WhitepaperVol6Reader: React.FC<{
               </div>
 
               <p>
-                where <span className="font-serif italic font-semibold">u&#770;<sub>S</sub>(&mu;<sub>s</sub>)</span> is the campaign&apos;s utility when the LLM adopts posterior belief <span className="font-serif italic font-semibold">&mu;<sub>s</sub></span> and generates action <span className="font-serif italic font-semibold">a&#770;(&mu;<sub>s</sub>)</span> (grading the candidate as &quot;helps&quot; rather than &quot;neutral&quot; or &quot;hurts&quot; in voter answers<sup>36</sup>). By the concavification theorem, the maximum attainable payoff for the AEO strategist is given by the concave closure <span className="font-serif italic font-semibold">V(&mu;<sub>0</sub>)</span>—the smallest concave function everywhere weakly greater than <span className="font-serif italic font-semibold">u&#770;<sub>S</sub>(&mu;)</span><sup>47</sup>.
+                where <span className="font-serif italic font-semibold">u&#770;<sub>S</sub>(&mu;<sub>s</sub>)</span> is the campaign&apos;s utility when the LLM adopts posterior belief <span className="font-serif italic font-semibold">&mu;<sub>s</sub></span> and generates action <span className="font-serif italic font-semibold">a&#770;(&mu;<sub>s</sub>)</span> (grading the candidate as &quot;helps&quot; rather than &quot;neutral&quot; or &quot;hurts&quot; in voter answers<sup>37</sup>). By the concavification theorem, the maximum attainable payoff for the AEO strategist is given by the concave closure <span className="font-serif italic font-semibold">V(&mu;<sub>0</sub>)</span>—the smallest concave function everywhere weakly greater than <span className="font-serif italic font-semibold">u&#770;<sub>S</sub>(&mu;)</span><sup>48</sup>.
               </p>
 
               <p>
-                In practical RAG mechanics, modern answer engines enforce the Triangulation Principle: neural rerankers discount isolated self-promotional claims on a candidate&apos;s or brand&apos;s own homepage (which make up only 5% to 19% of AI sources<sup>27</sup>), requiring multi-node third-party consensus across independent domains before shifting the posterior <span className="font-serif italic font-semibold">&mu;<sub>s</sub></span> past the decision threshold <span className="font-mono font-semibold">&mu;<sub><em>s</em></sub> &gt; 0.5</span><sup>6</sup>. Political AEO operatives and commercial brands achieve this concavification primarily through community and Reddit co-citation flooding alongside sponsored YouTube description riding<sup>20</sup>. Because Perplexity, Google AI Overviews, and ChatGPT disproportionately weight community discussions on Reddit during RAG retrieval<sup>32</sup>, campaigns flood high-authority subreddits, niche industry blogs, and Q&amp;A forums with coordinated data points and unlinked co-citations that pair a candidate or brand name with specific policy attributes or category leadership terms<sup>27</sup>. Even when individual sponsored posts or seeded threads are not selected as final citations, their simultaneous presence in the top-50 retrieved chunks shifts the LLM&apos;s posterior <span className="font-serif italic font-semibold">&mu;<sub>s</sub></span> across the threshold, causing the model to synthesize the engineered narrative while citing a single canonical profile such as Ballotpedia or Wikipedia<sup>32</sup>.
+                In practical RAG mechanics, modern answer engines enforce the Triangulation Principle: neural rerankers discount isolated self-promotional claims on a candidate&apos;s or brand&apos;s own homepage (which make up only 5% to 19% of AI sources<sup>28</sup>), requiring multi-node third-party consensus across independent domains before shifting the posterior <span className="font-serif italic font-semibold">&mu;<sub>s</sub></span> past the decision threshold <span className="font-mono font-semibold">&mu;<sub><em>s</em></sub> &gt; 0.5</span><sup>7</sup>. Political AEO operatives and commercial brands achieve this concavification primarily through community and Reddit co-citation flooding alongside sponsored YouTube description riding<sup>21</sup>. Because Perplexity, Google AI Overviews, and ChatGPT disproportionately weight community discussions on Reddit during RAG retrieval<sup>33</sup>, campaigns flood high-authority subreddits, niche industry blogs, and Q&amp;A forums with coordinated data points and unlinked co-citations that pair a candidate or brand name with specific policy attributes or category leadership terms<sup>28</sup>. Even when individual sponsored posts or seeded threads are not selected as final citations, their simultaneous presence in the top-50 retrieved chunks shifts the LLM&apos;s posterior <span className="font-serif italic font-semibold">&mu;<sub>s</sub></span> across the threshold, causing the model to synthesize the engineered narrative while citing a single canonical profile such as Ballotpedia or Wikipedia<sup>33</sup>.
               </p>
 
               <p>
-                Simultaneously, outside Google&apos;s core search index, AI engines cite long-form, reference-style YouTube videos disproportionately often<sup>28</sup>. Empirical tracking by Scrunch (2026) demonstrates that when an AI engine cites a YouTube video whose text description names a sponsor (&quot;thanks to Brand X for sponsoring&quot;), that sponsor is named in the generated AI answer 40.0% of the time, compared to 32.3% when unsponsored—a 1.24x mention lift that rises to 1.35x on unbranded category prompts, with platform-specific lifts of 1.28x on Google AI Mode, 1.22x on Google AI Overviews, 1.08x on Gemini, and 1.07x on Perplexity<sup>20</sup>. Conversely, in the remaining 60.0% of cited appearances, the sponsored YouTube video functions as a Type I ghost citation: the video is linked in the source panel while the sponsor&apos;s name is omitted or replaced by category competitors<sup>1</sup>.
+                Simultaneously, outside Google&apos;s core search index, AI engines cite long-form, reference-style YouTube videos disproportionately often<sup>29</sup>. Empirical tracking by Scrunch (2026) demonstrates that when an AI engine cites a YouTube video whose text description names a sponsor (&quot;thanks to Brand X for sponsoring&quot;), that sponsor is named in the generated AI answer 40.0% of the time, compared to 32.3% when unsponsored—a 1.24x mention lift that rises to 1.35x on unbranded category prompts, with platform-specific lifts of 1.28x on Google AI Mode, 1.22x on Google AI Overviews, 1.08x on Gemini, and 1.07x on Perplexity<sup>21</sup>. Conversely, in the remaining 60.0% of cited appearances, the sponsored YouTube video functions as a Type I ghost citation: the video is linked in the source panel while the sponsor&apos;s name is omitted or replaced by category competitors<sup>2</sup>.
               </p>
 
               <h3 className="font-serif text-xl sm:text-2xl text-[#410217] font-bold pt-2">
@@ -1010,19 +1010,19 @@ export const WhitepaperVol6Reader: React.FC<{
               </h3>
 
               <p>
-                As search and political information discovery transition in 2026 from single-turn RAG chatbots to multi-agent orchestrator topologies—standardized around Anthropic&apos;s Model Context Protocol (MCP) for tool/resource invocation and Google&apos;s Agent2Agent (A2A) Protocol for peer-to-peer agent delegation<sup>35</sup>—controlling whether an external page is used as an uncredited ghost citation acquires a structural, protocol-level dimension known as boundary laundering<sup>55</sup>.
+                As search and political information discovery transition in 2026 from single-turn RAG chatbots to multi-agent orchestrator topologies—standardized around Anthropic&apos;s Model Context Protocol (MCP) for tool/resource invocation and Google&apos;s Agent2Agent (A2A) Protocol for peer-to-peer agent delegation<sup>36</sup>—controlling whether an external page is used as an uncredited ghost citation acquires a structural, protocol-level dimension known as boundary laundering<sup>56</sup>.
               </p>
 
               <p>
-                In hierarchical multi-agent systems (such as Google ADK&apos;s three-agent architecture comprising a Trending Topics Agent that scrapes the web, a Trend Analyzer Agent that performs quantitative synthesis, and a Host Agent that orchestrates final responses<sup>57</sup>), individual agents often implement control-flow integrity (CFI) defenses such as the Dual-LLM CaMeL pattern, which separates a Privileged Planning LLM (PLLM) from a Quarantined LLM (QLLM) that parses untrusted external web content<sup>55</sup>. Within a single agent, CaMeL tags retrieved web pages or database rows as untrusted data, preventing indirect prompt injections or commercial/political directives from hijacking control flow<sup>55</sup>.
+                In hierarchical multi-agent systems (such as Google ADK&apos;s three-agent architecture comprising a Trending Topics Agent that scrapes the web, a Trend Analyzer Agent that performs quantitative synthesis, and a Host Agent that orchestrates final responses<sup>58</sup>), individual agents often implement control-flow integrity (CFI) defenses such as the Dual-LLM CaMeL pattern, which separates a Privileged Planning LLM (PLLM) from a Quarantined LLM (QLLM) that parses untrusted external web content<sup>56</sup>. Within a single agent, CaMeL tags retrieved web pages or database rows as untrusted data, preventing indirect prompt injections or commercial/political directives from hijacking control flow<sup>56</sup>.
               </p>
 
               <p>
-                However, formal security analysis by researchers at the University of Oxford (<em>Can CaMeLs Talk?</em>, October 2026) across <span className="font-mono font-semibold">n = 949</span> injected task instances on the MultiAgentDojo benchmark proves that individual agent security does not compose across agent boundaries<sup>55</sup>. While an unprotected multi-agent system exhibits a 12.9% Attack Success Rate (ASR) under indirect prompt injection, securing each agent individually with CaMeL still leaves a residual 0.2% ASR where every successful compromise occurs via boundary laundering, whereas enforcing cross-agent provenance via Multi-CaMeL reduces the ASR to 0.0%<sup>55</sup>. When a retrieval sub-agent <span className="font-serif italic font-semibold">A<sub>1</sub></span> ingests an external webpage (such as a sponsored post or politically engineered document containing embedded framing or indirect instructions) and returns <code className="bg-[#FFFDF8] px-1 border border-[#F2D69D] font-mono text-xs">summarised_info</code> to an Orchestrator Agent <span className="font-serif italic font-semibold">A<sub>0</sub></span>, <span className="font-serif italic font-semibold">A<sub>0</sub></span> incorporates that tainted summary into the natural-language prompt argument passed to a downstream synthesis or notification agent <span className="font-serif italic font-semibold">A<sub>2</sub></span><sup>55</sup>. Because standard agent protocols (including baseline MCP tools/call returns and A2A Message/Artifact exchanges over JSON-RPC 2.0<sup>52</sup>) do not propagate cryptographic provenance labels across agent hops, the downstream agent&apos;s PLLM receives the previously untrusted external content as a trusted user instruction<sup>55</sup>. This principal trust inversion and boundary laundering strips both the original source URL and its untrusted/sponsored status, causing the terminal agent to execute the embedded framing or recommendation as its own authoritative output with zero visible citation to the origin page<sup>55</sup>.
+                However, formal security analysis by researchers at the University of Oxford (<em>Can CaMeLs Talk?</em>, October 2026) across <span className="font-mono font-semibold">n = 949</span> injected task instances on the MultiAgentDojo benchmark proves that individual agent security does not compose across agent boundaries<sup>56</sup>. While an unprotected multi-agent system exhibits a 12.9% Attack Success Rate (ASR) under indirect prompt injection, securing each agent individually with CaMeL still leaves a residual 0.2% ASR where every successful compromise occurs via boundary laundering, whereas enforcing cross-agent provenance via Multi-CaMeL reduces the ASR to 0.0%<sup>56</sup>. When a retrieval sub-agent <span className="font-serif italic font-semibold">A<sub>1</sub></span> ingests an external webpage (such as a sponsored post or politically engineered document containing embedded framing or indirect instructions) and returns <code className="bg-[#FFFDF8] px-1 border border-[#F2D69D] font-mono text-xs">summarised_info</code> to an Orchestrator Agent <span className="font-serif italic font-semibold">A<sub>0</sub></span>, <span className="font-serif italic font-semibold">A<sub>0</sub></span> incorporates that tainted summary into the natural-language prompt argument passed to a downstream synthesis or notification agent <span className="font-serif italic font-semibold">A<sub>2</sub></span><sup>56</sup>. Because standard agent protocols (including baseline MCP tools/call returns and A2A Message/Artifact exchanges over JSON-RPC 2.0<sup>53</sup>) do not propagate cryptographic provenance labels across agent hops, the downstream agent&apos;s PLLM receives the previously untrusted external content as a trusted user instruction<sup>56</sup>. This principal trust inversion and boundary laundering strips both the original source URL and its untrusted/sponsored status, causing the terminal agent to execute the embedded framing or recommendation as its own authoritative output with zero visible citation to the origin page<sup>56</sup>.
               </p>
 
               <p>
-                Furthermore, in agentic discovery environments where AI agents autonomously select external data sources via MCP tools/list schemas or A2A /.well-known/agent.json Agent Cards<sup>52</sup>, source selection can be invisibly steered without leaving a citation trail through MCP parameter schema engineering and adversarial metadata injection. Controlled factor-level interventions across GPT, Claude, Gemini, DeepSeek, and Qwen (October 2026, arXiv:2610.14334) demonstrate that LLMs select external tools and data providers primarily based on parameter schema structure (<span className="font-serif italic font-semibold">&beta;<sub>P</sub></span> median magnitude <span className="font-mono font-semibold">3.82</span>, more than twice the effect of server names at <span className="font-mono font-semibold">1.48</span>) and parameter descriptions (positive selection lift in 21 of 30 conditions) rather than tool names<sup>60</sup>. Specifically, decomposing grouped objects into separate top-level parameter fields drives tool selection rates to 93.3%–100% across models, while listing a tool first in candidate order captures 79%–96% of selections when names are comparable<sup>62</sup>. A sponsored data provider or political information service exposing an MCP server or A2A Agent Card can therefore dominate agentic retrieval simply by engineering decomposed top-level JSON Schema parameters, while the orchestrating agent synthesizes the returned JSON payload (tools/call result) into prose without citing the underlying tool endpoint<sup>54</sup>. Moreover, because A2A Agent Card signing is optional in baseline deployments and opaque execution hides internal tool calls<sup>52</sup>, frameworks like ToolCommander demonstrate that injecting manipulator tool descriptions optimized for dense retrievers (ToolBench Retriever and Contriever) achieves a 100% retrieval attack success rate (<span className="font-mono font-semibold">ASR<sub>Ret</sub></span>), steering downstream LLM synthesis and scheduling invisibly<sup>64</sup>.
+                Furthermore, in agentic discovery environments where AI agents autonomously select external data sources via MCP tools/list schemas or A2A /.well-known/agent.json Agent Cards<sup>53</sup>, source selection can be invisibly steered without leaving a citation trail through MCP parameter schema engineering and adversarial metadata injection. Controlled factor-level interventions across GPT, Claude, Gemini, DeepSeek, and Qwen (October 2026, arXiv:2610.14334) demonstrate that LLMs select external tools and data providers primarily based on parameter schema structure (<span className="font-serif italic font-semibold">&beta;<sub>P</sub></span> median magnitude <span className="font-mono font-semibold">3.82</span>, more than twice the effect of server names at <span className="font-mono font-semibold">1.48</span>) and parameter descriptions (positive selection lift in 21 of 30 conditions) rather than tool names<sup>61</sup>. Specifically, decomposing grouped objects into separate top-level parameter fields drives tool selection rates to 93.3%–100% across models, while listing a tool first in candidate order captures 79%–96% of selections when names are comparable<sup>63</sup>. A sponsored data provider or political information service exposing an MCP server or A2A Agent Card can therefore dominate agentic retrieval simply by engineering decomposed top-level JSON Schema parameters, while the orchestrating agent synthesizes the returned JSON payload (tools/call result) into prose without citing the underlying tool endpoint<sup>55</sup>. Moreover, because A2A Agent Card signing is optional in baseline deployments and opaque execution hides internal tool calls<sup>53</sup>, frameworks like ToolCommander demonstrate that injecting manipulator tool descriptions optimized for dense retrievers (ToolBench Retriever and Contriever) achieves a 100% retrieval attack success rate (<span className="font-mono font-semibold">ASR<sub>Ret</sub></span>), steering downstream LLM synthesis and scheduling invisibly<sup>65</sup>.
               </p>
             </section>
 
@@ -1042,7 +1042,7 @@ export const WhitepaperVol6Reader: React.FC<{
               </h3>
 
               <p>
-                When a generative AI system fails or refuses to disclose that its output originated from a sponsored post, that opacity operates across both final citations and ghost citations<sup>1</sup>. In Final Citations and Type I Ghost Citations—which represent 40% to 61.7% of all AI citations across leading platforms<sup>1</sup>—the RAG parser extracts the factual assertions or comparative rankings from the sponsored page while stripping FTC material-connection disclosures as non-entailing boilerplate<sup>4</sup>. In Type II Ghost Citations, encompassing the approximately 50% of retrieved RAG passages that are never visibly linked<sup>2</sup>, the sponsored content shapes the model&apos;s latent posterior belief and answer synthesis while visible attribution is concentrated among the roughly 30 high-authority domains that capture 67% of topic citations<sup>2</sup>. Only when a publisher engages in asymmetric cloaking—serving sponsored FAQs in Markdown to AI crawlers while hiding them from human HTML readers, as demonstrated in the August 2026 <em>Time</em> and Mobian enforcement block by Perplexity—does an AI engine enforce a hard refusal that purges the content from both final and ghost citations<sup>3</sup>.
+                When a generative AI system fails or refuses to disclose that its output originated from a sponsored post, that opacity operates across both final citations and ghost citations<sup>2</sup>. In Final Citations and Type I Ghost Citations—which represent 40% to 61.7% of all AI citations across leading platforms<sup>2</sup>—the RAG parser extracts the factual assertions or comparative rankings from the sponsored page while stripping FTC material-connection disclosures as non-entailing boilerplate<sup>5</sup>. In Type II Ghost Citations, encompassing the approximately 50% of retrieved RAG passages that are never visibly linked<sup>3</sup>, the sponsored content shapes the model&apos;s latent posterior belief and answer synthesis while visible attribution is concentrated among the roughly 30 high-authority domains that capture 67% of topic citations<sup>3</sup>. Only when a publisher engages in asymmetric cloaking—serving sponsored FAQs in Markdown to AI crawlers while hiding them from human HTML readers, as demonstrated in the August 2026 <em>Time</em> and Mobian enforcement block by Perplexity—does an AI engine enforce a hard refusal that purges the content from both final and ghost citations<sup>4</sup>.
               </p>
 
               <h3 className="font-serif text-xl sm:text-2xl text-[#410217] font-bold pt-2">
@@ -1050,7 +1050,7 @@ export const WhitepaperVol6Reader: React.FC<{
               </h3>
 
               <p>
-                An internet page or sponsored post can be systematically engineered to act as a ghost citation rather than a final citation<sup>12</sup>. By omitting the sponsoring entity from the HTML &lt;title&gt; tag (increasing Type I ghosting from 12.2% to 42.9% overall and exceeding 52% on ChatGPT and Perplexity<sup>12</sup>), formatting the page as an unbranded comparative listicle (49.5% ghost rate<sup>12</sup>), delaying sponsor mentions past the first 500 characters (43.6% ghost rate<sup>12</sup>), and decoupling statistics from disclosures, an operator ensures the source brand is omitted from prose while rival or target entities named on the page capture the AI&apos;s explicit recommendation in 87% of instances<sup>1</sup>. To achieve complete link invisibility as a Type II ghost citation, content architects combine high-coverage RRF query fan-out headings with distributed, multi-sentence claim structures that fail standalone NLI citation-precision entailment (<span className="font-mono font-semibold">&phi;(<em>c<sub>i,j</sub></em>, <em>s<sub>i</sub></em>) = 0</span>), transferring the visible citation to a corroborated neutral domain<sup>10</sup>.
+                An internet page or sponsored post can be systematically engineered to act as a ghost citation rather than a final citation<sup>13</sup>. By omitting the sponsoring entity from the HTML &lt;title&gt; tag (increasing Type I ghosting from 12.2% to 42.9% overall and exceeding 52% on ChatGPT and Perplexity<sup>13</sup>), formatting the page as an unbranded comparative listicle (49.5% ghost rate<sup>13</sup>), delaying sponsor mentions past the first 500 characters (43.6% ghost rate<sup>13</sup>), and decoupling statistics from disclosures, an operator ensures the source brand is omitted from prose while rival or target entities named on the page capture the AI&apos;s explicit recommendation in 87% of instances<sup>2</sup>. To achieve complete link invisibility as a Type II ghost citation, content architects combine high-coverage RRF query fan-out headings with distributed, multi-sentence claim structures that fail standalone NLI citation-precision entailment (<span className="font-mono font-semibold">&phi;(<em>c<sub>i,j</sub></em>, <em>s<sub>i</sub></em>) = 0</span>), transferring the visible citation to a corroborated neutral domain<sup>11</sup>.
               </p>
 
               <h3 className="font-serif text-xl sm:text-2xl text-[#410217] font-bold pt-2">
@@ -1058,16 +1058,16 @@ export const WhitepaperVol6Reader: React.FC<{
               </h3>
 
               <p>
-                Because political AEO campaigns operating at $5,000 to $50,000 per month and stealth commercial marketers actively exploit Type II ghost citations, Reddit co-citation seeding, and multi-agent boundary laundering to cloak partisan or paid claims in algorithmic objectivity<sup>32</sup>, defensive governance requires architectural provenance enforcement across both multi-agent protocols and web publishing standards. Multi-agent orchestrators must replace raw natural-language context passing with provenance-preserving protocols such as Multi-CaMeL, which separates trusted instructions from untrusted tool-derived data via an opaque side-channel (<code className="bg-[#FFFDF8] px-1 border border-[#F2D69D] font-mono text-xs">get_variable</code>) and propagates security and sponsorship metadata across agent boundaries—reducing boundary-laundering attack success from 12.9% in unprotected systems and 0.2% in single-agent CaMeL setups to 0.0%<sup>55</sup>. Runtime verification layers such as VIGIL (verify-before-commit against tool stream injections) and DARWIN-Guard further harden semantic routers against adversarial framing<sup>54</sup>. Concurrently, to close the regulatory gap between FTC Double Disclosure mandates<sup>24</sup> and RAG disclosure stripping<sup>4</sup>, publishers and search engines must formalize symmetric machine-readable disclosure specifications—such as declaring paid placements in llms.txt, embedding C2PA metadata as mandated at the platform level under California AB 3211<sup>3</sup>, and utilizing Zero-Knowledge Machine Learning (zkML) proofs via frameworks like EZKL, Halo2, or Lagrange DeepProve alongside on-chain validation registries such as ERC-8004 to cryptographically attest that an agent&apos;s synthesized output satisfied source-attribution policies without tampering<sup>61</sup>.
+                Because political AEO campaigns operating at $5,000 to $50,000 per month and stealth commercial marketers actively exploit Type II ghost citations, Reddit co-citation seeding, and multi-agent boundary laundering to cloak partisan or paid claims in algorithmic objectivity<sup>33</sup>, defensive governance requires architectural provenance enforcement across both multi-agent protocols and web publishing standards. Multi-agent orchestrators must replace raw natural-language context passing with provenance-preserving protocols such as Multi-CaMeL, which separates trusted instructions from untrusted tool-derived data via an opaque side-channel (<code className="bg-[#FFFDF8] px-1 border border-[#F2D69D] font-mono text-xs">get_variable</code>) and propagates security and sponsorship metadata across agent boundaries—reducing boundary-laundering attack success from 12.9% in unprotected systems and 0.2% in single-agent CaMeL setups to 0.0%<sup>56</sup>. Runtime verification layers such as VIGIL (verify-before-commit against tool stream injections) and DARWIN-Guard further harden semantic routers against adversarial framing<sup>55</sup>. Concurrently, to close the regulatory gap between FTC Double Disclosure mandates<sup>25</sup> and RAG disclosure stripping<sup>5</sup>, publishers and search engines must formalize symmetric machine-readable disclosure specifications—such as declaring paid placements in llms.txt, embedding C2PA metadata as mandated at the platform level under California AB 3211<sup>4</sup>, and utilizing Zero-Knowledge Machine Learning (zkML) proofs via frameworks like EZKL, Halo2, or Lagrange DeepProve alongside on-chain validation registries such as ERC-8004 to cryptographically attest that an agent&apos;s synthesized output satisfied source-attribution policies without tampering<sup>62</sup>.
               </p>
             </section>
 
             {/* ==============================================================
-                SECTION 09: WORKS CITED (ALL 69 REFERENCES WORD-FOR-WORD)
+                SECTION 09: WORKS CITED (ALL 70 REFERENCES WORD-FOR-WORD)
                 ============================================================== */}
             <section id="sec-v6-9" className="scroll-mt-24 space-y-5 pt-6 border-t border-[#F2D69D]">
               <div className="font-mono text-xs text-[#D5991C] font-bold uppercase">
-                Section 09 · Complete Bibliography (69 Sources)
+                Section 09 · Complete Bibliography (70 Sources)
               </div>
               <h2 className="font-serif text-2xl sm:text-3xl text-[#410217] font-bold">
                 Works cited
