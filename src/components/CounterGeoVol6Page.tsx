@@ -442,7 +442,7 @@ export const WhitepaperVol6Reader: React.FC<{
               </p>
 
               <p>
-                By sampling just 100 typical questions in an industry and reverse-engineering the AI’s mapping model, an AEO cheater can word-sculpt a single poisoned web page so it lands right on that mathematical hub, allowing <strong>one rigged page to show up as the #1 retrieved source for over 21,000 out of 25,000 test questions across an extremely wide range of topic</strong> (Zhang et al). Combine that with <strong>semantic trojan horses</strong> (hiding a false claim inside an otherwise helpful guide) or <strong>split-payload attacks</strong> (splitting half of a rumor onto Site A and the other half onto Site B so the AI connects the dots itself), and bad actors can hijack AI answers across an entire industry without ever hacking a single server.
+                Researchers (Zhang et al., arXiv:2412.14113) showed just how extreme this flaw is in AI image-search systems: by testing only 100 random queries against the AI’s mapping model and making tiny, invisible tweaks to a single image, they turned that one file into a mathematical &quot;hub&quot; that showed up as the #1 result for over 21,000 out of 25,000 completely different test searches—compared to just 102 for a normal file. Combine that kind of math-driven search hijacking with <strong>semantic trojan horses</strong> (hiding a false claim inside an otherwise helpful guide) or <strong>split-payload attacks</strong> (splitting half of a rumor onto Site A and the other half onto Site B so the AI connects the dots itself), and bad actors can manipulate AI answers across an entire industry without ever hacking a single server.
               </p>
 
               <p>
