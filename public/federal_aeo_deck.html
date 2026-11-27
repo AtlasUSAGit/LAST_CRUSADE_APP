@@ -1,0 +1,2651 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LAST CRUSADE — Federal AEO Growth, SBIR &amp; SBA Procurement Briefing</title>
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Google Fonts: Cormorant Garamond, Plus Jakarta Sans, JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet">
+
+  <!-- Three.js & GSAP + ScrollTrigger -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            cream: '#FAF5EB',
+            oxblood: '#320813',
+            gold: '#DDA743',
+          },
+          fontFamily: {
+            serif: ['"Cormorant Garamond"', 'Georgia', 'serif'],
+            sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    :root {
+      --bg-cream: #FAF5EB;
+      --accent-primary: #320813;
+      --accent-secondary: #DDA743;
+    }
+
+    * {
+      box-sizing: border-box;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      background-color: var(--bg-cream);
+      color: var(--accent-primary);
+    }
+
+    body {
+      background-color: var(--bg-cream);
+      color: var(--accent-primary);
+      overflow-x: hidden;
+      margin: 0;
+      padding: 0;
+    }
+
+    ::selection {
+      background-color: var(--accent-primary);
+      color: var(--bg-cream);
+    }
+
+    /* Subtle architectural grid overlay matching Cover Deck */
+    .editorial-grid {
+      background-size: 64px 64px;
+      background-image:
+        linear-gradient(to right, rgba(50, 8, 19, 0.04) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(50, 8, 19, 0.04) 1px, transparent 1px);
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #FAF5EB;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: #320813;
+      border-radius: 3px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: #DDA743;
+    }
+
+    /* WebGL Fixed Canvas */
+    #webgl-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    /* Content wrapper above WebGL */
+    .deck-content {
+      position: relative;
+      z-index: 10;
+    }
+
+    /* Glassmorphic editorial cards matching Cover Deck */
+    .editorial-card {
+      background: rgba(250, 245, 235, 0.88);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(50, 8, 19, 0.14);
+      box-shadow: 0 20px 50px -15px rgba(50, 8, 19, 0.08);
+    }
+
+    .editorial-card-dark {
+      background: rgba(50, 8, 19, 0.96);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid rgba(221, 167, 67, 0.35);
+      color: #FAF5EB;
+      box-shadow: 0 25px 60px -15px rgba(50, 8, 19, 0.35);
+    }
+
+    /* Animated gold underline accent */
+    .gold-rule {
+      height: 1px;
+      background: linear-gradient(90deg, #320813 0%, #DDA743 50%, rgba(50, 8, 19, 0.1) 100%);
+    }
+
+    /* Navigation Diamond Indicators */
+    .nav-diamond {
+      width: 8px;
+      height: 8px;
+      transform: rotate(45deg);
+      border: 1px solid #320813;
+      background: transparent;
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      cursor: pointer;
+    }
+
+    .nav-diamond.active {
+      background: #DDA743;
+      border-color: #320813;
+      transform: rotate(45deg) scale(1.45);
+      box-shadow: 0 0 12px rgba(221, 167, 67, 0.65);
+    }
+
+    .nav-diamond:hover {
+      background: #320813;
+      transform: rotate(45deg) scale(1.3);
+    }
+
+    /* Animated Bar Fill */
+    .rev-bar-fill {
+      transform-origin: left center;
+      transform: scaleX(0);
+    }
+
+    /* Interactive simulation canvases */
+    .sim-canvas {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    /* Smart auto-hiding menu bar */
+    #smart-menu-bar {
+      will-change: transform, opacity;
+      transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+    }
+
+    /* Sticky stacking editorial cards */
+    .sticky-workflow-card {
+      will-change: transform, opacity;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .sticky-workflow-card.is-focused {
+      border-color: rgba(221, 167, 67, 0.85);
+      box-shadow: 0 28px 65px -18px rgba(50, 8, 19, 0.22);
+    }
+
+    /* Agency filter pill */
+    .agency-tab {
+      transition: all 0.25s ease;
+    }
+
+    .agency-tab.active {
+      background-color: #320813;
+      color: #FAF5EB;
+      border-color: #DDA743;
+    }
+
+    /* Market chip hover */
+    .market-pill {
+      transition: all 0.25s ease;
+    }
+
+    .market-pill.active,
+    .market-pill:hover {
+      background-color: #320813;
+      color: #FAF5EB;
+      border-color: #DDA743;
+      transform: translateY(-2px);
+    }
+
+    .market-pill.active .market-pill-sub,
+    .market-pill:hover .market-pill-sub {
+      color: rgba(250, 245, 235, 0.78);
+    }
+
+    .market-pill.active .market-pill-num,
+    .market-pill:hover .market-pill-num {
+      color: #DDA743;
+    }
+
+    /* Subtle copy toast */
+    #copy-toast {
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+    }
+  </style>
+</head>
+
+<body class="editorial-grid font-sans antialiased selection:bg-oxblood selection:text-cream">
+
+  <!-- Smart Auto-Hiding Top Menu Bar -->
+  <header id="smart-menu-bar"
+    class="fixed top-0 left-0 w-full z-50 bg-[#FAF5EB]/95 backdrop-blur-md border-b border-oxblood/15 px-6 sm:px-14 lg:px-24 py-3 flex items-center justify-between shadow-xs">
+
+    <!-- Left: Brand / Home Link -->
+    <div class="flex items-center gap-3 sm:gap-4">
+      <a href="./" target="_top"
+        class="flex items-center gap-2 font-mono text-xs text-oxblood hover:text-gold uppercase tracking-widest border border-oxblood/20 px-3 py-1.5 transition-all bg-cream hover:bg-oxblood hover:text-cream shadow-xs rounded-sm">
+        <span>←</span>
+        <span>Platform Home</span>
+      </a>
+      <span class="inline-block w-2.5 h-2.5 rotate-45 bg-gold border border-oxblood"></span>
+      <span class="font-mono text-xs sm:text-sm tracking-[0.26em] uppercase text-oxblood font-bold">
+        FEDERAL AEO PLAYBOOK
+      </span>
+    </div>
+
+    <!-- Center: Section Jump Links (Desktop) -->
+    <nav class="hidden xl:flex items-center gap-4 font-mono text-[11px] text-oxblood/70 uppercase tracking-wider">
+      <a href="#sec-2" class="hover:text-gold transition-colors">01 Vision</a>
+      <span class="text-oxblood/20">/</span>
+      <a href="#sec-3" class="hover:text-gold transition-colors">02 All Markets</a>
+      <span class="text-oxblood/20">/</span>
+      <a href="#sec-5" class="hover:text-gold transition-colors">03 SBIR Phases</a>
+      <span class="text-oxblood/20">/</span>
+      <a href="#sec-6" class="hover:text-gold transition-colors">04 Agencies</a>
+      <span class="text-oxblood/20">/</span>
+      <a href="#sec-8" class="hover:text-gold transition-colors">05 Set-Asides</a>
+      <span class="text-oxblood/20">/</span>
+      <a href="#sec-9" class="hover:text-gold transition-colors">06 AWS Strategy</a>
+    </nav>
+
+    <!-- Right: Cover Deck Link & Astrolabe -->
+    <div class="flex items-center gap-3 sm:gap-4">
+      <a href="./#/pitch-deck" target="_top"
+        class="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-wider px-3.5 py-1.5 bg-oxblood text-cream border border-gold hover:bg-gold hover:text-oxblood transition-all font-bold shadow-xs rounded-sm">
+        <span>Cover Deck</span>
+        <span>→</span>
+      </a>
+
+      <!-- Geometric astrolabe emblem -->
+      <svg class="w-7 h-7 text-oxblood animate-spin shrink-0" style="animation-duration: 24s;" viewBox="0 0 40 40"
+        fill="none">
+        <circle cx="20" cy="20" r="18" stroke="currentColor" stroke-width="1" stroke-dasharray="3 3" />
+        <circle cx="20" cy="20" r="11" stroke="#DDA743" stroke-width="1.2" />
+        <path d="M20 2 L20 38 M2 20 L38 20" stroke="currentColor" stroke-width="0.75" opacity="0.5" />
+        <rect x="17" y="17" width="6" height="6" transform="rotate(45 20 20)" fill="#320813" />
+      </svg>
+    </div>
+  </header>
+
+  <!-- Top Scroll Progress Bar -->
+  <div class="fixed top-0 left-0 w-full h-1 bg-oxblood/10 z-50">
+    <div id="scroll-progress" class="h-full bg-gold w-0 transition-none"></div>
+  </div>
+
+  <!-- Architectural Frame Hairlines -->
+  <div class="fixed inset-3 sm:inset-5 pointer-events-none border border-oxblood/15 z-40 rounded-sm">
+    <div class="absolute -top-1 -left-1 w-2.5 h-2.5 border-t-2 border-l-2 border-oxblood"></div>
+    <div class="absolute -top-1 -right-1 w-2.5 h-2.5 border-t-2 border-r-2 border-oxblood"></div>
+    <div class="absolute -bottom-1 -left-1 w-2.5 h-2.5 border-b-2 border-l-2 border-oxblood"></div>
+    <div class="absolute -bottom-1 -right-1 w-2.5 h-2.5 border-b-2 border-r-2 border-oxblood"></div>
+  </div>
+
+  <!-- Copy Notification Toast -->
+  <div id="copy-toast"
+    class="fixed bottom-8 left-1/2 -translate-x-1/2 translate-y-12 opacity-0 pointer-events-none z-50 px-5 py-2.5 rounded-full bg-oxblood text-cream border border-gold font-mono text-xs uppercase tracking-widest shadow-xl">
+    Copied contact to clipboard
+  </div>
+
+  <!-- Right-Margin Geometric Section Navigation (10 Chapters) -->
+  <nav aria-label="Slide Navigation"
+    class="fixed right-6 sm:right-9 top-1/2 -translate-y-1/2 z-50 hidden md:flex flex-col items-center gap-2.5">
+    <button class="nav-diamond active" data-target="#sec-1" title="01 Cover"></button>
+    <div class="w-px h-2 bg-oxblood/20"></div>
+    <button class="nav-diamond" data-target="#sec-2" title="02 Mission"></button>
+    <div class="w-px h-2 bg-oxblood/20"></div>
+    <button class="nav-diamond" data-target="#sec-3" title="03 Future of Markets"></button>
+    <div class="w-px h-2 bg-oxblood/20"></div>
+    <button class="nav-diamond" data-target="#sec-4" title="04 The SBIR Program"></button>
+    <div class="w-px h-2 bg-oxblood/20"></div>
+    <button class="nav-diamond" data-target="#sec-5" title="05 SBIR Phases"></button>
+    <div class="w-px h-2 bg-oxblood/20"></div>
+    <button class="nav-diamond" data-target="#sec-6" title="06 Agency Directory"></button>
+    <div class="w-px h-2 bg-oxblood/20"></div>
+    <button class="nav-diamond" data-target="#sec-7" title="07 Application & Fast-Track"></button>
+    <div class="w-px h-2 bg-oxblood/20"></div>
+    <button class="nav-diamond" data-target="#sec-8" title="08 SBA Set-Asides"></button>
+    <div class="w-px h-2 bg-oxblood/20"></div>
+    <button class="nav-diamond" data-target="#sec-9" title="09 AWS Mentor-Protégé"></button>
+    <div class="w-px h-2 bg-oxblood/20"></div>
+    <button class="nav-diamond" data-target="#sec-10" title="10 Action Plan"></button>
+  </nav>
+
+  <!-- Persistent Three.js WebGL Background Stage -->
+  <div id="webgl-container"></div>
+
+  <!-- MAIN SCROLLING EXECUTIVE BRIEFING -->
+  <main class="deck-content">
+
+    <!-- ==========================================
+         SLIDE 1: HERO / COVER
+         ========================================== -->
+    <section id="sec-1"
+      class="min-h-screen w-full flex flex-col justify-between px-6 sm:px-14 lg:px-24 pt-24 pb-12 sm:pt-28 sm:pb-16 relative">
+
+      <!-- Top Meta Rule -->
+      <div class="flex items-center justify-between border-b border-oxblood/20 pb-4">
+        <div class="flex items-center gap-2.5">
+          <span class="inline-block w-2 h-2 rotate-45 bg-gold border border-oxblood"></span>
+          <span class="font-mono text-xs text-oxblood/70 uppercase tracking-[0.22em]">
+            EXECUTIVE FEDERAL BRIEFING
+          </span>
+        </div>
+        <span class="font-mono text-xs text-oxblood/55 uppercase tracking-widest hidden sm:inline-block">
+          SBIR // SBA SET-ASIDES // AWS MENTOR-PROTÉGÉ // NOV 2026
+        </span>
+      </div>
+
+      <!-- Center Monumental Title -->
+      <div class="my-auto py-14 max-w-5xl">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-oxblood/20 bg-cream/80 font-mono text-[11px] uppercase tracking-[0.2em] text-oxblood mb-6">
+          <span class="w-1.5 h-1.5 rounded-full bg-gold"></span>
+          <span>Non-Dilutive R&amp;D &amp; Federal Contracting Strategy for AEO Leadership</span>
+        </div>
+
+        <div class="overflow-hidden mb-6">
+          <h1 id="hero-title"
+            class="font-serif text-5xl sm:text-7xl lg:text-[7.2rem] leading-[0.94] tracking-tight font-semibold text-oxblood">
+            FEDERAL AEO<br />GROWTH PLAYBOOK
+          </h1>
+        </div>
+
+        <div class="gold-rule w-full max-w-2xl my-8"></div>
+
+        <p id="hero-subtitle"
+          class="font-serif italic text-2xl sm:text-3xl lg:text-4xl text-oxblood/90 leading-snug max-w-4xl">
+          How our AEO startup captures non-dilutive federal R&amp;D capital through SBIR, wins low-competition SBA Small Business Set-Asides, and scales alongside AWS through the Mentor-Protégé Program.
+        </p>
+
+        <!-- Key Headline Pillars Strip -->
+        <div id="hero-metrics" class="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-10 max-w-3xl">
+          <div class="editorial-card p-5 rounded-xl border-t-2 border-t-gold">
+            <div class="font-mono text-[11px] uppercase tracking-widest text-oxblood/60">America's Seed Fund</div>
+            <div class="font-serif text-3xl sm:text-4xl font-semibold text-oxblood mt-1">Up to $522M</div>
+            <div class="text-xs text-oxblood/75 mt-1">Uncapped sole-source Phase III contracts</div>
+          </div>
+          <div class="editorial-card p-5 rounded-xl border-t-2 border-t-oxblood">
+            <div class="font-mono text-[11px] uppercase tracking-widest text-oxblood/60">Target Agency Pool</div>
+            <div class="font-serif text-3xl sm:text-4xl font-semibold text-oxblood mt-1">$2.85B+ / yr</div>
+            <div class="text-xs text-oxblood/75 mt-1">Across DoW, DOE, NSF, DOC &amp; DHS</div>
+          </div>
+          <div class="editorial-card-dark p-5 rounded-xl border-t-2 border-t-gold">
+            <div class="font-mono text-[11px] uppercase tracking-widest text-gold">Enterprise Accelerator</div>
+            <div class="font-serif text-3xl sm:text-4xl font-semibold text-cream mt-1">AWS Wedge → JV</div>
+            <div class="text-xs text-cream/75 mt-1">Commercial proof to SBA Mentor-Protégé</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Scroll Prompt -->
+      <div class="flex items-center justify-between pt-6 border-t border-oxblood/15">
+        <div class="flex items-center gap-2.5">
+          <span class="w-2 h-2 rounded-full bg-oxblood"></span>
+          <span class="w-16 h-px bg-oxblood/30"></span>
+          <span class="w-2 h-2 rounded-full bg-gold"></span>
+          <span class="font-mono text-[11px] uppercase tracking-widest text-oxblood/60 ml-2">Scroll to explore 10 chapters</span>
+        </div>
+        <a href="#sec-2" aria-label="Scroll to Next Section"
+          class="group flex flex-col items-center justify-center w-11 h-11 rounded-full border border-oxblood/30 hover:border-oxblood hover:bg-oxblood transition-all duration-300">
+          <svg
+            class="w-4 h-4 text-oxblood group-hover:text-cream transition-transform duration-300 group-hover:translate-y-0.5"
+            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75">
+            <path d="M12 4v16m0 0l-6-6m6 6l6-6" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </a>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         SLIDE 2: WHO WE ARE & SOVEREIGN MISSION
+         ========================================== -->
+    <section id="sec-2" class="min-h-screen w-full px-6 sm:px-14 lg:px-24 py-24 flex flex-col justify-center relative">
+      <div class="max-w-7xl mx-auto w-full space-y-10">
+
+        <div class="flex items-center gap-3 reveal-card">
+          <span class="font-mono text-xs uppercase tracking-[0.25em] text-gold bg-oxblood px-3 py-1 rounded-full font-semibold">01 // Who We Are</span>
+          <div class="h-px flex-1 bg-oxblood/15"></div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-stretch">
+          <!-- Main Mission Manifesto Card -->
+          <div class="lg:col-span-7 editorial-card p-8 sm:p-12 rounded-2xl border-l-4 border-l-oxblood flex flex-col justify-between space-y-8 reveal-card">
+            <div class="space-y-6">
+              <div class="font-mono text-xs uppercase tracking-[0.22em] text-oxblood/60">
+                Dual-Use Answer Engine Optimization &amp; Counter-AEO
+              </div>
+              <h2 class="font-serif text-3xl sm:text-5xl text-oxblood leading-[1.12] font-medium">
+                Designing AEO &amp; Counter-AEO systems built for <span class="underline decoration-gold decoration-2 underline-offset-8">national security and global markets</span>.
+              </h2>
+              <p class="font-sans text-lg sm:text-xl text-oxblood/90 leading-relaxed">
+                We are a new Answer Engine Optimization startup designing next-generation uses for <strong>AEO</strong> and <strong>Counter-AEO</strong> systems across federal operations—covering data, intelligence, and cybersecurity for national security, defense, military, and intelligence missions.
+              </p>
+              <p class="font-sans text-lg sm:text-xl text-oxblood/90 leading-relaxed">
+                Alongside defense and intelligence, we engineer financial AEO operations built both to <strong>defend American and global markets from adversarial AEO abuse</strong> and to <strong>deploy strategic AEO capabilities in global markets when required for the defense of the United States</strong>.
+              </p>
+            </div>
+
+            <div class="pt-6 border-t border-oxblood/15 grid grid-cols-2 sm:grid-cols-4 gap-4">
+              <div>
+                <div class="font-mono text-[10px] uppercase tracking-widest text-oxblood/55">Domain 01</div>
+                <div class="font-serif text-lg font-bold text-oxblood">Data &amp; Intelligence</div>
+              </div>
+              <div>
+                <div class="font-mono text-[10px] uppercase tracking-widest text-oxblood/55">Domain 02</div>
+                <div class="font-serif text-lg font-bold text-oxblood">Cybersecurity</div>
+              </div>
+              <div>
+                <div class="font-mono text-[10px] uppercase tracking-widest text-oxblood/55">Domain 03</div>
+                <div class="font-serif text-lg font-bold text-oxblood">Defense &amp; Military</div>
+              </div>
+              <div>
+                <div class="font-mono text-[10px] uppercase tracking-widest text-oxblood/55">Domain 04</div>
+                <div class="font-serif text-lg font-bold text-oxblood">Market Operations</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Column: Two Executive Pillars -->
+          <div class="lg:col-span-5 flex flex-col gap-6">
+            <div class="editorial-card-dark p-8 rounded-2xl border-t-4 border-t-gold flex-1 flex flex-col justify-between reveal-card">
+              <div class="space-y-4">
+                <div class="flex items-center justify-between">
+                  <span class="font-mono text-xs uppercase tracking-[0.2em] text-gold">Defensive Mandate</span>
+                  <span class="w-2.5 h-2.5 rounded-full bg-gold"></span>
+                </div>
+                <h3 class="font-serif text-3xl text-cream font-medium leading-tight">
+                  Protecting American Infrastructure &amp; Financial Markets
+                </h3>
+                <p class="text-sm sm:text-base text-cream/85 leading-relaxed">
+                  Foreign adversaries and bad actors do not need to breach a firewall to sway AI-powered decisions—they simply poison the open-web information AI models read. Our Counter-AEO systems detect, filter, and stop narrative and market manipulation before federal or financial systems act on it.
+                </p>
+              </div>
+              <div class="mt-6 pt-4 border-t border-gold/25 font-mono text-[11px] text-gold uppercase tracking-wider">
+                Shielding Agencies, Analysts &amp; Capital Markets
+              </div>
+            </div>
+
+            <div class="editorial-card p-8 rounded-2xl border-t-4 border-t-oxblood flex-1 flex flex-col justify-between reveal-card">
+              <div class="space-y-4">
+                <div class="flex items-center justify-between">
+                  <span class="font-mono text-xs uppercase tracking-[0.2em] text-oxblood/65">Offensive &amp; Strategic Mandate</span>
+                  <span class="w-2.5 h-2.5 rotate-45 bg-oxblood"></span>
+                </div>
+                <h3 class="font-serif text-3xl text-oxblood font-medium leading-tight">
+                  Information &amp; Market Advantage for U.S. Operations
+                </h3>
+                <p class="text-sm sm:text-base text-oxblood/85 leading-relaxed">
+                  The same AEO precision that wins commercial visibility for private-sector giants like AWS can be engineered to shape global AI retrieval environments—supporting strategic communications, intelligence operations, and economic defense whenever America's national security requires it.
+                </p>
+              </div>
+              <div class="mt-6 pt-4 border-t border-oxblood/15 font-mono text-[11px] text-oxblood/70 uppercase tracking-wider">
+                Dual-Use Advantage: Private Revenue + Federal Scale
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         SLIDE 3: AEO IS THE FUTURE OF MARKETS
+         ========================================== -->
+    <section id="sec-3" class="min-h-screen w-full px-6 sm:px-14 lg:px-24 py-24 flex flex-col justify-center relative">
+      <div class="max-w-7xl mx-auto w-full space-y-12">
+
+        <div class="flex items-center gap-3 reveal-card">
+          <span class="font-mono text-xs uppercase tracking-[0.25em] text-gold bg-oxblood px-3 py-1 rounded-full font-semibold">02 // The Market Thesis</span>
+          <div class="h-px flex-1 bg-oxblood/15"></div>
+        </div>
+
+        <!-- Monumental Declaration -->
+        <div class="editorial-card p-8 sm:p-14 rounded-2xl border-2 border-oxblood/20 relative overflow-hidden reveal-card">
+          <div class="max-w-4xl space-y-4">
+            <p class="font-serif text-3xl sm:text-5xl lg:text-6xl leading-[1.08] text-oxblood/65 font-normal">
+              AEO is not the future of marketing.
+            </p>
+            <h2 class="font-serif text-4xl sm:text-6xl lg:text-7xl leading-[1.02] text-oxblood font-semibold">
+              AEO is the future of <span class="underline decoration-gold decoration-4 underline-offset-8">markets</span>.
+            </h2>
+            <p class="font-sans text-lg sm:text-xl text-oxblood/85 pt-3 leading-relaxed max-w-3xl">
+              It will be used to manipulate, transform, and shape entire markets—far beyond consumer goods and services. As human buyers, institutions, and autonomous AI agents all rely on answer engines to evaluate reality, whoever controls AI retrieval shapes pricing, capital flows, supply chains, and national power.
+            </p>
+          </div>
+        </div>
+
+        <!-- Interactive 10-Market Constellation Visualizer + Interactive Cards -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          <!-- Left: Live Interactive Orbit Canvas -->
+          <div class="lg:col-span-5 editorial-card-dark rounded-2xl p-6 flex flex-col justify-between h-[430px] sm:h-[480px] reveal-card">
+            <div class="flex items-center justify-between border-b border-gold/25 pb-3">
+              <div>
+                <div class="font-mono text-[10px] uppercase tracking-[0.22em] text-gold">Live Ecosystem Map</div>
+                <div class="font-serif text-xl text-cream">AEO Across All 10 Global Markets</div>
+              </div>
+              <span class="px-2.5 py-1 rounded-full bg-gold/15 border border-gold/40 font-mono text-[10px] text-gold uppercase">Interactive</span>
+            </div>
+
+            <div class="flex-1 w-full relative my-2">
+              <canvas id="markets-constellation-canvas" class="sim-canvas"></canvas>
+            </div>
+
+            <div id="market-active-readout" class="p-3.5 rounded-xl bg-cream/10 border border-gold/30">
+              <div class="font-mono text-[10px] uppercase tracking-widest text-gold" id="market-readout-tag">01 // Financial Markets</div>
+              <div class="text-xs sm:text-sm text-cream/90 mt-1" id="market-readout-desc">
+                Building Agent-to-Agent Retrieval optimization where autonomous trading desks and institutional AI agents source market signals.
+              </div>
+            </div>
+          </div>
+
+          <!-- Right: All 10 Markets Grid -->
+          <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-3.5 reveal-card">
+            <button type="button" class="market-pill active text-left editorial-card p-4 rounded-xl cursor-pointer" data-market-idx="0">
+              <div class="flex items-center justify-between">
+                <span class="market-pill-num font-mono text-[10px] uppercase tracking-widest text-gold font-bold">01 // Flagship Expansion</span>
+                <span class="text-xs opacity-60">→</span>
+              </div>
+              <div class="font-serif text-xl font-bold mt-0.5">Financial Markets</div>
+              <div class="market-pill-sub text-xs text-oxblood/75 mt-1">Driven by Agent-to-Agent Retrieval optimization for institutional &amp; automated finance.</div>
+            </button>
+
+            <button type="button" class="market-pill text-left editorial-card p-4 rounded-xl cursor-pointer" data-market-idx="1">
+              <div class="flex items-center justify-between">
+                <span class="market-pill-num font-mono text-[10px] uppercase tracking-widest text-oxblood/60 font-bold">02 // Physical Resources</span>
+                <span class="text-xs opacity-60">→</span>
+              </div>
+              <div class="font-serif text-xl font-bold mt-0.5">Commodity &amp; Natural Resource Markets</div>
+              <div class="market-pill-sub text-xs text-oxblood/75 mt-1">Critical minerals, agriculture, metals, and global extraction supply intelligence.</div>
+            </button>
+
+            <button type="button" class="market-pill text-left editorial-card p-4 rounded-xl cursor-pointer" data-market-idx="2">
+              <div class="flex items-center justify-between">
+                <span class="market-pill-num font-mono text-[10px] uppercase tracking-widest text-oxblood/60 font-bold">03 // Grid &amp; Fuel</span>
+                <span class="text-xs opacity-60">→</span>
+              </div>
+              <div class="font-serif text-xl font-bold mt-0.5">Energy Markets</div>
+              <div class="market-pill-sub text-xs text-oxblood/75 mt-1">Power grid forecasting, oil &amp; gas dispatch, nuclear, and energy security pricing.</div>
+            </button>
+
+            <button type="button" class="market-pill text-left editorial-card p-4 rounded-xl cursor-pointer" data-market-idx="3">
+              <div class="flex items-center justify-between">
+                <span class="market-pill-num font-mono text-[10px] uppercase tracking-widest text-oxblood/60 font-bold">04 // Human Capital</span>
+                <span class="text-xs opacity-60">→</span>
+              </div>
+              <div class="font-serif text-xl font-bold mt-0.5">Labor Markets</div>
+              <div class="market-pill-sub text-xs text-oxblood/75 mt-1">AI-driven hiring, credential verification, workforce allocation, and wage discovery.</div>
+            </button>
+
+            <button type="button" class="market-pill text-left editorial-card p-4 rounded-xl cursor-pointer" data-market-idx="4">
+              <div class="flex items-center justify-between">
+                <span class="market-pill-num font-mono text-[10px] uppercase tracking-widest text-oxblood/60 font-bold">05 // Epistemic Power</span>
+                <span class="text-xs opacity-60">→</span>
+              </div>
+              <div class="font-serif text-xl font-bold mt-0.5">Intelligence &amp; Knowledge Markets</div>
+              <div class="market-pill-sub text-xs text-oxblood/75 mt-1">Open-source intelligence (OSINT), research synthesis, and authoritative information flows.</div>
+            </button>
+
+            <button type="button" class="market-pill text-left editorial-card p-4 rounded-xl cursor-pointer" data-market-idx="5">
+              <div class="flex items-center justify-between">
+                <span class="market-pill-num font-mono text-[10px] uppercase tracking-widest text-oxblood/60 font-bold">06 // Public Narrative</span>
+                <span class="text-xs opacity-60">→</span>
+              </div>
+              <div class="font-serif text-xl font-bold mt-0.5">Political Markets</div>
+              <div class="market-pill-sub text-xs text-oxblood/75 mt-1">Policy sentiment, regulatory narratives, voter information ecosystems, and civic defense.</div>
+            </button>
+
+            <button type="button" class="market-pill text-left editorial-card p-4 rounded-xl cursor-pointer" data-market-idx="6">
+              <div class="flex items-center justify-between">
+                <span class="market-pill-num font-mono text-[10px] uppercase tracking-widest text-oxblood/60 font-bold">07 // Global Flow</span>
+                <span class="text-xs opacity-60">→</span>
+              </div>
+              <div class="font-serif text-xl font-bold mt-0.5">Trade, Supply Chain &amp; Logistics</div>
+              <div class="market-pill-sub text-xs text-oxblood/75 mt-1">Vendor selection, shipping bottlenecks, tariff impact models, and maritime routing.</div>
+            </button>
+
+            <button type="button" class="market-pill text-left editorial-card p-4 rounded-xl cursor-pointer" data-market-idx="7">
+              <div class="flex items-center justify-between">
+                <span class="market-pill-num font-mono text-[10px] uppercase tracking-widest text-oxblood/60 font-bold">08 // Real Assets</span>
+                <span class="text-xs opacity-60">→</span>
+              </div>
+              <div class="font-serif text-xl font-bold mt-0.5">Land Markets</div>
+              <div class="market-pill-sub text-xs text-oxblood/75 mt-1">Commercial real estate, data-center site selection, zoning, and sovereign land valuation.</div>
+            </button>
+
+            <button type="button" class="market-pill text-left editorial-card p-4 rounded-xl cursor-pointer" data-market-idx="8">
+              <div class="flex items-center justify-between">
+                <span class="market-pill-num font-mono text-[10px] uppercase tracking-widest text-oxblood/60 font-bold">09 // Sovereign Security</span>
+                <span class="text-xs opacity-60">→</span>
+              </div>
+              <div class="font-serif text-xl font-bold mt-0.5">Defense &amp; National Security Markets</div>
+              <div class="market-pill-sub text-xs text-oxblood/75 mt-1">Military procurement, cyber defense, cognitive security, and allied deterrence.</div>
+            </button>
+
+            <button type="button" class="market-pill text-left editorial-card p-4 rounded-xl cursor-pointer" data-market-idx="9">
+              <div class="flex items-center justify-between">
+                <span class="market-pill-num font-mono text-[10px] uppercase tracking-widest text-oxblood/60 font-bold">10 // Commercial Baseline</span>
+                <span class="text-xs opacity-60">→</span>
+              </div>
+              <div class="font-serif text-xl font-bold mt-0.5">Goods &amp; Services Markets</div>
+              <div class="market-pill-sub text-xs text-oxblood/75 mt-1">Where AEO began—our immediate commercial wedge into enterprise software and brands.</div>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         SLIDE 4: INTRO TO THE SBIR PROGRAM ("AMERICA'S SEED FUND")
+         ========================================== -->
+    <section id="sec-4" class="min-h-screen w-full px-6 sm:px-14 lg:px-24 py-24 flex flex-col justify-center relative">
+      <div class="max-w-7xl mx-auto w-full space-y-10">
+
+        <div class="flex items-center gap-3 reveal-card">
+          <span class="font-mono text-xs uppercase tracking-[0.25em] text-gold bg-oxblood px-3 py-1 rounded-full font-semibold">03 // SBIR Deep Dive</span>
+          <div class="h-px flex-1 bg-oxblood/15"></div>
+        </div>
+
+        <div class="editorial-card-dark p-10 sm:p-16 rounded-2xl border-2 border-gold/50 relative overflow-hidden reveal-card">
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+            <div class="lg:col-span-8 space-y-6">
+              <div class="font-mono text-xs uppercase tracking-[0.25em] text-gold">
+                America's Seed Fund // Small Business Innovation Research
+              </div>
+              <h2 class="font-serif text-4xl sm:text-6xl lg:text-7xl text-cream font-semibold leading-[1.04]">
+                THE SBIR PROGRAM
+              </h2>
+              <p class="font-serif italic text-2xl sm:text-3xl text-gold/95 leading-snug">
+                Federal technology funding built to transform early-stage R&amp;D into commercial and government success—without giving up a single share of equity.
+              </p>
+              <p class="font-sans text-base sm:text-lg text-cream/85 leading-relaxed max-w-2xl">
+                For an AEO startup entering federal contracting for the first time, <strong>SBIR is the single highest-leverage front door into the U.S. government.</strong> Federal agencies are legally required to set aside billions every year exclusively for small businesses building breakthrough technology. Even better: winning an SBIR award unlocks special sole-source contracting powers that bypass traditional procurement red tape.
+              </p>
+            </div>
+
+            <div class="lg:col-span-4 space-y-4">
+              <div class="p-5 rounded-xl bg-cream/10 border border-gold/30">
+                <div class="font-mono text-[11px] uppercase tracking-widest text-gold">0% Dilution</div>
+                <div class="font-serif text-2xl text-cream font-semibold mt-1">Keep 100% Equity &amp; IP</div>
+                <p class="text-xs text-cream/75 mt-1">SBIR grants and contracts are non-dilutive, and SBIR data rights protect your core technology for 20 years.</p>
+              </div>
+              <div class="p-5 rounded-xl bg-cream/10 border border-gold/30">
+                <div class="font-mono text-[11px] uppercase tracking-widest text-gold">Built-In Customer Validation</div>
+                <div class="font-serif text-2xl text-cream font-semibold mt-1">Federal Proof of Concept</div>
+                <p class="text-xs text-cream/75 mt-1">Paid R&amp;D directly alongside DoW, DHS, DOE, DOC, and NSF mission owners who become Phase III buyers.</p>
+              </div>
+              <div class="p-5 rounded-xl bg-gold/20 border border-gold">
+                <div class="font-mono text-[11px] uppercase tracking-widest text-gold font-bold">The Ultimate Prize</div>
+                <div class="font-serif text-2xl text-cream font-semibold mt-1">Sole-Source Phase III</div>
+                <p class="text-xs text-cream/85 mt-1">No competitive rebidding. No dollar ceiling. Any federal agency can award follow-on contracts directly to us.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         SLIDE 5: SBIR PROGRAM STRUCTURE & PHASES
+         (HOME-PAGE STYLE PINNED 3-COLUMN GSAP ASSEMBLY + ESCALATOR CANVAS)
+         ========================================== -->
+    <section id="sec-5" class="w-full relative py-16">
+      <div class="max-w-7xl mx-auto px-6 sm:px-14 lg:px-24 pb-8 space-y-5">
+        <div class="flex items-center gap-3 reveal-card">
+          <span class="font-mono text-xs uppercase tracking-[0.25em] text-gold bg-oxblood px-3 py-1 rounded-full font-semibold">04 // SBIR Structure &amp; Phases</span>
+          <div class="h-px flex-1 bg-oxblood/15"></div>
+        </div>
+        <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6 reveal-card">
+          <div class="max-w-3xl">
+            <h2 class="font-serif text-4xl sm:text-6xl text-oxblood font-semibold leading-[1.06]">
+              From Feasibility Grant to <span class="underline decoration-gold decoration-2 underline-offset-8">$522M Sole-Source Scale</span>.
+            </h2>
+            <p class="font-sans text-base sm:text-lg text-oxblood/80 mt-3 leading-relaxed">
+              Scroll to step through the three SBIR stages—watching how non-dilutive R&amp;D capital escalates into uncapped, non-competitive federal procurement.
+            </p>
+          </div>
+          <div class="font-mono text-xs text-oxblood/70 uppercase tracking-widest px-4 py-2 rounded-full border border-oxblood/20 bg-cream/80 shrink-0">
+            Scroll-Pinned Stage Assembly
+          </div>
+        </div>
+      </div>
+
+      <!-- GSAP PINNED 3-COLUMN PROGRESSIVE STICKY STAGE (Home-page style animation, Cover Deck clean shapes) -->
+      <div id="sbir-pinned-stage" class="w-full lg:h-screen flex flex-col justify-center px-6 sm:px-14 lg:px-24 py-8 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto w-full flex flex-col justify-between gap-6 h-full max-h-[820px]">
+
+          <!-- Top: Live SBIR Funding Escalator Canvas -->
+          <div class="editorial-card rounded-2xl p-4 sm:p-5 border border-oxblood/15">
+            <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+              <div class="flex items-center gap-2">
+                <span class="w-2.5 h-2.5 rounded-full bg-gold animate-pulse"></span>
+                <span class="font-mono text-[11px] uppercase tracking-widest text-oxblood font-semibold">
+                  Capital Escalation Curve // Phase I → Phase II → Phase III Uncapped
+                </span>
+              </div>
+              <span id="sbir-stage-status" class="font-mono text-[11px] uppercase tracking-wider text-oxblood/70">
+                Stage 1 of 3 · Feasibility Proof
+              </span>
+            </div>
+            <div class="w-full h-28 sm:h-32 relative">
+              <canvas id="sbir-curve-canvas" class="sim-canvas"></canvas>
+            </div>
+          </div>
+
+          <!-- 3-Column Pinned Progressive Cards (Base Cards + Sliding Executive Unlock Overlays) -->
+          <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 flex-1 min-h-[410px]">
+
+            <!-- COLUMN 1: PHASE I -->
+            <div class="relative flex flex-col">
+              <div class="sbir-col-base editorial-card rounded-2xl p-7 border-t-4 border-t-oxblood flex-1 flex flex-col justify-between">
+                <div class="space-y-4">
+                  <div class="flex items-center justify-between">
+                    <span class="font-mono text-xs uppercase tracking-widest text-oxblood/65 font-bold">Phase I // R&amp;D Grant</span>
+                    <span class="px-2.5 py-1 rounded-full bg-oxblood/10 text-oxblood font-mono text-[11px] font-semibold">6–12 Months</span>
+                  </div>
+                  <h3 class="font-serif text-3xl text-oxblood font-semibold">Feasibility Study</h3>
+                  <div class="font-serif text-4xl sm:text-5xl font-bold text-oxblood tracking-tight">
+                    $150K – $275K
+                  </div>
+                  <p class="text-sm sm:text-base text-oxblood/85 leading-relaxed">
+                    Prove the technical merit, core concept, and real-world feasibility of early-stage AEO and Counter-AEO innovations before committing heavy engineering resources.
+                  </p>
+                </div>
+                <div class="pt-4 mt-4 border-t border-oxblood/15 flex items-center justify-between font-mono text-[11px] text-oxblood/70">
+                  <span>Non-Dilutive Award</span>
+                  <span class="text-oxblood font-bold">0% Equity</span>
+                </div>
+              </div>
+
+              <!-- Sliding Executive Takeaway Overlay (slides up on scroll) -->
+              <div class="sbir-col-overlay hidden lg:flex absolute inset-x-0 bottom-0 h-[44%] editorial-card-dark rounded-2xl p-6 border-t-2 border-t-gold flex-col justify-between">
+                <div class="font-mono text-[10px] uppercase tracking-[0.22em] text-gold">Executive Advantage // Phase I</div>
+                <p class="text-sm text-cream/90 leading-relaxed">
+                  <strong>Fastest federal validation:</strong> Builds an official U.S. government customer relationship and qualifies us immediately for Phase II follow-on capital.
+                </p>
+                <div class="font-mono text-[10px] text-gold/80 uppercase">Low Entry Barrier · Ideal First Federal Win</div>
+              </div>
+            </div>
+
+            <!-- COLUMN 2: PHASE II -->
+            <div class="relative flex flex-col">
+              <div class="sbir-col-base editorial-card rounded-2xl p-7 border-t-4 border-t-gold flex-1 flex flex-col justify-between">
+                <div class="space-y-4">
+                  <div class="flex items-center justify-between">
+                    <span class="font-mono text-xs uppercase tracking-widest text-oxblood/65 font-bold">Phase II // Full R&amp;D</span>
+                    <span class="px-2.5 py-1 rounded-full bg-gold/20 text-oxblood font-mono text-[11px] font-semibold">2 Years</span>
+                  </div>
+                  <h3 class="font-serif text-3xl text-oxblood font-semibold">Prototype &amp; Scale R&amp;D</h3>
+                  <div class="font-serif text-4xl sm:text-5xl font-bold text-oxblood tracking-tight">
+                    $1.0M – $2.0M
+                  </div>
+                  <p class="text-sm sm:text-base text-oxblood/85 leading-relaxed">
+                    Full prototype development, rigorous field testing, agency integration, and commercial go-to-market refinement—funding our core Counter-AEO cybersecurity product build.
+                  </p>
+                </div>
+                <div class="pt-4 mt-4 border-t border-oxblood/15 flex items-center justify-between font-mono text-[11px] text-oxblood/70">
+                  <span>Builds Production Platform</span>
+                  <span class="text-oxblood font-bold">20-Yr IP Rights</span>
+                </div>
+              </div>
+
+              <!-- Sliding Executive Takeaway Overlay -->
+              <div class="sbir-col-overlay hidden lg:flex absolute inset-x-0 bottom-0 h-[44%] editorial-card-dark rounded-2xl p-6 border-t-2 border-t-gold flex-col justify-between">
+                <div class="font-mono text-[10px] uppercase tracking-[0.22em] text-gold">Executive Advantage // Phase II</div>
+                <p class="text-sm text-cream/90 leading-relaxed">
+                  <strong>Funds our cyber R&amp;D engine:</strong> Pays for our federal cybersecurity platform while our commercial team scales private AEO services across AWS.
+                </p>
+                <div class="font-mono text-[10px] text-gold/80 uppercase">Dual-Use Software Owned By Us</div>
+              </div>
+            </div>
+
+            <!-- COLUMN 3: PHASE III -->
+            <div class="relative flex flex-col">
+              <div class="sbir-col-base editorial-card-dark rounded-2xl p-7 border-2 border-gold flex-1 flex flex-col justify-between">
+                <div class="space-y-4">
+                  <div class="flex items-center justify-between">
+                    <span class="font-mono text-xs uppercase tracking-widest text-gold font-bold">Phase III // Scaling</span>
+                    <span class="px-2.5 py-1 rounded-full bg-gold text-oxblood font-mono text-[11px] font-bold">Uncapped</span>
+                  </div>
+                  <h3 class="font-serif text-3xl text-cream font-semibold">Commercial &amp; Sole-Source</h3>
+                  <div class="font-serif text-4xl sm:text-5xl font-bold text-gold tracking-tight">
+                    Up to $522M
+                  </div>
+                  <p class="text-sm sm:text-base text-cream/85 leading-relaxed">
+                    Transitioning technology from prototype into full federal procurement and private marketplaces. Unlocks <strong>non-competitive sole-source follow-on contracts with zero statutory dollar caps</strong> across defense and civilian agencies.
+                  </p>
+                </div>
+                <div class="pt-4 mt-4 border-t border-gold/30 flex items-center justify-between font-mono text-[11px] text-gold">
+                  <span>Sole-Source Mandate</span>
+                  <span class="font-bold">Zero Bidding Delay</span>
+                </div>
+              </div>
+
+              <!-- Sliding Executive Takeaway Overlay -->
+              <div class="sbir-col-overlay hidden lg:flex absolute inset-x-0 bottom-0 h-[44%] bg-gold text-oxblood rounded-2xl p-6 border-2 border-oxblood flex-col justify-between shadow-2xl">
+                <div class="font-mono text-[10px] uppercase tracking-[0.22em] text-oxblood/80 font-bold">Proven Ceiling // Program Graduates</div>
+                <p class="text-sm text-oxblood font-semibold leading-relaxed">
+                  PROGRAM GRADUATES RECEIVE CONTRACTS UP TO $522 MILLION—awarded directly without open competition across any federal department.
+                </p>
+                <div class="font-mono text-[10px] text-oxblood uppercase font-bold">Full Procurement Velocity Unlocked</div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         SLIDE 6: TARGET FEDERAL AGENCIES & DIRECT SBIR CONTACTS
+         ========================================== -->
+    <section id="sec-6" class="min-h-screen w-full px-6 sm:px-14 lg:px-24 py-24 relative">
+      <div class="max-w-7xl mx-auto w-full space-y-10">
+
+        <div class="flex items-center gap-3 reveal-card">
+          <span class="font-mono text-xs uppercase tracking-[0.25em] text-gold bg-oxblood px-3 py-1 rounded-full font-semibold">05 // Target Agencies &amp; Contacts</span>
+          <div class="h-px flex-1 bg-oxblood/15"></div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end reveal-card">
+          <div class="lg:col-span-7 space-y-3">
+            <h2 class="font-serif text-4xl sm:text-6xl text-oxblood font-semibold leading-[1.06]">
+              Five High-Alignment Federal Agencies &amp; Direct Decision-Makers
+            </h2>
+            <p class="font-sans text-base sm:text-lg text-oxblood/80 leading-relaxed">
+              Over <strong>$2.85 Billion</strong> in annual SBIR budgets across defense, energy, scientific computing, commerce standards, and homeland security—with direct program manager contacts ready for outreach.
+            </p>
+          </div>
+
+          <!-- Interactive Agency Filter Tabs -->
+          <div class="lg:col-span-5 flex flex-wrap gap-2 lg:justify-end">
+            <button type="button" class="agency-tab active px-3.5 py-2 rounded-full border border-oxblood/25 font-mono text-xs uppercase tracking-wider cursor-pointer" data-agency="all">All (5)</button>
+            <button type="button" class="agency-tab px-3.5 py-2 rounded-full border border-oxblood/25 font-mono text-xs uppercase tracking-wider cursor-pointer bg-cream/80" data-agency="dow">DoW · $2.3B</button>
+            <button type="button" class="agency-tab px-3.5 py-2 rounded-full border border-oxblood/25 font-mono text-xs uppercase tracking-wider cursor-pointer bg-cream/80" data-agency="doe">DOE · $349M</button>
+            <button type="button" class="agency-tab px-3.5 py-2 rounded-full border border-oxblood/25 font-mono text-xs uppercase tracking-wider cursor-pointer bg-cream/80" data-agency="nsf">NSF · $174M</button>
+            <button type="button" class="agency-tab px-3.5 py-2 rounded-full border border-oxblood/25 font-mono text-xs uppercase tracking-wider cursor-pointer bg-cream/80" data-agency="doc">DOC · $15M</button>
+            <button type="button" class="agency-tab px-3.5 py-2 rounded-full border border-oxblood/25 font-mono text-xs uppercase tracking-wider cursor-pointer bg-cream/80" data-agency="dhs">DHS · $15M</button>
+          </div>
+        </div>
+
+        <!-- Animated Agency Budget Scale Comparison Card -->
+        <div class="editorial-card p-6 sm:p-8 rounded-2xl space-y-5 reveal-card">
+          <div class="flex flex-wrap items-center justify-between gap-2">
+            <div class="font-mono text-xs uppercase tracking-[0.2em] text-oxblood/70 font-semibold">
+              Annual SBIR Budget Comparison (Click any contact email below to copy or email directly)
+            </div>
+            <div class="font-mono text-xs text-oxblood/60">Combined Target Pool: ~$2.853 Billion</div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-5 gap-4">
+            <div class="space-y-1.5">
+              <div class="flex justify-between text-xs font-mono"><span class="font-bold">DoW</span><span class="text-gold font-bold">$2.3B</span></div>
+              <div class="w-full h-2.5 bg-oxblood/10 rounded-full overflow-hidden"><div class="rev-bar-fill h-full bg-oxblood rounded-full" style="width: 100%;"></div></div>
+            </div>
+            <div class="space-y-1.5">
+              <div class="flex justify-between text-xs font-mono"><span class="font-bold">DOE</span><span>$349M</span></div>
+              <div class="w-full h-2.5 bg-oxblood/10 rounded-full overflow-hidden"><div class="rev-bar-fill h-full bg-gold rounded-full" style="width: 58%;"></div></div>
+            </div>
+            <div class="space-y-1.5">
+              <div class="flex justify-between text-xs font-mono"><span class="font-bold">NSF</span><span>$174M</span></div>
+              <div class="w-full h-2.5 bg-oxblood/10 rounded-full overflow-hidden"><div class="rev-bar-fill h-full bg-oxblood/80 rounded-full" style="width: 42%;"></div></div>
+            </div>
+            <div class="space-y-1.5">
+              <div class="flex justify-between text-xs font-mono"><span class="font-bold">DOC</span><span>$15M</span></div>
+              <div class="w-full h-2.5 bg-oxblood/10 rounded-full overflow-hidden"><div class="rev-bar-fill h-full bg-gold/80 rounded-full" style="width: 22%;"></div></div>
+            </div>
+            <div class="space-y-1.5">
+              <div class="flex justify-between text-xs font-mono"><span class="font-bold">DHS</span><span>$15M</span></div>
+              <div class="w-full h-2.5 bg-oxblood/10 rounded-full overflow-hidden"><div class="rev-bar-fill h-full bg-oxblood/65 rounded-full" style="width: 22%;"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- AGENCY CARDS GRID -->
+        <div id="agency-cards-container" class="space-y-6">
+
+          <!-- 1. DEPARTMENT OF WAR (DoW) — FEATURED FULL-WIDTH CARD -->
+          <div class="agency-card editorial-card-dark p-8 sm:p-10 rounded-2xl border-2 border-gold/50 space-y-6 reveal-card" data-agency-id="dow">
+            <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4 pb-6 border-b border-gold/25">
+              <div>
+                <div class="font-mono text-xs uppercase tracking-[0.22em] text-gold">Primary Defense Anchor // Largest Federal SBIR Budget</div>
+                <h3 class="font-serif text-3xl sm:text-5xl text-cream font-semibold mt-1">Department of War (DoW)</h3>
+              </div>
+              <div class="flex flex-wrap gap-3">
+                <div class="px-4 py-2.5 rounded-xl bg-gold text-oxblood">
+                  <div class="font-mono text-[10px] uppercase tracking-wider font-bold">Annual Budget</div>
+                  <div class="font-serif text-2xl font-bold leading-tight">$2.3 Billion</div>
+                </div>
+                <div class="px-4 py-2.5 rounded-xl bg-cream/10 border border-gold/30">
+                  <div class="font-mono text-[10px] uppercase tracking-wider text-gold">Phase I Award</div>
+                  <div class="font-serif text-2xl font-semibold text-cream leading-tight">$50K – $250K</div>
+                </div>
+                <div class="px-4 py-2.5 rounded-xl bg-cream/10 border border-gold/30">
+                  <div class="font-mono text-[10px] uppercase tracking-wider text-gold">Phase II Award</div>
+                  <div class="font-serif text-2xl font-semibold text-cream leading-tight">$800K – $1.83M</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="text-sm sm:text-base text-cream/85 leading-relaxed">
+              <strong class="text-gold font-mono text-xs uppercase tracking-wider mr-2">Priority Areas:</strong>
+              5G, AI/Autonomy, Biotechnology, Control and Communications, Cybersecurity, Directed Energy, Hypersonic, Microelectronics, Network Command, Nuclear, Quantum Sciences, Space, and more.
+            </div>
+
+            <!-- All 9 DoW / Component Contacts -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3.5 pt-2">
+              <div class="p-4 rounded-xl bg-cream/10 border border-gold/25 space-y-1.5">
+                <div class="font-mono text-[10px] uppercase tracking-widest text-gold">Office for Small Business Innovation</div>
+                <div class="font-serif text-lg font-semibold text-cream">Gina Sims</div>
+                <div class="text-xs text-cream/70">Director, Office for Small Business Innovation</div>
+                <div class="pt-1 flex flex-wrap gap-2 text-xs font-mono">
+                  <button type="button" class="copy-email text-gold hover:underline cursor-pointer" data-copy="osd.innovate@mail.mil">osd.innovate@mail.mil</button>
+                </div>
+              </div>
+
+              <div class="p-4 rounded-xl bg-cream/10 border border-gold/25 space-y-1.5">
+                <div class="font-mono text-[10px] uppercase tracking-widest text-gold">DoW Central Innovation Desk</div>
+                <div class="font-serif text-lg font-semibold text-cream">DoW Office for Small Business Innovation</div>
+                <div class="text-xs text-cream/70">Department of War SBIR/STTR Portal</div>
+                <div class="pt-1 flex flex-wrap gap-2 text-xs font-mono">
+                  <button type="button" class="copy-email text-gold hover:underline cursor-pointer" data-copy="osd.innovate@mail.mil">osd.innovate@mail.mil</button>
+                </div>
+              </div>
+
+              <div class="p-4 rounded-xl bg-cream/10 border border-gold/25 space-y-1.5">
+                <div class="font-mono text-[10px] uppercase tracking-widest text-gold">DARPA</div>
+                <div class="font-serif text-lg font-semibold text-cream">Jennifer Thabet</div>
+                <div class="text-xs text-cream/70">Small Business Program Director</div>
+                <div class="pt-1 flex flex-col gap-0.5 text-xs font-mono">
+                  <a href="tel:7035264170" class="text-cream/85 hover:text-gold">703-526-4170</a>
+                  <button type="button" class="copy-email text-left text-gold hover:underline cursor-pointer" data-copy="sbir@darpa.mil">sbir@darpa.mil</button>
+                </div>
+              </div>
+
+              <div class="p-4 rounded-xl bg-cream/10 border border-gold/25 space-y-1.5">
+                <div class="font-mono text-[10px] uppercase tracking-widest text-gold">Special Operations Command (USSOCOM)</div>
+                <div class="font-serif text-lg font-semibold text-cream">Robin Burke</div>
+                <div class="text-xs text-cream/70">USSOCOM SBIR/STTR Program Manager</div>
+                <div class="pt-1 text-xs font-mono">
+                  <button type="button" class="copy-email text-gold hover:underline cursor-pointer" data-copy="sbir@socom.mil">sbir@socom.mil</button>
+                </div>
+              </div>
+
+              <div class="p-4 rounded-xl bg-cream/10 border border-gold/25 space-y-1.5">
+                <div class="font-mono text-[10px] uppercase tracking-widest text-gold">Defense Threat Reduction Agency (DTRA)</div>
+                <div class="font-serif text-lg font-semibold text-cream">Sharon Morrow</div>
+                <div class="text-xs text-cream/70">Small Business Director</div>
+                <div class="pt-1 flex flex-col gap-0.5 text-xs font-mono">
+                  <a href="tel:7037673436" class="text-cream/85 hover:text-gold">703-767-3436</a>
+                  <button type="button" class="copy-email text-left text-gold hover:underline break-all cursor-pointer" data-copy="dtra.belvoir.rd.mbx.sbir@mail.mil">dtra.belvoir.rd.mbx.sbir@mail.mil</button>
+                </div>
+              </div>
+
+              <div class="p-4 rounded-xl bg-cream/10 border border-gold/25 space-y-1.5">
+                <div class="font-mono text-[10px] uppercase tracking-widest text-gold">Defense Logistics Agency (DLA)</div>
+                <div class="font-serif text-lg font-semibold text-cream">SBIR Program Manager</div>
+                <div class="text-xs text-cream/70">Supply Chain &amp; Logistics Innovation</div>
+                <div class="pt-1 flex flex-col gap-0.5 text-xs font-mono">
+                  <a href="tel:8043019635" class="text-cream/85 hover:text-gold">804-301-9635</a>
+                  <button type="button" class="copy-email text-left text-gold hover:underline cursor-pointer" data-copy="DLASBIR2@dla.mil">DLASBIR2@dla.mil</button>
+                </div>
+              </div>
+
+              <div class="p-4 rounded-xl bg-cream/10 border border-gold/25 space-y-1.5">
+                <div class="font-mono text-[10px] uppercase tracking-widest text-gold">Defense Health Agency (DHA)</div>
+                <div class="font-serif text-lg font-semibold text-cream">SBIR/STTR Project Manager</div>
+                <div class="text-xs text-cream/70">Defense Medical &amp; Bio-Data Systems</div>
+                <div class="pt-1 flex flex-col gap-0.5 text-xs font-mono">
+                  <a href="tel:3016197296" class="text-cream/85 hover:text-gold">301-619-7296</a>
+                  <button type="button" class="copy-email text-left text-gold hover:underline break-all cursor-pointer" data-copy="dha.ncr.rd.mbx.sbirsttr@health.mil">dha.ncr.rd.mbx.sbirsttr@health.mil</button>
+                </div>
+              </div>
+
+              <div class="p-4 rounded-xl bg-cream/10 border border-gold/25 space-y-1.5">
+                <div class="font-mono text-[10px] uppercase tracking-widest text-gold">Defense Microelectronics Activity (DMEA)</div>
+                <div class="font-serif text-lg font-semibold text-cream">SBIR/STTR Program Manager</div>
+                <div class="text-xs text-cream/70">Trusted Hardware &amp; Microelectronics</div>
+                <div class="pt-1 flex flex-col gap-0.5 text-xs font-mono">
+                  <a href="tel:9169992955" class="text-cream/85 hover:text-gold">916-999-2955</a>
+                  <button type="button" class="copy-email text-left text-gold hover:underline break-all cursor-pointer" data-copy="osd.mcclellan-park.dmea.list.smbus@mail.mil">osd.mcclellan-park.dmea.list.smbus@mail.mil</button>
+                </div>
+              </div>
+
+              <div class="p-4 rounded-xl bg-cream/10 border border-gold/25 space-y-1.5">
+                <div class="font-mono text-[10px] uppercase tracking-widest text-gold">Missile Defense Agency (MDA)</div>
+                <div class="font-serif text-lg font-semibold text-cream">SBIR/STTR Program Management Office</div>
+                <div class="text-xs text-cream/70">Command, Sensing &amp; Strategic Defense</div>
+                <div class="pt-1 flex flex-col gap-0.5 text-xs font-mono">
+                  <a href="tel:2569552020" class="text-cream/85 hover:text-gold">256-955-2020</a>
+                  <button type="button" class="copy-email text-left text-gold hover:underline cursor-pointer" data-copy="sbirsttr@mda.mil">sbirsttr@mda.mil</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 2x2 GRID FOR DOE, NSF, DOC, DHS -->
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+
+            <!-- 2. DEPARTMENT OF ENERGY (DOE) -->
+            <div class="agency-card editorial-card p-8 rounded-2xl border-t-4 border-t-gold flex flex-col justify-between space-y-6 reveal-card" data-agency-id="doe">
+              <div class="space-y-4">
+                <div class="flex items-start justify-between gap-4">
+                  <div>
+                    <div class="font-mono text-[11px] uppercase tracking-[0.2em] text-oxblood/60">Energy, Computing &amp; Grid Security</div>
+                    <h3 class="font-serif text-3xl text-oxblood font-semibold mt-1">Department of Energy (DOE)</h3>
+                  </div>
+                  <span class="px-3.5 py-1.5 rounded-full bg-oxblood text-gold font-mono text-xs font-bold shrink-0">$349M Budget</span>
+                </div>
+
+                <div class="grid grid-cols-2 gap-3">
+                  <div class="p-3.5 rounded-xl bg-oxblood/5 border border-oxblood/15">
+                    <div class="font-mono text-[10px] uppercase text-oxblood/60">Phase I Funding</div>
+                    <div class="font-serif text-2xl font-bold text-oxblood">$200K – $300K</div>
+                  </div>
+                  <div class="p-3.5 rounded-xl bg-gold/15 border border-gold/40">
+                    <div class="font-mono text-[10px] uppercase text-oxblood/70">Phase II Funding</div>
+                    <div class="font-serif text-2xl font-bold text-oxblood">$1.1M – $2.0M</div>
+                  </div>
+                </div>
+
+                <p class="text-sm text-oxblood/85 leading-relaxed">
+                  <strong>Research Areas:</strong> Advanced Scientific Computing Research, Environmental Management, Fossil Energy, Biological and Environmental Research, Fusion Energy Science, Cybersecurity, Energy Security, and more.
+                </p>
+              </div>
+
+              <div class="space-y-3 pt-4 border-t border-oxblood/15">
+                <div class="p-3.5 rounded-xl bg-cream border border-oxblood/15">
+                  <div class="font-mono text-[10px] uppercase tracking-wider text-oxblood/60">Primary DOE Contact</div>
+                  <div class="font-serif text-lg font-bold text-oxblood">SBIR/STTR Program Manager</div>
+                  <div class="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs font-mono mt-1">
+                    <a href="tel:3019035707" class="text-oxblood hover:text-gold">301-903-5707</a>
+                    <button type="button" class="copy-email text-oxblood underline decoration-gold cursor-pointer" data-copy="sbir-sttr@science.doe.gov">sbir-sttr@science.doe.gov</button>
+                  </div>
+                </div>
+                <div class="p-3.5 rounded-xl bg-cream border border-gold/45">
+                  <div class="font-mono text-[10px] uppercase tracking-wider text-gold font-bold">Branch // ARPA-E</div>
+                  <div class="font-serif text-lg font-bold text-oxblood">Danny Cunningham</div>
+                  <div class="text-xs text-oxblood/75">Advanced Research Projects Agency - Energy · Associate Director for Technology-to-Market</div>
+                  <div class="text-xs font-mono mt-1">
+                    <button type="button" class="copy-email text-oxblood underline decoration-gold cursor-pointer" data-copy="daniel.cunningham@hq.doe.gov">daniel.cunningham@hq.doe.gov</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 3. NATIONAL SCIENCE FOUNDATION (NSF) -->
+            <div class="agency-card editorial-card p-8 rounded-2xl border-t-4 border-t-oxblood flex flex-col justify-between space-y-6 reveal-card" data-agency-id="nsf">
+              <div class="space-y-4">
+                <div class="flex items-start justify-between gap-4">
+                  <div>
+                    <div class="font-mono text-[11px] uppercase tracking-[0.2em] text-oxblood/60">Broad Deep-Tech &amp; Commercial Innovation</div>
+                    <h3 class="font-serif text-3xl text-oxblood font-semibold mt-1">National Science Foundation (NSF)</h3>
+                  </div>
+                  <span class="px-3.5 py-1.5 rounded-full bg-oxblood text-gold font-mono text-xs font-bold shrink-0">$174M Budget</span>
+                </div>
+
+                <div class="grid grid-cols-2 gap-3">
+                  <div class="p-3.5 rounded-xl bg-oxblood/5 border border-oxblood/15">
+                    <div class="font-mono text-[10px] uppercase text-oxblood/60">Phase I Funding</div>
+                    <div class="font-serif text-2xl font-bold text-oxblood">$300,000</div>
+                  </div>
+                  <div class="p-3.5 rounded-xl bg-gold/15 border border-gold/40">
+                    <div class="font-mono text-[10px] uppercase text-oxblood/70">Phase II Funding</div>
+                    <div class="font-serif text-2xl font-bold text-oxblood">$1.25 Million</div>
+                  </div>
+                </div>
+
+                <p class="text-sm text-oxblood/85 leading-relaxed">
+                  <strong>Scope:</strong> Funds almost all areas of technology and market sectors (with the exception of clinical trials). Ideal for foundational AEO algorithms, AI security tooling, and broad commercial-first software ventures.
+                </p>
+
+                <div class="p-3.5 rounded-xl bg-oxblood/5 border border-oxblood/10 text-xs text-oxblood/80">
+                  <strong>Executive Tip:</strong> NSF welcomes open, investigator-initiated pitches via a brief 3-page Project Pitch before inviting a full proposal—making it one of the friendliest entry points for first-time founders.
+                </div>
+              </div>
+
+              <div class="pt-4 border-t border-oxblood/15">
+                <div class="p-3.5 rounded-xl bg-cream border border-oxblood/15">
+                  <div class="font-mono text-[10px] uppercase tracking-wider text-oxblood/60">NSF Contact</div>
+                  <div class="font-serif text-lg font-bold text-oxblood">SBIR/STTR Programs</div>
+                  <div class="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs font-mono mt-1">
+                    <a href="tel:7032928050" class="text-oxblood hover:text-gold">703-292-8050</a>
+                    <button type="button" class="copy-email text-oxblood underline decoration-gold cursor-pointer" data-copy="sbir@nsf.gov">sbir@nsf.gov</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 4. DEPARTMENT OF COMMERCE (DOC) -->
+            <div class="agency-card editorial-card p-8 rounded-2xl border-t-4 border-t-oxblood flex flex-col justify-between space-y-6 reveal-card" data-agency-id="doc">
+              <div class="space-y-4">
+                <div class="flex items-start justify-between gap-4">
+                  <div>
+                    <div class="font-mono text-[11px] uppercase tracking-[0.2em] text-oxblood/60">Standards, AI Trust &amp; Economic Measurement</div>
+                    <h3 class="font-serif text-3xl text-oxblood font-semibold mt-1">Department of Commerce (DOC)</h3>
+                  </div>
+                  <span class="px-3.5 py-1.5 rounded-full bg-oxblood text-gold font-mono text-xs font-bold shrink-0">$15M Budget</span>
+                </div>
+
+                <div class="grid grid-cols-2 gap-3">
+                  <div class="p-3.5 rounded-xl bg-oxblood/5 border border-oxblood/15">
+                    <div class="font-mono text-[10px] uppercase text-oxblood/60">Phase I Funding</div>
+                    <div class="font-serif text-2xl font-bold text-oxblood">$100,000</div>
+                  </div>
+                  <div class="p-3.5 rounded-xl bg-gold/15 border border-gold/40">
+                    <div class="font-mono text-[10px] uppercase text-oxblood/70">Phase II Funding</div>
+                    <div class="font-serif text-2xl font-bold text-oxblood">$400,000</div>
+                  </div>
+                </div>
+
+                <p class="text-sm text-oxblood/85 leading-relaxed">
+                  <strong>Supports:</strong> Funds technologies in support of the missions of the <strong>National Oceanic and Atmospheric Administration (NOAA)</strong> and the <strong>National Institute of Standards and Technology (NIST)</strong>—a premier strategic anchor for national AI safety, cybersecurity, and trustworthiness standards.
+                </p>
+              </div>
+
+              <div class="pt-4 border-t border-oxblood/15">
+                <div class="p-3.5 rounded-xl bg-cream border border-oxblood/15">
+                  <div class="font-mono text-[10px] uppercase tracking-wider text-oxblood/60">DOC / NIST Contact</div>
+                  <div class="font-serif text-lg font-bold text-oxblood">Jacqueline Gray</div>
+                  <div class="text-xs text-oxblood/75">NIST SBIR Program Manager</div>
+                  <div class="text-xs font-mono mt-1">
+                    <button type="button" class="copy-email text-oxblood underline decoration-gold cursor-pointer" data-copy="sbir@nist.gov">sbir@nist.gov</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 5. DEPARTMENT OF HOMELAND SECURITY (DHS) -->
+            <div class="agency-card editorial-card p-8 rounded-2xl border-t-4 border-t-gold flex flex-col justify-between space-y-6 reveal-card" data-agency-id="dhs">
+              <div class="space-y-4">
+                <div class="flex items-start justify-between gap-4">
+                  <div>
+                    <div class="font-mono text-[11px] uppercase tracking-[0.2em] text-oxblood/60">Critical Infrastructure &amp; Cyber Resilience</div>
+                    <h3 class="font-serif text-3xl text-oxblood font-semibold mt-1">Department of Homeland Security (DHS)</h3>
+                  </div>
+                  <span class="px-3.5 py-1.5 rounded-full bg-oxblood text-gold font-mono text-xs font-bold shrink-0">$15M Budget</span>
+                </div>
+
+                <div class="grid grid-cols-2 gap-3">
+                  <div class="p-3.5 rounded-xl bg-oxblood/5 border border-oxblood/15">
+                    <div class="font-mono text-[10px] uppercase text-oxblood/60">Phase I Funding</div>
+                    <div class="font-serif text-2xl font-bold text-oxblood">$175,000</div>
+                  </div>
+                  <div class="p-3.5 rounded-xl bg-gold/15 border border-gold/40">
+                    <div class="font-mono text-[10px] uppercase text-oxblood/70">Phase II Funding</div>
+                    <div class="font-serif text-2xl font-bold text-oxblood">$1 Million</div>
+                  </div>
+                </div>
+
+                <p class="text-sm text-oxblood/85 leading-relaxed">
+                  <strong>Funds Innovation Supporting:</strong> Borders and Maritime Security, Chemical and Biological Defense, Critical Infrastructure and Resilience, Cybersecurity, Explosives Detection and Aviation Screening, First Responders, and more.
+                </p>
+              </div>
+
+              <div class="pt-4 border-t border-oxblood/15">
+                <div class="p-3.5 rounded-xl bg-cream border border-oxblood/15">
+                  <div class="font-mono text-[10px] uppercase tracking-wider text-oxblood/60">DHS Contact</div>
+                  <div class="font-serif text-lg font-bold text-oxblood">Dusty Lang</div>
+                  <div class="text-xs text-oxblood/75">SBIR Program Director</div>
+                  <div class="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs font-mono mt-1">
+                    <a href="tel:2022547000" class="text-oxblood hover:text-gold">202-254-7000</a>
+                    <button type="button" class="copy-email text-oxblood underline decoration-gold cursor-pointer" data-copy="stsbir.program@hq.dhs.gov">stsbir.program@hq.dhs.gov</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         SLIDE 7: HOW TO APPLY, WORKFLOW & FAST-TRACKING SBIR APPROVALS
+         (STICKY STACKING EDITORIAL CARDS + APPLICATION TIPS GUIDE)
+         ========================================== -->
+    <section id="sec-7" class="w-full px-6 sm:px-14 lg:px-24 py-24 relative">
+      <div class="max-w-7xl mx-auto w-full space-y-14">
+
+        <div class="flex items-center gap-3 reveal-card">
+          <span class="font-mono text-xs uppercase tracking-[0.25em] text-gold bg-oxblood px-3 py-1 rounded-full font-semibold">06 // Application Playbook &amp; Fast-Track</span>
+          <div class="h-px flex-1 bg-oxblood/15"></div>
+        </div>
+
+        <div class="max-w-4xl space-y-4 reveal-card">
+          <h2 class="font-serif text-4xl sm:text-6xl text-oxblood font-semibold leading-[1.06]">
+            Step-by-Step SBIR Application Guide &amp; <span class="underline decoration-gold decoration-2 underline-offset-8">Fast-Track Playbook</span>
+          </h2>
+          <p class="font-sans text-base sm:text-lg text-oxblood/80 leading-relaxed">
+            Most first-time applicants fail on administrative friction, not technology. Follow this four-step sequence and three proven accelerators to move cleanly from registration to funded award.
+          </p>
+        </div>
+
+        <!-- PART A: STICKY STACKING 4-STEP APPLICATION WORKFLOW -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+          <!-- Left Sticky Index -->
+          <div class="lg:col-span-4 lg:sticky lg:top-24 space-y-5">
+            <div class="editorial-card-dark p-7 rounded-2xl border-t-4 border-t-gold space-y-5">
+              <div class="font-mono text-[11px] uppercase tracking-[0.22em] text-gold">SBIR Application Workflow</div>
+              <h3 class="font-serif text-3xl text-cream font-medium leading-tight">
+                Four Disciplined Steps Before Submission Day
+              </h3>
+              <p class="text-sm text-cream/80 leading-relaxed">
+                Start mandatory registrations at least <strong>4 to 6 weeks before your target deadline</strong> so paperwork never blocks a winning proposal.
+              </p>
+
+              <div class="space-y-2.5 pt-2" id="workflow-tracker">
+                <div class="wf-pill flex items-center gap-3 p-2.5 rounded-lg bg-gold/20 border border-gold/50 text-xs font-mono text-cream" data-wf="0">
+                  <span class="text-gold font-bold">01</span><span>Mandatory Registrations</span>
+                </div>
+                <div class="wf-pill flex items-center gap-3 p-2.5 rounded-lg bg-cream/5 border border-cream/10 text-xs font-mono text-cream/70" data-wf="1">
+                  <span class="text-gold font-bold">02</span><span>Topic Alignment</span>
+                </div>
+                <div class="wf-pill flex items-center gap-3 p-2.5 rounded-lg bg-cream/5 border border-cream/10 text-xs font-mono text-cream/70" data-wf="2">
+                  <span class="text-gold font-bold">03</span><span>Technical Proposal</span>
+                </div>
+                <div class="wf-pill flex items-center gap-3 p-2.5 rounded-lg bg-cream/5 border border-cream/10 text-xs font-mono text-cream/70" data-wf="3">
+                  <span class="text-gold font-bold">04</span><span>Commercial Strategy</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Sticky-Stacking Workflow Cards -->
+          <div class="lg:col-span-8 space-y-8 pb-6">
+
+            <!-- Step 1 -->
+            <div class="sticky-workflow-card lg:sticky lg:top-24 editorial-card p-8 sm:p-10 rounded-2xl border-l-4 border-l-oxblood" data-wf-step="0">
+              <div class="flex items-center justify-between mb-4">
+                <span class="font-mono text-xs uppercase tracking-[0.22em] text-gold bg-oxblood px-3 py-1 rounded-full font-semibold">Step 01 // Foundation</span>
+                <span class="font-mono text-xs text-oxblood/55">Weeks 1–3</span>
+              </div>
+              <h4 class="font-serif text-3xl sm:text-4xl text-oxblood font-semibold mb-3">Mandatory Registrations</h4>
+              <p class="font-sans text-base sm:text-lg text-oxblood/85 leading-relaxed mb-5">
+                Complete <strong>SAM.gov (UEI)</strong>, the <strong>SBA Small Business Concern (SBC) Registry</strong>, and <strong>Grants.gov / eRA Commons</strong> (plus the DSIP portal for DoW) <em>prior to drafting</em>.
+              </p>
+              <div class="p-4 rounded-xl bg-oxblood/5 border border-oxblood/15 text-sm text-oxblood/85">
+                <strong>Pro Tip:</strong> SAM.gov entity validation can take 2–4 weeks if address or EIN records don't match IRS filings character-for-character. Register immediately—it is 100% free and opens the door to both SBIR and SBA Set-Asides.
+              </div>
+            </div>
+
+            <!-- Step 2 -->
+            <div class="sticky-workflow-card lg:sticky lg:top-28 editorial-card p-8 sm:p-10 rounded-2xl border-l-4 border-l-gold" data-wf-step="1">
+              <div class="flex items-center justify-between mb-4">
+                <span class="font-mono text-xs uppercase tracking-[0.22em] text-gold bg-oxblood px-3 py-1 rounded-full font-semibold">Step 02 // Targeting</span>
+                <span class="font-mono text-xs text-oxblood/55">Weeks 3–4</span>
+              </div>
+              <h4 class="font-serif text-3xl sm:text-4xl text-oxblood font-semibold mb-3">Topic Alignment</h4>
+              <p class="font-sans text-base sm:text-lg text-oxblood/85 leading-relaxed mb-5">
+                Map our AEO &amp; Counter-AEO technology directly to active agency <strong>Funding Opportunity Announcements (FOAs)</strong>, <strong>Broad Agency Announcements (BAAs)</strong>, or DoW Open Topics.
+              </p>
+              <div class="p-4 rounded-xl bg-gold/15 border border-gold/40 text-sm text-oxblood/90">
+                <strong>Pro Tip:</strong> Never force a generic pitch into an unrelated solicitation. Mirror the exact mission language of the agency—e.g., "information integrity &amp; cyber resilience" for DHS/DoW, or "trustworthy AI standards" for NIST/DOC.
+              </div>
+            </div>
+
+            <!-- Step 3 -->
+            <div class="sticky-workflow-card lg:sticky lg:top-32 editorial-card p-8 sm:p-10 rounded-2xl border-l-4 border-l-oxblood" data-wf-step="2">
+              <div class="flex items-center justify-between mb-4">
+                <span class="font-mono text-xs uppercase tracking-[0.22em] text-gold bg-oxblood px-3 py-1 rounded-full font-semibold">Step 03 // Blueprint</span>
+                <span class="font-mono text-xs text-oxblood/55">Weeks 4–7</span>
+              </div>
+              <h4 class="font-serif text-3xl sm:text-4xl text-oxblood font-semibold mb-3">Technical Proposal</h4>
+              <p class="font-sans text-base sm:text-lg text-oxblood/85 leading-relaxed mb-5">
+                Draft a rigorous, crystal-clear research plan emphasizing <strong>technical innovation</strong>, measurable milestones, clear risk reduction, and an executable delivery schedule.
+              </p>
+              <div class="p-4 rounded-xl bg-oxblood/5 border border-oxblood/15 text-sm text-oxblood/85">
+                <strong>Pro Tip:</strong> Reviewers read dozens of dense proposals quickly. Open with a plain-English executive summary explaining the threat, why existing security tools miss AI retrieval manipulation, and the exact measurable outcome our prototype will prove.
+              </div>
+            </div>
+
+            <!-- Step 4 -->
+            <div class="sticky-workflow-card lg:sticky lg:top-36 editorial-card-dark p-8 sm:p-10 rounded-2xl border-l-4 border-l-gold" data-wf-step="3">
+              <div class="flex items-center justify-between mb-4">
+                <span class="font-mono text-xs uppercase tracking-[0.22em] text-oxblood bg-gold px-3 py-1 rounded-full font-bold">Step 04 // Scale Case</span>
+                <span class="font-mono text-xs text-gold/80">Weeks 6–8</span>
+              </div>
+              <h4 class="font-serif text-3xl sm:text-4xl text-cream font-semibold mb-3">Commercial Strategy</h4>
+              <p class="font-sans text-base sm:text-lg text-cream/85 leading-relaxed mb-5">
+                Provide credible <strong>market sizing</strong>, our <strong>IP defense strategy</strong>, competitor analysis, and real <strong>customer traction metrics</strong> (including private-sector AEO engagements and letters of support).
+              </p>
+              <div class="p-4 rounded-xl bg-cream/10 border border-gold/35 text-sm text-cream/90">
+                <strong>Pro Tip:</strong> Agencies don't want science projects that sit on a shelf—they want technologies that survive commercially. Showing dual-use commercial pull (such as enterprise AEO work with AWS and financial firms) puts our commercialization score in the top tier.
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- PART B: FAST-TRACKING SBIR APPROVALS & APPLICATION TIPS -->
+        <div class="space-y-6 pt-4">
+          <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 reveal-card">
+            <div>
+              <div class="font-mono text-xs uppercase tracking-[0.22em] text-oxblood/60">Speed &amp; Scoring Advantage</div>
+              <h3 class="font-serif text-3xl sm:text-5xl text-oxblood font-semibold mt-1">Fast-Tracking SBIR Approvals</h3>
+            </div>
+            <span class="font-mono text-xs text-oxblood/65 uppercase tracking-wider">3 Proven Execution Levers</span>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="editorial-card p-8 rounded-2xl border-t-4 border-t-gold flex flex-col justify-between space-y-5 reveal-card">
+              <div class="space-y-3">
+                <div class="w-10 h-10 rounded-full bg-oxblood text-gold flex items-center justify-center font-mono text-sm font-bold">01</div>
+                <h4 class="font-serif text-2xl sm:text-3xl text-oxblood font-semibold">Target "Fast-Track"</h4>
+                <p class="text-sm sm:text-base text-oxblood/85 leading-relaxed">
+                  Combine <strong>Phase I and Phase II into a single proposal submission</strong> (available at NIH/DoW, alongside DoW Direct-to-Phase-II pathways). Eliminates the standard <strong>6-month funding gap</strong> between feasibility proof and full prototype development.
+                </p>
+              </div>
+              <div class="pt-3 border-t border-oxblood/15 font-mono text-[11px] text-oxblood/65 uppercase">Zero Valley of Death Between Phases</div>
+            </div>
+
+            <div class="editorial-card-dark p-8 rounded-2xl border-t-4 border-t-gold flex flex-col justify-between space-y-5 reveal-card">
+              <div class="space-y-3">
+                <div class="w-10 h-10 rounded-full bg-gold text-oxblood flex items-center justify-center font-mono text-sm font-bold">02</div>
+                <h4 class="font-serif text-2xl sm:text-3xl text-cream font-semibold">Engage Program Officers</h4>
+                <p class="text-sm sm:text-base text-cream/85 leading-relaxed">
+                  Submit a crisp <strong>1-page concept paper to agency Program Managers 4–6 weeks prior to release</strong> (during the pre-release window when direct Q&amp;A is open). Direct mission alignment dramatically elevates proposal scoring.
+                </p>
+              </div>
+              <div class="pt-3 border-t border-gold/25 font-mono text-[11px] text-gold uppercase">Turn Cold Submissions Into Warm Advocacy</div>
+            </div>
+
+            <div class="editorial-card p-8 rounded-2xl border-t-4 border-t-oxblood flex flex-col justify-between space-y-5 reveal-card">
+              <div class="space-y-3">
+                <div class="w-10 h-10 rounded-full bg-oxblood text-gold flex items-center justify-center font-mono text-sm font-bold">03</div>
+                <h4 class="font-serif text-2xl sm:text-3xl text-oxblood font-semibold">Pre-Submission Audit</h4>
+                <p class="text-sm sm:text-base text-oxblood/85 leading-relaxed">
+                  Submit <strong>at least 5 days early</strong> to clear SAM.gov and Grants.gov automated validation checks. Minor page-count, margin, PDF font, or budget-table glitches cause <strong>immediate administrative rejection</strong> without ever being read.
+                </p>
+              </div>
+              <div class="pt-3 border-t border-oxblood/15 font-mono text-[11px] text-oxblood/65 uppercase">Zero Unforced Administrative Disqualifications</div>
+            </div>
+          </div>
+
+          <!-- Compact Executive Tips Strip -->
+          <div class="editorial-card p-6 sm:p-8 rounded-2xl border border-gold/50 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 reveal-card">
+            <div>
+              <div class="font-mono text-[10px] uppercase tracking-widest text-gold font-bold">Tip A // Letters of Support</div>
+              <p class="text-xs sm:text-sm text-oxblood/85 mt-1">Attach 2–4 signed letters from commercial customers (or federal end-users) stating they will adopt the finished tool.</p>
+            </div>
+            <div>
+              <div class="font-mono text-[10px] uppercase tracking-widest text-gold font-bold">Tip B // Score the Rubric</div>
+              <p class="text-xs sm:text-sm text-oxblood/85 mt-1">Structure proposal headings to mirror the exact evaluation criteria in the solicitation so reviewers can award full points easily.</p>
+            </div>
+            <div>
+              <div class="font-mono text-[10px] uppercase tracking-widest text-gold font-bold">Tip C // Right-Size the Ask</div>
+              <p class="text-xs sm:text-sm text-oxblood/85 mt-1">Budget every dollar to concrete milestones—avoid padded overhead and keep Phase I laser-focused on proving one undeniable metric.</p>
+            </div>
+            <div>
+              <div class="font-mono text-[10px] uppercase tracking-widest text-gold font-bold">Tip D // Request Debriefs</div>
+              <p class="text-xs sm:text-sm text-oxblood/85 mt-1">If an application isn't funded on the first try, always request written reviewer feedback—resubmissions win at dramatically higher rates.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==========================================
+         SLIDE 8: SBA SMALL BUSINESS SET-ASIDES DEEP DIVE (SOLO TRACK)
+         ========================================== -->
+    <section id="sec-8" class="min-h-screen w-full px-6 sm:px-14 lg:px-24 py-24 relative">
+      <div class="max-w-7xl mx-auto w-full space-y-12">
+
+        <div class="flex items-center gap-3 reveal-card">
+          <span class="font-mono text-xs uppercase tracking-[0.25em] text-gold bg-oxblood px-3 py-1 rounded-full font-semibold">07 // SBA Small Business Set-Asides (Solo Track)</span>
+          <div class="h-px flex-1 bg-oxblood/15"></div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+          <!-- Left: Plain-English Mechanics -->
+          <div class="lg:col-span-7 space-y-6 reveal-card">
+            <h2 class="font-serif text-4xl sm:text-6xl text-oxblood font-semibold leading-[1.06]">
+              Winning Federal Contracts <span class="underline decoration-gold decoration-2 underline-offset-8">Without Competing Against Defense Giants</span>.
+            </h2>
+            <p class="font-sans text-base sm:text-lg text-oxblood/85 leading-relaxed">
+              The U.S. government is required by federal policy to reserve a major share of its contract spending—at least <strong>23% of prime federal contracting dollars</strong>—for small businesses. Through <strong>SBA Small Business Set-Asides</strong>, agencies legally restrict specific contracts so multi-billion-dollar primes cannot bid directly against us.
+            </p>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div class="editorial-card p-6 rounded-xl border-l-4 border-l-oxblood">
+                <div class="font-mono text-[11px] uppercase tracking-widest text-oxblood/60 font-bold">Automatic Reservation</div>
+                <div class="font-serif text-2xl font-bold text-oxblood mt-1">Simplified Acquisitions</div>
+                <p class="text-xs sm:text-sm text-oxblood/80 mt-2 leading-relaxed">
+                  Contracts between $10,000 and the Simplified Acquisition Threshold (~$250K–$350K) are <strong>automatically set aside for small businesses</strong>—faster paperwork, rapid awards, and ideal for building early federal past performance.
+                </p>
+              </div>
+              <div class="editorial-card p-6 rounded-xl border-l-4 border-l-gold">
+                <div class="font-mono text-[11px] uppercase tracking-widest text-oxblood/60 font-bold">The "Rule of Two"</div>
+                <div class="font-serif text-2xl font-bold text-oxblood mt-1">Multi-Million Set-Asides</div>
+                <p class="text-xs sm:text-sm text-oxblood/80 mt-2 leading-relaxed">
+                  Above the threshold, if a Contracting Officer expects at least <strong>two capable small businesses</strong> to submit fair-priced bids, the contract is reserved exclusively for small businesses—locking out huge primes.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right: Live Competition-Compression Radar Canvas -->
+          <div class="lg:col-span-5 editorial-card-dark rounded-2xl p-6 h-[420px] flex flex-col justify-between reveal-card">
+            <div class="flex items-center justify-between border-b border-gold/25 pb-3">
+              <div>
+                <div class="font-mono text-[10px] uppercase tracking-[0.2em] text-gold">Win-Probability Physics</div>
+                <div class="font-serif text-xl text-cream">How Targeting Shrinks Competition</div>
+              </div>
+              <span class="w-2.5 h-2.5 rounded-full bg-gold animate-pulse"></span>
+            </div>
+            <div class="flex-1 w-full relative my-2">
+              <canvas id="setaside-funnel-canvas" class="sim-canvas"></canvas>
+            </div>
+            <div class="grid grid-cols-3 gap-2 pt-2 border-t border-gold/20 text-center font-mono text-[10px]">
+              <div class="text-cream/65">Full &amp; Open<br /><span class="text-cream font-bold">50–200+ Bids</span></div>
+              <div class="text-gold/85">Niche Set-Aside<br /><span class="text-gold font-bold">3–8 Bids</span></div>
+              <div class="text-gold">SBIR III / JV<br /><span class="text-cream font-bold">1–2 Bids</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Guide & Tips: Finding & Targeting Contracts on Our Own to Reduce Competition -->
+        <div class="editorial-card p-8 sm:p-10 rounded-2xl border border-oxblood/20 space-y-8 reveal-card">
+          <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-b border-oxblood/15 pb-5">
+            <div>
+              <div class="font-mono text-xs uppercase tracking-[0.22em] text-gold bg-oxblood inline-block px-3 py-1 rounded-full font-semibold mb-2">
+                Track A // Winning Small Business Set-Asides On Our Own
+              </div>
+              <h3 class="font-serif text-3xl sm:text-4xl text-oxblood font-semibold">
+                Tactical Guide: Finding Contracts &amp; Engineering Low-Competition Wins
+              </h3>
+            </div>
+            <span class="font-mono text-xs text-oxblood/60 uppercase tracking-wider">Solo Execution Playbook</span>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div class="p-5 rounded-xl bg-cream border border-oxblood/15 space-y-2">
+              <div class="font-mono text-xs text-gold font-bold uppercase">01 // Where to Hunt Daily</div>
+              <h4 class="font-serif text-2xl text-oxblood font-semibold">SAM.gov &amp; Agency Forecasts</h4>
+              <p class="text-sm text-oxblood/80 leading-relaxed">
+                Set saved alerts on <strong>SAM.gov</strong> filtered strictly to <em>Total Small Business Set-Aside</em> under AI, cybersecurity, and data NAICS codes (e.g., 541511, 541512, 541715). Cross-check <strong>USAspending.gov</strong> to spot expiring contracts 6–12 months before renewal.
+              </p>
+            </div>
+
+            <div class="p-5 rounded-xl bg-cream border border-oxblood/15 space-y-2">
+              <div class="font-mono text-xs text-gold font-bold uppercase">02 // Shape the Bid Early</div>
+              <h4 class="font-serif text-2xl text-oxblood font-semibold">Answer Sources Sought &amp; RFIs</h4>
+              <p class="text-sm text-oxblood/80 leading-relaxed">
+                Before posting an RFP, agencies publish <strong>Sources Sought Notices</strong> to see if small businesses can do the job. Responding with a sharp capability brief proves the <em>Rule of Two</em>, nudges the buyer to set the contract aside, and shapes the technical specs around AEO.
+              </p>
+            </div>
+
+            <div class="p-5 rounded-xl bg-cream border border-oxblood/15 space-y-2">
+              <div class="font-mono text-xs text-gold font-bold uppercase">03 // Exploit Our Category Edge</div>
+              <h4 class="font-serif text-2xl text-oxblood font-semibold">Target Emerging AI &amp; Cyber Niches</h4>
+              <p class="text-sm text-oxblood/80 leading-relaxed">
+                Avoid generic IT helpdesk or broad staffing bids where 80+ small shops compete on lowest price. Target <strong>generative AI defense, misinformation detection, retrieval security, and OSINT analytics</strong>—where virtually no traditional Beltway contractor has AEO expertise.
+              </p>
+            </div>
+
+            <div class="p-5 rounded-xl bg-cream border border-oxblood/15 space-y-2">
+              <div class="font-mono text-xs text-gold font-bold uppercase">04 // Fast First Wins</div>
+              <h4 class="font-serif text-2xl text-oxblood font-semibold">Start Under the Simplified Threshold</h4>
+              <p class="text-sm text-oxblood/80 leading-relaxed">
+                Target $50K–$250K pilot audits, AI vulnerability assessments, and rapid-prototyping awards first. These face minimal competition, close in weeks instead of years, and generate the federal <strong>Past Performance (CPARS)</strong> scores needed for multi-million-dollar bids.
+              </p>
+            </div>
+
+            <div class="p-5 rounded-xl bg-cream border border-oxblood/15 space-y-2">
+              <div class="font-mono text-xs text-gold font-bold uppercase">05 // Direct Buyer Access</div>
+              <h4 class="font-serif text-2xl text-oxblood font-semibold">Meet Agency Small Business Offices</h4>
+              <p class="text-sm text-oxblood/80 leading-relaxed">
+                Every major department has an <strong>OSDBU</strong> (Office of Small and Disadvantaged Business Utilization) graded on hitting small-business spending quotas. Bring a crisp 1-page Capability Statement focused on AI security gaps—they actively introduce small firms to buyers.
+              </p>
+            </div>
+
+            <div class="p-5 rounded-xl bg-oxblood text-cream border border-gold/50 space-y-2">
+              <div class="font-mono text-xs text-gold font-bold uppercase">06 // The Solo Limit (And How We Break It)</div>
+              <h4 class="font-serif text-2xl text-cream font-semibold">Why Solo Set-Asides Have a Ceiling</h4>
+              <p class="text-sm text-cream/85 leading-relaxed">
+                On our own, we can rapidly win pilots, SBIR grants, and niche contracts up to ~$1M–$5M. To capture <strong>$10M–$100M+ federal Small Business Set-Asides</strong> that demand deep past performance, GovCloud hosting, and security clearances, we unlock <strong>Track B: The SBA Mentor-Protégé Program with AWS</strong>.
+              </p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==========================================
+         SLIDE 9: SBA MENTOR-PROTÉGÉ PROGRAM & THE AWS FLYWHEEL
+         (COVER-DECK STYLE STICKY LEFT LIVE CANVAS + SCROLLING RIGHT EXECUTION CARDS)
+         ========================================== -->
+    <section id="sec-9" class="w-full px-6 sm:px-14 lg:px-24 py-24 relative">
+      <div class="max-w-7xl mx-auto w-full space-y-12">
+
+        <div class="flex items-center gap-3 reveal-card">
+          <span class="font-mono text-xs uppercase tracking-[0.25em] text-gold bg-oxblood px-3 py-1 rounded-full font-semibold">08 // Track B: SBA Mentor-Protégé &amp; AWS Flywheel</span>
+          <div class="h-px flex-1 bg-oxblood/15"></div>
+        </div>
+
+        <!-- Mentor-Protégé Plain-English Explainer Banner -->
+        <div class="editorial-card p-8 sm:p-12 rounded-2xl border-2 border-oxblood/20 space-y-6 reveal-card">
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            <div class="lg:col-span-7 space-y-4">
+              <div class="font-mono text-xs uppercase tracking-[0.22em] text-oxblood/65">
+                How the SBA Mentor-Protégé Program Works
+              </div>
+              <h2 class="font-serif text-4xl sm:text-5xl text-oxblood font-semibold leading-[1.08]">
+                Small-Business Set-Aside Status + <span class="underline decoration-gold decoration-2 underline-offset-8">AWS Enterprise Power</span>.
+              </h2>
+              <p class="font-sans text-base sm:text-lg text-oxblood/85 leading-relaxed">
+                The <strong>SBA Mentor-Protégé Program</strong> lets a small business (the <strong>Protégé</strong>) pair formally with an established industry giant (the <strong>Mentor</strong>) for up to 6 years. Together, we can form a <strong>Joint Venture (JV)</strong> that competes for and wins massive <strong>Small Business Set-Aside contracts</strong>—while borrowing the Mentor's federal past performance, cloud infrastructure, security credentials, and contract vehicles <em>without losing our small-business size status</em>.
+              </p>
+            </div>
+            <div class="lg:col-span-5 grid grid-cols-2 gap-3.5">
+              <div class="p-4 rounded-xl bg-oxblood text-cream border border-gold/40">
+                <div class="font-mono text-[10px] text-gold uppercase">Zero Affiliation Penalty</div>
+                <div class="font-serif text-xl font-semibold mt-1">Keep Set-Aside Access</div>
+                <p class="text-xs text-cream/75 mt-1">SBA explicitly shields approved Mentor-Protégé JVs from size-affiliation rules.</p>
+              </div>
+              <div class="p-4 rounded-xl bg-cream border border-oxblood/15">
+                <div class="font-mono text-[10px] text-oxblood/60 uppercase">What AWS Gets</div>
+                <div class="font-serif text-xl font-semibold text-oxblood mt-1">New Set-Aside Access</div>
+                <p class="text-xs text-oxblood/75 mt-1">AWS gains access to restricted small-business contracts + best-in-class AEO/Cyber IP.</p>
+              </div>
+              <div class="p-4 rounded-xl bg-cream border border-oxblood/15">
+                <div class="font-mono text-[10px] text-oxblood/60 uppercase">What We Get</div>
+                <div class="font-serif text-xl font-semibold text-oxblood mt-1">Prime Credibility</div>
+                <p class="text-xs text-oxblood/75 mt-1">GovCloud scale, federal past performance, BD muscle, and contracting infrastructure.</p>
+              </div>
+              <div class="p-4 rounded-xl bg-gold/20 border border-gold">
+                <div class="font-mono text-[10px] text-oxblood font-bold uppercase">Warm Executive Lead</div>
+                <div class="font-serif text-xl font-semibold text-oxblood mt-1">AWS GenAI Head</div>
+                <p class="text-xs text-oxblood/85 mt-1">Direct entry point with AWS's Head of Generative AI &amp; Data Architecture.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- STICKY LEFT VISUALIZER + SCROLLING RIGHT 4-PHASE AWS EXECUTION PLAYBOOK -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start pt-4">
+
+          <!-- Sticky Left Column: Live Scroll-Synced AWS Flywheel Canvas -->
+          <div class="lg:col-span-5 lg:sticky lg:top-20 editorial-card-dark rounded-2xl p-6 h-[440px] sm:h-[520px] flex flex-col justify-between overflow-hidden">
+            <div class="flex items-center justify-between border-b border-gold/25 pb-3">
+              <div>
+                <div class="font-mono text-[10px] uppercase tracking-[0.2em] text-gold">Leveraging Our AWS Lead</div>
+                <div id="aws-canvas-title" class="font-serif text-xl text-cream">Phase 1 · Single-Product AEO Wedge</div>
+              </div>
+              <div class="flex items-center gap-1.5">
+                <span class="w-2.5 h-2.5 rounded-full bg-gold animate-pulse"></span>
+              </div>
+            </div>
+
+            <div class="flex-1 w-full relative my-2">
+              <canvas id="aws-flywheel-canvas" class="sim-canvas"></canvas>
+            </div>
+
+            <div class="space-y-2">
+              <div class="flex justify-between font-mono text-[10px] uppercase tracking-wider text-cream/70">
+                <span id="aws-phase-label">Step 1 of 4 · Prove Value Commercial First</span>
+                <span id="aws-phase-pct" class="text-gold font-bold">25%</span>
+              </div>
+              <div class="h-1.5 w-full bg-cream/10 rounded-full overflow-hidden">
+                <div id="aws-progress-bar" class="h-full bg-gold w-1/4 transition-all duration-300"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Scrolling Right Column: The 4-Phase AWS + SBIR + Mentor-Protégé Sequence -->
+          <div class="lg:col-span-7 space-y-6">
+
+            <!-- Phase 1 -->
+            <div class="aws-step editorial-card p-8 sm:p-10 rounded-2xl border-l-4 border-l-oxblood space-y-3" data-aws-phase="0">
+              <div class="flex items-center justify-between">
+                <span class="font-mono text-xs uppercase tracking-[0.2em] text-gold bg-oxblood px-3 py-1 rounded-full font-semibold">Stage 01 // The Wedge</span>
+                <span class="font-mono text-xs text-oxblood/55">Immediate Outreach</span>
+              </div>
+              <h3 class="font-serif text-3xl text-oxblood font-semibold">
+                Offer One High-Impact AEO Proof on a Single AWS Product
+              </h3>
+              <p class="font-sans text-base sm:text-lg text-oxblood/85 leading-relaxed">
+                Don't pitch a complex federal joint venture on Day 1. Leverage our warm relationship with <strong>AWS's Head of Generative AI and Data Architecture</strong> by offering a focused, low-friction opportunity to execute <strong>AEO for one single AWS product</strong> (such as Amazon Bedrock, SageMaker, or a priority AI/data service).
+              </p>
+              <div class="p-3.5 rounded-xl bg-oxblood/5 border border-oxblood/15 text-xs sm:text-sm text-oxblood/85">
+                <strong>Why this works:</strong> Zero bureaucracy for our AWS sponsor to say "yes," fast measurable citation lift across ChatGPT, Perplexity, Claude, and Gemini, and immediate proof that we outperform every agency on Earth.
+              </div>
+            </div>
+
+            <!-- Phase 2 -->
+            <div class="aws-step editorial-card p-8 sm:p-10 rounded-2xl border-l-4 border-l-gold space-y-3" data-aws-phase="1">
+              <div class="flex items-center justify-between">
+                <span class="font-mono text-xs uppercase tracking-[0.2em] text-gold bg-oxblood px-3 py-1 rounded-full font-semibold">Stage 02 // Commercial Expansion</span>
+                <span class="font-mono text-xs text-oxblood/55">Months 2–6</span>
+              </div>
+              <h3 class="font-serif text-3xl text-oxblood font-semibold">
+                Prove Category Leadership &amp; Expand Across AWS Products
+              </h3>
+              <p class="font-sans text-base sm:text-lg text-oxblood/85 leading-relaxed">
+                Once our single-product pilot delivers undeniable citation and retrieval gains, we convert that proof into a <strong>broader private-sector AEO engagement across multiple AWS product lines</strong>—generating high-margin commercial revenue while turning AWS product &amp; AI leaders into active internal champions.
+              </p>
+              <div class="p-3.5 rounded-xl bg-gold/15 border border-gold/40 text-xs sm:text-sm text-oxblood/90">
+                <strong>Strategic Benefit:</strong> Builds trusted vendor status inside AWS, funds our operations organically, and gives us a marquee commercial case study for federal SBIR commercialization scoring.
+              </div>
+            </div>
+
+            <!-- Phase 3 -->
+            <div class="aws-step editorial-card-dark p-8 sm:p-10 rounded-2xl border-l-4 border-l-gold space-y-3" data-aws-phase="2">
+              <div class="flex items-center justify-between">
+                <span class="font-mono text-xs uppercase tracking-[0.2em] text-oxblood bg-gold px-3 py-1 rounded-full font-bold">Stage 03 // Parallel Cyber R&amp;D</span>
+                <span class="font-mono text-xs text-gold/80">Running Simultaneously</span>
+              </div>
+              <h3 class="font-serif text-3xl text-cream font-semibold">
+                Build Federal Counter-AEO Cybersecurity Systems via SBIR Funding
+              </h3>
+              <p class="font-sans text-base sm:text-lg text-cream/85 leading-relaxed">
+                While expanding commercial AEO services for AWS, we run our <strong>SBIR Phase I &amp; Phase II track in parallel</strong> (targeting DoW, DHS, DOE, DOC, and NSF) to design and validate specialized <strong>AEO cybersecurity, intelligence, and market-defense systems</strong>—funded 100% by non-dilutive federal R&amp;D capital.
+              </p>
+              <div class="p-3.5 rounded-xl bg-cream/10 border border-gold/30 text-xs sm:text-sm text-cream/90">
+                <strong>Strategic Benefit:</strong> By the time we approach AWS Public Sector about federal contracting, we aren't bringing a slide deck—we are bringing federally validated, SBIR-funded cybersecurity software with 20-year data rights.
+              </div>
+            </div>
+
+            <!-- Phase 4 -->
+            <div class="aws-step editorial-card p-8 sm:p-10 rounded-2xl border-2 border-gold space-y-3" data-aws-phase="3">
+              <div class="flex items-center justify-between">
+                <span class="font-mono text-xs uppercase tracking-[0.2em] text-gold bg-oxblood px-3 py-1 rounded-full font-semibold">Stage 04 // The Federal Force Multiplier</span>
+                <span class="font-mono text-xs text-oxblood/65">Months 6–18+</span>
+              </div>
+              <h3 class="font-serif text-3xl text-oxblood font-semibold">
+                Formalize AWS SBA Mentor-Protégé Partnership &amp; Capture Major Set-Asides
+              </h3>
+              <p class="font-sans text-base sm:text-lg text-oxblood/85 leading-relaxed">
+                Armed with commercial credibility across AWS and SBIR-built federal AEO/cybersecurity technology, our GenAI sponsor bridges us to <strong>AWS Worldwide Public Sector</strong> to establish an SBA-approved <strong>Mentor-Protégé Agreement &amp; Joint Venture</strong>. Together, we pursue large <strong>Small Business Set-Aside contracts</strong> across defense, intelligence, energy, and homeland security—combining our small-business set-aside access and AEO cyber stack with AWS GovCloud, enterprise clearances, and prime past performance.
+              </p>
+              <div class="p-3.5 rounded-xl bg-oxblood text-cream text-xs sm:text-sm">
+                <strong class="text-gold">The Winning Equation:</strong> AWS cannot bid Small Business Set-Asides alone, and a young startup cannot easily prime a $50M GovCloud cyber program alone. Together in a Mentor-Protégé JV, both sides unlock billions in previously unreachable federal demand.
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==========================================
+         SLIDE 10: SIDE-BY-SIDE COMPARISON & 90-DAY EXECUTIVE ACTION PLAN
+         ========================================== -->
+    <section id="sec-10" class="min-h-screen w-full px-6 sm:px-14 lg:px-24 py-24 flex flex-col justify-center relative">
+      <div class="max-w-7xl mx-auto w-full space-y-12">
+
+        <div class="flex items-center gap-3 reveal-card">
+          <span class="font-mono text-xs uppercase tracking-[0.25em] text-gold bg-oxblood px-3 py-1 rounded-full font-semibold">09 // Executive Roadmap</span>
+          <div class="h-px flex-1 bg-oxblood/15"></div>
+        </div>
+
+        <div class="text-center max-w-4xl mx-auto space-y-4 reveal-card">
+          <h2 class="font-serif text-4xl sm:text-6xl text-oxblood font-semibold leading-tight">
+            Two Synchronized Tracks to Federal Market Leadership
+          </h2>
+          <p class="font-sans text-base sm:text-lg text-oxblood/80">
+            We do not wait for one channel to finish before starting the next—solo SBIR &amp; set-aside execution fuels the exact technology that supercharges our AWS Mentor-Protégé engine.
+          </p>
+        </div>
+
+        <!-- Solo vs Mentor-Protégé Comparison -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 reveal-card">
+          <div class="editorial-card p-8 sm:p-10 rounded-2xl border-t-4 border-t-oxblood space-y-5">
+            <div class="font-mono text-xs uppercase tracking-[0.2em] text-oxblood/60 font-bold">Track A // Independent Execution</div>
+            <h3 class="font-serif text-3xl text-oxblood font-semibold">Solo SBIR + Small Business Set-Asides</h3>
+            <ul class="space-y-3 text-sm sm:text-base text-oxblood/85">
+              <li class="flex items-start gap-2.5"><span class="text-gold font-bold">◆</span><span><strong>Fastest Non-Dilutive R&amp;D:</strong> Phase I ($100K–$300K) → Phase II ($400K–$2M) across DoW, DOE, NSF, DOC, and DHS.</span></li>
+              <li class="flex items-start gap-2.5"><span class="text-gold font-bold">◆</span><span><strong>Low-Competition Direct Awards:</strong> Simplified Acquisitions (&lt;$250K–$350K) and niche AEO/cyber set-asides under the Rule of Two.</span></li>
+              <li class="flex items-start gap-2.5"><span class="text-gold font-bold">◆</span><span><strong>Uncapped Sole-Source Rights:</strong> SBIR Phase III enables direct follow-on contracts up to $522M without competitive rebidding.</span></li>
+            </ul>
+          </div>
+
+          <div class="editorial-card-dark p-8 sm:p-10 rounded-2xl border-t-4 border-t-gold space-y-5">
+            <div class="font-mono text-xs uppercase tracking-[0.2em] text-gold font-bold">Track B // Strategic Enterprise Alliance</div>
+            <h3 class="font-serif text-3xl text-cream font-semibold">AWS Commercial Wedge → SBA Mentor-Protégé JV</h3>
+            <ul class="space-y-3 text-sm sm:text-base text-cream/85">
+              <li class="flex items-start gap-2.5"><span class="text-gold font-bold">◆</span><span><strong>Single-Product Commercial Proof:</strong> Win one AWS product AEO mandate through our AWS GenAI Head lead, then expand across AWS.</span></li>
+              <li class="flex items-start gap-2.5"><span class="text-gold font-bold">◆</span><span><strong>Deploy SBIR Cyber Stack:</strong> Pair our SBIR-funded Counter-AEO cybersecurity platform with AWS GovCloud &amp; public-sector sales teams.</span></li>
+              <li class="flex items-start gap-2.5"><span class="text-gold font-bold">◆</span><span><strong>Unlock Enterprise-Scale Set-Asides:</strong> Bid $10M–$100M+ Small Business Set-Asides as an SBA Mentor-Protégé Joint Venture with AWS's past performance.</span></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Immediate 90-Day Executive Launch Checklist -->
+        <div class="editorial-card p-8 sm:p-10 rounded-2xl border-2 border-oxblood/20 space-y-6 reveal-card">
+          <div class="font-mono text-xs uppercase tracking-[0.22em] text-oxblood/65">Immediate Next 90 Days</div>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="space-y-2 border-l-2 border-gold pl-4">
+              <div class="font-mono text-xs font-bold text-oxblood">Days 1 – 30</div>
+              <div class="font-serif text-2xl font-semibold text-oxblood">Registrations &amp; AWS Wedge</div>
+              <p class="text-sm text-oxblood/80 leading-relaxed">
+                Complete SAM.gov (UEI), SBC Registry &amp; Grants.gov. Pitch the single-product AEO pilot to our AWS Head of GenAI &amp; Data Architecture lead.
+              </p>
+            </div>
+            <div class="space-y-2 border-l-2 border-oxblood pl-4">
+              <div class="font-mono text-xs font-bold text-oxblood">Days 31 – 60</div>
+              <div class="font-serif text-2xl font-semibold text-oxblood">Program Officer Outreach</div>
+              <p class="text-sm text-oxblood/80 leading-relaxed">
+                Send 1-page Counter-AEO concept papers to DoW (DARPA, USSOCOM, DTRA), DHS, DOE, NIST &amp; NSF contacts. Respond to 3–5 SAM.gov Sources Sought notices.
+              </p>
+            </div>
+            <div class="space-y-2 border-l-2 border-gold pl-4">
+              <div class="font-mono text-xs font-bold text-oxblood">Days 61 – 90</div>
+              <div class="font-serif text-2xl font-semibold text-oxblood">Submit &amp; Expand</div>
+              <p class="text-sm text-oxblood/80 leading-relaxed">
+                Submit first Phase I / Fast-Track SBIR proposals (5 days early). Deliver standout AWS pilot metrics to initiate multi-product expansion &amp; Public Sector intros.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bottom Action CTAs -->
+        <div class="flex flex-wrap items-center justify-center gap-5 pt-4 pb-12 reveal-card">
+          <a href="./" target="_top"
+            class="group inline-flex items-center justify-center gap-3 px-10 py-4 bg-oxblood text-cream font-mono text-xs sm:text-sm font-bold tracking-[0.2em] uppercase border-2 border-gold rounded-full shadow-xl hover:bg-gold hover:text-oxblood hover:border-oxblood transition-all duration-300 transform hover:-translate-y-1 cursor-pointer">
+            <span>← Platform Home</span>
+          </a>
+
+          <a href="./#/pitch-deck" target="_top"
+            class="group inline-flex items-center justify-center gap-3 px-10 py-4 bg-cream text-oxblood font-mono text-xs sm:text-sm font-bold tracking-[0.2em] uppercase border-2 border-oxblood rounded-full shadow-xl hover:bg-oxblood hover:text-cream hover:border-gold transition-all duration-300 transform hover:-translate-y-1 cursor-pointer">
+            <span>View Cover Deck</span>
+            <span class="inline-block transition-transform duration-300 group-hover:translate-x-1">→</span>
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ==========================================
+       JAVASCRIPT: THREE.JS WEBGL, 2D CANVASES & GSAP CHOREOGRAPHY
+       ========================================== -->
+  <script>
+    window.addEventListener('load', () => {
+      gsap.registerPlugin(ScrollTrigger);
+
+      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      /* -----------------------------------------------------------
+       * 1. PERSISTENT THREE.JS WEBGL STAGE (SCROLL-MORPHING)
+       * ----------------------------------------------------------- */
+      const initWebGL = () => {
+        const container = document.getElementById('webgl-container');
+        if (!container || typeof THREE === 'undefined') return;
+
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 1000);
+        camera.position.set(0, 0, 14.5);
+
+        const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+        container.appendChild(renderer.domElement);
+
+        const mainGroup = new THREE.Group();
+        scene.add(mainGroup);
+
+        // 1A: Outer Architectural Wireframe Icosahedron (Oxblood #320813)
+        const icoGeo = new THREE.IcosahedronGeometry(3.4, 1);
+        const icoMat = new THREE.MeshBasicMaterial({
+          color: 0x320813,
+          wireframe: true,
+          transparent: true,
+          opacity: 0.15
+        });
+        const icoMesh = new THREE.Mesh(icoGeo, icoMat);
+        mainGroup.add(icoMesh);
+
+        // 1B: Inner Faceted Dodecahedron Core (Gold #DDA743)
+        const coreGeo = new THREE.DodecahedronGeometry(1.75, 0);
+        const coreMat = new THREE.MeshBasicMaterial({
+          color: 0xDDA743,
+          wireframe: true,
+          transparent: true,
+          opacity: 0.42
+        });
+        const coreMesh = new THREE.Mesh(coreGeo, coreMat);
+        mainGroup.add(coreMesh);
+
+        // 1C: Triple Orbital Rings (SBIR R&D, Commercial AWS, Federal Set-Asides)
+        const ring1 = new THREE.Mesh(
+          new THREE.TorusGeometry(4.4, 0.024, 16, 120),
+          new THREE.MeshBasicMaterial({ color: 0x320813, transparent: true, opacity: 0.24 })
+        );
+        ring1.rotation.x = Math.PI / 3;
+        mainGroup.add(ring1);
+
+        const ring2 = new THREE.Mesh(
+          new THREE.TorusGeometry(5.1, 0.026, 16, 120),
+          new THREE.MeshBasicMaterial({ color: 0xDDA743, transparent: true, opacity: 0.42 })
+        );
+        ring2.rotation.y = Math.PI / 4;
+        mainGroup.add(ring2);
+
+        const ring3 = new THREE.Mesh(
+          new THREE.TorusGeometry(5.9, 0.018, 12, 120),
+          new THREE.MeshBasicMaterial({ color: 0x320813, transparent: true, opacity: 0.16 })
+        );
+        ring3.rotation.x = -Math.PI / 5;
+        ring3.rotation.y = Math.PI / 6;
+        mainGroup.add(ring3);
+
+        // 1D: Floating 720-Particle Lattice
+        const particleCount = 720;
+        const pGeo = new THREE.BufferGeometry();
+        const positions = new Float32Array(particleCount * 3);
+        const colors = new Float32Array(particleCount * 3);
+
+        const cOxblood = new THREE.Color(0x320813);
+        const cGold = new THREE.Color(0xDDA743);
+
+        for (let i = 0; i < particleCount; i++) {
+          const r = 3.4 + Math.random() * 7.2;
+          const theta = Math.random() * Math.PI * 2;
+          const phi = Math.acos(2 * Math.random() - 1);
+
+          positions[i * 3] = r * Math.sin(phi) * Math.cos(theta);
+          positions[i * 3 + 1] = r * Math.sin(phi) * Math.sin(theta);
+          positions[i * 3 + 2] = r * Math.cos(phi);
+
+          const chosen = Math.random() > 0.4 ? cOxblood : cGold;
+          colors[i * 3] = chosen.r;
+          colors[i * 3 + 1] = chosen.g;
+          colors[i * 3 + 2] = chosen.b;
+        }
+
+        pGeo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+        pGeo.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+
+        const particleSystem = new THREE.Points(
+          pGeo,
+          new THREE.PointsMaterial({
+            size: 0.065,
+            vertexColors: true,
+            transparent: true,
+            opacity: 0.5
+          })
+        );
+        mainGroup.add(particleSystem);
+
+        // Mouse Parallax Tracking
+        let mouseX = 0;
+        let mouseY = 0;
+        window.addEventListener('mousemove', (e) => {
+          mouseX = (e.clientX / window.innerWidth - 0.5) * 2;
+          mouseY = (e.clientY / window.innerHeight - 0.5) * 2;
+        });
+
+        // GSAP ScrollTrigger 3D Stage Choreography
+        if (!prefersReducedMotion) {
+          const tl3D = gsap.timeline({
+            scrollTrigger: {
+              trigger: 'body',
+              start: 'top top',
+              end: 'bottom bottom',
+              scrub: 1.2
+            }
+          });
+
+          tl3D
+            .to(mainGroup.position, { x: 3.1, y: -0.4, z: -1.2, duration: 1 }, 0)
+            .to(mainGroup.rotation, { x: 0.7, y: 1.4, duration: 1 }, 0)
+            .to(mainGroup.position, { x: -2.8, y: 0.3, z: 1.4, duration: 1 }, 1)
+            .to(particleSystem.scale, { x: 1.65, y: 1.65, z: 1.65, duration: 1 }, 1)
+            .to(coreMesh.scale, { x: 1.85, y: 1.85, z: 1.85, duration: 1 }, 1)
+            .to(mainGroup.position, { x: 0, y: 0.4, z: -2.2, duration: 1.2 }, 2)
+            .to(ring1.scale, { x: 1.35, y: 1.35, z: 1.35, duration: 1.2 }, 2)
+            .to(ring2.scale, { x: 1.35, y: 1.35, z: 1.35, duration: 1.2 }, 2)
+            .to(mainGroup.position, { x: 2.9, y: -0.5, z: -0.6, duration: 1.5 }, 3.2)
+            .to(mainGroup.rotation, { x: 2.1, y: 3.8, duration: 1.5 }, 3.2)
+            .to(mainGroup.position, { x: -2.4, y: 0.2, z: 0.8, duration: 1.5 }, 4.7)
+            .to(mainGroup.position, { x: 0, y: 0, z: 1.5, duration: 1.5 }, 6.2)
+            .to(particleSystem.scale, { x: 1.15, y: 1.15, z: 1.15, duration: 1.5 }, 6.2);
+        }
+
+        const clock = new THREE.Clock();
+        const animateWebGL = () => {
+          requestAnimationFrame(animateWebGL);
+          const elapsed = clock.getElapsedTime();
+
+          if (!prefersReducedMotion) {
+            icoMesh.rotation.y = elapsed * 0.11;
+            icoMesh.rotation.x = elapsed * 0.06;
+            coreMesh.rotation.y = -elapsed * 0.2;
+            coreMesh.rotation.z = elapsed * 0.13;
+            ring1.rotation.z = elapsed * 0.16;
+            ring2.rotation.x = -elapsed * 0.14;
+            ring3.rotation.y = elapsed * 0.1;
+            particleSystem.rotation.y = elapsed * 0.035;
+          }
+
+          camera.position.x += (mouseX * 0.85 - camera.position.x) * 0.04;
+          camera.position.y += (-mouseY * 0.85 - camera.position.y) * 0.04;
+          camera.lookAt(scene.position);
+
+          renderer.render(scene, camera);
+        };
+        animateWebGL();
+
+        window.addEventListener('resize', () => {
+          camera.aspect = window.innerWidth / window.innerHeight;
+          camera.updateProjectionMatrix();
+          renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+      };
+      initWebGL();
+
+      /* -----------------------------------------------------------
+       * 2. SCROLL PROGRESS, AUTO-HIDING MENU & NAV DIAMONDS
+       * ----------------------------------------------------------- */
+      gsap.to('#scroll-progress', {
+        width: '100%',
+        ease: 'none',
+        scrollTrigger: {
+          trigger: 'body',
+          start: 'top top',
+          end: 'bottom bottom',
+          scrub: 0.2
+        }
+      });
+
+      const menuBar = document.getElementById('smart-menu-bar');
+      if (menuBar) {
+        let lastScrollY = window.pageYOffset || document.documentElement.scrollTop;
+        let ticking = false;
+        const handleScroll = () => {
+          const currentScrollY = window.pageYOffset || document.documentElement.scrollTop;
+          const diff = currentScrollY - lastScrollY;
+          if (currentScrollY <= 25) {
+            menuBar.style.transform = 'translateY(0)';
+            menuBar.style.opacity = '1';
+            menuBar.style.pointerEvents = 'auto';
+          } else if (diff > 6 && currentScrollY > 70) {
+            menuBar.style.transform = 'translateY(-110%)';
+            menuBar.style.opacity = '0';
+            menuBar.style.pointerEvents = 'none';
+          } else if (diff < -5) {
+            menuBar.style.transform = 'translateY(0)';
+            menuBar.style.opacity = '1';
+            menuBar.style.pointerEvents = 'auto';
+          }
+          lastScrollY = currentScrollY <= 0 ? 0 : currentScrollY;
+          ticking = false;
+        };
+        window.addEventListener('scroll', () => {
+          if (!ticking) {
+            window.requestAnimationFrame(handleScroll);
+            ticking = true;
+          }
+        }, { passive: true });
+      }
+
+      // Hero Entrance & Editorial Card Reveals
+      if (!prefersReducedMotion) {
+        gsap.from('#hero-title', { y: 72, opacity: 0, duration: 1.2, ease: 'power4.out' });
+        gsap.from('#hero-subtitle', { y: 36, opacity: 0, duration: 1.2, delay: 0.2, ease: 'power3.out' });
+        gsap.from('#hero-metrics > div', { y: 28, opacity: 0, duration: 0.9, stagger: 0.12, delay: 0.35, ease: 'power3.out' });
+
+        gsap.utils.toArray('.reveal-card').forEach((card) => {
+          gsap.from(card, {
+            y: 42,
+            opacity: 0,
+            duration: 0.95,
+            ease: 'power3.out',
+            scrollTrigger: {
+              trigger: card,
+              start: 'top 87%',
+              toggleActions: 'play none none reverse'
+            }
+          });
+        });
+
+        gsap.utils.toArray('.rev-bar-fill').forEach((bar, idx) => {
+          gsap.to(bar, {
+            scaleX: 1,
+            duration: 1.3,
+            delay: idx * 0.1,
+            ease: 'expo.out',
+            scrollTrigger: {
+              trigger: '#sec-6',
+              start: 'top 72%'
+            }
+          });
+        });
+      } else {
+        gsap.set('.rev-bar-fill', { scaleX: 1 });
+      }
+
+      // Right-Margin Diamond Indicators Sync
+      const sections = ['#sec-1', '#sec-2', '#sec-3', '#sec-4', '#sec-5', '#sec-6', '#sec-7', '#sec-8', '#sec-9', '#sec-10'];
+      const navButtons = document.querySelectorAll('.nav-diamond');
+      sections.forEach((secId, index) => {
+        const el = document.querySelector(secId);
+        if (!el) return;
+        ScrollTrigger.create({
+          trigger: el,
+          start: 'top center',
+          end: 'bottom center',
+          onEnter: () => setActiveDiamond(index),
+          onEnterBack: () => setActiveDiamond(index)
+        });
+      });
+
+      function setActiveDiamond(activeIndex) {
+        navButtons.forEach((btn, idx) => btn.classList.toggle('active', idx === activeIndex));
+      }
+
+      navButtons.forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const target = document.querySelector(btn.getAttribute('data-target'));
+          if (target) target.scrollIntoView({ behavior: 'smooth' });
+        });
+      });
+
+      /* -----------------------------------------------------------
+       * 3. HOME-PAGE STYLE GSAP PINNED 3-COLUMN ASSEMBLY (SECTION 5)
+       *    + STICKY WORKFLOW HIGHLIGHTER (SECTION 7)
+       * ----------------------------------------------------------- */
+      let sbirProgress = 0.15;
+      const sbirStage = document.getElementById('sbir-pinned-stage');
+      const sbirStatus = document.getElementById('sbir-stage-status');
+
+      if (sbirStage && window.innerWidth >= 1024 && !prefersReducedMotion) {
+        const baseCols = gsap.utils.toArray('.sbir-col-base', sbirStage);
+        const overlays = gsap.utils.toArray('.sbir-col-overlay', sbirStage);
+
+        baseCols.forEach((el, idx) => {
+          if (idx > 0) gsap.set(el, { yPercent: 105, opacity: 0 });
+        });
+        gsap.set(overlays, { yPercent: 110, opacity: 0 });
+
+        const sbirTl = gsap.timeline({
+          scrollTrigger: {
+            trigger: sbirStage,
+            start: 'top top',
+            end: '+=240%',
+            pin: true,
+            scrub: 0.85,
+            anticipatePin: 1,
+            onUpdate: (self) => {
+              sbirProgress = self.progress;
+              if (sbirStatus) {
+                if (self.progress < 0.28) sbirStatus.textContent = 'Stage 1 of 3 · Phase I Feasibility ($150K–$275K)';
+                else if (self.progress < 0.56) sbirStatus.textContent = 'Stage 2 of 3 · Phase II Prototype R&D ($1M–$2M)';
+                else if (self.progress < 0.82) sbirStatus.textContent = 'Stage 3 of 3 · Phase III Uncapped Sole-Source';
+                else sbirStatus.textContent = 'Sole-Source Mandate Unlocked · Up to $522M Ceiling';
+              }
+            }
+          }
+        });
+
+        if (baseCols[1]) sbirTl.to(baseCols[1], { yPercent: 0, opacity: 1, duration: 1, ease: 'power2.out' });
+        if (baseCols[2]) sbirTl.to(baseCols[2], { yPercent: 0, opacity: 1, duration: 1, ease: 'power2.out' }, '-=0.25');
+
+        overlays.forEach((ov, idx) => {
+          sbirTl.to(ov, { yPercent: 0, opacity: 1, duration: 0.9, ease: 'power2.inOut' }, idx === 0 ? '+=0.15' : '-=0.3');
+        });
+      } else {
+        sbirProgress = 1;
+      }
+
+      // Sticky Stacking Workflow Card Sync (Section 7)
+      const wfCards = document.querySelectorAll('.sticky-workflow-card');
+      const wfPills = document.querySelectorAll('.wf-pill');
+      const setActiveWorkflow = (idx) => {
+        wfCards.forEach((c, i) => c.classList.toggle('is-focused', i === idx));
+        wfPills.forEach((p, i) => {
+          if (i === idx) {
+            p.classList.add('bg-gold/20', 'border-gold/50', 'text-cream');
+            p.classList.remove('bg-cream/5', 'border-cream/10', 'text-cream/70');
+          } else {
+            p.classList.remove('bg-gold/20', 'border-gold/50', 'text-cream');
+            p.classList.add('bg-cream/5', 'border-cream/10', 'text-cream/70');
+          }
+        });
+      };
+
+      wfCards.forEach((card, idx) => {
+        ScrollTrigger.create({
+          trigger: card,
+          start: 'top 52%',
+          end: 'bottom 45%',
+          onEnter: () => setActiveWorkflow(idx),
+          onEnterBack: () => setActiveWorkflow(idx)
+        });
+      });
+
+      /* -----------------------------------------------------------
+       * 4. INTERACTIVE CONTROLS: AGENCY FILTER, COPY EMAIL, MARKET PILLS
+       * ----------------------------------------------------------- */
+      const agencyTabs = document.querySelectorAll('.agency-tab');
+      const agencyCards = document.querySelectorAll('.agency-card');
+      agencyTabs.forEach((tab) => {
+        tab.addEventListener('click', () => {
+          const filter = tab.getAttribute('data-agency');
+          agencyTabs.forEach((t) => {
+            t.classList.toggle('active', t === tab);
+            if (t !== tab) t.classList.add('bg-cream/80');
+            else t.classList.remove('bg-cream/80');
+          });
+          agencyCards.forEach((card) => {
+            const id = card.getAttribute('data-agency-id');
+            card.style.display = (filter === 'all' || filter === id) ? '' : 'none';
+          });
+          ScrollTrigger.refresh();
+        });
+      });
+
+      const copyToast = document.getElementById('copy-toast');
+      let toastTimer = null;
+      document.querySelectorAll('.copy-email').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const val = btn.getAttribute('data-copy');
+          if (!val) return;
+          if (navigator.clipboard) navigator.clipboard.writeText(val).catch(() => {});
+          if (copyToast) {
+            copyToast.textContent = `Copied: ${val}`;
+            copyToast.style.opacity = '1';
+            copyToast.style.transform = 'translate(-50%, 0)';
+            clearTimeout(toastTimer);
+            toastTimer = setTimeout(() => {
+              copyToast.style.opacity = '0';
+              copyToast.style.transform = 'translate(-50%, 3rem)';
+            }, 2200);
+          }
+        });
+      });
+
+      /* -----------------------------------------------------------
+       * 5. BESPOKE HiDPI 2D CANVAS VISUALIZERS
+       * ----------------------------------------------------------- */
+      function setupHiDPICanvas(canvas) {
+        const dpr = Math.min(window.devicePixelRatio || 1, 2);
+        const rect = canvas.getBoundingClientRect();
+        canvas.width = Math.max(1, rect.width * dpr);
+        canvas.height = Math.max(1, rect.height * dpr);
+        const ctx = canvas.getContext('2d');
+        ctx.scale(dpr, dpr);
+        return { ctx, width: rect.width, height: rect.height };
+      }
+
+      // 5A: Section 3 — 10-Market Orbital Constellation Canvas
+      const MARKETS_DATA = [
+        { tag: '01 // Financial Markets', short: 'Finance & A2A', desc: 'Building Agent-to-Agent Retrieval optimization where autonomous trading desks and institutional AI agents source market signals.' },
+        { tag: '02 // Commodities & Resources', short: 'Commodities', desc: 'Shaping AI discovery around critical minerals, agriculture, metals, and global extraction supply chains.' },
+        { tag: '03 // Energy Markets', short: 'Energy', desc: 'Protecting and optimizing retrieval across power grid forecasting, fuel pricing, nuclear, and energy security.' },
+        { tag: '04 // Labor Markets', short: 'Labor', desc: 'Influencing AI-driven recruiting, credential verification, and global workforce allocation systems.' },
+        { tag: '05 // Intelligence & Knowledge', short: 'Intelligence', desc: 'Defending open-source intelligence (OSINT) and authoritative knowledge graphs from adversarial distortion.' },
+        { tag: '06 // Political Markets', short: 'Political', desc: 'Safeguarding democratic narratives, civic policy research, and regulatory integrity inside AI answer engines.' },
+        { tag: '07 // Trade, Supply Chain & Logistics', short: 'Supply Chain', desc: 'Winning autonomous vendor discovery while countering spoofed shipping and maritime disruption claims.' },
+        { tag: '08 // Land Markets', short: 'Land', desc: 'Shaping AI valuation and site-selection models for data centers, commercial land, and sovereign infrastructure.' },
+        { tag: '09 // Defense & National Security', short: 'Defense', desc: 'Deploying dual-use AEO and Counter-AEO systems for military operations, cyber defense, and national deterrence.' },
+        { tag: '10 // Goods & Services', short: 'Commerce', desc: 'Our commercial beachhead—proving unmatched AEO dominance for flagship private-sector brands and AWS products.' }
+      ];
+
+      let activeMarketIdx = 0;
+      const marketPills = document.querySelectorAll('.market-pill');
+      const marketTagEl = document.getElementById('market-readout-tag');
+      const marketDescEl = document.getElementById('market-readout-desc');
+
+      const selectMarket = (idx) => {
+        activeMarketIdx = idx;
+        marketPills.forEach((p, i) => p.classList.toggle('active', i === idx));
+        if (marketTagEl) marketTagEl.textContent = MARKETS_DATA[idx].tag;
+        if (marketDescEl) marketDescEl.textContent = MARKETS_DATA[idx].desc;
+      };
+
+      marketPills.forEach((pill) => {
+        const idx = parseInt(pill.getAttribute('data-market-idx') || '0', 10);
+        pill.addEventListener('click', () => selectMarket(idx));
+        pill.addEventListener('mouseenter', () => selectMarket(idx));
+      });
+
+      const initMarketsCanvas = () => {
+        const canvas = document.getElementById('markets-constellation-canvas');
+        if (!canvas) return;
+        let { ctx, width, height } = setupHiDPICanvas(canvas);
+        let t = 0;
+        window.addEventListener('resize', () => ({ ctx, width, height } = setupHiDPICanvas(canvas)));
+
+        const render = () => {
+          requestAnimationFrame(render);
+          t += 0.012;
+          ctx.clearRect(0, 0, width, height);
+
+          const cx = width / 2;
+          const cy = height / 2;
+          const orbitR = Math.min(width, height) * 0.37;
+
+          // Concentric subtle rings
+          [orbitR * 0.55, orbitR].forEach((rad, i) => {
+            ctx.strokeStyle = i === 1 ? 'rgba(221, 167, 67, 0.25)' : 'rgba(250, 245, 235, 0.14)';
+            ctx.setLineDash(i === 1 ? [4, 5] : []);
+            ctx.lineWidth = 1.2;
+            ctx.beginPath();
+            ctx.arc(cx, cy, rad, 0, Math.PI * 2);
+            ctx.stroke();
+            ctx.setLineDash([]);
+          });
+
+          // Draw 10 orbiting markets
+          MARKETS_DATA.forEach((m, i) => {
+            const angle = (i / MARKETS_DATA.length) * Math.PI * 2 - Math.PI / 2 + t * 0.18;
+            const nx = cx + Math.cos(angle) * orbitR;
+            const ny = cy + Math.sin(angle) * orbitR;
+            const isSel = i === activeMarketIdx;
+
+            // Connection spoke
+            ctx.strokeStyle = isSel ? '#DDA743' : 'rgba(250, 245, 235, 0.18)';
+            ctx.lineWidth = isSel ? 2.2 : 1;
+            ctx.beginPath();
+            ctx.moveTo(cx, cy);
+            ctx.lineTo(nx, ny);
+            ctx.stroke();
+
+            // Traveling data packet on active spoke
+            if (isSel) {
+              const p = (t * 1.4) % 1;
+              const px = cx + (nx - cx) * p;
+              const py = cy + (ny - cy) * p;
+              ctx.fillStyle = '#FAF5EB';
+              ctx.beginPath();
+              ctx.arc(px, py, 3.5, 0, Math.PI * 2);
+              ctx.fill();
+            }
+
+            // Outer node halo if active
+            if (isSel) {
+              ctx.strokeStyle = 'rgba(221, 167, 67, 0.55)';
+              ctx.lineWidth = 1.5;
+              ctx.beginPath();
+              ctx.arc(nx, ny, 13 + Math.sin(t * 4) * 2.5, 0, Math.PI * 2);
+              ctx.stroke();
+            }
+
+            // Node circle
+            ctx.fillStyle = isSel ? '#DDA743' : '#FAF5EB';
+            ctx.beginPath();
+            ctx.arc(nx, ny, isSel ? 7.5 : 4.2, 0, Math.PI * 2);
+            ctx.fill();
+
+            // Node label
+            const labelDist = orbitR + (isSel ? 26 : 20);
+            const lx = cx + Math.cos(angle) * labelDist;
+            const ly = cy + Math.sin(angle) * labelDist;
+            ctx.font = isSel ? '600 10px "JetBrains Mono", monospace' : '400 9px "JetBrains Mono", monospace';
+            ctx.fillStyle = isSel ? '#DDA743' : 'rgba(250, 245, 235, 0.65)';
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.fillText(m.short, lx, ly);
+          });
+
+          // Central AEO Core
+          ctx.fillStyle = '#DDA743';
+          ctx.beginPath();
+          ctx.arc(cx, cy, 22, 0, Math.PI * 2);
+          ctx.fill();
+          ctx.strokeStyle = '#FAF5EB';
+          ctx.lineWidth = 2;
+          ctx.stroke();
+
+          ctx.fillStyle = '#320813';
+          ctx.font = '700 11px "JetBrains Mono", monospace';
+          ctx.textAlign = 'center';
+          ctx.textBaseline = 'middle';
+          ctx.fillText('AEO', cx, cy);
+        };
+        render();
+      };
+      initMarketsCanvas();
+
+      // 5B: Section 5 — SBIR Funding Escalator Canvas ($150K -> $2M -> $522M)
+      const initSbirCurveCanvas = () => {
+        const canvas = document.getElementById('sbir-curve-canvas');
+        if (!canvas) return;
+        let { ctx, width, height } = setupHiDPICanvas(canvas);
+        let t = 0;
+        window.addEventListener('resize', () => ({ ctx, width, height } = setupHiDPICanvas(canvas)));
+
+        const render = () => {
+          requestAnimationFrame(render);
+          t += 0.025;
+          ctx.clearRect(0, 0, width, height);
+
+          const padX = 36;
+          const padY = 18;
+          const usableW = width - padX * 2;
+          const usableH = height - padY * 2;
+
+          // Subtle horizontal guide lines
+          ctx.strokeStyle = 'rgba(50, 8, 19, 0.08)';
+          ctx.lineWidth = 1;
+          for (let i = 0; i <= 3; i++) {
+            const y = padY + (usableH / 3) * i;
+            ctx.beginPath();
+            ctx.moveTo(padX, y);
+            ctx.lineTo(width - padX, y);
+            ctx.stroke();
+          }
+
+          // Background dashed trajectory
+          ctx.strokeStyle = 'rgba(50, 8, 19, 0.22)';
+          ctx.setLineDash([4, 5]);
+          ctx.lineWidth = 1.5;
+          ctx.beginPath();
+          for (let x = 0; x <= usableW; x += 4) {
+            const n = x / usableW;
+            const y = padY + usableH - Math.pow(n, 2.7) * usableH;
+            if (x === 0) ctx.moveTo(padX + x, y);
+            else ctx.lineTo(padX + x, y);
+          }
+          ctx.stroke();
+          ctx.setLineDash([]);
+
+          // Active Scroll-Synced Gold/Oxblood Curve
+          const activeMax = Math.max(0.18, Math.min(1, sbirProgress));
+          ctx.strokeStyle = '#320813';
+          ctx.lineWidth = 3;
+          ctx.beginPath();
+          for (let x = 0; x <= usableW * activeMax; x += 3) {
+            const n = x / usableW;
+            const y = padY + usableH - Math.pow(n, 2.7) * usableH;
+            if (x === 0) ctx.moveTo(padX + x, y);
+            else ctx.lineTo(padX + x, y);
+          }
+          ctx.stroke();
+
+          // Milestone Beacons
+          const milestones = [
+            { n: 0.16, label: 'Phase I ($150K–$275K)' },
+            { n: 0.52, label: 'Phase II ($1M–$2M)' },
+            { n: 0.96, label: 'Phase III (Up to $522M)' }
+          ];
+          milestones.forEach((m, idx) => {
+            const mx = padX + m.n * usableW;
+            const my = padY + usableH - Math.pow(m.n, 2.7) * usableH;
+            const reached = activeMax >= m.n - 0.05;
+
+            if (reached && idx === 2) {
+              ctx.strokeStyle = 'rgba(221, 167, 67, 0.55)';
+              ctx.lineWidth = 1.5;
+              ctx.beginPath();
+              ctx.arc(mx, my, 12 + Math.sin(t * 2) * 3, 0, Math.PI * 2);
+              ctx.stroke();
+            }
+
+            ctx.fillStyle = reached ? (idx === 2 ? '#DDA743' : '#320813') : 'rgba(50, 8, 19, 0.25)';
+            ctx.beginPath();
+            ctx.arc(mx, my, idx === 2 ? 7 : 5, 0, Math.PI * 2);
+            ctx.fill();
+
+            ctx.font = '600 10px "JetBrains Mono", monospace';
+            ctx.fillStyle = reached ? '#320813' : 'rgba(50, 8, 19, 0.45)';
+            ctx.textAlign = idx === 2 ? 'right' : 'center';
+            ctx.fillText(m.label, idx === 2 ? mx - 12 : mx, Math.max(12, my - 12));
+          });
+
+          // Moving pulse dot along active curve
+          const pNorm = ((t * 0.22) % 1) * activeMax;
+          const px = padX + pNorm * usableW;
+          const py = padY + usableH - Math.pow(pNorm, 2.7) * usableH;
+          ctx.fillStyle = '#DDA743';
+          ctx.beginPath();
+          ctx.arc(px, py, 5.5, 0, Math.PI * 2);
+          ctx.fill();
+          ctx.strokeStyle = '#320813';
+          ctx.lineWidth = 1.5;
+          ctx.stroke();
+        };
+        render();
+      };
+      initSbirCurveCanvas();
+
+      // 5C: Section 8 — Competition Compression Radar Canvas
+      const initSetAsideFunnelCanvas = () => {
+        const canvas = document.getElementById('setaside-funnel-canvas');
+        if (!canvas) return;
+        let { ctx, width, height } = setupHiDPICanvas(canvas);
+        let t = 0;
+
+        const bidders = Array.from({ length: 42 }, (_, i) => ({
+          angle: (i / 42) * Math.PI * 2,
+          speed: 0.004 + (i % 5) * 0.0015,
+          tier: i < 30 ? 0 : i < 38 ? 1 : 2 // 0 = outer giant primes, 1 = small biz, 2 = our team/JV
+        }));
+
+        window.addEventListener('resize', () => ({ ctx, width, height } = setupHiDPICanvas(canvas)));
+
+        const render = () => {
+          requestAnimationFrame(render);
+          t += 0.02;
+          ctx.clearRect(0, 0, width, height);
+
+          const cx = width / 2;
+          const cy = height / 2;
+          const maxR = Math.min(width, height) * 0.43;
+          const midR = maxR * 0.62;
+          const coreR = maxR * 0.28;
+
+          // Three concentric competition zones
+          ctx.strokeStyle = 'rgba(250, 245, 235, 0.2)';
+          ctx.lineWidth = 1;
+          ctx.beginPath();
+          ctx.arc(cx, cy, maxR, 0, Math.PI * 2);
+          ctx.stroke();
+
+          // Set-Aside Shield Boundary (Gold dashed)
+          ctx.strokeStyle = '#DDA743';
+          ctx.setLineDash([5, 4]);
+          ctx.lineWidth = 2;
+          ctx.beginPath();
+          ctx.arc(cx, cy, midR, 0, Math.PI * 2);
+          ctx.stroke();
+          ctx.setLineDash([]);
+
+          // Inner Core Winner Ring
+          ctx.fillStyle = 'rgba(221, 167, 67, 0.16)';
+          ctx.beginPath();
+          ctx.arc(cx, cy, coreR, 0, Math.PI * 2);
+          ctx.fill();
+          ctx.strokeStyle = '#DDA743';
+          ctx.lineWidth = 1.5;
+          ctx.stroke();
+
+          // Sweeping radar beam
+          const sweep = t * 0.7;
+          ctx.strokeStyle = 'rgba(221, 167, 67, 0.35)';
+          ctx.lineWidth = 1.5;
+          ctx.beginPath();
+          ctx.moveTo(cx, cy);
+          ctx.lineTo(cx + Math.cos(sweep) * maxR, cy + Math.sin(sweep) * maxR);
+          ctx.stroke();
+
+          // Bidder Dots
+          bidders.forEach((b) => {
+            b.angle += b.speed;
+            const r = b.tier === 0 ? maxR - 8 : b.tier === 1 ? (midR + coreR) * 0.52 : coreR * 0.55;
+            const x = cx + Math.cos(b.angle) * r;
+            const y = cy + Math.sin(b.angle) * r;
+
+            ctx.fillStyle = b.tier === 0 ? 'rgba(250, 245, 235, 0.35)' : b.tier === 1 ? 'rgba(250, 245, 235, 0.8)' : '#DDA743';
+            ctx.beginPath();
+            ctx.arc(x, y, b.tier === 2 ? 5.5 : b.tier === 1 ? 3.5 : 2.8, 0, Math.PI * 2);
+            ctx.fill();
+          });
+
+          // Labels
+          ctx.font = '600 9px "JetBrains Mono", monospace';
+          ctx.textAlign = 'center';
+          ctx.fillStyle = 'rgba(250, 245, 235, 0.55)';
+          ctx.fillText('LARGE PRIMES LOCKED OUT', cx, cy - maxR + 12);
+          ctx.fillStyle = '#DDA743';
+          ctx.fillText('SET-ASIDE ZONE', cx, cy - midR + 13);
+          ctx.fillStyle = '#FAF5EB';
+          ctx.fillText('OUR TEAM', cx, cy + 3);
+        };
+        render();
+      };
+      initSetAsideFunnelCanvas();
+
+      // 5D: Section 9 — Scroll-Synced AWS Flywheel Canvas
+      const initAwsFlywheelCanvas = () => {
+        const canvas = document.getElementById('aws-flywheel-canvas');
+        if (!canvas) return;
+        let { ctx, width, height } = setupHiDPICanvas(canvas);
+        let awsPhase = 0;
+        let t = 0;
+
+        window.addEventListener('resize', () => ({ ctx, width, height } = setupHiDPICanvas(canvas)));
+
+        const awsTitle = document.getElementById('aws-canvas-title');
+        const awsLabel = document.getElementById('aws-phase-label');
+        const awsPct = document.getElementById('aws-phase-pct');
+        const awsBar = document.getElementById('aws-progress-bar');
+
+        const phaseMeta = [
+          { title: 'Stage 1 · Single-Product AEO Wedge', label: 'Step 1 of 4 · Prove Value on One AWS Product', pct: '25%' },
+          { title: 'Stage 2 · AWS Portfolio Expansion', label: 'Step 2 of 4 · Expand Commercial Scope Across AWS', pct: '50%' },
+          { title: 'Stage 3 · Parallel SBIR Cyber R&D', label: 'Step 3 of 4 · Non-Dilutive Federal Security Platform', pct: '75%' },
+          { title: 'Stage 4 · SBA Mentor-Protégé JV', label: 'Step 4 of 4 · Capture Major Federal Set-Asides Together', pct: '100%' }
+        ];
+
+        document.querySelectorAll('.aws-step').forEach((stepEl) => {
+          const p = parseInt(stepEl.getAttribute('data-aws-phase') || '0', 10);
+          const syncPhase = () => {
+            awsPhase = p;
+            if (awsTitle) awsTitle.textContent = phaseMeta[p].title;
+            if (awsLabel) awsLabel.textContent = phaseMeta[p].label;
+            if (awsPct) awsPct.textContent = phaseMeta[p].pct;
+            if (awsBar) awsBar.style.width = phaseMeta[p].pct;
+          };
+          ScrollTrigger.create({
+            trigger: stepEl,
+            start: 'top 62%',
+            end: 'bottom 38%',
+            onEnter: syncPhase,
+            onEnterBack: syncPhase
+          });
+        });
+
+        const render = () => {
+          requestAnimationFrame(render);
+          t += 0.025;
+          ctx.clearRect(0, 0, width, height);
+
+          const cx = width / 2;
+          const cy = height / 2;
+          const rx = width * 0.31;
+          const ry = height * 0.28;
+
+          const nodes = [
+            { x: cx - rx, y: cy - ry, title: '1. AWS PILOT', sub: '1 Product AEO' },
+            { x: cx + rx, y: cy - ry, title: '2. AWS SCALE', sub: 'Multi-Product' },
+            { x: cx + rx, y: cy + ry, title: '3. SBIR CYBER', sub: 'Federal R&D' },
+            { x: cx - rx, y: cy + ry, title: '4. MENTOR-PROTÉGÉ', sub: 'Federal JV' }
+          ];
+
+          // Draw Flywheel Loop Arrows
+          for (let i = 0; i < 4; i++) {
+            const a = nodes[i];
+            const b = nodes[(i + 1) % 4];
+            const isActiveEdge = i <= awsPhase;
+
+            ctx.strokeStyle = isActiveEdge ? '#DDA743' : 'rgba(250, 245, 235, 0.18)';
+            ctx.lineWidth = isActiveEdge ? 2.4 : 1.2;
+            ctx.beginPath();
+            ctx.moveTo(a.x, a.y);
+            ctx.lineTo(b.x, b.y);
+            ctx.stroke();
+
+            if (isActiveEdge) {
+              const prog = (t * 0.55 + i * 0.25) % 1;
+              const px = a.x + (b.x - a.x) * prog;
+              const py = a.y + (b.y - a.y) * prog;
+              ctx.fillStyle = '#FAF5EB';
+              ctx.beginPath();
+              ctx.arc(px, py, 3.8, 0, Math.PI * 2);
+              ctx.fill();
+            }
+          }
+
+          // Central Convergence Core
+          ctx.strokeStyle = awsPhase === 3 ? '#DDA743' : 'rgba(221, 167, 67, 0.35)';
+          ctx.lineWidth = awsPhase === 3 ? 2.5 : 1.2;
+          ctx.beginPath();
+          ctx.arc(cx, cy, 34 + (awsPhase === 3 ? Math.sin(t * 3) * 4 : 0), 0, Math.PI * 2);
+          ctx.stroke();
+
+          ctx.fillStyle = awsPhase === 3 ? '#DDA743' : 'rgba(250, 245, 235, 0.12)';
+          ctx.beginPath();
+          ctx.arc(cx, cy, 26, 0, Math.PI * 2);
+          ctx.fill();
+
+          ctx.font = '700 9px "JetBrains Mono", monospace';
+          ctx.fillStyle = awsPhase === 3 ? '#320813' : '#FAF5EB';
+          ctx.textAlign = 'center';
+          ctx.textBaseline = 'middle';
+          ctx.fillText(awsPhase === 3 ? 'JV WIN' : 'FLYWHEEL', cx, cy);
+
+          // Draw 4 Stage Nodes
+          nodes.forEach((n, idx) => {
+            const reached = idx <= awsPhase;
+            const current = idx === awsPhase;
+
+            if (current) {
+              ctx.strokeStyle = 'rgba(221, 167, 67, 0.55)';
+              ctx.lineWidth = 1.8;
+              ctx.beginPath();
+              ctx.arc(n.x, n.y, 26 + Math.sin(t * 3) * 3, 0, Math.PI * 2);
+              ctx.stroke();
+            }
+
+            ctx.fillStyle = current ? '#DDA743' : reached ? '#4e1021' : '#24050e';
+            ctx.beginPath();
+            ctx.arc(n.x, n.y, 21, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.strokeStyle = reached ? '#DDA743' : 'rgba(250, 245, 235, 0.25)';
+            ctx.lineWidth = 1.8;
+            ctx.stroke();
+
+            ctx.font = '700 11px "JetBrains Mono", monospace';
+            ctx.fillStyle = current ? '#320813' : '#FAF5EB';
+            ctx.fillText(`0${idx + 1}`, n.x, n.y);
+
+            ctx.font = '600 10px "JetBrains Mono", monospace';
+            ctx.fillStyle = reached ? '#DDA743' : 'rgba(250, 245, 235, 0.55)';
+            ctx.fillText(n.title, n.x, n.y + (idx < 2 ? -33 : 34));
+
+            ctx.font = '400 9px "Plus Jakarta Sans", sans-serif';
+            ctx.fillStyle = 'rgba(250, 245, 235, 0.72)';
+            ctx.fillText(n.sub, n.x, n.y + (idx < 2 ? -21 : 46));
+          });
+        };
+        render();
+      };
+      initAwsFlywheelCanvas();
+    });
+  </script>
+</body>
+
+</html>

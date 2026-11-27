@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowUpRight, BookOpen, Sparkles, Compass } from 'lucide-react';
+import { ArrowUpRight, BookOpen, Sparkles, Compass, Landmark } from 'lucide-react';
 import { NavigationPage } from '../types';
 
 interface FooterProps {
@@ -39,6 +39,13 @@ export const Footer: React.FC<FooterProps> = ({
                 <span>View Cover Deck</span>
               </button>
               <button
+                onClick={() => onNavigate('federal-deck')}
+                className="inline-flex items-center space-x-1.5 px-3.5 py-2 rounded-lg bg-[#410217] hover:bg-[#5C0A24] text-[#F2D69D] border border-[#D5991C]/60 text-xs font-semibold transition-colors cursor-pointer"
+              >
+                <Landmark className="w-3.5 h-3.5 text-[#D5991C]" />
+                <span>Federal AEO &amp; SBIR Deck</span>
+              </button>
+              <button
                 onClick={() => onNavigate('counter-geo-ops')}
                 className="inline-flex items-center space-x-1.5 px-3.5 py-2 rounded-lg bg-[#410217] hover:bg-[#5C0A24] text-[#FBF3E2] border border-[#D5991C]/40 text-xs font-medium transition-colors cursor-pointer"
               >
@@ -60,8 +67,19 @@ export const Footer: React.FC<FooterProps> = ({
                 </button>
               </li>
               <li>
+                <button onClick={() => onNavigate('our-process')} className="hover:text-[#D5991C] transition-colors cursor-pointer">
+                  Our Process
+                </button>
+              </li>
+              <li>
                 <button onClick={() => onNavigate('pitch-deck')} className="hover:text-[#D5991C] transition-colors cursor-pointer font-semibold text-[#F2D69D]">
                   Cover Deck
+                </button>
+              </li>
+              <li>
+                <button onClick={() => onNavigate('federal-deck')} className="hover:text-[#D5991C] transition-colors cursor-pointer font-semibold text-[#D5991C] flex items-center space-x-1 text-left">
+                  <span>Federal AEO &amp; SBIR Playbook</span>
+                  <ArrowUpRight className="w-3 h-3 shrink-0" />
                 </button>
               </li>
               <li>
@@ -75,7 +93,7 @@ export const Footer: React.FC<FooterProps> = ({
                 </button>
               </li>
               <li>
-                <button onClick={() => onNavigate('rea-studio')} className="hover:text-[#D5991C] transition-colors cursor-pointer">
+                <button onClick={() => onNavigate('rea')} className="hover:text-[#D5991C] transition-colors cursor-pointer">
                   REA Reverse-Engineering Studio
                 </button>
               </li>

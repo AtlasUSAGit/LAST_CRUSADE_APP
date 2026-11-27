@@ -23,6 +23,7 @@ import { CounterGeoVol5Page } from './components/CounterGeoVol5Page';
 import { CounterGeoVol6Page } from './components/CounterGeoVol6Page';
 import { CounterGeoCommandCenterPage } from './components/CounterGeoCommandCenterPage';
 import { PitchDeckPage } from './components/PitchDeckPage';
+import { FederalDeckPage } from './components/FederalDeckPage';
 import { ResearchPage } from './components/ResearchPage';
 import { GlitterWrap } from './components/GlitterWrap';
 import { NavigationPage } from './types';
@@ -47,6 +48,7 @@ export default function App() {
     if (hash.includes('counter-geo') || hash.includes('visualizer')) return 'counter-geo';
     if (hash.includes('research') || hash.includes('whitepaper') || hash.includes('papers')) return 'research';
     if (hash.includes('rea') || hash.includes('studio') || hash.includes('workbench')) return 'rea';
+    if (hash.includes('federal-deck') || hash.includes('federal-strategy') || hash.includes('federal-aeo') || hash.includes('sbir')) return 'federal-deck';
     if (hash.includes('pitch-deck') || hash.includes('pitch') || hash.includes('deck')) return 'pitch-deck';
     return 'overview';
   };
@@ -79,6 +81,8 @@ export default function App() {
         setCurrentPage('research');
       } else if (hash.includes('rea') || hash.includes('studio') || hash.includes('workbench')) {
         setCurrentPage('rea');
+      } else if (hash.includes('federal-deck') || hash.includes('federal-strategy') || hash.includes('federal-aeo') || hash.includes('sbir')) {
+        setCurrentPage('federal-deck');
       } else if (hash.includes('pitch-deck') || hash.includes('pitch') || hash.includes('deck')) {
         setCurrentPage('pitch-deck');
       } else if (hash === '' || hash === '#' || hash === '#/') {
@@ -119,6 +123,8 @@ export default function App() {
       window.location.hash = '#/attack-library';
     } else if (page === 'pitch-deck') {
       window.location.hash = '#/pitch-deck';
+    } else if (page === 'federal-deck') {
+      window.location.hash = '#/federal-deck';
     }
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -336,8 +342,16 @@ export default function App() {
         />
       )}
 
+      {currentPage === 'federal-deck' && (
+        <FederalDeckPage
+          onNavigate={handleNavigate}
+          onOpenAudit={() => setAuditModalOpen(true)}
+          onOpenIncident={() => setIncidentModalOpen(true)}
+        />
+      )}
+
       {/* Footer */}
-      {currentPage !== 'services' && currentPage !== 'pitch-deck' && (
+      {currentPage !== 'services' && currentPage !== 'pitch-deck' && currentPage !== 'federal-deck' && (
         <Footer
           onOpenAudit={() => setAuditModalOpen(true)}
           onOpenIncident={() => setIncidentModalOpen(true)}

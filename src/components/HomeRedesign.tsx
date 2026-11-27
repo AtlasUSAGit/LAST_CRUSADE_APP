@@ -804,7 +804,8 @@ export const HomeRedesign: React.FC<HomeRedesignProps> = ({
       'counter-geo-vol5': subPage ? `#/counter-geo-vol5/${subPage}` : '#/counter-geo-vol5',
       'counter-geo-vol6': subPage ? `#/counter-geo-vol6/${subPage}` : '#/counter-geo-vol6',
       'counter-geo-ops': '#/attack-library',
-      'pitch-deck': '#/pitch-deck'
+      'pitch-deck': '#/pitch-deck',
+      'federal-deck': '#/federal-deck'
     };
     window.location.hash = routeMap[page] || '#/';
     window.scrollTo({ top: 0, behavior: 'smooth' });
