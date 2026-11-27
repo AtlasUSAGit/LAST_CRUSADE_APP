@@ -14,7 +14,7 @@ export const Footer: React.FC<FooterProps> = ({
   onOpenIncident,
 }) => {
   return (
-    <footer className="bg-[#2B010F] border-t border-[#F2D69D]/30 text-[#FBF3E2]">
+    <footer className="relative z-20 bg-[#2B010F] border-t-2 border-[#D5991C]/45 text-[#FBF3E2] shadow-[0_-20px_50px_rgba(43,1,15,0.2)]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 pb-12 border-b border-[#F2D69D]/20">
           {/* Col 1: Brand & Mission (4 cols) */}
